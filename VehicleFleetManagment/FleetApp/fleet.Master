@@ -15,9 +15,6 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="description" content="Mega Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
-      <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
-      <meta name="author" content="codedthemes" />
       <!-- Favicon icon -->
       <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <!-- Google font-->
@@ -38,6 +35,8 @@
         <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
       <!-- Style.css -->
       <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css">
+
        <asp:ContentPlaceHolder ID="head" runat="server">
        </asp:ContentPlaceHolder>
   </head>
@@ -471,53 +470,15 @@
 
                   <!-- start Main Content page --> 
                   <div class="pcoded-content">
-                      <!-- Page-header start -->
-                      <div class="page-header">
-                          <div class="page-block">
-                              <div class="row align-items-center">
-                                  <div class="col-md-8">
-                                      <div class="page-header-title">
-                                          <h5 class="m-b-10">Dashboard</h5>
-                                          <p class="m-b-0">Welcome to Mega Able</p>
-                                      </div>
-                                  </div>
-                                  <div class="col-md-4">
-                                      <ul class="breadcrumb-title">
-                                          <li class="breadcrumb-item">
-                                              <a href="index.html"> <i class="fa fa-home"></i> </a>
-                                          </li>
-                                          <li class="breadcrumb-item"><a href="#!">Dashboard</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- Page-header end -->
-                    
-                        <div class="pcoded-inner-content">
-                            <!-- Main-body start -->
-                            <div class="main-body">
-                                <div class="page-wrapper">
-                                    <!-- Page-body start -->
-                                    <div class="page-body">
-                                        <div class="row">
-                                            <!-- start page-->
-                                                  <form id="form1" runat="server">
-                                                        <div>
-                                                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                                                            </asp:ContentPlaceHolder>
-                                                        </div>
-                                                    </form>
-
-                                             <!-- end page-->
-                                        </div>
-                                    </div>
-                                    <!-- Page-body end -->
+                        <!-- start page-->
+                            <form id="form1" runat="server">
+                                <div>
+                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                    </asp:ContentPlaceHolder>
                                 </div>
-                              <!--  <div id="styleSelector"> </div>-->
-                            </div>
-                        </div>
+                            </form>
+
+                        <!-- end page-->
                     </div>
                   <!-- end Main Content page --> 
                 </div>
@@ -591,6 +552,7 @@
     <script type="text/javascript" src="assets/js/jquery-slimscroll/jquery.slimscroll.js "></script>
     <!-- modernizr js -->
     <script type="text/javascript" src="assets/js/modernizr/modernizr.js "></script>
+    <script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <!-- slimscroll js -->
     <script type="text/javascript" src="assets/js/SmoothScroll.js"></script>
     <script src="assets/js/jquery.mCustomScrollbar.concat.min.js "></script>
@@ -606,9 +568,10 @@
     <!-- menu js -->
     <script src="assets/js/pcoded.min.js"></script>
     <script src="assets/js/vertical-layout.min.js "></script>
-    <!-- custom js -->
+    <!-- custom Dashboard js -->
     <script type="text/javascript" src="assets/pages/dashboard/custom-dashboard.js"></script>
-    <script type="text/javascript" src="assets/js/script.js "></script>
+    <script type="text/javascript" src="assets/js/script.js"></script>
+
 
 </body>
 </html>
