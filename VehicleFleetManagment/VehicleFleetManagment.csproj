@@ -257,6 +257,7 @@
     <Content Include="FleetApp\chart.html" />
     <Content Include="FleetApp\color.html" />
     <Content Include="FleetApp\form-elements-component.html" />
+    <Content Include="FleetApp\Home.aspx" />
     <Content Include="FleetApp\icon-themify.html" />
     <Content Include="FleetApp\index.html" />
     <Content Include="FleetApp\label-badge.html" />
@@ -317,6 +318,7 @@
     <Content Include="FleetApp\assets\icon\themify-icons\fonts\themify.eot" />
     <Content Include="FleetApp\assets\icon\themify-icons\fonts\themify.ttf" />
     <Content Include="FleetApp\assets\icon\themify-icons\fonts\themify.woff" />
+    <Content Include="FleetApp\fleet.Master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -376,6 +378,20 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FleetApp\fleet.Master.cs">
+      <DependentUpon>fleet.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\fleet.Master.designer.cs">
+      <DependentUpon>fleet.Master</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -389,12 +405,14 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
