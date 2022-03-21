@@ -265,6 +265,7 @@
     <Content Include="FleetApp\notification.html" />
     <Content Include="FleetApp\progress-bar.html" />
     <Content Include="FleetApp\sample-page.html" />
+    <Content Include="FleetApp\tab.aspx" />
     <Content Include="FleetApp\tabs.html" />
     <Content Include="FleetApp\tooltip.html" />
     <Content Include="FleetApp\typography.html" />
@@ -391,6 +392,13 @@
     </Compile>
     <Compile Include="FleetApp\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\tab.aspx.cs">
+      <DependentUpon>tab.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\tab.aspx.designer.cs">
+      <DependentUpon>tab.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
