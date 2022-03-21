@@ -161,6 +161,7 @@
     <Content Include="FleetApp\assets\images\details_open.png" />
     <Content Include="FleetApp\assets\images\faq_man.png" />
     <Content Include="FleetApp\assets\images\favicon.ico" />
+    <Content Include="FleetApp\assets\images\admin.jpg" />
     <Content Include="FleetApp\assets\images\logo-blue.png" />
     <Content Include="FleetApp\assets\images\logo-compact.png" />
     <Content Include="FleetApp\assets\images\logo.png" />
@@ -173,6 +174,7 @@
     <Content Include="FleetApp\assets\images\tooltip\shape1.svg" />
     <Content Include="FleetApp\assets\images\tooltip\tooltip1.svg" />
     <Content Include="FleetApp\assets\images\user-bg.jpg" />
+    <Content Include="FleetApp\assets\images\vehicle.png" />
     <Content Include="FleetApp\assets\images\widget\AUSTRALIA.jpg" />
     <Content Include="FleetApp\assets\images\widget\BRAZIL.jpg" />
     <Content Include="FleetApp\assets\images\widget\DIGITALPEN.jpg" />
@@ -189,6 +191,7 @@
     <Content Include="FleetApp\assets\images\widget\TABLET.jpg" />
     <Content Include="FleetApp\assets\images\widget\UK.jpg" />
     <Content Include="FleetApp\assets\images\widget\USA.jpg" />
+    <Content Include="FleetApp\assets\images\widget\vehicle.png" />
     <Content Include="FleetApp\assets\images\widget\wather2bottom.png" />
     <Content Include="FleetApp\assets\images\widget\wather2m.png" />
     <Content Include="FleetApp\assets\images\widget\wather2star1.png" />

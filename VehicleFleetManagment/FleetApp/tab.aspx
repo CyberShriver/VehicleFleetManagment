@@ -10,8 +10,8 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-8">
                                         <div class="page-header-title">
-                                            <h5 class="m-b-10">Bootstrap Basic Tables</h5>
-                                            <p class="m-b-0">Lorem Ipsum is simply dummy text of the printing</p>
+                                            <h5 class="m-b-10">Vehicle Fleet Managment</h5>
+                                            <p class="m-b-0">Safety Rules Are Your Best Tools.</p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
