@@ -39,11 +39,10 @@
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>Material Form Inputs</h5>
-                                    <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+                                    <h5>Vehicle Forms</h5>
                                 </div>
                                 <div class="card-block">
-                                    <form class="form-material">
+                                    <div class="form-material">
                                         <div class="form-group form-default">
                                             <input type="text" name="footer-email" class="form-control" required="">
                                             <span class="form-bar"></span>
@@ -79,7 +78,7 @@
                                             <span class="form-bar"></span>
                                             <label class="float-label">Text area Input</label>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +86,7 @@
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-block">
-                                    <form class="form-material">
+                                    <div class="form-material">
                                         <div class="form-group form-default">
                                             <input type="text" name="footer-email" class="form-control" required="">
                                             <span class="form-bar"></span>
@@ -123,7 +122,7 @@
                                             <span class="form-bar"></span>
                                             <label class="float-label">Text area Input</label>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
