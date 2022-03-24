@@ -272,7 +272,7 @@
                         <!-- end Search  -->
 
                         <!-- Start Vehicle entities-->
-                        <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Vehicle Entities</div>
+                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Vehicle Entities</div>--%>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="active">
                                 <a href="index.html" class="waves-effect waves-dark">
@@ -343,7 +343,7 @@
                         <!--End Vehicle entities-->
 
                         <!-- Start Ministrie entities-->
-                        <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Ministries Entries</div>
+                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.forms">Ministries Entries</div>--%>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -388,7 +388,7 @@
                         <!-- End Ministrie entities-->
 
                         <!-- Start Tools entities-->
-                        <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Tools Entities</div>
+                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.forms">Tools Entities</div>--%>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -474,7 +474,7 @@
                         <!-- End Tools entities-->
 
                         <!-- Start Fuels entities-->
-                        <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Fuels Entities</div>
+                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.forms">Fuels Entities</div>--%>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -497,7 +497,7 @@
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                     </li>
-             
+
 
                                 </ul>
                             </li>
@@ -505,7 +505,7 @@
                         <!-- End Fuels entities-->
 
                         <!-- Start Drivers entities-->
-                        <div class="pcoded-navigation-label" data-i18n="nav.category.other">Drivers Entities</div>
+                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.other">Drivers Entities</div>--%>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -541,14 +541,14 @@
                                             <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">License</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                    </li>                                  
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
                         <!-- End Drivers entities-->
 
                         <!-- Start Accident entities-->
-                        <div class="pcoded-navigation-label" data-i18n="nav.category.other">Crash & Repair</div>
+                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.other">Crash & Repair</div>--%>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -570,7 +570,7 @@
                                             <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Repair</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                    </li>                                 
+                                    </li>
 
                                 </ul>
                             </li>
@@ -578,7 +578,7 @@
                         <!-- End Accident entities-->
 
                         <!-- Start Reports entities-->
-                        <div class="pcoded-navigation-label" data-i18n="nav.category.other">Reports Entities</div>
+                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.other">Reports Entities</div>--%>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -664,7 +664,7 @@
                         <!-- End Reports entities-->
 
                         <!-- Start System entities-->
-                        <div class="pcoded-navigation-label" data-i18n="nav.category.other">Settings</div>
+                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.other">Settings</div>--%>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="">
                                 <a href="index.html" class="waves-effect waves-dark">
