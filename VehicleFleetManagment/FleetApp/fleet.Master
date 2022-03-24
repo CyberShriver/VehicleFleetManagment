@@ -29,8 +29,6 @@
     <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" type="text/css" href="assets/icon/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
     <!-- scrollbar.css -->
     <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css">
     <!-- am chart export.css -->
@@ -285,14 +283,14 @@
                             </li>
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                    <span class="pcoded-micon"><i class="fas fa-bus"></i></span>
+                                    <span class="pcoded-micon"><i class="fa fa-bus"></i></span>
                                     <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Vehicles</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
                                     <li class="">
                                         <a href="accordion.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="fa fa-bus"></i></span>
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Vehicles</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
@@ -480,7 +478,7 @@
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                    <span class="pcoded-micon"><i class="fa fa-gas-pump"></i></span>
+                                    <span class="pcoded-micon"><i class="fa fa-cab"></i></span>
                                     <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Fuel</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
