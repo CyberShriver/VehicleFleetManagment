@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FleetApp/fleet.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="VehicleFleetManagment.FleetApp.Home" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FleetApp/fleet.Master" AutoEventWireup="true" CodeBehind="Vehicle.aspx.cs" Inherits="VehicleFleetManagment.Vehicle" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -39,64 +39,40 @@
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>General information</h5>
+                                    <h5>Vehicle Forms</h5>
                                 </div>
                                 <div class="card-block">
                                     <div class="form-material">
-
                                         <div class="form-group form-default">
-                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode">
+                                            <input type="text" name="footer-email" class="form-control" required="">
                                             <span class="form-bar"></span>
-                                            <label class="float-label">Code</label>
-                                        </div>
-
-                                        <div class="form-group form-default">
-                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtPlate">
-                                            <span class="form-bar"></span>
-                                            <label class="float-label">Plate</label>
+                                            <label class="float-label">Username</label>
                                         </div>
                                         <div class="form-group form-default">
-                                            <input type="Text" name="footer-email" class="form-control" required="" runat="server" id="txtName">
+                                            <input type="text" name="footer-email" class="form-control" required="">
                                             <span class="form-bar"></span>
-                                            <label class="float-label">Name</label>
+                                            <label class="float-label">Email (exa@gmail.com)</label>
                                         </div>
                                         <div class="form-group form-default">
-                                            <input type="text" name="footer-email" class="form-control" required=""  runat="server" id="txtModel">
+                                            <input type="password" name="footer-email" class="form-control" required="">
                                             <span class="form-bar"></span>
-                                            <label class="float-label">Model</label>
+                                            <label class="float-label">Password</label>
                                         </div>
                                         <div class="form-group form-default">
-                                            <input type="text" name="footer-email" class="form-control" required=""  runat="server" id="txtColor">
+                                            <input type="text" name="footer-email" class="form-control" required="" value="My value">
                                             <span class="form-bar"></span>
-                                            <label class="float-label">Color</label>
+                                            <label class="float-label">Predefine value</label>
                                         </div>
                                         <div class="form-group form-default">
-                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEngineNumber">
+                                            <input type="text" name="footer-email" class="form-control" required="" disabled>
                                             <span class="form-bar"></span>
-                                            <label class="float-label">Engine N°</label>
-                                        </div>
-                                         <div class="form-group form-default">
-                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtChassis">
-                                            <span class="form-bar"></span>
-                                            <label class="float-label">Chassis N°</label>
-                                        </div>
-
-                                        <div class="form-group form-default">
-                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEngineManif">
-                                            <span class="form-bar"></span>
-                                            <label class="float-label">Engine Manufacturer</label>
+                                            <label class="float-label">Disabled</label>
                                         </div>
                                         <div class="form-group form-default">
-                                            <input type="password" name="footer-email" class="form-control" required="" runat="server" id="txtPicture">
+                                            <input type="text" name="footer-email" class="form-control" required="" maxlength="6">
                                             <span class="form-bar"></span>
-                                            <label class="float-label">Picture</label>
+                                            <label class="float-label">Max length 6 char</label>
                                         </div>
-                                        <div class="form-group form-default">
-                                            <input type="text" name="footer-email" class="form-control" required=""  runat="server" id="txtStatus">
-                                            <span class="form-bar"></span>
-                                            <label class="float-label">Status </label>
-                                        </div>
-
                                         <div class="form-group form-default">
                                             <textarea class="form-control" required=""></textarea>
                                             <span class="form-bar"></span>
@@ -152,12 +128,14 @@
                         </div>
                     </div>
                 </div>
-                 <!-- Page body end -->
+                <!-- Page body end -->
             </div>
         </div>
         <!-- Main-body end -->
         <div id="styleSelector">
         </div>
     </div>
+
+
 
 </asp:Content>

@@ -4,7 +4,7 @@
 
 <html lang="en">
     <head runat="server">
-    <title>Mega Able bootstrap admin template by codedthemes </title>
+    <title>Vehicle fleet Managment </title>
     <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 10]>
@@ -29,6 +29,8 @@
       <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css">
       <!-- Font Awesome -->
       <link rel="stylesheet" type="text/css" href="assets/icon/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
       <!-- scrollbar.css -->
       <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css">
         <!-- am chart export.css -->
@@ -236,6 +238,8 @@
                   <nav class="pcoded-navbar">
                       <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
                       <div class="pcoded-inner-navbar main-menu">
+
+                        <!-- Start Admin  -->
                           <div class="">
                               <div class="main-menu-header">
                                   <img class="img-80 img-radius" src="assets/images/admin.jpg" alt="User-Profile-Image">
@@ -243,7 +247,7 @@
                                       <span id="more-details">Patrick Shriver<i class="fa fa-caret-down"></i></span>
                                   </div>
                               </div>
-        
+                           <!--start Profile Admin  -->
                               <div class="main-menu-content">
                                   <ul>
                                       <li class="more-details">
@@ -253,7 +257,11 @@
                                       </li>
                                   </ul>
                               </div>
+                           <!--End Profile Admin  -->
                           </div>
+                        <!-- end Admin Pic -->
+
+                          <!-- Start Search  -->
                           <div class="p-15 p-b-0">
                               <form class="form-material">
                                   <div class="form-group form-primary">
@@ -263,19 +271,22 @@
                                   </div>
                               </form>
                           </div>
-                          <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Layout</div>
+                           <!-- end Search  -->
+
+                          <!-- Start Vehicle entities-->
+                          <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Vehicle Entities</div>
                           <ul class="pcoded-item pcoded-left-item">
                               <li class="active">
                                   <a href="index.html" class="waves-effect waves-dark">
-                                      <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                      <span class="pcoded-micon"><i class="fa fa-dashboard"></i><b>D</b></span>
                                       <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                       <span class="pcoded-mcaret"></span>
                                   </a>
                               </li>
                               <li class="pcoded-hasmenu">
                                   <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                      <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                      <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Components</span>
+                                      <span class="pcoded-micon"><i class="fa fa-bus"></i></span>
+                                      <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Vehicles</span>
                                       <span class="pcoded-mcaret"></span>
                                   </a>
                                   <ul class="pcoded-submenu">
@@ -353,110 +364,85 @@
                                   </ul>
                               </li>
                           </ul>
-                          <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Forms &amp; Tables</div>
+                          <!--End Vehicle entities-->
+
+                          <!-- Start Ministrie entities-->
+                          <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Ministries Entries</div>
                           <ul class="pcoded-item pcoded-left-item">
-                              <li>
-                                  <a href="form-elements-component.html" class="waves-effect waves-dark">
-                                      <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                      <span class="pcoded-mtext" data-i18n="nav.form-components.main">Form Components</span>
-                                      <span class="pcoded-mcaret"></span>
-                                  </a>
-                              </li>
-                              <li>
-                                  <a href="bs-basic-table.html" class="waves-effect waves-dark">
-                                      <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                      <span class="pcoded-mtext" data-i18n="nav.form-components.main">Basic Table</span>
-                                      <span class="pcoded-mcaret"></span>
-                                  </a>
-                              </li>
-        
-                          </ul>
-        
-                          <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Chart &amp; Maps</div>
-                          <ul class="pcoded-item pcoded-left-item">
-                              <li>
-                                  <a href="chart.html" class="waves-effect waves-dark">
-                                      <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                      <span class="pcoded-mtext" data-i18n="nav.form-components.main">Chart</span>
-                                      <span class="pcoded-mcaret"></span>
-                                  </a>
-                              </li>
-                              <li>
-                                  <a href="map-google.html" class="waves-effect waves-dark">
-                                      <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                                      <span class="pcoded-mtext" data-i18n="nav.form-components.main">Maps</span>
-                                      <span class="pcoded-mcaret"></span>
-                                  </a>
-                              </li>
                               <li class="pcoded-hasmenu">
                                   <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                      <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                      <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Pages</span>
+                                      <span class="pcoded-micon"><i class="fa fa-building"></i></span>
+                                      <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Ministries</span>
                                       <span class="pcoded-mcaret"></span>
                                   </a>
                                   <ul class="pcoded-submenu">
                                       <li class=" ">
-                                          <a href="auth-normal-sign-in.html" class="waves-effect waves-dark">
+                                          <a href="accordion.html" class="waves-effect waves-dark">
                                               <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Login</span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Accordion</span>
                                               <span class="pcoded-mcaret"></span>
                                           </a>
                                       </li>
                                       <li class=" ">
-                                          <a href="auth-sign-up.html" class="waves-effect waves-dark">
+                                          <a href="breadcrumb.html" class="waves-effect waves-dark">
                                               <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Register</span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Breadcrumbs</span>
                                               <span class="pcoded-mcaret"></span>
                                           </a>
                                       </li>
                                       <li class=" ">
-                                          <a href="sample-page.html" class="waves-effect waves-dark">
+                                          <a href="button.html" class="waves-effect waves-dark">
                                               <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Sample Page</span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Button</span>
                                               <span class="pcoded-mcaret"></span>
                                           </a>
                                       </li>
-                                  </ul>
-                              </li>
-        
-                          </ul>
-        
-                          <div class="pcoded-navigation-label" data-i18n="nav.category.other">Other</div>
-                          <ul class="pcoded-item pcoded-left-item">
-                              <li class="pcoded-hasmenu ">
-                                  <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                      <span class="pcoded-micon"><i class="ti-direction-alt"></i><b>M</b></span>
-                                      <span class="pcoded-mtext" data-i18n="nav.menu-levels.main">Menu Levels</span>
-                                      <span class="pcoded-mcaret"></span>
-                                  </a>
-                                  <ul class="pcoded-submenu">
-                                      <li class="">
-                                          <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                      <li class=" ">
+                                          <a href="tabs.html" class="waves-effect waves-dark">
                                               <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                              <span class="pcoded-mtext" data-i18n="nav.menu-levels.menu-level-21">Menu Level 2.1</span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Tabs</span>
                                               <span class="pcoded-mcaret"></span>
                                           </a>
                                       </li>
-                                      <li class="pcoded-hasmenu ">
-                                          <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                              <span class="pcoded-micon"><i class="ti-direction-alt"></i></span>
-                                              <span class="pcoded-mtext" data-i18n="nav.menu-levels.menu-level-22.main">Menu Level 2.2</span>
+                                      <li class=" ">
+                                          <a href="color.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Color</span>
                                               <span class="pcoded-mcaret"></span>
                                           </a>
-                                          <ul class="pcoded-submenu">
-                                              <li class="">
-                                                  <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                                      <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                      <span class="pcoded-mtext" data-i18n="nav.menu-levels.menu-level-22.menu-level-31">Menu Level 3.1</span>
-                                                      <span class="pcoded-mcaret"></span>
-                                                  </a>
-                                              </li>
-                                          </ul>
                                       </li>
-                                      <li class="">
-                                          <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                      <li class=" ">
+                                          <a href="label-badge.html" class="waves-effect waves-dark">
                                               <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                              <span class="pcoded-mtext" data-i18n="nav.menu-levels.menu-level-23">Menu Level 2.3</span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Label Badge</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="tooltip.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Tooltip</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="typography.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Typography</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="notification.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Notification</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="icon-themify.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Themify</span>
                                               <span class="pcoded-mcaret"></span>
                                           </a>
                                       </li>
@@ -464,6 +450,450 @@
                                   </ul>
                               </li>
                           </ul>
+                          <!-- End Ministrie entities-->
+        
+                          <!-- Start Tools entities--> 
+                          <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Tools Entities</div>
+                          <ul class="pcoded-item pcoded-left-item">
+                              <li class="pcoded-hasmenu">
+                                  <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                      <span class="pcoded-micon"><i class="fa fa-puzzle-piece"></i></span>
+                                      <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Piece</span>
+                                      <span class="pcoded-mcaret"></span>
+                                  </a>
+                                  <ul class="pcoded-submenu">
+                                      <li class=" ">
+                                          <a href="accordion.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Accordion</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="breadcrumb.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Breadcrumbs</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="button.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Button</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="tabs.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Tabs</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="color.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Color</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="label-badge.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Label Badge</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="tooltip.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Tooltip</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="typography.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Typography</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="notification.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Notification</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="icon-themify.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Themify</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                
+                                  </ul>
+                              </li>
+                          </ul>                            
+                          <!-- End Tools entities--> 
+
+                          <!-- Start Fuels entities--> 
+                          <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Fuels Entities</div>
+                          <ul class="pcoded-item pcoded-left-item">
+                              <li class="pcoded-hasmenu">
+                                  <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                      <span class="pcoded-micon"><i class="fa fa-gas-pump"></i></span>
+                                      <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Fuel</span>
+                                      <span class="pcoded-mcaret"></span>
+                                  </a>
+                                  <ul class="pcoded-submenu">
+                                      <li class=" ">
+                                          <a href="accordion.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Accordion</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="breadcrumb.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Breadcrumbs</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="button.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Button</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="tabs.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Tabs</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="color.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Color</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="label-badge.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Label Badge</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="tooltip.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Tooltip</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="typography.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Typography</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="notification.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Notification</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="icon-themify.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Themify</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                
+                                  </ul>
+                              </li>
+                          </ul>
+                           <!-- End Fuels entities--> 
+
+                          <!-- Start Drivers entities-->
+                          <div class="pcoded-navigation-label" data-i18n="nav.category.other">Drivers Entities</div>
+                          <ul class="pcoded-item pcoded-left-item">
+                              <li class="pcoded-hasmenu">
+                                  <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                      <span class="pcoded-micon"><i class="fa fa-users"></i></span>
+                                      <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Drivers</span>
+                                      <span class="pcoded-mcaret"></span>
+                                  </a>
+                                  <ul class="pcoded-submenu">
+                                      <li class=" ">
+                                          <a href="accordion.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Accordion</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="breadcrumb.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Breadcrumbs</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="button.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Button</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="tabs.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Tabs</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="color.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Color</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="label-badge.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Label Badge</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="tooltip.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Tooltip</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="typography.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Typography</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="notification.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Notification</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="icon-themify.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Themify</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                
+                                  </ul>
+                              </li>
+                          </ul>
+                          <!-- End Drivers entities-->
+
+                          <!-- Start Accident entities-->
+                          <div class="pcoded-navigation-label" data-i18n="nav.category.other">Accident Entities</div>
+                          <ul class="pcoded-item pcoded-left-item">
+                              <li class="pcoded-hasmenu">
+                                  <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                      <span class="pcoded-micon"><i class="fa fa-car-burst"></i></span>
+                                      <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Accidents</span>
+                                      <span class="pcoded-mcaret"></span>
+                                  </a>
+                                  <ul class="pcoded-submenu">
+                                      <li class=" ">
+                                          <a href="accordion.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Crash</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="breadcrumb.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Breadcrumbs</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="button.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Button</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="tabs.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Tabs</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="color.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Color</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="label-badge.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Label Badge</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="tooltip.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Tooltip</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="typography.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Typography</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="notification.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Notification</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="icon-themify.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Themify</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                
+                                  </ul>
+                              </li>
+                          </ul>
+                          <!-- End Accident entities-->
+
+                          <!-- Start Reports entities-->
+                          <div class="pcoded-navigation-label" data-i18n="nav.category.other">Reports Entities</div>
+                          <ul class="pcoded-item pcoded-left-item">
+                              <li class="pcoded-hasmenu">
+                                  <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                      <span class="pcoded-micon"><i class="ti-printer"></i></span>
+                                      <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Reports</span>
+                                      <span class="pcoded-mcaret"></span>
+                                  </a>
+                                  <ul class="pcoded-submenu">
+                                      <li class=" ">
+                                          <a href="accordion.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Report</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="breadcrumb.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Breadcrumbs</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="button.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Button</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="tabs.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Tabs</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="color.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Color</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="label-badge.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Label Badge</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="tooltip.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Tooltip</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="typography.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Typography</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="notification.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Notification</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                                      <li class=" ">
+                                          <a href="icon-themify.html" class="waves-effect waves-dark">
+                                              <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                              <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Themify</span>
+                                              <span class="pcoded-mcaret"></span>
+                                          </a>
+                                      </li>
+                
+                                  </ul>
+                              </li>
+                          </ul>
+                          <!-- End Reports entities-->
+
+                          <!-- Start System entities-->
+                          <div class="pcoded-navigation-label" data-i18n="nav.category.other">Settings</div>
+                          <ul class="pcoded-item pcoded-left-item">
+                              <li class="">
+                                  <a href="index.html" class="waves-effect waves-dark">
+                                      <span class="pcoded-micon"><i class="ti-settings"></i><b>D</b></span>
+                                      <span class="pcoded-mtext" data-i18n="nav.dash.main">System</span>
+                                      <span class="pcoded-mcaret"></span>
+                                  </a>
+                              </li>
+                          </ul>
+                          <!-- End System entities-->
                       </div>
                   </nav>
                   <!-- end side nav-->
