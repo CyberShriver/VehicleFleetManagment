@@ -157,6 +157,8 @@
     <Content Include="FleetApp\assets\images\browser\ie.png" />
     <Content Include="FleetApp\assets\images\browser\opera.png" />
     <Content Include="FleetApp\assets\images\browser\safari.png" />
+    <Content Include="FleetApp\assets\images\bus-48.png" />
+    <Content Include="FleetApp\assets\images\bus-64.png" />
     <Content Include="FleetApp\assets\images\details_close.png" />
     <Content Include="FleetApp\assets\images\details_open.png" />
     <Content Include="FleetApp\assets\images\faq_man.png" />
