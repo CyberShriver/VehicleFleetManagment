@@ -115,6 +115,26 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="FleetApp\accordion.html" />
+    <Content Include="FleetApp\AddAssurance.aspx" />
+    <Content Include="FleetApp\AddBody.aspx" />
+    <Content Include="FleetApp\AddCarCrash.aspx" />
+    <Content Include="FleetApp\AddDriver.aspx" />
+    <Content Include="FleetApp\AddLeave.aspx" />
+    <Content Include="FleetApp\AddLeaveType.aspx" />
+    <Content Include="FleetApp\AddLicense.aspx" />
+    <Content Include="FleetApp\AddMark.aspx" />
+    <Content Include="FleetApp\AddMinistry.aspx" />
+    <Content Include="FleetApp\AddMinistryDriver.aspx" />
+    <Content Include="FleetApp\AddMinistryReal.aspx" />
+    <Content Include="FleetApp\AddModel.aspx" />
+    <Content Include="FleetApp\AddMOT.aspx" />
+    <Content Include="FleetApp\AddProvider.aspx" />
+    <Content Include="FleetApp\AddRealEstate.aspx" />
+    <Content Include="FleetApp\AddRepair.aspx" />
+    <Content Include="FleetApp\AddSchedule.aspx" />
+    <Content Include="FleetApp\AddSystemSettings.aspx" />
+    <Content Include="FleetApp\AddVehicle.aspx" />
+    <Content Include="FleetApp\AddVehicleFuel.aspx" />
     <Content Include="FleetApp\assets\css\animate.css\css\animate.css" />
     <Content Include="FleetApp\assets\css\bootstrap\css\bootstrap.min.css" />
     <Content Include="FleetApp\assets\css\chartist\chartist.css" />
@@ -274,6 +294,24 @@
     <Content Include="FleetApp\tabs.html" />
     <Content Include="FleetApp\tooltip.html" />
     <Content Include="FleetApp\typography.html" />
+    <Content Include="FleetApp\ViewAssurance.aspx" />
+    <Content Include="FleetApp\ViewCarCrash.aspx" />
+    <Content Include="FleetApp\ViewDriver.aspx" />
+    <Content Include="FleetApp\ViewLeave.aspx" />
+    <Content Include="FleetApp\ViewLeaveType.aspx" />
+    <Content Include="FleetApp\ViewLicense.aspx" />
+    <Content Include="FleetApp\ViewMark.aspx" />
+    <Content Include="FleetApp\ViewMinistry.aspx" />
+    <Content Include="FleetApp\ViewMinistryDriver.aspx" />
+    <Content Include="FleetApp\ViewMinistryReal.aspx" />
+    <Content Include="FleetApp\ViewModel.aspx" />
+    <Content Include="FleetApp\ViewMOT.aspx" />
+    <Content Include="FleetApp\ViewProvider.aspx" />
+    <Content Include="FleetApp\ViewRealEstate.aspx" />
+    <Content Include="FleetApp\ViewRepair.aspx" />
+    <Content Include="FleetApp\ViewSchedule.aspx" />
+    <Content Include="FleetApp\ViewVehicle.aspx" />
+    <Content Include="FleetApp\ViewVehicleFuel.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -385,6 +423,146 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FleetApp\AddAssurance.aspx.cs">
+      <DependentUpon>AddAssurance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddAssurance.aspx.designer.cs">
+      <DependentUpon>AddAssurance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddBody.aspx.cs">
+      <DependentUpon>AddBody.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddBody.aspx.designer.cs">
+      <DependentUpon>AddBody.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddCarCrash.aspx.cs">
+      <DependentUpon>AddCarCrash.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddCarCrash.aspx.designer.cs">
+      <DependentUpon>AddCarCrash.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddDriver.aspx.cs">
+      <DependentUpon>AddDriver.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddDriver.aspx.designer.cs">
+      <DependentUpon>AddDriver.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddLeave.aspx.cs">
+      <DependentUpon>AddLeave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddLeave.aspx.designer.cs">
+      <DependentUpon>AddLeave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddLeaveType.aspx.cs">
+      <DependentUpon>AddLeaveType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddLeaveType.aspx.designer.cs">
+      <DependentUpon>AddLeaveType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddLicense.aspx.cs">
+      <DependentUpon>AddLicense.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddLicense.aspx.designer.cs">
+      <DependentUpon>AddLicense.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddMark.aspx.cs">
+      <DependentUpon>AddMark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddMark.aspx.designer.cs">
+      <DependentUpon>AddMark.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddMinistry.aspx.cs">
+      <DependentUpon>AddMinistry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddMinistry.aspx.designer.cs">
+      <DependentUpon>AddMinistry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddMinistryDriver.aspx.cs">
+      <DependentUpon>AddMinistryDriver.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddMinistryDriver.aspx.designer.cs">
+      <DependentUpon>AddMinistryDriver.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddMinistryReal.aspx.cs">
+      <DependentUpon>AddMinistryReal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddMinistryReal.aspx.designer.cs">
+      <DependentUpon>AddMinistryReal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddModel.aspx.cs">
+      <DependentUpon>AddModel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddModel.aspx.designer.cs">
+      <DependentUpon>AddModel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddMOT.aspx.cs">
+      <DependentUpon>AddMOT.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddMOT.aspx.designer.cs">
+      <DependentUpon>AddMOT.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddProvider.aspx.cs">
+      <DependentUpon>AddProvider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddProvider.aspx.designer.cs">
+      <DependentUpon>AddProvider.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddRealEstate.aspx.cs">
+      <DependentUpon>AddRealEstate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddRealEstate.aspx.designer.cs">
+      <DependentUpon>AddRealEstate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddRepair.aspx.cs">
+      <DependentUpon>AddRepair.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddRepair.aspx.designer.cs">
+      <DependentUpon>AddRepair.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddSchedule.aspx.cs">
+      <DependentUpon>AddSchedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddSchedule.aspx.designer.cs">
+      <DependentUpon>AddSchedule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddSystemSettings.aspx.cs">
+      <DependentUpon>AddSystemSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddSystemSettings.aspx.designer.cs">
+      <DependentUpon>AddSystemSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddVehicle.aspx.cs">
+      <DependentUpon>AddVehicle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddVehicle.aspx.designer.cs">
+      <DependentUpon>AddVehicle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\AddVehicleFuel.aspx.cs">
+      <DependentUpon>AddVehicleFuel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddVehicleFuel.aspx.designer.cs">
+      <DependentUpon>AddVehicleFuel.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FleetApp\fleet.Master.cs">
       <DependentUpon>fleet.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -405,6 +583,132 @@
     </Compile>
     <Compile Include="FleetApp\tab.aspx.designer.cs">
       <DependentUpon>tab.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewAssurance.aspx.cs">
+      <DependentUpon>ViewAssurance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewAssurance.aspx.designer.cs">
+      <DependentUpon>ViewAssurance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewCarCrash.aspx.cs">
+      <DependentUpon>ViewCarCrash.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewCarCrash.aspx.designer.cs">
+      <DependentUpon>ViewCarCrash.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewDriver.aspx.cs">
+      <DependentUpon>ViewDriver.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewDriver.aspx.designer.cs">
+      <DependentUpon>ViewDriver.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewLeave.aspx.cs">
+      <DependentUpon>ViewLeave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewLeave.aspx.designer.cs">
+      <DependentUpon>ViewLeave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewLeaveType.aspx.cs">
+      <DependentUpon>ViewLeaveType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewLeaveType.aspx.designer.cs">
+      <DependentUpon>ViewLeaveType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewLicense.aspx.cs">
+      <DependentUpon>ViewLicense.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewLicense.aspx.designer.cs">
+      <DependentUpon>ViewLicense.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewMark.aspx.cs">
+      <DependentUpon>ViewMark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewMark.aspx.designer.cs">
+      <DependentUpon>ViewMark.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewMinistry.aspx.cs">
+      <DependentUpon>ViewMinistry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewMinistry.aspx.designer.cs">
+      <DependentUpon>ViewMinistry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewMinistryDriver.aspx.cs">
+      <DependentUpon>ViewMinistryDriver.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewMinistryDriver.aspx.designer.cs">
+      <DependentUpon>ViewMinistryDriver.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewMinistryReal.aspx.cs">
+      <DependentUpon>ViewMinistryReal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewMinistryReal.aspx.designer.cs">
+      <DependentUpon>ViewMinistryReal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewModel.aspx.cs">
+      <DependentUpon>ViewModel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewModel.aspx.designer.cs">
+      <DependentUpon>ViewModel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewMOT.aspx.cs">
+      <DependentUpon>ViewMOT.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewMOT.aspx.designer.cs">
+      <DependentUpon>ViewMOT.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewProvider.aspx.cs">
+      <DependentUpon>ViewProvider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewProvider.aspx.designer.cs">
+      <DependentUpon>ViewProvider.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewRealEstate.aspx.cs">
+      <DependentUpon>ViewRealEstate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewRealEstate.aspx.designer.cs">
+      <DependentUpon>ViewRealEstate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewRepair.aspx.cs">
+      <DependentUpon>ViewRepair.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewRepair.aspx.designer.cs">
+      <DependentUpon>ViewRepair.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewSchedule.aspx.cs">
+      <DependentUpon>ViewSchedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewSchedule.aspx.designer.cs">
+      <DependentUpon>ViewSchedule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewVehicle.aspx.cs">
+      <DependentUpon>ViewVehicle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewVehicle.aspx.designer.cs">
+      <DependentUpon>ViewVehicle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\ViewVehicleFuel.aspx.cs">
+      <DependentUpon>ViewVehicleFuel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewVehicleFuel.aspx.designer.cs">
+      <DependentUpon>ViewVehicleFuel.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -284,58 +284,172 @@
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="fa fa-bus"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Vehicles</span>
+                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.main">Vehicles</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
-                                    <li class="">
-                                        <a href="accordion.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Vehicles</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Vehicles.alert">Vehicles</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddVehicle.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Vehicles.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewVehicle.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicle.Vehicles.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class=" ">
-                                        <a href="breadcrumb.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu">
+                                        <a href="javascript:void(0) " class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Mark</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Vehicles.Mark.Alert">Mark</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddMark.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Mark.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewMark.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Mark.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class=" ">
-                                        <a href="button.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Model</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Vehicles.Model.Alert">Model</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddModel.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Model.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewModel.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Model.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class=" ">
-                                        <a href="tabs.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Body Type</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Vehicles.Body-Type.Alert">Body Type</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddBody.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Body-Type.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewBody.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Body-Type.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class=" ">
-                                        <a href="color.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Schedule</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Vehicles.Schedule.alert">Schedule</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddSchedule.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicle.Schedule.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewSchedule.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicle.Schedule.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class=" ">
-                                        <a href="label-badge.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Assurance</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Vehicles.Assurance.Alert">Assurance</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddAssurance.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Assurance.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewAssurance.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Assurance.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class=" ">
-                                        <a href="tooltip.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Controle Technique</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Vehicles.MOT.alert">MOT</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddMOT.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.MOT.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewMOT.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.MOT.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>
@@ -348,38 +462,102 @@
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="fa fa-building"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Ministries</span>
+                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.main">Ministries</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="accordion.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Ministry</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministry.alert">Ministry</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddMinistry.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministry.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewMinistry.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministry.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class=" ">
-                                        <a href="breadcrumb.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Ministry Drivers</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministry-Drivers.alert">Ministry Drivers</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddMinistryDriver.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministry-Drivers.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewMinistryDriver.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministry-Drivers.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
 
-                                    <li class=" ">
-                                        <a href="breadcrumb.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Real Estate</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Ministries.Real-Estate.alert">Real Estate</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddRealEstate.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Real-Estate.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewRealEstate.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Real-Estate.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class=" ">
-                                        <a href="button.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Ministries Real Estate</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministries-Real-Estate.alert">Ministries Real Estate</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddMinistryReal.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministries-Real-Estate.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewMinistryReal.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministries-Real-Estate.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
 
                                 </ul>
@@ -390,85 +568,13 @@
                         <!-- Start Tools entities-->
                         <%--<div class="pcoded-navigation-label" data-i18n="nav.category.forms">Tools Entities</div>--%>
                         <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu">
+                            <li class="">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="fa fa-puzzle-piece"></i></span>
                                     <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Piece</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="accordion.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Accordion</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="breadcrumb.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Breadcrumbs</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="button.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Button</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="tabs.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Tabs</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="color.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Color</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="label-badge.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Label Badge</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="tooltip.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Tooltip</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="typography.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Typography</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="notification.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Notification</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="icon-themify.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Themify</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-
-                                </ul>
+                                
                             </li>
                         </ul>
                         <!-- End Tools entities-->
@@ -479,23 +585,56 @@
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="fa fa-cab"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Fuel</span>
+                                    <span class="pcoded-mtext" data-i18n="nav.Fuel.main">Fuel</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="accordion.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Provider</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Fuel.Provider.alert">Provider</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddProvider.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Fuel.Provider.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewProvider.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Fuel.Provider.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class=" ">
-                                        <a href="breadcrumb.html" class="waves-effect waves-dark">
+
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Vehicle Fuel</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Fuel.Vehicle-Fuel.alert">Vehicle Fuel</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddVehicleFuel.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Fuel.Vehicle-Fuel.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewVehicleFuel.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Fuel.Vehicle-Fuel.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
 
 
@@ -514,33 +653,97 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="accordion.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Drivers</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Drivers.alert">Drivers</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                         <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddDriver.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.Driver.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewDriver.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.Driver.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class=" ">
-                                        <a href="breadcrumb.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Leave Type</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Drivers.Leave-Type.alert">Leave Type</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddLeaveType.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.Leave-Type.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewLeaveType.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.Leave-Type.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class=" ">
-                                        <a href="button.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Leave</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Drivers.Leave.alert">Leave</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddLeave.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.Leave.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewLeave.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.Leave.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class=" ">
-                                        <a href="tabs.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">License</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddLicense.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.License.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewLicense.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.License.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>
@@ -553,23 +756,55 @@
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="fa fa-wrench"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Maintenance</span>
+                                    <span class="pcoded-mtext" data-i18n="nav.Maintenance-Crash.main">Repair & Crash</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="breadcrumb.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Crash</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Maintanance-Crash.Crash.alert">Crash</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddCarCrash.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Maintanance-Crash.Crash.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewCarCrash.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Maintanance-Crash.Crash.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li class=" ">
-                                        <a href="button.html" class="waves-effect waves-dark">
+                                    <li class="pcoded-hasmenu ">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Repair</span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Maintanance-Crash.Repair.alert">Repair</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddRepair.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Maintanance-Crash.Repair.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewRepair.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Maintanance-Crash.Repair.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
 
                                 </ul>
@@ -580,85 +815,13 @@
                         <!-- Start Reports entities-->
                         <%--<div class="pcoded-navigation-label" data-i18n="nav.category.other">Reports Entities</div>--%>
                         <ul class="pcoded-item pcoded-left-item">
-                            <li class="pcoded-hasmenu">
+                            <li class="">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-printer"></i></span>
                                     <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Reports</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
-                                <ul class="pcoded-submenu">
-                                    <li class=" ">
-                                        <a href="accordion.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Report</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="breadcrumb.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Breadcrumbs</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="button.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Button</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="tabs.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Tabs</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="color.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Color</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="label-badge.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Label Badge</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="tooltip.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Tooltip</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="typography.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Typography</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="notification.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Notification</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="icon-themify.html" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Themify</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-
-                                </ul>
+                                
                             </li>
                         </ul>
                         <!-- End Reports entities-->
@@ -667,9 +830,9 @@
                         <%--<div class="pcoded-navigation-label" data-i18n="nav.category.other">Settings</div>--%>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="">
-                                <a href="index.html" class="waves-effect waves-dark">
+                                <a href="AddSystemSettings.aspx" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="ti-settings"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">System</span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">System settings</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
@@ -697,13 +860,6 @@
 
 
     </div>
-
-
-
-
-
-
-
 
 
     <!-- Warning Section Starts -->

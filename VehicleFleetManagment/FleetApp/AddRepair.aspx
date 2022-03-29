@@ -1,0 +1,165 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FleetApp/fleet.Master" AutoEventWireup="true" CodeBehind="AddRepair.aspx.cs" Inherits="VehicleFleetManagment.FleetApp.AddRepair" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Page-header start -->
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="page-header-title">
+                        <h5 class="m-b-10">Vehicle Fleet Managment</h5>
+                        <p class="m-b-0">Safety Rules Are Your Best Tools</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item">
+                            <a href="Home.aspx"><i class="fa fa-home"></i></a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="AddRepair.aspx">Add-Repair</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page-header end -->
+    <div class="pcoded-inner-content">
+        <!-- Main-body start -->
+        <div class="main-body">
+            <div class="page-wrapper">
+
+                <!-- Page body start -->
+                <div class="page-body">
+                    <!--Start Main Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Repair</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="form-material">
+                                            <div class="form-group form-default">
+                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Plate" required="" runat="server"></asp:DropDownList>
+                                                <label class="float-label">Plate</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Crash" required="" runat="server"></asp:DropDownList>
+                                                <label class="float-label">Crash</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtWork">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Work Number</label>
+                                            </div>
+                                             <div class="form-group form-default">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLocationCode">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Location Code</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_InterOrExt" required="" runat="server">
+                                                    <asp:ListItem>internal</asp:ListItem>
+                                                    <asp:ListItem>external</asp:ListItem>
+                                                </asp:DropDownList>
+                                                <label class="float-label">Internal or external?</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <textarea class="form-control" required="" runat="server" id="txtReason"></textarea>
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Reason of Repair</label>
+                                            </div> 
+                                            <div class="form-group form-default">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtWorkStatus">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Work Status</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <input type="date" class="form-control text-right" required="" runat="server" id="dateStart">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label  ">Start Date</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <input type="date" class="form-control text-right" required="" runat="server" id="dateEnd">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label  ">End Date</label>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="form-material">
+                                            <div class="form-group form-default">
+                                                <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtOdomIN">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Odemeter IN</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtOdomOUT">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Odemeter OUT</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <input type="time" name="footer-email" class="form-control text-right" required="" runat="server" id="TimeStartRepair">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Start work time</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <input type="time" name="footer-email" class="form-control text-right" required="" runat="server" id="TimeEndRepair">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">End work time</label>
+                                            </div>                                                                                                                                    
+                                            <div class="form-group form-default">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtOffService">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Off Service Days Number</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtParticiEmp">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Participant Employee Code</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <textarea class="form-control" required="" runat="server" id="txtComment"></textarea>
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Comment</label>
+                                            </div>                                     
+                                            <div class="form-group form-default">
+                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateSavedDate">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label ">Saved Date</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="float-right">
+                                <asp:Button ID="btn_save" class="btn btn-primary ml-5" runat="server" Text="Save" />
+                                <button type="reset" class="btn btn-danger ml-5">Cancel</button>
+                                <a class="btn btn-info ml-5" href="ViewRepair.aspx">List</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Main Card -->
+
+                </div>
+                <!-- Page body end -->
+            </div>
+        </div>
+        <!-- Main-body end -->
+        <div id="styleSelector"></div>
+    </div>
+
+</asp:Content>
