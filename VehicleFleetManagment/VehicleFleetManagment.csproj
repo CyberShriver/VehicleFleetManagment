@@ -114,7 +114,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
-    <Content Include="FleetApp\accordion.html" />
     <Content Include="FleetApp\AddAssurance.aspx" />
     <Content Include="FleetApp\AddBody.aspx" />
     <Content Include="FleetApp\AddCarCrash.aspx" />
@@ -274,26 +273,7 @@
     <Content Include="FleetApp\assets\pages\widget\amchart\serial.js" />
     <Content Include="FleetApp\assets\pages\widget\amchart\serial.min.js" />
     <Content Include="FleetApp\assets\pages\widget\excanvas.js" />
-    <Content Include="FleetApp\auth-normal-sign-in.html" />
-    <Content Include="FleetApp\auth-sign-up.html" />
-    <Content Include="FleetApp\breadcrumb.html" />
-    <Content Include="FleetApp\bs-basic-table.html" />
-    <Content Include="FleetApp\button.html" />
-    <Content Include="FleetApp\chart.html" />
-    <Content Include="FleetApp\color.html" />
-    <Content Include="FleetApp\form-elements-component.html" />
     <Content Include="FleetApp\Home.aspx" />
-    <Content Include="FleetApp\icon-themify.html" />
-    <Content Include="FleetApp\index.html" />
-    <Content Include="FleetApp\label-badge.html" />
-    <Content Include="FleetApp\map-google.html" />
-    <Content Include="FleetApp\notification.html" />
-    <Content Include="FleetApp\progress-bar.html" />
-    <Content Include="FleetApp\sample-page.html" />
-    <Content Include="FleetApp\tab.aspx" />
-    <Content Include="FleetApp\tabs.html" />
-    <Content Include="FleetApp\tooltip.html" />
-    <Content Include="FleetApp\typography.html" />
     <Content Include="FleetApp\ViewAssurance.aspx" />
     <Content Include="FleetApp\ViewCarCrash.aspx" />
     <Content Include="FleetApp\ViewDriver.aspx" />
@@ -576,13 +556,6 @@
     </Compile>
     <Compile Include="FleetApp\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FleetApp\tab.aspx.cs">
-      <DependentUpon>tab.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FleetApp\tab.aspx.designer.cs">
-      <DependentUpon>tab.aspx</DependentUpon>
     </Compile>
     <Compile Include="FleetApp\ViewAssurance.aspx.cs">
       <DependentUpon>ViewAssurance.aspx</DependentUpon>
