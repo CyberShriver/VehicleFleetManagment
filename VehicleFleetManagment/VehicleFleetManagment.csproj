@@ -722,6 +722,8 @@
     <Compile Include="FleetClass\Model_Class.cs" />
     <Compile Include="FleetClass\Provider_Class.cs" />
     <Compile Include="FleetClass\RealEstate_Class.cs" />
+    <Compile Include="FleetImp\Mark_Imp.cs" />
+    <Compile Include="FleetImp\Mark_Interface.cs" />
     <Compile Include="FleetModel\BODY_TYPE.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
@@ -787,7 +789,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="FleetImp\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
