@@ -36,6 +36,7 @@
                 <div class="page-body">
                     <div class="row">
                         <div class="col-md-12">
+                            <h3 class=" text-info mt-1" id="text_msg" runat="server"> </h3>
                             <div class="card">
                                 <div class="card-header">
                                     <h5>Model</h5>
@@ -59,8 +60,9 @@
 
                                 <div class="card-footer">
                                     <div class="float-right">
-                                        <asp:Button ID="btn_save" class="btn btn-primary mr-5" runat="server" Text="Save" />
+                                        <asp:Button ID="btn_save" class="btn btn-primary ml-5" runat="server" Text="Save" OnClick="btn_save_Click" />
                                         <button type="reset" class="btn btn-danger ml-5">Cancel</button>
+                                        <a class="btn btn-info ml-5" href="ViewMark.aspx">List</a>
                                     </div>
                                 </div>
                             </div>
