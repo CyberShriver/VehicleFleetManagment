@@ -717,6 +717,11 @@
     <Compile Include="FleetApp\ViewVehicleFuel.aspx.designer.cs">
       <DependentUpon>ViewVehicleFuel.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FleetClass\BodyType_Class.cs" />
+    <Compile Include="FleetClass\Mark_Class.cs" />
+    <Compile Include="FleetClass\Model_Class.cs" />
+    <Compile Include="FleetClass\Provider_Class.cs" />
+    <Compile Include="FleetClass\RealEstate_Class.cs" />
     <Compile Include="FleetModel\BODY_TYPE.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
@@ -782,7 +787,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="FleetClass\" />
     <Folder Include="FleetImp\" />
   </ItemGroup>
   <ItemGroup>
