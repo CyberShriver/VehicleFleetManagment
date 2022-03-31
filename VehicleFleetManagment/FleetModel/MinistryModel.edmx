@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MINISTRY_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BODY_TYPE">
+          <Key>
+            <PropertyRef Name="BODY_ID" />
+          </Key>
+          <Property Name="BODY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Category_N°" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MARK">
+          <Key>
+            <PropertyRef Name="MARK_ID" />
+          </Key>
+          <Property Name="MARK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mark_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MODEL">
+          <Key>
+            <PropertyRef Name="MODEL_ID" />
+          </Key>
+          <Property Name="MODEL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MARK_ID" Type="int" />
+          <Property Name="Model_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Comment" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PROVIDER">
+          <Key>
+            <PropertyRef Name="PROVIDER_ID" />
+          </Key>
+          <Property Name="PROVIDER_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Provider_Type" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Provider_Code" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Full_Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Stat" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="REAL_ESTATE">
+          <Key>
+            <PropertyRef Name="REAL_ESTATE_ID" />
+          </Key>
+          <Property Name="REAL_ESTATE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RealEstate_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Comment" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <Association Name="FK_MARK_MODEL">
+          <End Role="MARK" Type="Self.MARK" Multiplicity="0..1" />
+          <End Role="MODEL" Type="Self.MODEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARK">
+              <PropertyRef Name="MARK_ID" />
+            </Principal>
+            <Dependent Role="MODEL">
+              <PropertyRef Name="MARK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MINISTRY_DBModelStoreContainer">
+          <EntitySet Name="BODY_TYPE" EntityType="Self.BODY_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MARK" EntityType="Self.MARK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MODEL" EntityType="Self.MODEL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVIDER" EntityType="Self.PROVIDER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REAL_ESTATE" EntityType="Self.REAL_ESTATE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MARK_MODEL" Association="Self.FK_MARK_MODEL">
+            <End Role="MARK" EntitySet="MARK" />
+            <End Role="MODEL" EntitySet="MODEL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MINISTRY_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BODY_TYPE">
+          <Key>
+            <PropertyRef Name="BODY_ID" />
+          </Key>
+          <Property Name="BODY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Category_N_" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MARK">
+          <Key>
+            <PropertyRef Name="MARK_ID" />
+          </Key>
+          <Property Name="MARK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mark_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="MODELs" Relationship="Self.FK_MARK_MODEL" FromRole="MARK" ToRole="MODEL" />
+        </EntityType>
+        <EntityType Name="MODEL">
+          <Key>
+            <PropertyRef Name="MODEL_ID" />
+          </Key>
+          <Property Name="MODEL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MARK_ID" Type="Int32" />
+          <Property Name="Model_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MARK" Relationship="Self.FK_MARK_MODEL" FromRole="MODEL" ToRole="MARK" />
+        </EntityType>
+        <EntityType Name="PROVIDER">
+          <Key>
+            <PropertyRef Name="PROVIDER_ID" />
+          </Key>
+          <Property Name="PROVIDER_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Provider_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Provider_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Full_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="REAL_ESTATE">
+          <Key>
+            <PropertyRef Name="REAL_ESTATE_ID" />
+          </Key>
+          <Property Name="REAL_ESTATE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RealEstate_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_MARK_MODEL">
+          <End Role="MARK" Type="Self.MARK" Multiplicity="0..1" />
+          <End Role="MODEL" Type="Self.MODEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARK">
+              <PropertyRef Name="MARK_ID" />
+            </Principal>
+            <Dependent Role="MODEL">
+              <PropertyRef Name="MARK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MINISTRY_DB_Connection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BODY_TYPE" EntityType="Self.BODY_TYPE" />
+          <EntitySet Name="MARKs" EntityType="Self.MARK" />
+          <EntitySet Name="MODELs" EntityType="Self.MODEL" />
+          <EntitySet Name="PROVIDERs" EntityType="Self.PROVIDER" />
+          <EntitySet Name="REAL_ESTATE" EntityType="Self.REAL_ESTATE" />
+          <AssociationSet Name="FK_MARK_MODEL" Association="Self.FK_MARK_MODEL">
+            <End Role="MARK" EntitySet="MARKs" />
+            <End Role="MODEL" EntitySet="MODELs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MINISTRY_DBModelStoreContainer" CdmEntityContainer="MINISTRY_DB_Connection">
+          <EntitySetMapping Name="BODY_TYPE">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.BODY_TYPE">
+              <MappingFragment StoreEntitySet="BODY_TYPE">
+                <ScalarProperty Name="BODY_ID" ColumnName="BODY_ID" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Category_N_" ColumnName="Category_N°" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MARKs">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.MARK">
+              <MappingFragment StoreEntitySet="MARK">
+                <ScalarProperty Name="MARK_ID" ColumnName="MARK_ID" />
+                <ScalarProperty Name="Mark_Name" ColumnName="Mark_Name" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MODELs">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.MODEL">
+              <MappingFragment StoreEntitySet="MODEL">
+                <ScalarProperty Name="MODEL_ID" ColumnName="MODEL_ID" />
+                <ScalarProperty Name="MARK_ID" ColumnName="MARK_ID" />
+                <ScalarProperty Name="Model_Name" ColumnName="Model_Name" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVIDERs">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.PROVIDER">
+              <MappingFragment StoreEntitySet="PROVIDER">
+                <ScalarProperty Name="PROVIDER_ID" ColumnName="PROVIDER_ID" />
+                <ScalarProperty Name="Provider_Type" ColumnName="Provider_Type" />
+                <ScalarProperty Name="Provider_Code" ColumnName="Provider_Code" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Stat" ColumnName="Stat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REAL_ESTATE">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.REAL_ESTATE">
+              <MappingFragment StoreEntitySet="REAL_ESTATE">
+                <ScalarProperty Name="REAL_ESTATE_ID" ColumnName="REAL_ESTATE_ID" />
+                <ScalarProperty Name="RealEstate_Name" ColumnName="RealEstate_Name" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

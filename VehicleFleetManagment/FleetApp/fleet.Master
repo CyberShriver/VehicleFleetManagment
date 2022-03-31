@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="index.html">
+                        <a href="Home.aspx">
                             <img class="img-fluid" src="assets/images/bus-48.png" alt="System logo" />
                         </a>
                         <a class="mobile-options waves-effect waves-light">
@@ -217,7 +217,7 @@
                                         </a>
                                     </li>
                                     <li class="waves-effect waves-light">
-                                        <a href="auth-normal-sign-in.html">
+                                        <a href="Login.aspx">
                                             <i class="ti-layout-sidebar-left"></i>Logout
                                         </a>
                                     </li>
@@ -249,9 +249,9 @@
                             <div class="main-menu-content">
                                 <ul>
                                     <li class="more-details">
-                                        <a href="user-profile.html"><i class="ti-user"></i>View Profile</a>
+                                        <a href="Login.aspx"><i class="ti-user"></i>View Profile</a>
                                         <a href="#!"><i class="ti-settings"></i>Settings</a>
-                                        <a href="auth-normal-sign-in.html"><i class="ti-layout-sidebar-left"></i>Logout</a>
+                                        <a href="Login.aspx"><i class="ti-layout-sidebar-left"></i>Logout</a>
                                     </li>
                                 </ul>
                             </div>
