@@ -107,7 +107,7 @@
                         <a class="mobile-menu waves-effect waves-light" id="mobile-collapse" href="#!">
                             <i class="ti-menu"></i>
                         </a>
-                        <div class="mobile-search waves-effect waves-light">
+                        <%--<div class="mobile-search waves-effect waves-light">
                             <div class="header-search">
                                 <div class="main-search morphsearch-search">
                                     <div class="input-group">
@@ -117,7 +117,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>--%>
                         <a href="Home.aspx">
                             <img class="img-fluid" src="assets/images/bus-48.png" alt="System logo" />
                         </a>
@@ -938,7 +938,7 @@
     <!-- custom Dashboard js -->
     <script type="text/javascript" src="assets/pages/dashboard/custom-dashboard.js"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
-
+   
 
 </body>
 </html>

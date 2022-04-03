@@ -14,17 +14,22 @@ namespace VehicleFleetManagment.FleetImp
         //Add method
          int Add(Mark_Class Ma);
 
-        //Modify Method
-         int Modify(Mark_Class Ma, int id);
+        //Update Method
+         int Update(Mark_Class Ma, int id);
 
         //Delete Method
          int Delete(int id);
 
+        //Delete Method
+        int DeleteCheck(GridView gd, CheckBox chk, int id);
         //Display Method
-         void Display(GridView gd);
+        void Display(GridView gd);
 
         //Provide Method
          void provide(Mark_Class Ma, int id);
+
+        //count
+        int count();
 
         //Research Method
          void Research(GridView gd, string SearchText);

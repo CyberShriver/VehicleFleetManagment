@@ -38,8 +38,8 @@ namespace VehicleFleetManagment.FleetImp
             return msg;
         }
 
-        //MODIFY METHOD
-        public int Modify(Mark_Class Ma, int id)
+        //UPDATE METHOD
+        public int Update(Mark_Class Ma, int id)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -51,8 +51,6 @@ namespace VehicleFleetManagment.FleetImp
 
                     M.Mark_Name = Ma.Mark_Name;
                     M.Comment = Ma.Comment;
-
-                    con.MARKs.Add(M);
 
                     if (con.SaveChanges() > 0)
                     {
@@ -90,6 +88,35 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //DELETE CHECK METHOD
+        public int DeleteCheck(GridView gd,CheckBox chk, int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                for (int i = 0; i < gd.Rows.Count; i++)
+                {
+                    CheckBox chkselect = (CheckBox)gd.Rows[i].FindControl("chk");
+                    if (chkselect.Checked == true)
+                    {
+                        id = Convert.ToInt32(gd.Rows[i].Cells[i].Text);
+                        var obj = con.MARKs.Where(x => x.MARK_ID == id).First();
+
+                        if (con.Entry(obj).State == EntityState.Detached)
+                        {
+                            con.MARKs.Attach(obj);
+
+
+                        }
+                        con.MARKs.Remove(obj);
+                        con.SaveChanges();
+                    }
+                }
+                return msg;
+            }
+
+        }
+
+
         //DISPLAY METHOD
         public void Display(GridView gd)
         {
@@ -122,6 +149,19 @@ namespace VehicleFleetManagment.FleetImp
                 Ma.Comment = M.Comment;
 
             }
+        }
+
+        //COUNT METHOD
+        public int count()
+        {
+            int n = 0;
+            using(MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var b = (from l in con.MARKs
+                         select l).Count();
+                n = b;
+            }
+            return n;
         }
 
         //REASEARCH METHOD

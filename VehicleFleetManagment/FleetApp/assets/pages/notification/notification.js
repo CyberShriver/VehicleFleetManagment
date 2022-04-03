@@ -38,11 +38,12 @@ $(document).ready(function() {
     /*
      * Notifications
      */
+    var txtmsg = "Your Data is Added";
     function notify(from, align, icon, type, animIn, animOut){
         $.growl({
             icon: icon,
             title: ' Bootstrap Growl ',
-            message: 'Turning standard Bootstrap alerts into awesome notifications',
+            message=txtmsg,
             url: ''
         },{
             element: 'body',

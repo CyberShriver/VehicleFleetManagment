@@ -57,6 +57,11 @@
                                 <table class="table table-hover">
                                     <asp:GridView HorizontalAlign="Center" AllowSorting="true" AllowPaging="true" AutoGenerateColumns="false" CellPadding="4" GridLines="None" CellSpacing="4" runat="server" Width="447px">
                                         <Columns>
+                                            <asp:TemplateField>
+                                                <ItemTemplate>
+                                                    <asp:CheckBox ID="CheckBox1" runat="server" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                             <asp:TemplateField HeaderText="#" FooterText="#" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" HeaderStyle-BorderStyle="Solid" HeaderStyle-BorderWidth="1px">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label1" runat="server" Text='1000'></asp:Label>
