@@ -15,6 +15,33 @@ namespace VehicleFleetManagment.FleetApp
     {
 
         /// <summary>
+        /// SuccessMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SuccessMsg;
+
+        /// <summary>
+        /// FillMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FillMsg;
+
+        /// <summary>
+        /// FailMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FailMsg;
+
+        /// <summary>
         /// txtModel control.
         /// </summary>
         /// <remarks>
@@ -24,13 +51,13 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtModel;
 
         /// <summary>
-        /// txtMark control.
+        /// DropDown_Mark control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMark;
+        protected global::System.Web.UI.WebControls.DropDownList DropDown_Mark;
 
         /// <summary>
         /// txtComment control.
@@ -42,12 +69,12 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtComment;
 
         /// <summary>
-        /// btn_save control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_save;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSave;
     }
 }

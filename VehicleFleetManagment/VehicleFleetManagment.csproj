@@ -734,6 +734,8 @@
     <Compile Include="FleetImp\BodyType_Interface.cs" />
     <Compile Include="FleetImp\Mark_Imp.cs" />
     <Compile Include="FleetImp\Mark_Interface.cs" />
+    <Compile Include="FleetImp\Model_Imp.cs" />
+    <Compile Include="FleetImp\Model_Interface.cs" />
     <Compile Include="FleetImp\Provider_Imp.cs" />
     <Compile Include="FleetImp\Provider_Interface.cs" />
     <Compile Include="FleetImp\RealEstate_Imp.cs" />
