@@ -19,7 +19,7 @@
                         <li class="breadcrumb-item">
                             <a href="Home.aspx"><i class="fa fa-home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="AddMark.aspx">Add Mark</a>
+                        <li class="breadcrumb-item"><a href="AddMark.aspx">Add-Mark</a>
                         </li>
                     </ul>
                 </div>
@@ -50,7 +50,6 @@
                            </div>
                         </div>
                         <div class="col-md-12">
-                            <h3 class=" text-info mt-1" id="text_msg" runat="server"> </h3>
                             <div class="card">
                                 <div class="card-header">
                                     <h5>Mark</h5>

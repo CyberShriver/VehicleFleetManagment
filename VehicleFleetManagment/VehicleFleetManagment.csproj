@@ -285,6 +285,7 @@
     <Content Include="FleetApp\Home.aspx" />
     <Content Include="FleetApp\Login.aspx" />
     <Content Include="FleetApp\ViewAssurance.aspx" />
+    <Content Include="FleetApp\ViewBody.aspx" />
     <Content Include="FleetApp\ViewCarCrash.aspx" />
     <Content Include="FleetApp\ViewDriver.aspx" />
     <Content Include="FleetApp\ViewLeave.aspx" />
@@ -598,6 +599,13 @@
     <Compile Include="FleetApp\ViewAssurance.aspx.designer.cs">
       <DependentUpon>ViewAssurance.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FleetApp\ViewBody.aspx.cs">
+      <DependentUpon>ViewBody.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewBody.aspx.designer.cs">
+      <DependentUpon>ViewBody.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FleetApp\ViewCarCrash.aspx.cs">
       <DependentUpon>ViewCarCrash.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -726,6 +734,7 @@
     <Compile Include="FleetImp\BodyType_Interface.cs" />
     <Compile Include="FleetImp\Mark_Imp.cs" />
     <Compile Include="FleetImp\Mark_Interface.cs" />
+    <Compile Include="FleetImp\RealEstate_Imp.cs" />
     <Compile Include="FleetModel\BODY_TYPE.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>

@@ -11,61 +11,43 @@ namespace VehicleFleetManagment.FleetApp
 {
 
 
-    public partial class AddBody
+    public partial class ViewBody
     {
 
         /// <summary>
-        /// SuccessMsg control.
+        /// txt_Search control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SuccessMsg;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Search;
 
         /// <summary>
-        /// FillMsg control.
+        /// nbr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FillMsg;
+        protected global::System.Web.UI.WebControls.Label nbr;
 
         /// <summary>
-        /// FailMsg control.
+        /// gdv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FailMsg;
+        protected global::System.Web.UI.WebControls.GridView gdv;
 
         /// <summary>
-        /// txtCategory control.
+        /// indexFooter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCategory;
-
-        /// <summary>
-        /// txtCategoryNum control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtCategoryNum;
-
-        /// <summary>
-        /// btnSave control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnSave;
+        protected global::System.Web.UI.WebControls.Label indexFooter;
     }
 }
