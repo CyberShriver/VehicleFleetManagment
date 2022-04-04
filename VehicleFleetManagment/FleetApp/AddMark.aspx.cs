@@ -26,7 +26,6 @@ namespace VehicleFleetManagment.FleetApp
                 if (id == null)
                 {
                     btnSave.InnerText = "Save";
-                    // Response.Redirect("~/sima/province.aspx/");
                 }
                 else
 
