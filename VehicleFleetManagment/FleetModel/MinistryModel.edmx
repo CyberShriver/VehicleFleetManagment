@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MINISTRY_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MINISTRY_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BODY_TYPE">
           <Key>
             <PropertyRef Name="BODY_ID" />
@@ -12,6 +12,37 @@
           <Property Name="BODY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Category" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Category_N°" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DRIVER">
+          <Key>
+            <PropertyRef Name="DRIVER_ID" />
+          </Key>
+          <Property Name="DRIVER_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Driver_Code" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Full_Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CNI" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Address1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address2" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address3" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Driver_Type" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Postal_code" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Nationality" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Marital_Status" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DOB" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Mother_Language" Type="varchar" MaxLength="100" />
+          <Property Name="Office_Phone" Type="varchar" MaxLength="100" />
+          <Property Name="Personnal_Phone" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Picture" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LEAVE_TYPE">
+          <Key>
+            <PropertyRef Name="LEAVE_TYPE_ID" />
+          </Key>
+          <Property Name="LEAVE_TYPE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Leave_Type_Description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Leave_Number" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="MARK">
           <Key>
@@ -64,6 +95,8 @@
         </Association>
         <EntityContainer Name="MINISTRY_DBModelStoreContainer">
           <EntitySet Name="BODY_TYPE" EntityType="Self.BODY_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DRIVER" EntityType="Self.DRIVER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LEAVE_TYPE" EntityType="Self.LEAVE_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MARK" EntityType="Self.MARK" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MODEL" EntityType="Self.MODEL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROVIDER" EntityType="Self.PROVIDER" Schema="dbo" store:Type="Tables" />
@@ -73,8 +106,7 @@
             <End Role="MODEL" EntitySet="MODEL" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MINISTRY_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -147,7 +179,40 @@
             <End Role="MARK" EntitySet="MARKs" />
             <End Role="MODEL" EntitySet="MODELs" />
           </AssociationSet>
+          <EntitySet Name="DRIVERs" EntityType="MINISTRY_DBModel.DRIVER" />
+          <EntitySet Name="LEAVE_TYPE" EntityType="MINISTRY_DBModel.LEAVE_TYPE" />
         </EntityContainer>
+        <EntityType Name="DRIVER">
+          <Key>
+            <PropertyRef Name="DRIVER_ID" />
+          </Key>
+          <Property Name="DRIVER_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Driver_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Full_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CNI" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address3" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Driver_Type" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Postal_code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nationality" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Marital_Status" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mother_Language" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Office_Phone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Personnal_Phone" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Picture" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LEAVE_TYPE">
+          <Key>
+            <PropertyRef Name="LEAVE_TYPE_ID" />
+          </Key>
+          <Property Name="LEAVE_TYPE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Leave_Type_Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Leave_Number" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -201,6 +266,39 @@
                 <ScalarProperty Name="REAL_ESTATE_ID" ColumnName="REAL_ESTATE_ID" />
                 <ScalarProperty Name="RealEstate_Name" ColumnName="RealEstate_Name" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DRIVERs">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.DRIVER">
+              <MappingFragment StoreEntitySet="DRIVER">
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Personnal_Phone" ColumnName="Personnal_Phone" />
+                <ScalarProperty Name="Office_Phone" ColumnName="Office_Phone" />
+                <ScalarProperty Name="Mother_Language" ColumnName="Mother_Language" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Marital_Status" ColumnName="Marital_Status" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Postal_code" ColumnName="Postal_code" />
+                <ScalarProperty Name="Driver_Type" ColumnName="Driver_Type" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="CNI" ColumnName="CNI" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full_Name" />
+                <ScalarProperty Name="Driver_Code" ColumnName="Driver_Code" />
+                <ScalarProperty Name="DRIVER_ID" ColumnName="DRIVER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LEAVE_TYPE">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.LEAVE_TYPE">
+              <MappingFragment StoreEntitySet="LEAVE_TYPE">
+                <ScalarProperty Name="Leave_Number" ColumnName="Leave_Number" />
+                <ScalarProperty Name="Leave_Type_Description" ColumnName="Leave_Type_Description" />
+                <ScalarProperty Name="LEAVE_TYPE_ID" ColumnName="LEAVE_TYPE_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -726,12 +726,18 @@
       <DependentUpon>ViewVehicleFuel.aspx</DependentUpon>
     </Compile>
     <Compile Include="FleetClass\BodyType_Class.cs" />
+    <Compile Include="FleetClass\Driver_Class.cs" />
+    <Compile Include="FleetClass\LeaveType_Class.cs" />
     <Compile Include="FleetClass\Mark_Class.cs" />
     <Compile Include="FleetClass\Model_Class.cs" />
     <Compile Include="FleetClass\Provider_Class.cs" />
     <Compile Include="FleetClass\RealEstate_Class.cs" />
     <Compile Include="FleetImp\BodyType_Imp.cs" />
     <Compile Include="FleetImp\BodyType_Interface.cs" />
+    <Compile Include="FleetImp\Driver_Imp.cs" />
+    <Compile Include="FleetImp\Driver_Interface.cs" />
+    <Compile Include="FleetImp\LeaveType_Imp.cs" />
+    <Compile Include="FleetImp\LeaveType_Interface.cs" />
     <Compile Include="FleetImp\Mark_Imp.cs" />
     <Compile Include="FleetImp\Mark_Interface.cs" />
     <Compile Include="FleetImp\Model_Imp.cs" />
@@ -741,6 +747,12 @@
     <Compile Include="FleetImp\RealEstate_Imp.cs" />
     <Compile Include="FleetImp\RealEstate_Interface.cs" />
     <Compile Include="FleetModel\BODY_TYPE.cs">
+      <DependentUpon>MinistryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FleetModel\DRIVER.cs">
+      <DependentUpon>MinistryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FleetModel\LEAVE_TYPE.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="FleetModel\MARK.cs">

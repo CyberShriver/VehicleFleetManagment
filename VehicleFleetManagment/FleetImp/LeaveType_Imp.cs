@@ -1,33 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 using System.Web.UI.WebControls;
 using VehicleFleetManagment.FleetClass;
 using VehicleFleetManagment.FleetModel;
-using System.Data.Entity;
 
 namespace VehicleFleetManagment.FleetImp
 {
-    public class Provider_Imp : Provider_Interface
+    public class LeaveType_Imp:LeaveType_Interface
     {
 
         int msg;
-        PROVIDER P = new PROVIDER();
+        LEAVE_TYPE L = new LEAVE_TYPE();
 
         //ADD METHOD
-        public int Add(Provider_Class Pr)
+        public int Add(LeaveType_Class Le)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                P.Provider_Type = Pr.Provider_Type;
-                P.Provider_Code = Pr.Provider_Code;
-                P.Full_Name = Pr.Full_Name;
-                P.Phone = Pr.Phone;
-                P.Email = Pr.Email;
-                P.Stat = Pr.Stat;
+                L.Leave_Type_Description = Le.Leave_Type_Description;
+                L.Leave_Number = Le.Leave_Number;
 
-                con.PROVIDERs.Add(P);
+                con.LEAVE_TYPE.Add(L);
 
                 if (con.SaveChanges() > 0)
                 {
@@ -44,27 +40,23 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //UPDATE METHOD
-        public int Update(Provider_Class Pr, int id)
+        public int Update(LeaveType_Class Le, int id)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                PROVIDER P = new PROVIDER();
-                P = con.PROVIDERs.Where(x => x.PROVIDER_ID == id).FirstOrDefault();
+                LEAVE_TYPE L = new LEAVE_TYPE();
+                L = con.LEAVE_TYPE.Where(x => x.LEAVE_TYPE_ID == id).FirstOrDefault();
 
-                if (P != null)
+                if (L != null)
                 {
 
-                    P.Provider_Type = Pr.Provider_Type;
-                    P.Provider_Code = Pr.Provider_Code;
-                    P.Full_Name = Pr.Full_Name;
-                    P.Phone = Pr.Phone;
-                    P.Email = Pr.Email;
-                    P.Stat = Pr.Stat;
+                    L.Leave_Type_Description = Le.Leave_Type_Description;
+                    L.Leave_Number = Le.Leave_Number;
 
                     if (con.SaveChanges() > 0)
                     {
-                        con.PROVIDERs.Add(P);
-                        con.Entry(P).State = EntityState.Modified;
+                        con.LEAVE_TYPE.Add(L);
+                        con.Entry(L).State = EntityState.Modified;
 
                         msg = 1;
                     }
@@ -83,14 +75,14 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = con.PROVIDERs.Where(x => x.PROVIDER_ID == id).First();
+                var obj = con.LEAVE_TYPE.Where(x => x.LEAVE_TYPE_ID == id).First();
 
                 if (con.Entry(obj).State == EntityState.Detached)
                 {
-                    con.PROVIDERs.Attach(obj);
+                    con.LEAVE_TYPE.Attach(obj);
 
                 }
-                con.PROVIDERs.Remove(obj);
+                con.LEAVE_TYPE.Remove(obj);
                 con.SaveChanges();
                 return msg;
             }
@@ -108,15 +100,15 @@ namespace VehicleFleetManagment.FleetImp
                     if (chkselect.Checked == true)
                     {
                         id = Convert.ToInt32(gd.Rows[i].Cells[i].Text);
-                        var obj = con.PROVIDERs.Where(x => x.PROVIDER_ID == id).First();
+                        var obj = con.LEAVE_TYPE.Where(x => x.LEAVE_TYPE_ID == id).First();
 
                         if (con.Entry(obj).State == EntityState.Detached)
                         {
-                            con.PROVIDERs.Attach(obj);
+                            con.LEAVE_TYPE.Attach(obj);
 
 
                         }
-                        con.PROVIDERs.Remove(obj);
+                        con.LEAVE_TYPE.Remove(obj);
                         con.SaveChanges();
                     }
                 }
@@ -131,17 +123,13 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from P in con.PROVIDERs
+                var obj = (from L in con.LEAVE_TYPE
 
                            select new
                            {
-                               PROVIDER_ID = P.PROVIDER_ID,
-                               Provider_Type = P.Provider_Type,
-                               Provider_Code = P.Provider_Code,
-                               Full_Name = P.Full_Name,
-                               Phone = P.Phone,
-                               Email = P.Email,
-                               Stat = P.Stat
+                               LEAVE_TYPE_ID = L.LEAVE_TYPE_ID,
+                               Leave_Type_Description = L.Leave_Type_Description,
+                               Leave_Number = L.Leave_Number
                            }
                            ).ToList();
 
@@ -152,18 +140,14 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //PROVIDE METHOD
-        public void provide(Provider_Class Pr, int id)
+        public void provide(LeaveType_Class Le, int id)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                P = con.PROVIDERs.Where(x => x.PROVIDER_ID == id).FirstOrDefault();
+                L = con.LEAVE_TYPE.Where(x => x.LEAVE_TYPE_ID == id).FirstOrDefault();
 
-                Pr.Provider_Type = P.Provider_Type;
-                Pr.Provider_Code = P.Provider_Code;
-                Pr.Full_Name = P.Full_Name;
-                Pr.Phone = P.Phone;
-                Pr.Email = P.Email;
-                Pr.Stat = P.Stat;
+                Le.Leave_Type_Description = L.Leave_Type_Description;
+                Le.Leave_Number = L.Leave_Number;
 
             }
         }
@@ -174,9 +158,9 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var P = (from l in con.PROVIDERs
+                var L = (from l in con.LEAVE_TYPE
                          select l).Count();
-                n = P;
+                n = L;
             }
             return n;
         }
@@ -186,22 +170,16 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from P in con.PROVIDERs
+                var obj = (from L in con.LEAVE_TYPE
                            where
-                       P.Full_Name == SearchText ||
-                       P.Provider_Code == SearchText ||
-                       P.Stat == SearchText ||
-                       P.Provider_Type == SearchText
+                      L.Leave_Type_Description == SearchText ||
+                      L.Leave_Number.ToString() == SearchText
 
                            select new
                            {
-                               PROVIDER_ID = P.PROVIDER_ID,
-                               Provider_Type = P.Provider_Type,
-                               Provider_Code = P.Provider_Code,
-                               Full_Name = P.Full_Name,
-                               Phone = P.Phone,
-                               Email = P.Email,
-                               Stat = P.Stat
+                               LEAVE_TYPE_ID = L.LEAVE_TYPE_ID,
+                               Leave_Type_Description = L.Leave_Type_Description,
+                               Leave_Number = L.Leave_Number
 
                            }
                            ).ToList();
@@ -211,5 +189,7 @@ namespace VehicleFleetManagment.FleetImp
             }
 
         }
+
+
     }
 }
