@@ -14,7 +14,6 @@ namespace VehicleFleetManagment.FleetApp
 
         RealEstate_Class Re = new RealEstate_Class();
         RealEstate_Interface I = new RealEstate_Imp();
-        private int msg;
 
         protected void Page_Load(object sender, EventArgs e)
         {
