@@ -735,6 +735,7 @@
     <Compile Include="FleetImp\Mark_Imp.cs" />
     <Compile Include="FleetImp\Mark_Interface.cs" />
     <Compile Include="FleetImp\RealEstate_Imp.cs" />
+    <Compile Include="FleetImp\RealEstate_Interface.cs" />
     <Compile Include="FleetModel\BODY_TYPE.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
