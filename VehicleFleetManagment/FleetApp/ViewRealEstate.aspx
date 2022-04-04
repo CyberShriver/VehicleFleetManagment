@@ -100,7 +100,7 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Mark">
+                                            <asp:TemplateField HeaderText="Name">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label2" runat="server" Text='<%# Eval("RealEstate_Name") %>'></asp:Label>
                                                 </ItemTemplate>
