@@ -72,7 +72,7 @@
                                 </div>
 
                                 <div class="card-footer">
-                                    <div class="float-right notifications">
+                                    <div class="float-right ">
                                         <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
                                         <button type="reset" class="btn btn-danger ml-5">Cancel</button>
                                         <a class="btn btn-info ml-5" href="ViewMark.aspx">List</a>
