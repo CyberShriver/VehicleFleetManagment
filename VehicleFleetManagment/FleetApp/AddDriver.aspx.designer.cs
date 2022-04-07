@@ -15,13 +15,40 @@ namespace VehicleFleetManagment.FleetApp
     {
 
         /// <summary>
-        /// txtName control.
+        /// SuccessMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtName;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SuccessMsg;
+
+        /// <summary>
+        /// FillMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FillMsg;
+
+        /// <summary>
+        /// FailMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FailMsg;
+
+        /// <summary>
+        /// txtFullName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtFullName;
 
         /// <summary>
         /// DropDown_Gender control.
@@ -51,22 +78,22 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtNationality;
 
         /// <summary>
-        /// txtMarital control.
+        /// DropDown_Marital control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMarital;
+        protected global::System.Web.UI.WebControls.DropDownList DropDown_Marital;
 
         /// <summary>
-        /// txtLanguage control.
+        /// DropDown_language control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtLanguage;
+        protected global::System.Web.UI.WebControls.DropDownList DropDown_language;
 
         /// <summary>
         /// txtCNI control.
@@ -114,13 +141,13 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtTel;
 
         /// <summary>
-        /// picture control.
+        /// file_upd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile picture;
+        protected global::System.Web.UI.WebControls.FileUpload file_upd;
 
         /// <summary>
         /// txtCode control.
@@ -168,12 +195,12 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtTelOffice;
 
         /// <summary>
-        /// btn_save control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_save;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSave;
     }
 }

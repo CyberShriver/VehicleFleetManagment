@@ -19,7 +19,7 @@
                         <li class="breadcrumb-item">
                             <a href="Home.aspx"><i class="fa fa-home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="AddDriver.aspx">Add Driver</a>
+                        <li class="breadcrumb-item"><a href="AddDriver.aspx">Add-Driver</a>
                         </li>
                     </ul>
                 </div>
@@ -39,8 +39,21 @@
                         <div class="card-header">
                             <h5>Driver</h5>
                         </div>
-
-                        <div class="row">
+                            <div class="col-sm-6 mx-auto">
+                                <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>Success!</strong>
+                                </div>
+                                <div class="alert alert-info alert-dismissible fade show" runat="server" id="FillMsg">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>Please complete all fields!</strong>
+                                </div>
+                                <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>Operation Failed!</strong>
+                                </div>
+                            </div>
+                        <div class="row">                                                        
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-header">
@@ -50,7 +63,7 @@
                                         <div class="form-material">
 
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtName">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtFullName">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Full Name</label>
                                             </div>
@@ -73,15 +86,25 @@
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Nationality</label>
                                             </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtMarital">
-                                                <span class="form-bar"></span>
+                                             <div class="form-group form-default">
+                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Marital" required="" runat="server">
+                                                    <asp:ListItem>Single</asp:ListItem>
+                                                    <asp:ListItem>Married</asp:ListItem>
+                                                    <asp:ListItem>Divorced</asp:ListItem>
+                                                </asp:DropDownList>
                                                 <label class="float-label">Marital Status</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLanguage">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Mother Language</label>
+                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_language" required="" runat="server">
+                                                    <asp:ListItem>Kirundi</asp:ListItem>
+                                                    <asp:ListItem>Kinyarwanda</asp:ListItem>
+                                                    <asp:ListItem>Francais</asp:ListItem>
+                                                    <asp:ListItem>Swahili</asp:ListItem>
+                                                    <asp:ListItem>English</asp:ListItem>
+                                                    <asp:ListItem>Spanish</asp:ListItem>
+                                                    <asp:ListItem>Portugal</asp:ListItem>
+                                                </asp:DropDownList>
+                                                <label class="float-label">Mother Langage</label>
                                             </div>
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCNI">
@@ -109,11 +132,11 @@
                                                 <label class="float-label">Personal Phone</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="file" name="footer-email" class="form-control text-right" required="" runat="server" id="picture">
+                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required=""  autocomplete="off" class="form-control text-right" runat="server" />
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">Picture</label>
+                                                <label class="float-label ">Pic:.ico,.png,.jpg</label>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -158,13 +181,14 @@
                                     </div>
                                 </div>
                             </div>
+                               
                         </div>
 
                         <div class="card-footer">
                             <div class="float-right">
-                                <asp:Button ID="btn_save" class="btn btn-primary ml-5" runat="server" Text="Save" />
+                                <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
                                 <button type="reset" class="btn btn-danger ml-5">Cancel</button>
-                                <a class="btn btn-info ml-5" href="ViewDriver.aspx">View</a>
+                                <a class="btn btn-info ml-5" href="ViewDriver.aspx">List</a>
                             </div>
                         </div>
                     </div>
