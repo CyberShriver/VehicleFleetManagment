@@ -761,6 +761,9 @@
     <Compile Include="FleetModel\MARK.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="FleetModel\MINISTRY.cs">
+      <DependentUpon>MinistryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="FleetModel\MinistryModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

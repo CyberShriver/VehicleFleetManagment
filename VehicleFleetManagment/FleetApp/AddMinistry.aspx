@@ -35,6 +35,20 @@
                 <!-- Page body start -->
                 <div class="page-body">
                     <!--Start Main Card -->
+                    <div class="col-sm-6 mx-auto">
+                            <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Success!</strong>
+                            </div>
+                            <div class="alert alert-info alert-dismissible fade show" runat="server" id="FillMsg">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Please complete all fields!</strong>
+                            </div>
+                            <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Operation Failed!</strong>
+                            </div>
+                        </div>
                     <div class="card">
                         <div class="card-header">
                             <h5>Ministry</h5>
@@ -68,13 +82,22 @@
                                             <div class="form-group form-default">
                                                 <input type="email" name="footer-email" class="form-control" required="" runat="server" id="txtMail">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">EMail</label>
+                                                <label class="float-label">Email</label>
                                             </div>
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtFax">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Fax</label>
-                                            </div>                                           
+                                            </div>  
+                                            <div class="form-group form-default">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtPostal">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Postal Code</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
+                                               
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -93,12 +116,17 @@
                                                 <label class="float-label">System Name</label>
                                             </div>
                                             <div class="form-group form-default">
+                                                <input type="password" name="footer-email" class="form-control" required="" runat="server" id="txtPassword">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Password</label>
+                                            </div>
+                                            <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtSysTitle">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">System Title</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtSysMaile">
+                                                <input type="email" name="footer-email" class="form-control" required="" runat="server" id="txtSysMaile">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">System Email</label>
                                             </div>
@@ -110,9 +138,11 @@
 
                         <div class="card-footer">
                             <div class="float-right">
-                                <asp:Button ID="btn_save" class="btn btn-primary ml-5" runat="server" Text="Save" />
+                                <div class="float-right">
+                                <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
                                 <button type="reset" class="btn btn-danger ml-5">Cancel</button>
                                 <a class="btn btn-info ml-5" href="ViewMinistry.aspx">List</a>
+                            </div>
                             </div>
                         </div>
                     </div>

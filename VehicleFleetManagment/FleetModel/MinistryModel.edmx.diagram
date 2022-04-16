@@ -13,6 +13,7 @@
         <AssociationConnector Association="MINISTRY_DBModel.FK_MARK_MODEL" ManuallyRouted="false" />
         <EntityTypeShape EntityType="MINISTRY_DBModel.DRIVER" Width="1.5" PointX="7.625" PointY="6.5" />
         <EntityTypeShape EntityType="MINISTRY_DBModel.LEAVE_TYPE" Width="1.5" PointX="7.625" PointY="0.5" />
+        <EntityTypeShape EntityType="MINISTRY_DBModel.MINISTRY" Width="1.5" PointX="0.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

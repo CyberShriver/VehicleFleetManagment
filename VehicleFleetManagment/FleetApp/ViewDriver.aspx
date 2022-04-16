@@ -176,7 +176,7 @@
                                                     <asp:Label ID="Label16" runat="server" Text='<%# Eval("Office_Phone") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Office Phone" Visible="false">
+                                            <asp:TemplateField HeaderText="Postal Code" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label17" runat="server" Text='<%# Eval("Postal_code") %>'></asp:Label>
                                                 </ItemTemplate>

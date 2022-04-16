@@ -32,5 +32,6 @@ namespace VehicleFleetManagment.FleetModel
         public virtual DbSet<REAL_ESTATE> REAL_ESTATE { get; set; }
         public virtual DbSet<DRIVER> DRIVERs { get; set; }
         public virtual DbSet<LEAVE_TYPE> LEAVE_TYPE { get; set; }
+        public virtual DbSet<MINISTRY> MINISTRies { get; set; }
     }
 }

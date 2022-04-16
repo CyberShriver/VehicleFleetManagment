@@ -52,6 +52,23 @@
           <Property Name="Mark_Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Comment" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="MINISTRY">
+          <Key>
+            <PropertyRef Name="MINISTRY_ID" />
+          </Key>
+          <Property Name="MINISTRY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code_Min" Type="varchar" MaxLength="30" />
+          <Property Name="Ministry_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="30" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Postal_code" Type="varchar" MaxLength="100" />
+          <Property Name="Fax" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="30" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="System_Name" Type="varchar" MaxLength="100" />
+          <Property Name="System_Email" Type="varchar" MaxLength="100" />
+          <Property Name="System_Title" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="MODEL">
           <Key>
             <PropertyRef Name="MODEL_ID" />
@@ -98,6 +115,7 @@
           <EntitySet Name="DRIVER" EntityType="Self.DRIVER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LEAVE_TYPE" EntityType="Self.LEAVE_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MARK" EntityType="Self.MARK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MINISTRY" EntityType="Self.MINISTRY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MODEL" EntityType="Self.MODEL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROVIDER" EntityType="Self.PROVIDER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="REAL_ESTATE" EntityType="Self.REAL_ESTATE" Schema="dbo" store:Type="Tables" />
@@ -181,6 +199,7 @@
           </AssociationSet>
           <EntitySet Name="DRIVERs" EntityType="MINISTRY_DBModel.DRIVER" />
           <EntitySet Name="LEAVE_TYPE" EntityType="MINISTRY_DBModel.LEAVE_TYPE" />
+          <EntitySet Name="MINISTRies" EntityType="MINISTRY_DBModel.MINISTRY" />
         </EntityContainer>
         <EntityType Name="DRIVER">
           <Key>
@@ -212,6 +231,23 @@
           <Property Name="LEAVE_TYPE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Leave_Type_Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Leave_Number" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MINISTRY">
+          <Key>
+            <PropertyRef Name="MINISTRY_ID" />
+          </Key>
+          <Property Name="MINISTRY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code_Min" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Ministry_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Postal_code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="System_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="System_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="System_Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -299,6 +335,24 @@
                 <ScalarProperty Name="Leave_Number" ColumnName="Leave_Number" />
                 <ScalarProperty Name="Leave_Type_Description" ColumnName="Leave_Type_Description" />
                 <ScalarProperty Name="LEAVE_TYPE_ID" ColumnName="LEAVE_TYPE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MINISTRies">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.MINISTRY">
+              <MappingFragment StoreEntitySet="MINISTRY">
+                <ScalarProperty Name="System_Title" ColumnName="System_Title" />
+                <ScalarProperty Name="System_Email" ColumnName="System_Email" />
+                <ScalarProperty Name="System_Name" ColumnName="System_Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Postal_code" ColumnName="Postal_code" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Ministry_Name" ColumnName="Ministry_Name" />
+                <ScalarProperty Name="Code_Min" ColumnName="Code_Min" />
+                <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
