@@ -14,6 +14,13 @@ namespace VehicleFleetManagment.FleetModel
     
     public partial class MINISTRY
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MINISTRY()
+        {
+            this.VEHICLEs = new HashSet<VEHICLE>();
+            this.VEHICLE_FUEL_SUPPLY = new HashSet<VEHICLE_FUEL_SUPPLY>();
+        }
+    
         public int MINISTRY_ID { get; set; }
         public string Code_Min { get; set; }
         public string Ministry_Name { get; set; }
@@ -26,5 +33,10 @@ namespace VehicleFleetManagment.FleetModel
         public string System_Name { get; set; }
         public string System_Email { get; set; }
         public string System_Title { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VEHICLE> VEHICLEs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VEHICLE_FUEL_SUPPLY> VEHICLE_FUEL_SUPPLY { get; set; }
     }
 }

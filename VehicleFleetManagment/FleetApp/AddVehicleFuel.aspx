@@ -39,6 +39,20 @@
                         <div class="card-header">
                             <h5>Vehicle Fuel</h5>
                         </div>
+                        <div class="col-sm-6 mx-auto">
+                                <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>Success!</strong>
+                                </div>
+                                <div class="alert alert-info alert-dismissible fade show" runat="server" id="FillMsg">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>Please complete all fields!</strong>
+                                </div>
+                                <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>Operation Failed!</strong>
+                                </div>
+                            </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="card">
@@ -55,7 +69,7 @@
 
                                         <div class="form-group form-default">
                                             <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_ProviderCode" required="" runat="server"></asp:DropDownList>
-                                            <label class="float-label">Provider Code</label>
+                                            <label class="float-label">Provider</label>
                                         </div>
                                         <div class="form-group form-default">
                                             <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_TankType" required="" runat="server">
@@ -111,9 +125,7 @@
                                             <label class="float-label">Liter per 100km</label>
                                         </div>
                                         <div class="form-group form-default">
-                                            <input type="date" class="form-control text-right" required="" runat="server" id="dateSave">
-                                            <span class="form-bar"></span>
-                                            <label class="float-label  ">Saved Date</label>
+                                            <input type="date" class="form-control text-right" visible="false" runat="server" id="dateSave">
                                         </div>
                                         <div class="form-group form-default">
                                                 <textarea class="form-control" required="" runat="server" id="txtComment"></textarea>
@@ -127,10 +139,9 @@
                         </div>
                         <div class="card-footer">
                             <div class="float-right">
-                                <asp:Button ID="Button1" class="btn btn-primary ml-5" runat="server" Text="Save" />
+                                <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
                                 <button type="reset" class="btn btn-danger ml-5">Cancel</button>
-                                <a class="btn btn-info ml-5" href="ViewVehicleFuel.aspx">View</a>
-
+                                <a class="btn btn-info ml-5" href="ViewVehicleFuel.aspx">List</a>
                             </div>
                         </div>
                     </div>

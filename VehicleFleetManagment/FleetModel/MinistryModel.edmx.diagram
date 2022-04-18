@@ -14,6 +14,13 @@
         <EntityTypeShape EntityType="MINISTRY_DBModel.DRIVER" Width="1.5" PointX="7.625" PointY="6.5" />
         <EntityTypeShape EntityType="MINISTRY_DBModel.LEAVE_TYPE" Width="1.5" PointX="7.625" PointY="0.5" />
         <EntityTypeShape EntityType="MINISTRY_DBModel.MINISTRY" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="MINISTRY_DBModel.VEHICLE" Width="1.5" PointX="10.25" PointY="0.75" />
+        <EntityTypeShape EntityType="MINISTRY_DBModel.VEHICLE_FUEL_SUPPLY" Width="1.5" PointX="12.5" PointY="4.5" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_VEHICLE_IDBody" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_VEHICLE_IDMinistry" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_VEHICLEfuel_IDMinistry" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_VEHICLE_IDmodel" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_VEHICLEfuel_IDveh" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

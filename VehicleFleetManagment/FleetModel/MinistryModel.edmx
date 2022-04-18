@@ -98,6 +98,83 @@
           <Property Name="RealEstate_Name" Type="varchar" MaxLength="50" />
           <Property Name="Comment" Type="varchar" MaxLength="300" />
         </EntityType>
+        <EntityType Name="VEHICLE">
+          <Key>
+            <PropertyRef Name="VEHICLE_ID" />
+          </Key>
+          <Property Name="VEHICLE_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Veh_Code" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="BODY_ID" Type="int" Nullable="false" />
+          <Property Name="Local_Plate" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MODEL_ID" Type="int" Nullable="false" />
+          <Property Name="MINISTRY_ID" Type="int" Nullable="false" />
+          <Property Name="NameVeh" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Condition" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Chassis_Num" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Engine_Num" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Engine_Manufacturer" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Engine_Type" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Alternator_Engine_Manufacturer" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Alternator_Engine_Type" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Kva" Type="float" Nullable="false" />
+          <Property Name="Volt" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Generator_Weight" Type="varchar" MaxLength="100" />
+          <Property Name="Trailer" Type="varchar" MaxLength="30" />
+          <Property Name="Assembly_Num" Type="varchar" MaxLength="100" />
+          <Property Name="lhd_rhd" Type="varchar" MaxLength="30" />
+          <Property Name="Safety_Belt" Type="varchar" MaxLength="30" />
+          <Property Name="Gearbox_Type" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Opt_Four_Wheel" Type="varchar" MaxLength="30" />
+          <Property Name="Central_Locking" Type="varchar" MaxLength="30" />
+          <Property Name="Rear_Lock" Type="varchar" MaxLength="30" />
+          <Property Name="Engine_Series_Num" Type="varchar" MaxLength="100" />
+          <Property Name="Forward_Lock" Type="varchar" MaxLength="30" />
+          <Property Name="Engine_cylinder_Number" Type="varchar" MaxLength="30" />
+          <Property Name="Engine_cc" Type="varchar" MaxLength="30" />
+          <Property Name="Engine_Power" Type="float" />
+          <Property Name="Fuel_Fype" Type="varchar" MaxLength="100" />
+          <Property Name="Tank_Type1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Tank_Size1" Type="int" />
+          <Property Name="Tank_Type2" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Tank_Capacity2" Type="int" />
+          <Property Name="Front_Seats_Number" Type="int" />
+          <Property Name="Battery_Voltage" Type="float" />
+          <Property Name="Air_Conditioner" Type="varchar" MaxLength="30" />
+          <Property Name="Additional_Heating" Type="varchar" MaxLength="30" />
+          <Property Name="Veh_Weight" Type="float" />
+          <Property Name="Gross_Veh_Weigth" Type="float" />
+          <Property Name="Empty_Pod" Type="float" />
+          <Property Name="Key_Code" Type="varchar" MaxLength="100" />
+          <Property Name="Rear_Blake" Type="varchar" MaxLength="30" />
+          <Property Name="Electronic_Logbook" Type="varchar" MaxLength="30" />
+          <Property Name="Radio_Code" Type="varchar" MaxLength="100" />
+          <Property Name="Guaranteed_Expiration_Date" Type="varchar" MaxLength="100" />
+          <Property Name="Guaranteed_Certificate_Num" Type="varchar" MaxLength="100" />
+          <Property Name="Circulation_Expiration_Date" Type="varchar" MaxLength="100" />
+          <Property Name="Stat" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Picture" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="VEHICLE_FUEL_SUPPLY">
+          <Key>
+            <PropertyRef Name="VEHICLE_FUEL_ID" />
+          </Key>
+          <Property Name="VEHICLE_FUEL_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VEHICLE_ID" Type="bigint" Nullable="false" />
+          <Property Name="MINISTRY_ID" Type="int" />
+          <Property Name="Fuel_Type" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Tank_Type" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Tank_Code" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Provider_Code" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Odometer" Type="float" Nullable="false" />
+          <Property Name="Initial_Qty" Type="float" Nullable="false" />
+          <Property Name="Consumed_Qty" Type="float" Nullable="false" />
+          <Property Name="United_Price" Type="float" Nullable="false" />
+          <Property Name="Total_Price" Type="float" Nullable="false" />
+          <Property Name="Liter_100_km" Type="float" Nullable="false" />
+          <Property Name="Comment" Type="text" />
+          <Property Name="Saved_Date" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <Association Name="FK_MARK_MODEL">
           <End Role="MARK" Type="Self.MARK" Multiplicity="0..1" />
           <End Role="MODEL" Type="Self.MODEL" Multiplicity="*" />
@@ -110,6 +187,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_VEHICLE_IDBody">
+          <End Role="BODY_TYPE" Type="Self.BODY_TYPE" Multiplicity="1" />
+          <End Role="VEHICLE" Type="Self.VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BODY_TYPE">
+              <PropertyRef Name="BODY_ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="BODY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_IDMinistry">
+          <End Role="MINISTRY" Type="Self.MINISTRY" Multiplicity="1" />
+          <End Role="VEHICLE" Type="Self.VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_IDmodel">
+          <End Role="MODEL" Type="Self.MODEL" Multiplicity="1" />
+          <End Role="VEHICLE" Type="Self.VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MODEL">
+              <PropertyRef Name="MODEL_ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="MODEL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLEfuel_IDMinistry">
+          <End Role="MINISTRY" Type="Self.MINISTRY" Multiplicity="0..1" />
+          <End Role="VEHICLE_FUEL_SUPPLY" Type="Self.VEHICLE_FUEL_SUPPLY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Principal>
+            <Dependent Role="VEHICLE_FUEL_SUPPLY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLEfuel_IDveh">
+          <End Role="VEHICLE" Type="Self.VEHICLE" Multiplicity="1" />
+          <End Role="VEHICLE_FUEL_SUPPLY" Type="Self.VEHICLE_FUEL_SUPPLY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICLE">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Principal>
+            <Dependent Role="VEHICLE_FUEL_SUPPLY">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MINISTRY_DBModelStoreContainer">
           <EntitySet Name="BODY_TYPE" EntityType="Self.BODY_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DRIVER" EntityType="Self.DRIVER" Schema="dbo" store:Type="Tables" />
@@ -119,9 +256,31 @@
           <EntitySet Name="MODEL" EntityType="Self.MODEL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROVIDER" EntityType="Self.PROVIDER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="REAL_ESTATE" EntityType="Self.REAL_ESTATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VEHICLE" EntityType="Self.VEHICLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VEHICLE_FUEL_SUPPLY" EntityType="Self.VEHICLE_FUEL_SUPPLY" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_MARK_MODEL" Association="Self.FK_MARK_MODEL">
             <End Role="MARK" EntitySet="MARK" />
             <End Role="MODEL" EntitySet="MODEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_IDBody" Association="Self.FK_VEHICLE_IDBody">
+            <End Role="BODY_TYPE" EntitySet="BODY_TYPE" />
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_IDMinistry" Association="Self.FK_VEHICLE_IDMinistry">
+            <End Role="MINISTRY" EntitySet="MINISTRY" />
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_IDmodel" Association="Self.FK_VEHICLE_IDmodel">
+            <End Role="MODEL" EntitySet="MODEL" />
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLEfuel_IDMinistry" Association="Self.FK_VEHICLEfuel_IDMinistry">
+            <End Role="MINISTRY" EntitySet="MINISTRY" />
+            <End Role="VEHICLE_FUEL_SUPPLY" EntitySet="VEHICLE_FUEL_SUPPLY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLEfuel_IDveh" Association="Self.FK_VEHICLEfuel_IDveh">
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+            <End Role="VEHICLE_FUEL_SUPPLY" EntitySet="VEHICLE_FUEL_SUPPLY" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -135,6 +294,7 @@
           <Property Name="BODY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Category_N_" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VEHICLEs" Relationship="MINISTRY_DBModel.FK_VEHICLE_IDBody" FromRole="BODY_TYPE" ToRole="VEHICLE" />
         </EntityType>
         <EntityType Name="MARK">
           <Key>
@@ -154,6 +314,7 @@
           <Property Name="Model_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MARK" Relationship="Self.FK_MARK_MODEL" FromRole="MODEL" ToRole="MARK" />
+          <NavigationProperty Name="VEHICLEs" Relationship="MINISTRY_DBModel.FK_VEHICLE_IDmodel" FromRole="MODEL" ToRole="VEHICLE" />
         </EntityType>
         <EntityType Name="PROVIDER">
           <Key>
@@ -200,6 +361,28 @@
           <EntitySet Name="DRIVERs" EntityType="MINISTRY_DBModel.DRIVER" />
           <EntitySet Name="LEAVE_TYPE" EntityType="MINISTRY_DBModel.LEAVE_TYPE" />
           <EntitySet Name="MINISTRies" EntityType="MINISTRY_DBModel.MINISTRY" />
+          <EntitySet Name="VEHICLEs" EntityType="MINISTRY_DBModel.VEHICLE" />
+          <EntitySet Name="VEHICLE_FUEL_SUPPLY" EntityType="MINISTRY_DBModel.VEHICLE_FUEL_SUPPLY" />
+          <AssociationSet Name="FK_VEHICLE_IDBody" Association="MINISTRY_DBModel.FK_VEHICLE_IDBody">
+            <End Role="BODY_TYPE" EntitySet="BODY_TYPE" />
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_IDMinistry" Association="MINISTRY_DBModel.FK_VEHICLE_IDMinistry">
+            <End Role="MINISTRY" EntitySet="MINISTRies" />
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLEfuel_IDMinistry" Association="MINISTRY_DBModel.FK_VEHICLEfuel_IDMinistry">
+            <End Role="MINISTRY" EntitySet="MINISTRies" />
+            <End Role="VEHICLE_FUEL_SUPPLY" EntitySet="VEHICLE_FUEL_SUPPLY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLE_IDmodel" Association="MINISTRY_DBModel.FK_VEHICLE_IDmodel">
+            <End Role="MODEL" EntitySet="MODELs" />
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VEHICLEfuel_IDveh" Association="MINISTRY_DBModel.FK_VEHICLEfuel_IDveh">
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+            <End Role="VEHICLE_FUEL_SUPPLY" EntitySet="VEHICLE_FUEL_SUPPLY" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="DRIVER">
           <Key>
@@ -248,7 +431,152 @@
           <Property Name="System_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="System_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="System_Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VEHICLEs" Relationship="MINISTRY_DBModel.FK_VEHICLE_IDMinistry" FromRole="MINISTRY" ToRole="VEHICLE" />
+          <NavigationProperty Name="VEHICLE_FUEL_SUPPLY" Relationship="MINISTRY_DBModel.FK_VEHICLEfuel_IDMinistry" FromRole="MINISTRY" ToRole="VEHICLE_FUEL_SUPPLY" />
         </EntityType>
+        <EntityType Name="VEHICLE">
+          <Key>
+            <PropertyRef Name="VEHICLE_ID" />
+          </Key>
+          <Property Name="VEHICLE_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Veh_Code" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BODY_ID" Type="Int32" Nullable="false" />
+          <Property Name="Local_Plate" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MODEL_ID" Type="Int32" Nullable="false" />
+          <Property Name="MINISTRY_ID" Type="Int32" Nullable="false" />
+          <Property Name="NameVeh" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Color" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Condition" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Chassis_Num" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Engine_Num" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Engine_Manufacturer" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Engine_Type" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Alternator_Engine_Manufacturer" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Alternator_Engine_Type" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Kva" Type="Double" Nullable="false" />
+          <Property Name="Volt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Generator_Weight" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Trailer" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Assembly_Num" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="lhd_rhd" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Safety_Belt" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Gearbox_Type" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Opt_Four_Wheel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Central_Locking" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Rear_Lock" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Engine_Series_Num" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Forward_Lock" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Engine_cylinder_Number" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Engine_cc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Engine_Power" Type="Double" />
+          <Property Name="Fuel_Fype" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tank_Type1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tank_Size1" Type="Int32" />
+          <Property Name="Tank_Type2" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tank_Capacity2" Type="Int32" />
+          <Property Name="Front_Seats_Number" Type="Int32" />
+          <Property Name="Battery_Voltage" Type="Double" />
+          <Property Name="Air_Conditioner" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Additional_Heating" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Veh_Weight" Type="Double" />
+          <Property Name="Gross_Veh_Weigth" Type="Double" />
+          <Property Name="Empty_Pod" Type="Double" />
+          <Property Name="Key_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Rear_Blake" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Electronic_Logbook" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Radio_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Guaranteed_Expiration_Date" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Guaranteed_Certificate_Num" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Circulation_Expiration_Date" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Stat" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BODY_TYPE" Relationship="MINISTRY_DBModel.FK_VEHICLE_IDBody" FromRole="VEHICLE" ToRole="BODY_TYPE" />
+          <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_VEHICLE_IDMinistry" FromRole="VEHICLE" ToRole="MINISTRY" />
+          <NavigationProperty Name="MODEL" Relationship="MINISTRY_DBModel.FK_VEHICLE_IDmodel" FromRole="VEHICLE" ToRole="MODEL" />
+          <NavigationProperty Name="VEHICLE_FUEL_SUPPLY" Relationship="MINISTRY_DBModel.FK_VEHICLEfuel_IDveh" FromRole="VEHICLE" ToRole="VEHICLE_FUEL_SUPPLY" />
+        </EntityType>
+        <EntityType Name="VEHICLE_FUEL_SUPPLY">
+          <Key>
+            <PropertyRef Name="VEHICLE_FUEL_ID" />
+          </Key>
+          <Property Name="VEHICLE_FUEL_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VEHICLE_ID" Type="Int64" Nullable="false" />
+          <Property Name="MINISTRY_ID" Type="Int32" />
+          <Property Name="Fuel_Type" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tank_Type" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tank_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Provider_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Odometer" Type="Double" Nullable="false" />
+          <Property Name="Initial_Qty" Type="Double" Nullable="false" />
+          <Property Name="Consumed_Qty" Type="Double" Nullable="false" />
+          <Property Name="United_Price" Type="Double" Nullable="false" />
+          <Property Name="Total_Price" Type="Double" Nullable="false" />
+          <Property Name="Liter_100_km" Type="Double" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Saved_Date" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_VEHICLEfuel_IDMinistry" FromRole="VEHICLE_FUEL_SUPPLY" ToRole="MINISTRY" />
+          <NavigationProperty Name="VEHICLE" Relationship="MINISTRY_DBModel.FK_VEHICLEfuel_IDveh" FromRole="VEHICLE_FUEL_SUPPLY" ToRole="VEHICLE" />
+        </EntityType>
+        <Association Name="FK_VEHICLE_IDBody">
+          <End Type="MINISTRY_DBModel.BODY_TYPE" Role="BODY_TYPE" Multiplicity="1" />
+          <End Type="MINISTRY_DBModel.VEHICLE" Role="VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BODY_TYPE">
+              <PropertyRef Name="BODY_ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="BODY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_IDMinistry">
+          <End Type="MINISTRY_DBModel.MINISTRY" Role="MINISTRY" Multiplicity="1" />
+          <End Type="MINISTRY_DBModel.VEHICLE" Role="VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLEfuel_IDMinistry">
+          <End Type="MINISTRY_DBModel.MINISTRY" Role="MINISTRY" Multiplicity="0..1" />
+          <End Type="MINISTRY_DBModel.VEHICLE_FUEL_SUPPLY" Role="VEHICLE_FUEL_SUPPLY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Principal>
+            <Dependent Role="VEHICLE_FUEL_SUPPLY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLE_IDmodel">
+          <End Type="MINISTRY_DBModel.MODEL" Role="MODEL" Multiplicity="1" />
+          <End Type="MINISTRY_DBModel.VEHICLE" Role="VEHICLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MODEL">
+              <PropertyRef Name="MODEL_ID" />
+            </Principal>
+            <Dependent Role="VEHICLE">
+              <PropertyRef Name="MODEL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICLEfuel_IDveh">
+          <End Type="MINISTRY_DBModel.VEHICLE" Role="VEHICLE" Multiplicity="1" />
+          <End Type="MINISTRY_DBModel.VEHICLE_FUEL_SUPPLY" Role="VEHICLE_FUEL_SUPPLY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICLE">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Principal>
+            <Dependent Role="VEHICLE_FUEL_SUPPLY">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -353,6 +681,85 @@
                 <ScalarProperty Name="Ministry_Name" ColumnName="Ministry_Name" />
                 <ScalarProperty Name="Code_Min" ColumnName="Code_Min" />
                 <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VEHICLEs">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.VEHICLE">
+              <MappingFragment StoreEntitySet="VEHICLE">
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Stat" ColumnName="Stat" />
+                <ScalarProperty Name="Circulation_Expiration_Date" ColumnName="Circulation_Expiration_Date" />
+                <ScalarProperty Name="Guaranteed_Certificate_Num" ColumnName="Guaranteed_Certificate_Num" />
+                <ScalarProperty Name="Guaranteed_Expiration_Date" ColumnName="Guaranteed_Expiration_Date" />
+                <ScalarProperty Name="Radio_Code" ColumnName="Radio_Code" />
+                <ScalarProperty Name="Electronic_Logbook" ColumnName="Electronic_Logbook" />
+                <ScalarProperty Name="Rear_Blake" ColumnName="Rear_Blake" />
+                <ScalarProperty Name="Key_Code" ColumnName="Key_Code" />
+                <ScalarProperty Name="Empty_Pod" ColumnName="Empty_Pod" />
+                <ScalarProperty Name="Gross_Veh_Weigth" ColumnName="Gross_Veh_Weigth" />
+                <ScalarProperty Name="Veh_Weight" ColumnName="Veh_Weight" />
+                <ScalarProperty Name="Additional_Heating" ColumnName="Additional_Heating" />
+                <ScalarProperty Name="Air_Conditioner" ColumnName="Air_Conditioner" />
+                <ScalarProperty Name="Battery_Voltage" ColumnName="Battery_Voltage" />
+                <ScalarProperty Name="Front_Seats_Number" ColumnName="Front_Seats_Number" />
+                <ScalarProperty Name="Tank_Capacity2" ColumnName="Tank_Capacity2" />
+                <ScalarProperty Name="Tank_Type2" ColumnName="Tank_Type2" />
+                <ScalarProperty Name="Tank_Size1" ColumnName="Tank_Size1" />
+                <ScalarProperty Name="Tank_Type1" ColumnName="Tank_Type1" />
+                <ScalarProperty Name="Fuel_Fype" ColumnName="Fuel_Fype" />
+                <ScalarProperty Name="Engine_Power" ColumnName="Engine_Power" />
+                <ScalarProperty Name="Engine_cc" ColumnName="Engine_cc" />
+                <ScalarProperty Name="Engine_cylinder_Number" ColumnName="Engine_cylinder_Number" />
+                <ScalarProperty Name="Forward_Lock" ColumnName="Forward_Lock" />
+                <ScalarProperty Name="Engine_Series_Num" ColumnName="Engine_Series_Num" />
+                <ScalarProperty Name="Rear_Lock" ColumnName="Rear_Lock" />
+                <ScalarProperty Name="Central_Locking" ColumnName="Central_Locking" />
+                <ScalarProperty Name="Opt_Four_Wheel" ColumnName="Opt_Four_Wheel" />
+                <ScalarProperty Name="Gearbox_Type" ColumnName="Gearbox_Type" />
+                <ScalarProperty Name="Safety_Belt" ColumnName="Safety_Belt" />
+                <ScalarProperty Name="lhd_rhd" ColumnName="lhd_rhd" />
+                <ScalarProperty Name="Assembly_Num" ColumnName="Assembly_Num" />
+                <ScalarProperty Name="Trailer" ColumnName="Trailer" />
+                <ScalarProperty Name="Generator_Weight" ColumnName="Generator_Weight" />
+                <ScalarProperty Name="Volt" ColumnName="Volt" />
+                <ScalarProperty Name="Kva" ColumnName="Kva" />
+                <ScalarProperty Name="Alternator_Engine_Type" ColumnName="Alternator_Engine_Type" />
+                <ScalarProperty Name="Alternator_Engine_Manufacturer" ColumnName="Alternator_Engine_Manufacturer" />
+                <ScalarProperty Name="Engine_Type" ColumnName="Engine_Type" />
+                <ScalarProperty Name="Engine_Manufacturer" ColumnName="Engine_Manufacturer" />
+                <ScalarProperty Name="Engine_Num" ColumnName="Engine_Num" />
+                <ScalarProperty Name="Chassis_Num" ColumnName="Chassis_Num" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="NameVeh" ColumnName="NameVeh" />
+                <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
+                <ScalarProperty Name="MODEL_ID" ColumnName="MODEL_ID" />
+                <ScalarProperty Name="Local_Plate" ColumnName="Local_Plate" />
+                <ScalarProperty Name="BODY_ID" ColumnName="BODY_ID" />
+                <ScalarProperty Name="Veh_Code" ColumnName="Veh_Code" />
+                <ScalarProperty Name="VEHICLE_ID" ColumnName="VEHICLE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VEHICLE_FUEL_SUPPLY">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.VEHICLE_FUEL_SUPPLY">
+              <MappingFragment StoreEntitySet="VEHICLE_FUEL_SUPPLY">
+                <ScalarProperty Name="Saved_Date" ColumnName="Saved_Date" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Liter_100_km" ColumnName="Liter_100_km" />
+                <ScalarProperty Name="Total_Price" ColumnName="Total_Price" />
+                <ScalarProperty Name="United_Price" ColumnName="United_Price" />
+                <ScalarProperty Name="Consumed_Qty" ColumnName="Consumed_Qty" />
+                <ScalarProperty Name="Initial_Qty" ColumnName="Initial_Qty" />
+                <ScalarProperty Name="Odometer" ColumnName="Odometer" />
+                <ScalarProperty Name="Provider_Code" ColumnName="Provider_Code" />
+                <ScalarProperty Name="Tank_Code" ColumnName="Tank_Code" />
+                <ScalarProperty Name="Tank_Type" ColumnName="Tank_Type" />
+                <ScalarProperty Name="Fuel_Type" ColumnName="Fuel_Type" />
+                <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
+                <ScalarProperty Name="VEHICLE_ID" ColumnName="VEHICLE_ID" />
+                <ScalarProperty Name="VEHICLE_FUEL_ID" ColumnName="VEHICLE_FUEL_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
