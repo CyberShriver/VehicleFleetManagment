@@ -39,7 +39,20 @@
                         <div class="card-header">
                             <h5>Vehicle</h5>
                         </div>
-
+                        <div class="col-sm-6 mx-auto">
+                                <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>Success!</strong>
+                                </div>
+                                <div class="alert alert-info alert-dismissible fade show" runat="server" id="FillMsg">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>Please complete all fields!</strong>
+                                </div>
+                                <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>Operation Failed!</strong>
+                                </div>
+                            </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="card">
@@ -50,9 +63,8 @@
                                                 <label class="float-label">Ministry</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Vehicle Code</label>
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
+
                                             </div>
 
                                             <div class="form-group form-default">
@@ -74,7 +86,12 @@
                                                 <label class="float-label">Body</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_fuel" required="" runat="server"></asp:DropDownList>
+                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_fuel" required="" runat="server">
+                                                    <asp:ListItem>Petrol</asp:ListItem>
+                                                    <asp:ListItem>Gaz</asp:ListItem>
+                                                    <asp:ListItem>Essence</asp:ListItem>
+                                                    <asp:ListItem>Mazutu</asp:ListItem>
+                                                </asp:DropDownList>
                                                 <label class="float-label">Fuel Type</label>
                                             </div>
                                             <div class="form-group form-default">
@@ -99,9 +116,9 @@
                                                 <label class="float-label">Engine Manufacturer</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="password" name="footer-email" class="form-control" required="" runat="server" id="txtPicture">
+                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required=""  autocomplete="off" class="form-control text-right" runat="server" />
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">Picture</label>
+                                                <label class="float-label ">Pic:.ico,.png,.jpg</label>
                                             </div>
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEnginType">
@@ -243,7 +260,7 @@
                                                 <label class="float-label">left hand or right hand? </label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_thirdParty_injure" required="" runat="server">
+                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Belt" required="" runat="server">
                                                     <asp:ListItem>true</asp:ListItem>
                                                     <asp:ListItem>false</asp:ListItem>
                                                 </asp:DropDownList>
@@ -338,7 +355,7 @@
 
                         <div class="card-footer">
                             <div class="float-right">
-                                <asp:Button ID="btn_save" class="btn btn-primary ml-5" runat="server" Text="Save" />
+                                <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
                                 <button type="reset" class="btn btn-danger ml-5">Cancel</button>
                                 <a class="btn btn-info ml-5" href="ViewVehicle.aspx">List</a>
                             </div>

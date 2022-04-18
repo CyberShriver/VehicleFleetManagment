@@ -734,6 +734,7 @@
     <Compile Include="FleetClass\Provider_Class.cs" />
     <Compile Include="FleetClass\RealEstate_Class.cs" />
     <Compile Include="FleetClass\VehicleFuelSup_Class.cs" />
+    <Compile Include="FleetClass\Vehicle_Class.cs" />
     <Compile Include="FleetImp\BodyType_Imp.cs" />
     <Compile Include="FleetImp\BodyType_Interface.cs" />
     <Compile Include="FleetImp\Driver_Imp.cs" />
@@ -752,6 +753,8 @@
     <Compile Include="FleetImp\RealEstate_Interface.cs" />
     <Compile Include="FleetImp\VehicleFuelSupp_Imp.cs" />
     <Compile Include="FleetImp\VehicleFuelSupp_Interface.cs" />
+    <Compile Include="FleetImp\Vehicle_Imp.cs" />
+    <Compile Include="FleetImp\Vehicle_Interface.cs" />
     <Compile Include="FleetModel\BODY_TYPE.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
