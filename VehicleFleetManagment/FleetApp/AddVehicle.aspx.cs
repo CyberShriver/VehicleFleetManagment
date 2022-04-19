@@ -95,7 +95,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Veh.Engine_Num = txtEngineNumber.Value;
                                 Veh.Engine_Manufacturer = txtEngineManif.Value;
                                 Veh.Engine_Type = txtEnginType.Value;
-                                Veh.Alternator_Engine_Manufacturer =txtEngineManif.Value;
+                                Veh.Alternator_Engine_Manufacturer = txtEngAltern.Value;
                                 Veh.Alternator_Engine_Type = txtEngAlternType.Value;
                                 Veh.Kva =Convert.ToDouble(txtKva.Value);
                                 Veh.Volt = txtVolt.Value;
@@ -215,7 +215,7 @@ namespace VehicleFleetManagment.FleetApp
                         Veh.Engine_Num = txtEngineNumber.Value;
                         Veh.Engine_Manufacturer = txtEngineManif.Value;
                         Veh.Engine_Type = txtEnginType.Value;
-                        Veh.Alternator_Engine_Manufacturer = txtEngineManif.Value;
+                        Veh.Alternator_Engine_Manufacturer = txtEngAltern.Value;
                         Veh.Alternator_Engine_Type = txtEngAlternType.Value;
                         Veh.Kva = Convert.ToDouble(txtKva.Value);
                         Veh.Volt = txtVolt.Value;
@@ -361,7 +361,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Veh.Engine_Num = txtEngineNumber.Value;
                                 Veh.Engine_Manufacturer = txtEngineManif.Value;
                                 Veh.Engine_Type = txtEnginType.Value;
-                                Veh.Alternator_Engine_Manufacturer = txtEngineManif.Value;
+                                Veh.Alternator_Engine_Manufacturer = txtEngAltern.Value;
                                 Veh.Alternator_Engine_Type = txtEngAlternType.Value;
                                 Veh.Kva = Convert.ToDouble(txtKva.Value);
                                 Veh.Volt = txtVolt.Value;
@@ -441,7 +441,7 @@ namespace VehicleFleetManagment.FleetApp
                         Veh.Engine_Num = txtEngineNumber.Value;
                         Veh.Engine_Manufacturer = txtEngineManif.Value;
                         Veh.Engine_Type = txtEnginType.Value;
-                        Veh.Alternator_Engine_Manufacturer = txtEngineManif.Value;
+                        Veh.Alternator_Engine_Manufacturer =txtEngAltern.Value;
                         Veh.Alternator_Engine_Type = txtEngAlternType.Value;
                         Veh.Kva = Convert.ToDouble(txtKva.Value);
                         Veh.Volt = txtVolt.Value;
@@ -576,7 +576,7 @@ namespace VehicleFleetManagment.FleetApp
         //Genarate Code Vehicle
         string VehicleCode()
         {
-            return code =DropDown_Ministry.SelectedValue.ToString()+"-Veh-"+(Convert.ToInt32(I.count() + 1)) + "/" + DateTime.Now.Year;
+            return code =DropDown_Ministry.SelectedItem.ToString().Trim()+"-Veh-"+(Convert.ToInt32(I.count() + 1)) + "/" + DateTime.Now.Year;
         }
         void Minisrty()
         {

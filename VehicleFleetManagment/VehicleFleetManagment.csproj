@@ -730,6 +730,7 @@
     <Compile Include="FleetClass\LeaveType_Class.cs" />
     <Compile Include="FleetClass\Mark_Class.cs" />
     <Compile Include="FleetClass\Ministry_Class.cs" />
+    <Compile Include="FleetClass\MinRealEstate_Class.cs" />
     <Compile Include="FleetClass\Model_Class.cs" />
     <Compile Include="FleetClass\Provider_Class.cs" />
     <Compile Include="FleetClass\RealEstate_Class.cs" />
