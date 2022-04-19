@@ -19,7 +19,7 @@
                         <li class="breadcrumb-item">
                             <a href="Home.aspx"><i class="fa fa-home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="AddMinistryReal.aspx">Add Ministry Real</a>
+                        <li class="breadcrumb-item"><a href="AddMinistryReal.aspx">Add-Ministry-Real</a>
                         </li>
                     </ul>
                 </div>
@@ -35,6 +35,20 @@
                 <!-- Page body start -->
                 <div class="page-body">
                     <div class="row">
+                        <div class="col-sm-6 mx-auto">
+                            <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Success!</strong>
+                            </div>
+                            <div class="alert alert-info alert-dismissible fade show" runat="server" id="FillMsg">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Please complete all fields!</strong>
+                            </div>
+                            <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Operation Failed!</strong>
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
@@ -67,8 +81,9 @@
 
                                 <div class="card-footer">
                                     <div class="float-right">
-                                        <asp:Button ID="btn_save" class="btn btn-primary mr-5" runat="server" Text="Save" />
+                                        <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
                                         <button type="reset" class="btn btn-danger ml-5">Cancel</button>
+                                        <a class="btn btn-info ml-5" href="ViewMinistryReal.aspx">List</a>
                                     </div>
                                 </div>
                             </div>

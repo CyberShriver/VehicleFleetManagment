@@ -18,6 +18,9 @@ namespace VehicleFleetManagment.FleetModel
         public VEHICLE()
         {
             this.VEHICLE_FUEL_SUPPLY = new HashSet<VEHICLE_FUEL_SUPPLY>();
+            this.ASSURANCEs = new HashSet<ASSURANCE>();
+            this.MOTs = new HashSet<MOT>();
+            this.SCHEDULEs = new HashSet<SCHEDULE>();
         }
     
         public long VEHICLE_ID { get; set; }
@@ -78,5 +81,11 @@ namespace VehicleFleetManagment.FleetModel
         public virtual MODEL MODEL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VEHICLE_FUEL_SUPPLY> VEHICLE_FUEL_SUPPLY { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ASSURANCE> ASSURANCEs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MOT> MOTs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SCHEDULE> SCHEDULEs { get; set; }
     }
 }

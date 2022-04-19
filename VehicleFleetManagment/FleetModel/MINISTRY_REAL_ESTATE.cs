@@ -12,19 +12,15 @@ namespace VehicleFleetManagment.FleetModel
     using System;
     using System.Collections.Generic;
     
-    public partial class REAL_ESTATE
+    public partial class MINISTRY_REAL_ESTATE
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public REAL_ESTATE()
-        {
-            this.MINISTRY_REAL_ESTATE = new HashSet<MINISTRY_REAL_ESTATE>();
-        }
-    
+        public int MIN_REAL_ESTATE_ID { get; set; }
         public int REAL_ESTATE_ID { get; set; }
-        public string RealEstate_Name { get; set; }
+        public int MINISTRY_ID { get; set; }
+        public string Quantity { get; set; }
         public string Comment { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MINISTRY_REAL_ESTATE> MINISTRY_REAL_ESTATE { get; set; }
+        public virtual MINISTRY MINISTRY { get; set; }
+        public virtual REAL_ESTATE REAL_ESTATE { get; set; }
     }
 }

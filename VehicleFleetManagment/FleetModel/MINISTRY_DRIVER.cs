@@ -12,19 +12,23 @@ namespace VehicleFleetManagment.FleetModel
     using System;
     using System.Collections.Generic;
     
-    public partial class LEAVE_TYPE
+    public partial class MINISTRY_DRIVER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LEAVE_TYPE()
+        public MINISTRY_DRIVER()
         {
             this.LEAVEs = new HashSet<LEAVE>();
         }
     
-        public int LEAVE_TYPE_ID { get; set; }
-        public string Leave_Type_Description { get; set; }
-        public string Leave_Number { get; set; }
+        public long MIN_DRIVER_ID { get; set; }
+        public string Min_Driver_RegNumber { get; set; }
+        public long DRIVER_ID { get; set; }
+        public int MINISTRY_ID { get; set; }
+        public string Position_Status { get; set; }
     
+        public virtual DRIVER DRIVER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LEAVE> LEAVEs { get; set; }
+        public virtual MINISTRY MINISTRY { get; set; }
     }
 }

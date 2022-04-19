@@ -14,6 +14,12 @@ namespace VehicleFleetManagment.FleetModel
     
     public partial class DRIVER
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DRIVER()
+        {
+            this.MINISTRY_DRIVER = new HashSet<MINISTRY_DRIVER>();
+        }
+    
         public long DRIVER_ID { get; set; }
         public string Driver_Code { get; set; }
         public string Full_Name { get; set; }
@@ -32,5 +38,8 @@ namespace VehicleFleetManagment.FleetModel
         public string Office_Phone { get; set; }
         public string Personnal_Phone { get; set; }
         public string Picture { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MINISTRY_DRIVER> MINISTRY_DRIVER { get; set; }
     }
 }

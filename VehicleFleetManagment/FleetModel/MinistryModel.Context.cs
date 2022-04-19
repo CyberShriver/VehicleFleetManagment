@@ -35,5 +35,11 @@ namespace VehicleFleetManagment.FleetModel
         public virtual DbSet<MINISTRY> MINISTRies { get; set; }
         public virtual DbSet<VEHICLE> VEHICLEs { get; set; }
         public virtual DbSet<VEHICLE_FUEL_SUPPLY> VEHICLE_FUEL_SUPPLY { get; set; }
+        public virtual DbSet<ASSURANCE> ASSURANCEs { get; set; }
+        public virtual DbSet<LEAVE> LEAVEs { get; set; }
+        public virtual DbSet<MINISTRY_DRIVER> MINISTRY_DRIVER { get; set; }
+        public virtual DbSet<MINISTRY_REAL_ESTATE> MINISTRY_REAL_ESTATE { get; set; }
+        public virtual DbSet<MOT> MOTs { get; set; }
+        public virtual DbSet<SCHEDULE> SCHEDULEs { get; set; }
     }
 }
