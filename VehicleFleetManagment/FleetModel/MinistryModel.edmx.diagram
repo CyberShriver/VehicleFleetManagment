@@ -36,6 +36,10 @@
         <AssociationConnector Association="MINISTRY_DBModel.FK_MINISTRY_REAL_ESTATE_REAL_ESTATE_ID" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_MOT_IDveh" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_SCHEDULE_IDveh" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_ASSURANCE_MINISTRYId" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_LEAVE_MINISTRYId" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_MOT_MINISTRYId" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_SCHEDULE_MINISTRYId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

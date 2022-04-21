@@ -21,6 +21,10 @@ namespace VehicleFleetManagment.FleetModel
             this.VEHICLE_FUEL_SUPPLY = new HashSet<VEHICLE_FUEL_SUPPLY>();
             this.MINISTRY_DRIVER = new HashSet<MINISTRY_DRIVER>();
             this.MINISTRY_REAL_ESTATE = new HashSet<MINISTRY_REAL_ESTATE>();
+            this.ASSURANCEs = new HashSet<ASSURANCE>();
+            this.LEAVEs = new HashSet<LEAVE>();
+            this.MOTs = new HashSet<MOT>();
+            this.SCHEDULEs = new HashSet<SCHEDULE>();
         }
     
         public int MINISTRY_ID { get; set; }
@@ -44,5 +48,13 @@ namespace VehicleFleetManagment.FleetModel
         public virtual ICollection<MINISTRY_DRIVER> MINISTRY_DRIVER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MINISTRY_REAL_ESTATE> MINISTRY_REAL_ESTATE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ASSURANCE> ASSURANCEs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LEAVE> LEAVEs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MOT> MOTs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SCHEDULE> SCHEDULEs { get; set; }
     }
 }

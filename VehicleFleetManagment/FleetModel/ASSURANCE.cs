@@ -27,5 +27,6 @@ namespace VehicleFleetManagment.FleetModel
         public string Insurance_State { get; set; }
     
         public virtual VEHICLE VEHICLE { get; set; }
+        public virtual MINISTRY MINISTRY { get; set; }
     }
 }

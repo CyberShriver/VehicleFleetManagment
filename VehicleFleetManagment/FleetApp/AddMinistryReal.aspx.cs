@@ -24,6 +24,8 @@ namespace VehicleFleetManagment.FleetApp
             if (!IsPostBack)
             {
                 MsgInit();
+                Ministry();
+                RealEstate();
                 if (id == null)
                 {
                     btnSave.InnerText = "Save";
@@ -35,8 +37,8 @@ namespace VehicleFleetManagment.FleetApp
                     btnSave.InnerText = "Edit";
                     ChargeData();
                 }
-                RealEstate();
-                Ministry();
+                
+                
 
             }
 

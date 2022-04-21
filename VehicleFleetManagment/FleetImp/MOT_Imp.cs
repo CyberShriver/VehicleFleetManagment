@@ -9,24 +9,25 @@ using System.Data.Entity;
 
 namespace VehicleFleetManagment.FleetImp
 {
-    public class MinDriver_Imp: MinDriver_Interface
+    public class MOT_Imp: MOT_Interface
     {
 
         int msg;
-        MINISTRY_DRIVER M = new MINISTRY_DRIVER();
+        MOT M = new MOT();
 
         //ADD METHOD
-        public int Add(MinDriver_Class Md)
+        public int Add(MOT_Class Mo)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                M.DRIVER_ID = Md.DRIVER_ID;
-                M.Min_Driver_RegNumber  = Md.Min_Driver_RegNumber ;
-                M.MINISTRY_ID = Md.MINISTRY_ID;
-                M.Position_Status = Md.Position_Status;
-                // M.Saved_Date = Md.Saved_Date;
+                M.MOT_Number = Mo.MOT_Number;
+                M.MOT_Agency_Name = Mo.MOT_Agency_Name;
+                M.Visit_Dte = Mo.Visit_Dte;
+                M.Validity_End_Dte = Mo.Validity_End_Dte;
+                M.MINISTRY_ID = Mo.MINISTRY_ID;
+                M.VEHICLE_ID = Mo.VEHICLE_ID;
 
-                con.MINISTRY_DRIVER.Add(M);
+                con.MOTs.Add(M);
 
                 if (con.SaveChanges() > 0)
                 {
@@ -43,25 +44,26 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //UPDATE METHOD
-        public int Update(MinDriver_Class Md, int id)
+        public int Update(MOT_Class Mo, int id)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                MINISTRY_DRIVER M = new MINISTRY_DRIVER();
-                M = con.MINISTRY_DRIVER.Where(x => x.MIN_DRIVER_ID == id).FirstOrDefault();
+                MOT M = new MOT();
+                M = con.MOTs.Where(x => x.MOT_ID == id).FirstOrDefault();
 
                 if (M != null)
                 {
 
-                    M.DRIVER_ID = Md.DRIVER_ID;
-                    M.Min_Driver_RegNumber  = Md.Min_Driver_RegNumber ;
-                    M.MINISTRY_ID = Md.MINISTRY_ID;
-                    M.Position_Status = Md.Position_Status;
-                    // M.Saved_Date = Md.Saved_Date;
+                    M.MOT_Number = Mo.MOT_Number;
+                    M.MOT_Agency_Name = Mo.MOT_Agency_Name;
+                    M.Visit_Dte = Mo.Visit_Dte;
+                    M.Validity_End_Dte = Mo.Validity_End_Dte;
+                    M.MINISTRY_ID = Mo.MINISTRY_ID;
+                    M.VEHICLE_ID = Mo.VEHICLE_ID;
 
                     if (con.SaveChanges() > 0)
                     {
-                        con.MINISTRY_DRIVER.Add(M);
+                        con.MOTs.Add(M);
                         con.Entry(M).State = EntityState.Modified;
 
                         msg = 1;
@@ -81,14 +83,14 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = con.MINISTRY_DRIVER.Where(x => x.MIN_DRIVER_ID == id).First();
+                var obj = con.MOTs.Where(x => x.MOT_ID == id).First();
 
                 if (con.Entry(obj).State == EntityState.Detached)
                 {
-                    con.MINISTRY_DRIVER.Attach(obj);
+                    con.MOTs.Attach(obj);
 
                 }
-                con.MINISTRY_DRIVER.Remove(obj);
+                con.MOTs.Remove(obj);
                 con.SaveChanges();
                 return msg;
             }
@@ -106,15 +108,15 @@ namespace VehicleFleetManagment.FleetImp
                     if (chkselect.Checked == true)
                     {
                         id = Convert.ToInt32(gd.Rows[i].Cells[i].Text);
-                        var obj = con.MINISTRY_DRIVER.Where(x => x.MIN_DRIVER_ID == id).First();
+                        var obj = con.MOTs.Where(x => x.MOT_ID == id).First();
 
                         if (con.Entry(obj).State == EntityState.Detached)
                         {
-                            con.MINISTRY_DRIVER.Attach(obj);
+                            con.MOTs.Attach(obj);
 
 
                         }
-                        con.MINISTRY_DRIVER.Remove(obj);
+                        con.MOTs.Remove(obj);
                         con.SaveChanges();
                     }
                 }
@@ -129,15 +131,18 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MINISTRY_DRIVER
+                var obj = (from M in con.MOTs
 
                            select new
                            {
-                               MIN_DRIVER_ID = M.MIN_DRIVER_ID,
-                               DRIVER_ID = M.DRIVER_ID,
-                               Min_Driver_RegNumber  = M.Min_Driver_RegNumber ,
-                               MINISTRY_ID = M.MINISTRY_ID,
-                               Position_Status = M.Position_Status
+                               MOT_ID = M.MOT_ID,
+                               MOT_Number = M.MOT_Number,
+                               MOT_Agency_Name = M.MOT_Agency_Name,
+                               Visit_Dte = M.Visit_Dte,
+                               Validity_End_Dte = M.Validity_End_Dte,
+                               VEHICLE_ID = M.VEHICLE_ID,
+                               MINISTRY_ID= M.MINISTRY_ID
+                          
                            }
                            ).ToList();
 
@@ -148,17 +153,20 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //PROVIDE METHOD
-        public void provide(MinDriver_Class Md, int id)
+        public void provide(MOT_Class Mo, int id)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                M = con.MINISTRY_DRIVER.Where(x => x.MIN_DRIVER_ID == id).FirstOrDefault();
+                M = con.MOTs.Where(x => x.MOT_ID == id).FirstOrDefault();
 
-                Md.DRIVER_ID = M.DRIVER_ID;
-                Md.Min_Driver_RegNumber  = M.Min_Driver_RegNumber ;
-                Md.MINISTRY_ID = M.MINISTRY_ID;
-                Md.Position_Status = M.Position_Status;
-                // Md.Saved_Date = M.Saved_Date;
+                Mo.MOT_Number = M.MOT_Number;
+                Mo.MOT_Agency_Name = M.MOT_Agency_Name;
+                Mo.Visit_Dte = M.Visit_Dte;
+                Mo.Validity_End_Dte = M.Validity_End_Dte;
+                Mo.VEHICLE_ID = M.VEHICLE_ID;
+                Mo.MINISTRY_ID = M.MINISTRY_ID;
+
+
 
             }
         }
@@ -169,7 +177,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var M = (from l in con.MINISTRY_DRIVER
+                var M = (from l in con.MOTs
                          select l).Count();
                 n = M;
             }
@@ -181,15 +189,22 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MINISTRY_DRIVER
-                           where (M.Min_Driver_RegNumber ).ToString() == SearchText || (M.MINISTRY_ID).ToString() == SearchText
+                var obj = (from M in con.MOTs
+                           where
+                       M.MOT_Agency_Name == SearchText ||
+                       M.MOT_Number == SearchText ||
+                       M.Visit_Dte.ToString() == SearchText ||
+                       M.VEHICLE_ID.ToString() == SearchText
+
                            select new
                            {
-                               MIN_DRIVER_ID = M.MIN_DRIVER_ID,
-                               DRIVER_ID = M.DRIVER_ID,
-                               Min_Driver_RegNumber  = M.Min_Driver_RegNumber ,
-                               MINISTRY_ID = M.MINISTRY_ID,
-                               Position_Status = M.Position_Status
+                               MOT_ID = M.MOT_ID,
+                               MOT_Number = M.MOT_Number,
+                               MOT_Agency_Name = M.MOT_Agency_Name,
+                               Visit_Dte = M.Visit_Dte,
+                               Validity_End_Dte = M.Validity_End_Dte,
+                               VEHICLE_ID = M.VEHICLE_ID,
+                               MINISTRY_ID= M.MINISTRY_ID
 
                            }
                            ).ToList();
@@ -200,6 +215,51 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //DISPLAY METHOD ALL VEHICLE
+        public void DisplayAllVehicle(DropDownList drop)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from V in con.VEHICLEs
+
+                           select new
+                           {
+                               VEHICLE_ID = V.VEHICLE_ID,
+                               Local_Plate = V.Local_Plate,
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataTextField= "Local_Plate";
+                drop.DataValueField = "VEHICLE_ID";
+                drop.DataBind();
+            }
+
+        }
+
+
+        //DISPLAY METHOD VEHICLE
+        public void DisplayVehicle(DropDownList drop, int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from V in con.VEHICLEs
+                           where V.MINISTRY_ID == id
+
+                           select new
+                           {
+                               VEHICLE_ID = V.VEHICLE_ID,
+                               Local_Plate = V.Local_Plate,
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataTextField = "Local_Plate";
+                drop.DataValueField = "VEHICLE_ID";
+                drop.DataBind();
+            }
+
+        }
 
         //DISPLAY METHOD MINISTRY
         public void DisplayMinistry(DropDownList drop)
@@ -223,70 +283,5 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
-        //DISPLAY METHOD VEHICLE
-        public void DisplayVehicle(DropDownList drop,int id)
-        {
-            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
-            {
-                var obj = (from V in con.VEHICLEs where V.MINISTRY_ID==id
-
-                           select new
-                           {
-                               VEHICLE_ID = V.VEHICLE_ID,
-                               Local_Plate = V.Local_Plate,
-                           }
-                           ).ToList();
-
-                drop.DataSource = obj;
-                drop.DataTextField = "Local_Plate";
-                drop.DataValueField = "VEHICLE_ID";
-                drop.DataBind();
-            }
-
-        }
-        //DISPLAY METHOD ALL VEHICLE
-        public void DisplayAllVehicle(DropDownList drop)
-        {
-            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
-            {
-                var obj = (from V in con.VEHICLEs                        
-
-                           select new
-                           {
-                               VEHICLE_ID = V.VEHICLE_ID,
-                               Local_Plate = V.Local_Plate,
-                           }
-                           ).ToList();
-
-                drop.DataSource = obj;
-                drop.DataTextField = "Local_Plate";
-                drop.DataValueField = "VEHICLE_ID";
-                drop.DataBind();
-            }
-
-        }
-
-
-        //DISPLAY METHOD Driver
-        public void DisplayDriver(DropDownList drop)
-        {
-            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
-            {
-                var obj = (from D in con.DRIVERs
-
-                           select new
-                           {
-                               DRIVER_ID = D.DRIVER_ID,
-                               Full_Name = D.Full_Name 
-                           }
-                           ).ToList();
-
-                drop.DataSource = obj;
-                drop.DataValueField = "DRIVER_ID";
-                drop.DataTextField = "Full_Name";
-                drop.DataBind();
-            }
-
-        }
     }
 }

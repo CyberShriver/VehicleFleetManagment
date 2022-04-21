@@ -23,7 +23,10 @@ namespace VehicleFleetManagment.FleetApp
             id = Request.QueryString["MIN_DRIVER_ID"];
             if (!IsPostBack)
             {
+                Ministry();
                 MsgInit();
+                Vehicle();
+                Driver();
                 if (id == null)
                 {
                     btnSave.InnerText = "Save";
@@ -35,9 +38,7 @@ namespace VehicleFleetManagment.FleetApp
                     btnSave.InnerText = "Edit";
                     ChargeData();
                 }
-                Driver();
-                AllVehicle();
-                Ministry();
+               
 
             }
 

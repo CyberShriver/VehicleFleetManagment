@@ -733,6 +733,7 @@
     <Compile Include="FleetClass\Ministry_Class.cs" />
     <Compile Include="FleetClass\MinRealEstate_Class.cs" />
     <Compile Include="FleetClass\Model_Class.cs" />
+    <Compile Include="FleetClass\MOT_Class.cs" />
     <Compile Include="FleetClass\Provider_Class.cs" />
     <Compile Include="FleetClass\RealEstate_Class.cs" />
     <Compile Include="FleetClass\VehicleFuelSup_Class.cs" />
@@ -753,6 +754,8 @@
     <Compile Include="FleetImp\MinRealEstate_Interface.cs" />
     <Compile Include="FleetImp\Model_Imp.cs" />
     <Compile Include="FleetImp\Model_Interface.cs" />
+    <Compile Include="FleetImp\MOT_Imp.cs" />
+    <Compile Include="FleetImp\MOT_Interface.cs" />
     <Compile Include="FleetImp\Provider_Imp.cs" />
     <Compile Include="FleetImp\Provider_Interface.cs" />
     <Compile Include="FleetImp\RealEstate_Imp.cs" />
