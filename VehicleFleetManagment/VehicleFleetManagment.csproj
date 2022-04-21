@@ -725,6 +725,7 @@
     <Compile Include="FleetApp\ViewVehicleFuel.aspx.designer.cs">
       <DependentUpon>ViewVehicleFuel.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FleetClass\Assurance_Class.cs" />
     <Compile Include="FleetClass\BodyType_Class.cs" />
     <Compile Include="FleetClass\Driver_Class.cs" />
     <Compile Include="FleetClass\LeaveType_Class.cs" />
@@ -739,6 +740,8 @@
     <Compile Include="FleetClass\Schedule_Class.cs" />
     <Compile Include="FleetClass\VehicleFuelSup_Class.cs" />
     <Compile Include="FleetClass\Vehicle_Class.cs" />
+    <Compile Include="FleetImp\Assurance_Imp.cs" />
+    <Compile Include="FleetImp\Assurance_Interface.cs" />
     <Compile Include="FleetImp\BodyType_Imp.cs" />
     <Compile Include="FleetImp\BodyType_Interface.cs" />
     <Compile Include="FleetImp\Driver_Imp.cs" />

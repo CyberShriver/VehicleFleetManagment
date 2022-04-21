@@ -39,7 +39,7 @@
                     <!-- Hover table card start -->
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="font-weight-bold">All Body Type Records</h5>
+                            <h5 class="font-weight-bold">All Provider Records</h5>
                             <div class="card-header-right">
                                 <ul class="list-unstyled card-option">
                                     <li><i class="fa fa fa-wrench open-card-option"></i></li>
