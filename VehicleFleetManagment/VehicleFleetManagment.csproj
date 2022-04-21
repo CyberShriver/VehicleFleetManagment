@@ -736,6 +736,7 @@
     <Compile Include="FleetClass\MOT_Class.cs" />
     <Compile Include="FleetClass\Provider_Class.cs" />
     <Compile Include="FleetClass\RealEstate_Class.cs" />
+    <Compile Include="FleetClass\Schedule_Class.cs" />
     <Compile Include="FleetClass\VehicleFuelSup_Class.cs" />
     <Compile Include="FleetClass\Vehicle_Class.cs" />
     <Compile Include="FleetImp\BodyType_Imp.cs" />
@@ -760,6 +761,8 @@
     <Compile Include="FleetImp\Provider_Interface.cs" />
     <Compile Include="FleetImp\RealEstate_Imp.cs" />
     <Compile Include="FleetImp\RealEstate_Interface.cs" />
+    <Compile Include="FleetImp\Schedule_Imp.cs" />
+    <Compile Include="FleetImp\Schedule_Interface.cs" />
     <Compile Include="FleetImp\VehicleFuelSupp_Imp.cs" />
     <Compile Include="FleetImp\VehicleFuelSupp_Interface.cs" />
     <Compile Include="FleetImp\Vehicle_Imp.cs" />
