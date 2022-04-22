@@ -24,13 +24,14 @@ namespace VehicleFleetManagment.FleetImp
                 L.Carpooling = Le.Carpooling;
                 L.Start_Dte = Le.Start_Dte;
                 L.End_Dte = Le.End_Dte;
-               // L.Approved_By = Le.Approved_By;
+                L.Approved_By = Le.Approved_By;
                 L.Comment = Le.Comment;
                 L.Demand_Dte = Le.Demand_Dte;
                 L.Approved_Dte = Le.Approved_Dte;
                 L.Saved_Date = Le.Saved_Date;
                 L.MINISTRY_ID = Le.MINISTRY_ID;
                 L.MIN_DRIVER_ID = Le.MIN_DRIVER_ID;
+                L.LEAVE_TYPE_ID = Le.LEAVE_TYPE_ID;
 
                 con.LEAVEs.Add(L);
 
@@ -63,13 +64,14 @@ namespace VehicleFleetManagment.FleetImp
                     L.Carpooling = Le.Carpooling;
                     L.Start_Dte = Le.Start_Dte;
                     L.End_Dte = Le.End_Dte;
-                   // L.Approved_By = Le.Approved_By;
+                    L.Approved_By = Le.Approved_By;
                     L.Comment = Le.Comment;
                     L.Demand_Dte = Le.Demand_Dte;
                     L.Approved_Dte = Le.Approved_Dte;
                     L.Saved_Date = Le.Saved_Date;
                     L.MINISTRY_ID = Le.MINISTRY_ID;
                     L.MIN_DRIVER_ID = Le.MIN_DRIVER_ID;
+                    L.LEAVE_TYPE_ID = Le.LEAVE_TYPE_ID;
 
                     if (con.SaveChanges() > 0)
                     {
@@ -156,6 +158,7 @@ namespace VehicleFleetManagment.FleetImp
                                Demand_Dte = L.Demand_Dte,
                                Comment = L.Comment,
                                MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
+                               LEAVE_TYPE_ID = L.LEAVE_TYPE.Leave_Type_Description,
                                MINISTRY_ID = L.MINISTRY.Ministry_Name
 
                            }
@@ -178,12 +181,13 @@ namespace VehicleFleetManagment.FleetImp
                 Le.Carpooling = L.Carpooling;
                 Le.Start_Dte = L.Start_Dte;
                 Le.End_Dte = L.End_Dte;
-               // Le.Approved_By = L.Approved_By;
+                Le.Approved_By = L.Approved_By;
                 Le.Comment = L.Comment;
                 Le.Demand_Dte = L.Demand_Dte;
                 Le.LEAVE_TYPE = L.LEAVE_TYPE;
                 Le.MIN_DRIVER_ID = L.MIN_DRIVER_ID;
                 Le.MINISTRY_ID = L.MINISTRY_ID;
+                Le.LEAVE_TYPE_ID = L.LEAVE_TYPE_ID;
 
 
 
@@ -228,6 +232,7 @@ namespace VehicleFleetManagment.FleetImp
                                Demand_Dte = L.Demand_Dte,
                                Comment = L.Comment,
                                MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
+                               LEAVE_TYPE_ID = L.LEAVE_TYPE.Leave_Type_Description,
                                MINISTRY_ID = L.MINISTRY.Ministry_Name
 
                            }

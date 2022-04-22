@@ -101,18 +101,18 @@
             <PropertyRef Name="LEAVE_ID" />
           </Key>
           <Property Name="LEAVE_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MINISTRY_ID" Type="int" Nullable="false" />
           <Property Name="Leave_Code" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="MIN_DRIVER_ID" Type="bigint" Nullable="false" />
-          <Property Name="Carpooling" Type="varchar" MaxLength="30" />
-          <Property Name="LEAVE_TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="Carpooling" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="LEAVE_TYPE_ID" Type="int" />
           <Property Name="Start_Dte" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="End_Dte" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Demand_Dte" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Approved_By" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Approved_Dte" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Demand_Dte" Type="varchar" MaxLength="100" />
+          <Property Name="Approved_By" Type="varchar" MaxLength="100" />
+          <Property Name="Approved_Dte" Type="varchar" MaxLength="30" />
           <Property Name="Comment" Type="text" />
           <Property Name="Saved_Date" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="MINISTRY_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="LEAVE_TYPE">
           <Key>
@@ -141,6 +141,7 @@
           <Property Name="FourXfour" Type="varchar" MaxLength="30" />
           <Property Name="License_State" Type="varchar" MaxLength="100" />
           <Property Name="MINISTRY_ID" Type="int" />
+          <Property Name="Saved_Dte" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="MARK">
           <Key>
@@ -400,7 +401,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LEAVE_LEAVE_TYPE_ID">
-          <End Role="LEAVE_TYPE" Type="Self.LEAVE_TYPE" Multiplicity="1" />
+          <End Role="LEAVE_TYPE" Type="Self.LEAVE_TYPE" Multiplicity="0..1" />
           <End Role="LEAVE" Type="Self.LEAVE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LEAVE_TYPE">
@@ -1221,13 +1222,13 @@
           <Property Name="LEAVE_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Leave_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="MIN_DRIVER_ID" Type="Int64" Nullable="false" />
-          <Property Name="Carpooling" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="LEAVE_TYPE_ID" Type="Int32" Nullable="false" />
+          <Property Name="Carpooling" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LEAVE_TYPE_ID" Type="Int32" />
           <Property Name="Start_Dte" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="End_Dte" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Demand_Dte" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Approved_By" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="Approved_Dte" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Demand_Dte" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Approved_By" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Approved_Dte" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Saved_Date" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="LEAVE_TYPE" Relationship="MINISTRY_DBModel.FK_LEAVE_LEAVE_TYPE_ID" FromRole="LEAVE" ToRole="LEAVE_TYPE" />
@@ -1513,6 +1514,7 @@
           <Property Name="MINISTRY_ID" Type="Int32" />
           <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_LICENSE_IDMinistry" FromRole="LICENSE" ToRole="MINISTRY" />
           <NavigationProperty Name="MINISTRY_DRIVER" Relationship="MINISTRY_DBModel.FK_LICENSE_MIN_DRIVER_ID" FromRole="LICENSE" ToRole="MINISTRY_DRIVER" />
+          <Property Name="Saved_Dte" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="REPAIR">
           <Key>
@@ -1953,6 +1955,7 @@
           <EntitySetMapping Name="LICENSEs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.LICENSE">
               <MappingFragment StoreEntitySet="LICENSE">
+                <ScalarProperty Name="Saved_Dte" ColumnName="Saved_Dte" />
                 <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
                 <ScalarProperty Name="License_State" ColumnName="License_State" />
                 <ScalarProperty Name="FourXfour" ColumnName="FourXfour" />

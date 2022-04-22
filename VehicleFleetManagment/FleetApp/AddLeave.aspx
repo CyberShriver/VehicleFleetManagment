@@ -60,7 +60,7 @@
                                     <div class="card-block">
                                         <div class="form-material">
                                             <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Ministry" required="" runat="server"></asp:DropDownList>
+                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;"  OnSelectedIndexChanged="dropDown_Ministry_SelectedIndexChanged" AutoPostBack="true" ID="DropDown_Ministry" required="" runat="server"></asp:DropDownList>
                                                 <label class="float-label">Ministry</label>
                                             </div>
                                             <div class="form-group form-default">

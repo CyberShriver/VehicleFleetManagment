@@ -101,7 +101,7 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                             <asp:TemplateField HeaderText="Ministry" FooterText="#" Visible="false">
+                                             <asp:TemplateField HeaderText="Ministry" FooterText="#" >
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label9" runat="server" Text='<%# Eval("MINISTRY_ID") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -126,13 +126,13 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Demand Date">
+                                            <asp:TemplateField HeaderText="Demand Date" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label4" runat="server" Text='<%# Eval("Demand_Dte") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Approved Date">
+                                            <asp:TemplateField HeaderText="Approved Date" >
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label5" runat="server" Text='<%# Eval("Approved_Dte") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -165,6 +165,12 @@
                                             <asp:TemplateField HeaderText="Comment" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label98" runat="server" Text='<%# Eval("Comment") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                            <asp:TemplateField HeaderText="Saved Date" >
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label99" runat="server" Text='<%# Eval("Saved_Date") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

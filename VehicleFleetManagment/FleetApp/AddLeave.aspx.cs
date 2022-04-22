@@ -74,7 +74,7 @@ namespace VehicleFleetManagment.FleetApp
                     Le.Start_Dte = dateStart.Value;
                     Le.Comment = txtComment.Value;
                     Le.Saved_Date = DateTime.Now.ToString();
-                   // Le.Approved_By = txtApproved.Value;
+                    Le.Approved_By = txtApproved.Value;
                     Le.Demand_Dte =  dateDemand.Value ;
                     Le.Approved_Dte =dateApproved.Value;
                     Le.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
@@ -138,7 +138,7 @@ namespace VehicleFleetManagment.FleetApp
                     Le.Start_Dte = dateStart.Value;
                     Le.Comment = txtComment.Value;
                     Le.Saved_Date = DateTime.Now.ToString();
-                    // Le.Approved_By = txtApproved.Value;
+                    Le.Approved_By = txtApproved.Value;
                     Le.Demand_Dte = dateDemand.Value;
                     Le.Approved_Dte = dateApproved.Value;
                     Le.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
@@ -177,7 +177,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtLeaveCode.Value = Le.Leave_Code;
                 txtCarpooling.Value = Le.Carpooling;
                 txtComment.Value = Le.Comment;
-               // txtApproved.Value = Le.Approved_By;
+                txtApproved.Value = Le.Approved_By;
                 dateStart.Value = Le.Start_Dte;
                 dateEnd.Value = Le.End_Dte;
                 dateDemand.Value = Le.Demand_Dte;
