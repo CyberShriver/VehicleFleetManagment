@@ -730,6 +730,7 @@
     <Compile Include="FleetClass\Driver_Class.cs" />
     <Compile Include="FleetClass\LeaveType_Class.cs" />
     <Compile Include="FleetClass\Leave_Class.cs" />
+    <Compile Include="FleetClass\License_Class.cs" />
     <Compile Include="FleetClass\Mark_Class.cs" />
     <Compile Include="FleetClass\MinDriver_Class.cs" />
     <Compile Include="FleetClass\Ministry_Class.cs" />
@@ -751,6 +752,8 @@
     <Compile Include="FleetImp\LeaveType_Interface.cs" />
     <Compile Include="FleetImp\Leave_Imp.cs" />
     <Compile Include="FleetImp\Leave_Interface.cs" />
+    <Compile Include="FleetImp\License_Imp.cs" />
+    <Compile Include="FleetImp\License_Interface.cs" />
     <Compile Include="FleetImp\Mark_Imp.cs" />
     <Compile Include="FleetImp\Mark_Interface.cs" />
     <Compile Include="FleetImp\MinDriver_Imp.cs" />
