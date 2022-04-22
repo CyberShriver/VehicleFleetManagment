@@ -153,8 +153,8 @@ namespace VehicleFleetManagment.FleetImp
                            {
                                VEHICLE_FUEL_ID  = V.VEHICLE_FUEL_ID ,
                                Provider_Code = V.Provider_Code,
-                               VEHICLE_ID = V.VEHICLE_ID,
-                               MINISTRY_ID = V.MINISTRY_ID,
+                               VEHICLE_ID = V.VEHICLE.Local_Plate,
+                               MINISTRY_ID = V.MINISTRY.Ministry_Name,
                                 Fuel_Type = V. Fuel_Type,
                                Tank_Type = V.Tank_Type,
                                Tank_Code  = V.Tank_Code ,
@@ -221,27 +221,27 @@ namespace VehicleFleetManagment.FleetImp
                 var obj = (from V in con.VEHICLE_FUEL_SUPPLY
                            where
                        V.Provider_Code == SearchText ||
-                       (V.VEHICLE_ID).ToString() == SearchText ||
-                       (V.MINISTRY_ID).ToString() == SearchText ||
+                        V.VEHICLE.Local_Plate == SearchText ||
+                       V.MINISTRY.Ministry_Name == SearchText ||
                        V.Fuel_Type == SearchText
 
                            select new
                            {
-                               VEHICLE_FUEL_ID  = V.VEHICLE_FUEL_ID ,
+                               VEHICLE_FUEL_ID = V.VEHICLE_FUEL_ID,
                                Provider_Code = V.Provider_Code,
-                               VEHICLE_ID = V.VEHICLE_ID,
-                               MINISTRY_ID = V.MINISTRY_ID,
-                                Fuel_Type = V. Fuel_Type,
+                               VEHICLE_ID = V.VEHICLE.Local_Plate,
+                               MINISTRY_ID = V.MINISTRY.Ministry_Name,
+                               Fuel_Type = V.Fuel_Type,
                                Tank_Type = V.Tank_Type,
-                               Tank_Code  = V.Tank_Code ,
-                               Odometer  = V.Odometer ,
+                               Tank_Code = V.Tank_Code,
+                               Odometer = V.Odometer,
                                Initial_Qty = V.Initial_Qty,
-                               Consumed_Qty    = V.Consumed_Qty   ,
-                               United_Price  = V.United_Price ,
-                               Total_Price  = V.Total_Price ,
-                               Liter_100_km  = V.Liter_100_km ,
-                               Comment  = V.Comment ,
-                               Saved_Date  = V.Saved_Date ,                           
+                               Consumed_Qty = V.Consumed_Qty,
+                               United_Price = V.United_Price,
+                               Total_Price = V.Total_Price,
+                               Liter_100_km = V.Liter_100_km,
+                               Comment = V.Comment,
+                               Saved_Date = V.Saved_Date
 
                            }
                            ).ToList();

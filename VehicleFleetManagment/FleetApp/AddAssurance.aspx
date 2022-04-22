@@ -19,7 +19,7 @@
                         <li class="breadcrumb-item">
                             <a href="Home.aspx"><i class="fa fa-home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="AddAssurance.aspx">Add Assurance</a>
+                        <li class="breadcrumb-item"><a href="AddAssurance.aspx">Add-Assurance</a>
                         </li>
                     </ul>
                 </div>

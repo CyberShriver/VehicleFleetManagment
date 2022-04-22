@@ -40,6 +40,17 @@
         <AssociationConnector Association="MINISTRY_DBModel.FK_LEAVE_MINISTRYId" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_MOT_MINISTRYId" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_SCHEDULE_MINISTRYId" />
+        <EntityTypeShape EntityType="MINISTRY_DBModel.CAR_CRASH" Width="1.5" PointX="20.125" PointY="3.5" />
+        <EntityTypeShape EntityType="MINISTRY_DBModel.LICENSE" Width="1.5" PointX="17.125" PointY="9.375" />
+        <EntityTypeShape EntityType="MINISTRY_DBModel.REPAIR" Width="1.5" PointX="22.375" PointY="4.5" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_CAR_CRASH_IDMinistry" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_CAR_CRASH_IDveh" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_CAR_CRASH_MIN_DRIVER_ID" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_REPAIR_CAR_CRASH_ID" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_LICENSE_IDMinistry" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_LICENSE_MIN_DRIVER_ID" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_REPAIR_IDMinistry" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_REPAIR_IDveh" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

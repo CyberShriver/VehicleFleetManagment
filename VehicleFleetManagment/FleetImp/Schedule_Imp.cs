@@ -134,8 +134,8 @@ namespace VehicleFleetManagment.FleetImp
                            select new
                            {
                                SCHEDULE_ID = S.SCHEDULE_ID,
-                               MINISTRY_ID  = S.MINISTRY_ID ,
-                               VEHICLE_ID = S.VEHICLE_ID,
+                               MINISTRY_ID  = S.MINISTRY.Ministry_Name ,
+                               VEHICLE_ID = S.VEHICLE.Local_Plate,
                                Saved_Date = S.Saved_Date,
                                Comment = S.Comment
                            }
@@ -183,15 +183,15 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from S in con.SCHEDULEs
                            where
-                      S.VEHICLE_ID.ToString() == SearchText ||
+                      S.MINISTRY.Ministry_Name == SearchText ||
                       S.Saved_Date == SearchText ||
-                      S.MINISTRY_ID .ToString() == SearchText
+                      S.VEHICLE.Local_Plate == SearchText
 
                            select new
                            {
                                SCHEDULE_ID = S.SCHEDULE_ID,
-                               MINISTRY_ID  = S.MINISTRY_ID ,
-                               VEHICLE_ID = S.VEHICLE_ID,
+                               MINISTRY_ID = S.MINISTRY.Ministry_Name,
+                               VEHICLE_ID = S.VEHICLE.Local_Plate,
                                Saved_Date = S.Saved_Date,
                                Comment = S.Comment
 

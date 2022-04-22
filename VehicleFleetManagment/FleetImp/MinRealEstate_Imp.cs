@@ -134,9 +134,9 @@ namespace VehicleFleetManagment.FleetImp
                            select new
                            {
                                MIN_REAL_ESTATE_ID = M.MIN_REAL_ESTATE_ID,
-                               REAL_ESTATE_ID  = M.REAL_ESTATE_ID ,
+                               REAL_ESTATE_ID  = M.REAL_ESTATE.RealEstate_Name ,
                                Quantity = M.Quantity,
-                               MINISTRY_ID = M.MINISTRY_ID,                               
+                               MINISTRY_ID = M.MINISTRY.Ministry_Name,                               
                                Comment = M.Comment                             
                            }
                            ).ToList();
@@ -182,15 +182,15 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MINISTRY_REAL_ESTATE
-                           where (M.Quantity).ToString() == SearchText || (M.MINISTRY_ID).ToString() == SearchText                        
+                           where (M.Quantity).ToString() == SearchText || M.MINISTRY.Ministry_Name == SearchText                        
                            select new
                            {
                                MIN_REAL_ESTATE_ID = M.MIN_REAL_ESTATE_ID,
-                               REAL_ESTATE_ID  = M.REAL_ESTATE_ID ,
+                               REAL_ESTATE_ID = M.REAL_ESTATE.RealEstate_Name,
                                Quantity = M.Quantity,
-                               MINISTRY_ID = M.MINISTRY_ID,                               
+                               MINISTRY_ID = M.MINISTRY.Ministry_Name,
                                Comment = M.Comment
-                              
+
                            }
                            ).ToList();
 

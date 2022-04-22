@@ -132,7 +132,7 @@ namespace VehicleFleetManagment.FleetImp
                            select new
                            {
                                MODEL_ID = M.MODEL_ID,
-                               MARK_ID = M.MARK_ID,
+                               MARK_ID = M.MARK.Mark_Name,
                                Model_Name = M.Model_Name,
                                Comment = M.Comment
                            }
@@ -179,16 +179,15 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from M in con.MODELs
                            where
-                      M.Model_Name== SearchText ||
-                      M.MARK_ID.ToString() == SearchText
+                       M.Model_Name== SearchText ||
+                       M.MARK.Mark_Name == SearchText
 
                            select new
                            {
                                MODEL_ID = M.MODEL_ID,
-                               MARK_ID = M.MARK_ID,
-                               Model_Name= M.Model_Name,
+                               MARK_ID = M.MARK.Mark_Name,
+                               Model_Name = M.Model_Name,
                                Comment = M.Comment
-
                            }
                            ).ToList();
 

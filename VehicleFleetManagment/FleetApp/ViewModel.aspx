@@ -108,7 +108,7 @@
                                                     <asp:Label ID="Label2" runat="server" Text='<%# Eval("Model_Name") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                             <asp:TemplateField HeaderText="Mark" Visible="false">
+                                             <asp:TemplateField HeaderText="Mark" >
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label3" runat="server" Text='<%# Eval("MARK_ID") %>'></asp:Label>
                                                 </ItemTemplate>

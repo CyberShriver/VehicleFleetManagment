@@ -140,8 +140,8 @@ namespace VehicleFleetManagment.FleetImp
                                MOT_Agency_Name = M.MOT_Agency_Name,
                                Visit_Dte = M.Visit_Dte,
                                Validity_End_Dte = M.Validity_End_Dte,
-                               VEHICLE_ID = M.VEHICLE_ID,
-                               MINISTRY_ID= M.MINISTRY_ID
+                               VEHICLE_ID = M.VEHICLE.Local_Plate,
+                               MINISTRY_ID= M.MINISTRY.Ministry_Name
                           
                            }
                            ).ToList();
@@ -193,8 +193,9 @@ namespace VehicleFleetManagment.FleetImp
                            where
                        M.MOT_Agency_Name == SearchText ||
                        M.MOT_Number == SearchText ||
+                       M.MINISTRY.Ministry_Name == SearchText ||
                        M.Visit_Dte.ToString() == SearchText ||
-                       M.VEHICLE_ID.ToString() == SearchText
+                       M.VEHICLE.Local_Plate == SearchText
 
                            select new
                            {
@@ -203,8 +204,8 @@ namespace VehicleFleetManagment.FleetImp
                                MOT_Agency_Name = M.MOT_Agency_Name,
                                Visit_Dte = M.Visit_Dte,
                                Validity_End_Dte = M.Validity_End_Dte,
-                               VEHICLE_ID = M.VEHICLE_ID,
-                               MINISTRY_ID= M.MINISTRY_ID
+                               VEHICLE_ID = M.VEHICLE.Local_Plate,
+                               MINISTRY_ID = M.MINISTRY.Ministry_Name
 
                            }
                            ).ToList();

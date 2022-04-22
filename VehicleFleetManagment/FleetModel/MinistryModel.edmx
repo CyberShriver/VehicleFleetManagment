@@ -29,6 +29,50 @@
           <Property Name="Category" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Category_N°" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="CAR_CRASH">
+          <Key>
+            <PropertyRef Name="CAR_CRASH_ID" />
+          </Key>
+          <Property Name="CAR_CRASH_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Crash_Code" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="VEHICLE_ID" Type="bigint" />
+          <Property Name="Crash_Date" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Crash_Time" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Crash_Mileage" Type="float" />
+          <Property Name="MIN_DRIVER_ID" Type="bigint" />
+          <Property Name="Compensation_Rule_Dte" Type="varchar" MaxLength="100" />
+          <Property Name="Circumstance" Type="text" Nullable="false" />
+          <Property Name="Passenger_Comment" Type="text" Nullable="false" />
+          <Property Name="Crash_Place" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Full_Crash_Address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Crash_Info" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Responsible" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Crash_Reason" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Weather" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estimated_Speed" Type="float" Nullable="false" />
+          <Property Name="Condition_After_Crash" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Driver_Age" Type="int" Nullable="false" />
+          <Property Name="Tot_Number_Driver_drives" Type="int" Nullable="false" />
+          <Property Name="Crash_Damage" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Insurance_Declaration_Dte" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Report_Dte" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Final_Report_Dte" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Damage_Description" Type="text" Nullable="false" />
+          <Property Name="Damage_Third_Party" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Claim_Compensation_Amount" Type="float" />
+          <Property Name="Damaged_Vehicle" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Legal_Cost" Type="float" Nullable="false" />
+          <Property Name="Third_Party_Injures" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Injures_Employee" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Local_Insurance_Compensation_Amount" Type="float" />
+          <Property Name="Payed_Employee" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Employee_Amount_Recovered" Type="float" />
+          <Property Name="ThirdParty_Amount_Recovered" Type="float" />
+          <Property Name="Crash_Pic" Type="varchar" MaxLength="100" />
+          <Property Name="Saved_Date" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Stat" Type="varchar" MaxLength="30" />
+          <Property Name="MINISTRY_ID" Type="int" />
+        </EntityType>
         <EntityType Name="DRIVER">
           <Key>
             <PropertyRef Name="DRIVER_ID" />
@@ -59,13 +103,13 @@
           <Property Name="LEAVE_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Leave_Code" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="MIN_DRIVER_ID" Type="bigint" Nullable="false" />
-          <Property Name="Carpooling" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="LEAVE_TYPE_ID" Type="int" />
+          <Property Name="Carpooling" Type="varchar" MaxLength="30" />
+          <Property Name="LEAVE_TYPE_ID" Type="int" Nullable="false" />
           <Property Name="Start_Dte" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="End_Dte" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Demand_Dte" Type="varchar" MaxLength="100" />
-          <Property Name="Approved_By" Type="int" />
-          <Property Name="Approved_Dte" Type="varchar" MaxLength="30" />
+          <Property Name="Demand_Dte" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Approved_By" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Approved_Dte" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Comment" Type="text" />
           <Property Name="Saved_Date" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="MINISTRY_ID" Type="int" Nullable="false" />
@@ -77,6 +121,26 @@
           <Property Name="LEAVE_TYPE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Leave_Type_Description" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Leave_Number" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LICENSE">
+          <Key>
+            <PropertyRef Name="LICENSE_ID" />
+          </Key>
+          <Property Name="LICENSE_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MIN_DRIVER_ID" Type="bigint" Nullable="false" />
+          <Property Name="License_Code" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Exp_Date" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="International_License_Code" Type="varchar" MaxLength="100" />
+          <Property Name="Inter_License_Code_Exp_Date" Type="varchar" MaxLength="100" />
+          <Property Name="License_Code_Mission" Type="varchar" MaxLength="100" />
+          <Property Name="License_Code_Mission_Exp_Dte" Type="varchar" MaxLength="100" />
+          <Property Name="Bike" Type="varchar" MaxLength="30" />
+          <Property Name="Light_Vehicle" Type="varchar" MaxLength="30" />
+          <Property Name="Heavy_Weights" Type="varchar" MaxLength="30" />
+          <Property Name="Trailer_Weight" Type="varchar" MaxLength="30" />
+          <Property Name="FourXfour" Type="varchar" MaxLength="30" />
+          <Property Name="License_State" Type="varchar" MaxLength="100" />
+          <Property Name="MINISTRY_ID" Type="int" />
         </EntityType>
         <EntityType Name="MARK">
           <Key>
@@ -163,6 +227,30 @@
           <Property Name="REAL_ESTATE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RealEstate_Name" Type="varchar" MaxLength="50" />
           <Property Name="Comment" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="REPAIR">
+          <Key>
+            <PropertyRef Name="REPAIR_ID" />
+          </Key>
+          <Property Name="REPAIR_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Work_Number" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="VEHICLE_ID" Type="bigint" Nullable="false" />
+          <Property Name="Reason" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Internal_External" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CAR_CRASH_ID" Type="bigint" />
+          <Property Name="Location_Code" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Work_Status" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Start_Dte" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="End_Dte" Type="varchar" MaxLength="100" />
+          <Property Name="Odometer_IN" Type="float" />
+          <Property Name="Odometer_OUT" Type="float" />
+          <Property Name="Start_Work_Time" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="End_Work_Time" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Off_Service_Days_Number" Type="int" Nullable="false" />
+          <Property Name="Participant_Emp_Code" Type="varchar" MaxLength="100" />
+          <Property Name="Comment" Type="text" />
+          <Property Name="Saved_Date" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MINISTRY_ID" Type="int" />
         </EntityType>
         <EntityType Name="SCHEDULE">
           <Key>
@@ -275,8 +363,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CAR_CRASH_IDMinistry">
+          <End Role="MINISTRY" Type="Self.MINISTRY" Multiplicity="0..1" />
+          <End Role="CAR_CRASH" Type="Self.CAR_CRASH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Principal>
+            <Dependent Role="CAR_CRASH">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAR_CRASH_IDveh">
+          <End Role="VEHICLE" Type="Self.VEHICLE" Multiplicity="0..1" />
+          <End Role="CAR_CRASH" Type="Self.CAR_CRASH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICLE">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Principal>
+            <Dependent Role="CAR_CRASH">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAR_CRASH_MIN_DRIVER_ID">
+          <End Role="MINISTRY_DRIVER" Type="Self.MINISTRY_DRIVER" Multiplicity="0..1" />
+          <End Role="CAR_CRASH" Type="Self.CAR_CRASH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY_DRIVER">
+              <PropertyRef Name="MIN_DRIVER_ID" />
+            </Principal>
+            <Dependent Role="CAR_CRASH">
+              <PropertyRef Name="MIN_DRIVER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LEAVE_LEAVE_TYPE_ID">
-          <End Role="LEAVE_TYPE" Type="Self.LEAVE_TYPE" Multiplicity="0..1" />
+          <End Role="LEAVE_TYPE" Type="Self.LEAVE_TYPE" Multiplicity="1" />
           <End Role="LEAVE" Type="Self.LEAVE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LEAVE_TYPE">
@@ -308,6 +432,30 @@
             </Principal>
             <Dependent Role="LEAVE">
               <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LICENSE_IDMinistry">
+          <End Role="MINISTRY" Type="Self.MINISTRY" Multiplicity="0..1" />
+          <End Role="LICENSE" Type="Self.LICENSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Principal>
+            <Dependent Role="LICENSE">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LICENSE_MIN_DRIVER_ID">
+          <End Role="MINISTRY_DRIVER" Type="Self.MINISTRY_DRIVER" Multiplicity="1" />
+          <End Role="LICENSE" Type="Self.LICENSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY_DRIVER">
+              <PropertyRef Name="MIN_DRIVER_ID" />
+            </Principal>
+            <Dependent Role="LICENSE">
+              <PropertyRef Name="MIN_DRIVER_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -392,6 +540,42 @@
             </Principal>
             <Dependent Role="MOT">
               <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPAIR_CAR_CRASH_ID">
+          <End Role="CAR_CRASH" Type="Self.CAR_CRASH" Multiplicity="0..1" />
+          <End Role="REPAIR" Type="Self.REPAIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAR_CRASH">
+              <PropertyRef Name="CAR_CRASH_ID" />
+            </Principal>
+            <Dependent Role="REPAIR">
+              <PropertyRef Name="CAR_CRASH_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPAIR_IDMinistry">
+          <End Role="MINISTRY" Type="Self.MINISTRY" Multiplicity="0..1" />
+          <End Role="REPAIR" Type="Self.REPAIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Principal>
+            <Dependent Role="REPAIR">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPAIR_IDveh">
+          <End Role="VEHICLE" Type="Self.VEHICLE" Multiplicity="1" />
+          <End Role="REPAIR" Type="Self.REPAIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICLE">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Principal>
+            <Dependent Role="REPAIR">
+              <PropertyRef Name="VEHICLE_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -482,9 +666,11 @@
         <EntityContainer Name="MINISTRY_DBModelStoreContainer">
           <EntitySet Name="ASSURANCE" EntityType="Self.ASSURANCE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BODY_TYPE" EntityType="Self.BODY_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAR_CRASH" EntityType="Self.CAR_CRASH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DRIVER" EntityType="Self.DRIVER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LEAVE" EntityType="Self.LEAVE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LEAVE_TYPE" EntityType="Self.LEAVE_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LICENSE" EntityType="Self.LICENSE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MARK" EntityType="Self.MARK" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MINISTRY" EntityType="Self.MINISTRY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MINISTRY_DRIVER" EntityType="Self.MINISTRY_DRIVER" Schema="dbo" store:Type="Tables" />
@@ -493,6 +679,7 @@
           <EntitySet Name="MOT" EntityType="Self.MOT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROVIDER" EntityType="Self.PROVIDER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="REAL_ESTATE" EntityType="Self.REAL_ESTATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REPAIR" EntityType="Self.REPAIR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SCHEDULE" EntityType="Self.SCHEDULE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VEHICLE" EntityType="Self.VEHICLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VEHICLE_FUEL_SUPPLY" EntityType="Self.VEHICLE_FUEL_SUPPLY" Schema="dbo" store:Type="Tables" />
@@ -503,6 +690,18 @@
           <AssociationSet Name="FK_ASSURANCE_MINISTRYId" Association="Self.FK_ASSURANCE_MINISTRYId">
             <End Role="MINISTRY" EntitySet="MINISTRY" />
             <End Role="ASSURANCE" EntitySet="ASSURANCE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAR_CRASH_IDMinistry" Association="Self.FK_CAR_CRASH_IDMinistry">
+            <End Role="MINISTRY" EntitySet="MINISTRY" />
+            <End Role="CAR_CRASH" EntitySet="CAR_CRASH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAR_CRASH_IDveh" Association="Self.FK_CAR_CRASH_IDveh">
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+            <End Role="CAR_CRASH" EntitySet="CAR_CRASH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAR_CRASH_MIN_DRIVER_ID" Association="Self.FK_CAR_CRASH_MIN_DRIVER_ID">
+            <End Role="MINISTRY_DRIVER" EntitySet="MINISTRY_DRIVER" />
+            <End Role="CAR_CRASH" EntitySet="CAR_CRASH" />
           </AssociationSet>
           <AssociationSet Name="FK_LEAVE_LEAVE_TYPE_ID" Association="Self.FK_LEAVE_LEAVE_TYPE_ID">
             <End Role="LEAVE_TYPE" EntitySet="LEAVE_TYPE" />
@@ -515,6 +714,14 @@
           <AssociationSet Name="FK_LEAVE_MINISTRYId" Association="Self.FK_LEAVE_MINISTRYId">
             <End Role="MINISTRY" EntitySet="MINISTRY" />
             <End Role="LEAVE" EntitySet="LEAVE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LICENSE_IDMinistry" Association="Self.FK_LICENSE_IDMinistry">
+            <End Role="MINISTRY" EntitySet="MINISTRY" />
+            <End Role="LICENSE" EntitySet="LICENSE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LICENSE_MIN_DRIVER_ID" Association="Self.FK_LICENSE_MIN_DRIVER_ID">
+            <End Role="MINISTRY_DRIVER" EntitySet="MINISTRY_DRIVER" />
+            <End Role="LICENSE" EntitySet="LICENSE" />
           </AssociationSet>
           <AssociationSet Name="FK_MARK_MODEL" Association="Self.FK_MARK_MODEL">
             <End Role="MARK" EntitySet="MARK" />
@@ -543,6 +750,18 @@
           <AssociationSet Name="FK_MOT_MINISTRYId" Association="Self.FK_MOT_MINISTRYId">
             <End Role="MINISTRY" EntitySet="MINISTRY" />
             <End Role="MOT" EntitySet="MOT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPAIR_CAR_CRASH_ID" Association="Self.FK_REPAIR_CAR_CRASH_ID">
+            <End Role="CAR_CRASH" EntitySet="CAR_CRASH" />
+            <End Role="REPAIR" EntitySet="REPAIR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPAIR_IDMinistry" Association="Self.FK_REPAIR_IDMinistry">
+            <End Role="MINISTRY" EntitySet="MINISTRY" />
+            <End Role="REPAIR" EntitySet="REPAIR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPAIR_IDveh" Association="Self.FK_REPAIR_IDveh">
+            <End Role="VEHICLE" EntitySet="VEHICLE" />
+            <End Role="REPAIR" EntitySet="REPAIR" />
           </AssociationSet>
           <AssociationSet Name="FK_SCHEDULE_IDveh" Association="Self.FK_SCHEDULE_IDveh">
             <End Role="VEHICLE" EntitySet="VEHICLE" />
@@ -732,6 +951,41 @@
             <End Role="MINISTRY" EntitySet="MINISTRies" />
             <End Role="SCHEDULE" EntitySet="SCHEDULEs" />
           </AssociationSet>
+          <EntitySet Name="CAR_CRASH" EntityType="MINISTRY_DBModel.CAR_CRASH" />
+          <EntitySet Name="LICENSEs" EntityType="MINISTRY_DBModel.LICENSE" />
+          <EntitySet Name="REPAIRs" EntityType="MINISTRY_DBModel.REPAIR" />
+          <AssociationSet Name="FK_CAR_CRASH_IDMinistry" Association="MINISTRY_DBModel.FK_CAR_CRASH_IDMinistry">
+            <End Role="MINISTRY" EntitySet="MINISTRies" />
+            <End Role="CAR_CRASH" EntitySet="CAR_CRASH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAR_CRASH_IDveh" Association="MINISTRY_DBModel.FK_CAR_CRASH_IDveh">
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+            <End Role="CAR_CRASH" EntitySet="CAR_CRASH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CAR_CRASH_MIN_DRIVER_ID" Association="MINISTRY_DBModel.FK_CAR_CRASH_MIN_DRIVER_ID">
+            <End Role="MINISTRY_DRIVER" EntitySet="MINISTRY_DRIVER" />
+            <End Role="CAR_CRASH" EntitySet="CAR_CRASH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPAIR_CAR_CRASH_ID" Association="MINISTRY_DBModel.FK_REPAIR_CAR_CRASH_ID">
+            <End Role="CAR_CRASH" EntitySet="CAR_CRASH" />
+            <End Role="REPAIR" EntitySet="REPAIRs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LICENSE_IDMinistry" Association="MINISTRY_DBModel.FK_LICENSE_IDMinistry">
+            <End Role="MINISTRY" EntitySet="MINISTRies" />
+            <End Role="LICENSE" EntitySet="LICENSEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LICENSE_MIN_DRIVER_ID" Association="MINISTRY_DBModel.FK_LICENSE_MIN_DRIVER_ID">
+            <End Role="MINISTRY_DRIVER" EntitySet="MINISTRY_DRIVER" />
+            <End Role="LICENSE" EntitySet="LICENSEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPAIR_IDMinistry" Association="MINISTRY_DBModel.FK_REPAIR_IDMinistry">
+            <End Role="MINISTRY" EntitySet="MINISTRies" />
+            <End Role="REPAIR" EntitySet="REPAIRs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPAIR_IDveh" Association="MINISTRY_DBModel.FK_REPAIR_IDveh">
+            <End Role="VEHICLE" EntitySet="VEHICLEs" />
+            <End Role="REPAIR" EntitySet="REPAIRs" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="DRIVER">
           <Key>
@@ -790,6 +1044,9 @@
           <NavigationProperty Name="LEAVEs" Relationship="MINISTRY_DBModel.FK_LEAVE_MINISTRYId" FromRole="MINISTRY" ToRole="LEAVE" />
           <NavigationProperty Name="MOTs" Relationship="MINISTRY_DBModel.FK_MOT_MINISTRYId" FromRole="MINISTRY" ToRole="MOT" />
           <NavigationProperty Name="SCHEDULEs" Relationship="MINISTRY_DBModel.FK_SCHEDULE_MINISTRYId" FromRole="MINISTRY" ToRole="SCHEDULE" />
+          <NavigationProperty Name="CAR_CRASH" Relationship="MINISTRY_DBModel.FK_CAR_CRASH_IDMinistry" FromRole="MINISTRY" ToRole="CAR_CRASH" />
+          <NavigationProperty Name="LICENSEs" Relationship="MINISTRY_DBModel.FK_LICENSE_IDMinistry" FromRole="MINISTRY" ToRole="LICENSE" />
+          <NavigationProperty Name="REPAIRs" Relationship="MINISTRY_DBModel.FK_REPAIR_IDMinistry" FromRole="MINISTRY" ToRole="REPAIR" />
         </EntityType>
         <EntityType Name="VEHICLE">
           <Key>
@@ -854,6 +1111,8 @@
           <NavigationProperty Name="ASSURANCEs" Relationship="MINISTRY_DBModel.FK_ASSURANCE_IDveh" FromRole="VEHICLE" ToRole="ASSURANCE" />
           <NavigationProperty Name="MOTs" Relationship="MINISTRY_DBModel.FK_MOT_IDveh" FromRole="VEHICLE" ToRole="MOT" />
           <NavigationProperty Name="SCHEDULEs" Relationship="MINISTRY_DBModel.FK_SCHEDULE_IDveh" FromRole="VEHICLE" ToRole="SCHEDULE" />
+          <NavigationProperty Name="CAR_CRASH" Relationship="MINISTRY_DBModel.FK_CAR_CRASH_IDveh" FromRole="VEHICLE" ToRole="CAR_CRASH" />
+          <NavigationProperty Name="REPAIRs" Relationship="MINISTRY_DBModel.FK_REPAIR_IDveh" FromRole="VEHICLE" ToRole="REPAIR" />
         </EntityType>
         <EntityType Name="VEHICLE_FUEL_SUPPLY">
           <Key>
@@ -962,13 +1221,13 @@
           <Property Name="LEAVE_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Leave_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="MIN_DRIVER_ID" Type="Int64" Nullable="false" />
-          <Property Name="Carpooling" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="LEAVE_TYPE_ID" Type="Int32" />
+          <Property Name="Carpooling" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LEAVE_TYPE_ID" Type="Int32" Nullable="false" />
           <Property Name="Start_Dte" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="End_Dte" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Demand_Dte" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Approved_By" Type="Int32" />
-          <Property Name="Approved_Dte" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Demand_Dte" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Approved_By" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Approved_Dte" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Saved_Date" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="LEAVE_TYPE" Relationship="MINISTRY_DBModel.FK_LEAVE_LEAVE_TYPE_ID" FromRole="LEAVE" ToRole="LEAVE_TYPE" />
@@ -988,6 +1247,8 @@
           <NavigationProperty Name="DRIVER" Relationship="MINISTRY_DBModel.FK_MINISTRY_DRIVER_DriverID" FromRole="MINISTRY_DRIVER" ToRole="DRIVER" />
           <NavigationProperty Name="LEAVEs" Relationship="MINISTRY_DBModel.FK_LEAVE_MIN_DRIVER_ID" FromRole="MINISTRY_DRIVER" ToRole="LEAVE" />
           <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_MINISTRY_DRIVER_IDMinistry" FromRole="MINISTRY_DRIVER" ToRole="MINISTRY" />
+          <NavigationProperty Name="CAR_CRASH" Relationship="MINISTRY_DBModel.FK_CAR_CRASH_MIN_DRIVER_ID" FromRole="MINISTRY_DRIVER" ToRole="CAR_CRASH" />
+          <NavigationProperty Name="LICENSEs" Relationship="MINISTRY_DBModel.FK_LICENSE_MIN_DRIVER_ID" FromRole="MINISTRY_DRIVER" ToRole="LICENSE" />
         </EntityType>
         <EntityType Name="MINISTRY_REAL_ESTATE">
           <Key>
@@ -1180,6 +1441,199 @@
             </Principal>
             <Dependent Role="SCHEDULE">
               <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CAR_CRASH">
+          <Key>
+            <PropertyRef Name="CAR_CRASH_ID" />
+          </Key>
+          <Property Name="CAR_CRASH_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Crash_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VEHICLE_ID" Type="Int64" />
+          <Property Name="Crash_Date" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Crash_Time" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Crash_Mileage" Type="Double" />
+          <Property Name="MIN_DRIVER_ID" Type="Int64" />
+          <Property Name="Compensation_Rule_Dte" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Circumstance" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Passenger_Comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Crash_Place" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Full_Crash_Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Crash_Info" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Responsible" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Crash_Reason" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Weather" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estimated_Speed" Type="Double" Nullable="false" />
+          <Property Name="Condition_After_Crash" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Driver_Age" Type="Int32" Nullable="false" />
+          <Property Name="Tot_Number_Driver_drives" Type="Int32" Nullable="false" />
+          <Property Name="Crash_Damage" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Insurance_Declaration_Dte" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Report_Dte" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Final_Report_Dte" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Damage_Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Damage_Third_Party" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Claim_Compensation_Amount" Type="Double" />
+          <Property Name="Damaged_Vehicle" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Legal_Cost" Type="Double" Nullable="false" />
+          <Property Name="Third_Party_Injures" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Injures_Employee" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Local_Insurance_Compensation_Amount" Type="Double" />
+          <Property Name="Payed_Employee" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Employee_Amount_Recovered" Type="Double" />
+          <Property Name="ThirdParty_Amount_Recovered" Type="Double" />
+          <Property Name="Crash_Pic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Saved_Date" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Stat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MINISTRY_ID" Type="Int32" />
+          <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_CAR_CRASH_IDMinistry" FromRole="CAR_CRASH" ToRole="MINISTRY" />
+          <NavigationProperty Name="VEHICLE" Relationship="MINISTRY_DBModel.FK_CAR_CRASH_IDveh" FromRole="CAR_CRASH" ToRole="VEHICLE" />
+          <NavigationProperty Name="MINISTRY_DRIVER" Relationship="MINISTRY_DBModel.FK_CAR_CRASH_MIN_DRIVER_ID" FromRole="CAR_CRASH" ToRole="MINISTRY_DRIVER" />
+          <NavigationProperty Name="REPAIRs" Relationship="MINISTRY_DBModel.FK_REPAIR_CAR_CRASH_ID" FromRole="CAR_CRASH" ToRole="REPAIR" />
+        </EntityType>
+        <EntityType Name="LICENSE">
+          <Key>
+            <PropertyRef Name="LICENSE_ID" />
+          </Key>
+          <Property Name="LICENSE_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MIN_DRIVER_ID" Type="Int64" Nullable="false" />
+          <Property Name="License_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Exp_Date" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="International_License_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Inter_License_Code_Exp_Date" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="License_Code_Mission" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="License_Code_Mission_Exp_Dte" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Bike" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Light_Vehicle" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Heavy_Weights" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Trailer_Weight" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FourXfour" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="License_State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MINISTRY_ID" Type="Int32" />
+          <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_LICENSE_IDMinistry" FromRole="LICENSE" ToRole="MINISTRY" />
+          <NavigationProperty Name="MINISTRY_DRIVER" Relationship="MINISTRY_DBModel.FK_LICENSE_MIN_DRIVER_ID" FromRole="LICENSE" ToRole="MINISTRY_DRIVER" />
+        </EntityType>
+        <EntityType Name="REPAIR">
+          <Key>
+            <PropertyRef Name="REPAIR_ID" />
+          </Key>
+          <Property Name="REPAIR_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Work_Number" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VEHICLE_ID" Type="Int64" Nullable="false" />
+          <Property Name="Reason" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Internal_External" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CAR_CRASH_ID" Type="Int64" />
+          <Property Name="Location_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Work_Status" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Start_Dte" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="End_Dte" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Odometer_IN" Type="Double" />
+          <Property Name="Odometer_OUT" Type="Double" />
+          <Property Name="Start_Work_Time" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="End_Work_Time" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Off_Service_Days_Number" Type="Int32" Nullable="false" />
+          <Property Name="Participant_Emp_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Saved_Date" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MINISTRY_ID" Type="Int32" />
+          <NavigationProperty Name="CAR_CRASH" Relationship="MINISTRY_DBModel.FK_REPAIR_CAR_CRASH_ID" FromRole="REPAIR" ToRole="CAR_CRASH" />
+          <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_REPAIR_IDMinistry" FromRole="REPAIR" ToRole="MINISTRY" />
+          <NavigationProperty Name="VEHICLE" Relationship="MINISTRY_DBModel.FK_REPAIR_IDveh" FromRole="REPAIR" ToRole="VEHICLE" />
+        </EntityType>
+        <Association Name="FK_CAR_CRASH_IDMinistry">
+          <End Type="MINISTRY_DBModel.MINISTRY" Role="MINISTRY" Multiplicity="0..1" />
+          <End Type="MINISTRY_DBModel.CAR_CRASH" Role="CAR_CRASH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Principal>
+            <Dependent Role="CAR_CRASH">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAR_CRASH_IDveh">
+          <End Type="MINISTRY_DBModel.VEHICLE" Role="VEHICLE" Multiplicity="0..1" />
+          <End Type="MINISTRY_DBModel.CAR_CRASH" Role="CAR_CRASH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICLE">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Principal>
+            <Dependent Role="CAR_CRASH">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CAR_CRASH_MIN_DRIVER_ID">
+          <End Type="MINISTRY_DBModel.MINISTRY_DRIVER" Role="MINISTRY_DRIVER" Multiplicity="0..1" />
+          <End Type="MINISTRY_DBModel.CAR_CRASH" Role="CAR_CRASH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY_DRIVER">
+              <PropertyRef Name="MIN_DRIVER_ID" />
+            </Principal>
+            <Dependent Role="CAR_CRASH">
+              <PropertyRef Name="MIN_DRIVER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPAIR_CAR_CRASH_ID">
+          <End Type="MINISTRY_DBModel.CAR_CRASH" Role="CAR_CRASH" Multiplicity="0..1" />
+          <End Type="MINISTRY_DBModel.REPAIR" Role="REPAIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAR_CRASH">
+              <PropertyRef Name="CAR_CRASH_ID" />
+            </Principal>
+            <Dependent Role="REPAIR">
+              <PropertyRef Name="CAR_CRASH_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LICENSE_IDMinistry">
+          <End Type="MINISTRY_DBModel.MINISTRY" Role="MINISTRY" Multiplicity="0..1" />
+          <End Type="MINISTRY_DBModel.LICENSE" Role="LICENSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Principal>
+            <Dependent Role="LICENSE">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LICENSE_MIN_DRIVER_ID">
+          <End Type="MINISTRY_DBModel.MINISTRY_DRIVER" Role="MINISTRY_DRIVER" Multiplicity="1" />
+          <End Type="MINISTRY_DBModel.LICENSE" Role="LICENSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY_DRIVER">
+              <PropertyRef Name="MIN_DRIVER_ID" />
+            </Principal>
+            <Dependent Role="LICENSE">
+              <PropertyRef Name="MIN_DRIVER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPAIR_IDMinistry">
+          <End Type="MINISTRY_DBModel.MINISTRY" Role="MINISTRY" Multiplicity="0..1" />
+          <End Type="MINISTRY_DBModel.REPAIR" Role="REPAIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Principal>
+            <Dependent Role="REPAIR">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPAIR_IDveh">
+          <End Type="MINISTRY_DBModel.VEHICLE" Role="VEHICLE" Multiplicity="1" />
+          <End Type="MINISTRY_DBModel.REPAIR" Role="REPAIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICLE">
+              <PropertyRef Name="VEHICLE_ID" />
+            </Principal>
+            <Dependent Role="REPAIR">
+              <PropertyRef Name="VEHICLE_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1448,6 +1902,97 @@
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="VEHICLE_ID" ColumnName="VEHICLE_ID" />
                 <ScalarProperty Name="SCHEDULE_ID" ColumnName="SCHEDULE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAR_CRASH">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.CAR_CRASH">
+              <MappingFragment StoreEntitySet="CAR_CRASH">
+                <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
+                <ScalarProperty Name="Stat" ColumnName="Stat" />
+                <ScalarProperty Name="Saved_Date" ColumnName="Saved_Date" />
+                <ScalarProperty Name="Crash_Pic" ColumnName="Crash_Pic" />
+                <ScalarProperty Name="ThirdParty_Amount_Recovered" ColumnName="ThirdParty_Amount_Recovered" />
+                <ScalarProperty Name="Employee_Amount_Recovered" ColumnName="Employee_Amount_Recovered" />
+                <ScalarProperty Name="Payed_Employee" ColumnName="Payed_Employee" />
+                <ScalarProperty Name="Local_Insurance_Compensation_Amount" ColumnName="Local_Insurance_Compensation_Amount" />
+                <ScalarProperty Name="Injures_Employee" ColumnName="Injures_Employee" />
+                <ScalarProperty Name="Third_Party_Injures" ColumnName="Third_Party_Injures" />
+                <ScalarProperty Name="Legal_Cost" ColumnName="Legal_Cost" />
+                <ScalarProperty Name="Damaged_Vehicle" ColumnName="Damaged_Vehicle" />
+                <ScalarProperty Name="Claim_Compensation_Amount" ColumnName="Claim_Compensation_Amount" />
+                <ScalarProperty Name="Damage_Third_Party" ColumnName="Damage_Third_Party" />
+                <ScalarProperty Name="Damage_Description" ColumnName="Damage_Description" />
+                <ScalarProperty Name="Final_Report_Dte" ColumnName="Final_Report_Dte" />
+                <ScalarProperty Name="Report_Dte" ColumnName="Report_Dte" />
+                <ScalarProperty Name="Insurance_Declaration_Dte" ColumnName="Insurance_Declaration_Dte" />
+                <ScalarProperty Name="Crash_Damage" ColumnName="Crash_Damage" />
+                <ScalarProperty Name="Tot_Number_Driver_drives" ColumnName="Tot_Number_Driver_drives" />
+                <ScalarProperty Name="Driver_Age" ColumnName="Driver_Age" />
+                <ScalarProperty Name="Condition_After_Crash" ColumnName="Condition_After_Crash" />
+                <ScalarProperty Name="Estimated_Speed" ColumnName="Estimated_Speed" />
+                <ScalarProperty Name="Weather" ColumnName="Weather" />
+                <ScalarProperty Name="Crash_Reason" ColumnName="Crash_Reason" />
+                <ScalarProperty Name="Responsible" ColumnName="Responsible" />
+                <ScalarProperty Name="Crash_Info" ColumnName="Crash_Info" />
+                <ScalarProperty Name="Full_Crash_Address" ColumnName="Full_Crash_Address" />
+                <ScalarProperty Name="Crash_Place" ColumnName="Crash_Place" />
+                <ScalarProperty Name="Passenger_Comment" ColumnName="Passenger_Comment" />
+                <ScalarProperty Name="Circumstance" ColumnName="Circumstance" />
+                <ScalarProperty Name="Compensation_Rule_Dte" ColumnName="Compensation_Rule_Dte" />
+                <ScalarProperty Name="MIN_DRIVER_ID" ColumnName="MIN_DRIVER_ID" />
+                <ScalarProperty Name="Crash_Mileage" ColumnName="Crash_Mileage" />
+                <ScalarProperty Name="Crash_Time" ColumnName="Crash_Time" />
+                <ScalarProperty Name="Crash_Date" ColumnName="Crash_Date" />
+                <ScalarProperty Name="VEHICLE_ID" ColumnName="VEHICLE_ID" />
+                <ScalarProperty Name="Crash_Code" ColumnName="Crash_Code" />
+                <ScalarProperty Name="CAR_CRASH_ID" ColumnName="CAR_CRASH_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LICENSEs">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.LICENSE">
+              <MappingFragment StoreEntitySet="LICENSE">
+                <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
+                <ScalarProperty Name="License_State" ColumnName="License_State" />
+                <ScalarProperty Name="FourXfour" ColumnName="FourXfour" />
+                <ScalarProperty Name="Trailer_Weight" ColumnName="Trailer_Weight" />
+                <ScalarProperty Name="Heavy_Weights" ColumnName="Heavy_Weights" />
+                <ScalarProperty Name="Light_Vehicle" ColumnName="Light_Vehicle" />
+                <ScalarProperty Name="Bike" ColumnName="Bike" />
+                <ScalarProperty Name="License_Code_Mission_Exp_Dte" ColumnName="License_Code_Mission_Exp_Dte" />
+                <ScalarProperty Name="License_Code_Mission" ColumnName="License_Code_Mission" />
+                <ScalarProperty Name="Inter_License_Code_Exp_Date" ColumnName="Inter_License_Code_Exp_Date" />
+                <ScalarProperty Name="International_License_Code" ColumnName="International_License_Code" />
+                <ScalarProperty Name="Exp_Date" ColumnName="Exp_Date" />
+                <ScalarProperty Name="License_Code" ColumnName="License_Code" />
+                <ScalarProperty Name="MIN_DRIVER_ID" ColumnName="MIN_DRIVER_ID" />
+                <ScalarProperty Name="LICENSE_ID" ColumnName="LICENSE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPAIRs">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.REPAIR">
+              <MappingFragment StoreEntitySet="REPAIR">
+                <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
+                <ScalarProperty Name="Saved_Date" ColumnName="Saved_Date" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Participant_Emp_Code" ColumnName="Participant_Emp_Code" />
+                <ScalarProperty Name="Off_Service_Days_Number" ColumnName="Off_Service_Days_Number" />
+                <ScalarProperty Name="End_Work_Time" ColumnName="End_Work_Time" />
+                <ScalarProperty Name="Start_Work_Time" ColumnName="Start_Work_Time" />
+                <ScalarProperty Name="Odometer_OUT" ColumnName="Odometer_OUT" />
+                <ScalarProperty Name="Odometer_IN" ColumnName="Odometer_IN" />
+                <ScalarProperty Name="End_Dte" ColumnName="End_Dte" />
+                <ScalarProperty Name="Start_Dte" ColumnName="Start_Dte" />
+                <ScalarProperty Name="Work_Status" ColumnName="Work_Status" />
+                <ScalarProperty Name="Location_Code" ColumnName="Location_Code" />
+                <ScalarProperty Name="CAR_CRASH_ID" ColumnName="CAR_CRASH_ID" />
+                <ScalarProperty Name="Internal_External" ColumnName="Internal_External" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="VEHICLE_ID" ColumnName="VEHICLE_ID" />
+                <ScalarProperty Name="Work_Number" ColumnName="Work_Number" />
+                <ScalarProperty Name="REPAIR_ID" ColumnName="REPAIR_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

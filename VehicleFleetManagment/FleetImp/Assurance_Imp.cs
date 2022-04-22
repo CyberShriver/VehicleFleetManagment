@@ -152,8 +152,8 @@ namespace VehicleFleetManagment.FleetImp
                                Insurance_Company = A.Insurance_Company ,
                                Insurance_State = A.Insurance_State ,
                                Comment = A.Comment ,
-                               VEHICLE_ID = A.VEHICLE_ID,
-                               MINISTRY_ID = A.MINISTRY_ID
+                               VEHICLE_ID = A.VEHICLE.Local_Plate,
+                               MINISTRY_ID = A.MINISTRY.Ministry_Name
 
                            }
                            ).ToList();
@@ -223,8 +223,8 @@ namespace VehicleFleetManagment.FleetImp
                                Insurance_Company = A.Insurance_Company,
                                Insurance_State = A.Insurance_State,
                                Comment = A.Comment,
-                               VEHICLE_ID = A.VEHICLE_ID,
-                               MINISTRY_ID = A.MINISTRY_ID
+                               VEHICLE_ID = A.VEHICLE.Local_Plate,
+                               MINISTRY_ID = A.MINISTRY.Ministry_Name
 
                            }
                            ).ToList();
