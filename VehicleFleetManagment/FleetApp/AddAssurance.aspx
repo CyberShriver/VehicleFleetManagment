@@ -102,7 +102,7 @@
                                                 <label class="float-label ">Expire Date</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtAmount">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAmount"  onkeypress="inpNum(event)" maxlength="10">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Amount</label>
                                             </div>

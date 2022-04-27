@@ -748,6 +748,8 @@
     <Compile Include="FleetImp\Assurance_Interface.cs" />
     <Compile Include="FleetImp\BodyType_Imp.cs" />
     <Compile Include="FleetImp\BodyType_Interface.cs" />
+    <Compile Include="FleetImp\Crash_Imp.cs" />
+    <Compile Include="FleetImp\Crash_Interface.cs" />
     <Compile Include="FleetImp\Driver_Imp.cs" />
     <Compile Include="FleetImp\Driver_Interface.cs" />
     <Compile Include="FleetImp\LeaveType_Imp.cs" />

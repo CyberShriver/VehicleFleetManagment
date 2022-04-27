@@ -15,6 +15,33 @@ namespace VehicleFleetManagment.FleetApp
     {
 
         /// <summary>
+        /// SuccessMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SuccessMsg;
+
+        /// <summary>
+        /// FillMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FillMsg;
+
+        /// <summary>
+        /// FailMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FailMsg;
+
+        /// <summary>
         /// DropDown_Ministry control.
         /// </summary>
         /// <remarks>
@@ -22,15 +49,6 @@ namespace VehicleFleetManagment.FleetApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDown_Ministry;
-
-        /// <summary>
-        /// DropDown_Driver control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDown_Driver;
 
         /// <summary>
         /// DropDown_Plate control.
@@ -42,13 +60,13 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.WebControls.DropDownList DropDown_Plate;
 
         /// <summary>
-        /// txtCrashCode control.
+        /// DropDown_Driver control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCrashCode;
+        protected global::System.Web.UI.WebControls.DropDownList DropDown_Driver;
 
         /// <summary>
         /// dateCrash control.
@@ -138,7 +156,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtPassenger;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPassenger;
 
         /// <summary>
         /// txtCrashInfo control.
@@ -177,13 +195,13 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDamage;
 
         /// <summary>
-        /// txtPicture control.
+        /// file_upd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile txtPicture;
+        protected global::System.Web.UI.WebControls.FileUpload file_upd;
 
         /// <summary>
         /// dateCompensation control.
@@ -237,7 +255,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtAmount;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtAmount;
 
         /// <summary>
         /// txtDamageDesipt control.
@@ -264,7 +282,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtLegalCost;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtLegalCost;
 
         /// <summary>
         /// txtLocalComp control.
@@ -273,7 +291,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtLocalComp;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtLocalComp;
 
         /// <summary>
         /// txtRecoverEmpl control.
@@ -282,7 +300,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtRecoverEmpl;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtRecoverEmpl;
 
         /// <summary>
         /// txtThirdPartyRecov control.
@@ -291,7 +309,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtThirdPartyRecov;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtThirdPartyRecov;
 
         /// <summary>
         /// DropDown_vehicle_Damag control.
@@ -330,13 +348,13 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.WebControls.DropDownList DropDown_Employee_injure;
 
         /// <summary>
-        /// dropDown_AssuranceStatus control.
+        /// dropDown_Employe_Payed control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropDown_AssuranceStatus;
+        protected global::System.Web.UI.WebControls.DropDownList dropDown_Employe_Payed;
 
         /// <summary>
         /// DropDown_state control.
@@ -348,21 +366,12 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.WebControls.DropDownList DropDown_state;
 
         /// <summary>
-        /// dateSavedDate control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateSavedDate;
-
-        /// <summary>
-        /// btn_save control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_save;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSave;
     }
 }

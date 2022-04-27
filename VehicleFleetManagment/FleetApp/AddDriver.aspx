@@ -173,9 +173,13 @@
                                                 <label class="float-label">Postal Code</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="tel" name="footer-email" class="form-control" required="" runat="server" id="txtTelOffice">
+                                                <%--<input type="tel" name="footer-email" class="form-control" required="" runat="server" id="txtTelOffice" title="phone number" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}-[0-9]{3}">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">Office Phone</label>
+                                                <label class="float-label">Office Phone</label>--%>
+                                                  <div class="input-group">
+                                                      <input type="tel" class="form-control" required="" runat="server" id="txtTelOffice">
+                                                      <span class="input-group-addon">Office Phone</span>
+                                                  </div>
                                             </div>
                                         </div>
                                     </div>
@@ -201,4 +205,9 @@
         <!-- Main-body end -->
         <div id="styleSelector"></div>
     </div>
+    <script>
+        $("#txtTelOffice").intlTelInput({
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/js/utils.js"
+        });
+    </script>
 </asp:Content>

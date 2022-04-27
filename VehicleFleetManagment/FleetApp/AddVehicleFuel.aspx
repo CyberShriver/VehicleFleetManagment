@@ -78,6 +78,13 @@
                                             </asp:DropDownList>
                                             <label class="float-label">Tank Type</label>
                                         </div>
+                                         <div class="form-group form-default">
+                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_fuel" required="" runat="server">
+                                                <asp:ListItem>Petrol</asp:ListItem>
+                                                <asp:ListItem>Mazutu</asp:ListItem>
+                                            </asp:DropDownList>
+                                            <label class="float-label">Fuel Type</label>
+                                        </div>
                                         <div class="form-group form-default">
                                             <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTankCode">
                                             <span class="form-bar"></span>

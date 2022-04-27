@@ -63,9 +63,7 @@
                                             <label class="float-label">Category</label>
                                         </div>
                                         <div class="form-group form-default">
-                                            <input type="number" name="footer-email"  class="form-control" required="" runat="server" id="txtCategoryNum" maxlength="4" 
-                                                oninput="javascript: if(this.value.length>this.maxLength) this.value=this.value.slice(0,this.maxLength);"
-                                                >
+                                            <input type="text" name="footer-email"  class="form-control" required=""  runat="server" id="txtCategoryNum" onkeypress="inpNumInt(event)" maxlength="4">
                                             <span class="form-bar"></span>
                                             <label class="float-label">Category N°(only 4 characters)</label>                          
                                         </div>
@@ -92,5 +90,18 @@
     </div>
 
    <script type="text/javascript" src="assets/js/jquery/jquery.min.js"></script>
+
+   <%-- <script>
+        function inpNum(e) {
+            e = e || window.event;
+            var charCode = (typeof e.which == "undefined") ? e.keyCode : e.which;
+            var charStr = String.fromCharCode(charCode);
+            if (!charStr.match(/^[0-9]+$/))
+                e.preventDefault();
+        }
+    </script>--%>
+  
 </asp:Content>
+
+
 

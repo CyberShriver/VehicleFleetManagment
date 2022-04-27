@@ -51,7 +51,7 @@
           <Property Name="Weather" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Estimated_Speed" Type="float" Nullable="false" />
           <Property Name="Condition_After_Crash" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Driver_Age" Type="int" Nullable="false" />
+          <Property Name="Driver_Age" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Tot_Number_Driver_drives" Type="int" Nullable="false" />
           <Property Name="Crash_Damage" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Insurance_Declaration_Dte" Type="varchar" MaxLength="100" Nullable="false" />
@@ -1467,7 +1467,7 @@
           <Property Name="Weather" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Estimated_Speed" Type="Double" Nullable="false" />
           <Property Name="Condition_After_Crash" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Driver_Age" Type="Int32" Nullable="false" />
+          <Property Name="Driver_Age" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Tot_Number_Driver_drives" Type="Int32" Nullable="false" />
           <Property Name="Crash_Damage" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Insurance_Declaration_Dte" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />

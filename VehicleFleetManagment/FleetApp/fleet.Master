@@ -939,7 +939,27 @@
     <script type="text/javascript" src="assets/pages/dashboard/custom-dashboard.js"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
    
+    <!-- prevent letter input in type="text" for double or float-->
+     <script>
+        function inpNum(e) {
+            e = e || window.event;
+            var charCode = (typeof e.which == "undefined") ? e.keyCode : e.which;
+            var charStr = String.fromCharCode(charCode);
+            if (!charStr.match(/^[0-9,.]+$/))
+                e.preventDefault();
+        }
+     </script>
 
+     <!-- prevent letter input in type="text" for int-->
+    <script>
+        function inpNumInt(e) {
+            e = e || window.event;
+            var charCode = (typeof e.which == "undefined") ? e.keyCode : e.which;
+            var charStr = String.fromCharCode(charCode);
+            if (!charStr.match(/^[0-9]+$/))
+                e.preventDefault();
+        }
+    </script>
 </body>
 </html>
 

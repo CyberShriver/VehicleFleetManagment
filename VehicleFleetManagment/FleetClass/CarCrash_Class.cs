@@ -26,7 +26,7 @@ namespace VehicleFleetManagment.FleetClass
         public string Weather { get; set; }
         public double Estimated_Speed { get; set; }
         public string Condition_After_Crash { get; set; }
-        public int Driver_Age { get; set; }
+        public string Driver_Age { get; set; }
         public int Tot_Number_Driver_drives { get; set; }
         public string Crash_Damage { get; set; }
         public string Insurance_Declaration_Dte { get; set; }

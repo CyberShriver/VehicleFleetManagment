@@ -78,6 +78,15 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.WebControls.DropDownList DropDown_TankType;
 
         /// <summary>
+        /// DropDown_fuel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDown_fuel;
+
+        /// <summary>
         /// txtTankCode control.
         /// </summary>
         /// <remarks>

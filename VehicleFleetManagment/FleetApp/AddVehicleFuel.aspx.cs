@@ -71,6 +71,7 @@ namespace VehicleFleetManagment.FleetApp
                         Ve.United_Price = Convert.ToDouble(txtUnit.Value);
                         Ve.Total_Price = Convert.ToDouble(txtTotal.Value);
                         Ve.Provider_Code = DropDown_ProviderCode.SelectedValue;
+                        Ve.Fuel_Type = DropDown_fuel.SelectedValue;
                         Ve.Liter_100_km = Convert.ToDouble(txtLiter_100_km.Value);
                         Ve.Comment = txtComment.Value;
                         Ve.MINISTRY_ID =Convert.ToInt32(DropDown_Ministry.SelectedValue);
@@ -134,12 +135,14 @@ namespace VehicleFleetManagment.FleetApp
                     Ve.United_Price = Convert.ToDouble(txtUnit.Value);
                     Ve.Total_Price = Convert.ToDouble(txtTotal.Value);
                     Ve.Provider_Code = DropDown_ProviderCode.SelectedValue;
+                    Ve.Fuel_Type = DropDown_fuel.SelectedValue;
                     Ve.Liter_100_km = Convert.ToDouble(txtLiter_100_km.Value);
                     Ve.Comment = txtComment.Value;
                     Ve.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
                     Ve.Tank_Type = DropDown_TankType.SelectedValue;
                     Ve.Saved_Date = DateTime.Now.Date.ToString();
                     Ve.VEHICLE_ID = Convert.ToInt32(DropDown_Vehicle.SelectedValue);
+
                     msg = I.Update(Ve,Convert.ToInt32(id));
                     if (msg > 0)
                     {
@@ -180,6 +183,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtComment.Value= Ve.Comment ;
                 DropDown_Ministry.SelectedValue= Ve.MINISTRY_ID.ToString();
                 DropDown_TankType.SelectedValue= Ve.Tank_Type;
+                DropDown_fuel.SelectedValue= Ve.Fuel_Type;
                 dateSave.Value=DateTime.Now.Date.ToString();
                 DropDown_Vehicle.SelectedValue= Ve.VEHICLE_ID.ToString();
             }

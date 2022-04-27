@@ -111,7 +111,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtAmount;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtAmount;
 
         /// <summary>
         /// dropDown_AssuranceStatus control.
