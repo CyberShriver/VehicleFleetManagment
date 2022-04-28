@@ -215,7 +215,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtInitQ.Value = "";
                 txtConsumeQ.Value = "";
                 txtUnit.Value = "";
-                txtTotal.Value = "";
+               
             }
             return tot;
         }
