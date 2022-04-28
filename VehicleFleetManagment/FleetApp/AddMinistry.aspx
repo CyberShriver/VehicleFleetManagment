@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FleetApp/fleet.Master" AutoEventWireup="true" CodeBehind="AddMinistry.aspx.cs" Inherits="VehicleFleetManagment.FleetApp.AddMinistry" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <!-- Page-header start -->
     <div class="page-header">
         <div class="page-block">
@@ -117,6 +117,7 @@
                                             </div>
                                             <div class="form-group form-default">
                                                 <input type="password" name="footer-email" class="form-control" required="" runat="server" id="txtPassword">
+                                                <i class="far fa-eye" id="togglePassword"  style="margin-left: -30px; cursor: pointer;"></i>                                             
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Password</label>
                                             </div>
@@ -131,6 +132,8 @@
                                                 <label class="float-label">System Email</label>
                                             </div>
                                         </div>
+                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -155,5 +158,16 @@
         <!-- Main-body end -->
         <div id="styleSelector"></div>
     </div>
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#txtPassword');
 
+        togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
 </asp:Content>

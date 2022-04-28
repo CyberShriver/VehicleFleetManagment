@@ -64,9 +64,9 @@
                                             <label class="float-label">Description</label>
                                         </div>
                                         <div class="form-group form-default">
-                                            <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtLeaveN">
+                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLeaveN">
                                             <span class="form-bar"></span>
-                                            <label class="float-label">Leave Number</label>
+                                            <label class="float-label">Leave N°</label>
                                         </div>
                                     </div>
                                 </div>

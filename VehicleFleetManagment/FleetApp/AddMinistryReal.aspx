@@ -66,7 +66,7 @@
                                                 <label class="float-label">Ministry</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtQuantity">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtQuantity" onkeypress="inpNumInt(event)" maxlength="10">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Quantity</label>
                                             </div>

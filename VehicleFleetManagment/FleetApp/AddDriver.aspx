@@ -95,7 +95,7 @@
                                                 <label class="float-label">Marital Status</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_language" required="" runat="server">
+                                                <asp:DropDownList class="form-control bfh-languages"  name="footer-email" Style="width: 100%;" ID="DropDown_language" required="" runat="server">
                                                     <asp:ListItem>Kirundi</asp:ListItem>
                                                     <asp:ListItem>Kinyarwanda</asp:ListItem>
                                                     <asp:ListItem>Francais</asp:ListItem>
@@ -165,23 +165,21 @@
                                             <div class="form-group form-default">
                                                 <input type="email" name="footer-email" class="form-control" required="" runat="server" id="txtMail">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">Email(example@gmail.com)</label>
+                                                <label class="float-label">Email (example@gmail.com)</label>
                                             </div>
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtPostal">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Postal Code</label>
                                             </div>
-                                            <div class="form-group form-default">
-                                                <%--<input type="tel" name="footer-email" class="form-control" required="" runat="server" id="txtTelOffice" title="phone number" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}-[0-9]{3}">
+                                            <div class="form-group form-default"">
+                                                <input type="tel" name="footer-email" class="form-control" data-tip="only number required" required="" runat="server" id="txtTelOffice" title="phone number" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}-[0-9]{3}">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">Office Phone</label>--%>
-                                                  <div class="input-group">
-                                                      <input type="tel" class="form-control" required="" runat="server" id="txtTelOffice">
-                                                      <span class="input-group-addon">Office Phone</span>
-                                                  </div>
+                                                <label class="float-label">Office Phone  </label> 
+                                                
                                             </div>
                                         </div>
+                                                  
                                     </div>
                                 </div>
                             </div>
@@ -209,5 +207,7 @@
         $("#txtTelOffice").intlTelInput({
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/js/utils.js"
         });
+
+        $("#txtTelOffice").intlTelInput();
     </script>
 </asp:Content>

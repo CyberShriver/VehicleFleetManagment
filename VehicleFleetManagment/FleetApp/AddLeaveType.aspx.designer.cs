@@ -57,7 +57,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtLeaveN;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtLeaveN;
 
         /// <summary>
         /// btnSave control.

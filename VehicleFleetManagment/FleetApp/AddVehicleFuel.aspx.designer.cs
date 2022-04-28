@@ -102,7 +102,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtOdometer;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtOdometer;
 
         /// <summary>
         /// txtInitQ control.
@@ -111,7 +111,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtInitQ;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtInitQ;
 
         /// <summary>
         /// txtConsumeQ control.
@@ -120,7 +120,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtConsumeQ;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtConsumeQ;
 
         /// <summary>
         /// txtUnit control.
@@ -129,16 +129,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtUnit;
-
-        /// <summary>
-        /// txtTotal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtTotal;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtUnit;
 
         /// <summary>
         /// txtLiter_100_km control.
@@ -147,7 +138,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtLiter_100_km;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtLiter_100_km;
 
         /// <summary>
         /// dateSave control.

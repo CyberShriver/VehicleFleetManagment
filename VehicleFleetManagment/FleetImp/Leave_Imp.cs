@@ -276,12 +276,12 @@ namespace VehicleFleetManagment.FleetImp
                            select new
                            {
                                LEAVE_TYPE_ID = Lev.LEAVE_TYPE_ID,
-                               Leave_Type_Description = Lev.Leave_Type_Description,
+                               Leave_Number = Lev.Leave_Number,
                            }
                            ).ToList();
 
                 drop.DataSource = obj;
-                drop.DataTextField = "Leave_Type_Description";
+                drop.DataTextField = "Leave_Number";
                 drop.DataValueField = "LEAVE_TYPE_ID";
                 drop.DataBind();
             }

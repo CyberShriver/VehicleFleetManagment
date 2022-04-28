@@ -53,7 +53,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtTankCode.Value == "" || txtOdometer.Value == "" || txtInitQ.Value == "" || txtConsumeQ.Value == "" || txtUnit.Value == "" || txtTotal.Value == "" ||
+                if (txtTankCode.Value == "" || txtOdometer.Value == "" || txtInitQ.Value == "" || txtConsumeQ.Value == "" || txtUnit.Value == "" || 
                     txtLiter_100_km.Value == "" || txtComment.Value == "" || DropDown_Ministry.SelectedValue == "-1" || DropDown_Vehicle.SelectedValue == "-1" ||
                     DropDown_ProviderCode.SelectedValue == "-1" || DropDown_TankType.SelectedValue == "-1")
                 {
@@ -69,7 +69,7 @@ namespace VehicleFleetManagment.FleetApp
                         Ve.Initial_Qty = Convert.ToDouble(txtInitQ.Value);
                         Ve.Consumed_Qty = Convert.ToDouble(txtConsumeQ.Value);
                         Ve.United_Price = Convert.ToDouble(txtUnit.Value);
-                        Ve.Total_Price = Convert.ToDouble(txtTotal.Value);
+                        Ve.Total_Price = total();
                         Ve.Provider_Code = DropDown_ProviderCode.SelectedValue;
                         Ve.Fuel_Type = DropDown_fuel.SelectedValue;
                         Ve.Liter_100_km = Convert.ToDouble(txtLiter_100_km.Value);
@@ -133,7 +133,7 @@ namespace VehicleFleetManagment.FleetApp
                     Ve.Initial_Qty = Convert.ToDouble(txtInitQ.Value);
                     Ve.Consumed_Qty = Convert.ToDouble(txtConsumeQ.Value);
                     Ve.United_Price = Convert.ToDouble(txtUnit.Value);
-                    Ve.Total_Price = Convert.ToDouble(txtTotal.Value);
+                    Ve.Total_Price = total();
                     Ve.Provider_Code = DropDown_ProviderCode.SelectedValue;
                     Ve.Fuel_Type = DropDown_fuel.SelectedValue;
                     Ve.Liter_100_km = Convert.ToDouble(txtLiter_100_km.Value);
@@ -197,6 +197,27 @@ namespace VehicleFleetManagment.FleetApp
             }
             else
                 Update();
+        }
+
+        //Total function
+
+        int total()
+        {
+            int tot=0;
+            if (Convert.ToInt32(txtInitQ.Value)>= Convert.ToInt32(txtConsumeQ.Value))
+            {
+
+                int t=(Convert.ToInt32(txtInitQ.Value) - Convert.ToInt32(txtConsumeQ.Value)) * Convert.ToInt32(txtUnit.Value);
+                tot = t;
+            }
+            else
+            {
+                txtInitQ.Value = "";
+                txtConsumeQ.Value = "";
+                txtUnit.Value = "";
+                txtTotal.Value = "";
+            }
+            return tot;
         }
 
         //Add dropDawn Minisrty

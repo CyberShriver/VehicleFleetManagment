@@ -75,7 +75,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtWork;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtWork;
 
         /// <summary>
         /// txtLocationCode control.
@@ -138,7 +138,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtOdomIN;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtOdomIN;
 
         /// <summary>
         /// txtOdomOUT control.
@@ -147,7 +147,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtOdomOUT;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtOdomOUT;
 
         /// <summary>
         /// TimeStartRepair control.

@@ -192,7 +192,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtKva;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtKva;
 
         /// <summary>
         /// txtVolt control.
@@ -309,7 +309,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtFrontSeat;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtFrontSeat;
 
         /// <summary>
         /// txtBatteryVolt control.
@@ -318,7 +318,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtBatteryVolt;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtBatteryVolt;
 
         /// <summary>
         /// txtVehiclWeight control.
@@ -327,7 +327,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtVehiclWeight;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtVehiclWeight;
 
         /// <summary>
         /// txtKeyCode control.
@@ -345,7 +345,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtGrossVehWeigth;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtGrossVehWeigth;
 
         /// <summary>
         /// txtEmptyPod control.
@@ -354,7 +354,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEmptyPod;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEmptyPod;
 
         /// <summary>
         /// DropDown_Trailer control.

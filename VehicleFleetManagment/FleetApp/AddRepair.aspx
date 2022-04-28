@@ -71,7 +71,7 @@
                                                 <label class="float-label">Crash</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtWork">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtWork" onkeypress="inpNumInt(event)" maxlength="7">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Work Number</label>
                                             </div>
@@ -118,12 +118,12 @@
                                     <div class="card-block">
                                         <div class="form-material">
                                             <div class="form-group form-default">
-                                                <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtOdomIN">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtOdomIN" onkeypress="inpNumInt(event)" maxlength="7">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Odemeter IN</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtOdomOUT">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtOdomOUT" onkeypress="inpNumInt(event)" maxlength="7">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Odemeter OUT</label>
                                             </div>

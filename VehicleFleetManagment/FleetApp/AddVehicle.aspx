@@ -141,19 +141,19 @@
                                                 <label class="float-label">Alternator Engine Type </label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtKva">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtKva" onkeypress="inpNum(event)" maxlength="10">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Kva </label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtVolt">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtVolt" onkeypress="inpNum(event)" maxlength="5">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">Volt </label>
+                                                <label class="float-label">Volt</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtGenerWeight">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtGenerWeight" onkeypress="inpNum(event)" maxlength="7">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">Generator Weight</label>
+                                                <label class="float-label">Generator Weight ( in Kgs )</label>
                                             </div>
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAssembly">
@@ -161,9 +161,9 @@
                                                 <label class="float-label">Assembly N° </label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEnginPower">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEnginPower" onkeypress="inpNum(event)" maxlength="7">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">Engine Power </label>
+                                                <label class="float-label">Engine Power ( in Volt ) </label>
                                             </div>
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEnginCylind">
@@ -200,9 +200,9 @@
                                                 <label class="float-label ">Tank Type 1</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control text-right" required="" runat="server" id="txtTankSze1">
+                                                <input type="text" name="footer-email" class="form-control text-right" required="" runat="server" id="txtTankSze1" onkeypress="inpNum(event)" maxlength="7">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label ">Tank Size 1</label>
+                                                <label class="float-label ">Tank Size 1 ( in Meter )</label>
                                             </div>
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTankTyp2">
@@ -210,24 +210,24 @@
                                                 <label class="float-label">Tank Type 2 </label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTankCapacity2">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTankCapacity2" onkeypress="inpNumInt(event)" maxlength="5">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">Tank Capacity 2</label>
+                                                <label class="float-label">Tank Capacity 2 ( in Liter )</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtFrontSeat">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtFrontSeat" onkeypress="inpNumInt(event)" maxlength="3">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Front Seats Number</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtBatteryVolt">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtBatteryVolt" onkeypress="inpNum(event)" maxlength="10">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">Battery Voltage</label>
+                                                <label class="float-label">Battery Voltage ( in Volt )</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtVehiclWeight">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtVehiclWeight" onkeypress="inpNum(event)" maxlength="5">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">Vehicle Weight</label>
+                                                <label class="float-label">Vehicle Weight (in kgs )</label>
                                             </div>
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtKeyCode">
@@ -235,12 +235,12 @@
                                                 <label class="float-label">Key code</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtGrossVehWeigth">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtGrossVehWeigth" onkeypress="inpNum(event)" maxlength="5">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">Gross Vehicle Weigth</label>
+                                                <label class="float-label">Gross Weigth ( in Kgs )</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtEmptyPod">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEmptyPod" onkeypress="inpNum(event)" maxlength="10">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Empty Pod</label>
                                             </div>

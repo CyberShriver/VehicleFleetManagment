@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" type="text/css" href="assets/icon/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <!-- scrollbar.css -->
     <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css">
     <!-- am chart export.css -->

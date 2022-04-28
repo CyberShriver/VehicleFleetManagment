@@ -102,9 +102,9 @@
                                                 <label class="float-label ">Expire Date</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAmount"  onkeypress="inpNum(event)" maxlength="10">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAmount" onkeypress="inpNum(event)" maxlength="10">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">Amount</label>
+                                                <label class="float-label">Amount (FBU)</label>
                                             </div>
                                             <div class="form-group form-default">
                                                 <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="dropDown_AssuranceStatus" required="" runat="server">

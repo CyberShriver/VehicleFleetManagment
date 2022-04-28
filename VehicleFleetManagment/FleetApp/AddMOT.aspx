@@ -70,7 +70,7 @@
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtMOT">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">MOT number</label>
+                                                <label class="float-label">MOT N°</label>
                                             </div>
 
                                         </div>

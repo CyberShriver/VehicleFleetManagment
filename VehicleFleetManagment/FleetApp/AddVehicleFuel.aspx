@@ -64,7 +64,7 @@
                                         </div>
                                         <div class="form-group form-default">
                                             <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Vehicle" required="" runat="server"></asp:DropDownList>
-                                            <label class="float-label">Vehicle Registation Number</label>
+                                            <label class="float-label">Plate</label>
                                         </div>
 
                                         <div class="form-group form-default">
@@ -91,13 +91,13 @@
                                             <label class="float-label">Tank Code</label>
                                         </div>
                                         <div class="form-group form-default">
-                                            <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtOdometer">
+                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtOdometer" onkeypress="inpNumInt(event)" maxlength="7">
                                             <span class="form-bar"></span>
                                             <label class="float-label">Odometer</label>
                                         </div>
 
                                         <div class="form-group form-default">
-                                            <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtInitQ">
+                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtInitQ" onkeypress="inpNum(event)" maxlength="7">
                                             <span class="form-bar"></span>
                                             <label class="float-label">Initial Quantity</label>
                                         </div>
@@ -112,24 +112,24 @@
                                     <div class="card-block">
                                         <div class="form-material">
                                            <div class="form-group form-default">
-                                            <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtConsumeQ">
+                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtConsumeQ" onkeypress="inpNum(event)" maxlength="7">
                                             <span class="form-bar"></span>
                                             <label class="float-label">Consummed Quantity</label>
                                         </div>
                                         <div class="form-group form-default">
-                                            <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtUnit">
+                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtUnit" onkeypress="inpNum(event)" maxlength="7">
                                             <span class="form-bar"></span>
                                             <label class="float-label">United Price</label>
                                         </div>
-                                        <div class="form-group form-default">
-                                            <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtTotal">
+                                        <%--<div class="form-group form-default">
+                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTotal" onkeypress="inpNum(event)" maxlength="7">
                                             <span class="form-bar"></span>
                                             <label class="float-label">Total Price</label>
-                                        </div>
+                                        </div>--%>
                                         <div class="form-group form-default">
-                                            <input type="number" name="footer-email" class="form-control" required="" runat="server" id="txtLiter_100_km">
+                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLiter_100_km" onkeypress="inpNum(event)" maxlength="7">
                                             <span class="form-bar"></span>
-                                            <label class="float-label">Liter per 100km</label>
+                                            <label class="float-label">Liter per 100km (in Liter)</label>
                                         </div>
                                         <div class="form-group form-default">
                                             <input type="date" class="form-control text-right" visible="false" runat="server" id="dateSave">
