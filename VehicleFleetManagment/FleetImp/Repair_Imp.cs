@@ -239,9 +239,11 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from R in con.REPAIRs
                            where
-                       // R.Internal_External  == SearchText ||
-                       R.Work_Number  == SearchText ||
-                       R.Start_Dte.ToString() == SearchText ||
+                       R.Work_Number.StartsWith(SearchText) ||
+                       R.Start_Dte.StartsWith(SearchText) ||
+                       R.VEHICLE.Local_Plate.StartsWith(SearchText) ||
+                       R.CAR_CRASH.Crash_Code.StartsWith(SearchText) ||
+                       R.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
                        R.Work_Status .ToString() == SearchText
 
                            select new

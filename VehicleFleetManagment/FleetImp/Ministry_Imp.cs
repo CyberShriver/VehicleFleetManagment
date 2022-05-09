@@ -209,10 +209,9 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from M in con.MINISTRies
                            where
-                       M.Ministry_Name == SearchText ||
-                       M.Address == SearchText ||
-                       M.Postal_code == SearchText ||
-                       M.Code_Min == SearchText
+                       M.Ministry_Name.StartsWith(SearchText) ||
+                       M.Address.StartsWith(SearchText) ||
+                       M.Code_Min.StartsWith(SearchText)
 
                            select new
                            {

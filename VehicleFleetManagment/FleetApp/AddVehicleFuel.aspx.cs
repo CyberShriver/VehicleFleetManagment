@@ -91,7 +91,6 @@ namespace VehicleFleetManagment.FleetApp
                         txtInitQ.Value = "";
                         txtConsumeQ.Value = "";
                         txtUnit.Value = "";
-                        txtTotal.Value = "";
                         txtLiter_100_km.Value = "";
                         txtComment.Value = "";
                         }
@@ -117,7 +116,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtTankCode.Value == "" || txtOdometer.Value == "" || txtInitQ.Value == "" || txtConsumeQ.Value == "" || txtUnit.Value == "" || txtTotal.Value == "" ||
+                if (txtTankCode.Value == "" || txtOdometer.Value == "" || txtInitQ.Value == "" || txtConsumeQ.Value == "" || txtUnit.Value == "" || 
                     txtLiter_100_km.Value == "" || txtComment.Value == "" || DropDown_Ministry.SelectedValue == "-1" || DropDown_Vehicle.SelectedValue == "-1" ||
                     DropDown_ProviderCode.SelectedValue == "-1" || DropDown_TankType.SelectedValue == "-1")
                 {
@@ -177,7 +176,6 @@ namespace VehicleFleetManagment.FleetApp
                 txtInitQ.Value= Ve.Initial_Qty.ToString();
                 txtConsumeQ.Value= Ve.Consumed_Qty.ToString();
                 txtUnit.Value= Ve.United_Price.ToString();
-                txtTotal.Value= Ve.Total_Price.ToString();
                 DropDown_ProviderCode.SelectedValue= Ve.Provider_Code;
                 txtLiter_100_km.Value= Ve.Liter_100_km.ToString();
                 txtComment.Value= Ve.Comment ;

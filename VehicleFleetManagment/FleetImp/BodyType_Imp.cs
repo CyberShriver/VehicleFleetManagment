@@ -90,28 +90,19 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //DELETE CHECK METHOD
-        public int DeleteCheck(GridView gd, CheckBox chk, int id)
+        public int DeleteCheck(int id)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                for (int i = 0; i < gd.Rows.Count; i++)
+                var obj = con.BODY_TYPE.Where(x => x.BODY_ID == id).First();
+
+                if (con.Entry(obj).State == EntityState.Detached)
                 {
-                    CheckBox chkselect = (CheckBox)gd.Rows[i].FindControl("chk");
-                    if (chkselect.Checked == true)
-                    {
-                        id = Convert.ToInt32(gd.Rows[i].Cells[i].Text);
-                        var obj = con.BODY_TYPE.Where(x => x.BODY_ID == id).First();
+                    con.BODY_TYPE.Attach(obj);
 
-                        if (con.Entry(obj).State == EntityState.Detached)
-                        {
-                            con.BODY_TYPE.Attach(obj);
-
-
-                        }
-                        con.BODY_TYPE.Remove(obj);
-                        con.SaveChanges();
-                    }
                 }
+                con.BODY_TYPE.Remove(obj);
+                con.SaveChanges();
                 return msg;
             }
 
@@ -172,8 +163,8 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from B in con.BODY_TYPE
                            where
-                      B.Category == SearchText ||
-                      B.Category_N_.ToString()== SearchText
+                      B.Category.StartsWith(SearchText) ||
+                      B.Category_N_.ToString().StartsWith(SearchText)
 
                            select new
                            {

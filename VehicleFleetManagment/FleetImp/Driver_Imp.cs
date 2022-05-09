@@ -232,10 +232,13 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from D in con.DRIVERs
                            where
-                       D.Full_Name == SearchText ||
-                       D.Driver_Code == SearchText ||
-                       D.CNI == SearchText ||
-                       D.Driver_Type == SearchText
+                       D.Full_Name.StartsWith(SearchText) ||
+                       D.Driver_Code.StartsWith(SearchText) ||
+                       D.DOB.StartsWith(SearchText) ||
+                       D.Personnal_Phone.StartsWith(SearchText) ||
+                       D.Office_Phone.StartsWith(SearchText) ||
+                       D.CNI.StartsWith(SearchText) ||
+                       D.Driver_Type.StartsWith(SearchText)
 
                            select new
                            {

@@ -182,7 +182,11 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MINISTRY_DRIVER
-                           where (M.Min_Driver_RegNumber ).ToString() == SearchText || M.MINISTRY.Ministry_Name == SearchText
+                           where 
+                           (M.Min_Driver_RegNumber ).ToString().StartsWith(SearchText) ||
+                           M.DRIVER.Full_Name.StartsWith(SearchText) ||
+                           M.DRIVER.Full_Name.StartsWith(SearchText) ||
+                           M.MINISTRY.Ministry_Name.StartsWith(SearchText)
                            select new
                            {
                                MIN_DRIVER_ID = M.MIN_DRIVER_ID,

@@ -224,10 +224,12 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from L in con.LICENSEs
                            where
-                       L.License_Code_Mission  == SearchText ||
-                       L.License_Code  == SearchText ||
-                       L.Exp_Date .ToString() == SearchText ||
-                       L.Heavy_Weights .ToString() == SearchText
+                       L.License_Code_Mission.StartsWith(SearchText) ||
+                       L.License_Code.StartsWith(SearchText) ||
+                       L.MINISTRY_DRIVER.DRIVER.Full_Name.StartsWith(SearchText) ||
+                        L.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
+                       L.Exp_Date.StartsWith(SearchText) ||
+                       L.Heavy_Weights.StartsWith(SearchText)
 
                            select new
                            {

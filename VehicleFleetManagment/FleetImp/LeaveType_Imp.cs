@@ -172,8 +172,8 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from L in con.LEAVE_TYPE
                            where
-                      L.Leave_Type_Description == SearchText ||
-                      L.Leave_Number.ToString() == SearchText
+                      L.Leave_Type_Description.StartsWith(SearchText) ||
+                      L.Leave_Number.ToString().StartsWith(SearchText)
 
                            select new
                            {

@@ -44,9 +44,9 @@
                                 <ul class="list-unstyled card-option">
                                     <li><i class="fa fa fa-wrench open-card-option"></i></li>
                                     <li><i class="fa fa-window-maximize full-card"></i></li>
-                                    <li><i class="fa fa-minus minimize-card"></i></li>
-                                    <li></li>
+                                    <%--<li><i class="fa fa-minus minimize-card"></i></li>--%>
                                     <li><a onserverclick="btnReload_click" runat="server" class="reload-card btn-out"><i class="fa fa-refresh"></i></a></li>
+                                    <li><a  runat="server" class="reload-card btn-out"><i class="fa fa-recycle"></i></a></li>
                                     <li><i class="fa fa-trash close-card"></i></li>
                                 </ul>
                             </div>
@@ -57,16 +57,18 @@
                                     <div class="col-md">
                                         <div class="form-material">
                                             <div class="form-group form-primary">
-                                                <input type="text" name="footer-email" class="form-control" id="txt_Search" runat="server" placeholder="search">
+                                                <%--<input type="text" name="footer-email" class="form-control" id="txt_Search" runat="server" placeholder="search">--%>
+                                                <asp:TextBox  name="footer-email" class="form-control"  id="txt_Search" runat="server" placeholder="search" OnTextChanged="txt_Search_TextChanged"></asp:TextBox>
                                                 <span class="form-bar"></span>
                                             </div>
                                         </div>
 
                                     </div>
 
-                                    <div class="col-md">
+                                    <div class="col-md d-inline">
                                         <button class="btn btn-default" runat="server" onserverclick="btn_srch_Click"><i class="fa fa-search m-r-10"></i>search</button>
-                                        <%--<asp:Button ID="DeleteCheck" runat="server" Text="Delete All" class="btn btn-danger" OnClick="DeleteCheck_Click" />--%>
+                                        <%--<button  runat="server"  class="btn btn-danger ml-5" onserverclick="DeleteCheck_Click">Delete All</button>--%>
+                                        <asp:Button runat="server"  class="btn btn-danger ml-5" Text="Delete All" OnClick="DeleteCheck_Click" Visible="false"/>
                                     </div>
                                 </div>
                             </div>
@@ -89,13 +91,13 @@
                                         <Columns>
                                             <asp:TemplateField>
                                                 <HeaderTemplate>
-                                                    <asp:CheckBox ID="checkSelHeader" runat="server" Text="Select All" AutoPostBack="false" />
+                                                    <asp:CheckBox ID="checkSelHeader" runat="server" Text="Select All" AutoPostBack="true" OnCheckedChanged="checkSelHeader_CheckedChanged" />
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
-                                                    <asp:CheckBox ID="checkSel" runat="server" />
+                                                    <asp:CheckBox ID="checkSel" runat="server" OnCheckedChanged="checkSel_CheckedChanged"/>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="#" FooterText="#">
+                                            <asp:TemplateField HeaderText="# N°" FooterText="#">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("BODY_ID") %>'></asp:Label>
                                                 </ItemTemplate>

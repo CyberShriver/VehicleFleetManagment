@@ -188,10 +188,11 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from P in con.PROVIDERs
                            where
-                       P.Full_Name == SearchText ||
-                       P.Provider_Code == SearchText ||
-                       P.Stat == SearchText ||
-                       P.Provider_Type == SearchText
+                       P.Full_Name.StartsWith(SearchText) ||
+                       P.Provider_Code.StartsWith(SearchText) ||
+                       P.Stat.StartsWith(SearchText) ||
+                       P.Phone.StartsWith(SearchText) ||
+                       P.Provider_Type.StartsWith(SearchText)
 
                            select new
                            {

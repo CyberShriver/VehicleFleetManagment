@@ -207,10 +207,12 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from A in con.ASSURANCEs
                            where
-                       A.Insurance_Policy  == SearchText ||
-                       A.Maintenance_Type  == SearchText ||
-                       A.Insurance_Start_Date .ToString() == SearchText ||
-                       A.VEHICLE_ID.ToString() == SearchText
+                       A.Insurance_Policy.StartsWith(SearchText) ||
+                       A.Maintenance_Type.StartsWith(SearchText) ||
+                       A.Insurance_Start_Date.StartsWith(SearchText) ||
+                       A.Insurance_Company.StartsWith(SearchText) ||
+                       A.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
+                       A.VEHICLE.Local_Plate.StartsWith(SearchText) 
 
                            select new
                            {

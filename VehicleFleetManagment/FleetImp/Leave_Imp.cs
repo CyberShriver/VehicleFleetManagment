@@ -214,10 +214,12 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from L in con.LEAVEs
                            where
-                      // L.Approved_By == SearchText ||
-                       L.Leave_Code == SearchText ||
-                       L.Start_Dte.ToString() == SearchText ||
-                       L.Approved_Dte.ToString() == SearchText
+                       L.Leave_Code.StartsWith(SearchText) ||
+                       L.Start_Dte.StartsWith(SearchText) ||
+                       L.Demand_Dte.StartsWith(SearchText) ||
+                       L.MINISTRY_DRIVER.DRIVER.Full_Name.StartsWith(SearchText) ||
+                       L.LEAVE_TYPE.Leave_Type_Description.StartsWith(SearchText) ||
+                       L.Approved_Dte.StartsWith(SearchText)
 
                            select new
                            {

@@ -182,7 +182,10 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MINISTRY_REAL_ESTATE
-                           where (M.Quantity).ToString() == SearchText || M.MINISTRY.Ministry_Name == SearchText                        
+                           where 
+                           (M.Quantity).ToString() == SearchText ||
+                            M.REAL_ESTATE.RealEstate_Name.StartsWith(SearchText) ||
+                            M.MINISTRY.Ministry_Name.StartsWith(SearchText)
                            select new
                            {
                                MIN_REAL_ESTATE_ID = M.MIN_REAL_ESTATE_ID,

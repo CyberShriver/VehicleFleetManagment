@@ -132,13 +132,13 @@
                                                     <asp:Label ID="Label8" runat="server" Text='<%# Eval("Odometer") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Initial Qty" Visible="false">
+                                            <asp:TemplateField HeaderText="Initial Qty" Visible="true">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label9" runat="server" Text='<%# Eval("Initial_Qty") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Consumed Qty" Visible="false">
+                                            <asp:TemplateField HeaderText="Consumed Qty" Visible="true">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label10" runat="server" Text='<%# Eval("Consumed_Qty") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -150,7 +150,7 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Total Price" Visible="false">
+                                            <asp:TemplateField HeaderText="Total Price" Visible="true">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label12" runat="server" Text='<%# Eval("Total_Price") %>'></asp:Label>
                                                 </ItemTemplate>

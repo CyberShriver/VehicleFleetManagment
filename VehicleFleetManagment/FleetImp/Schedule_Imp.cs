@@ -183,9 +183,9 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from S in con.SCHEDULEs
                            where
-                      S.MINISTRY.Ministry_Name == SearchText ||
-                      S.Saved_Date == SearchText ||
-                      S.VEHICLE.Local_Plate == SearchText
+                      S.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
+                      S.Saved_Date.StartsWith(SearchText) ||
+                      S.VEHICLE.Local_Plate.StartsWith(SearchText)
 
                            select new
                            {

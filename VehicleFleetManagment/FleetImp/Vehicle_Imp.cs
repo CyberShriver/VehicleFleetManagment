@@ -230,9 +230,9 @@ namespace VehicleFleetManagment.FleetImp
                            {
                                VEHICLE_ID = V.VEHICLE_ID,
                                Veh_Code = V.Veh_Code,
-                               BODY_ID = V.BODY_ID,
+                               BODY_ID = V.BODY_TYPE.Category,
                                Local_Plate = V.Local_Plate,
-                               MODEL_ID = V.MODEL_ID,
+                               MODEL_ID =( V.MODEL.Model_Name)+" , "+ (V.MODEL.MARK.Mark_Name),
                                MINISTRY_ID = V.MINISTRY.Ministry_Name,
                                NameVeh = V.NameVeh,
                                Color = V.Color,
@@ -372,18 +372,22 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from V in con.VEHICLEs
                            where
-                       V.Local_Plate == SearchText ||
-                       V.Veh_Code == SearchText ||
-                       V.Chassis_Num == SearchText ||
-                       V.NameVeh == SearchText
+                       V.Local_Plate.StartsWith(SearchText) ||
+                       V.Veh_Code.StartsWith(SearchText) ||
+                       V.BODY_TYPE.Category.StartsWith(SearchText) ||
+                       V.Veh_Code.StartsWith(SearchText) ||
+                       V.MODEL.Model_Name.StartsWith(SearchText) ||
+                       V.MODEL.MARK.Mark_Name.StartsWith(SearchText) ||
+                       V.Chassis_Num.StartsWith(SearchText) ||
+                       V.NameVeh.StartsWith(SearchText)
 
                            select new
                            {
                                VEHICLE_ID = V.VEHICLE_ID,
                                Veh_Code = V.Veh_Code,
-                               BODY_ID = V.BODY_ID,
+                               BODY_ID = V.BODY_TYPE.Category,
                                Local_Plate = V.Local_Plate,
-                               MODEL_ID = V.MODEL_ID,
+                               MODEL_ID = (V.MODEL.Model_Name) + "," + (V.MODEL.MARK.Mark_Name),
                                MINISTRY_ID = V.MINISTRY.Ministry_Name,
                                NameVeh = V.NameVeh,
                                Color = V.Color,
@@ -474,8 +478,7 @@ namespace VehicleFleetManagment.FleetImp
                            select new
                            {
                                MODEL_ID = Mo.MODEL_ID,
-                               Model_Name = Mo.Model_Name,
-                               MARK_ID= Mo.MARK_ID,
+                               Model_Name ="Model: " +(Mo.Model_Name)+" ,  Mark: "+ (Mo.MARK.Mark_Name),
                            }
                            ).ToList();
 
@@ -508,7 +511,7 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
-        //BodyType
+        //BodyType 
         public void DisplayBodyType(DropDownList drop)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())

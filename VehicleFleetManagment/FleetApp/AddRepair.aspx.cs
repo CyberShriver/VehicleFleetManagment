@@ -25,6 +25,7 @@ namespace VehicleFleetManagment.FleetApp
                 MsgInit();
                 Ministry();
                 Vehicle();
+                Crash();
                 if (id == null)
                 {
                     btnSave.InnerText = "Save";

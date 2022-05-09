@@ -179,8 +179,8 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from M in con.MODELs
                            where
-                       M.Model_Name== SearchText ||
-                       M.MARK.Mark_Name == SearchText
+                       M.Model_Name.StartsWith(SearchText) ||
+                       M.MARK.Mark_Name.StartsWith(SearchText)
 
                            select new
                            {

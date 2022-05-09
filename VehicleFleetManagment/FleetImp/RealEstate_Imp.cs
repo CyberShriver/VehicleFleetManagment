@@ -171,9 +171,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from R in con.REAL_ESTATE
-                           where
-                      R.RealEstate_Name == SearchText ||
-                      R.Comment.ToString() == SearchText
+                           where R.RealEstate_Name.StartsWith(SearchText)
 
                            select new
                            {

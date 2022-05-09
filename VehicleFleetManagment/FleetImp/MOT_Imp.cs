@@ -191,11 +191,11 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from M in con.MOTs
                            where
-                       M.MOT_Agency_Name == SearchText ||
-                       M.MOT_Number == SearchText ||
-                       M.MINISTRY.Ministry_Name == SearchText ||
-                       M.Visit_Dte.ToString() == SearchText ||
-                       M.VEHICLE.Local_Plate == SearchText
+                       M.MOT_Agency_Name.StartsWith(SearchText) ||
+                       M.MOT_Number.StartsWith(SearchText) ||
+                       M.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
+                       M.Visit_Dte.StartsWith(SearchText) ||
+                       M.VEHICLE.Local_Plate.StartsWith(SearchText)
 
                            select new
                            {

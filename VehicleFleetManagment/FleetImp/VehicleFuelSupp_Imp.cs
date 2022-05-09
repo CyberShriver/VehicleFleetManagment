@@ -220,10 +220,10 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from V in con.VEHICLE_FUEL_SUPPLY
                            where
-                       V.Provider_Code == SearchText ||
-                        V.VEHICLE.Local_Plate == SearchText ||
-                       V.MINISTRY.Ministry_Name == SearchText ||
-                       V.Fuel_Type == SearchText
+                       V.Provider_Code.StartsWith(SearchText) ||
+                        V.VEHICLE.Local_Plate.StartsWith(SearchText) ||
+                       V.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
+                       V.Fuel_Type.StartsWith(SearchText)
 
                            select new
                            {
@@ -253,7 +253,7 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         
-        //DISPLAY METHOD MINISTRY
+        //DISPLAY METHOD MINISTRY IN DROPDOWN
         public void DisplayMinistry(DropDownList drop)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())

@@ -322,10 +322,14 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from C in con.CAR_CRASH
                            where
-                       C.VEHICLE.Local_Plate == SearchText ||
-                       C.Crash_Date == SearchText ||
-                       C.Crash_Time == SearchText ||
-                       C.MINISTRY_DRIVER.DRIVER.Full_Name == SearchText
+                       C.VEHICLE.Local_Plate.StartsWith(SearchText) ||
+                       C.Crash_Date.StartsWith(SearchText) ||
+                       C.Crash_Time.StartsWith(SearchText) ||
+                       C.Responsible.StartsWith(SearchText) ||
+                       C.Crash_Place.StartsWith(SearchText) ||
+                       C.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
+                       C.Report_Dte.StartsWith(SearchText) ||
+                       C.MINISTRY_DRIVER.DRIVER.Full_Name.StartsWith(SearchText)
 
                            select new
                            {

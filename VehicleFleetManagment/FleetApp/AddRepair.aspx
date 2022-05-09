@@ -152,11 +152,7 @@
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Comment</label>
                                             </div>                                     
-                                            <div class="form-group form-default">
-                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateSavedDate">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label ">Saved Date</label>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
