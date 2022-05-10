@@ -44,7 +44,7 @@
                                 <ul class="list-unstyled card-option">
                                     <li><i class="fa fa fa-wrench open-card-option"></i></li>
                                     <li><i class="fa fa-window-maximize full-card"></i></li>
-                                    <%--<li><i class="fa fa-minus minimize-card"></i></li>--%>
+                                    <li><i class="fa fa-minus minimize-card"></i></li>
                                     <li><a onserverclick="btnReload_click" runat="server" class="reload-card btn-out"><i class="fa fa-refresh"></i></a></li>
                                     <li><a  runat="server" class="reload-card btn-out"><i class="fa fa-recycle"></i></a></li>
                                     <li><i class="fa fa-trash close-card"></i></li>
@@ -97,7 +97,7 @@
                                                     <asp:CheckBox ID="checkSel" runat="server" OnCheckedChanged="checkSel_CheckedChanged"/>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="# N°" FooterText="#">
+                                            <asp:TemplateField HeaderText="#" FooterText="#">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("BODY_ID") %>'></asp:Label>
                                                 </ItemTemplate>

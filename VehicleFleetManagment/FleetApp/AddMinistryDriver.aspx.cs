@@ -17,6 +17,7 @@ namespace VehicleFleetManagment.FleetApp
         MinDriver_Interface I = new MinDriver_Imp();
         int msg;
         string id;
+        string codeMin = "Min-1/2022";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -165,7 +166,16 @@ namespace VehicleFleetManagment.FleetApp
         //Add dropDawn Minisrty
         void Ministry()
         {
-            I.DisplayMinistry(DropDown_Ministry);
+            if (codeMin == "All")
+            {
+                DMinistry.Visible = true;
+                I.DisplayMinistryAll(DropDown_Ministry);
+            }
+            else
+            {
+                I.DisplayMinistry(DropDown_Ministry, codeMin);
+                DMinistry.Visible = false;
+            }
         }
 
         //Add dropDawn Vehicle

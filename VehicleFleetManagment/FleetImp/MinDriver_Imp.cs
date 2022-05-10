@@ -125,17 +125,39 @@ namespace VehicleFleetManagment.FleetImp
 
 
         //DISPLAY METHOD
-        public void Display(GridView gd)
+        public void Display(GridView gd, string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MINISTRY_DRIVER
+                var obj = (from M in con.MINISTRY_DRIVER where M.MINISTRY.Code_Min == codeMin
 
                            select new
                            {
                                MIN_DRIVER_ID = M.MIN_DRIVER_ID,
                                DRIVER_ID = M.DRIVER.Full_Name,
                                Min_Driver_RegNumber  = M.Min_Driver_RegNumber ,
+                               MINISTRY_ID = M.MINISTRY.Ministry_Name,
+                               Position_Status = M.Position_Status
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //DISPLAY All METHOD
+        public void DisplayAll(GridView gd)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from M in con.MINISTRY_DRIVER
+                           select new
+                           {
+                               MIN_DRIVER_ID = M.MIN_DRIVER_ID,
+                               DRIVER_ID = M.DRIVER.Full_Name,
+                               Min_Driver_RegNumber = M.Min_Driver_RegNumber,
                                MINISTRY_ID = M.MINISTRY.Ministry_Name,
                                Position_Status = M.Position_Status
                            }
@@ -164,7 +186,20 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //COUNT METHOD
-        public int count()
+        public int count(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var M = (from l in con.MINISTRY_DRIVER where l.MINISTRY.Code_Min == codeMin
+                         select l).Count();
+                n = M;
+            }
+            return n;
+        }
+
+        //COUNT All METHOD
+        public int countAll()
         {
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
@@ -177,15 +212,42 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //REASEARCH METHOD
-        public void Research(GridView gd, string SearchText)
+        public void Research(GridView gd, string codeMin, string SearchText)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MINISTRY_DRIVER
-                           where 
+                           where M.MINISTRY.Code_Min== codeMin &&
                            (M.Min_Driver_RegNumber ).ToString().StartsWith(SearchText) ||
                            M.DRIVER.Full_Name.StartsWith(SearchText) ||
+                           M.DRIVER.Full_Name.StartsWith(SearchText) 
+                           select new
+                           {
+                               MIN_DRIVER_ID = M.MIN_DRIVER_ID,
+                               DRIVER_ID = M.DRIVER.Full_Name,
+                               Min_Driver_RegNumber = M.Min_Driver_RegNumber,
+                               MINISTRY_ID = M.MINISTRY.Ministry_Name,
+                               Position_Status = M.Position_Status
+
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //REASEARCH All METHOD
+        public void ResearchAll(GridView gd,string SearchText)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from M in con.MINISTRY_DRIVER
+                           where
+                           (M.Min_Driver_RegNumber).ToString().StartsWith(SearchText) ||
                            M.DRIVER.Full_Name.StartsWith(SearchText) ||
+                           M.DRIVER.Full_Name.StartsWith(SearchText)||
                            M.MINISTRY.Ministry_Name.StartsWith(SearchText)
                            select new
                            {
@@ -206,7 +268,31 @@ namespace VehicleFleetManagment.FleetImp
 
 
         //DISPLAY METHOD MINISTRY
-        public void DisplayMinistry(DropDownList drop)
+        public void DisplayMinistry(DropDownList drop,string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from M in con.MINISTRies where M.Code_Min== codeMin
+
+                           select new
+                           {
+                               MINISTRY_ID = M.MINISTRY_ID,
+                               Ministry_Name= M.Ministry_Name,
+                               Code_Min = codeMin,
+                               
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "MINISTRY_ID";
+                drop.DataTextField = "Ministry_Name";
+                drop.DataBind();
+            }
+
+        }
+
+        //DISPLAY METHOD All MINISTRY
+        public void DisplayMinistryAll(DropDownList drop)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -216,6 +302,7 @@ namespace VehicleFleetManagment.FleetImp
                            {
                                MINISTRY_ID = M.MINISTRY_ID,
                                Ministry_Name = M.Ministry_Name,
+
                            }
                            ).ToList();
 

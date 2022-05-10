@@ -778,6 +778,8 @@
     <Compile Include="FleetImp\Repair_Interface.cs" />
     <Compile Include="FleetImp\Schedule_Imp.cs" />
     <Compile Include="FleetImp\Schedule_Interface.cs" />
+    <Compile Include="FleetImp\Users_Imp.cs" />
+    <Compile Include="FleetImp\Users_Interface.cs" />
     <Compile Include="FleetImp\VehicleFuelSupp_Imp.cs" />
     <Compile Include="FleetImp\VehicleFuelSupp_Interface.cs" />
     <Compile Include="FleetImp\Vehicle_Imp.cs" />
