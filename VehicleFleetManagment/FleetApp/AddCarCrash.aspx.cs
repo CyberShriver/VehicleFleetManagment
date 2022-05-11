@@ -322,7 +322,7 @@ namespace VehicleFleetManagment.FleetApp
                         {
                             if (file_upd.PostedFile.ContentLength < 104857600)
                             {
-                                    Cr.Crash_Code = CrashCode();
+                                    Cr.Crash_Code = txtCode.Value;
                                     Cr.Damage_Third_Party = DropDown_Damage_thirdParty.SelectedValue;
                                     Cr.Damaged_Vehicle = DropDown_vehicle_Damag.SelectedValue;
                                     Cr.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
@@ -390,7 +390,7 @@ namespace VehicleFleetManagment.FleetApp
                     }
                     else
                     {
-                            Cr.Crash_Code = CrashCode();
+                            Cr.Crash_Code = txtCode.Value;
                             Cr.Damage_Third_Party = DropDown_Damage_thirdParty.SelectedValue;
                             Cr.Damaged_Vehicle = DropDown_vehicle_Damag.SelectedValue;
                             Cr.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
@@ -470,10 +470,10 @@ namespace VehicleFleetManagment.FleetApp
                 txtMeileage.Value= Cr.Crash_Mileage.ToString();
                 txtResponible.Value = Cr.Responsible;
                 txtWeather.Value = Cr.Weather;
+                txtCode.Value = Cr.Crash_Code;
                 txtSpeed.Value = Cr.Estimated_Speed.ToString();
                 dateCompensation.Value = Cr.Compensation_Rule_Dte.ToString();
                 txtDamage.Value = Cr.Damage_Description.ToString();
-                // Cr.Crash_Pic = img;
                 DropDown_Employee_injure.SelectedValue = Cr.Injures_Employee;
                 txtReason.Value = Cr.Crash_Reason;
                 dropDown_Employe_Payed.SelectedValue = Cr.Payed_Employee;

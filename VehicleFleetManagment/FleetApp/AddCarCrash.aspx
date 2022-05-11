@@ -173,6 +173,10 @@
                                                 <label class="float-label ">Report Date</label>
                                             </div>
                                             <div class="form-group form-default">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
+                                               
+                                            </div>
+                                            <div class="form-group form-default">
                                                 <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateFinalReport">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label ">Final Report date</label>

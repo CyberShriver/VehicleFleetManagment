@@ -366,7 +366,6 @@
     <Content Include="FleetApp\fleet.Master" />
     <EntityDeploy Include="FleetModel\MinistryModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MinistryModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="FleetModel\MinistryModel.edmx.diagram">
       <DependentUpon>MinistryModel.edmx</DependentUpon>

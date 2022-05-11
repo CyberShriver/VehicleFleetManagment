@@ -119,9 +119,9 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Email">
+                                            <asp:TemplateField HeaderText="User Name">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label10" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
+                                                    <asp:Label ID="Label10" runat="server" Text='<%# Eval("User_Nme") %>'></asp:Label>
                                                 </ItemTemplate>
 
                                             </asp:TemplateField>
@@ -154,6 +154,11 @@
                                             <asp:TemplateField HeaderText="System Email" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label19" runat="server" Text='<%# Eval("System_Email") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                             <asp:TemplateField HeaderText="Logo">
+                                                <ItemTemplate>
+                                                    <asp:Image ID="Image1" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images",Eval("Logo")) %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         

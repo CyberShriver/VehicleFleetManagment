@@ -45,7 +45,7 @@
     </form>--%>
 <body themebg-pattern="theme1">
     <!-- Pre-loader start -->
-    <div class="theme-loader">
+   <%-- <div class="theme-loader">
         <div class="loader-track">
             <div class="preloader-wrapper">
                 <div class="spinner-layer spinner-blue">
@@ -96,7 +96,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
     <!-- Pre-loader end -->
 
     <section class="login-block">
@@ -108,46 +108,59 @@
 
                     <form class="md-float-material form-material">
                         <div class="text-center">
-                            <img src="assets/images/bus-48.png" alt="logo.png"/>
+                            <img src="assets/images/bus-48.png" alt="logo.png" />
                             <span class="text-light font-weight-bold">Vehicle System Managment</span>
                         </div>
                         <div class="auth-box card">
                             <div class="card-block">
+                               
                                 <div class="row m-b-20">
                                     <div class="col-md-12">
                                         <h3 class="text-center">Sign In</h3>
                                     </div>
                                 </div>
-                                <div class="form-group form-primary">
-                                    <input type="text" name="email" class="form-control" required=""/>
-                                    <span class="form-bar"></span>
-                                    <label class="float-label">Your Email Address</label>
-                                </div>
-                                <div class="form-group form-primary">
-                                    <input type="password" name="password" class="form-control" required=""/>
-                                    <span class="form-bar"></span>
-                                    <label class="float-label">Password</label>
-                                </div>
-                                <div class="row m-t-25 text-left">
-                                    <div class="col-12">
-                                        <div class="checkbox-fade fade-in-primary d-">
-                                            <label>
-                                                <input type="checkbox" value=""/>
-                                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                                                <span class="text-inverse">Remember me</span>
-                                            </label>
+                                <div class="form-material">
+                                    <div class="form-group form-primary">
+                                        <input type="text" name="email" class="form-control" required="" id="txtUserName" runat="server" />
+                                        <span class="form-bar"></span>
+                                        <label class="float-label">Your username</label>
+                                    </div>
+                                    <div class="form-group form-primary">
+                                        <input type="password" name="password" class="form-control" required="" id="txtPassWord" runat="server" />
+                                        <span class="form-bar"></span>
+                                        <label class="float-label">Password</label>
+                                    </div>
+                                    <div class="row m-t-25 text-left">
+                                        <div class="col-12">
+                                            <div class="checkbox-fade fade-in-primary d-">
+                                                <label>
+                                                    <input type="checkbox" value="" runat="server" id="CheckRemember" />
+                                                    <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                                    <span class="text-inverse">Remember me</span>
+                                                </label>
+                                            </div>
+                                            <div class="forgot-phone text-right f-right">
+                                                <a href="#" class="text-right f-w-600">Forgot Password?</a>
+                                            </div>
                                         </div>
-                                        <div class="forgot-phone text-right f-right">
-                                            <a href="#" class="text-right f-w-600">Forgot Password?</a>
+                                    </div>
+                                     <div class="col-sm-6 mx-auto">
+                                    <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>Success!</strong>
+                                    </div>
+                                    <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>Wrong username or password</strong>
+                                    </div>
+                                            <asp:Label ID="shuu" runat="server" Text="Hello shugar" Visible="false"></asp:Label>
+                                </div>
+                                    <div class="row m-t-30">
+                                        <div class="col-md-12 form-group form-primary">
+                                            <button class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20" runat="server"  OnServerClick="btn_connexion_ServerClick" >Sign in</button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row m-t-30">
-                                    <div class="col-md-12">
-                                        <a  class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20" href="AddVehicle.aspx">Sign in</a>
-                                    </div>
-                                </div>
-                               
                             </div>
                         </div>
                     </form>
@@ -159,50 +172,6 @@
         </div>
         <!-- end of container-fluid -->
     </section>
-    <!-- Warning Section Starts -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 10]>
-<div class="ie-warning">
-    <h1>Warning!!</h1>
-    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-    <div class="iew-container">
-        <ul class="iew-download">
-            <li>
-                <a href="http://www.google.com/chrome/">
-                    <img src="assets/images/browser/chrome.png" alt="Chrome">
-                    <div>Chrome</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.mozilla.org/en-US/firefox/new/">
-                    <img src="assets/images/browser/firefox.png" alt="Firefox">
-                    <div>Firefox</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://www.opera.com">
-                    <img src="assets/images/browser/opera.png" alt="Opera">
-                    <div>Opera</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.apple.com/safari/">
-                    <img src="assets/images/browser/safari.png" alt="Safari">
-                    <div>Safari</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                    <img src="assets/images/browser/ie.png" alt="">
-                    <div>IE (9 & above)</div>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <p>Sorry for the inconvenience!</p>
-</div>
-<![endif]-->
-    <!-- Warning Section Ends -->
     <!-- Required Jquery -->
     <script type="text/javascript" src="assets/js/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/jquery-ui/jquery-ui.min.js "></script>

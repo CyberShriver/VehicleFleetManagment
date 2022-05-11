@@ -34,7 +34,6 @@ namespace VehicleFleetManagment.FleetModel
         public string Code_Min { get; set; }
         public string Ministry_Name { get; set; }
         public string Password { get; set; }
-        public string Email { get; set; }
         public string Postal_code { get; set; }
         public string Fax { get; set; }
         public string Phone { get; set; }
@@ -42,6 +41,8 @@ namespace VehicleFleetManagment.FleetModel
         public string System_Name { get; set; }
         public string System_Email { get; set; }
         public string System_Title { get; set; }
+        public string User_Nme { get; set; }
+        public string Logo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VEHICLE> VEHICLEs { get; set; }

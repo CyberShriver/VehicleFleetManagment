@@ -156,17 +156,18 @@
             <PropertyRef Name="MINISTRY_ID" />
           </Key>
           <Property Name="MINISTRY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Code_Min" Type="varchar" MaxLength="30" />
-          <Property Name="Ministry_Name" Type="varchar" MaxLength="100" />
-          <Property Name="Password" Type="varchar" MaxLength="30" />
-          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Code_Min" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ministry_Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="User_Nme" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Postal_code" Type="varchar" MaxLength="100" />
           <Property Name="Fax" Type="varchar" MaxLength="100" />
           <Property Name="Phone" Type="varchar" MaxLength="30" />
-          <Property Name="Address" Type="varchar" MaxLength="100" />
-          <Property Name="System_Name" Type="varchar" MaxLength="100" />
-          <Property Name="System_Email" Type="varchar" MaxLength="100" />
-          <Property Name="System_Title" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="System_Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="System_Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="System_Title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Logo" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="MINISTRY_DRIVER">
           <Key>
@@ -1026,17 +1027,16 @@
             <PropertyRef Name="MINISTRY_ID" />
           </Key>
           <Property Name="MINISTRY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code_Min" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Ministry_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Code_Min" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ministry_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Postal_code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Fax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="System_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="System_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="System_Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="System_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="System_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="System_Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="VEHICLEs" Relationship="MINISTRY_DBModel.FK_VEHICLE_IDMinistry" FromRole="MINISTRY" ToRole="VEHICLE" />
           <NavigationProperty Name="VEHICLE_FUEL_SUPPLY" Relationship="MINISTRY_DBModel.FK_VEHICLEfuel_IDMinistry" FromRole="MINISTRY" ToRole="VEHICLE_FUEL_SUPPLY" />
           <NavigationProperty Name="MINISTRY_DRIVER" Relationship="MINISTRY_DBModel.FK_MINISTRY_DRIVER_IDMinistry" FromRole="MINISTRY" ToRole="MINISTRY_DRIVER" />
@@ -1048,6 +1048,8 @@
           <NavigationProperty Name="CAR_CRASH" Relationship="MINISTRY_DBModel.FK_CAR_CRASH_IDMinistry" FromRole="MINISTRY" ToRole="CAR_CRASH" />
           <NavigationProperty Name="LICENSEs" Relationship="MINISTRY_DBModel.FK_LICENSE_IDMinistry" FromRole="MINISTRY" ToRole="LICENSE" />
           <NavigationProperty Name="REPAIRs" Relationship="MINISTRY_DBModel.FK_REPAIR_IDMinistry" FromRole="MINISTRY" ToRole="REPAIR" />
+          <Property Name="User_Nme" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Logo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="VEHICLE">
           <Key>
@@ -1731,6 +1733,8 @@
           <EntitySetMapping Name="MINISTRies">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.MINISTRY">
               <MappingFragment StoreEntitySet="MINISTRY">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="User_Nme" ColumnName="User_Nme" />
                 <ScalarProperty Name="System_Title" ColumnName="System_Title" />
                 <ScalarProperty Name="System_Email" ColumnName="System_Email" />
                 <ScalarProperty Name="System_Name" ColumnName="System_Name" />
@@ -1738,7 +1742,6 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="Postal_code" ColumnName="Postal_code" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Ministry_Name" ColumnName="Ministry_Name" />
                 <ScalarProperty Name="Code_Min" ColumnName="Code_Min" />

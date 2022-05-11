@@ -11,7 +11,6 @@ namespace VehicleFleetManagment.FleetClass
         public string Code_Min { get; set; }
         public string Ministry_Name { get; set; }
         public string Password { get; set; }
-        public string Email { get; set; }
         public string Postal_code { get; set; }
         public string Fax { get; set; }
         public string Phone { get; set; }
@@ -19,6 +18,8 @@ namespace VehicleFleetManagment.FleetClass
         public string System_Name { get; set; }
         public string System_Email { get; set; }
         public string System_Title { get; set; }
+        public string User_Nme { get; set; }
+        public string Logo { get; set; }
 
     }
 }

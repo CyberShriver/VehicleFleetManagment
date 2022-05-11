@@ -79,11 +79,7 @@
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Address</label>
                                             </div>
-                                            <div class="form-group form-default">
-                                                <input type="email" name="footer-email" class="form-control" required="" runat="server" id="txtMail">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Email</label>
-                                            </div>
+                                            
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtFax">
                                                 <span class="form-bar"></span>
@@ -116,6 +112,11 @@
                                                 <label class="float-label">System Name</label>
                                             </div>
                                             <div class="form-group form-default">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtUserName">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">User Name</label>
+                                            </div>
+                                            <div class="form-group form-default">
                                                 <input type="password" name="footer-email" class="form-control" required="" runat="server" id="txtPassword">
                                                 <i class="far fa-eye" id="togglePassword"  style="margin-left: -30px; cursor: pointer;"></i>                                             
                                                 <span class="form-bar"></span>
@@ -130,6 +131,11 @@
                                                 <input type="email" name="footer-email" class="form-control" required="" runat="server" id="txtSysMaile">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">System Email</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required=""  autocomplete="off" class="form-control text-right" runat="server" />
+                                                <span class="form-bar"></span>
+                                                <label class="float-label ">Pic:.ico,.png,.jpg</label>
                                             </div>
                                         </div>
                                         

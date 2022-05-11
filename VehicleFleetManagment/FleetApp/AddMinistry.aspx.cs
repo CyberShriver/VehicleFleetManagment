@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VehicleFleetManagment.FleetClass;
 using VehicleFleetManagment.FleetImp;
+using System.IO;
 
 namespace VehicleFleetManagment.FleetApp
 {
@@ -58,14 +59,79 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtName.Value == "" || txtAddress.Value == "" || txtTel.Value == "" || txtMail.Value == "" || txtPassword.Value == "" || txtSysTitle.Value == "" ||
-                    txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == ""  || txtSysMaile.Value == "" )
+                if (txtName.Value == "" || txtAddress.Value == "" || txtTel.Value == "" || txtUserName.Value == "" || txtPassword.Value == "" || txtSysTitle.Value == "" ||
+                    txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || txtSysMaile.Value == "")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
                     FailMsg.Visible = false;
                 }
-               
+                else
+                {
+                    if (file_upd.HasFile)
+                    {
+                        file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images") + Path.GetFileName(file_upd.FileName));
+                        string img = Path.GetFileName(file_upd.FileName);
+                        FileInfo ext = new FileInfo(img);
+                        if (ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg")
+                        {
+                            if (file_upd.PostedFile.ContentLength < 104857600)
+                            {
+                                Min.Code_Min = MinistryCode();
+                                Min.Ministry_Name = txtName.Value;
+                                Min.Address = txtAddress.Value;
+                                Min.Phone = txtTel.Value;
+                                Min.Fax = txtFax.Value;
+                                Min.System_Name = txtSysName.Value;
+                                Min.System_Title = txtSysTitle.Value;
+                                Min.Postal_code = txtPostal.Value;
+                                Min.User_Nme = txtUserName.Value;
+                                Min.System_Email = txtSysMaile.Value;
+                                Min.Password = txtPassword.Value;
+                                Min.Logo = img;
+
+                                msg = I.Add(Min);
+                                if (msg > 0)
+                                {
+                                    I.Add(Min);
+                                    FillMsg.Visible = false;
+                                    FailMsg.Visible = false;
+                                    SuccessMsg.Visible = true;
+
+                                    txtPostal.Value = "";
+                                    txtTel.Value = "";
+                                    txtSysTitle.Value = "";
+                                    txtSysName.Value = "";
+                                    txtPassword.Value = "";
+                                    txtName.Value = "";
+                                    txtTel.Value = "";
+                                    txtAddress.Value = "";
+                                    txtUserName.Value = "";
+                                    txtSysName.Value = "";
+
+                                }
+                                else
+                                {
+                                    SuccessMsg.Visible = false;
+                                    FillMsg.Visible = false;
+                                    FailMsg.Visible = true;
+
+                                }
+                            }
+                            else
+                            {
+                                SuccessMsg.Visible = false;
+                                FillMsg.Visible = false;
+                                FailMsg.Visible = true;
+                            }
+                        }
+                        else
+                        {
+                            SuccessMsg.Visible = false;
+                            FillMsg.Visible = false;
+                            FailMsg.Visible = true;
+                        }
+                    }
                     else
                     {
                         Min.Code_Min = MinistryCode();
@@ -76,10 +142,11 @@ namespace VehicleFleetManagment.FleetApp
                         Min.System_Name = txtSysName.Value;
                         Min.System_Title = txtSysTitle.Value;
                         Min.Postal_code = txtPostal.Value;
-                        Min.Email = txtMail.Value;
+                        Min.User_Nme = txtUserName.Value;
                         Min.System_Email = txtSysMaile.Value;
                         Min.Password = txtPassword.Value;
-          
+                        Min.Logo = "No Logo";
+
                         msg = I.Add(Min);
                         if (msg > 0)
                         {
@@ -88,18 +155,17 @@ namespace VehicleFleetManagment.FleetApp
                             FailMsg.Visible = false;
                             SuccessMsg.Visible = true;
 
-                        txtPostal.Value = "";
-                        txtTel.Value = "";
-                        txtSysTitle.Value = "";
-                        txtSysName.Value = "";
-                        txtPassword.Value = "";
-                        txtName.Value = "";
-                        txtTel.Value = "";
-                        txtAddress.Value = "";
-                        txtMail.Value = "";
-                        txtSysName.Value = "";
-
-                    }
+                            txtPostal.Value = "";
+                            txtTel.Value = "";
+                            txtSysTitle.Value = "";
+                            txtSysName.Value = "";
+                            txtPassword.Value = "";
+                            txtName.Value = "";
+                            txtTel.Value = "";
+                            txtAddress.Value = "";
+                            txtUserName.Value = "";
+                            txtSysName.Value = "";
+                        }
                         else
                         {
                             SuccessMsg.Visible = false;
@@ -108,8 +174,9 @@ namespace VehicleFleetManagment.FleetApp
 
                         }
                     }
-                
+                }
             }
+           
             catch (SqlException e)
             {
                 SuccessMsg.Visible = false;
@@ -124,40 +191,91 @@ namespace VehicleFleetManagment.FleetApp
 
             try
             {
-                if (txtName.Value == "" || txtAddress.Value == "" || txtTel.Value == "" || txtMail.Value == "" || txtPassword.Value == "" || txtSysTitle.Value == "" ||
-                   txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || txtSysMaile.Value == "")
+                if (txtName.Value == "" || txtAddress.Value == "" || txtTel.Value == "" || txtUserName.Value == "" || txtPassword.Value == "" || txtSysTitle.Value == "" ||
+                  txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || txtSysMaile.Value == "")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
                     FailMsg.Visible = false;
                 }
-
                 else
                 {
-                   // Min.Code_Min = txtCode.Value;
-                    Min.Ministry_Name = txtName.Value;
-                    Min.Address = txtAddress.Value;
-                    Min.Phone = txtTel.Value;
-                    Min.Fax = txtFax.Value;
-                    Min.System_Name = txtSysName.Value;
-                    Min.System_Title = txtSysTitle.Value;
-                    Min.Postal_code = txtPostal.Value;
-                    Min.Email = txtMail.Value;
-                    Min.System_Email = txtSysMaile.Value;
-                    Min.Password = txtPassword.Value;
-                    msg = I.Update(Min, Convert.ToInt32(id));
-                    if (msg > 0)
+                    if (file_upd.HasFile)
                     {
-                        Response.Redirect("~/FleetApp/ViewMinistry.aspx");
+                        file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images") + Path.GetFileName(file_upd.FileName));
+                        string img = Path.GetFileName(file_upd.FileName);
+                        FileInfo ext = new FileInfo(img);
+                        if (ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg")
+                        {
+                            if (file_upd.PostedFile.ContentLength < 104857600)
+                            {
+                                Min.Code_Min = txtCode.Value;
+                                Min.Ministry_Name = txtName.Value;
+                                Min.Address = txtAddress.Value;
+                                Min.Phone = txtTel.Value;
+                                Min.Fax = txtFax.Value;
+                                Min.System_Name = txtSysName.Value;
+                                Min.System_Title = txtSysTitle.Value;
+                                Min.Postal_code = txtPostal.Value;
+                                Min.User_Nme = txtUserName.Value;
+                                Min.System_Email = txtSysMaile.Value;
+                                Min.Password = txtPassword.Value;
+                                Min.Logo = img;
+
+                                msg = I.Update(Min, Convert.ToInt32(id));
+                                if (msg > 0)
+                                {
+                                    Response.Redirect("~/FleetApp/ViewMinistry.aspx");
+                                }
+                                else
+                                {
+                                    SuccessMsg.Visible = false;
+                                    FillMsg.Visible = false;
+                                    FailMsg.Visible = true;
+
+                                }
+                            }
+                            else
+                            {
+                                SuccessMsg.Visible = false;
+                                FillMsg.Visible = false;
+                                FailMsg.Visible = true;
+                            }
+                        }
+                        else
+                        {
+                            SuccessMsg.Visible = false;
+                            FillMsg.Visible = false;
+                            FailMsg.Visible = true;
+                        }
                     }
                     else
                     {
-                        SuccessMsg.Visible = false;
-                        FillMsg.Visible = false;
-                        FailMsg.Visible = true;
+                        Min.Code_Min = txtCode.Value;
+                        Min.Ministry_Name = txtName.Value;
+                        Min.Address = txtAddress.Value;
+                        Min.Phone = txtTel.Value;
+                        Min.Fax = txtFax.Value;
+                        Min.System_Name = txtSysName.Value;
+                        Min.System_Title = txtSysTitle.Value;
+                        Min.Postal_code = txtPostal.Value;
+                        Min.User_Nme = txtUserName.Value;
+                        Min.System_Email = txtSysMaile.Value;
+                        Min.Password = txtPassword.Value;
+                        Min.Logo = "No logo";
+                        msg = I.Update(Min, Convert.ToInt32(id));
+                        if (msg > 0)
+                        {
+                            Response.Redirect("~/FleetApp/ViewMinistry.aspx");
+                        }
+                        else
+                        {
+                            SuccessMsg.Visible = false;
+                            FillMsg.Visible = false;
+                            FailMsg.Visible = true;
 
+                        }
                     }
-
                 }
             }
             catch (SqlException e)
@@ -182,7 +300,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtSysName.Value = Min.System_Name;
                 txtSysTitle.Value= Min.System_Title;
                 txtPostal.Value = Min.Postal_code;
-                txtMail.Value = Min.Email;
+                txtUserName.Value = Min.User_Nme;
                 txtPassword.Value = Min.Password;
                 txtSysMaile.Value = Min.System_Email;
                
