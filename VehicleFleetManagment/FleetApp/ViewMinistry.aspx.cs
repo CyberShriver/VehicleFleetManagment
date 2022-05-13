@@ -13,7 +13,6 @@ namespace VehicleFleetManagment.FleetApp
     {
         Ministry_Class Min = new Ministry_Class();
         Ministry_Interface I = new Ministry_Imp();
-        private int msg;
 
         protected void Page_Load(object sender, EventArgs e)
         {
