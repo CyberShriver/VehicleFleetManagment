@@ -11,79 +11,79 @@ namespace VehicleFleetManagment.FleetApp
 {
 
 
-    public partial class fleet
+    public partial class Profile
     {
 
         /// <summary>
-        /// head control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Label txtName;
 
         /// <summary>
-        /// LogoPic control.
+        /// txtTel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image LogoPic;
+        protected global::System.Web.UI.WebControls.Label txtTel;
 
         /// <summary>
-        /// HeaderProfile control.
+        /// txtAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image HeaderProfile;
+        protected global::System.Web.UI.WebControls.Label txtAddress;
 
         /// <summary>
-        /// txtProfileName control.
+        /// txtFax control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtProfileName;
+        protected global::System.Web.UI.WebControls.Label txtFax;
 
         /// <summary>
-        /// SideProfile control.
+        /// txtPostal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image SideProfile;
+        protected global::System.Web.UI.WebControls.Label txtPostal;
 
         /// <summary>
-        /// txtSideProfile control.
+        /// txtCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtSideProfile;
+        protected global::System.Web.UI.WebControls.Label txtCode;
 
         /// <summary>
-        /// form1 control.
+        /// txtUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label txtUserName;
 
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// Image1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Image Image1;
     }
 }

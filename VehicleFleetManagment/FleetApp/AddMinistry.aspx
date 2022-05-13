@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FleetApp/fleet.Master" AutoEventWireup="true" CodeBehind="AddMinistry.aspx.cs" Inherits="VehicleFleetManagment.FleetApp.AddMinistry" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Page-header start -->
@@ -36,19 +35,19 @@
                 <div class="page-body">
                     <!--Start Main Card -->
                     <div class="col-sm-6 mx-auto">
-                            <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Success!</strong>
-                            </div>
-                            <div class="alert alert-info alert-dismissible fade show" runat="server" id="FillMsg">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Please complete all fields!</strong>
-                            </div>
-                            <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Operation Failed!</strong>
-                            </div>
+                        <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Success!</strong>
                         </div>
+                        <div class="alert alert-info alert-dismissible fade show" runat="server" id="FillMsg">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Please complete all fields!</strong>
+                        </div>
+                        <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Operation Failed!</strong>
+                        </div>
+                    </div>
                     <div class="card">
                         <div class="card-header">
                             <h5>Ministry</h5>
@@ -61,8 +60,7 @@
                                         <h5>General information</h5>
                                     </div>
                                     <div class="card-block">
-                                        <form>
-
+                                        <div class="form-material">
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtName">
                                                 <span class="form-bar"></span>
@@ -79,22 +77,26 @@
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Address</label>
                                             </div>
-                                            
+
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtFax">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Fax</label>
-                                            </div>  
+                                            </div>
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtPostal">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Postal Code</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
-                                               
+                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
+                                                <span class="form-bar"></span>
+                                                <label class="float-label ">Picture:.ico,.png,.jpg</label>
                                             </div>
-                                        </form>
+                                            <div class="form-group form-default">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +120,7 @@
                                             </div>
                                             <div class="form-group form-default">
                                                 <input type="password" name="footer-email" class="form-control" required="" runat="server" id="txtPassword">
-                                                <i class="far fa-eye" id="togglePassword"  style="margin-left: -30px; cursor: pointer;"></i>                                             
+                                                <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Password</label>
                                             </div>
@@ -133,12 +135,22 @@
                                                 <label class="float-label">System Email</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required=""  autocomplete="off" class="form-control text-right" runat="server" />
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtSlogan">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label ">Pic:.ico,.png,.jpg</label>
+                                                <label class="float-label">Slogan</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTheme">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Theme</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <asp:FileUpload ID="file_updLogo" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
+                                                <span class="form-bar"></span>
+                                                <label class="float-label ">Logo:.ico,.png,.jpg</label>
                                             </div>
                                         </div>
-                                        
+
 
                                     </div>
                                 </div>
@@ -148,10 +160,10 @@
                         <div class="card-footer">
                             <div class="float-right">
                                 <div class="float-right">
-                                <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
-                                <button type="reset" class="btn btn-danger ml-5">Cancel</button>
-                                <a class="btn btn-info ml-5" href="ViewMinistry.aspx">List</a>
-                            </div>
+                                    <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
+                                    <button type="reset" class="btn btn-danger ml-5">Cancel</button>
+                                    <a class="btn btn-info ml-5" href="ViewMinistry.aspx">List</a>
+                                </div>
                             </div>
                         </div>
                     </div>

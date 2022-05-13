@@ -31,6 +31,9 @@ namespace VehicleFleetManagment.FleetImp
         //Provide Method
         void provide(Ministry_Class Min, int id);
 
+        //Profile Methode
+        void Profile(Ministry_Class Min, string codeMin);
+
         //count
         int count();
 

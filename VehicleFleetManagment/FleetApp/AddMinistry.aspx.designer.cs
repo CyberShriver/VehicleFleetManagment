@@ -87,6 +87,15 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtPostal;
 
         /// <summary>
+        /// file_upd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload file_upd;
+
+        /// <summary>
         /// txtCode control.
         /// </summary>
         /// <remarks>
@@ -141,13 +150,31 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtSysMaile;
 
         /// <summary>
-        /// file_upd control.
+        /// txtSlogan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload file_upd;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtSlogan;
+
+        /// <summary>
+        /// txtTheme control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTheme;
+
+        /// <summary>
+        /// file_updLogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload file_updLogo;
 
         /// <summary>
         /// btnSave control.

@@ -20,6 +20,9 @@ namespace VehicleFleetManagment.FleetClass
         public string System_Title { get; set; }
         public string User_Nme { get; set; }
         public string Logo { get; set; }
+        public string Picture { get; set; }
+        public string Slogan { get; set; }
+        public string Theme { get; set; }
 
     }
 }

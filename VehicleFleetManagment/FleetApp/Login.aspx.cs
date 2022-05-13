@@ -16,8 +16,8 @@ namespace VehicleFleetManagment.FleetApp
         Ministry_Interface I = new Ministry_Imp();
         private int msg;
 
-        HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
         HttpCookie Code_Min = new HttpCookie("Code_Min");
+        HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
         HttpCookie Phone = new HttpCookie("Phone");
         HttpCookie Ministry_Name = new HttpCookie("Ministry_Name");
         HttpCookie Address = new HttpCookie("Address");
@@ -29,6 +29,9 @@ namespace VehicleFleetManagment.FleetApp
         HttpCookie System_Email = new HttpCookie("System_Email");
         HttpCookie Password = new HttpCookie("Password");
         HttpCookie Logo = new HttpCookie("Logo");
+        HttpCookie Picture = new HttpCookie("Picture");
+        HttpCookie Slogan = new HttpCookie("Slogan");
+        HttpCookie Theme = new HttpCookie("Theme");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -79,6 +82,47 @@ namespace VehicleFleetManagment.FleetApp
                     Code_Min.Value = Min.Code_Min.ToString().Trim();
                     Code_Min.Expires.Add(new TimeSpan(1, 0, 0));
                     Response.Cookies.Add(Code_Min);
+
+                    Ministry_Name.Value = Min.Ministry_Name.ToString().Trim();
+                    Ministry_Name.Expires.Add(new TimeSpan(1, 0, 0));
+                    Response.Cookies.Add(Ministry_Name);
+
+                    System_Name.Value = Min.System_Name.ToString().Trim();
+                    System_Name.Expires.Add(new TimeSpan(1, 0, 0));
+                    Response.Cookies.Add(System_Name);
+
+                    System_Title.Value = Min.System_Title.ToString().Trim();
+                    System_Title.Expires.Add(new TimeSpan(1, 0, 0));
+                    Response.Cookies.Add(System_Title);
+
+                    Logo.Value = Min.Logo.ToString().Trim();
+                    Logo.Expires.Add(new TimeSpan(1, 0, 0));
+                    Response.Cookies.Add(Logo);
+
+                    User_Nme.Value = Min.User_Nme.ToString().Trim();
+                    User_Nme.Expires.Add(new TimeSpan(1, 0, 0));
+                    Response.Cookies.Add(User_Nme);
+
+                    MINISTRY_ID.Value = Min.MINISTRY_ID.ToString().Trim();
+                    MINISTRY_ID.Expires.Add(new TimeSpan(1, 0, 0));
+                    Response.Cookies.Add(MINISTRY_ID);
+
+                    System_Email.Value = Min.System_Email.ToString().Trim();
+                    System_Email.Expires.Add(new TimeSpan(1, 0, 0));
+                    Response.Cookies.Add(System_Email);
+
+                    Picture.Value = Min.Picture.ToString().Trim();
+                    Picture.Expires.Add(new TimeSpan(1, 0, 0));
+                    Response.Cookies.Add(Picture);
+
+                    Slogan.Value = Min.Slogan.ToString().Trim();
+                    Slogan.Expires.Add(new TimeSpan(1, 0, 0));
+                    Response.Cookies.Add(Slogan);
+
+                    Theme.Value = Min.Theme.ToString().Trim();
+                    Theme.Expires.Add(new TimeSpan(1, 0, 0));
+                    Response.Cookies.Add(Theme);
+
                     if (Code_Min.Value != null)
                     {
                     Response.Redirect("~/FleetApp/ViewMinistryDriver.aspx");

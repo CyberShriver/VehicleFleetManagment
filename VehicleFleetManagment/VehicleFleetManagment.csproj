@@ -284,6 +284,7 @@
     <Content Include="FleetApp\assets\pages\widget\excanvas.js" />
     <Content Include="FleetApp\Home.aspx" />
     <Content Include="FleetApp\Login.aspx" />
+    <Content Include="FleetApp\Profile.aspx" />
     <Content Include="FleetApp\ViewAssurance.aspx" />
     <Content Include="FleetApp\ViewBody.aspx" />
     <Content Include="FleetApp\ViewCarCrash.aspx" />
@@ -366,6 +367,7 @@
     <Content Include="FleetApp\fleet.Master" />
     <EntityDeploy Include="FleetModel\MinistryModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MinistryModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="FleetModel\MinistryModel.edmx.diagram">
       <DependentUpon>MinistryModel.edmx</DependentUpon>
@@ -590,6 +592,13 @@
     </Compile>
     <Compile Include="FleetApp\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="FleetApp\ViewAssurance.aspx.cs">
       <DependentUpon>ViewAssurance.aspx</DependentUpon>
@@ -821,6 +830,11 @@
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="FleetModel\MinistryModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MinistryModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetModel\MinistryModel1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MinistryModel.edmx</DependentUpon>

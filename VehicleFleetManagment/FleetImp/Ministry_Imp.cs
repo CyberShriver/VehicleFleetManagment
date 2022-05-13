@@ -32,6 +32,9 @@ namespace VehicleFleetManagment.FleetImp
                 M.System_Email = Min.System_Email;
                 M.Password = Min.Password;
                 M.Logo = Min.Logo;
+                M.Slogan = Min.Slogan;
+                M.Theme = Min.Theme;
+                M.Picture = Min.Picture;
                 
 
                 con.MINISTRies.Add(M);
@@ -73,6 +76,9 @@ namespace VehicleFleetManagment.FleetImp
                     M.System_Email = Min.System_Email;
                     M.Password = Min.Password;
                     M.Logo = Min.Logo;
+                    M.Picture = Min.Picture;
+                    M.Theme = Min.Theme;
+                    M.Slogan = Min.Slogan;
 
                     if (con.SaveChanges() > 0)
                     {
@@ -112,6 +118,9 @@ namespace VehicleFleetManagment.FleetImp
                     Min.System_Email = M.System_Email;
                     Min.Password = M.Password;
                     Min.Logo = M.Logo;
+                    Min.Slogan = M.Slogan;
+                    Min.Theme = M.Theme;
+                    Min.Picture = M.Picture;
 
                     return msg = 1;
                 }
@@ -189,7 +198,10 @@ namespace VehicleFleetManagment.FleetImp
                                System_Title = M.System_Title,
                                System_Email = M.System_Email,
                                Password = M.Password,
-                               Logo = M.Logo
+                               Logo = M.Logo,
+                               Picture = M.Picture,
+                               Slogan = M.Slogan,
+                               Theme = M.Theme
             }
                            ).ToList();
 
@@ -218,6 +230,36 @@ namespace VehicleFleetManagment.FleetImp
                 Min.System_Email = M.System_Email;
                 Min.Password = M.Password;
                 Min.Logo = M.Logo;
+                Min.Theme = M.Theme;
+                Min.Picture = M.Picture;
+                Min.Slogan = M.Slogan;
+
+            }
+        }
+
+        //Profile METHOD
+        public void Profile(Ministry_Class Min, string codeMin )
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                M = con.MINISTRies.Where(x => x.Code_Min == codeMin).FirstOrDefault();
+
+                Min.Code_Min = M.Code_Min;
+                Min.Ministry_Name = M.Ministry_Name;
+                Min.Address = M.Address;
+                Min.Phone = M.Phone;
+                Min.Postal_code = M.Postal_code;
+                Min.User_Nme = M.User_Nme;
+                Min.Fax = M.Fax;
+                Min.System_Name = M.System_Name;
+                Min.System_Title = M.System_Title;
+                Min.System_Email = M.System_Email;
+                Min.Password = M.Password;
+                Min.Logo = M.Logo;
+                Min.Picture = M.Picture;
+                Min.Slogan = M.Slogan;
+                Min.Theme = M.Theme;
+
 
             }
         }
@@ -260,9 +302,12 @@ namespace VehicleFleetManagment.FleetImp
                                System_Title = M.System_Title,
                                System_Email = M.System_Email,
                                Password = M.Password,
-                               Logo = M.Logo
+                               Logo = M.Logo,
+                               Picture = M.Picture,
+                               Slogan = M.Slogan,
+                               Theme = M.Theme
 
-            }
+                           }
                            ).ToList();
 
                 gd.DataSource = obj;

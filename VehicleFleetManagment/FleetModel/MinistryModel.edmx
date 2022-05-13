@@ -168,6 +168,9 @@
           <Property Name="System_Email" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="System_Title" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Logo" Type="varchar" MaxLength="100" />
+          <Property Name="Picture" Type="varchar" MaxLength="100" />
+          <Property Name="Slogan" Type="varchar" MaxLength="200" />
+          <Property Name="Theme" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="MINISTRY_DRIVER">
           <Key>
@@ -1050,6 +1053,9 @@
           <NavigationProperty Name="REPAIRs" Relationship="MINISTRY_DBModel.FK_REPAIR_IDMinistry" FromRole="MINISTRY" ToRole="REPAIR" />
           <Property Name="User_Nme" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Logo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Slogan" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Theme" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="VEHICLE">
           <Key>
@@ -1733,6 +1739,9 @@
           <EntitySetMapping Name="MINISTRies">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.MINISTRY">
               <MappingFragment StoreEntitySet="MINISTRY">
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+                <ScalarProperty Name="Slogan" ColumnName="Slogan" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
                 <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="User_Nme" ColumnName="User_Nme" />
                 <ScalarProperty Name="System_Title" ColumnName="System_Title" />

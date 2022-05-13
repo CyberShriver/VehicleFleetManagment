@@ -43,6 +43,9 @@ namespace VehicleFleetManagment.FleetModel
         public string System_Title { get; set; }
         public string User_Nme { get; set; }
         public string Logo { get; set; }
+        public string Picture { get; set; }
+        public string Slogan { get; set; }
+        public string Theme { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VEHICLE> VEHICLEs { get; set; }

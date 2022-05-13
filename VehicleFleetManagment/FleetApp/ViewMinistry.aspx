@@ -162,9 +162,19 @@
                                                     <asp:Label ID="Label19" runat="server" Text='<%# Eval("System_Email") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Slogan" Visible="true">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label197" runat="server" Text='<%# Eval("Slogan") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Logo">
                                                 <ItemTemplate>
                                                     <asp:Image ID="Image1" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images",Eval("Logo")) %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Picture">
+                                                <ItemTemplate>
+                                                    <asp:Image ID="Image2" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images",Eval("Picture")) %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

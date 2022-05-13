@@ -15,6 +15,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="description" content="Mega Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+    <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+    <meta name="author" content="codedthemes" />
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <!-- Google font-->
@@ -42,7 +46,7 @@
     </asp:ContentPlaceHolder>
 </head>
 
-<body>
+<body themebg-pattern="theme4">
     <!-- Pre-loader start -->
     <%--<div class="theme-loader">
         <div class="loader-track">
@@ -120,7 +124,8 @@
                             </div>
                         </div>--%>
                         <a href="Home.aspx">
-                            <img class="img-fluid" src="assets/images/bus-48.png" alt="System logo" />
+                            <%--<img class="img-fluid" src="assets/images/bus-48.png" alt="System logo" />--%>
+                            <asp:Image ID="LogoPic" class="img-fluid" runat="server" AlternateText="System logo"/>
                         </a>
                         <a class="mobile-options waves-effect waves-light">
                             <i class="ti-more"></i>
@@ -192,8 +197,9 @@
                             </li>
                             <li class="user-profile header-notification">
                                 <a href="#!" class="waves-effect waves-light">
-                                    <img src="assets/images/admin.jpg" class="img-radius" alt="User-Profile-Image">
-                                    <span>Patrick Shriver</span>
+                                    <%--<img src="assets/images/admin.jpg" class="img-radius" alt="User-Profile-Image">--%>
+                                    <asp:Image ID="HeaderProfile" class="img-radius" runat="server" AlternateText="User-Profile-Image"/>
+                                    <asp:Label ID="txtProfileName" runat="server" Text="" ></asp:Label>
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
@@ -203,7 +209,7 @@
                                         </a>
                                     </li>
                                     <li class="waves-effect waves-light">
-                                        <a href="user-profile.html">
+                                        <a href="Profile.aspx">
                                             <i class="ti-user"></i>Profile
                                         </a>
                                     </li>
@@ -241,16 +247,18 @@
                         <!-- Start Admin  -->
                         <div class="">
                             <div class="main-menu-header">
-                                <img class="img-80 img-radius" src="assets/images/admin.jpg" alt="User-Profile-Image">
+                                <%--<img class="img-80 img-radius" src="assets/images/admin.jpg" alt="User-Profile-Image">--%>
+                                <asp:Image ID="SideProfile" class="img-80 img-radius" runat="server" AlternateText="User-Profile-Image"/>
                                 <div class="user-details">
-                                    <span id="more-details">Patrick Shriver<i class="fa fa-caret-down"></i></span>
+                                    <asp:Label ID="txtSideProfile" runat="server" Text="" ></asp:Label>
+                                    <span id="more-details"><i class="fa fa-caret-down"></i></span>
                                 </div>
                             </div>
                             <!--start Profile Admin  -->
                             <div class="main-menu-content">
                                 <ul>
                                     <li class="more-details">
-                                        <a href="Login.aspx"><i class="ti-user"></i>View Profile</a>
+                                        <a href="Profile.aspx"><i class="ti-user"></i>View Profile</a>
                                         <a href="#!"><i class="ti-settings"></i>Settings</a>
                                         <a href="#" runat="server" onserverclick="SideLogout_ServerClick"><i class="ti-layout-sidebar-left"></i>Logout</a>
                                     </li>

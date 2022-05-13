@@ -60,7 +60,7 @@ namespace VehicleFleetManagment.FleetApp
             try
             {
                 if (txtName.Value == "" || txtAddress.Value == "" || txtTel.Value == "" || txtUserName.Value == "" || txtPassword.Value == "" || txtSysTitle.Value == "" ||
-                    txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || txtSysMaile.Value == "")
+                    txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || txtSysMaile.Value == "" || txtTheme.Value=="" || txtSlogan.Value=="")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -68,14 +68,16 @@ namespace VehicleFleetManagment.FleetApp
                 }
                 else
                 {
-                    if (file_upd.HasFile)
+                    if (file_upd.HasFile || file_updLogo.HasFile)
                     {
                         file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images") + Path.GetFileName(file_upd.FileName));
+                        file_updLogo.SaveAs(Server.MapPath("~/FleetApp/assets/images") + Path.GetFileName(file_updLogo.FileName));
                         string img = Path.GetFileName(file_upd.FileName);
+                        string Imglogo = Path.GetFileName(file_updLogo.FileName);
                         FileInfo ext = new FileInfo(img);
                         if (ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg")
                         {
-                            if (file_upd.PostedFile.ContentLength < 104857600)
+                            if (file_upd.PostedFile.ContentLength < 104857600 || file_updLogo.PostedFile.ContentLength < 104857600)
                             {
                                 Min.Code_Min = MinistryCode();
                                 Min.Ministry_Name = txtName.Value;
@@ -88,7 +90,10 @@ namespace VehicleFleetManagment.FleetApp
                                 Min.User_Nme = txtUserName.Value;
                                 Min.System_Email = txtSysMaile.Value;
                                 Min.Password = txtPassword.Value;
-                                Min.Logo = img;
+                                Min.Picture = img;
+                                Min.Logo = Imglogo;
+                                Min.Theme = txtTheme.Value;
+                                Min.Slogan = txtSlogan.Value;
 
                                 msg = I.Add(Min);
                                 if (msg > 0)
@@ -108,6 +113,8 @@ namespace VehicleFleetManagment.FleetApp
                                     txtAddress.Value = "";
                                     txtUserName.Value = "";
                                     txtSysName.Value = "";
+                                    txtTheme.Value = "";
+                                    txtSlogan.Value = "";
 
                                 }
                                 else
@@ -134,7 +141,7 @@ namespace VehicleFleetManagment.FleetApp
                     }
                     else
                     {
-                        Min.Code_Min = MinistryCode();
+                        Min.Code_Min =MinistryCode();
                         Min.Ministry_Name = txtName.Value;
                         Min.Address = txtAddress.Value;
                         Min.Phone = txtTel.Value;
@@ -145,7 +152,10 @@ namespace VehicleFleetManagment.FleetApp
                         Min.User_Nme = txtUserName.Value;
                         Min.System_Email = txtSysMaile.Value;
                         Min.Password = txtPassword.Value;
-                        Min.Logo = "No Logo";
+                        Min.Picture = "No Picture";
+                        Min.Logo = "No logo";
+                        Min.Theme = txtTheme.Value;
+                        Min.Slogan = txtSlogan.Value;
 
                         msg = I.Add(Min);
                         if (msg > 0)
@@ -165,6 +175,8 @@ namespace VehicleFleetManagment.FleetApp
                             txtAddress.Value = "";
                             txtUserName.Value = "";
                             txtSysName.Value = "";
+                            txtTheme.Value = "";
+                            txtSlogan.Value = "";
                         }
                         else
                         {
@@ -192,7 +204,7 @@ namespace VehicleFleetManagment.FleetApp
             try
             {
                 if (txtName.Value == "" || txtAddress.Value == "" || txtTel.Value == "" || txtUserName.Value == "" || txtPassword.Value == "" || txtSysTitle.Value == "" ||
-                  txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || txtSysMaile.Value == "")
+                  txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || txtSysMaile.Value == "" || txtTheme.Value == "" || txtSlogan.Value == "")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -200,14 +212,16 @@ namespace VehicleFleetManagment.FleetApp
                 }
                 else
                 {
-                    if (file_upd.HasFile)
+                    if (file_upd.HasFile || file_updLogo.HasFile)
                     {
                         file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images") + Path.GetFileName(file_upd.FileName));
+                        file_updLogo.SaveAs(Server.MapPath("~/FleetApp/assets/images") + Path.GetFileName(file_updLogo.FileName));
                         string img = Path.GetFileName(file_upd.FileName);
+                        string Imglogo = Path.GetFileName(file_updLogo.FileName);
                         FileInfo ext = new FileInfo(img);
                         if (ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg")
                         {
-                            if (file_upd.PostedFile.ContentLength < 104857600)
+                            if (file_upd.PostedFile.ContentLength < 104857600 || file_updLogo.PostedFile.ContentLength < 104857600)
                             {
                                 Min.Code_Min = txtCode.Value;
                                 Min.Ministry_Name = txtName.Value;
@@ -220,7 +234,10 @@ namespace VehicleFleetManagment.FleetApp
                                 Min.User_Nme = txtUserName.Value;
                                 Min.System_Email = txtSysMaile.Value;
                                 Min.Password = txtPassword.Value;
-                                Min.Logo = img;
+                                Min.Picture = img;
+                                Min.Logo = Imglogo;
+                                Min.Theme = txtTheme.Value;
+                                Min.Slogan = txtSlogan.Value;
 
                                 msg = I.Update(Min, Convert.ToInt32(id));
                                 if (msg > 0)
@@ -262,7 +279,11 @@ namespace VehicleFleetManagment.FleetApp
                         Min.User_Nme = txtUserName.Value;
                         Min.System_Email = txtSysMaile.Value;
                         Min.Password = txtPassword.Value;
+                        Min.Picture = "No Picture";
                         Min.Logo = "No logo";
+                        Min.Theme = txtTheme.Value;
+                        Min.Slogan = txtSlogan.Value;
+
                         msg = I.Update(Min, Convert.ToInt32(id));
                         if (msg > 0)
                         {
@@ -303,6 +324,8 @@ namespace VehicleFleetManagment.FleetApp
                 txtUserName.Value = Min.User_Nme;
                 txtPassword.Value = Min.Password;
                 txtSysMaile.Value = Min.System_Email;
+                txtSlogan.Value = Min.Slogan;
+                txtTheme.Value = Min.Theme;
                
             }
         }
