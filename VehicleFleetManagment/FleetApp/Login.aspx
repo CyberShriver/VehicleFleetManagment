@@ -106,20 +106,28 @@
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
 
-                    <form class="md-float-material form-material">
+                    <form class="md-float-material form-material" runat="server">
                         <div class="text-center">
                             <img src="assets/images/bus-48.png" alt="logo.png" />
                             <span class="text-light font-weight-bold">Vehicle System Managment</span>
                         </div>
                         <div class="auth-box card">
-                            <div class="card-block">
-                               
+                            <div class="card-block for">
+                               <div class="col-sm-6 mx-auto">
+                                    <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>Success!</strong>
+                                    </div>
+                                    <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>Wrong username or password</strong>
+                                    </div>
+                                </div>
                                 <div class="row m-b-20">
                                     <div class="col-md-12">
                                         <h3 class="text-center">Sign In</h3>
                                     </div>
                                 </div>
-                                <div class="form-material">
                                     <div class="form-group form-primary">
                                         <input type="text" name="email" class="form-control" required="" id="txtUserName" runat="server" />
                                         <span class="form-bar"></span>
@@ -144,29 +152,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                     <div class="col-sm-6 mx-auto">
-                                    <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
-                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>Success!</strong>
-                                    </div>
-                                    <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
-                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>Wrong username or password</strong>
-                                    </div>
-                                            <asp:Label ID="shuu" runat="server" Text="Hello shugar" Visible="false"></asp:Label>
-                                </div>
+                                     
                                     <div class="row m-t-30">
                                         <div class="col-md-12 form-group form-primary">
-                                            <button class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20" runat="server"  OnServerClick="btn_connexion_ServerClick" >Sign in</button>
+                                           <button type="button" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20" runat="server" id="btnconnexion"  onserverclick="btn_connexion_ServerClick" >Sign in</button>                      
                                         </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </form>
                     <!-- end of form -->
                 </div>
-                <!-- end of col-sm-12 -->
+                <!-- end of col-sm-12 -->"
             </div>
             <!-- end of row -->
         </div>

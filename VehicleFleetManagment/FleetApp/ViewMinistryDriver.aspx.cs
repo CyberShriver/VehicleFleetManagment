@@ -19,11 +19,13 @@ namespace VehicleFleetManagment.FleetApp
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie codeMinistrie=Request.Cookies["Code_Min"];
-            if (Request.Cookies["Code_Min"] != null)
+            HttpCookie Code_Min = new HttpCookie("Code_Min");
+
+            if (Request.Cookies["Code_Min"].Value != null)
             {
-                codeMin = Convert.ToString(codeMinistrie.Value);
+                codeMin = Request.Cookies["Code_Min"].Value;
             }
+
             if (!IsPostBack)
             {
                 getDataGDV();

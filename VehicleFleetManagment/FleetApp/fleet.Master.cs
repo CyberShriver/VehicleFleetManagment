@@ -13,5 +13,22 @@ namespace VehicleFleetManagment.FleetApp
         {
 
         }
+
+
+        protected void LogoutLink(object sender, EventArgs args)
+        {
+            HttpCookie Code_Min = new HttpCookie("Code_Min");
+            Code_Min.Expires = DateTime.Now.AddMilliseconds(-10);
+            Response.Cookies.Add(Code_Min);
+            Response.Redirect("~/FleetApp/Login.aspx");
+        }
+
+        protected void SideLogout_ServerClick(object sender, EventArgs e)
+        {
+            HttpCookie Code_Min = new HttpCookie("Code_Min");
+            Code_Min.Expires = DateTime.Now.AddMilliseconds(-10);
+            Response.Cookies.Add(Code_Min);
+            Response.Redirect("~/FleetApp/Login.aspx");
+        }
     }
 }

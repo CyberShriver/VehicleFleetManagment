@@ -129,7 +129,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MINISTRY_DRIVER where M.MINISTRY.Code_Min == codeMin
+                var obj = (from M in con.MINISTRY_DRIVER where M.MINISTRY.Code_Min ==codeMin.Trim()
 
                            select new
                            {

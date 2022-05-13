@@ -112,7 +112,7 @@
                                                     <asp:Label ID="Label3" runat="server" Text='<%# Eval("Ministry_Name") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-              
+
                                             <asp:TemplateField HeaderText="Telephone">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label7" runat="server" Text='<%# Eval("Phone") %>'></asp:Label>
@@ -123,8 +123,14 @@
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label10" runat="server" Text='<%# Eval("User_Nme") %>'></asp:Label>
                                                 </ItemTemplate>
-
                                             </asp:TemplateField>
+
+                                            <asp:TemplateField HeaderText="Password">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label1011" runat="server" Text='<%# Eval("Password") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
                                             <asp:TemplateField HeaderText="Address">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label11" runat="server" Text='<%# Eval("Address") %>'></asp:Label>
@@ -146,7 +152,7 @@
                                                     <asp:Label ID="Label15" runat="server" Text='<%# Eval("System_Name") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                             <asp:TemplateField HeaderText="System Title" Visible="false">
+                                            <asp:TemplateField HeaderText="System Title" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label16" runat="server" Text='<%# Eval("System_Title") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -156,12 +162,12 @@
                                                     <asp:Label ID="Label19" runat="server" Text='<%# Eval("System_Email") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                             <asp:TemplateField HeaderText="Logo">
+                                            <asp:TemplateField HeaderText="Logo">
                                                 <ItemTemplate>
                                                     <asp:Image ID="Image1" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images",Eval("Logo")) %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                        
+
 
                                             <asp:TemplateField HeaderText="Action">
                                                 <ItemTemplate>

@@ -61,7 +61,7 @@
                                         <h5>General information</h5>
                                     </div>
                                     <div class="card-block">
-                                        <div class="form-material">
+                                        <form>
 
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtName">
@@ -94,7 +94,7 @@
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
                                                
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

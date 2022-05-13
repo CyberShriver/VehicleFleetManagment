@@ -98,7 +98,7 @@ namespace VehicleFleetManagment.FleetImp
             {
                 M = con.MINISTRies.Where(x => x.User_Nme == userName && x.Password == password).FirstOrDefault();
 
-                if (Min!= null)
+                if (M!= null)
                 {
                     Min.Code_Min = M.Code_Min;
                     Min.Ministry_Name = M.Ministry_Name;

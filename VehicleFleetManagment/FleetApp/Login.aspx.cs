@@ -35,7 +35,7 @@ namespace VehicleFleetManagment.FleetApp
             if (!IsPostBack)
             {
                 initial_msg();
-                if (Request.Cookies["User_Nme"] != null && Request.Cookies["Password"] != null)
+                if (Request.Cookies["User_Nme"] != null && Request.Cookies["Password"] != null )
                 {
                     txtUserName.Value = Request.Cookies["User_Nme"].Value;
                     txtPassWord.Attributes["value"] = Request.Cookies["Password"].Value;
@@ -62,37 +62,34 @@ namespace VehicleFleetManagment.FleetApp
 
                 if (msg == 1)
                 {
+                    if (CheckRemember.Checked)
+                    {
+                        Response.Cookies["User_Nme"].Value = Min.User_Nme;
+                        Response.Cookies["Password"].Value = Min.Password;
+                        Response.Cookies["User_Nme"].Expires = DateTime.Now.AddMinutes(5);
+                        Response.Cookies["Password"].Expires = DateTime.Now.AddMinutes(5);
+                    }
+                    else
+                    {
+                        Response.Cookies["User_Nme"].Expires = DateTime.Now.AddMinutes(-1);
+                        Response.Cookies["Password"].Expires = DateTime.Now.AddMinutes(-1);
+                    }
+
+
+                    Code_Min.Value = Min.Code_Min.ToString().Trim();
+                    Code_Min.Expires.Add(new TimeSpan(1, 0, 0));
+                    Response.Cookies.Add(Code_Min);
+                    if (Code_Min.Value != null)
+                    {
                     Response.Redirect("~/FleetApp/ViewMinistryDriver.aspx");
-                    //if (CheckRemember.Checked)
-                    //{
-                    //    Response.Cookies["User_Nme"].Value = Min.User_Nme;
-                    //    Response.Cookies["Password"].Value = Min.Password;
-                    //    Response.Cookies["User_Nme"].Expires = DateTime.Now.AddMinutes(5);
-                    //    Response.Cookies["Password"].Expires = DateTime.Now.AddMinutes(5);
-                    //}
-                    //else
-                    //{
-                    //    Response.Cookies["User_Nme"].Expires = DateTime.Now.AddMinutes(-1);
-                    //    Response.Cookies["Password"].Expires = DateTime.Now.AddMinutes(-1);
-                    //}
-
-
-                    //Code_Min.Value = Min.Code_Min.ToString();
-                    //Code_Min.Expires.Add(new TimeSpan(1, 0, 0));
-                    //Response.Cookies.Add(Code_Min);
-
-                    ////rs.Value = co.CDANGC;
-                    ////rs.Expires.Add(new TimeSpan(1, 0, 0));
-                    ////Response.Cookies.Add(rs);
-                    //User_Nme.Value = Min.User_Nme;
-                    //User_Nme.Expires.Add(new TimeSpan(1, 0, 0));
-                    //Response.Cookies.Add(User_Nme);
-
-
-
+                    }
+                    else
+                    {
+                        SuccessMsg.Visible = false;
+                        FailMsg.Visible = true;
+                    }                    
                 }
-                else
-                {
+                else{
                     SuccessMsg.Visible = false;
                     FailMsg.Visible = true; 
                 }
@@ -101,10 +98,9 @@ namespace VehicleFleetManagment.FleetApp
 
         }
 
-        protected void btn_connexion_ServerClick(object sender, EventArgs e)
+        protected void btn_connexion_ServerClick(object sender, EventArgs args)
         {
             connect();
-            shuu.Visible = true;
         }
     }
 }
