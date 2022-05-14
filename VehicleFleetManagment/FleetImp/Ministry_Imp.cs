@@ -97,6 +97,42 @@ namespace VehicleFleetManagment.FleetImp
             return msg;
         }
 
+        //UPDATE SETTINGS METHOD
+        public int UpdateSettings(Ministry_Class Min, int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                MINISTRY M = new MINISTRY();
+                M = con.MINISTRies.Where(x => x.MINISTRY_ID == id).FirstOrDefault();
+
+                if (M != null)
+                {
+
+                    M.System_Name = Min.System_Name;
+                    M.System_Title = Min.System_Title;
+                    M.System_Email = Min.System_Email;
+                    //M.Password = Min.Password;
+                    M.Logo = Min.Logo;
+                    M.Theme = Min.Theme;
+                    M.Slogan = Min.Slogan;
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.MINISTRies.Add(M);
+                        con.Entry(M).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
         //Login Connection METHOD
         public int Connexion(Ministry_Class Min, string userName, string password)
         {
@@ -108,6 +144,7 @@ namespace VehicleFleetManagment.FleetImp
                 {
                     Min.Code_Min = M.Code_Min;
                     Min.Ministry_Name = M.Ministry_Name;
+                    Min.MINISTRY_ID = M.MINISTRY_ID;
                     Min.Address = M.Address;
                     Min.Phone = M.Phone;
                     Min.Postal_code = M.Postal_code;

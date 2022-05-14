@@ -31,7 +31,7 @@ namespace VehicleFleetManagment.FleetApp
         HttpCookie Logo = new HttpCookie("Logo");
         HttpCookie Picture = new HttpCookie("Picture");
         HttpCookie Slogan = new HttpCookie("Slogan");
-        HttpCookie Theme = new HttpCookie("Theme");
+        HttpCookie theme = new HttpCookie("Theme");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -119,9 +119,9 @@ namespace VehicleFleetManagment.FleetApp
                     Slogan.Expires.Add(new TimeSpan(1, 0, 0));
                     Response.Cookies.Add(Slogan);
 
-                    Theme.Value = Min.Theme.ToString().Trim();
-                    Theme.Expires.Add(new TimeSpan(1, 0, 0));
-                    Response.Cookies.Add(Theme);
+                    theme.Value = Min.Theme.ToString().Trim();
+                    theme.Expires.Add(new TimeSpan(1, 0, 0));
+                    Response.Cookies.Add(theme);
 
                     if (Code_Min.Value != null)
                     {

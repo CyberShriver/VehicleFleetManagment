@@ -75,7 +75,9 @@ namespace VehicleFleetManagment.FleetApp
                         string img = Path.GetFileName(file_upd.FileName);
                         string Imglogo = Path.GetFileName(file_updLogo.FileName);
                         FileInfo ext = new FileInfo(img);
-                        if (ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg")
+                        FileInfo ext2 = new FileInfo(Imglogo);
+                        if (ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg" ||
+                            ext2.Extension == ".ico" || ext2.Extension == ".png" || ext2.Extension == ".jpg" || ext2.Extension == ".jpeg" )
                         {
                             if (file_upd.PostedFile.ContentLength < 104857600 || file_updLogo.PostedFile.ContentLength < 104857600)
                             {
@@ -219,7 +221,9 @@ namespace VehicleFleetManagment.FleetApp
                         string img = Path.GetFileName(file_upd.FileName);
                         string Imglogo = Path.GetFileName(file_updLogo.FileName);
                         FileInfo ext = new FileInfo(img);
-                        if (ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg")
+                        FileInfo ext2 = new FileInfo(Imglogo);
+                        if (ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg" ||
+                            ext2.Extension == ".ico" || ext2.Extension == ".png" || ext2.Extension == ".jpg" || ext2.Extension == ".jpeg")
                         {
                             if (file_upd.PostedFile.ContentLength < 104857600 || file_updLogo.PostedFile.ContentLength < 104857600)
                             {

@@ -17,6 +17,9 @@ namespace VehicleFleetManagment.FleetImp
         //Update Method
         int Update(Ministry_Class Min, int id);
 
+        //Update settings Method
+        int UpdateSettings(Ministry_Class Min, int id);
+
         //Delete Method
         int Delete(int id);
 

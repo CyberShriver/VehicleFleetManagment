@@ -285,6 +285,7 @@
     <Content Include="FleetApp\Home.aspx" />
     <Content Include="FleetApp\Login.aspx" />
     <Content Include="FleetApp\Profile.aspx" />
+    <Content Include="FleetApp\Settings.aspx" />
     <Content Include="FleetApp\ViewAssurance.aspx" />
     <Content Include="FleetApp\ViewBody.aspx" />
     <Content Include="FleetApp\ViewCarCrash.aspx" />
@@ -599,6 +600,13 @@
     </Compile>
     <Compile Include="FleetApp\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
     </Compile>
     <Compile Include="FleetApp\ViewAssurance.aspx.cs">
       <DependentUpon>ViewAssurance.aspx</DependentUpon>

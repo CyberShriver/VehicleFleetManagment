@@ -204,7 +204,7 @@
                                 </a>
                                 <ul class="show-notification profile-notification">
                                     <li class="waves-effect waves-light">
-                                        <a href="#!">
+                                        <a href="Settings.aspx">
                                             <i class="ti-settings"></i>Settings
                                         </a>
                                     </li>
@@ -259,7 +259,7 @@
                                 <ul>
                                     <li class="more-details">
                                         <a href="Profile.aspx"><i class="ti-user"></i>View Profile</a>
-                                        <a href="#!"><i class="ti-settings"></i>Settings</a>
+                                        <a href="Settings.aspx"><i class="ti-settings"></i>Settings</a>
                                         <a href="#" runat="server" onserverclick="SideLogout_ServerClick"><i class="ti-layout-sidebar-left"></i>Logout</a>
                                     </li>
                                 </ul>
