@@ -222,8 +222,8 @@ namespace VehicleFleetManagment.FleetApp
                         string Imglogo = Path.GetFileName(file_updLogo.FileName);
                         FileInfo ext = new FileInfo(img);
                         FileInfo ext2 = new FileInfo(Imglogo);
-                        if (ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg" ||
-                            ext2.Extension == ".ico" || ext2.Extension == ".png" || ext2.Extension == ".jpg" || ext2.Extension == ".jpeg")
+                        if (ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".JPG" || ext.Extension == ".jpeg" ||
+                            ext2.Extension == ".ico" || ext2.Extension == ".png" || ext2.Extension == ".jpg" || ext2.Extension == ".JPG" || ext2.Extension == ".jpeg")
                         {
                             if (file_upd.PostedFile.ContentLength < 104857600 || file_updLogo.PostedFile.ContentLength < 104857600)
                             {
