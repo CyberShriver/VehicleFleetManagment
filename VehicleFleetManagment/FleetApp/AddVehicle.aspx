@@ -34,335 +34,394 @@
 
                 <!-- Page body start -->
                 <div class="page-body">
-                    <!--Start Main Card -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h5>Vehicle</h5>
+                    
+                    <div class="col-sm-6 mx-auto">
+                        <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Success!</strong>
                         </div>
-                        <div class="col-sm-6 mx-auto">
-                                <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
-                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                    <strong>Success!</strong>
-                                </div>
-                                <div class="alert alert-info alert-dismissible fade show" runat="server" id="FillMsg">
-                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                    <strong>Please complete all fields!</strong>
-                                </div>
-                                <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
-                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                    <strong>Operation Failed!</strong>
-                                </div>
-                            </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-block">
-                                        <div class="form-material">
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Ministry" required="" runat="server"></asp:DropDownList>
-                                                <label class="float-label">Ministry</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
-
-                                            </div>
-
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtPlate">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Plate</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="Text" name="footer-email" class="form-control" required="" runat="server" id="txtName">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Name</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Model" required="" runat="server"></asp:DropDownList>
-                                                <label class="float-label">Model</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Body" required="" runat="server"></asp:DropDownList>
-                                                <label class="float-label">Body</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_fuel" required="" runat="server">
-                                                    <asp:ListItem>Petrol</asp:ListItem>
-                                                    <asp:ListItem>Gaz</asp:ListItem>
-                                                    <asp:ListItem>Essence</asp:ListItem>
-                                                    <asp:ListItem>Mazutu</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Fuel Type</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtColor">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Color</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEngineNumber">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Engine N°</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtChassis">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Chassis N°</label>
-                                            </div>
-
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEngineManif">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Engine Manufacturer</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required=""  autocomplete="off" class="form-control text-right" runat="server" />
-                                                <span class="form-bar"></span>
-                                                <label class="float-label ">Pic:.ico,.png,.jpg</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEnginType">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Engine Type </label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEnginSeries">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Engine Series N° </label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEngAltern">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Alternator Engine Manufacturer </label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEngAlternType">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Alternator Engine Type </label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtKva" onkeypress="inpNum(event)" maxlength="10">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Kva </label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtVolt" onkeypress="inpNum(event)" maxlength="5">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Volt</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtGenerWeight" onkeypress="inpNum(event)" maxlength="7">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Generator Weight ( in Kgs )</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAssembly">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Assembly N° </label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEnginPower" onkeypress="inpNum(event)" maxlength="7">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Engine Power ( in Volt ) </label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEnginCylind">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Engine cylinder Number </label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEngincc">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Engine cc</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control text-right" required="" runat="server" id="txtGearBox">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label ">Gearbox Type</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <textarea class="form-control" required="" runat="server" id="txtCondition"></textarea>
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Condition</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-block">
-                                        <div class="form-material">
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control text-right" required="" runat="server" id="txtTankTyp1">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label ">Tank Type 1</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control text-right" required="" runat="server" id="txtTankSze1" onkeypress="inpNum(event)" maxlength="7">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label ">Tank Size 1 ( in Meter )</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTankTyp2">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Tank Type 2 </label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTankCapacity2" onkeypress="inpNumInt(event)" maxlength="5">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Tank Capacity 2 ( in Liter )</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtFrontSeat" onkeypress="inpNumInt(event)" maxlength="3">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Front Seats Number</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtBatteryVolt" onkeypress="inpNum(event)" maxlength="10">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Battery Voltage ( in Volt )</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtVehiclWeight" onkeypress="inpNum(event)" maxlength="5">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Vehicle Weight (in kgs )</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtKeyCode">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Key code</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtGrossVehWeigth" onkeypress="inpNum(event)" maxlength="5">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Gross Weigth ( in Kgs )</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEmptyPod" onkeypress="inpNum(event)" maxlength="10">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Empty Pod</label>
-                                            </div>
-
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Trailer" required="" runat="server">
-                                                    <asp:ListItem>true</asp:ListItem>
-                                                    <asp:ListItem>false</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Trailer? </label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_lhd_rhd" required="" runat="server">
-                                                    <asp:ListItem>left</asp:ListItem>
-                                                    <asp:ListItem>right</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">left hand or right hand? </label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Belt" required="" runat="server">
-                                                    <asp:ListItem>true</asp:ListItem>
-                                                    <asp:ListItem>false</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Have Safety Belt?</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Central_Locking" required="" runat="server">
-                                                    <asp:ListItem>true</asp:ListItem>
-                                                    <asp:ListItem>false</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Central Locking? </label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="dropDown_Rear_Lock" required="" runat="server">
-                                                    <asp:ListItem>true</asp:ListItem>
-                                                    <asp:ListItem>false</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Rear Lock?</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Forward_Lock" required="" runat="server">
-                                                    <asp:ListItem>true</asp:ListItem>
-                                                    <asp:ListItem>false</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Forward Lock?</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Opt_Four_Wheel" required="" runat="server">
-                                                    <asp:ListItem>true</asp:ListItem>
-                                                    <asp:ListItem>false</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Opt Four Wheel?</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Air_Conditioner" required="" runat="server">
-                                                    <asp:ListItem>true</asp:ListItem>
-                                                    <asp:ListItem>false</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Air Conditioner?</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Additional_Heating" required="" runat="server">
-                                                    <asp:ListItem>true</asp:ListItem>
-                                                    <asp:ListItem>false</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Additional Heating?</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Rear_Blake" required="" runat="server">
-                                                    <asp:ListItem>true</asp:ListItem>
-                                                    <asp:ListItem>false</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Rear Blake?</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Electronic_Logbook" required="" runat="server">
-                                                    <asp:ListItem>true</asp:ListItem>
-                                                    <asp:ListItem>false</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Electronic Logbook?</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtRadioCode">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Radio Code</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtGuaranteeCerticat">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Guaranteed Certificate N°</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateGuaranteExp">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label ">Guaranteed Expiration Date</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateCirculationExp">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label ">Circulation Expiration Date</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <textarea class="form-control" required="" runat="server" id="txtStat"></textarea>
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Status </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="alert alert-info alert-dismissible fade show" runat="server" id="FillMsg">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Please complete all fields!</strong>
                         </div>
-
-                        <div class="card-footer">
-                            <div class="float-right">
-                                <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
-                                <button type="reset" class="btn btn-danger ml-5">Cancel</button>
-                                <a class="btn btn-info ml-5" href="ViewVehicle.aspx">List</a>
-                            </div>
+                        <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Operation Failed!</strong>
                         </div>
                     </div>
-                    <!--End Main Card -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!-- Tab variant tab card start -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Vehicle</h5>
+                                </div>
+                                <div class="card-block tab-icon">
 
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs md-tabs " role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#general" role="tab" runat="server"><i class="icofont icofont-home"></i>General Information</a>
+                                            <div class="slide"></div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#Engine" role="tab" runat="server"><i class="icofont icofont-ui-settings"></i>Engine Information</a>
+                                            <div class="slide"></div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#specific" role="tab" runat="server"><i class="icofont icofont-ui-settings"></i>Specific Information</a>
+                                            <div class="slide"></div>
+                                        </li>
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content card-block">
+                                        <!--General  info Tab  -->
+                                        <div class="tab-pane active " id="general" role="tabpanel">
+                                            <div class="tab-content card-block">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-material">
+                                                            <div class="form-group form-default">
+                                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Ministry" required="" runat="server"></asp:DropDownList>
+                                                                <label class="float-label">Ministry</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
+                                                            </div>
+
+                                                            <div class="form-group form-default">
+                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtPlate">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Plate</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <input type="Text" name="footer-email" class="form-control" required="" runat="server" id="txtName">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Name</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Model" required="" runat="server"></asp:DropDownList>
+                                                                <label class="float-label">Model</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Body" required="" runat="server"></asp:DropDownList>
+                                                                <label class="float-label">Body</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-material">
+
+                                                            <div class="form-group form-default">
+                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtChassis">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Chassis N°</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_fuel" required="" runat="server">
+                                                                    <asp:ListItem>Petrol</asp:ListItem>
+                                                                    <asp:ListItem>Gaz</asp:ListItem>
+                                                                    <asp:ListItem>Essence</asp:ListItem>
+                                                                    <asp:ListItem>Mazutu</asp:ListItem>
+                                                                </asp:DropDownList>
+                                                                <label class="float-label">Fuel Type</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtColor">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Color</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label ">Pic:.ico,.png,.jpg</label>
+                                                            </div>
+
+                                                            <div class="form-group form-default">
+                                                                <textarea class="form-control" required="" runat="server" id="txtCondition"></textarea>
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Condition</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!-- end General  info Tab  -->
+
+                                        <!--  Engine info Tab  -->
+                                        <div class="tab-pane " id="Engine" role="tabpanel">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-material">
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEngineNumber">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Engine N°</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEngineManif">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Engine Manufacturer</label>
+                                                        </div>
+
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEnginType">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Engine Type </label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEnginSeries">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Engine Series N° </label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEngAltern">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Alternator Engine Manufacturer </label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEngAlternType">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Alternator Engine Type </label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtKva" onkeypress="inpNum(event)" maxlength="10">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Kva </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-material">
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtVolt" onkeypress="inpNum(event)" maxlength="5">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Volt</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtGenerWeight" onkeypress="inpNum(event)" maxlength="7">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Generator Weight ( in Kgs )</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAssembly">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Assembly N° </label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEnginPower" onkeypress="inpNum(event)" maxlength="7">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Engine Power ( in Volt ) </label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEnginCylind">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Engine cylinder Number </label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEngincc">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Engine cc</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control text-right" required="" runat="server" id="txtGearBox">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label ">Gearbox Type</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Engine info Tab  -->
+
+                                        <!-- End Specific info Tab  -->
+                                        <div class="tab-pane " id="specific" role="tabpanel">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-material">
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control text-right" required="" runat="server" id="txtTankTyp1">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label ">Tank Type 1</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control text-right" required="" runat="server" id="txtTankSze1" onkeypress="inpNum(event)" maxlength="7">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label ">Tank Size 1 ( in Meter )</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTankTyp2">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Tank Type 2 </label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTankCapacity2" onkeypress="inpNumInt(event)" maxlength="5">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Tank Capacity 2 ( in Liter )</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtFrontSeat" onkeypress="inpNumInt(event)" maxlength="3">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Front Seats Number</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtBatteryVolt" onkeypress="inpNum(event)" maxlength="10">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Battery Voltage ( in Volt )</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtVehiclWeight" onkeypress="inpNum(event)" maxlength="5">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Vehicle Weight (in kgs )</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtKeyCode">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Key code</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtGrossVehWeigth" onkeypress="inpNum(event)" maxlength="5">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Gross Weigth ( in Kgs )</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEmptyPod" onkeypress="inpNum(event)" maxlength="10">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Empty Pod</label>
+                                                        </div>
+
+                                                        <div class="form-group form-default">
+                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Trailer" required="" runat="server">
+                                                                <asp:ListItem>true</asp:ListItem>
+                                                                <asp:ListItem>false</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <label class="float-label">Trailer? </label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_lhd_rhd" required="" runat="server">
+                                                                <asp:ListItem>left</asp:ListItem>
+                                                                <asp:ListItem>right</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <label class="float-label">left hand or right hand? </label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Belt" required="" runat="server">
+                                                                <asp:ListItem>true</asp:ListItem>
+                                                                <asp:ListItem>false</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <label class="float-label">Have Safety Belt?</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Central_Locking" required="" runat="server">
+                                                                <asp:ListItem>true</asp:ListItem>
+                                                                <asp:ListItem>false</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <label class="float-label">Central Locking? </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+
+                                                    <div class="form-material">
+
+                                                        <div class="form-group form-default">
+                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="dropDown_Rear_Lock" required="" runat="server">
+                                                                <asp:ListItem>true</asp:ListItem>
+                                                                <asp:ListItem>false</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <label class="float-label">Rear Lock?</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Forward_Lock" required="" runat="server">
+                                                                <asp:ListItem>true</asp:ListItem>
+                                                                <asp:ListItem>false</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <label class="float-label">Forward Lock?</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Opt_Four_Wheel" required="" runat="server">
+                                                                <asp:ListItem>true</asp:ListItem>
+                                                                <asp:ListItem>false</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <label class="float-label">Opt Four Wheel?</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Air_Conditioner" required="" runat="server">
+                                                                <asp:ListItem>true</asp:ListItem>
+                                                                <asp:ListItem>false</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <label class="float-label">Air Conditioner?</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Additional_Heating" required="" runat="server">
+                                                                <asp:ListItem>true</asp:ListItem>
+                                                                <asp:ListItem>false</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <label class="float-label">Additional Heating?</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Rear_Blake" required="" runat="server">
+                                                                <asp:ListItem>true</asp:ListItem>
+                                                                <asp:ListItem>false</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <label class="float-label">Rear Blake?</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Electronic_Logbook" required="" runat="server">
+                                                                <asp:ListItem>true</asp:ListItem>
+                                                                <asp:ListItem>false</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <label class="float-label">Electronic Logbook?</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtRadioCode">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Radio Code</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtGuaranteeCerticat">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Guaranteed Certificate N°</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateGuaranteExp">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label ">Guaranteed Expiration Date</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateCirculationExp">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label ">Circulation Expiration Date</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <textarea class="form-control" required="" runat="server" id="txtStat"></textarea>
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Status </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Specific info Tab  -->
+                                    </div>
+                                </div>
+
+                                <div class="card-footer">
+                                    <div class="float-right">
+                                        <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
+                                        <button type="reset" class="btn btn-danger ml-5">Cancel</button>
+                                        <a class="btn btn-info ml-5" href="ViewVehicle.aspx">List</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Tab variant tab card start -->
+                        </div>
+                    </div>
                 </div>
                 <!-- Page body end -->
             </div>

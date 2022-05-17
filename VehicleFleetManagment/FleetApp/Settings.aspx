@@ -104,7 +104,7 @@
                                         <div class="col-sm-6 mx-auto">
                                             <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
                                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                                <strong>Success!</strong>
+                                                <strong>Reset Default</strong>
                                             </div>
                                             <div class="alert alert-info alert-dismissible fade show" runat="server" id="FillMsg">
                                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -157,8 +157,8 @@
                                         <div class="card-footer">
                                             <div class="float-right">
                                                 <div class="float-right">
-                                                    <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save Changes</button>
-                                                    <button type="reset" class="btn btn-danger ml-5">Cancel</button>
+                                                    <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click" >Save Changes</button>
+                                                    <button type="reset" class="btn btn-danger ml-5" runat="server" id="btnCancel">Cancel</button>
                                                 </div>
                                             </div>
                                         </div>

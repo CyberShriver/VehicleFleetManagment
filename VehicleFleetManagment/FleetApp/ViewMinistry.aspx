@@ -169,12 +169,12 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Logo">
                                                 <ItemTemplate>
-                                                    <asp:Image ID="Image1" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images",Eval("Logo")) %>' />
+                                                    <asp:Image ID="Image1" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images/Logo/",Eval("Logo")) %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Picture">
                                                 <ItemTemplate>
-                                                    <asp:Image ID="Image2" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images",Eval("Picture")) %>' />
+                                                    <asp:Image ID="Image2" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images/Users/",Eval("Picture")) %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

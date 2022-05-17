@@ -30,7 +30,33 @@ namespace VehicleFleetManagment.FleetApp
       
         protected void Page_Load(object sender, EventArgs e)
         {
-            //UpdateCookies();
+            SavedCookies();
+            if (!IsPostBack)
+            {
+                MsgInit();
+                ChargeData();
+                confirm();
+            }
+        }
+
+        //MANAGE BUTTON ACTIVATION
+        void buttonState()
+        {
+            if (txtSysTitle.Value == "" && txtSysName.Value == "" && txtSysMaile.Value == "" && txtTheme.Value == "" && txtSlogan.Value == "" && file_updLogo.HasFile==false)
+            {
+                btnSave.Disabled=true;
+                btnCancel.Disabled=true;
+            }
+            else
+            {
+                btnSave.Disabled = false;
+                btnCancel.Disabled = false;
+            }
+
+        }
+        //SAVED COOKIES METHODE
+        void SavedCookies()
+        {
             HttpCookie Code_Min = new HttpCookie("Code_Min");
             HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
             HttpCookie Phone = new HttpCookie("Phone");
@@ -61,83 +87,24 @@ namespace VehicleFleetManagment.FleetApp
                 slogan = Request.Cookies["Slogan"].Value;
                 them = Request.Cookies["Theme"].Value;
             }
-
-            if (!IsPostBack)
-            {
-                MsgInit();
-                ChargeData();
-            }
         }
-        //protected void UpdateCookies()
-        //{
-        //    HttpCookie Code_Min = new HttpCookie("Code_Min");
-        //    HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
-        //    HttpCookie Phone = new HttpCookie("Phone");
-        //    HttpCookie Ministry_Name = new HttpCookie("Ministry_Name");
-        //    HttpCookie Address = new HttpCookie("Address");
-        //    HttpCookie Postal_code = new HttpCookie("Postal_code");
-        //    HttpCookie User_Nme = new HttpCookie("User_Nme");
-        //    HttpCookie Fax = new HttpCookie("Fax");
-        //    HttpCookie System_Name = new HttpCookie("System_Name");
-        //    HttpCookie System_Title = new HttpCookie("System_Title");
-        //    HttpCookie System_Email = new HttpCookie("System_Email");
-        //    HttpCookie Password = new HttpCookie("Password");
-        //    HttpCookie Logo = new HttpCookie("Logo");
-        //    HttpCookie Picture = new HttpCookie("Picture");
-        //    HttpCookie Slogan = new HttpCookie("Slogan");
-        //    HttpCookie theme = new HttpCookie("Theme");
-
-        //    Code_Min.Value = Min.Code_Min.ToString().Trim();
-        //            Code_Min.Expires.Add(new TimeSpan(1, 0, 0));
-        //            Response.Cookies.Add(Code_Min);
-
-        //            Ministry_Name.Value = Min.Ministry_Name.ToString().Trim();
-        //            Ministry_Name.Expires.Add(new TimeSpan(1, 0, 0));
-        //            Response.Cookies.Add(Ministry_Name);
-
-        //            System_Name.Value = Min.System_Name.ToString().Trim();
-        //            System_Name.Expires.Add(new TimeSpan(1, 0, 0));
-        //            Response.Cookies.Add(System_Name);
-
-        //            System_Title.Value = Min.System_Title.ToString().Trim();
-        //            System_Title.Expires.Add(new TimeSpan(1, 0, 0));
-        //            Response.Cookies.Add(System_Title);
-
-        //            Logo.Value = Min.Logo.ToString().Trim();
-        //            Logo.Expires.Add(new TimeSpan(1, 0, 0));
-        //            Response.Cookies.Add(Logo);
-
-        //            User_Nme.Value = Min.User_Nme.ToString().Trim();
-        //            User_Nme.Expires.Add(new TimeSpan(1, 0, 0));
-        //            Response.Cookies.Add(User_Nme);
-
-        //            MINISTRY_ID.Value = Min.MINISTRY_ID.ToString().Trim();
-        //            MINISTRY_ID.Expires.Add(new TimeSpan(1, 0, 0));
-        //            Response.Cookies.Add(MINISTRY_ID);
-
-        //            System_Email.Value = Min.System_Email.ToString().Trim();
-        //            System_Email.Expires.Add(new TimeSpan(1, 0, 0));
-        //            Response.Cookies.Add(System_Email);
-
-        //            Picture.Value = Min.Picture.ToString().Trim();
-        //            Picture.Expires.Add(new TimeSpan(1, 0, 0));
-        //            Response.Cookies.Add(Picture);
-
-        //            Slogan.Value = Min.Slogan.ToString().Trim();
-        //            Slogan.Expires.Add(new TimeSpan(1, 0, 0));
-        //            Response.Cookies.Add(Slogan);
-
-        //            theme.Value = Min.Theme.ToString().Trim();
-        //            theme.Expires.Add(new TimeSpan(1, 0, 0));
-        //            Response.Cookies.Add(theme);
-
-        //}
+     
+        //MANAGE CONFIRM BUTTON ON SUBMIT CHANGES
+        void confirm()
+        {         
+                string message = "Logout to apply the Changes!!";
+                ClientScript.RegisterOnSubmitStatement(this.GetType(), "confirm", "return confirm('" + message + "');");                
+        }
+      
+        //STATE MESSAGES
         private void MsgInit()
         {
             SuccessMsg.Visible = false;
             FillMsg.Visible = false;
             FailMsg.Visible = false;
         }
+
+        //CHARGE PROFILE DATA
         protected void ChargeData()
         {
             if (codeMin != null)
@@ -151,24 +118,14 @@ namespace VehicleFleetManagment.FleetApp
                 txtFax.Text = Min.Fax;
                 txtPostal.Text = Min.Postal_code;
                 txtUserName.Text = Min.User_Nme;
-                Image1.ImageUrl = "~/FleetApp/assets/images/" + Min.Picture;
+                Image1.ImageUrl = "~/FleetApp/assets/images/Users/" + Min.Picture;
             }
         }
 
-        protected void settings()
-        {
-            txtSysName.Value = systemName;
-            txtSysTitle.Value = systemTitle;
-            txtSysMaile.Value =systemMail ;
-            txtSlogan.Value = slogan;
-            txtTheme.Value = them;
-            
-        }
-
-        //update
+   
+        //UPDATE SETTINGS 
         void Update()
         {
-
             try
             {
                 if ( txtSysTitle.Value == "" && txtSysName.Value == "" && txtSysMaile.Value == "" && txtTheme.Value == "" && txtSlogan.Value == "")
@@ -180,7 +137,7 @@ namespace VehicleFleetManagment.FleetApp
                     Min.Theme = them;
                     Min.Slogan =slogan;
 
-                    SuccessMsg.Visible = true;
+                    SuccessMsg.Visible = false;
                     FillMsg.Visible = false;
                     FailMsg.Visible = false;
                 }
@@ -205,7 +162,7 @@ namespace VehicleFleetManagment.FleetApp
                                 msg = I.UpdateSettings(Min, Convert.ToInt32(id));
                                 if (msg > 0)
                                 {
-                                    Response.Redirect("~/FleetApp/Settings.aspx");
+                                    Response.Redirect("~/FleetApp/Login.aspx");
                                 }
                                 else
                                 {
@@ -242,7 +199,7 @@ namespace VehicleFleetManagment.FleetApp
                         msg = I.UpdateSettings(Min, Convert.ToInt32(id));
                         if (msg > 0)
                         {
-                            Response.Redirect("~/FleetApp/Settings.aspx");
+                            Response.Redirect("~/FleetApp/Login.aspx");
                         }
                         else
                         {
@@ -261,8 +218,11 @@ namespace VehicleFleetManagment.FleetApp
                 FailMsg.Visible = true;
             }
         }
+
+        //SAVE CHANGES BUTTON
         protected void btn_save_Click(object sender, EventArgs args)
         {
+            
             Update();
         }
     }

@@ -70,8 +70,8 @@ namespace VehicleFleetManagment.FleetApp
                 {
                     if (file_upd.HasFile || file_updLogo.HasFile)
                     {
-                        file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images") + Path.GetFileName(file_upd.FileName));
-                        file_updLogo.SaveAs(Server.MapPath("~/FleetApp/assets/images") + Path.GetFileName(file_updLogo.FileName));
+                        file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images/Users/") + Path.GetFileName(file_upd.FileName));
+                        file_updLogo.SaveAs(Server.MapPath("~/FleetApp/assets/images/Logo/") + Path.GetFileName(file_updLogo.FileName));
                         string img = Path.GetFileName(file_upd.FileName);
                         string Imglogo = Path.GetFileName(file_updLogo.FileName);
                         FileInfo ext = new FileInfo(img);
@@ -216,8 +216,8 @@ namespace VehicleFleetManagment.FleetApp
                 {
                     if (file_upd.HasFile || file_updLogo.HasFile)
                     {
-                        file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images") + Path.GetFileName(file_upd.FileName));
-                        file_updLogo.SaveAs(Server.MapPath("~/FleetApp/assets/images") + Path.GetFileName(file_updLogo.FileName));
+                        file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images/Users/") + Path.GetFileName(file_upd.FileName));
+                        file_updLogo.SaveAs(Server.MapPath("~/FleetApp/assets/images/Logo/") + Path.GetFileName(file_updLogo.FileName));
                         string img = Path.GetFileName(file_upd.FileName);
                         string Imglogo = Path.GetFileName(file_updLogo.FileName);
                         FileInfo ext = new FileInfo(img);
@@ -338,9 +338,10 @@ namespace VehicleFleetManagment.FleetApp
         {
             if (id == null)
             {
+               
                 Add();
             }
-            else
+           else
                 Update();
         }
 

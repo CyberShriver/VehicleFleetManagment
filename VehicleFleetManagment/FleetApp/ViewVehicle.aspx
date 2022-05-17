@@ -372,7 +372,7 @@
 
                                             <asp:TemplateField HeaderText="Picture">
                                                 <ItemTemplate>
-                                                    <asp:Image ID="Image1" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images",Eval("Picture")) %>' />
+                                                    <asp:Image ID="Image1" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images/Vehicles/",Eval("Picture")) %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

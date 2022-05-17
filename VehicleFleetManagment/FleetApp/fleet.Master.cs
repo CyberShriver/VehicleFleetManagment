@@ -60,9 +60,9 @@ namespace VehicleFleetManagment.FleetApp
             }           
             txtProfileName.Text = name;
             txtSideProfile.Text = name;
-            HeaderProfile.ImageUrl = "~/FleetApp/assets/images/" + pic;
-            SideProfile.ImageUrl = "~/FleetApp/assets/images/" + pic;
-            LogoPic.ImageUrl = "~/FleetApp/assets/images/" + logo;
+            HeaderProfile.ImageUrl = "~/FleetApp/assets/images/Users/" + pic;
+            SideProfile.ImageUrl = "~/FleetApp/assets/images/Users/" + pic;
+            LogoPic.ImageUrl = "~/FleetApp/assets/images/Logo/" + logo;
         }
 
         //protected void UpdateCookies()

@@ -76,7 +76,7 @@ namespace VehicleFleetManagment.FleetApp
                 {
                     if (file_upd.HasFile)
                     {
-                        file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images") + Path.GetFileName(file_upd.FileName));
+                        file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images/Crash/") + Path.GetFileName(file_upd.FileName));
                         string img = Path.GetFileName(file_upd.FileName);
                         FileInfo ext = new FileInfo(img);
                         if (ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg")
@@ -315,7 +315,7 @@ namespace VehicleFleetManagment.FleetApp
                 {
                     if (file_upd.HasFile)
                     {
-                        file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images") + Path.GetFileName(file_upd.FileName));
+                        file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images/Crash/") + Path.GetFileName(file_upd.FileName));
                         string img = Path.GetFileName(file_upd.FileName);
                         FileInfo ext = new FileInfo(img);
                         if (ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg")

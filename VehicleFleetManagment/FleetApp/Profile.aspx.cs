@@ -44,7 +44,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtFax.Text = Min.Fax;
                 txtPostal.Text = Min.Postal_code;
                 txtUserName.Text = Min.User_Nme;
-                Image1.ImageUrl ="~/FleetApp/assets/images/"+Min.Picture;
+                Image1.ImageUrl ="~/FleetApp/assets/images/Users/"+Min.Picture;
             }
         }
     }
