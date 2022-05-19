@@ -48,128 +48,6 @@
                         </div>
                     </div>
 
-                    <!--Start Main Card -->
-                    <%--<div class="card">
-                        <div class="card-header">
-                            <h5>Ministry</h5>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5>General information</h5>
-                                    </div>
-                                    <div class="card-block">
-                                        <div class="form-material">
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtName">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Name</label>
-                                            </div>
-
-                                            <div class="form-group form-default">
-                                                <input type="tel" name="footer-email" class="form-control" required="" runat="server" id="txtTel">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Telephone</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAddress">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Address</label>
-                                            </div>
-
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtFax">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Fax</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtPostal">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Postal Code</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
-                                                <span class="form-bar"></span>
-                                                <label class="float-label ">Picture:.ico,.png,.jpg</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5>System Settings</h5>
-                                    </div>
-                                    <div class="card-block">
-                                        <div class="form-material">
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtSysName">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">System Name</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtUserName">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">User Name</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="password" name="footer-email" class="form-control" required="" runat="server" id="txtPassword">
-                                                <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Password</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtSysTitle">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">System Title</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="email" name="footer-email" class="form-control" required="" runat="server" id="txtSysMaile">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">System Email</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtSlogan">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Slogan</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTheme">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Theme</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:FileUpload ID="file_updLogo" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
-                                                <span class="form-bar"></span>
-                                                <label class="float-label ">Logo:.ico,.png,.jpg</label>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-footer">
-                            <div class="float-right">
-                                <div class="float-right">
-                                    <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
-                                    <button type="reset" class="btn btn-danger ml-5">Cancel</button>
-                                    <a class="btn btn-info ml-5" href="ViewMinistry.aspx">List</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>--%>
-                    <!--End Main Card -->
-
                     <div class="row">
                         <div class="col-sm-12">
                             <!-- Tab variant tab card start -->
@@ -182,112 +60,133 @@
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs md-tabs " role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active" data-toggle="tab" href="#home7" role="tab" runat="server" id="hm7"><i class="icofont icofont-home"></i>General</a>
+                                            <a class="nav-link active" role="tab" runat="server" id="tabGen" onserverclick="ActiveGen_click"><i class="icofont icofont-home"></i>General</a>
                                             <div class="slide"></div>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#settings7" role="tab" runat="server" id="sett"><i class="icofont icofont-ui-settings"></i>Settings</a>
+                                            <a class="nav-link" role="tab" id="tabSettings" runat="server" onserverclick="ActiveSettings_click"><i class="icofont icofont-ui-settings"></i>Settings</a>
                                             <div class="slide"></div>
                                         </li>
                                     </ul>
                                     <!-- Tab panes -->
                                     <div class="tab-content card-block">
-                                        <!--General Ministriy info Tab  -->
-                                        <div class="tab-pane active card col-md-8 mx-auto" id="home7" role="tabpanel">
-                                            <div class="tab-content card-block">
-                                                <div class="form-material">
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtName">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Name</label>
-                                            </div>
+                                        <asp:MultiView ID="MultiView" runat="server">
+                                            <!--General Ministriy info Tab  -->
+                                            <asp:View ID="ViewGeneral" runat="server">
+                                                <div class="tab-content col-md-8 mx-auto card-block" id="home7">
+                                                    <div class="form-material">
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtName">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Name</label>
+                                                        </div>
 
-                                            <div class="form-group form-default">
-                                                <input type="tel" name="footer-email" class="form-control" required="" runat="server" id="txtTel">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Telephone</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAddress">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Address</label>
-                                            </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="tel" name="footer-email" class="form-control" required="" runat="server" id="txtTel">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Telephone</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAddress">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Address</label>
+                                                        </div>
 
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtFax">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Fax</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtPostal">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Postal Code</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
-                                                <span class="form-bar"></span>
-                                                <label class="float-label ">Picture:.ico,.png,.jpg</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
-                                            </div>
-                                        </div>
-                                            </div>
-                                            <!-- end General Ministriy info Tab  -->
-                                        </div>
-                                        <!-- End General Ministriy info Tab  -->
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtFax">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Fax</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtPostal">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Postal Code</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label ">Picture:.ico,.png,.jpg</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                        <!--  Settings Ministriy info Tab  -->
-                                        <div class="tab-pane card col-md-8 mx-auto" id="settings7" role="tabpanel">
-                                            <div class="form-material">
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtSysName">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">System Name</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtUserName">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">User Name</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="password" name="footer-email" class="form-control" required="" runat="server" id="txtPassword">
-                                                <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Password</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtSysTitle">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">System Title</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="email" name="footer-email" class="form-control" required="" runat="server" id="txtSysMaile">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">System Email</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtSlogan">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Slogan</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTheme">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Theme</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:FileUpload ID="file_updLogo" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
-                                                <span class="form-bar"></span>
-                                                <label class="float-label ">Logo:.ico,.png,.jpg</label>
-                                            </div>
-                                        </div>
-                                        </div>
-                                        <!-- End Settings Ministriy info Tab  -->
+
+                                                <div class="card-footer">
+                                                    <div class="float-right">
+                                                        <a class="btn btn-sm btn-info ml-5" href="ViewMinistry.aspx">List <i class="icofont icofont-listine-dots"></i></a>
+                                                        <button type="reset" class="btn btn-sm btn-danger ml-5 mr-5">Cancel</button>
+                                                    <button type="button" id="btnGenNext" class="btn btn-sm btn-default ml-5 waves-effect ml-5  " runat="server" onserverclick="ActiveSettings_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
+                                                    </div>
+                                                </div>
+                                            </asp:View>
+                                            <!-- End General Ministriy info Tab  -->
+
+                                            <!--  Settings Ministriy info Tab  -->
+                                            <asp:View ID="ViewSettings" runat="server">
+                                                <div class="card-block col-md-8 mx-auto">
+                                                    <div class="form-material">
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtSysName">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">System Name</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtUserName">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">User Name</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="password" name="footer-email" class="form-control" required="" runat="server" id="txtPassword">
+                                                            <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Password</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtSysTitle">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">System Title</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="email" name="footer-email" class="form-control" required="" runat="server" id="txtSysMaile">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">System Email</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtSlogan">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Slogan</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTheme">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Theme</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <asp:FileUpload ID="file_updLogo" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label ">Logo:.ico,.png,.jpg</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                   <button type="button" id="BtnSettingsPreview" class="btn btn-sm btn-default  waves-effect" runat="server" onserverclick="ActiveGen_click"><i class="icofont icofont-hand-drawn-left"></i>Preview</button>
+                                                        <div class="float-right">
+                                                            <button type="button" id="btnSave" class="btn btn-sm btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save <i class="icofont icofont-save"></i></button>
+                                                            <button type="reset" class="btn btn-sm btn-danger ml-5">Cancel</button>
+                                                            <a class="btn btn-sm btn-info ml-5" href="ViewMinistry.aspx">List <i class="icofont icofont-listine-dots"></i></a>
+
+                                                        </div>
+
+                                            </asp:View>
+                                            <!-- End Settings Ministriy info Tab  -->
+                                        </asp:MultiView>
+
                                     </div>
                                 </div>
 
-                                <div class="card-footer">
+                                <%--<div class="card-footer">
                                     <div class="float-right">
                                         <div class="float-right">
                                             <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
@@ -295,7 +194,7 @@
                                             <a class="btn btn-info ml-5" href="ViewMinistry.aspx">List</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div>--%>
                             </div>
                             <!-- Tab variant tab card start -->
                         </div>

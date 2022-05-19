@@ -10,8 +10,8 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h5 class="m-b-10">Vehicle Fleet Managment</h5>
-                        <p class="m-b-0">Safety Rules Are Your Best Tools</p>
+                        <asp:Label class="m-b-10 h5" ID="txtSystemTitle" runat="server" Text="" ></asp:Label>
+                        <p><asp:Label class="m-b-0 p" ID="txtSlogan" runat="server" Text="" ></asp:Label></p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -48,40 +48,41 @@
                             <strong>Operation Failed!</strong>
                         </div>
                     </div>
-                  
+
                     <div class="row">
                         <div class="col-sm-12">
                             <!-- Tab variant tab card start -->
                             <div class="card">
                                 <div class="card-header">
-                                   <h5>Car Crash</h5>
+                                    <h5>Car Crash</h5>
                                 </div>
                                 <div class="card-block tab-icon">
 
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs md-tabs " role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active" data-toggle="tab" href="#general" role="tab" runat="server"><i class="icofont icofont-home"></i>General Information</a>
+                                            <a class="nav-link active" role="tab" runat="server" id="tabGen" onserverclick="ActiveGen_click"><i class="icofont icofont-home"></i>General Information</a>
                                             <div class="slide"></div>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#report" role="tab" runat="server"><i class="icofont icofont-ui-settings"></i>Report Information</a>
+                                            <a class="nav-link" role="tab" runat="server" id="tabReport" onserverclick="ActiveReport_click"><i class="icofont icofont-ui-settings"></i>Report Information</a>
                                             <div class="slide"></div>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#specific" role="tab" runat="server"><i class="icofont icofont-ui-settings"></i>Specific Information</a>
+                                            <a class="nav-link" id="tabSpec" role="tab" runat="server" onserverclick="ActiveSpecific_click"><i class="icofont icofont-ui-settings"></i>Specific Information</a>
                                             <div class="slide"></div>
                                         </li>
                                     </ul>
                                     <!-- Tab panes -->
                                     <div class="tab-content card-block">
-                                        <!--General  info Tab  -->
-                                        <div class="tab-pane active " id="general" role="tabpanel">
-                                            <div class="tab-content card-block">
-                                                <div class="row">
+                                        <!-- MULTIVIEW  -->
+                                        <asp:MultiView ID="MultiView" runat="server">
+                                            <!--General  info Tab  -->
+                                            <asp:View ID="ViewGeneral" runat="server">
+                                                <div class="row card-block">
                                                     <div class="col-md-6">
                                                         <div class="form-material">
-                                                            <div class="form-group form-default">
+                                                            <div class="form-group form-default" id="DMinistry" runat="server">
                                                                 <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Ministry" OnSelectedIndexChanged="dropDown_Ministry_SelectedIndexChanged" AutoPostBack="true" required="" runat="server"></asp:DropDownList>
                                                                 <label class="float-label">Ministry</label>
                                                             </div>
@@ -177,161 +178,173 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="card-footer">
+                                                    <div class="float-right">
+                                                        <a class="btn btn-sm btn-info ml-5" href="ViewCarCrash.aspx">List <i class="icofont icofont-listine-dots"></i></a>
+                                                        <button type="reset" class="btn btn-sm btn-danger ml-5 mr-5">Cancel</button>
+                                                    <button type="button" id="btnGenNext" class="btn btn-sm btn-default ml-5 waves-effect  " runat="server" onserverclick="ActiveReport_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
+                                                    </div>
+                                                </div>
+                                            </asp:View>
+                                            <!-- end General  info Tab  -->
 
-                                            </div>
-                                        </div>
-                                        <!-- end General  info Tab  -->
+                                            <!--  Report info Tab  -->
+                                            <asp:View ID="ViewReport" runat="server">
+                                                <div class="row card-block">
+                                                    <div class="col-md-6">
+                                                        <div class="form-material">
+                                                            <div class="form-group form-default">
+                                                                <input type="date" class="form-control text-right" required="" runat="server" id="dateCompensation">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label  ">Compensation Rule Date</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <textarea class="form-control" required="" runat="server" id="txtCircumstance"></textarea>
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Circumstance</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateReport">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label ">Report Date</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateFinalReport">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label ">Final Report date</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateDeclaration">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label ">Insurance Declaration Date</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAmount" onkeypress="inpNum(event)" maxlength="4">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Claim Compensation Amount</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                        <!--  Engine info Tab  -->
-                                        <div class="tab-pane " id="report" role="tabpanel">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-material">
-                                                        <div class="form-group form-default">
-                                                            <input type="date" class="form-control text-right" required="" runat="server" id="dateCompensation">
-                                                            <span class="form-bar"></span>
-                                                            <label class="float-label  ">Compensation Rule Date</label>
-                                                        </div>
-                                                        <div class="form-group form-default">
-                                                            <textarea class="form-control" required="" runat="server" id="txtCircumstance"></textarea>
-                                                            <span class="form-bar"></span>
-                                                            <label class="float-label">Circumstance</label>
-                                                        </div>
-                                                        <div class="form-group form-default">
-                                                            <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateReport">
-                                                            <span class="form-bar"></span>
-                                                            <label class="float-label ">Report Date</label>
-                                                        </div>
-                                                        <div class="form-group form-default">
-                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
-                                                        </div>
-                                                        <div class="form-group form-default">
-                                                            <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateFinalReport">
-                                                            <span class="form-bar"></span>
-                                                            <label class="float-label ">Final Report date</label>
-                                                        </div>
-                                                        <div class="form-group form-default">
-                                                            <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateDeclaration">
-                                                            <span class="form-bar"></span>
-                                                            <label class="float-label ">Insurance Declaration Date</label>
-                                                        </div>
-                                                         <div class="form-group form-default">
-                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAmount" onkeypress="inpNum(event)" maxlength="4">
-                                                            <span class="form-bar"></span>
-                                                            <label class="float-label">Claim Compensation Amount</label>
+                                                    <div class="col-md-6">
+                                                        <div class="form-material">
+                                                            <div class="form-group form-default">
+                                                                <textarea class="form-control" required="" runat="server" id="txtDamageDesipt"></textarea>
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Damage Description</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <textarea class="form-control" required="" runat="server" id="txtComment"></textarea>
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Passenger Comment</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLegalCost" onkeypress="inpNum(event)" maxlength="4">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Legal Cost</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLocalComp" onkeypress="inpNum(event)" maxlength="4">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Local Insurance Compensation Amount</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtRecoverEmpl" onkeypress="inpNum(event)" maxlength="4">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Employee Amount Recovered</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtThirdPartyRecov" onkeypress="inpNum(event)" maxlength="4">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Third Party Amount Recovered</label>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="float-right">
+                                                    <a class="btn btn-sm btn-info ml-5 " href="ViewCarCrash.aspx">List <i class="icofont icofont-listine-dots"></i></a>
+                                                    <button type="reset" class="btn btn-sm btn-danger ml-5 mr-5">Cancel</button>
+                                                    <button type="button" id="BtnReportNext" class="btn btn-sm btn-default  waves-effect  ml-5" runat="server" onserverclick="ActiveSpecific_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
+                                                </div>
+                                                <button type="button" id="BtnReportPreview" class="btn btn-sm btn-default  waves-effect " runat="server" onserverclick="ActiveGen_click"><i class="icofont icofont-hand-drawn-left"></i>Preview</button>
+                                            </asp:View>
+                                            <!-- End Report info Tab  -->
 
-                                                <div class="col-md-6">
-                                                    <div class="form-material">
-                                                         <div class="form-group form-default">
-                                                            <textarea class="form-control" required="" runat="server" id="txtDamageDesipt"></textarea>
-                                                            <span class="form-bar"></span>
-                                                            <label class="float-label">Damage Description</label>
+                                            <!--  Specific info Tab  -->
+                                            <asp:View ID="ViewSpecific" runat="server">
+                                                <div class="row card-block">
+                                                    <div class="col-md-6">
+                                                        <div class="form-material">
+                                                            <div class="form-group form-default">
+                                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_vehicle_Damag" required="" runat="server">
+                                                                    <asp:ListItem>true</asp:ListItem>
+                                                                    <asp:ListItem>false</asp:ListItem>
+                                                                </asp:DropDownList>
+                                                                <label class="float-label">Is Vehicle Damaged? </label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Damage_thirdParty" required="" runat="server">
+                                                                    <asp:ListItem>true</asp:ListItem>
+                                                                    <asp:ListItem>false</asp:ListItem>
+                                                                </asp:DropDownList>
+                                                                <label class="float-label">Are Third Parties Damaged? </label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_thirdParty_injure" required="" runat="server">
+                                                                    <asp:ListItem>true</asp:ListItem>
+                                                                    <asp:ListItem>false</asp:ListItem>
+                                                                </asp:DropDownList>
+                                                                <label class="float-label">Are Third Parties Injured?</label>
+                                                            </div>
                                                         </div>
-                                                        <div class="form-group form-default">
-                                                            <textarea class="form-control" required="" runat="server" id="txtComment"></textarea>
-                                                            <span class="form-bar"></span>
-                                                            <label class="float-label">Passenger Comment</label>
-                                                        </div>
-                                                        <div class="form-group form-default">
-                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLegalCost" onkeypress="inpNum(event)" maxlength="4">
-                                                            <span class="form-bar"></span>
-                                                            <label class="float-label">Legal Cost</label>
-                                                        </div>
-                                                        <div class="form-group form-default">
-                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLocalComp" onkeypress="inpNum(event)" maxlength="4">
-                                                            <span class="form-bar"></span>
-                                                            <label class="float-label">Local Insurance Compensation Amount</label>
-                                                        </div>
-                                                        <div class="form-group form-default">
-                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtRecoverEmpl" onkeypress="inpNum(event)" maxlength="4">
-                                                            <span class="form-bar"></span>
-                                                            <label class="float-label">Employee Amount Recovered</label>
-                                                        </div>
-                                                        <div class="form-group form-default">
-                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtThirdPartyRecov" onkeypress="inpNum(event)" maxlength="4">
-                                                            <span class="form-bar"></span>
-                                                            <label class="float-label">Third Party Amount Recovered</label>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+
+                                                        <div class="form-material">
+
+
+                                                            <div class="form-group form-default">
+                                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Employee_injure" required="" runat="server">
+                                                                    <asp:ListItem>true</asp:ListItem>
+                                                                    <asp:ListItem>false</asp:ListItem>
+                                                                </asp:DropDownList>
+                                                                <label class="float-label">Employees are Injured? </label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="dropDown_Employe_Payed" required="" runat="server">
+                                                                    <asp:ListItem>true</asp:ListItem>
+                                                                    <asp:ListItem>false</asp:ListItem>
+                                                                </asp:DropDownList>
+                                                                <label class="float-label">Employees are payed?</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_state" required="" runat="server">
+                                                                    <asp:ListItem>High</asp:ListItem>
+                                                                    <asp:ListItem>Medium</asp:ListItem>
+                                                                    <asp:ListItem>Low</asp:ListItem>
+                                                                </asp:DropDownList>
+                                                                <label class="float-label">State</label>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Engine info Tab  -->
+                                                <button type="button" id="BtnSpecificPreview" class="btn btn-sm btn-default  waves-effect" runat="server" onserverclick="ActiveReport_click"><i class="icofont icofont-hand-drawn-left"></i>Preview</button>
+                                                <div class="float-right">
+                                                    <button type="button" id="btnSave" class="btn btn-sm btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save <i class="icofont icofont-save"></i></button>
+                                                    <button type="reset" class="btn btn-sm btn-danger ml-5">Cancel</button>
+                                                    <a class="btn btn-sm btn-info ml-5" href="ViewCarCrash.aspx">List <i class="icofont icofont-listine-dots"></i></a>
 
-                                        <!-- End Specific info Tab  -->
-                                        <div class="tab-pane " id="specific" role="tabpanel">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-material">
-                                                        <div class="form-group form-default">
-                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_vehicle_Damag" required="" runat="server">
-                                                                <asp:ListItem>true</asp:ListItem>
-                                                                <asp:ListItem>false</asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <label class="float-label">Is Vehicle Damaged? </label>
-                                                        </div>
-                                                        <div class="form-group form-default">
-                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Damage_thirdParty" required="" runat="server">
-                                                                <asp:ListItem>true</asp:ListItem>
-                                                                <asp:ListItem>false</asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <label class="float-label">Are Third Parties Damaged? </label>
-                                                        </div>
-                                                        <div class="form-group form-default">
-                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_thirdParty_injure" required="" runat="server">
-                                                                <asp:ListItem>true</asp:ListItem>
-                                                                <asp:ListItem>false</asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <label class="float-label">Are Third Parties Injured?</label>
-                                                        </div>
-                                                    </div>
                                                 </div>
-
-                                                <div class="col-md-6">
-
-                                                    <div class="form-material">
-
-
-                                                        <div class="form-group form-default">
-                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Employee_injure" required="" runat="server">
-                                                                <asp:ListItem>true</asp:ListItem>
-                                                                <asp:ListItem>false</asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <label class="float-label">Employees are Injured? </label>
-                                                        </div>
-                                                        <div class="form-group form-default">
-                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="dropDown_Employe_Payed" required="" runat="server">
-                                                                <asp:ListItem>true</asp:ListItem>
-                                                                <asp:ListItem>false</asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <label class="float-label">Employees are payed?</label>
-                                                        </div>
-                                                        <div class="form-group form-default">
-                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_state" required="" runat="server">
-                                                                <asp:ListItem>High</asp:ListItem>
-                                                                <asp:ListItem>Medium</asp:ListItem>
-                                                                <asp:ListItem>Low</asp:ListItem>
-                                                            </asp:DropDownList>
-                                                            <label class="float-label">State</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Specific info Tab  -->
+                                            </asp:View>
+                                            <!-- End Specific info Tab  -->
+                                        </asp:MultiView>
+                                        <!-- END MULTIVIEW  -->
                                     </div>
-                                </div>
-
-                                <div class="card-footer">
-                                    <div class="float-right">
-                                        <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
-                                        <button type="reset" class="btn btn-danger ml-5">Cancel</button>
-                                        <a class="btn btn-info ml-5" href="ViewCarCrash.aspx">List</a>
-                                    </div>
-                                </div>
+                                </div>                               
                             </div>
                             <!-- Tab variant tab card start -->
                         </div>

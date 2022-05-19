@@ -14,6 +14,8 @@ namespace VehicleFleetManagment.FleetApp
         Ministry_Class Min = new Ministry_Class();
         Ministry_Interface I = new Ministry_Imp();
         string codeMin;
+        string sytemTitle;
+        string slogan;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -27,6 +29,9 @@ namespace VehicleFleetManagment.FleetApp
 
             if (!IsPostBack)
             {
+                txtSystemTitle.Text = sytemTitle;
+                txtSlogan.Text = slogan;
+
                 ChargeData();
             }
         }

@@ -125,11 +125,11 @@ namespace VehicleFleetManagment.FleetImp
 
 
         //DISPLAY METHOD
-        public void Display(GridView gd)
+        public void Display(GridView gd, string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MINISTRY_REAL_ESTATE
+                var obj = (from M in con.MINISTRY_REAL_ESTATE where M.MINISTRY.Code_Min== codeMin.Trim()
 
                            select new
                            {
@@ -147,6 +147,28 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //DISPLAY ALL METHOD
+        public void DisplayAll(GridView gd)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from M in con.MINISTRY_REAL_ESTATE
+
+                           select new
+                           {
+                               MIN_REAL_ESTATE_ID = M.MIN_REAL_ESTATE_ID,
+                               REAL_ESTATE_ID = M.REAL_ESTATE.RealEstate_Name,
+                               Quantity = M.Quantity,
+                               MINISTRY_ID = M.MINISTRY.Ministry_Name,
+                               Comment = M.Comment
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
         //PROVIDE METHOD
         public void provide(MinRealEstate_Class Mr, int id)
         {
@@ -163,8 +185,21 @@ namespace VehicleFleetManagment.FleetImp
             }
         }
 
-        //COUNT METHOD
-        public int count()
+        //COUNT  METHOD
+        public int count(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var M = (from l in con.MINISTRY_REAL_ESTATE where l.MINISTRY.Code_Min== codeMin
+                         select l).Count();
+                n = M;
+            }
+            return n;
+        }
+
+        //COUNT  ALL METHOD
+        public int countAll()
         {
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
@@ -175,14 +210,13 @@ namespace VehicleFleetManagment.FleetImp
             }
             return n;
         }
-
         //REASEARCH METHOD
-        public void Research(GridView gd, string SearchText)
+        public void Research(GridView gd,string codeMin,string SearchText)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MINISTRY_REAL_ESTATE
-                           where 
+                           where M.MINISTRY.Code_Min == codeMin &&
                            (M.Quantity).ToString() == SearchText ||
                             M.REAL_ESTATE.RealEstate_Name.StartsWith(SearchText) ||
                             M.MINISTRY.Ministry_Name.StartsWith(SearchText)
@@ -203,9 +237,35 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //REASEARCH All METHOD
+        public void ResearchAll(GridView gd, string SearchText)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from M in con.MINISTRY_REAL_ESTATE
+                           where
+                           (M.Quantity).ToString() == SearchText ||
+                            M.REAL_ESTATE.RealEstate_Name.StartsWith(SearchText) ||
+                            M.MINISTRY.Ministry_Name.StartsWith(SearchText)
+                           select new
+                           {
+                               MIN_REAL_ESTATE_ID = M.MIN_REAL_ESTATE_ID,
+                               REAL_ESTATE_ID = M.REAL_ESTATE.RealEstate_Name,
+                               Quantity = M.Quantity,
+                               MINISTRY_ID = M.MINISTRY.Ministry_Name,
+                               Comment = M.Comment
 
-        //DISPLAY METHOD MINISTRY
-        public void DisplayMinistry(DropDownList drop)
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //DISPLAY METHOD MINISTRY All
+        public void DisplayMinistryAll(DropDownList drop)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -226,6 +286,30 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //DISPLAY METHOD MINISTRY
+        public void DisplayMinistry(DropDownList drop, string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from M in con.MINISTRies
+                           where M.Code_Min == codeMin
+
+                           select new
+                           {
+                               MINISTRY_ID = M.MINISTRY_ID,
+                               Ministry_Name = M.Ministry_Name,
+                               Code_Min = codeMin,
+
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "MINISTRY_ID";
+                drop.DataTextField = "Ministry_Name";
+                drop.DataBind();
+            }
+
+        }
 
         //DISPLAY METHOD REAL_ESTATE
         public void DisplayREAL_ESTATE(DropDownList drop)

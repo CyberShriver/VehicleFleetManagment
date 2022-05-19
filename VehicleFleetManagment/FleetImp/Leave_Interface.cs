@@ -23,22 +23,37 @@ namespace VehicleFleetManagment.FleetImp
 
         //Delete Method
         int DeleteCheck(GridView gd, CheckBox chk, int id);
+
         //Display Method
-        void Display(GridView gd);
+        void Display(GridView gd,string codeMin);
+
+        //Display ALL Method
+        void DisplayAll(GridView gd);
 
         //Provide Method
         void provide(Leave_Class Le, int id);
 
         //count
-        int count();
+        int count(string codeMin);
+
+        //count All
+        int countAll();
+
 
         //Research Method
-        void Research(GridView gd, string SearchText);
+        void Research(GridView gd,string codeMin, string SearchText);
+
+        //Research All Method
+        void ResearchAll(GridView gd, string SearchText);
+
         //DropDown All Vehicle 
         void DisplayAllDriver(DropDownList drop);
 
         //DropDown Ministry 
-        void DisplayMinistry(DropDownList drop);
+        void DisplayMinistry(DropDownList drop,string codeMin);
+
+        //DropDown All Ministry 
+        void DisplayMinistryAll(DropDownList drop);
 
         //DropDown Vehicle 
         void DisplayDriver(DropDownList drop, int id);

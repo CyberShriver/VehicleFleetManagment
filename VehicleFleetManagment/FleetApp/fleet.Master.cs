@@ -23,12 +23,16 @@ namespace VehicleFleetManagment.FleetApp
         string slogan;
         string theme;
 
-        void cook()
-        {
-            
-        }
+    
         
         protected void Page_Load(object sender, EventArgs e)
+        {
+            ChargeCookies();
+            
+        }
+
+        //Charge Cookies
+        void ChargeCookies()
         {
             HttpCookie Code_Min = new HttpCookie("Code_Min");
             HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
@@ -57,7 +61,12 @@ namespace VehicleFleetManagment.FleetApp
                 pic = Request.Cookies["Picture"].Value;
                 slogan = Request.Cookies["Slogan"].Value;
                 theme = Request.Cookies["Theme"].Value;
-            }           
+            }
+            else
+            {
+                Response.Redirect("~/FleetApp/Login.aspx");
+            }
+
             txtProfileName.Text = name;
             txtSideProfile.Text = name;
             HeaderProfile.ImageUrl = "~/FleetApp/assets/images/Users/" + pic;

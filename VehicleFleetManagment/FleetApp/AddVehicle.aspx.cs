@@ -18,12 +18,16 @@ namespace VehicleFleetManagment.FleetApp
         int msg;
         string id;
         string code;
-
+        string codeMin;
+        string sytemTitle;
+        string slogan;
         protected void Page_Load(object sender, EventArgs e)
         {
             id = Request.QueryString["VEHICLE_ID"];
+            ChargeCookies();
             if (!IsPostBack)
             {
+                MultiView.ActiveViewIndex = 0;
                 MsgInit();
                 if (id == null)
                 {
@@ -36,8 +40,10 @@ namespace VehicleFleetManagment.FleetApp
                     ChargeData();
                 }
 
+                txtSystemTitle.Text = sytemTitle;
+                txtSlogan.Text = slogan;
+
                 Minisrty();
-               // Fuel();
                 Model();
                 Body();
 
@@ -45,6 +51,36 @@ namespace VehicleFleetManagment.FleetApp
 
         }
 
+        void ChargeCookies()
+        {
+            HttpCookie Code_Min = new HttpCookie("Code_Min");
+            HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
+            HttpCookie Phone = new HttpCookie("Phone");
+            HttpCookie Ministry_Name = new HttpCookie("Ministry_Name");
+            HttpCookie Address = new HttpCookie("Address");
+            HttpCookie Postal_code = new HttpCookie("Postal_code");
+            HttpCookie User_Nme = new HttpCookie("User_Nme");
+            HttpCookie Fax = new HttpCookie("Fax");
+            HttpCookie System_Name = new HttpCookie("System_Name");
+            HttpCookie System_Title = new HttpCookie("System_Title");
+            HttpCookie System_Email = new HttpCookie("System_Email");
+            HttpCookie Password = new HttpCookie("Password");
+            HttpCookie Logo = new HttpCookie("Logo");
+            HttpCookie Picture = new HttpCookie("Picture");
+            HttpCookie Slogan = new HttpCookie("Slogan");
+            HttpCookie Theme = new HttpCookie("Theme");
+
+            if (Request.Cookies["Code_Min"].Value != null)
+            {
+                codeMin = Request.Cookies["Code_Min"].Value;
+                sytemTitle = Request.Cookies["System_Title"].Value;
+                slogan = Request.Cookies["Slogan"].Value;
+            }
+            else
+            {
+                Response.Redirect("~/FleetApp/Login.aspx");
+            }
+        }
         private void MsgInit()
         {
             SuccessMsg.Visible = false;
@@ -573,14 +609,70 @@ namespace VehicleFleetManagment.FleetApp
                 Update();
         }
 
+        protected void ActiveGen_click(object sender, EventArgs args)
+        {
+            MultiView.ActiveViewIndex = 0;
+            MsgInit();
+            tabEngin.Attributes.Remove("class");
+            tabEngin.Attributes.Add("class", "nav-link");
+
+            tabSpec.Attributes.Remove("class");
+            tabSpec.Attributes.Add("class", "nav-link");
+
+            tabGen.Attributes.Remove("class");
+            tabGen.Attributes.Add("class", "nav-link active");
+        }
+        protected void ActiveEngine_click(object sender, EventArgs args)
+        {
+            MultiView.ActiveViewIndex = 1;
+            MsgInit();
+            tabGen.Attributes.Remove("class");
+            tabGen.Attributes.Add("class", "nav-link");
+
+            tabSpec.Attributes.Remove("class");
+            tabSpec.Attributes.Add("class", "nav-link");
+
+            tabEngin.Attributes.Remove("class");
+            tabEngin.Attributes.Add("class", "nav-link active");
+        }
+        protected void ActiveSpecific_click(object sender, EventArgs args)
+        {
+            MultiView.ActiveViewIndex = 2;
+            MsgInit();
+            tabGen.Attributes.Remove("class");
+            tabGen.Attributes.Add("class", "nav-link");
+
+            tabEngin.Attributes.Remove("class");
+            tabEngin.Attributes.Add("class", "nav-link");
+
+            tabSpec.Attributes.Remove("class");
+            tabSpec.Attributes.Add("class", "nav-link active");
+        }
         //Genarate Code Vehicle
         string VehicleCode()
         {
-            return code =DropDown_Ministry.SelectedItem.ToString().Trim()+"-Veh-"+(Convert.ToInt32(I.count() + 1)) + "/" + DateTime.Now.Year;
+            if (codeMin == "All")
+            {
+                return code = DropDown_Ministry.SelectedItem.ToString().Trim() + "-Veh-" + (Convert.ToInt32(I.countAll() + 1)) + "/" + DateTime.Now.Year;
+
+            }
+            else
+            {              
+            return code =DropDown_Ministry.SelectedItem.ToString().Trim()+"-Veh-"+(Convert.ToInt32(I.count(codeMin) + 1)) + "/" + DateTime.Now.Year;
+            }
         }
         void Minisrty()
         {
-            I.DisplayMinistry(DropDown_Ministry);
+            if (codeMin == "All")
+            {
+                DMinistry.Visible = true;
+                I.DisplayMinistryAll(DropDown_Ministry);
+            }
+            else
+            {
+                I.DisplayMinistry(DropDown_Ministry, codeMin);
+                DMinistry.Visible = false;
+            }
         }
 
         void Model()

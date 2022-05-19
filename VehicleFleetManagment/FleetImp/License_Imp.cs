@@ -143,11 +143,11 @@ namespace VehicleFleetManagment.FleetImp
 
 
         //DISPLAY METHOD
-        public void Display(GridView gd)
+        public void Display(GridView gd,string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from L in con.LICENSEs
+                var obj = (from L in con.LICENSEs where L.MINISTRY.Code_Min== codeMin
 
                            select new
                            {
@@ -165,6 +165,41 @@ namespace VehicleFleetManagment.FleetImp
                                Bike  = L.Bike ,
                                MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
                                FourXfour  = L.FourXfour,
+                               Saved_Dte = L.Saved_Dte,
+                               MINISTRY_ID = L.MINISTRY.Ministry_Name
+
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //DISPLAY ALL METHOD
+        public void DisplayAll(GridView gd)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from L in con.LICENSEs
+
+                           select new
+                           {
+                               LICENSE_ID = L.LICENSE_ID,
+                               License_Code = L.License_Code,
+                               International_License_Code = L.International_License_Code,
+                               Exp_Date = L.Exp_Date,
+                               Inter_License_Code_Exp_Date = L.Inter_License_Code_Exp_Date,
+                               License_Code_Mission = L.License_Code_Mission,
+                               License_State = L.License_State,
+                               Heavy_Weights = L.Heavy_Weights,
+                               Trailer_Weight = L.Trailer_Weight,
+                               Light_Vehicle = L.Light_Vehicle,
+                               License_Code_Mission_Exp_Dte = L.License_Code_Mission_Exp_Dte,
+                               Bike = L.Bike,
+                               MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
+                               FourXfour = L.FourXfour,
                                Saved_Dte = L.Saved_Dte,
                                MINISTRY_ID = L.MINISTRY.Ministry_Name
 
@@ -205,7 +240,20 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //COUNT METHOD
-        public int count()
+        public int count(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var L = (from l in con.LICENSEs where l.MINISTRY.Code_Min== codeMin
+                         select l).Count();
+                n = L;
+            }
+            return n;
+        }
+
+        //COUNT ALL METHOD
+        public int countAll()
         {
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
@@ -218,7 +266,49 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //REASEARCH METHOD
-        public void Research(GridView gd, string SearchText)
+        public void Research(GridView gd,string codeMin, string SearchText)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from L in con.LICENSEs
+                           where L.MINISTRY.Code_Min== codeMin &&
+                       L.License_Code_Mission.StartsWith(SearchText) ||
+                       L.License_Code.StartsWith(SearchText) ||
+                       L.MINISTRY_DRIVER.DRIVER.Full_Name.StartsWith(SearchText) ||
+                        L.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
+                       L.Exp_Date.StartsWith(SearchText) ||
+                       L.Heavy_Weights.StartsWith(SearchText)
+
+                           select new
+                           {
+                               LICENSE_ID = L.LICENSE_ID,
+                               License_Code = L.License_Code,
+                               International_License_Code = L.International_License_Code,
+                               Exp_Date = L.Exp_Date,
+                               Inter_License_Code_Exp_Date = L.Inter_License_Code_Exp_Date,
+                               License_Code_Mission = L.License_Code_Mission,
+                               License_State = L.License_State,
+                               Heavy_Weights = L.Heavy_Weights,
+                               Trailer_Weight = L.Trailer_Weight,
+                               Light_Vehicle = L.Light_Vehicle,
+                               License_Code_Mission_Exp_Dte = L.License_Code_Mission_Exp_Dte,
+                               Bike = L.Bike,
+                               MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
+                               FourXfour = L.FourXfour,
+                               Saved_Dte = L.Saved_Dte,
+                               MINISTRY_ID = L.MINISTRY.Ministry_Name
+
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //REASEARCH ALL METHOD
+        public void ResearchAll(GridView gd, string SearchText)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -305,7 +395,29 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //DISPLAY METHOD MINISTRY
-        public void DisplayMinistry(DropDownList drop)
+        public void DisplayMinistry(DropDownList drop,string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from L in con.MINISTRies where L.Code_Min== codeMin
+
+                           select new
+                           {
+                               MINISTRY_ID = L.MINISTRY_ID,
+                               Ministry_Name = L.Ministry_Name,
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "MINISTRY_ID";
+                drop.DataTextField = "Ministry_Name";
+                drop.DataBind();
+            }
+
+        }
+
+        //DISPLAY METHOD ALL MINISTRY
+        public void DisplayMinistryAll(DropDownList drop)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {

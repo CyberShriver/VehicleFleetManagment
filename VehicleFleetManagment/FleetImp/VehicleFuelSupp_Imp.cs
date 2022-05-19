@@ -143,11 +143,11 @@ namespace VehicleFleetManagment.FleetImp
 
 
         //DISPLAY METHOD
-        public void Display(GridView gd)
+        public void Display(GridView gd,string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from V in con.VEHICLE_FUEL_SUPPLY
+                var obj = (from V in con.VEHICLE_FUEL_SUPPLY where V.MINISTRY.Code_Min== codeMin
 
                            select new
                            {
@@ -166,6 +166,40 @@ namespace VehicleFleetManagment.FleetImp
                                Liter_100_km  = V.Liter_100_km ,
                                Comment  = V.Comment ,
                                Saved_Date  = V.Saved_Date ,
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+
+        //DISPLAY ALL METHOD
+        public void DisplayAll(GridView gd)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from V in con.VEHICLE_FUEL_SUPPLY
+
+                           select new
+                           {
+                               VEHICLE_FUEL_ID = V.VEHICLE_FUEL_ID,
+                               Provider_Code = V.Provider_Code,
+                               VEHICLE_ID = V.VEHICLE.Local_Plate,
+                               MINISTRY_ID = V.MINISTRY.Ministry_Name,
+                               Fuel_Type = V.Fuel_Type,
+                               Tank_Type = V.Tank_Type,
+                               Tank_Code = V.Tank_Code,
+                               Odometer = V.Odometer,
+                               Initial_Qty = V.Initial_Qty,
+                               Consumed_Qty = V.Consumed_Qty,
+                               United_Price = V.United_Price,
+                               Total_Price = V.Total_Price,
+                               Liter_100_km = V.Liter_100_km,
+                               Comment = V.Comment,
+                               Saved_Date = V.Saved_Date,
                            }
                            ).ToList();
 
@@ -201,7 +235,20 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //COUNT METHOD
-        public int count()
+        public int count(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var V = (from l in con.VEHICLE_FUEL_SUPPLY where l.MINISTRY.Code_Min==codeMin
+                         select l).Count();
+                n = V;
+            }
+            return n;
+        }
+
+        //COUNT ALL METHOD
+        public int countAll()
         {
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
@@ -214,7 +261,46 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //REASEARCH METHOD
-        public void Research(GridView gd, string SearchText)
+        public void Research(GridView gd,string codeMin, string SearchText)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from V in con.VEHICLE_FUEL_SUPPLY
+                           where V.MINISTRY.Code_Min== codeMin &&
+                       V.Provider_Code.StartsWith(SearchText) ||
+                        V.VEHICLE.Local_Plate.StartsWith(SearchText) ||
+                       V.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
+                       V.Fuel_Type.StartsWith(SearchText)
+
+                           select new
+                           {
+                               VEHICLE_FUEL_ID = V.VEHICLE_FUEL_ID,
+                               Provider_Code = V.Provider_Code,
+                               VEHICLE_ID = V.VEHICLE.Local_Plate,
+                               MINISTRY_ID = V.MINISTRY.Ministry_Name,
+                               Fuel_Type = V.Fuel_Type,
+                               Tank_Type = V.Tank_Type,
+                               Tank_Code = V.Tank_Code,
+                               Odometer = V.Odometer,
+                               Initial_Qty = V.Initial_Qty,
+                               Consumed_Qty = V.Consumed_Qty,
+                               United_Price = V.United_Price,
+                               Total_Price = V.Total_Price,
+                               Liter_100_km = V.Liter_100_km,
+                               Comment = V.Comment,
+                               Saved_Date = V.Saved_Date
+
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //REASEARCH ALL METHOD
+        public void ResearchAll(GridView gd, string SearchText)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -252,9 +338,31 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
-        
+
         //DISPLAY METHOD MINISTRY IN DROPDOWN
-        public void DisplayMinistry(DropDownList drop)
+        public void DisplayMinistry(DropDownList drop,string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from M in con.MINISTRies where M.Code_Min==codeMin
+
+                           select new
+                           {
+                               MINISTRY_ID = M.MINISTRY_ID,
+                               Ministry_Name = M.Ministry_Name,
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "MINISTRY_ID";
+                drop.DataTextField = "Ministry_Name";
+                drop.DataBind();
+            }
+
+        }
+
+        //DISPLAY METHOD ALL MINISTRY IN DROPDOWN
+        public void DisplayMinistryAll(DropDownList drop)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -297,6 +405,7 @@ namespace VehicleFleetManagment.FleetImp
             }
 
         }
+
         //Provider
         public void DisplayProvider(DropDownList drop)
         {

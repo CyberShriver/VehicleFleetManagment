@@ -135,11 +135,11 @@ namespace VehicleFleetManagment.FleetImp
 
 
         //DISPLAY METHOD
-        public void Display(GridView gd)
+        public void Display(GridView gd, string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from A in con.ASSURANCEs
+                var obj = (from A in con.ASSURANCEs where A.MINISTRY.Code_Min== codeMin
 
                            select new
                            {
@@ -152,6 +152,36 @@ namespace VehicleFleetManagment.FleetImp
                                Insurance_Company = A.Insurance_Company ,
                                Insurance_State = A.Insurance_State ,
                                Comment = A.Comment ,
+                               VEHICLE_ID = A.VEHICLE.Local_Plate,
+                               MINISTRY_ID = A.MINISTRY.Ministry_Name
+
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //DISPLAY All METHOD
+        public void DisplayAll(GridView gd)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from A in con.ASSURANCEs
+
+                           select new
+                           {
+                               ASSURANCE_ID = A.ASSURANCE_ID,
+                               Maintenance_Type = A.Maintenance_Type,
+                               Insurance_Policy = A.Insurance_Policy,
+                               Insurance_Start_Date = A.Insurance_Start_Date,
+                               Local_Insurance_Exp_Date = A.Local_Insurance_Exp_Date,
+                               Amount = A.Amount,
+                               Insurance_Company = A.Insurance_Company,
+                               Insurance_State = A.Insurance_State,
+                               Comment = A.Comment,
                                VEHICLE_ID = A.VEHICLE.Local_Plate,
                                MINISTRY_ID = A.MINISTRY.Ministry_Name
 
@@ -188,7 +218,20 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //COUNT METHOD
-        public int count()
+        public int count(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var A = (from l in con.ASSURANCEs where l.MINISTRY.Code_Min== codeMin
+                         select l).Count();
+                n = A;
+            }
+            return n;
+        }
+
+        //COUNT All METHOD
+        public int countAll()
         {
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
@@ -201,7 +244,44 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //REASEARCH METHOD
-        public void Research(GridView gd, string SearchText)
+        public void Research(GridView gd, string codeMin, string SearchText)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from A in con.ASSURANCEs
+                           where A.MINISTRY.Code_Min== codeMin &&
+                       A.Insurance_Policy.StartsWith(SearchText) ||
+                       A.Maintenance_Type.StartsWith(SearchText) ||
+                       A.Insurance_Start_Date.StartsWith(SearchText) ||
+                       A.Insurance_Company.StartsWith(SearchText) ||
+                       A.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
+                       A.VEHICLE.Local_Plate.StartsWith(SearchText) 
+
+                           select new
+                           {
+                               ASSURANCE_ID = A.ASSURANCE_ID,
+                               Maintenance_Type = A.Maintenance_Type,
+                               Insurance_Policy = A.Insurance_Policy,
+                               Insurance_Start_Date = A.Insurance_Start_Date,
+                               Local_Insurance_Exp_Date = A.Local_Insurance_Exp_Date,
+                               Amount = A.Amount,
+                               Insurance_Company = A.Insurance_Company,
+                               Insurance_State = A.Insurance_State,
+                               Comment = A.Comment,
+                               VEHICLE_ID = A.VEHICLE.Local_Plate,
+                               MINISTRY_ID = A.MINISTRY.Ministry_Name
+
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //REASEARCH All METHOD
+        public void ResearchAll(GridView gd, string SearchText)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -212,7 +292,7 @@ namespace VehicleFleetManagment.FleetImp
                        A.Insurance_Start_Date.StartsWith(SearchText) ||
                        A.Insurance_Company.StartsWith(SearchText) ||
                        A.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
-                       A.VEHICLE.Local_Plate.StartsWith(SearchText) 
+                       A.VEHICLE.Local_Plate.StartsWith(SearchText)
 
                            select new
                            {
@@ -284,7 +364,29 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //DISPLAY METHOD MINISTRY
-        public void DisplayMinistry(DropDownList drop)
+        public void DisplayMinistry(DropDownList drop, string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from A in con.MINISTRies where A.Code_Min== codeMin
+
+                           select new
+                           {
+                               MINISTRY_ID = A.MINISTRY_ID,
+                               Ministry_Name = A.Ministry_Name,
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "MINISTRY_ID";
+                drop.DataTextField = "Ministry_Name";
+                drop.DataBind();
+            }
+
+        }
+
+        //DISPLAY METHOD ALL MINISTRY
+        public void DisplayMinistryAll(DropDownList drop)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {

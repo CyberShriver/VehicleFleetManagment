@@ -14,11 +14,19 @@ namespace VehicleFleetManagment.FleetApp
         MinRealEstate_Class Mr = new MinRealEstate_Class();
         MinRealEstate_Interface I = new MinRealEstate_Imp();
         private int msg;
+        string codeMin;
+        string sytemTitle;
+        string slogan;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            ChargeCookies();
             if (!IsPostBack)
             {
+                txtSystemTitle.Text = sytemTitle;
+                txtSlogan.Text = slogan;
+
                 getDataGDV();
 
             }
@@ -26,16 +34,52 @@ namespace VehicleFleetManagment.FleetApp
 
         public void getDataGDV()
         {
-            I.Display(gdv);
-            nbr.Text = I.count().ToString();
+            if (codeMin == "All")
+            {
+                I.DisplayAll(gdv);
+                nbr.Text = I.countAll().ToString();
+            }
+            else
+            {
+                I.Display(gdv, codeMin);
+                nbr.Text = I.count(codeMin).ToString();
+            }
 
         }
 
+        void ChargeCookies()
+        {
+            HttpCookie Code_Min = new HttpCookie("Code_Min");
+            HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
+            HttpCookie System_Title = new HttpCookie("System_Title");
+            HttpCookie Slogan = new HttpCookie("Slogan");
+            HttpCookie Theme = new HttpCookie("Theme");
+
+            if (Request.Cookies["Code_Min"].Value != null)
+            {
+                codeMin = Request.Cookies["Code_Min"].Value;
+                sytemTitle = Request.Cookies["System_Title"].Value;
+                slogan = Request.Cookies["Slogan"].Value;
+            }
+            else
+            {
+                Response.Redirect("~/FleetApp/Login.aspx");
+            }
+        }
         protected void btn_srch_Click(object sender, EventArgs e)
         {
-            if (txt_Search.Value == "")
-                getDataGDV();
-            else I.Research(gdv, txt_Search.Value);
+            if (codeMin == "All")
+            {
+                if (txt_Search.Value == "")
+                    getDataGDV();
+                else I.ResearchAll(gdv, txt_Search.Value);
+            }
+            else
+            {
+                if (txt_Search.Value == "")
+                    getDataGDV();
+                else I.Research(gdv, codeMin, txt_Search.Value);
+            }
         }
         protected void btnReload_click(object sender, EventArgs e)
         {

@@ -14,17 +14,24 @@ namespace VehicleFleetManagment.FleetApp
     {
         MinDriver_Class Mr = new MinDriver_Class();
         MinDriver_Interface I = new MinDriver_Imp();
-        private int msg;
         string codeMin;
-        string name;
         string sytemTitle;
-        string logo;
-        string systemName;
-        string pic;
         string slogan;
-        string theme;
 
         protected void Page_Load(object sender, EventArgs e)
+        {
+            ChargeCookies();
+
+            if (!IsPostBack)
+            {
+                txtSystemTitle.Text = sytemTitle;
+                txtSlogan.Text = slogan;
+                getDataGDV();
+
+            }
+        }
+
+        void ChargeCookies()
         {
             HttpCookie Code_Min = new HttpCookie("Code_Min");
             HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
@@ -46,24 +53,14 @@ namespace VehicleFleetManagment.FleetApp
             if (Request.Cookies["Code_Min"].Value != null)
             {
                 codeMin = Request.Cookies["Code_Min"].Value;
-                name = Request.Cookies["Ministry_Name"].Value;
                 sytemTitle = Request.Cookies["System_Title"].Value;
-                logo = Request.Cookies["Logo"].Value;
-                systemName = Request.Cookies["System_Name"].Value;
-                pic = Request.Cookies["Picture"].Value;
                 slogan = Request.Cookies["Slogan"].Value;
-                theme = Request.Cookies["Theme"].Value;
             }
-
-            if (!IsPostBack)
+            else
             {
-                getDataGDV();
-                txtSystemTitle.Text = sytemTitle;
-                txtSlogan.Text = slogan;
-
+                Response.Redirect("~/FleetApp/Login.aspx");
             }
         }
-
         public void getDataGDV()
         {
             if (codeMin == "All")

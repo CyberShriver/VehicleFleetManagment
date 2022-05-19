@@ -153,11 +153,11 @@ namespace VehicleFleetManagment.FleetImp
 
 
         //DISPLAY METHOD
-        public void Display(GridView gd)
+        public void Display(GridView gd,string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from R in con.REPAIRs
+                var obj = (from R in con.REPAIRs where R.MINISTRY.Code_Min== codeMin
 
                            select new
                            {
@@ -182,6 +182,44 @@ namespace VehicleFleetManagment.FleetImp
                                CAR_CRASH_ID = R.CAR_CRASH.Crash_Code
 
             }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //DISPLAY All METHOD
+        public void DisplayAll(GridView gd)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from R in con.REPAIRs
+
+                           select new
+                           {
+                               REPAIR_ID = R.REPAIR_ID,
+                               Work_Number = R.Work_Number,
+                               Reason = R.Reason,
+                               Start_Dte = R.Start_Dte,
+                               End_Dte = R.End_Dte,
+                               Internal_External = R.Internal_External,
+                               Work_Status = R.Work_Status,
+                               Saved_Date = R.Saved_Date,
+                               Location_Code = R.Location_Code,
+                               Comment = R.Comment,
+                               VEHICLE_ID = R.VEHICLE.Local_Plate,
+                               Odometer_IN = R.Odometer_IN,
+                               MINISTRY_ID = R.MINISTRY.Ministry_Name,
+                               Odometer_OUT = R.Odometer_OUT,
+                               Start_Work_Time = R.Start_Work_Time,
+                               End_Work_Time = R.End_Work_Time,
+                               Off_Service_Days_Number = R.Off_Service_Days_Number,
+                               Participant_Emp_Code = R.Participant_Emp_Code,
+                               CAR_CRASH_ID = R.CAR_CRASH.Crash_Code
+
+                           }
                            ).ToList();
 
                 gd.DataSource = obj;
@@ -220,7 +258,20 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //COUNT METHOD
-        public int count()
+        public int count(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var R = (from c in con.REPAIRs where c.MINISTRY.Code_Min== codeMin
+                         select c).Count();
+                n = R;
+            }
+            return n;
+        }
+
+        //COUNT ALL METHOD
+        public int countAll()
         {
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
@@ -233,12 +284,12 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //REASEARCH METHOD
-        public void Research(GridView gd, string SearchText)
+        public void Research(GridView gd,string codeMin, string SearchText)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from R in con.REPAIRs
-                           where
+                           where R.MINISTRY.Code_Min== codeMin &&
                        R.Work_Number.StartsWith(SearchText) ||
                        R.Start_Dte.StartsWith(SearchText) ||
                        R.VEHICLE.Local_Plate.StartsWith(SearchText) ||
@@ -277,6 +328,50 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //REASEARCH ALL METHOD
+        public void ResearchAll(GridView gd, string SearchText)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from R in con.REPAIRs
+                           where
+                       R.Work_Number.StartsWith(SearchText) ||
+                       R.Start_Dte.StartsWith(SearchText) ||
+                       R.VEHICLE.Local_Plate.StartsWith(SearchText) ||
+                       R.CAR_CRASH.Crash_Code.StartsWith(SearchText) ||
+                       R.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
+                       R.Work_Status.ToString() == SearchText
+
+                           select new
+                           {
+                               REPAIR_ID = R.REPAIR_ID,
+                               Work_Number = R.Work_Number,
+                               Reason = R.Reason,
+                               Start_Dte = R.Start_Dte,
+                               End_Dte = R.End_Dte,
+                               Internal_External = R.Internal_External,
+                               Work_Status = R.Work_Status,
+                               Saved_Date = R.Saved_Date,
+                               Location_Code = R.Location_Code,
+                               Comment = R.Comment,
+                               VEHICLE_ID = R.VEHICLE.Local_Plate,
+                               Odometer_IN = R.Odometer_IN,
+                               MINISTRY_ID = R.MINISTRY.Ministry_Name,
+                               Odometer_OUT = R.Odometer_OUT,
+                               Start_Work_Time = R.Start_Work_Time,
+                               End_Work_Time = R.End_Work_Time,
+                               Off_Service_Days_Number = R.Off_Service_Days_Number,
+                               Participant_Emp_Code = R.Participant_Emp_Code,
+                               CAR_CRASH_ID = R.CAR_CRASH.Crash_Code
+
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
         //DISPLAY METHOD ALL Driver
         public void DisplayAllVehicle(DropDownList drop)
         {
@@ -369,7 +464,29 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //DISPLAY METHOD MINISTRY
-        public void DisplayMinistry(DropDownList drop)
+        public void DisplayMinistry(DropDownList drop,string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from R in con.MINISTRies where R.Code_Min== codeMin
+
+                           select new
+                           {
+                               MINISTRY_ID = R.MINISTRY_ID,
+                               Ministry_Name = R.Ministry_Name,
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "MINISTRY_ID";
+                drop.DataTextField = "Ministry_Name";
+                drop.DataBind();
+            }
+
+        }
+
+        //DISPLAY METHOD ALL MINISTRY
+        public void DisplayMinistryAll(DropDownList drop)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {

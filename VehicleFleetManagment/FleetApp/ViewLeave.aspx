@@ -10,8 +10,8 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h5 class="m-b-10">Vehicle Fleet Managment</h5>
-                        <p class="m-b-0">Safety Rules Are Your Best Tools.</p>
+                        <asp:Label class="m-b-10 h5" ID="txtSystemTitle" runat="server" Text="" ></asp:Label>
+                        <p><asp:Label class="m-b-0 p" ID="txtSlogan" runat="server" Text="" ></asp:Label></p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -95,7 +95,7 @@
                                                     <asp:CheckBox ID="checkSel" runat="server" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="#" FooterText="#">
+                                            <asp:TemplateField HeaderText="#" FooterText="#" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("LEAVE_ID") %>'></asp:Label>
                                                 </ItemTemplate>

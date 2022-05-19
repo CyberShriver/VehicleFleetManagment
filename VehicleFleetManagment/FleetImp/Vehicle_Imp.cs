@@ -220,7 +220,77 @@ namespace VehicleFleetManagment.FleetImp
 
 
         //DISPLAY METHOD
-        public void Display(GridView gd)
+        public void Display(GridView gd, string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from V in con.VEHICLEs where  V.MINISTRY.Code_Min== codeMin
+
+                           select new
+                           {
+                               VEHICLE_ID = V.VEHICLE_ID,
+                               Veh_Code = V.Veh_Code,
+                               BODY_ID = V.BODY_TYPE.Category,
+                               Local_Plate = V.Local_Plate,
+                               MODEL_ID =( V.MODEL.Model_Name)+" , "+ (V.MODEL.MARK.Mark_Name),
+                               MINISTRY_ID = V.MINISTRY.Ministry_Name,
+                               NameVeh = V.NameVeh,
+                               Color = V.Color,
+                               Condition = V.Condition,
+                               Chassis_Num = V.Chassis_Num,
+                               Engine_Num = V.Engine_Num,
+                               Engine_Manufacturer = V.Engine_Manufacturer,
+                               Engine_Type = V.Engine_Type,
+                               Alternator_Engine_Manufacturer = V.Alternator_Engine_Manufacturer,
+                               Alternator_Engine_Type = V.Alternator_Engine_Type,
+                               Kva = V.Kva,
+                               Volt = V.Volt,
+                               Generator_Weight = V.Generator_Weight,
+                               Trailer = V.Trailer,
+                               Assembly_Num = V.Assembly_Num,
+                               lhd_rhd = V.lhd_rhd,
+                               Safety_Belt = V.Safety_Belt,
+                               Gearbox_Type = V.Gearbox_Type,
+                               Opt_Four_Wheel = V.Opt_Four_Wheel,
+                               Central_Locking = V.Central_Locking,
+                               Rear_Lock = V.Rear_Lock,
+                               Engine_Series_Num = V.Engine_Series_Num,
+                               Forward_Lock = V.Forward_Lock,
+                               Engine_cylinder_Number = V.Engine_cylinder_Number,
+                               Engine_cc = V.Engine_cc,
+                               Engine_Power = V.Engine_Power,
+                               Fuel_Fype = V.Fuel_Fype,
+                               Tank_Type1 = V.Tank_Type1,
+                               Tank_Size1 = V.Tank_Size1,
+                               Tank_Type2 = V.Tank_Type2,
+                               Tank_Capacity2 = V.Tank_Capacity2,
+                               Front_Seats_Number = V.Front_Seats_Number,
+                               Battery_Voltage = V.Battery_Voltage,
+                               Air_Conditioner = V.Air_Conditioner,
+                               Additional_Heating = V.Additional_Heating,
+                               Veh_Weight = V.Veh_Weight,
+                               Gross_Veh_Weigth = V.Gross_Veh_Weigth,
+                               Empty_Pod = V.Empty_Pod,
+                               Key_Code = V.Key_Code,
+                               Rear_Blake = V.Rear_Blake,
+                               Electronic_Logbook = V.Electronic_Logbook,
+                               Radio_Code = V.Radio_Code,
+                               Guaranteed_Expiration_Date = V.Guaranteed_Expiration_Date,
+                               Guaranteed_Certificate_Num = V.Guaranteed_Certificate_Num,
+                               Circulation_Expiration_Date = V.Circulation_Expiration_Date,
+                               Stat = V.Stat,
+                               Picture = V.Picture
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //DISPLAY All METHOD
+        public void DisplayAll(GridView gd)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -232,7 +302,7 @@ namespace VehicleFleetManagment.FleetImp
                                Veh_Code = V.Veh_Code,
                                BODY_ID = V.BODY_TYPE.Category,
                                Local_Plate = V.Local_Plate,
-                               MODEL_ID =( V.MODEL.Model_Name)+" , "+ (V.MODEL.MARK.Mark_Name),
+                               MODEL_ID = (V.MODEL.Model_Name) + " , " + (V.MODEL.MARK.Mark_Name),
                                MINISTRY_ID = V.MINISTRY.Ministry_Name,
                                NameVeh = V.NameVeh,
                                Color = V.Color,
@@ -353,7 +423,20 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //COUNT METHOD
-        public int count()
+        public int count(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var V = (from l in con.VEHICLEs where l.MINISTRY.Code_Min== codeMin
+                         select l).Count();
+                n = V;
+            }
+            return n;
+        }
+
+        //COUNT All METHOD
+        public int countAll()
         {
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
@@ -366,7 +449,87 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //REASEARCH METHOD
-        public void Research(GridView gd, string SearchText)
+        public void Research(GridView gd, string codeMin, string SearchText)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from V in con.VEHICLEs
+                           where V.MINISTRY.Code_Min == codeMin &&
+                       V.Local_Plate.StartsWith(SearchText) ||
+                       V.Veh_Code.StartsWith(SearchText) ||
+                       V.BODY_TYPE.Category.StartsWith(SearchText) ||
+                       V.Veh_Code.StartsWith(SearchText) ||
+                       V.MODEL.Model_Name.StartsWith(SearchText) ||
+                       V.MODEL.MARK.Mark_Name.StartsWith(SearchText) ||
+                       V.Chassis_Num.StartsWith(SearchText) ||
+                       V.NameVeh.StartsWith(SearchText)
+
+                           select new
+                           {
+                               VEHICLE_ID = V.VEHICLE_ID,
+                               Veh_Code = V.Veh_Code,
+                               BODY_ID = V.BODY_TYPE.Category,
+                               Local_Plate = V.Local_Plate,
+                               MODEL_ID = (V.MODEL.Model_Name) + "," + (V.MODEL.MARK.Mark_Name),
+                               MINISTRY_ID = V.MINISTRY.Ministry_Name,
+                               NameVeh = V.NameVeh,
+                               Color = V.Color,
+                               Condition = V.Condition,
+                               Chassis_Num = V.Chassis_Num,
+                               Engine_Num = V.Engine_Num,
+                               Engine_Manufacturer = V.Engine_Manufacturer,
+                               Engine_Type = V.Engine_Type,
+                               Alternator_Engine_Manufacturer = V.Alternator_Engine_Manufacturer,
+                               Alternator_Engine_Type = V.Alternator_Engine_Type,
+                               Kva = V.Kva,
+                               Volt = V.Volt,
+                               Generator_Weight = V.Generator_Weight,
+                               Trailer = V.Trailer,
+                               Assembly_Num = V.Assembly_Num,
+                               lhd_rhd = V.lhd_rhd,
+                               Safety_Belt = V.Safety_Belt,
+                               Gearbox_Type = V.Gearbox_Type,
+                               Opt_Four_Wheel = V.Opt_Four_Wheel,
+                               Central_Locking = V.Central_Locking,
+                               Rear_Lock = V.Rear_Lock,
+                               Engine_Series_Num = V.Engine_Series_Num,
+                               Forward_Lock = V.Forward_Lock,
+                               Engine_cylinder_Number = V.Engine_cylinder_Number,
+                               Engine_cc = V.Engine_cc,
+                               Engine_Power = V.Engine_Power,
+                               Fuel_Fype = V.Fuel_Fype,
+                               Tank_Type1 = V.Tank_Type1,
+                               Tank_Size1 = V.Tank_Size1,
+                               Tank_Type2 = V.Tank_Type2,
+                               Tank_Capacity2 = V.Tank_Capacity2,
+                               Front_Seats_Number = V.Front_Seats_Number,
+                               Battery_Voltage = V.Battery_Voltage,
+                               Air_Conditioner = V.Air_Conditioner,
+                               Additional_Heating = V.Additional_Heating,
+                               Veh_Weight = V.Veh_Weight,
+                               Gross_Veh_Weigth = V.Gross_Veh_Weigth,
+                               Empty_Pod = V.Empty_Pod,
+                               Key_Code = V.Key_Code,
+                               Rear_Blake = V.Rear_Blake,
+                               Electronic_Logbook = V.Electronic_Logbook,
+                               Radio_Code = V.Radio_Code,
+                               Guaranteed_Expiration_Date = V.Guaranteed_Expiration_Date,
+                               Guaranteed_Certificate_Num = V.Guaranteed_Certificate_Num,
+                               Circulation_Expiration_Date = V.Circulation_Expiration_Date,
+                               Stat = V.Stat,
+                               Picture = V.Picture
+
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //REASEARCH All METHOD
+        public void ResearchAll(GridView gd, string SearchText)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -446,11 +609,11 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //DISPLAY METHOD MINISTRY
-        public void DisplayMinistry(DropDownList drop)
+        public void DisplayMinistry(DropDownList drop, string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MINISTRies
+                var obj = (from M in con.MINISTRies where M.Code_Min == codeMin
 
                            select new
                            {
@@ -467,6 +630,28 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //DISPLAY METHOD All MINISTRY
+        public void DisplayMinistryAll(DropDownList drop)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from M in con.MINISTRies
+
+                           select new
+                           {
+                               MINISTRY_ID = M.MINISTRY_ID,
+                               Ministry_Name = M.Ministry_Name,
+
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "MINISTRY_ID";
+                drop.DataTextField = "Ministry_Name";
+                drop.DataBind();
+            }
+
+        }
 
         //DISPLAY METHOD Model
         public void DisplayModel(DropDownList drop)

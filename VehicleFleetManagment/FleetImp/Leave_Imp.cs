@@ -139,7 +139,39 @@ namespace VehicleFleetManagment.FleetImp
 
 
         //DISPLAY METHOD
-        public void Display(GridView gd)
+        public void Display(GridView gd,string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from L in con.LEAVEs where L.MINISTRY.Code_Min== codeMin
+
+                           select new
+                           {
+                               LEAVE_ID = L.LEAVE_ID,
+                               Leave_Code = L.Leave_Code,
+                               Carpooling = L.Carpooling,
+                               Start_Dte = L.Start_Dte,
+                               End_Dte = L.End_Dte,
+                               Approved_By = L.Approved_By,
+                               Approved_Dte = L.Approved_Dte,
+                               Saved_Date = L.Saved_Date,
+                               Demand_Dte = L.Demand_Dte,
+                               Comment = L.Comment,
+                               MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
+                               LEAVE_TYPE_ID = L.LEAVE_TYPE.Leave_Type_Description,
+                               MINISTRY_ID = L.MINISTRY.Ministry_Name
+
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //DISPLAY ALL METHOD
+        public void DisplayAll(GridView gd)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -195,7 +227,20 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //COUNT METHOD
-        public int count()
+        public int count(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var L = (from l in con.LEAVEs where l.MINISTRY.Code_Min==codeMin
+                         select l).Count();
+                n = L;
+            }
+            return n;
+        }
+
+        //COUNT All METHOD
+        public int countAll()
         {
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
@@ -206,9 +251,47 @@ namespace VehicleFleetManagment.FleetImp
             }
             return n;
         }
-
         //REASEARCH METHOD
-        public void Research(GridView gd, string SearchText)
+        public void Research(GridView gd,string codeMin, string SearchText)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from L in con.LEAVEs
+                           where L.MINISTRY.Code_Min==codeMin &&
+                       L.Leave_Code.StartsWith(SearchText) ||
+                       L.Start_Dte.StartsWith(SearchText) ||
+                       L.Demand_Dte.StartsWith(SearchText) ||
+                       L.MINISTRY_DRIVER.DRIVER.Full_Name.StartsWith(SearchText) ||
+                       L.LEAVE_TYPE.Leave_Type_Description.StartsWith(SearchText) ||
+                       L.Approved_Dte.StartsWith(SearchText)
+
+                           select new
+                           {
+                               LEAVE_ID = L.LEAVE_ID,
+                               Leave_Code = L.Leave_Code,
+                               Carpooling = L.Carpooling,
+                               Start_Dte = L.Start_Dte,
+                               End_Dte = L.End_Dte,
+                               Approved_By = L.Approved_By,
+                               Approved_Dte = L.Approved_Dte,
+                               Saved_Date = L.Saved_Date,
+                               Demand_Dte = L.Demand_Dte,
+                               Comment = L.Comment,
+                               MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
+                               LEAVE_TYPE_ID = L.LEAVE_TYPE.Leave_Type_Description,
+                               MINISTRY_ID = L.MINISTRY.Ministry_Name
+
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //REASEARCH ALL METHOD
+        public void ResearchAll(GridView gd, string SearchText)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -315,7 +398,29 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //DISPLAY METHOD MINISTRY
-        public void DisplayMinistry(DropDownList drop)
+        public void DisplayMinistry(DropDownList drop,string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from L in con.MINISTRies where L.Code_Min==codeMin
+
+                           select new
+                           {
+                               MINISTRY_ID = L.MINISTRY_ID,
+                               Ministry_Name = L.Ministry_Name,
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "MINISTRY_ID";
+                drop.DataTextField = "Ministry_Name";
+                drop.DataBind();
+            }
+
+        }
+
+        //DISPLAY METHOD ALL MINISTRY
+        public void DisplayMinistryAll(DropDownList drop)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {

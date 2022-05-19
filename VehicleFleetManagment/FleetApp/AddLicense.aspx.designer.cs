@@ -15,6 +15,24 @@ namespace VehicleFleetManagment.FleetApp
     {
 
         /// <summary>
+        /// txtSystemTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtSystemTitle;
+
+        /// <summary>
+        /// txtSlogan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtSlogan;
+
+        /// <summary>
         /// SuccessMsg control.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,15 @@ namespace VehicleFleetManagment.FleetApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl FailMsg;
+
+        /// <summary>
+        /// DMinistry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DMinistry;
 
         /// <summary>
         /// DropDown_Ministry control.

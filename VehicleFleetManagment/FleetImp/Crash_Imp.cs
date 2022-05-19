@@ -195,7 +195,65 @@ namespace VehicleFleetManagment.FleetImp
 
 
         //DISPLAY METHOD
-        public void Display(GridView gd)
+        public void Display(GridView gd,string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from C in con.CAR_CRASH where C.MINISTRY.Code_Min==codeMin
+
+                           select new
+                           {
+                               CAR_CRASH_ID = C.CAR_CRASH_ID,
+                               Crash_Code = C.Crash_Code,
+                               VEHICLE_ID = C.VEHICLE.Local_Plate,
+                               Crash_Date = C.Crash_Date,
+                               Crash_Time = C.Crash_Time,
+                               MINISTRY_ID = C.MINISTRY.Ministry_Name,
+                               Crash_Mileage = C.Crash_Mileage,
+                               MIN_DRIVER_ID = C.MINISTRY_DRIVER.DRIVER.Full_Name,
+                               Compensation_Rule_Dte = C.Compensation_Rule_Dte,
+                               Circumstance = C.Circumstance,
+                               Passenger_Comment = C.Passenger_Comment,
+                               Crash_Place = C.Crash_Place,
+                               Full_Crash_Address = C.Full_Crash_Address,
+                               Crash_Info = C.Crash_Info,
+                               Responsible = C.Responsible,
+                               Crash_Reason = C.Crash_Reason,
+                               Estimated_Speed= C.Estimated_Speed,
+                               Weather = C.Weather,
+                               Condition_After_Crash = C.Condition_After_Crash,
+                               Driver_Age = C.Driver_Age,
+                               Tot_Number_Driver_drives = C.Tot_Number_Driver_drives,
+                               Crash_Damage = C.Crash_Damage,
+                               Insurance_Declaration_Dte = C.Insurance_Declaration_Dte,
+                               Report_Dte = C.Report_Dte,
+                               Final_Report_Dte = C.Final_Report_Dte,
+                               Damage_Description = C.Damage_Description,
+                               Damage_Third_Party = C.Damage_Third_Party,
+                               Claim_Compensation_Amount = C.Claim_Compensation_Amount,
+                               Damaged_Vehicle = C.Damaged_Vehicle,
+                               Legal_Cost = C.Legal_Cost,
+                               Third_Party_Injures = C.Third_Party_Injures,
+                               Injures_Employee = C.Injures_Employee,
+                               Local_Insurance_Compensation_Amount = C.Local_Insurance_Compensation_Amount,
+                               Payed_Employee = C.Payed_Employee,
+                               Employee_Amount_Recovered = C.Employee_Amount_Recovered,
+                               ThirdParty_Amount_Recovered = C.ThirdParty_Amount_Recovered,
+                               Crash_Pic = C.Crash_Pic,
+                               Saved_Date = C.Saved_Date,
+                               Stat = C.Stat,
+
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //DISPLAY All METHOD
+        public void DisplayAll(GridView gd)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -219,7 +277,7 @@ namespace VehicleFleetManagment.FleetImp
                                Crash_Info = C.Crash_Info,
                                Responsible = C.Responsible,
                                Crash_Reason = C.Crash_Reason,
-                               Estimated_Speed= C.Estimated_Speed,
+                               Estimated_Speed = C.Estimated_Speed,
                                Weather = C.Weather,
                                Condition_After_Crash = C.Condition_After_Crash,
                                Driver_Age = C.Driver_Age,
@@ -303,7 +361,20 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //COUNT METHOD
-        public int count()
+        public int count(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var C = (from l in con.CAR_CRASH where l.MINISTRY.Code_Min==codeMin
+                         select l).Count();
+                n = C;
+            }
+            return n;
+        }
+
+        //COUNT ALL METHOD
+        public int countAll()
         {
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
@@ -316,12 +387,12 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //REASEARCH METHOD
-        public void Research(GridView gd, string SearchText)
+        public void Research(GridView gd,string codeMin, string SearchText)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from C in con.CAR_CRASH
-                           where
+                           where C.MINISTRY.Code_Min== codeMin &&
                        C.VEHICLE.Local_Plate.StartsWith(SearchText) ||
                        C.Crash_Date.StartsWith(SearchText) ||
                        C.Crash_Time.StartsWith(SearchText) ||
@@ -383,6 +454,73 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //REASEARCH ALL METHOD
+        public void ResearchAll(GridView gd, string SearchText)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from C in con.CAR_CRASH
+                           where
+                       C.VEHICLE.Local_Plate.StartsWith(SearchText) ||
+                       C.Crash_Date.StartsWith(SearchText) ||
+                       C.Crash_Time.StartsWith(SearchText) ||
+                       C.Responsible.StartsWith(SearchText) ||
+                       C.Crash_Place.StartsWith(SearchText) ||
+                       C.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
+                       C.Report_Dte.StartsWith(SearchText) ||
+                       C.MINISTRY_DRIVER.DRIVER.Full_Name.StartsWith(SearchText)
+
+                           select new
+                           {
+                               CAR_CRASH_ID = C.CAR_CRASH_ID,
+                               Crash_Code = C.Crash_Code,
+                               VEHICLE_ID = C.VEHICLE.Local_Plate,
+                               Crash_Date = C.Crash_Date,
+                               Crash_Time = C.Crash_Time,
+                               MINISTRY_ID = C.MINISTRY.Ministry_Name,
+                               Crash_Mileage = C.Crash_Mileage,
+                               MIN_DRIVER_ID = C.MINISTRY_DRIVER.DRIVER.Full_Name,
+                               Compensation_Rule_Dte = C.Compensation_Rule_Dte,
+                               Circumstance = C.Circumstance,
+                               Passenger_Comment = C.Passenger_Comment,
+                               Crash_Place = C.Crash_Place,
+                               Full_Crash_Address = C.Full_Crash_Address,
+                               Crash_Info = C.Crash_Info,
+                               Responsible = C.Responsible,
+                               Crash_Reason = C.Crash_Reason,
+                               Estimated_Speed = C.Estimated_Speed,
+                               Weather = C.Weather,
+                               Condition_After_Crash = C.Condition_After_Crash,
+                               Driver_Age = C.Driver_Age,
+                               Tot_Number_Driver_drives = C.Tot_Number_Driver_drives,
+                               Crash_Damage = C.Crash_Damage,
+                               Insurance_Declaration_Dte = C.Insurance_Declaration_Dte,
+                               Report_Dte = C.Report_Dte,
+                               Final_Report_Dte = C.Final_Report_Dte,
+                               Damage_Description = C.Damage_Description,
+                               Damage_Third_Party = C.Damage_Third_Party,
+                               Claim_Compensation_Amount = C.Claim_Compensation_Amount,
+                               Damaged_Vehicle = C.Damaged_Vehicle,
+                               Legal_Cost = C.Legal_Cost,
+                               Third_Party_Injures = C.Third_Party_Injures,
+                               Injures_Employee = C.Injures_Employee,
+                               Local_Insurance_Compensation_Amount = C.Local_Insurance_Compensation_Amount,
+                               Payed_Employee = C.Payed_Employee,
+                               Employee_Amount_Recovered = C.Employee_Amount_Recovered,
+                               ThirdParty_Amount_Recovered = C.ThirdParty_Amount_Recovered,
+                               Crash_Pic = C.Crash_Pic,
+                               Saved_Date = C.Saved_Date,
+                               Stat = C.Stat,
+
+
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
         //DISPLAY METHOD ALL Vehicle
         public void DisplayAllVehicle(DropDownList drop)
         {
@@ -490,7 +628,29 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //DISPLAY METHOD MINISTRY
-        public void DisplayMinistry(DropDownList drop)
+        public void DisplayMinistry(DropDownList drop,string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from M in con.MINISTRies where M.Code_Min==codeMin
+
+                           select new
+                           {
+                               MINISTRY_ID = M.MINISTRY_ID,
+                               Ministry_Name = M.Ministry_Name,
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "MINISTRY_ID";
+                drop.DataTextField = "Ministry_Name";
+                drop.DataBind();
+            }
+
+        }
+
+        //DISPLAY METHOD ALL MINISTRY
+        public void DisplayMinistryAll(DropDownList drop)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {

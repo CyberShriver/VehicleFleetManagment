@@ -15,6 +15,24 @@ namespace VehicleFleetManagment.FleetApp
     {
 
         /// <summary>
+        /// txtSystemTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtSystemTitle;
+
+        /// <summary>
+        /// HeaderSlogan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label HeaderSlogan;
+
+        /// <summary>
         /// txtName control.
         /// </summary>
         /// <remarks>

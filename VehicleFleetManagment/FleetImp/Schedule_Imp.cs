@@ -125,7 +125,30 @@ namespace VehicleFleetManagment.FleetImp
 
 
         //DISPLAY METHOD
-        public void Display(GridView gd)
+        public void Display(GridView gd,string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from S in con.SCHEDULEs where S.MINISTRY.Code_Min== codeMin
+
+                           select new
+                           {
+                               SCHEDULE_ID = S.SCHEDULE_ID,
+                               MINISTRY_ID  = S.MINISTRY.Ministry_Name ,
+                               VEHICLE_ID = S.VEHICLE.Local_Plate,
+                               Saved_Date = S.Saved_Date,
+                               Comment = S.Comment
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //DISPLAY ALL METHOD
+        public void DisplayAll(GridView gd)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -134,7 +157,7 @@ namespace VehicleFleetManagment.FleetImp
                            select new
                            {
                                SCHEDULE_ID = S.SCHEDULE_ID,
-                               MINISTRY_ID  = S.MINISTRY.Ministry_Name ,
+                               MINISTRY_ID = S.MINISTRY.Ministry_Name,
                                VEHICLE_ID = S.VEHICLE.Local_Plate,
                                Saved_Date = S.Saved_Date,
                                Comment = S.Comment
@@ -164,7 +187,20 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //COUNT METHOD
-        public int count()
+        public int count(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var S = (from l in con.SCHEDULEs where l.MINISTRY.Code_Min== codeMin
+                         select l).Count();
+                n = S;
+            }
+            return n;
+        }
+
+        //COUNT ALL METHOD
+        public int countAll()
         {
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
@@ -176,8 +212,37 @@ namespace VehicleFleetManagment.FleetImp
             return n;
         }
 
+
         //REASEARCH METHOD
-        public void Research(GridView gd, string SearchText)
+        public void Research(GridView gd,string codeMin, string SearchText)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from S in con.SCHEDULEs
+                           where S.MINISTRY.Code_Min==codeMin &&
+                      S.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
+                      S.Saved_Date.StartsWith(SearchText) ||
+                      S.VEHICLE.Local_Plate.StartsWith(SearchText)
+
+                           select new
+                           {
+                               SCHEDULE_ID = S.SCHEDULE_ID,
+                               MINISTRY_ID = S.MINISTRY.Ministry_Name,
+                               VEHICLE_ID = S.VEHICLE.Local_Plate,
+                               Saved_Date = S.Saved_Date,
+                               Comment = S.Comment
+
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
+
+        //REASEARCH ALL METHOD
+        public void ResearchAll(GridView gd, string SearchText)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -203,6 +268,7 @@ namespace VehicleFleetManagment.FleetImp
             }
 
         }
+
         //DISPLAY METHOD ALL VEHICLE
         public void DisplayAllVehicle(DropDownList drop)
         {
@@ -250,7 +316,29 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //DISPLAY METHOD MINISTRY
-        public void DisplayMinistry(DropDownList drop)
+        public void DisplayMinistry(DropDownList drop,string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from M in con.MINISTRies where M.Code_Min==codeMin
+
+                           select new
+                           {
+                               MINISTRY_ID = M.MINISTRY_ID,
+                               Ministry_Name = M.Ministry_Name,
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "MINISTRY_ID";
+                drop.DataTextField = "Ministry_Name";
+                drop.DataBind();
+            }
+
+        }
+
+        //DISPLAY METHOD ALL MINISTRY
+        public void DisplayMinistryAll(DropDownList drop)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {

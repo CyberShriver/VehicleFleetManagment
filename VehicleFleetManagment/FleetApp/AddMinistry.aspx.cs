@@ -23,6 +23,7 @@ namespace VehicleFleetManagment.FleetApp
         protected void Page_Load(object sender, EventArgs e)
         {
             id = Request.QueryString["MINISTRY_ID"];
+            MultiView.ActiveViewIndex = 0;
             if (!IsPostBack)
             {
                 MsgInit();
@@ -345,6 +346,25 @@ namespace VehicleFleetManagment.FleetApp
                 Update();
         }
 
+        protected void ActiveGen_click(object sender, EventArgs args)
+        {
+            MultiView.ActiveViewIndex = 0;
+            MsgInit();
+            tabSettings.Attributes.Remove("class");
+            tabSettings.Attributes.Add("class", "nav-link");
 
+            tabGen.Attributes.Remove("class");
+            tabGen.Attributes.Add("class", "nav-link active");
+        }
+        protected void ActiveSettings_click(object sender, EventArgs args)
+        {
+            MultiView.ActiveViewIndex = 1;
+            MsgInit();
+            tabGen.Attributes.Remove("class");
+            tabGen.Attributes.Add("class", "nav-link");
+
+            tabSettings.Attributes.Remove("class");
+            tabSettings.Attributes.Add("class", "nav-link active");
+        }
     }
 }

@@ -10,8 +10,8 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h5 class="m-b-10">Vehicle Fleet Managment</h5>
-                        <p class="m-b-0">Safety Rules Are Your Best Tools</p>
+                        <asp:Label class="m-b-10 h5" ID="txtSystemTitle" runat="server" Text="" ></asp:Label>
+                        <p><asp:Label class="m-b-0 p" ID="txtSlogan" runat="server" Text="" ></asp:Label></p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -59,7 +59,7 @@
                                 <div class="card">
                                     <div class="card-block">
                                         <div class="form-material">
-                                            <div class="form-group form-default">
+                                            <div class="form-group form-default" id="DMinistry" runat="server">
                                                 <asp:DropDownList class="form-control " name="footer-email" OnSelectedIndexChanged="dropDown_Ministry_SelectedIndexChanged" AutoPostBack="true" Style="width: 100%;" ID="DropDown_Ministry" required="" runat="server"></asp:DropDownList>
                                                 <label class="float-label">Ministry</label>
                                             </div>

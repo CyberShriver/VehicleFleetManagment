@@ -33,6 +33,9 @@ namespace VehicleFleetManagment.FleetApp
             SavedCookies();
             if (!IsPostBack)
             {
+                txtSystemTitle.Text = systemTitle;
+                HeaderSlogan.Text = slogan;
+
                 MsgInit();
                 ChargeData();
                 confirm();
