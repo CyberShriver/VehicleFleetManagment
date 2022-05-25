@@ -38,6 +38,8 @@ namespace VehicleFleetManagment.FleetModel
         public string Office_Phone { get; set; }
         public string Personnal_Phone { get; set; }
         public string Picture { get; set; }
+        public string Ministry_Work { get; set; }
+        public string State { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MINISTRY_DRIVER> MINISTRY_DRIVER { get; set; }

@@ -16,7 +16,9 @@ namespace VehicleFleetManagment.FleetApp
         Driver_Class Dr = new Driver_Class();
         Driver_Interface I = new Driver_Imp();
         int msg;
+        string code;
         string id;
+        string codeMin;
         string sytemTitle;
         string slogan;
 
@@ -27,14 +29,22 @@ namespace VehicleFleetManagment.FleetApp
             if (!IsPostBack)
             {
                 MsgInit();
+                Ministry();
+                MultiView.ActiveViewIndex = 0;
                 txtSystemTitle.Text = sytemTitle;
                 txtSlogan.Text = slogan;
                 if (id == null)
                 {
                     btnSave.InnerText = "Save";
                 }
-                else
+                else if (id != null && Dr.Ministry_Work == null)
 
+                {
+                   
+                    btnSave.InnerText = "Save";
+                    ChargeData();
+                }
+                else
                 {
                     btnSave.InnerText = "Edit";
                     ChargeData();
@@ -65,6 +75,7 @@ namespace VehicleFleetManagment.FleetApp
 
             if (Request.Cookies["Code_Min"].Value != null)
             {
+                codeMin = Request.Cookies["Code_Min"].Value;
                 sytemTitle = Request.Cookies["System_Title"].Value;
                 slogan = Request.Cookies["Slogan"].Value;
             }
@@ -85,8 +96,8 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtCode.Value == "" || txtFullName.Value == "" || txtTel.Value == "" || txtMail.Value == "" || dateBirth.Value == "" || txtNationality.Value == "" ||
-                    txtCNI.Value == "" || txtAddress1.Value == "" || txtAddress1.Value == "" || txtAddress2.Value == "" || txtAddress3.Value == "" || txtTelOffice.Value == "" || txtPostal.Value == ""
+                if ( txtFullName.Value == "" || txtTel.Value == "" || txtMail.Value == "" || dateBirth.Value == "" || txtNationality.Value == "" ||
+                    txtCNI.Value == "" || txtAddress1.Value == "" || txtTelOffice.Value == "" || txtPostal.Value == ""
                     || DropDown_language.SelectedValue == "-1" || DropDown_Gender.SelectedValue == "-1" || DropDown_Marital.SelectedValue == "-1" || DropDownList_DriverType.SelectedValue == "-1")
                 {
                     SuccessMsg.Visible = false;
@@ -104,7 +115,8 @@ namespace VehicleFleetManagment.FleetApp
                         {
                             if (file_upd.PostedFile.ContentLength < 104857600)
                             {
-                                Dr.Driver_Code = txtCode.Value;
+                                Dr.Driver_Code = DriverCode();
+                                Dr.Ministry_Work = DropDown_Ministry.SelectedValue;
                                 Dr.Full_Name = txtFullName.Value;
                                 Dr.CNI = txtCNI.Value;
                                 Dr.Address1 = txtAddress1.Value;
@@ -120,6 +132,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Dr.Mother_Language = DropDown_language.SelectedValue;
                                 Dr.Office_Phone = txtTelOffice.Value;
                                 Dr.Personnal_Phone = txtTel.Value;
+                                Dr.State = state();
                                 Dr.Picture = img;
                                 msg = I.Add(Dr);
                                 if (msg > 0)
@@ -158,7 +171,8 @@ namespace VehicleFleetManagment.FleetApp
                     }
                     else
                     {
-                        Dr.Driver_Code = txtCode.Value;
+                        Dr.Driver_Code = DriverCode();
+                        Dr.Ministry_Work = DropDown_Ministry.SelectedValue;
                         Dr.Full_Name = txtFullName.Value;
                         Dr.CNI = txtCNI.Value;
                         Dr.Address1 = txtAddress1.Value;
@@ -174,6 +188,7 @@ namespace VehicleFleetManagment.FleetApp
                         Dr.Mother_Language = DropDown_language.SelectedValue;
                         Dr.Office_Phone = txtTelOffice.Value;
                         Dr.Personnal_Phone = txtTel.Value;
+                        Dr.State = state();
                         Dr.Picture = "No Picture";
                         msg = I.Add(Dr);
                         if (msg > 0)
@@ -206,6 +221,8 @@ namespace VehicleFleetManagment.FleetApp
             }
         }
 
+        
+
         //update
         void Update()
         {
@@ -213,8 +230,8 @@ namespace VehicleFleetManagment.FleetApp
             try
             {
                 if (txtCode.Value == "" || txtFullName.Value == "" || txtTel.Value == "" || txtMail.Value == "" || dateBirth.Value == "" || txtNationality.Value == "" ||
-                    txtCNI.Value == "" || txtAddress1.Value == "" || txtAddress1.Value == "" || txtAddress2.Value == "" || txtAddress3.Value == "" || txtTelOffice.Value == "" || txtPostal.Value == ""
-                    || DropDown_language.SelectedValue == "-1" || DropDown_Gender.SelectedValue == "-1" || DropDown_Marital.SelectedValue == "-1" || DropDownList_DriverType.SelectedValue == "-1")
+                    txtCNI.Value == "" || txtAddress1.Value == "" || txtAddress1.Value == "" ||txtTelOffice.Value == "" || txtPostal.Value == ""
+                    || DropDown_language.SelectedValue == "-1" || DropDown_Gender.SelectedValue == "-1" || DropDown_Marital.SelectedValue == "-1" || DropDownList_DriverType.SelectedValue == "-1" )
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -232,6 +249,7 @@ namespace VehicleFleetManagment.FleetApp
                             if (file_upd.PostedFile.ContentLength < 104857600)
                             {
                                 Dr.Driver_Code = txtCode.Value;
+                                Dr.Ministry_Work = DropDown_Ministry.SelectedValue;
                                 Dr.Full_Name = txtFullName.Value;
                                 Dr.CNI = txtCNI.Value;
                                 Dr.Address1 = txtAddress1.Value;
@@ -247,6 +265,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Dr.Mother_Language = DropDown_language.SelectedValue;
                                 Dr.Office_Phone = txtTelOffice.Value;
                                 Dr.Personnal_Phone = txtTel.Value;
+                                Dr.State = state();
                                 Dr.Picture = img;
                                 msg = I.Update(Dr, Convert.ToInt32(id));
                                 if (msg > 0)
@@ -278,6 +297,7 @@ namespace VehicleFleetManagment.FleetApp
                     else
                     {
                         Dr.Driver_Code = txtCode.Value;
+                        Dr.Ministry_Work = DropDown_Ministry.SelectedValue;
                         Dr.Full_Name = txtFullName.Value;
                         Dr.CNI = txtCNI.Value;
                         Dr.Address1 = txtAddress1.Value;
@@ -293,6 +313,7 @@ namespace VehicleFleetManagment.FleetApp
                         Dr.Mother_Language = DropDown_language.SelectedValue;
                         Dr.Office_Phone = txtTelOffice.Value;
                         Dr.Personnal_Phone = txtTel.Value;
+                        Dr.State = state();
                         Dr.Picture = "No Picture";
                         msg=I.Update(Dr, Convert.ToInt32(id));
                         if (msg > 0)
@@ -317,6 +338,21 @@ namespace VehicleFleetManagment.FleetApp
             }
         }
 
+        //State Method
+        String state()
+        {
+            string stat;
+            if (codeMin != "All")
+            {
+                stat = "Work";
+            }
+            else
+            {
+                stat = "Free";
+            }
+            return stat;
+        }
+
         protected void ChargeData()
         {
             if (id != null)
@@ -324,6 +360,7 @@ namespace VehicleFleetManagment.FleetApp
                 I.provide(Dr, Convert.ToInt32(id));
 
                 txtCode.Value = Dr.Driver_Code;
+                DropDown_Ministry.SelectedValue= Dr.Ministry_Work ;
                 txtFullName.Value = Dr.Full_Name;
                 txtCNI.Value = Dr.CNI;
                 txtAddress1.Value = Dr.Address1;
@@ -349,8 +386,61 @@ namespace VehicleFleetManagment.FleetApp
             {
                 Add();
             }
-            else
+            else {
+
                 Update();
+            }
+        }
+
+        protected void ActiveGen_click(object sender, EventArgs args)
+        {
+            MultiView.ActiveViewIndex = 0;
+            MsgInit();
+            
+            tabProfessional.Attributes.Remove("class");
+            tabProfessional.Attributes.Add("class", "nav-link");
+
+            tabGen.Attributes.Remove("class");
+            tabGen.Attributes.Add("class", "nav-link active");
+        }
+        protected void ActiveProf_click(object sender, EventArgs args)
+        {
+            MultiView.ActiveViewIndex = 1;
+            MsgInit();
+            tabGen.Attributes.Remove("class");
+            tabGen.Attributes.Add("class", "nav-link");
+
+            tabProfessional.Attributes.Remove("class");
+            tabProfessional.Attributes.Add("class", "nav-link active");
+        }
+
+        //Driver code auto generate 
+        string DriverCode()
+        {
+
+            if (codeMin == "All")
+            {
+                return code = DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.countAll() + 1)) + "-" + DateTime.Now.Date;
+            }
+            else
+            {
+                return code = DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.count() + 1)) + "-" + DateTime.Now.Date;
+            }
+        }
+
+        //Add dropDawn Minisrty
+        void Ministry()
+        {
+            if (codeMin == "All")
+            {
+                DMinistry.Visible = true;
+                I.DisplayMinistryAll(DropDown_Ministry);
+            }
+            else
+            {
+                I.DisplayMinistry(DropDown_Ministry, codeMin);
+                DMinistry.Visible = false;
+            }
         }
     }
 }

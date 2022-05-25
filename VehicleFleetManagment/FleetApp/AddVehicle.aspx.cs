@@ -53,23 +53,7 @@ namespace VehicleFleetManagment.FleetApp
 
         void ChargeCookies()
         {
-            HttpCookie Code_Min = new HttpCookie("Code_Min");
-            HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
-            HttpCookie Phone = new HttpCookie("Phone");
-            HttpCookie Ministry_Name = new HttpCookie("Ministry_Name");
-            HttpCookie Address = new HttpCookie("Address");
-            HttpCookie Postal_code = new HttpCookie("Postal_code");
-            HttpCookie User_Nme = new HttpCookie("User_Nme");
-            HttpCookie Fax = new HttpCookie("Fax");
-            HttpCookie System_Name = new HttpCookie("System_Name");
-            HttpCookie System_Title = new HttpCookie("System_Title");
-            HttpCookie System_Email = new HttpCookie("System_Email");
-            HttpCookie Password = new HttpCookie("Password");
-            HttpCookie Logo = new HttpCookie("Logo");
-            HttpCookie Picture = new HttpCookie("Picture");
-            HttpCookie Slogan = new HttpCookie("Slogan");
-            HttpCookie Theme = new HttpCookie("Theme");
-
+           
             if (Request.Cookies["Code_Min"].Value != null)
             {
                 codeMin = Request.Cookies["Code_Min"].Value;
@@ -98,11 +82,11 @@ namespace VehicleFleetManagment.FleetApp
                     txtEnginCylind.Value == "" || txtEnginPower.Value == "" || txtAssembly.Value == "" || txtGenerWeight.Value == "" || txtVolt.Value == "" || txtKva.Value == "" ||
                     txtEngincc.Value == "" || txtGearBox.Value == "" || txtCondition.Value == "" || txtTankTyp1.Value == "" || txtTankSze1.Value == "" || txtTankTyp2.Value == "" ||
                     txtGrossVehWeigth.Value == "" || txtKeyCode.Value == "" || txtVehiclWeight.Value == "" || txtBatteryVolt.Value == "" || txtFrontSeat.Value == "" || txtTankCapacity2.Value == "" ||
-                    txtEmptyPod.Value == "" || txtRadioCode.Value == "" || txtGuaranteeCerticat.Value == "" || dateGuaranteExp.Value == "" || dateCirculationExp.Value == "" || txtStat.Value == "" 
+                    txtEmptyPod.Value == "" || txtRadioCode.Value == "" || txtGuaranteeCerticat.Value == "" || dateGuaranteExp.Value == "" || dateCirculationExp.Value == "" 
                     || DropDown_Ministry.SelectedValue == "-1" || DropDown_Model.SelectedValue == "-1" || DropDown_Body.SelectedValue == "-1" || DropDown_fuel.SelectedValue == "-1"
                     || DropDown_Trailer.SelectedValue == "-1" || DropDown_lhd_rhd.SelectedValue == "-1" || DropDown_Belt.SelectedValue == "-1" || DropDown_Central_Locking.SelectedValue == "-1"
                     || dropDown_Rear_Lock.SelectedValue == "-1" || DropDown_Forward_Lock.SelectedValue == "-1" || DropDown_Opt_Four_Wheel.SelectedValue == "-1" || DropDown_Air_Conditioner.SelectedValue == "-1"
-                    || DropDown_Additional_Heating.SelectedValue == "-1" || DropDown_Additional_Heating.SelectedValue == "-1" || DropDown_Rear_Blake.SelectedValue == "-1" || DropDown_Electronic_Logbook.SelectedValue == "-1")
+                    || DropDown_Additional_Heating.SelectedValue == "-1" || DropDown_Additional_Heating.SelectedValue == "-1" || DropDown_Rear_Blake.SelectedValue == "-1" || DropDown_Electronic_Logbook.SelectedValue == "-1" || DropDown_State.SelectedValue == "-1")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -169,7 +153,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Veh.Guaranteed_Expiration_Date = dateGuaranteExp.Value;
                                 Veh.Guaranteed_Certificate_Num = txtGuaranteeCerticat.Value;
                                 Veh.Circulation_Expiration_Date = dateCirculationExp.Value;
-                                Veh.Stat = txtStat.Value;
+                                Veh.Stat = DropDown_State.SelectedValue;
                                 msg = I.Add(Veh);
                                 if (msg > 0)
                                 {
@@ -213,7 +197,6 @@ namespace VehicleFleetManagment.FleetApp
                                     txtGuaranteeCerticat.Value = "";
                                     dateGuaranteExp.Value = "";
                                     dateCirculationExp.Value = "";
-                                    txtStat.Value = "";
                                 }
                                 else
                                 {
@@ -289,7 +272,7 @@ namespace VehicleFleetManagment.FleetApp
                         Veh.Guaranteed_Expiration_Date = dateGuaranteExp.Value;
                         Veh.Guaranteed_Certificate_Num = txtGuaranteeCerticat.Value;
                         Veh.Circulation_Expiration_Date = dateCirculationExp.Value;
-                        Veh.Stat = txtStat.Value;
+                        Veh.Stat = DropDown_State.SelectedValue;
                         msg = I.Add(Veh);
                         if (msg > 0)
                         {
@@ -333,7 +316,6 @@ namespace VehicleFleetManagment.FleetApp
                             txtGuaranteeCerticat.Value = "";
                             dateGuaranteExp.Value = "";
                             dateCirculationExp.Value = "";
-                            txtStat.Value = "";
                         }
                         else
                         {
@@ -364,11 +346,11 @@ namespace VehicleFleetManagment.FleetApp
                     txtEnginCylind.Value == "" || txtEnginPower.Value == "" || txtAssembly.Value == "" || txtGenerWeight.Value == "" || txtVolt.Value == "" || txtKva.Value == "" ||
                     txtEngincc.Value == "" || txtGearBox.Value == "" || txtCondition.Value == "" || txtTankTyp1.Value == "" || txtTankSze1.Value == "" || txtTankTyp2.Value == "" ||
                     txtGrossVehWeigth.Value == "" || txtKeyCode.Value == "" || txtVehiclWeight.Value == "" || txtBatteryVolt.Value == "" || txtFrontSeat.Value == "" || txtTankCapacity2.Value == "" ||
-                    txtEmptyPod.Value == "" || txtRadioCode.Value == "" || txtGuaranteeCerticat.Value == "" || dateGuaranteExp.Value == "" || dateCirculationExp.Value == "" || txtStat.Value == ""
+                    txtEmptyPod.Value == "" || txtRadioCode.Value == "" || txtGuaranteeCerticat.Value == "" || dateGuaranteExp.Value == "" || dateCirculationExp.Value == "" 
                     || DropDown_Ministry.SelectedValue == "-1" || DropDown_Model.SelectedValue == "-1" || DropDown_Body.SelectedValue == "-1" || DropDown_fuel.SelectedValue == "-1"
                     || DropDown_Trailer.SelectedValue == "-1" || DropDown_lhd_rhd.SelectedValue == "-1" || DropDown_Belt.SelectedValue == "-1" || DropDown_Central_Locking.SelectedValue == "-1"
                     || dropDown_Rear_Lock.SelectedValue == "-1" || DropDown_Forward_Lock.SelectedValue == "-1" || DropDown_Opt_Four_Wheel.SelectedValue == "-1" || DropDown_Air_Conditioner.SelectedValue == "-1"
-                    || DropDown_Additional_Heating.SelectedValue == "-1" || DropDown_Additional_Heating.SelectedValue == "-1" || DropDown_Rear_Blake.SelectedValue == "-1" || DropDown_Electronic_Logbook.SelectedValue == "-1")
+                    || DropDown_Additional_Heating.SelectedValue == "-1" || DropDown_Additional_Heating.SelectedValue == "-1" || DropDown_Rear_Blake.SelectedValue == "-1" || DropDown_Electronic_Logbook.SelectedValue == "-1" || DropDown_State.SelectedValue == "-1")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -385,7 +367,7 @@ namespace VehicleFleetManagment.FleetApp
                         {
                             if (file_upd.PostedFile.ContentLength < 104857600)
                             {
-                                Veh.Veh_Code = VehicleCode();
+                                Veh.Veh_Code =txtCode.Value;
                                 Veh.BODY_ID = Convert.ToInt32(DropDown_Body.SelectedValue);
                                 Veh.Local_Plate = txtPlate.Value;
                                 Veh.MODEL_ID = Convert.ToInt32(DropDown_Model.SelectedValue);
@@ -435,7 +417,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Veh.Guaranteed_Expiration_Date = dateGuaranteExp.Value;
                                 Veh.Guaranteed_Certificate_Num = txtGuaranteeCerticat.Value;
                                 Veh.Circulation_Expiration_Date = dateCirculationExp.Value;
-                                Veh.Stat = txtStat.Value;
+                                Veh.Stat = DropDown_State.SelectedValue;
                                 msg = I.Update(Veh, Convert.ToInt32(id));
                                 if (msg > 0)
                                 {
@@ -465,7 +447,7 @@ namespace VehicleFleetManagment.FleetApp
                     }
                     else
                     {
-                        Veh.Veh_Code = VehicleCode();
+                        Veh.Veh_Code = txtCode.Value;
                         Veh.BODY_ID = Convert.ToInt32(DropDown_Body.SelectedValue);
                         Veh.Local_Plate = txtPlate.Value;
                         Veh.MODEL_ID = Convert.ToInt32(DropDown_Model.SelectedValue);
@@ -515,7 +497,7 @@ namespace VehicleFleetManagment.FleetApp
                         Veh.Guaranteed_Expiration_Date = dateGuaranteExp.Value;
                         Veh.Guaranteed_Certificate_Num = txtGuaranteeCerticat.Value;
                         Veh.Circulation_Expiration_Date = dateCirculationExp.Value;
-                        Veh.Stat = txtStat.Value;
+                        Veh.Stat = DropDown_State.SelectedValue;
                         msg = I.Update(Veh, Convert.ToInt32(id));
                         if (msg > 0)
                         {
@@ -557,7 +539,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtEngineNumber.Value = Veh.Engine_Num;
                 txtEngineManif.Value = Veh.Engine_Manufacturer;
                 txtEnginType.Value = Veh.Engine_Type;
-                txtEngineManif.Value = Veh.Alternator_Engine_Manufacturer;
+                txtEngAltern.Value = Veh.Alternator_Engine_Manufacturer;
                 txtEngAlternType.Value = Veh.Alternator_Engine_Type;
                 txtKva.Value = Veh.Kva.ToString();
                 txtVolt.Value = Veh.Volt.ToString();
@@ -595,7 +577,7 @@ namespace VehicleFleetManagment.FleetApp
                 dateGuaranteExp.Value = Veh.Guaranteed_Expiration_Date;
                 txtGuaranteeCerticat.Value = Veh.Guaranteed_Certificate_Num;
                 dateCirculationExp.Value = Veh.Circulation_Expiration_Date;
-                txtStat.Value = Veh.Stat;
+                DropDown_State.SelectedValue = Veh.Stat;
             }
         }
 
@@ -653,12 +635,12 @@ namespace VehicleFleetManagment.FleetApp
         {
             if (codeMin == "All")
             {
-                return code = DropDown_Ministry.SelectedItem.ToString().Trim() + "-Veh-" + (Convert.ToInt32(I.countAll() + 1)) + "/" + DateTime.Now.Year;
+                return code = DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + "-Veh-" + (Convert.ToInt32(I.countAll() + 1)) + "/" + DateTime.Now.Year;
 
             }
             else
             {              
-            return code =DropDown_Ministry.SelectedItem.ToString().Trim()+"-Veh-"+(Convert.ToInt32(I.count(codeMin) + 1)) + "/" + DateTime.Now.Year;
+            return code =DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + "-Veh-"+(Convert.ToInt32(I.count(codeMin) + 1)) + "/" + DateTime.Now.Year;
             }
         }
         void Minisrty()

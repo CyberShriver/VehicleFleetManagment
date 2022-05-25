@@ -14,6 +14,7 @@ namespace VehicleFleetManagment.FleetApp
         Driver_Class Dr = new Driver_Class();
         Driver_Interface I = new Driver_Imp();
         private int msg;
+        string codeMin;
         string sytemTitle;
         string slogan;
 
@@ -52,6 +53,7 @@ namespace VehicleFleetManagment.FleetApp
 
             if (Request.Cookies["Code_Min"].Value != null)
             {
+                codeMin = Request.Cookies["Code_Min"].Value;
                 sytemTitle = Request.Cookies["System_Title"].Value;
                 slogan = Request.Cookies["Slogan"].Value;
             }
@@ -62,16 +64,43 @@ namespace VehicleFleetManagment.FleetApp
         }
         public void getDataGDV()
         {
-            I.Display(gdv);
-            nbr.Text = I.count().ToString();
+            if (codeMin == "All")
+            {
+                I.DisplayAll(gdv);
+                nbr.Text = I.countAll().ToString();
+              //  btn_Edit.InnerText = "Edit";
+
+
+
+            }
+            else if(codeMin!="All" && DropDown_Filter.SelectedValue== "Free Agents")
+            {
+                I.Display(gdv);
+                nbr.Text = I.count().ToString();
+               // btn_Edit.InnerText = "Add";
+            }
+            else
+            {
+                I.DisplayMinistryDriver(gdv, codeMin);
+                nbr.Text = I.countMinistryDrivers(codeMin).ToString();
+            }
 
         }
 
         protected void btn_srch_Click(object sender, EventArgs e)
         {
-            if (txt_Search.Value == "")
-                getDataGDV();
-            else I.Research(gdv, txt_Search.Value);
+            if (codeMin == "All")
+            {
+                if (txt_Search.Value == "")
+                    getDataGDV();
+                else I.ResearchAll(gdv, txt_Search.Value);
+            }
+            else
+            {
+                if (txt_Search.Value == "")
+                    getDataGDV();
+                else I.Research(gdv,txt_Search.Value);
+            }
         }
         protected void btnReload_click(object sender, EventArgs e)
         {
@@ -81,11 +110,12 @@ namespace VehicleFleetManagment.FleetApp
 
         protected void gdv_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
+            
             int index = Convert.ToInt32(e.CommandArgument);
+          
             if (e.CommandName == "edit")
             {
-                Response.Redirect("~/FleetApp/AddDriver.aspx?DRIVER_ID=" + index);
+                Response.Redirect("~/FleetApp/AddDriver.aspx?DRIVER_ID=" + index);               
 
             }
             if (e.CommandName == "delet")
@@ -114,6 +144,11 @@ namespace VehicleFleetManagment.FleetApp
         protected void gdv_PreRender(object sender, EventArgs e)
         {
             indexFooter.Text = "Page " + (gdv.PageIndex + 1).ToString() + " of " + gdv.PageCount.ToString();
+        }
+
+        protected void DropDown_Filter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            getDataGDV();
         }
     }
 }

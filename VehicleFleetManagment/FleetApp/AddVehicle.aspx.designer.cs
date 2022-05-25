@@ -195,15 +195,6 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtColor;
 
         /// <summary>
-        /// file_upd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload file_upd;
-
-        /// <summary>
         /// txtCondition control.
         /// </summary>
         /// <remarks>
@@ -609,13 +600,22 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateCirculationExp;
 
         /// <summary>
-        /// txtStat control.
+        /// file_upd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtStat;
+        protected global::System.Web.UI.WebControls.FileUpload file_upd;
+
+        /// <summary>
+        /// DropDown_State control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDown_State;
 
         /// <summary>
         /// BtnSpecificPreview control.

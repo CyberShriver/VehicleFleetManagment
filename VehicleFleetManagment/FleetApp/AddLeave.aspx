@@ -56,7 +56,6 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="card">
                                     <div class="card-block">
                                         <div class="form-material">
                                             <div class="form-group form-default" id="DMinistry" runat="server">
@@ -89,11 +88,9 @@
 
                                         </div>
                                     </div>
-                                </div>
                             </div>
 
                             <div class="col-md-6">
-                                <div class="card">
                                     <div class="card-block">
                                         <div class="form-material">
                                             <div class="form-group form-default">
@@ -123,7 +120,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
                         <div class="card-footer">

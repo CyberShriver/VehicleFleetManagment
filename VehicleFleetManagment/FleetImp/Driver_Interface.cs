@@ -21,8 +21,15 @@ namespace VehicleFleetManagment.FleetImp
 
         //Delete Method
         int DeleteCheck(GridView gd, CheckBox chk, int id);
+
         //Display Method
         void Display(GridView gd);
+
+        //Display All Method
+        void DisplayAll(GridView gd);
+
+        //DISPLAY Driver for specific Ministry METHOD
+        void DisplayMinistryDriver(GridView gd, string codeMin);
 
         //Provide Method
         void provide(Driver_Class Dr, int id);
@@ -30,8 +37,34 @@ namespace VehicleFleetManagment.FleetImp
         //count
         int count();
 
+        //COUNT Ministry drivers METHOD
+        int countMinistryDrivers(string codeMin);
+
+        //count All
+        int countAll();
+
         //Research Method
         void Research(GridView gd, string SearchText);
 
+        //Research All Method
+        void ResearchAll(GridView gd, string SearchText);
+
+        //DropDown Ministry 
+        void DisplayMinistry(DropDownList drop, string codeMin);
+
+        //DropDown All Ministry 
+        void DisplayMinistryAll(DropDownList drop);
+
+        //UPDATE MINISTRY WORK STATE METHOD TO To CODE MINISTRY
+        int UpdateMinistryWorkState(Driver_Class Dr, int id, string codeMin);
+
+        //UPDATE MINISTRY WORK STATE METHOD TO EMPTY
+        int UpdateMinistryWorkStateEmpty(Driver_Class Dr, int id);
+
+        ////UPDATE  STATE TO FREE METHOD
+        int UpdateFreeState(Driver_Class Dr, int id);
+
+        //UPDATE  STATE TO WORK METHOD
+        int UpdateWorkState(Driver_Class Dr, int id);
     }
 }

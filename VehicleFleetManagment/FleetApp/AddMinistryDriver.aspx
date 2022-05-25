@@ -73,8 +73,10 @@
                                         </div>
                                         <div class="form-group form-default">
                                             <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Status" required="" runat="server">
-                                                <asp:ListItem>work</asp:ListItem>
-                                                <asp:ListItem>No work</asp:ListItem>
+                                                <asp:ListItem Selected="True">On Post</asp:ListItem>
+                                                <asp:ListItem>Swaped to another</asp:ListItem>
+                                                <asp:ListItem>Leave</asp:ListItem>
+                                                <asp:ListItem>Fired</asp:ListItem>
                                             </asp:DropDownList>
                                             <label class="float-label">Position</label>
                                         </div>

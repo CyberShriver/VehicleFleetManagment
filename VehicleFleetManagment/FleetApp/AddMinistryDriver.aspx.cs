@@ -15,6 +15,13 @@ namespace VehicleFleetManagment.FleetApp
     {
         MinDriver_Class  Md = new MinDriver_Class ();
         MinDriver_Interface I = new MinDriver_Imp();
+
+        Vehicle_Class Veh = new Vehicle_Class();
+        Vehicle_Interface Iveh = new  Vehicle_Imp();
+
+        Driver_Class Dr = new Driver_Class();
+        Driver_Interface Idr = new Driver_Imp();
+
         int msg;
         string id;
         string codeMin;
@@ -44,6 +51,7 @@ namespace VehicleFleetManagment.FleetApp
                 {
                     btnSave.InnerText = "Edit";
                     ChargeData();
+                    swap();
                 }
                
 
@@ -176,6 +184,35 @@ namespace VehicleFleetManagment.FleetApp
             }
         }
 
+        //update vehicle vailability 
+
+        void vehicleDriverState()
+        {
+            if(DropDown_Status.SelectedValue== "On Post")
+            {
+                Iveh.UpdateVehUnavailable(Veh, DropDown_Vehicle.SelectedItem.Value);
+                Idr.UpdateMinistryWorkState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value),codeMin);
+                Idr.UpdateWorkState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
+
+            }
+            else if(DropDown_Status.SelectedValue == "Swaped to another")
+            {
+                Iveh.UpdateVehAvailable(Veh, DropDown_Vehicle.SelectedItem.Value);
+                Idr.UpdateWorkState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
+            }
+            else if (DropDown_Status.SelectedValue == "Leave")
+            {
+                Iveh.UpdateVehAvailable(Veh, DropDown_Vehicle.SelectedItem.Value);
+                Idr.UpdateWorkState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
+            }
+            else
+            {
+                Iveh.UpdateVehAvailable(Veh, DropDown_Vehicle.SelectedItem.Value);
+                Idr.UpdateFreeState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
+                Idr.UpdateMinistryWorkStateEmpty(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
+            }
+        }
+
         protected void ChargeData()
         {
             if (id != null)
@@ -191,12 +228,14 @@ namespace VehicleFleetManagment.FleetApp
 
         protected void btn_save_Click(object sender, EventArgs args)
         {
+            vehicleDriverState();
             if (id == null)
             {
                 Add();
             }
             else
                 Update();
+
         }
 
         //Add dropDawn Minisrty
@@ -214,27 +253,60 @@ namespace VehicleFleetManagment.FleetApp
             }
         }
 
-        //Add dropDawn Vehicle
+        //control swap button
+        void swap()
+        {
+            if(DropDown_Status.SelectedValue=="Swaped to another")
+            {
+                btnSave.Visible = false;
+            }
+            else
+            {
+                btnSave.Visible = true;
+            }
+        }
+        // DropDawn Driver
         void Driver()
         {
-            I.DisplayDriver(DropDown_Driver);
+            if (id != null && codeMin!="All")
+            {
+            I.DisplayDriverMinAll(DropDown_Driver,codeMin, Convert.ToInt32(id));
+            }
+            else if(id != null && codeMin == "All")
+            {
+                I.DisplayDriverAll(DropDown_Driver);
+
+            }
+            else
+            {
+                I.DisplayDriver(DropDown_Driver,codeMin);
+            }
         }
 
-        //Add dropDawn Vehicle
-        void AllVehicle()
-        {
-            I.DisplayAllVehicle(DropDown_Vehicle);
-        }
 
-        //Add dropDawn Vehicle
+        // dropDawn Vehicle
         void Vehicle()
         {
-            I.DisplayVehicle(DropDown_Vehicle,Convert.ToInt32(DropDown_Ministry.SelectedItem.Value));
+            if (id != null && codeMin != "All")
+            {
+                I.DisplayAllMinVehicle(DropDown_Vehicle,codeMin, Convert.ToInt32(id));
+            }
+            else if (id != null && codeMin == "All")
+            {
+                I.DisplayAllVehicle(DropDown_Driver);
+
+            }
+            else
+            {
+                I.DisplayVehicle(DropDown_Vehicle, Convert.ToInt32(DropDown_Ministry.SelectedItem.Value));
+            }
+
         }
 
         protected void dropDown_Ministry_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Vehicle();
+            //Dropdown all vehicles
+            I.DisplayAllVehicle(DropDown_Vehicle);
         }
     }
 }

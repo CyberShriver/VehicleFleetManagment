@@ -14,6 +14,7 @@ namespace VehicleFleetManagment.FleetImp
 
         int msg;
         MINISTRY_DRIVER M = new MINISTRY_DRIVER();
+        VEHICLE V = new VEHICLE();
 
         //ADD METHOD
         public int Add(MinDriver_Class Md)
@@ -57,7 +58,6 @@ namespace VehicleFleetManagment.FleetImp
                     M.Min_Driver_RegNumber  = Md.Min_Driver_RegNumber ;
                     M.MINISTRY_ID = Md.MINISTRY_ID;
                     M.Position_Status = Md.Position_Status;
-                    // M.Saved_Date = Md.Saved_Date;
 
                     if (con.SaveChanges() > 0)
                     {
@@ -291,7 +291,7 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
-        //DISPLAY METHOD All MINISTRY
+        //DISPLAY  All MINISTRY METHOD
         public void DisplayMinistryAll(DropDownList drop)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
@@ -314,12 +314,12 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
-        //DISPLAY METHOD VEHICLE
+        //DISPLAY VEHICLE DEPENDS ON MINISTRY CHOOSEN IN AUTOPOSTBACK METHOD
         public void DisplayVehicle(DropDownList drop,int id)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from V in con.VEHICLEs where V.MINISTRY_ID==id
+                var obj = (from V in con.VEHICLEs where V.MINISTRY_ID==id && V.Stat == "Available"
 
                            select new
                            {
@@ -334,12 +334,33 @@ namespace VehicleFleetManagment.FleetImp
             }
 
         }
-        //DISPLAY METHOD ALL VEHICLE
+
+        //DISPLAY  ALL VEHICLE FOR SPECIFIC MINISTRY BASED ON CODE MINISTRY METHOD
+        public void DisplayAllMinVehicle(DropDownList drop,string codeMin,int idMinDr)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from V in con.MINISTRY_DRIVER where V.MINISTRY.Code_Min==codeMin && V.MIN_DRIVER_ID== idMinDr
+
+                           select new
+                           {
+                               Min_Driver_RegNumber = V.Min_Driver_RegNumber,
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "Min_Driver_RegNumber";
+                drop.DataBind();
+            }
+
+        }
+
+        //DISPLAY  ALL VEHICLE METHOD
         public void DisplayAllVehicle(DropDownList drop)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from V in con.VEHICLEs                        
+                var obj = (from V in con.VEHICLEs
 
                            select new
                            {
@@ -356,12 +377,12 @@ namespace VehicleFleetManagment.FleetImp
         }
 
 
-        //DISPLAY METHOD Driver
-        public void DisplayDriver(DropDownList drop)
+        //DISPLAY  Driver for specific Ministry METHOD
+        public void DisplayDriver(DropDownList drop, string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from D in con.DRIVERs
+                var obj = (from D in con.DRIVERs where D.Ministry_Work== codeMin && D.State=="Work"
 
                            select new
                            {
@@ -377,5 +398,50 @@ namespace VehicleFleetManagment.FleetImp
             }
 
         }
+
+        //DISPLAY All Driver for specific Ministry  METHOD 
+        public void DisplayDriverMinAll(DropDownList drop,string codeMin,int idMinDr)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from D in con.MINISTRY_DRIVER where D.MINISTRY.Code_Min == codeMin && D.MIN_DRIVER_ID == idMinDr
+
+                           select new
+                           {
+                               DRIVER_ID = D.DRIVER_ID,
+                               Full_Name = D.DRIVER.Full_Name
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "DRIVER_ID";
+                drop.DataTextField = "Full_Name";
+                drop.DataBind();
+            }
+
+        }
+
+        //DISPLAY  All Driver METHOD
+        public void DisplayDriverAll(DropDownList drop)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from D in con.DRIVERs
+
+                           select new
+                           {
+                               DRIVER_ID = D.DRIVER_ID,
+                               Full_Name = D.Full_Name
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "DRIVER_ID";
+                drop.DataTextField = "Full_Name";
+                drop.DataBind();
+            }
+
+        }
+
     }
 }

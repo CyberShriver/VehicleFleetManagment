@@ -56,5 +56,11 @@ namespace VehicleFleetManagment.FleetImp
         void DisplayFuel(DropDownList drop);
         //DropDown BodyType 
         void DisplayBodyType(DropDownList drop);
+
+        //Update unavailability of vahicle
+        int UpdateVehUnavailable(Vehicle_Class veh, string LocalPlate);
+
+        //Update Availability of vahicle
+        int UpdateVehAvailable(Vehicle_Class veh, string LocalPlate);
     }
 }

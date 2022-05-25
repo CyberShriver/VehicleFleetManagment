@@ -10,8 +10,9 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <asp:Label class="m-b-10 h5" ID="txtSystemTitle" runat="server" Text="" ></asp:Label>
-                        <p><asp:Label class="m-b-0 p" ID="txtSlogan" runat="server" Text="" ></asp:Label></p>
+                        <asp:Label class="m-b-10 h5" ID="txtSystemTitle" runat="server" Text=""></asp:Label>
+                        <p>
+                            <asp:Label class="m-b-0 p" ID="txtSlogan" runat="server" Text=""></asp:Label></p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -52,25 +53,36 @@
                             </div>
 
                             <!-- Start Search  -->
-                            <div class=" col-md-6 mx-auto mb-0 mt-0">
+
                                 <div class="row">
-                                    <div class="col-md">
-                                        <div class="form-material">
-                                            <div class="form-group form-primary">
-                                                <input type="text" name="footer-email" class="form-control" id="txt_Search" runat="server" placeholder="search">
-                                                <span class="form-bar"></span>
+                                    <div class="mt-0 ml-3  mb-0 mr-5">
+                                        <span runat="server" class="font-weight-bold mr-1">Filter: </span>
+                                        <div class="form-group form-default">
+                                            <asp:DropDownList ID="DropDown_Filter" runat="server" OnSelectedIndexChanged="DropDown_Filter_SelectedIndexChanged" AutoPostBack="true">
+                                                <asp:ListItem Selected="True">Ours Drivers</asp:ListItem>
+                                                <asp:ListItem>Free Agents</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 d-flex mx-auto mb-0 mt-0">
+                                        <div class="col-md ">
+                                            <div class="form-material">
+                                                <div class="form-group form-primary">
+                                                    <input type="text" name="footer-email" class="form-control" id="txt_Search" runat="server" placeholder="search">
+                                                    <span class="form-bar"></span>
+                                                </div>
                                             </div>
+
                                         </div>
 
+                                        <div class="col-md">
+                                            <button class="btn btn-default" runat="server" onserverclick="btn_srch_Click"><i class="fa fa-search m-r-10"></i>search</button>
+                                            <%--<asp:Button ID="DeleteCheck" runat="server" Text="Delete All" class="btn btn-danger" OnClick="DeleteCheck_Click" />--%>
+                                        </div>
                                     </div>
-
-                                    <div class="col-md">
-                                        <button class="btn btn-default" runat="server" onserverclick="btn_srch_Click"><i class="fa fa-search m-r-10"></i>search</button>
-                                        <%--<asp:Button ID="DeleteCheck" runat="server" Text="Delete All" class="btn btn-danger" OnClick="DeleteCheck_Click" />--%>
-                                    </div>
-                                </div>
                             </div>
                             <!-- end Search  -->
+
                             <div class="float-right mt-0 d-flex mb-0">
                                 <span runat="server" class="font-weight-bold mr-1">Records: </span>
                                 <asp:Label ID="nbr" runat="server" Text="" class="text-danger font-weight-bold mr-1"> </asp:Label>
@@ -179,6 +191,17 @@
                                             <asp:TemplateField HeaderText="Postal Code" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label17" runat="server" Text='<%# Eval("Postal_code") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                            <asp:TemplateField HeaderText="Ministry Code" Visible="true">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label111" runat="server" Text='<%# Eval("Ministry_Work") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="State" Visible="true">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label11144" runat="server" Text='<%# Eval("State") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

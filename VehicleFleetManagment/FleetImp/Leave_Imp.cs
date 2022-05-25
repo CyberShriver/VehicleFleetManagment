@@ -380,7 +380,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from Md in con.MINISTRY_DRIVER
-                           where Md.MIN_DRIVER_ID == id
+                           where Md.MINISTRY.MINISTRY_ID == id && Md.Position_Status=="On Post"
 
                            select new
                            {

@@ -170,11 +170,7 @@
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Crash Demage</label>
                                                             </div>
-                                                            <div class="form-group form-default">
-                                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
-                                                                <span class="form-bar"></span>
-                                                                <label class="float-label ">Pic:.ico,.png,.jpg</label>
-                                                            </div>
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -328,6 +324,11 @@
                                                                     <asp:ListItem>Low</asp:ListItem>
                                                                 </asp:DropDownList>
                                                                 <label class="float-label">State</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label ">Pic:.ico,.png,.jpg</label>
                                                             </div>
                                                         </div>
                                                     </div>

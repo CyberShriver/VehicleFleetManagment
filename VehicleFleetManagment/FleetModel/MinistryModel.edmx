@@ -82,8 +82,8 @@
           <Property Name="Full_Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="CNI" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Address1" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Address2" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Address3" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address2" Type="varchar" MaxLength="100" />
+          <Property Name="Address3" Type="varchar" MaxLength="100" />
           <Property Name="Driver_Type" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Postal_code" Type="varchar" MaxLength="100" />
           <Property Name="Email" Type="varchar" MaxLength="100" />
@@ -95,6 +95,8 @@
           <Property Name="Office_Phone" Type="varchar" MaxLength="100" />
           <Property Name="Personnal_Phone" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Picture" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ministry_Work" Type="varchar" MaxLength="100" />
+          <Property Name="State" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="LEAVE">
           <Key>
@@ -1001,8 +1003,8 @@
           <Property Name="Full_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CNI" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Address1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Address2" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Address3" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Driver_Type" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Postal_code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -1015,6 +1017,8 @@
           <Property Name="Personnal_Phone" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Picture" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MINISTRY_DRIVER" Relationship="MINISTRY_DBModel.FK_MINISTRY_DRIVER_DriverID" FromRole="DRIVER" ToRole="MINISTRY_DRIVER" />
+          <Property Name="Ministry_Work" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="LEAVE_TYPE">
           <Key>
@@ -1706,6 +1710,8 @@
           <EntitySetMapping Name="DRIVERs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.DRIVER">
               <MappingFragment StoreEntitySet="DRIVER">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Ministry_Work" ColumnName="Ministry_Work" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
                 <ScalarProperty Name="Personnal_Phone" ColumnName="Personnal_Phone" />
                 <ScalarProperty Name="Office_Phone" ColumnName="Office_Phone" />

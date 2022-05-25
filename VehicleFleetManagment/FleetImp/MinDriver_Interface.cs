@@ -51,13 +51,23 @@ namespace VehicleFleetManagment.FleetImp
         void DisplayMinistryAll(DropDownList drop);
 
         //DropDown Driver 
-        void DisplayDriver(DropDownList drop);
+        void DisplayDriver(DropDownList drop,string codeMin);
 
-        //DropDown Vehicle 
+        //DISPLAY All Driver for specific Ministry  METHOD 
+        void DisplayDriverMinAll(DropDownList drop, string codeMin, int idMinDr);
+
+        //DropDown All Driver 
+        void DisplayDriverAll(DropDownList drop);
+
+        //DISPLAY VEHICLE DEPENDS ON MINISTRY CHOOSEN IN AUTOPOSTBACK METHOD
         void DisplayVehicle(DropDownList drop, int id);
+
+        //DISPLAY  ALL VEHICLE FOR SPECIFIC MINISTRY BASED ON CODE MINISTRY METHOD
+        void DisplayAllMinVehicle(DropDownList drop, string codeMin,int idMinDr);
 
         //DropDown All Vehicle 
         void DisplayAllVehicle(DropDownList drop);
 
+    
     }
 }

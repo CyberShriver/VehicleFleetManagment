@@ -39,7 +39,7 @@
                     <!-- Hover table card start -->
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="font-weight-bold">All Drivers Records</h5>
+                            <h5 class="font-weight-bold">All Vehicles Records</h5>
                             <div class="card-header-right">
                                 <ul class="list-unstyled card-option">
                                     <li><i class="fa fa fa-wrench open-card-option"></i></li>
@@ -364,7 +364,7 @@
                                                     <asp:Label ID="Label137" runat="server" Text='<%# Eval("Circulation_Expiration_Date") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Status " Visible="false">
+                                            <asp:TemplateField HeaderText="State " Visible="true">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label157" runat="server" Text='<%# Eval("Stat") %>'></asp:Label>
                                                 </ItemTemplate>

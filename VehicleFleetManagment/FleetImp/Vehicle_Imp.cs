@@ -718,5 +718,60 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //UPDATE VEHICLE UNVAILABLE STATE METHOD
+        public int UpdateVehUnavailable(Vehicle_Class veh, string LocalPlate)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                VEHICLE V = new VEHICLE();
+                V = con.VEHICLEs.Where(x => x.Local_Plate == LocalPlate).FirstOrDefault();
+
+                if (V != null)
+                {
+                    V.Stat = "Unavailable";
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.VEHICLEs.Add(V);
+                        con.Entry(V).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
+        //UPDATE VEHICLE VAILABLE STATE METHOD
+        public int UpdateVehAvailable(Vehicle_Class veh, string LocalPlate)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                VEHICLE V = new VEHICLE();
+                V = con.VEHICLEs.Where(x => x.Local_Plate == LocalPlate).FirstOrDefault();
+
+                if (V != null)
+                {
+                    V.Stat = "Available";
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.VEHICLEs.Add(V);
+                        con.Entry(V).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
     }
 }

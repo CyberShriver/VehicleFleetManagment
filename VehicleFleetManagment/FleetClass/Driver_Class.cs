@@ -25,6 +25,9 @@ namespace VehicleFleetManagment.FleetClass
         public string Office_Phone { get; set; }
         public string Personnal_Phone { get; set; }
         public string Picture { get; set; }
+        public string Ministry_Work { get; set; }
+        public string State { get; set; }
+
 
 
     }

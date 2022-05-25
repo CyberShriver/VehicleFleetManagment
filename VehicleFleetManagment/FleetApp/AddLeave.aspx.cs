@@ -240,12 +240,12 @@ namespace VehicleFleetManagment.FleetApp
             I.DisplayAllDriver(DropDown_Driver);
         }
 
-        //Add dropDawn LeaveType
+        //Add dropDown LeaveType
         void LeaveType()
         {
             I.DisplayLeaveType(DropDown_LeaveType);
         }
-        //Add dropDawn Minisrty
+        //Add dropDown Minisrty
         void Ministry()
         {
             if (codeMin == "All")
@@ -259,7 +259,7 @@ namespace VehicleFleetManagment.FleetApp
                 DMinistry.Visible = false;
             }
         }
-        //Add dropDawn Vehicle
+        //Add dropDown driver
         void Driver()
         {
             I.DisplayDriver(DropDown_Driver, Convert.ToInt32(DropDown_Ministry.SelectedItem.Value));

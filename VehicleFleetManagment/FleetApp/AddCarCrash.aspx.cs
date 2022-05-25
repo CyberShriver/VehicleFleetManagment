@@ -98,14 +98,14 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if ( dateCrash.Value == "" || TimeCrash.Value == "" || txtCrashPlace.Value == "" || txtAddress.Value == "" ||
-                    txtMeileage.Value == "" || txtResponible.Value == "" || txtDriverAge.Value == "" || txtWeather.Value == "" || txtCrashPlace.Value == "" ||  txtSpeed.Value == "" ||
+                if (dateCrash.Value == "" || TimeCrash.Value == "" || txtCrashPlace.Value == "" || txtAddress.Value == "" ||
+                    txtMeileage.Value == "" || txtResponible.Value == "" || txtDriverAge.Value == "" || txtWeather.Value == "" || txtCrashPlace.Value == "" || txtSpeed.Value == "" ||
                     txtPassenger.Value == "" || txtCrashInfo.Value == "" || txtReason.Value == "" || txtCondition.Value == "" || txtDamage.Value == "" || dateCompensation.Value == "" ||
-                    txtCircumstance.Value == "" || dateReport.Value == "" || txtCondition.Value == "" || dateFinalReport.Value == "" || dateDeclaration.Value == "" || txtAmount.Value== "" ||
+                    txtCircumstance.Value == "" || dateReport.Value == "" || txtCondition.Value == "" || dateFinalReport.Value == "" || dateDeclaration.Value == "" || txtAmount.Value == "" ||
                     txtDamageDesipt.Value == "" || txtComment.Value == "" || txtLegalCost.Value == "" || txtLocalComp.Value == "" || txtRecoverEmpl.Value == "" || txtThirdPartyRecov.Value == "" ||
                     DropDown_Ministry.SelectedValue == "-1" || DropDown_vehicle_Damag.SelectedValue == "-1" || DropDown_Damage_thirdParty.SelectedValue == "-1" || DropDown_thirdParty_injure.SelectedValue == "-1"
-                    || DropDown_Employee_injure.SelectedValue == "-1" || dropDown_Employe_Payed.SelectedValue == "-1" || DropDown_state.SelectedValue == "-1" ||DropDown_Driver.SelectedValue== "-1"
-                    || DropDown_Plate.SelectedValue== "-1" )
+                    || DropDown_Employee_injure.SelectedValue == "-1" || dropDown_Employe_Payed.SelectedValue == "-1" || DropDown_state.SelectedValue == "-1" || DropDown_Driver.SelectedValue == "-1"
+                    || DropDown_Plate.SelectedValue == "-1")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -131,34 +131,34 @@ namespace VehicleFleetManagment.FleetApp
                                 Cr.Condition_After_Crash = txtCondition.Value;
                                 Cr.Full_Crash_Address = txtAddress.Value;
                                 Cr.Crash_Place = txtCrashPlace.Value;
-                                Cr.Crash_Mileage =  Convert.ToDouble(txtMeileage.Value);
+                                Cr.Crash_Mileage = Convert.ToDouble(txtMeileage.Value);
                                 Cr.Responsible = txtResponible.Value;
                                 Cr.Weather = txtWeather.Value;
-                                Cr.Estimated_Speed =  Convert.ToDouble(txtSpeed.Value);
+                                Cr.Estimated_Speed = Convert.ToDouble(txtSpeed.Value);
                                 Cr.Compensation_Rule_Dte = dateCompensation.Value;
                                 Cr.Crash_Damage = txtDamage.Value;
                                 Cr.Crash_Pic = img;
                                 Cr.Injures_Employee = DropDown_Employee_injure.SelectedValue;
                                 Cr.Crash_Reason = txtReason.Value;
                                 Cr.Payed_Employee = dropDown_Employe_Payed.SelectedValue;
-                                Cr.Stat= DropDown_state.SelectedValue;
+                                Cr.Stat = DropDown_state.SelectedValue;
                                 Cr.Report_Dte = dateReport.Value;
                                 Cr.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
                                 Cr.VEHICLE_ID = Convert.ToInt32(DropDown_Plate.SelectedValue);
                                 Cr.Driver_Age = txtDriverAge.Value;
                                 Cr.Tot_Number_Driver_drives = Convert.ToInt32(txtPassenger.Value);
                                 Cr.Circumstance = txtCircumstance.Value;
-                                Cr.Crash_Info =txtCrashInfo.Value;
+                                Cr.Crash_Info = txtCrashInfo.Value;
                                 Cr.Third_Party_Injures = DropDown_thirdParty_injure.SelectedValue;
                                 Cr.Final_Report_Dte = dateFinalReport.Value;
-                                Cr.Insurance_Declaration_Dte =dateDeclaration.Value;
+                                Cr.Insurance_Declaration_Dte = dateDeclaration.Value;
                                 Cr.Claim_Compensation_Amount = Convert.ToDouble(txtAmount.Value);
                                 Cr.ThirdParty_Amount_Recovered = Convert.ToDouble(txtThirdPartyRecov.Value);
                                 Cr.Employee_Amount_Recovered = Convert.ToDouble(txtRecoverEmpl.Value);
                                 Cr.Local_Insurance_Compensation_Amount = Convert.ToDouble(txtLocalComp.Value);
                                 Cr.Legal_Cost = Convert.ToDouble(txtLegalCost.Value);
                                 Cr.Damage_Description = txtDamageDesipt.Value;
-                                Cr.Saved_Date =DateTime.Now.ToString();
+                                Cr.Saved_Date = DateTime.Now.ToString();
                                 Cr.Passenger_Comment = txtComment.Value;
 
                                 msg = I.Add(Cr);
@@ -197,7 +197,7 @@ namespace VehicleFleetManagment.FleetApp
                                     txtLocalComp.Value = "";
                                     txtRecoverEmpl.Value = "";
                                     txtThirdPartyRecov.Value = "";
-                                    
+
                                 }
                                 else
                                 {
@@ -309,7 +309,7 @@ namespace VehicleFleetManagment.FleetApp
                     }
                 }
             }
-        
+
             catch (SqlException e)
             {
                 SuccessMsg.Visible = false;
@@ -324,15 +324,15 @@ namespace VehicleFleetManagment.FleetApp
 
             try
             {
-                if ( dateCrash.Value == "" || TimeCrash.Value == "" || txtCrashPlace.Value == "" || txtAddress.Value == "" ||
+                if (dateCrash.Value == "" || TimeCrash.Value == "" || txtCrashPlace.Value == "" || txtAddress.Value == "" ||
                     txtMeileage.Value == "" || txtResponible.Value == "" || txtDriverAge.Value == "" || txtWeather.Value == "" || txtCrashPlace.Value == "" || txtSpeed.Value == "" ||
                     txtPassenger.Value == "" || txtCrashInfo.Value == "" || txtReason.Value == "" || txtCondition.Value == "" || txtDamage.Value == "" || dateCompensation.Value == "" ||
                     txtCircumstance.Value == "" || dateReport.Value == "" || txtCondition.Value == "" || dateFinalReport.Value == "" || dateDeclaration.Value == "" || txtAmount.Value == "" ||
-                    txtDamageDesipt.Value == "" || txtComment.Value == "" || txtLegalCost.Value == "" || txtLocalComp.Value == "" || txtRecoverEmpl.Value == "" || txtThirdPartyRecov.Value == "" 
+                    txtDamageDesipt.Value == "" || txtComment.Value == "" || txtLegalCost.Value == "" || txtLocalComp.Value == "" || txtRecoverEmpl.Value == "" || txtThirdPartyRecov.Value == ""
                     || DropDown_Ministry.SelectedValue == "-1" || DropDown_vehicle_Damag.SelectedValue == "-1" || DropDown_Damage_thirdParty.SelectedValue == "-1" || DropDown_thirdParty_injure.SelectedValue == "-1"
                     || DropDown_Employee_injure.SelectedValue == "-1" || dropDown_Employe_Payed.SelectedValue == "-1" || DropDown_state.SelectedValue == "-1" || DropDown_Driver.SelectedValue == "-1"
                     || DropDown_Plate.SelectedValue == "-1")
-                    {
+                {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
                     FailMsg.Visible = false;
@@ -348,46 +348,46 @@ namespace VehicleFleetManagment.FleetApp
                         {
                             if (file_upd.PostedFile.ContentLength < 104857600)
                             {
-                                    Cr.Crash_Code = txtCode.Value;
-                                    Cr.Damage_Third_Party = DropDown_Damage_thirdParty.SelectedValue;
-                                    Cr.Damaged_Vehicle = DropDown_vehicle_Damag.SelectedValue;
-                                    Cr.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
-                                    Cr.Crash_Date = dateCrash.Value;
-                                    Cr.Crash_Time = TimeCrash.Value;
-                                    Cr.Condition_After_Crash = txtCondition.Value;
-                                    Cr.Full_Crash_Address = txtAddress.Value;
-                                    Cr.Crash_Place = txtCrashPlace.Value;
-                                    Cr.Crash_Mileage = Convert.ToInt32(txtMeileage.Value);
-                                    Cr.Responsible = txtResponible.Value;
-                                    Cr.Weather = txtWeather.Value;
-                                    Cr.Estimated_Speed = Convert.ToInt32(txtSpeed.Value);
-                                    Cr.Compensation_Rule_Dte = dateCompensation.Value;
-                                    Cr.Crash_Damage = txtDamage.Value;
-                                    Cr.Crash_Pic = img;
-                                    Cr.Injures_Employee = DropDown_Employee_injure.SelectedValue;
-                                    Cr.Crash_Reason = txtReason.Value;
-                                    Cr.Payed_Employee = dropDown_Employe_Payed.SelectedValue;
-                                    Cr.Stat = DropDown_state.SelectedValue;
-                                    Cr.Report_Dte = dateReport.Value;
-                                    Cr.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
-                                    Cr.VEHICLE_ID = Convert.ToInt32(DropDown_Plate.SelectedValue);
-                                    Cr.Driver_Age = txtDriverAge.Value;
-                                    Cr.Tot_Number_Driver_drives = Convert.ToInt32(txtPassenger.Value);
-                                    Cr.Circumstance = txtCircumstance.Value;
-                                    Cr.Crash_Info = txtCrashInfo.Value;
-                                    Cr.Third_Party_Injures = DropDown_thirdParty_injure.SelectedValue;
-                                    Cr.Final_Report_Dte = dateFinalReport.Value;
-                                    Cr.Insurance_Declaration_Dte = dateDeclaration.Value;
-                                    Cr.Claim_Compensation_Amount = Convert.ToDouble(txtAmount.Value);
-                                    Cr.ThirdParty_Amount_Recovered = Convert.ToDouble(txtThirdPartyRecov.Value);
-                                    Cr.Employee_Amount_Recovered = Convert.ToDouble(txtRecoverEmpl.Value);
-                                    Cr.Local_Insurance_Compensation_Amount = Convert.ToDouble(txtLocalComp.Value);
-                                    Cr.Legal_Cost = Convert.ToDouble(txtLegalCost.Value);
-                                    Cr.Damage_Description = txtDamageDesipt.Value;
-                                    Cr.Saved_Date = DateTime.Now.ToString();
-                                    Cr.Passenger_Comment = txtComment.Value;
+                                Cr.Crash_Code = txtCode.Value;
+                                Cr.Damage_Third_Party = DropDown_Damage_thirdParty.SelectedValue;
+                                Cr.Damaged_Vehicle = DropDown_vehicle_Damag.SelectedValue;
+                                Cr.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
+                                Cr.Crash_Date = dateCrash.Value;
+                                Cr.Crash_Time = TimeCrash.Value;
+                                Cr.Condition_After_Crash = txtCondition.Value;
+                                Cr.Full_Crash_Address = txtAddress.Value;
+                                Cr.Crash_Place = txtCrashPlace.Value;
+                                Cr.Crash_Mileage = Convert.ToInt32(txtMeileage.Value);
+                                Cr.Responsible = txtResponible.Value;
+                                Cr.Weather = txtWeather.Value;
+                                Cr.Estimated_Speed = Convert.ToInt32(txtSpeed.Value);
+                                Cr.Compensation_Rule_Dte = dateCompensation.Value;
+                                Cr.Crash_Damage = txtDamage.Value;
+                                Cr.Crash_Pic = img;
+                                Cr.Injures_Employee = DropDown_Employee_injure.SelectedValue;
+                                Cr.Crash_Reason = txtReason.Value;
+                                Cr.Payed_Employee = dropDown_Employe_Payed.SelectedValue;
+                                Cr.Stat = DropDown_state.SelectedValue;
+                                Cr.Report_Dte = dateReport.Value;
+                                Cr.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
+                                Cr.VEHICLE_ID = Convert.ToInt32(DropDown_Plate.SelectedValue);
+                                Cr.Driver_Age = txtDriverAge.Value;
+                                Cr.Tot_Number_Driver_drives = Convert.ToInt32(txtPassenger.Value);
+                                Cr.Circumstance = txtCircumstance.Value;
+                                Cr.Crash_Info = txtCrashInfo.Value;
+                                Cr.Third_Party_Injures = DropDown_thirdParty_injure.SelectedValue;
+                                Cr.Final_Report_Dte = dateFinalReport.Value;
+                                Cr.Insurance_Declaration_Dte = dateDeclaration.Value;
+                                Cr.Claim_Compensation_Amount = Convert.ToDouble(txtAmount.Value);
+                                Cr.ThirdParty_Amount_Recovered = Convert.ToDouble(txtThirdPartyRecov.Value);
+                                Cr.Employee_Amount_Recovered = Convert.ToDouble(txtRecoverEmpl.Value);
+                                Cr.Local_Insurance_Compensation_Amount = Convert.ToDouble(txtLocalComp.Value);
+                                Cr.Legal_Cost = Convert.ToDouble(txtLegalCost.Value);
+                                Cr.Damage_Description = txtDamageDesipt.Value;
+                                Cr.Saved_Date = DateTime.Now.ToString();
+                                Cr.Passenger_Comment = txtComment.Value;
 
-                                    msg = I.Update(Cr, Convert.ToInt32(id));
+                                msg = I.Update(Cr, Convert.ToInt32(id));
                                 if (msg > 0)
                                 {
                                     Response.Redirect("~/FleetApp/ViewCarCrash.aspx");
@@ -416,47 +416,47 @@ namespace VehicleFleetManagment.FleetApp
                     }
                     else
                     {
-                            Cr.Crash_Code = txtCode.Value;
-                            Cr.Damage_Third_Party = DropDown_Damage_thirdParty.SelectedValue;
-                            Cr.Damaged_Vehicle = DropDown_vehicle_Damag.SelectedValue;
-                            Cr.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
-                            Cr.Crash_Date = dateCrash.Value;
-                            Cr.Crash_Time = TimeCrash.Value;
-                            Cr.Condition_After_Crash = txtCondition.Value;
-                            Cr.Full_Crash_Address = txtAddress.Value;
-                            Cr.Crash_Place = txtCrashPlace.Value;
-                            Cr.Crash_Mileage = Convert.ToInt32(txtMeileage.Value);
-                            Cr.Responsible = txtResponible.Value;
-                            Cr.Weather = txtWeather.Value;
-                            Cr.Estimated_Speed = Convert.ToInt32(txtSpeed.Value);
-                            Cr.Compensation_Rule_Dte = dateCompensation.Value;
-                            Cr.Crash_Damage = txtDamage.Value;
-                            Cr.Crash_Pic = "No picture";
-                            Cr.Injures_Employee = DropDown_Employee_injure.SelectedValue;
-                            Cr.Crash_Reason = txtReason.Value;
-                            Cr.Payed_Employee = dropDown_Employe_Payed.SelectedValue;
-                            Cr.Stat = DropDown_state.SelectedValue;
-                            Cr.Report_Dte = dateReport.Value;
-                            Cr.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
-                            Cr.VEHICLE_ID = Convert.ToInt32(DropDown_Plate.SelectedValue);
-                            Cr.Driver_Age = txtDriverAge.Value;
-                            Cr.Tot_Number_Driver_drives = Convert.ToInt32(txtPassenger.Value);
-                            Cr.Circumstance = txtCircumstance.Value;
-                            Cr.Crash_Info = txtCrashInfo.Value;
-                            Cr.Third_Party_Injures = DropDown_thirdParty_injure.SelectedValue;
-                            Cr.Final_Report_Dte = dateFinalReport.Value;
-                            Cr.Insurance_Declaration_Dte = dateDeclaration.Value;
-                            Cr.Claim_Compensation_Amount = Convert.ToDouble(txtAmount.Value);
-                            Cr.ThirdParty_Amount_Recovered = Convert.ToDouble(txtThirdPartyRecov.Value);
-                            Cr.Employee_Amount_Recovered = Convert.ToDouble(txtRecoverEmpl.Value);
-                            Cr.Local_Insurance_Compensation_Amount = Convert.ToDouble(txtLocalComp.Value);
-                            Cr.Legal_Cost = Convert.ToDouble(txtLegalCost.Value);
-                            Cr.Damage_Description = txtDamageDesipt.Value;
-                            Cr.Saved_Date = DateTime.Now.ToString();
-                            Cr.Passenger_Comment = txtComment.Value;
-                            msg = I.Add(Cr);
+                        Cr.Crash_Code = txtCode.Value;
+                        Cr.Damage_Third_Party = DropDown_Damage_thirdParty.SelectedValue;
+                        Cr.Damaged_Vehicle = DropDown_vehicle_Damag.SelectedValue;
+                        Cr.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
+                        Cr.Crash_Date = dateCrash.Value;
+                        Cr.Crash_Time = TimeCrash.Value;
+                        Cr.Condition_After_Crash = txtCondition.Value;
+                        Cr.Full_Crash_Address = txtAddress.Value;
+                        Cr.Crash_Place = txtCrashPlace.Value;
+                        Cr.Crash_Mileage = Convert.ToInt32(txtMeileage.Value);
+                        Cr.Responsible = txtResponible.Value;
+                        Cr.Weather = txtWeather.Value;
+                        Cr.Estimated_Speed = Convert.ToInt32(txtSpeed.Value);
+                        Cr.Compensation_Rule_Dte = dateCompensation.Value;
+                        Cr.Crash_Damage = txtDamage.Value;
+                        Cr.Crash_Pic = "No picture";
+                        Cr.Injures_Employee = DropDown_Employee_injure.SelectedValue;
+                        Cr.Crash_Reason = txtReason.Value;
+                        Cr.Payed_Employee = dropDown_Employe_Payed.SelectedValue;
+                        Cr.Stat = DropDown_state.SelectedValue;
+                        Cr.Report_Dte = dateReport.Value;
+                        Cr.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
+                        Cr.VEHICLE_ID = Convert.ToInt32(DropDown_Plate.SelectedValue);
+                        Cr.Driver_Age = txtDriverAge.Value;
+                        Cr.Tot_Number_Driver_drives = Convert.ToInt32(txtPassenger.Value);
+                        Cr.Circumstance = txtCircumstance.Value;
+                        Cr.Crash_Info = txtCrashInfo.Value;
+                        Cr.Third_Party_Injures = DropDown_thirdParty_injure.SelectedValue;
+                        Cr.Final_Report_Dte = dateFinalReport.Value;
+                        Cr.Insurance_Declaration_Dte = dateDeclaration.Value;
+                        Cr.Claim_Compensation_Amount = Convert.ToDouble(txtAmount.Value);
+                        Cr.ThirdParty_Amount_Recovered = Convert.ToDouble(txtThirdPartyRecov.Value);
+                        Cr.Employee_Amount_Recovered = Convert.ToDouble(txtRecoverEmpl.Value);
+                        Cr.Local_Insurance_Compensation_Amount = Convert.ToDouble(txtLocalComp.Value);
+                        Cr.Legal_Cost = Convert.ToDouble(txtLegalCost.Value);
+                        Cr.Damage_Description = txtDamageDesipt.Value;
+                        Cr.Saved_Date = DateTime.Now.ToString();
+                        Cr.Passenger_Comment = txtComment.Value;
+                        msg = I.Add(Cr);
 
-                            msg = I.Update(Cr, Convert.ToInt32(id));
+                        msg = I.Update(Cr, Convert.ToInt32(id));
                         if (msg > 0)
                         {
                             Response.Redirect("~/FleetApp/ViewCarCrash.aspx");
@@ -493,7 +493,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtCondition.Value = Cr.Condition_After_Crash;
                 txtAddress.Value = Cr.Full_Crash_Address;
                 txtCrashPlace.Value = Cr.Crash_Place;
-                txtMeileage.Value= Cr.Crash_Mileage.ToString();
+                txtMeileage.Value = Cr.Crash_Mileage.ToString();
                 txtResponible.Value = Cr.Responsible;
                 txtWeather.Value = Cr.Weather;
                 txtCode.Value = Cr.Crash_Code;
@@ -521,7 +521,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtLegalCost.Value = Cr.Legal_Cost.ToString();
                 txtDamageDesipt.Value = Cr.Damage_Description.ToString();
                 txtComment.Value = Cr.Passenger_Comment;
-               
+
             }
         }
 
@@ -534,7 +534,7 @@ namespace VehicleFleetManagment.FleetApp
             else
                 Update();
         }
-                protected void ActiveGen_click(object sender, EventArgs args)
+        protected void ActiveGen_click(object sender, EventArgs args)
         {
             MultiView.ActiveViewIndex = 0;
             MsgInit();
@@ -577,20 +577,20 @@ namespace VehicleFleetManagment.FleetApp
         //Genarate Code Vehicle
         string CrashCode()
         {
-            
+
             if (codeMin == "All")
             {
-                return code = "Crash-" + (Convert.ToInt32(I.countAll() + 1)) + "/" + DateTime.Now.Date;
+                return code = "Crash-" + DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3)+(Convert.ToInt32(I.countAll() + 1)) + "/" + DateTime.Now.Date;
             }
             else
             {
-                return code = "Crash-" + (Convert.ToInt32(I.count(codeMin) + 1)) + "/" + DateTime.Now.Date;
+                return code = "Crash-"+ DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.count(codeMin) + 1)) + "/" + DateTime.Now.Date;
             }
         }
 
         string driverAge()
         {
-          return I.DisplayDriverAge(Convert.ToInt32(DropDown_Driver.SelectedValue));
+            return I.DisplayDriverAge(Convert.ToInt32(DropDown_Driver.SelectedValue));
         }
         void Minisrty()
         {

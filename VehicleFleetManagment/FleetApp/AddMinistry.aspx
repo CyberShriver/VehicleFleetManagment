@@ -9,8 +9,8 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h5 class="m-b-10">Vehicle Fleet Managment</h5>
-                        <p class="m-b-0">Safety Rules Are Your Best Tools</p>
+                        <asp:Label class="m-b-10 h5" ID="txtSystemTitle" runat="server" Text="" ></asp:Label>
+                        <p><asp:Label class="m-b-0 p" ID="txtHeaderSlogan" runat="server" Text="" ></asp:Label></p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -102,11 +102,7 @@
                                                             <span class="form-bar"></span>
                                                             <label class="float-label">Postal Code</label>
                                                         </div>
-                                                        <div class="form-group form-default">
-                                                            <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
-                                                            <span class="form-bar"></span>
-                                                            <label class="float-label ">Picture:.ico,.png,.jpg</label>
-                                                        </div>
+                                                       
                                                         <div class="form-group form-default">
                                                             <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
                                                         </div>
@@ -165,7 +161,12 @@
                                                             <label class="float-label">Theme</label>
                                                         </div>
                                                         <div class="form-group form-default">
-                                                            <asp:FileUpload ID="file_updLogo" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
+                                                            <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label ">Picture:.ico,.png,.jpg</label>
+                                                        </div>
+                                                        <div class="form-group form-default">
+                                                            <asp:FileUpload ID="file_updLogo"  name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
                                                             <span class="form-bar"></span>
                                                             <label class="float-label ">Logo:.ico,.png,.jpg</label>
                                                         </div>
@@ -186,15 +187,6 @@
                                     </div>
                                 </div>
 
-                                <%--<div class="card-footer">
-                                    <div class="float-right">
-                                        <div class="float-right">
-                                            <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
-                                            <button type="reset" class="btn btn-danger ml-5">Cancel</button>
-                                            <a class="btn btn-info ml-5" href="ViewMinistry.aspx">List</a>
-                                        </div>
-                                    </div>
-                                </div>--%>
                             </div>
                             <!-- Tab variant tab card start -->
                         </div>
