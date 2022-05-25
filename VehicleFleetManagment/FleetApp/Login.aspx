@@ -102,7 +102,7 @@
 
                     <form class="md-float-material form-material" runat="server">
                         <div class="text-center">
-                            <img src="assets/images/bus-48.png" alt="logo.png" />
+                            <img src="assets/images/Logo/bus-48.png" alt="logo.png" />
                             <span class="text-light font-weight-bold">Vehicle System Managment</span>
                         </div>
                         <div class="auth-box card">

@@ -57,7 +57,7 @@
                                 <div class="row">
                                     <div class="mt-0 ml-3  mb-0 mr-5">
                                         <span runat="server" class="font-weight-bold mr-1">Filter: </span>
-                                        <div class="form-group form-default">
+                                        <div class="form-group form-default" runat="server" id="filterVisibility">
                                             <asp:DropDownList ID="DropDown_Filter" runat="server" OnSelectedIndexChanged="DropDown_Filter_SelectedIndexChanged" AutoPostBack="true">
                                                 <asp:ListItem Selected="True">Ours Drivers</asp:ListItem>
                                                 <asp:ListItem>Free Agents</asp:ListItem>

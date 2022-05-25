@@ -45,6 +45,15 @@ namespace VehicleFleetManagment.FleetApp
         protected void Page_Load(object sender, EventArgs e)
         {
             ChargeCookies();
+
+            if (codeMin == "All")
+            {
+                MinistryTable.Visible = true;
+            }
+            else
+            {
+                MinistryTable.Visible = false;
+            }
             
         }
 

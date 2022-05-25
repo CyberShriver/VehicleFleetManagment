@@ -68,6 +68,7 @@ namespace VehicleFleetManagment.FleetApp
             {
                 I.DisplayAll(gdv);
                 nbr.Text = I.countAll().ToString();
+                filterVisibility.Visible = false;
               //  btn_Edit.InnerText = "Edit";
 
 
@@ -77,12 +78,14 @@ namespace VehicleFleetManagment.FleetApp
             {
                 I.Display(gdv);
                 nbr.Text = I.count().ToString();
+                filterVisibility.Visible = true;
                // btn_Edit.InnerText = "Add";
             }
             else
             {
                 I.DisplayMinistryDriver(gdv, codeMin);
                 nbr.Text = I.countMinistryDrivers(codeMin).ToString();
+                filterVisibility.Visible = true;
             }
 
         }

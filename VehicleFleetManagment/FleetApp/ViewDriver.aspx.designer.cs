@@ -33,6 +33,15 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.WebControls.Label txtSlogan;
 
         /// <summary>
+        /// filterVisibility control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl filterVisibility;
+
+        /// <summary>
         /// DropDown_Filter control.
         /// </summary>
         /// <remarks>
