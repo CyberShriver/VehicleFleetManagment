@@ -62,7 +62,7 @@ namespace VehicleFleetManagment.FleetApp
         {
            
 
-            if (Request.Cookies["Code_Min"].Value != null)
+            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Ministry_Name"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null || Request.Cookies["Logo"] != null || Request.Cookies["System_Name"] != null || Request.Cookies["Picture"] != null || Request.Cookies["Theme"] != null)
             {
                 codeMin = Request.Cookies["Code_Min"].Value;
                 name = Request.Cookies["Ministry_Name"].Value;

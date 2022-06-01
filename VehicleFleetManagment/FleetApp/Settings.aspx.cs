@@ -30,7 +30,7 @@ namespace VehicleFleetManagment.FleetApp
       
         protected void Page_Load(object sender, EventArgs e)
         {
-            SavedCookies();
+            ChargeCookies();
             if (!IsPostBack)
             {
                 txtSystemTitle.Text = systemTitle;
@@ -58,26 +58,11 @@ namespace VehicleFleetManagment.FleetApp
 
         }
         //SAVED COOKIES METHODE
-        void SavedCookies()
+        void ChargeCookies()
         {
-            HttpCookie Code_Min = new HttpCookie("Code_Min");
-            HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
-            HttpCookie Phone = new HttpCookie("Phone");
-            HttpCookie Ministry_Name = new HttpCookie("Ministry_Name");
-            HttpCookie Address = new HttpCookie("Address");
-            HttpCookie Postal_code = new HttpCookie("Postal_code");
-            HttpCookie User_Nme = new HttpCookie("User_Nme");
-            HttpCookie Fax = new HttpCookie("Fax");
-            HttpCookie System_Name = new HttpCookie("System_Name");
-            HttpCookie System_Title = new HttpCookie("System_Title");
-            HttpCookie System_Email = new HttpCookie("System_Email");
-            HttpCookie Password = new HttpCookie("Password");
-            HttpCookie Logo = new HttpCookie("Logo");
-            HttpCookie Picture = new HttpCookie("Picture");
-            HttpCookie Slogan = new HttpCookie("Slogan");
-            HttpCookie theme = new HttpCookie("Theme");
 
-            if (Request.Cookies["Code_Min"].Value != null)
+
+            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Ministry_Name"] != null || Request.Cookies["System_Email"] != null || Request.Cookies["MINISTRY_ID"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null || Request.Cookies["Logo"] != null || Request.Cookies["System_Name"] != null || Request.Cookies["Picture"] != null || Request.Cookies["Theme"] != null)
             {
                 id = Convert.ToInt32(Request.Cookies["MINISTRY_ID"].Value);
                 codeMin = Request.Cookies["Code_Min"].Value;
@@ -90,6 +75,7 @@ namespace VehicleFleetManagment.FleetApp
                 slogan = Request.Cookies["Slogan"].Value;
                 them = Request.Cookies["Theme"].Value;
             }
+
         }
      
         //MANAGE CONFIRM BUTTON ON SUBMIT CHANGES

@@ -32,6 +32,16 @@ namespace VehicleFleetManagment.FleetApp
             }
         }
 
+        void ChargeCookies()
+        {
+            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null)
+            {
+                codeMin = Request.Cookies["Code_Min"].Value;
+                sytemTitle = Request.Cookies["System_Title"].Value;
+                slogan = Request.Cookies["Slogan"].Value;
+            }
+
+        }
         public void getDataGDV()
         {
             if (codeMin == "All")
@@ -47,25 +57,6 @@ namespace VehicleFleetManagment.FleetApp
 
         }
 
-        void ChargeCookies()
-        {
-            HttpCookie Code_Min = new HttpCookie("Code_Min");
-            HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
-            HttpCookie System_Title = new HttpCookie("System_Title");
-            HttpCookie Slogan = new HttpCookie("Slogan");
-            HttpCookie Theme = new HttpCookie("Theme");
-
-            if (Request.Cookies["Code_Min"].Value != null)
-            {
-                codeMin = Request.Cookies["Code_Min"].Value;
-                sytemTitle = Request.Cookies["System_Title"].Value;
-                slogan = Request.Cookies["Slogan"].Value;
-            }
-            else
-            {
-                Response.Redirect("~/FleetApp/Login.aspx");
-            }
-        }
         protected void btn_srch_Click(object sender, EventArgs e)
         {
             if (codeMin == "All")

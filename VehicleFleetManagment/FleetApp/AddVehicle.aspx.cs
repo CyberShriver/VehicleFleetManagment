@@ -53,17 +53,13 @@ namespace VehicleFleetManagment.FleetApp
 
         void ChargeCookies()
         {
-           
-            if (Request.Cookies["Code_Min"].Value != null)
+            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null)
             {
                 codeMin = Request.Cookies["Code_Min"].Value;
                 sytemTitle = Request.Cookies["System_Title"].Value;
                 slogan = Request.Cookies["Slogan"].Value;
             }
-            else
-            {
-                Response.Redirect("~/FleetApp/Login.aspx");
-            }
+                              
         }
         private void MsgInit()
         {
@@ -157,7 +153,6 @@ namespace VehicleFleetManagment.FleetApp
                                 msg = I.Add(Veh);
                                 if (msg > 0)
                                 {
-                                    I.Add(Veh);
                                     FillMsg.Visible = false;
                                     FailMsg.Visible = false;
                                     SuccessMsg.Visible = true;
@@ -276,7 +271,6 @@ namespace VehicleFleetManagment.FleetApp
                         msg = I.Add(Veh);
                         if (msg > 0)
                         {
-                            I.Add(Veh);
                             FillMsg.Visible = false;
                             FailMsg.Visible = false;
                             SuccessMsg.Visible = true;

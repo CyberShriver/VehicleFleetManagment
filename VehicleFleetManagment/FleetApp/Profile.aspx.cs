@@ -20,13 +20,7 @@ namespace VehicleFleetManagment.FleetApp
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie Code_Min = new HttpCookie("Code_Min");
-
-            if (Request.Cookies["Code_Min"].Value != null)
-            {
-                codeMin = Request.Cookies["Code_Min"].Value;
-            }
-
+            ChargeCookies();
             if (!IsPostBack)
             {
                 txtSystemTitle.Text = sytemTitle;
@@ -36,6 +30,16 @@ namespace VehicleFleetManagment.FleetApp
             }
         }
 
+        void ChargeCookies()
+        {
+            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null)
+            {
+                codeMin = Request.Cookies["Code_Min"].Value;
+                sytemTitle = Request.Cookies["System_Title"].Value;
+                slogan = Request.Cookies["Slogan"].Value;
+            }
+
+        }
         protected void ChargeData()
         {
             if (codeMin != null)

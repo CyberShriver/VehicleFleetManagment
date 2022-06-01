@@ -56,33 +56,13 @@ namespace VehicleFleetManagment.FleetApp
 
         void ChargeCookies()
         {
-            HttpCookie Code_Min = new HttpCookie("Code_Min");
-            HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
-            HttpCookie Phone = new HttpCookie("Phone");
-            HttpCookie Ministry_Name = new HttpCookie("Ministry_Name");
-            HttpCookie Address = new HttpCookie("Address");
-            HttpCookie Postal_code = new HttpCookie("Postal_code");
-            HttpCookie User_Nme = new HttpCookie("User_Nme");
-            HttpCookie Fax = new HttpCookie("Fax");
-            HttpCookie System_Name = new HttpCookie("System_Name");
-            HttpCookie System_Title = new HttpCookie("System_Title");
-            HttpCookie System_Email = new HttpCookie("System_Email");
-            HttpCookie Password = new HttpCookie("Password");
-            HttpCookie Logo = new HttpCookie("Logo");
-            HttpCookie Picture = new HttpCookie("Picture");
-            HttpCookie Slogan = new HttpCookie("Slogan");
-            HttpCookie Theme = new HttpCookie("Theme");
-
-            if (Request.Cookies["Code_Min"].Value != null)
+            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null)
             {
                 codeMin = Request.Cookies["Code_Min"].Value;
                 sytemTitle = Request.Cookies["System_Title"].Value;
                 slogan = Request.Cookies["Slogan"].Value;
             }
-            else
-            {
-                Response.Redirect("~/FleetApp/Login.aspx");
-            }
+
         }
         private void MsgInit()
         {
@@ -96,8 +76,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if ( txtFullName.Value == "" || txtTel.Value == "" || txtMail.Value == "" || dateBirth.Value == "" || txtNationality.Value == "" ||
-                    txtCNI.Value == "" || txtAddress1.Value == "" || txtTelOffice.Value == "" || txtPostal.Value == ""
+                if ( txtFullName.Value == "" || txtTel.Value == "" || dateBirth.Value == "" || txtNationality.Value == "" || txtCNI.Value == "" || txtAddress1.Value == "" 
                     || DropDown_language.SelectedValue == "-1" || DropDown_Gender.SelectedValue == "-1" || DropDown_Marital.SelectedValue == "-1" || DropDownList_DriverType.SelectedValue == "-1")
                 {
                     SuccessMsg.Visible = false;
@@ -137,7 +116,6 @@ namespace VehicleFleetManagment.FleetApp
                                 msg = I.Add(Dr);
                                 if (msg > 0)
                                 {
-                                    I.Add(Dr);
                                     FillMsg.Visible = false;
                                     FailMsg.Visible = false;
                                     SuccessMsg.Visible = true;
@@ -193,7 +171,6 @@ namespace VehicleFleetManagment.FleetApp
                         msg = I.Add(Dr);
                         if (msg > 0)
                         {
-                            I.Add(Dr);
                             FillMsg.Visible = false;
                             FailMsg.Visible = false;
                             SuccessMsg.Visible = true;
