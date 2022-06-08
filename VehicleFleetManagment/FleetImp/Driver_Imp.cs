@@ -38,6 +38,7 @@ namespace VehicleFleetManagment.FleetImp
                 D.Personnal_Phone = Dr.Personnal_Phone;
                 D.Ministry_Work = Dr.Ministry_Work;
                 D.State = Dr.State;
+                D.Visibility = "true";
                 D.Picture = Dr.Picture;
 
                 con.DRIVERs.Add(D);
@@ -85,8 +86,8 @@ namespace VehicleFleetManagment.FleetImp
                     D.Personnal_Phone = Dr.Personnal_Phone;
                     D.Ministry_Work = Dr.Ministry_Work;
                     D.State = Dr.State;
+                    D.Visibility = "true";
                     D.Picture = Dr.Picture;
-
                     if (con.SaveChanges() > 0)
                     {
                         con.DRIVERs.Add(D);
@@ -180,6 +181,7 @@ namespace VehicleFleetManagment.FleetImp
                                Personnal_Phone=D.Personnal_Phone,
                                Ministry_Work = D.Ministry_Work,
                                State = D.State,
+                               Visibility = D.Visibility,
                                Picture =D.Picture
             }
                            ).ToList();
@@ -219,6 +221,7 @@ namespace VehicleFleetManagment.FleetImp
                                Personnal_Phone = D.Personnal_Phone,
                                Ministry_Work = D.Ministry_Work,
                                State = D.State,
+                               Visibility = D.Visibility,
                                Picture = D.Picture
                            }
                            ).ToList();
@@ -257,6 +260,7 @@ namespace VehicleFleetManagment.FleetImp
                                Personnal_Phone = D.Personnal_Phone,
                                Ministry_Work = D.Ministry_Work,
                                State = D.State,
+                               Visibility = D.Visibility,
                                Picture = D.Picture
                            }
                            ).ToList();
@@ -478,8 +482,9 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
-        //UPDATE MINISTRY WORK STATE METHOD TO CODE MINISTRY
-        public int UpdateMinistryWorkState(Driver_Class Dr, int id,string codeMin)
+
+        //UPDATE Ministry Work and state
+        public int UpdateMinistryWorkState(Driver_Class Dr, int id, string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -489,6 +494,8 @@ namespace VehicleFleetManagment.FleetImp
                 if (D != null)
                 {
                     D.Ministry_Work = codeMin;
+                    D.State = "Work";
+                    D.Visibility = "true";
                     if (con.SaveChanges() > 0)
                     {
                         con.DRIVERs.Add(D);
@@ -507,72 +514,21 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //UPDATE MINISTRY WORK STATE METHOD TO EMPTY
-        public int UpdateMinistryWorkStateEmpty(Driver_Class Dr, int id)
+        public int UpdateMinistryWorkStateEmpty( int id)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 DRIVER D = new DRIVER();
+                MINISTRY_DRIVER M = new MINISTRY_DRIVER();
+
                 D = con.DRIVERs.Where(x => x.DRIVER_ID == id).FirstOrDefault();
+                M = con.MINISTRY_DRIVER.OrderByDescending(x => x.MIN_DRIVER_ID).Where(x => x.DRIVER_ID == id && x.Position_Status == "On Post").FirstOrDefault();
 
-                if (D != null)
+                if (D != null && M!= null)
                 {
-                    D.Ministry_Work =null;
-                    if (con.SaveChanges() > 0)
-                    {
-                        con.DRIVERs.Add(D);
-                        con.Entry(D).State = EntityState.Modified;
-
-                        msg = 1;
-                    }
-
-                    else
-                        msg = 0;
-                }
-            }
-
-
-            return msg;
-        }
-
-        //UPDATE  STATE TO WORK METHOD
-        public int UpdateWorkState(Driver_Class Dr, int id)
-        {
-            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
-            {
-                DRIVER D = new DRIVER();
-                D = con.DRIVERs.Where(x => x.DRIVER_ID == id).FirstOrDefault();
-
-                if (D != null)
-                {
-                    D.State ="Work";
-                    if (con.SaveChanges() > 0)
-                    {
-                        con.DRIVERs.Add(D);
-                        con.Entry(D).State = EntityState.Modified;
-
-                        msg = 1;
-                    }
-
-                    else
-                        msg = 0;
-                }
-            }
-
-
-            return msg;
-        }
-
-        //UPDATE  STATE TO FREE METHOD
-        public int UpdateFreeState(Driver_Class Dr, int id)
-        {
-            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
-            {
-                DRIVER D = new DRIVER();
-                D = con.DRIVERs.Where(x => x.DRIVER_ID == id).FirstOrDefault();
-
-                if (D != null)
-                {
+                    D.Ministry_Work = null;
                     D.State = "Free";
+                    D.Visibility = "false";
                     if (con.SaveChanges() > 0)
                     {
                         con.DRIVERs.Add(D);

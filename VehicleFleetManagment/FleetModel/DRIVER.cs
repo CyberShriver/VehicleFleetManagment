@@ -40,6 +40,7 @@ namespace VehicleFleetManagment.FleetModel
         public string Picture { get; set; }
         public string Ministry_Work { get; set; }
         public string State { get; set; }
+        public string Visibility { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MINISTRY_DRIVER> MINISTRY_DRIVER { get; set; }

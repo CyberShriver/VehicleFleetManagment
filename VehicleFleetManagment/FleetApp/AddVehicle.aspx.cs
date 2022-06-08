@@ -76,7 +76,7 @@ namespace VehicleFleetManagment.FleetApp
                 if ( txtPlate.Value == "" || txtName.Value == "" || txtColor.Value == "" || txtEngineNumber.Value == "" || txtChassis.Value == "" ||
                     txtEngineManif.Value == "" || txtEnginType.Value == "" || txtEnginSeries.Value == "" || txtEngAltern.Value == "" || txtEngineNumber.Value == "" || txtEngAlternType.Value == "" ||
                     txtEnginCylind.Value == "" || txtEnginPower.Value == "" || txtAssembly.Value == "" || txtGenerWeight.Value == "" || txtVolt.Value == "" || txtKva.Value == "" ||
-                    txtEngincc.Value == "" || txtGearBox.Value == "" || txtCondition.Value == "" || txtTankTyp1.Value == "" || txtTankSze1.Value == "" || txtTankTyp2.Value == "" ||
+                    txtEngincc.Value == "" || txtGearBox.Value == "" || txtCondition.Value == "" || txtTankTyp1.Value == "" || txtTankSze1.Value == ""  ||
                     txtGrossVehWeigth.Value == "" || txtKeyCode.Value == "" || txtVehiclWeight.Value == "" || txtBatteryVolt.Value == "" || txtFrontSeat.Value == "" || txtTankCapacity2.Value == "" ||
                     txtEmptyPod.Value == "" || txtRadioCode.Value == "" || txtGuaranteeCerticat.Value == "" || dateGuaranteExp.Value == "" || dateCirculationExp.Value == "" 
                     || DropDown_Ministry.SelectedValue == "-1" || DropDown_Model.SelectedValue == "-1" || DropDown_Body.SelectedValue == "-1" || DropDown_fuel.SelectedValue == "-1"
@@ -629,12 +629,12 @@ namespace VehicleFleetManagment.FleetApp
         {
             if (codeMin == "All")
             {
-                return code = DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + "-Veh-" + (Convert.ToInt32(I.countAll() + 1)) + "/" + DateTime.Now.Year;
+                return code = "Veh-"+DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.countAll() + 1))+DateTime.Today.ToString("ddMMyyyy");
 
             }
             else
             {              
-            return code =DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + "-Veh-"+(Convert.ToInt32(I.count(codeMin) + 1)) + "/" + DateTime.Now.Year;
+            return code = "Veh-"+DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.count(codeMin) + 1)) + DateTime.Today.ToString("ddMMyyyy");
             }
         }
         void Minisrty()

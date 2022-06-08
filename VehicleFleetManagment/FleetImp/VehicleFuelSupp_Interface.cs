@@ -51,8 +51,11 @@ namespace VehicleFleetManagment.FleetImp
         //DropDown All Ministry 
         void DisplayMinistryAll(DropDownList drop);
 
-        //DropDown Vehicl 
-        void DisplayVehicle(DropDownList drop);
+        //DropDown all Vehicl 
+        void DisplayAllVehicle(DropDownList drop);
+
+        //DropDown Vehicle for specific ministry 
+        void DisplayVehicle(DropDownList drop,string codeMin);
 
         //DropDown Provider 
         void DisplayProvider(DropDownList drop);

@@ -27,6 +27,7 @@ namespace VehicleFleetManagment.FleetClass
         public string Picture { get; set; }
         public string Ministry_Work { get; set; }
         public string State { get; set; }
+        public string Visibility { get; set; }
 
 
 

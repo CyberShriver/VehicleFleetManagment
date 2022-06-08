@@ -55,16 +55,11 @@ namespace VehicleFleetManagment.FleetImp
         //DropDown All Ministry 
         void DisplayMinistryAll(DropDownList drop);
 
-        //UPDATE MINISTRY WORK STATE METHOD TO To CODE MINISTRY
-        int UpdateMinistryWorkState(Driver_Class Dr, int id, string codeMin);
-
         //UPDATE MINISTRY WORK STATE METHOD TO EMPTY
-        int UpdateMinistryWorkStateEmpty(Driver_Class Dr, int id);
+        int UpdateMinistryWorkStateEmpty( int id);
 
-        ////UPDATE  STATE TO FREE METHOD
-        int UpdateFreeState(Driver_Class Dr, int id);
+        
 
-        //UPDATE  STATE TO WORK METHOD
-        int UpdateWorkState(Driver_Class Dr, int id);
+
     }
 }

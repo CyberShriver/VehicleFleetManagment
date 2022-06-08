@@ -47,7 +47,7 @@ namespace VehicleFleetManagment.FleetImp
         void DisplayAllDriver(DropDownList drop);
 
         //DropDown patricular Driver 
-        void DisplayDriver(DropDownList drop, int id);
+        void DisplayDriver(DropDownList drop,string plat);
 
         //DISPLAY METHOD paticular Vehicle
         void DisplayVehicle(DropDownList drop, int id);
@@ -61,8 +61,11 @@ namespace VehicleFleetManagment.FleetImp
         //DropDown AllMinistry 
         void DisplayMinistryAll(DropDownList drop);
 
-        //DISPLAY METHOD Driver Age
-        string DisplayDriverAge(int id);
+        // DISPLAY DRIVER FOR SPECIFIC MINISTRY BASED ON CODE MINISTRY METHOD(In case of Edit) WHEN DRIVER AND VEH NOT ON POST
+         void DisplaySelectedDriver(DropDownList drop, string codeMin, int id);
+
+        //DISPLAY VEHICLE FOR SPECIFIC MINISTRY BASED ON CODE MINISTRY METHOD ( In case of Edit) WHEN DRIVER AND VEH NOT ON POST
+        void DisplaySelectedVehicle(DropDownList drop, string codeMin, int id);
 
 
 

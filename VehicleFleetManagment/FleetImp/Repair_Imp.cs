@@ -417,23 +417,23 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //DISPLAY METHOD REPAIR Type
-        public void DisplayCarCrash(DropDownList drop, int id)
+        public void DisplayCarCrash(DropDownList drop, string plate)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from carc in con.CAR_CRASH
-                           where carc.VEHICLE_ID == id
+                           where carc.Local_Plate == plate
 
                            select new
                            {
-                               CAR_CRASH_ID = carc.CAR_CRASH_ID,
+                               Crash_Reason = carc.Crash_Reason +"/"+ carc.Crash_Date,
                                Crash_Code = carc.Crash_Code,
                            }
                            ).ToList();
 
                 drop.DataSource = obj;
-                drop.DataTextField = "Crash_Code";
-                drop.DataValueField = "CAR_CRASH_ID";
+                drop.DataTextField = "Crash_Reason";
+                drop.DataValueField = "Crash_Code";
                 drop.DataBind();
             }
 

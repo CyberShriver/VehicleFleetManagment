@@ -38,7 +38,6 @@ namespace VehicleFleetManagment.FleetApp
                 if (id == null)
                 {
                     btnSave.InnerText = "Save";
-                    // Response.Redirect("~/sima/province.aspx/");
                 }
                 else
 
@@ -237,6 +236,7 @@ namespace VehicleFleetManagment.FleetApp
                 Update();
         }
 
+
         //Add dropDawn all Vehicle
         void AllVehicle()
         {
@@ -271,7 +271,7 @@ namespace VehicleFleetManagment.FleetApp
         //Add dropDawn crash
         void Crash()
         {
-            I.DisplayCarCrash(DropDown_Crash, Convert.ToInt32(DropDown_Plate.SelectedItem.Value));
+            I.DisplayCarCrash(DropDown_Crash, DropDown_Plate.SelectedItem.Text);
         }
 
         protected void dropDown_Ministry_SelectedIndexChanged(object sender, EventArgs e)

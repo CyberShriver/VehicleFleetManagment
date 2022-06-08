@@ -10,7 +10,7 @@ namespace VehicleFleetManagment.FleetClass
     {
         public long CAR_CRASH_ID { get; set; }
         public string Crash_Code { get; set; }
-        public Nullable<long> VEHICLE_ID { get; set; }
+        public string Local_Plate { get; set; }
         public string Crash_Date { get; set; }
         public string Crash_Time { get; set; }
         public Nullable<double> Crash_Mileage { get; set; }
@@ -26,7 +26,6 @@ namespace VehicleFleetManagment.FleetClass
         public string Weather { get; set; }
         public double Estimated_Speed { get; set; }
         public string Condition_After_Crash { get; set; }
-        public string Driver_Age { get; set; }
         public int Tot_Number_Driver_drives { get; set; }
         public string Crash_Damage { get; set; }
         public string Insurance_Declaration_Dte { get; set; }
@@ -49,7 +48,6 @@ namespace VehicleFleetManagment.FleetClass
         public Nullable<int> MINISTRY_ID { get; set; }
 
         public virtual MINISTRY MINISTRY { get; set; }
-        public virtual VEHICLE VEHICLE { get; set; }
         public virtual MINISTRY_DRIVER MINISTRY_DRIVER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<REPAIR> REPAIRs { get; set; }

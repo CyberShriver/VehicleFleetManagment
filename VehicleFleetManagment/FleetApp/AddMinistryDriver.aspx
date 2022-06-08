@@ -69,17 +69,17 @@
                                         </div>
                                         <div class="form-group form-default">
                                             <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Vehicle" required="" runat="server"></asp:DropDownList>
-                                            <label class="float-label">Registation Number</label>
+                                            <label class="float-label">Plate Number</label>
                                         </div>                                        
-                                        <div class="form-group form-default">
+                                        <%--<div class="form-group form-default">
                                             <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Status" required="" runat="server">
                                                 <asp:ListItem Selected="True">On Post</asp:ListItem>
-                                                <asp:ListItem>Swaped to another</asp:ListItem>
+                                                <asp:ListItem>Swaped</asp:ListItem>
                                                 <asp:ListItem>Leave</asp:ListItem>
                                                 <asp:ListItem>Fired</asp:ListItem>
                                             </asp:DropDownList>
                                             <label class="float-label">Position</label>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                 </div>
 

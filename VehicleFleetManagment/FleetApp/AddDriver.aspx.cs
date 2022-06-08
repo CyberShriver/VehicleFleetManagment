@@ -353,7 +353,6 @@ namespace VehicleFleetManagment.FleetApp
                 DropDown_language.SelectedValue = Dr.Mother_Language;
                 txtTelOffice.Value = Dr.Office_Phone;
                 txtTel.Value = Dr.Personnal_Phone;
-                //file_upd= Dr.Picture;
             }
         }
 
@@ -397,11 +396,11 @@ namespace VehicleFleetManagment.FleetApp
 
             if (codeMin == "All")
             {
-                return code = DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.countAll() + 1)) + "-" + DateTime.Now.Date;
+                return code = txtCNI.Value.Trim().Substring(0, 2) + (Convert.ToInt32(I.countAll() + 1)) + DateTime.Today.ToString("ddMMyyyy");
             }
             else
             {
-                return code = DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.count() + 1)) + "-" + DateTime.Now.Date;
+                return code = txtCNI.Value.Trim().Substring(0, 2) + (Convert.ToInt32(I.count() + 1)) + DateTime.Today.ToString("ddMMyyyy");
             }
         }
 

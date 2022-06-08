@@ -22,7 +22,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 C.Crash_Code  = cr.Crash_Code ;
-                C.VEHICLE_ID  = cr.VEHICLE_ID ;
+                C.Local_Plate = cr.Local_Plate;
                 C.Crash_Date  = cr.Crash_Date ;
                 C.Crash_Time  = cr.Crash_Time ;
                 C.MINISTRY_ID = cr.MINISTRY_ID;
@@ -39,7 +39,6 @@ namespace VehicleFleetManagment.FleetImp
                 C.Weather  = cr.Weather ;
                 C.Estimated_Speed  = cr.Estimated_Speed ;
                 C.Condition_After_Crash  = cr.Condition_After_Crash ;
-                C.Driver_Age  = cr.Driver_Age ;
                 C.Tot_Number_Driver_drives  = cr.Tot_Number_Driver_drives ;
                 C.Crash_Damage  = cr.Crash_Damage ;
                 C.Insurance_Declaration_Dte  = cr.Insurance_Declaration_Dte ;
@@ -90,7 +89,7 @@ namespace VehicleFleetManagment.FleetImp
                 {
 
                     C.Crash_Code  = cr.Crash_Code ;
-                    C.VEHICLE_ID  = cr.VEHICLE_ID ;
+                    C.Local_Plate = cr.Local_Plate;
                     C.Crash_Date  = cr.Crash_Date ;
                     C.Crash_Time  = cr.Crash_Time ;
                     C.MINISTRY_ID = cr.MINISTRY_ID;
@@ -107,7 +106,6 @@ namespace VehicleFleetManagment.FleetImp
                     C.Weather  = cr.Weather ;
                     C.Estimated_Speed  = cr.Estimated_Speed ;
                     C.Condition_After_Crash  = cr.Condition_After_Crash ;
-                    C.Driver_Age  = cr.Driver_Age ;
                     C.Tot_Number_Driver_drives  = cr.Tot_Number_Driver_drives ;
                     C.Crash_Damage  = cr.Crash_Damage ;
                     C.Insurance_Declaration_Dte  = cr.Insurance_Declaration_Dte ;
@@ -205,7 +203,7 @@ namespace VehicleFleetManagment.FleetImp
                            {
                                CAR_CRASH_ID = C.CAR_CRASH_ID,
                                Crash_Code = C.Crash_Code,
-                               VEHICLE_ID = C.VEHICLE.Local_Plate,
+                               Local_Plate = C.Local_Plate,
                                Crash_Date = C.Crash_Date,
                                Crash_Time = C.Crash_Time,
                                MINISTRY_ID = C.MINISTRY.Ministry_Name,
@@ -222,7 +220,6 @@ namespace VehicleFleetManagment.FleetImp
                                Estimated_Speed= C.Estimated_Speed,
                                Weather = C.Weather,
                                Condition_After_Crash = C.Condition_After_Crash,
-                               Driver_Age = C.Driver_Age,
                                Tot_Number_Driver_drives = C.Tot_Number_Driver_drives,
                                Crash_Damage = C.Crash_Damage,
                                Insurance_Declaration_Dte = C.Insurance_Declaration_Dte,
@@ -263,7 +260,7 @@ namespace VehicleFleetManagment.FleetImp
                            {
                                CAR_CRASH_ID = C.CAR_CRASH_ID,
                                Crash_Code = C.Crash_Code,
-                               VEHICLE_ID = C.VEHICLE.Local_Plate,
+                               Local_Plate = C.Local_Plate,
                                Crash_Date = C.Crash_Date,
                                Crash_Time = C.Crash_Time,
                                MINISTRY_ID = C.MINISTRY.Ministry_Name,
@@ -280,7 +277,6 @@ namespace VehicleFleetManagment.FleetImp
                                Estimated_Speed = C.Estimated_Speed,
                                Weather = C.Weather,
                                Condition_After_Crash = C.Condition_After_Crash,
-                               Driver_Age = C.Driver_Age,
                                Tot_Number_Driver_drives = C.Tot_Number_Driver_drives,
                                Crash_Damage = C.Crash_Damage,
                                Insurance_Declaration_Dte = C.Insurance_Declaration_Dte,
@@ -318,7 +314,7 @@ namespace VehicleFleetManagment.FleetImp
                 C = con.CAR_CRASH.Where(x => x.CAR_CRASH_ID == id).FirstOrDefault();
 
                 cr.Crash_Code  = C.Crash_Code ;
-                cr.VEHICLE_ID  = C.VEHICLE_ID ;
+                cr.Local_Plate = C.Local_Plate;
                 cr.Crash_Date  = C.Crash_Date ;
                 cr.Crash_Time  = C.Crash_Time ;
                 cr.MINISTRY_ID = C.MINISTRY_ID;
@@ -335,7 +331,6 @@ namespace VehicleFleetManagment.FleetImp
                 cr.Weather  = C.Weather ;
                 cr.Estimated_Speed  = C.Estimated_Speed ;
                 cr.Condition_After_Crash  = C.Condition_After_Crash ;
-                cr.Driver_Age  = C.Driver_Age ;
                 cr.Tot_Number_Driver_drives  = C.Tot_Number_Driver_drives ;
                 cr.Crash_Damage  = C.Crash_Damage ;
                 cr.Insurance_Declaration_Dte  = C.Insurance_Declaration_Dte ;
@@ -393,7 +388,7 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from C in con.CAR_CRASH
                            where C.MINISTRY.Code_Min== codeMin &&
-                       C.VEHICLE.Local_Plate.StartsWith(SearchText) ||
+                       C.Local_Plate.StartsWith(SearchText) ||
                        C.Crash_Date.StartsWith(SearchText) ||
                        C.Crash_Time.StartsWith(SearchText) ||
                        C.Responsible.StartsWith(SearchText) ||
@@ -406,7 +401,7 @@ namespace VehicleFleetManagment.FleetImp
                            {
                                CAR_CRASH_ID = C.CAR_CRASH_ID,
                                Crash_Code  = C.Crash_Code ,
-                               VEHICLE_ID  = C.VEHICLE.Local_Plate ,
+                               Local_Plate = C.Local_Plate ,
                                Crash_Date  = C.Crash_Date ,
                                Crash_Time  = C.Crash_Time ,
                                MINISTRY_ID = C.MINISTRY.Ministry_Name,
@@ -423,7 +418,6 @@ namespace VehicleFleetManagment.FleetImp
                                Estimated_Speed = C.Estimated_Speed,
                                Weather  = C.Weather ,
                                Condition_After_Crash  = C.Condition_After_Crash ,
-                               Driver_Age  = C.Driver_Age ,
                                Tot_Number_Driver_drives  = C.Tot_Number_Driver_drives ,
                                Crash_Damage  = C.Crash_Damage ,
                                Insurance_Declaration_Dte  = C.Insurance_Declaration_Dte ,
@@ -461,7 +455,7 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from C in con.CAR_CRASH
                            where
-                       C.VEHICLE.Local_Plate.StartsWith(SearchText) ||
+                       C.Local_Plate.StartsWith(SearchText) ||
                        C.Crash_Date.StartsWith(SearchText) ||
                        C.Crash_Time.StartsWith(SearchText) ||
                        C.Responsible.StartsWith(SearchText) ||
@@ -474,7 +468,7 @@ namespace VehicleFleetManagment.FleetImp
                            {
                                CAR_CRASH_ID = C.CAR_CRASH_ID,
                                Crash_Code = C.Crash_Code,
-                               VEHICLE_ID = C.VEHICLE.Local_Plate,
+                               VEHICLE_ID = C.Local_Plate,
                                Crash_Date = C.Crash_Date,
                                Crash_Time = C.Crash_Time,
                                MINISTRY_ID = C.MINISTRY.Ministry_Name,
@@ -491,7 +485,6 @@ namespace VehicleFleetManagment.FleetImp
                                Estimated_Speed = C.Estimated_Speed,
                                Weather = C.Weather,
                                Condition_After_Crash = C.Condition_After_Crash,
-                               Driver_Age = C.Driver_Age,
                                Tot_Number_Driver_drives = C.Tot_Number_Driver_drives,
                                Crash_Damage = C.Crash_Damage,
                                Insurance_Declaration_Dte = C.Insurance_Declaration_Dte,
@@ -566,64 +559,46 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //DISPLAY METHOD paticular Driver
-        public void DisplayDriver(DropDownList drop, int id)
+        public void DisplayDriver(DropDownList drop,string plat)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from Md in con.MINISTRY_DRIVER
-                           where Md.MINISTRY_ID == id
+                           where Md.Position_Status=="On Post" && Md.Min_Driver_RegNumber== plat
 
                            select new
                            {
-                               MIN_DRIVER_ID = Md.MIN_DRIVER_ID,
-                               Full_Name = Md.DRIVER.Full_Name,
+                               DRIVER_ID = Md.DRIVER_ID,
+                               Full_Name = Md.DRIVER.Full_Name
                            }
                            ).ToList();
 
                 drop.DataSource = obj;
                 drop.DataTextField = "Full_Name";
-                drop.DataValueField = "MIN_DRIVER_ID";
+                drop.DataValueField = "DRIVER_ID";
                 drop.DataBind();
             }
 
         }
-        //DISPLAY METHOD Driver Age
-        public string DisplayDriverAge(int id)
-        {
-            string age;
-            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
-            {
-                var obj = (from Md in con.MINISTRY_DRIVER
-                           where Md.MIN_DRIVER_ID == id
-                           select Md.DRIVER.DOB);
-
-                age = obj.ToString();
-              
-            }
-            return age;
-        }
-
 
         //DISPLAY METHOD paticular Vehicle
         public void DisplayVehicle(DropDownList drop, int id)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from veh in con.VEHICLEs
-                           where veh.MINISTRY_ID == id
-
+                var obj = (from Md in con.MINISTRY_DRIVER
+                           where Md.MINISTRY_ID == id && Md.Position_Status == "On Post" 
                            select new
                            {
-                               VEHICLE_ID = veh.VEHICLE_ID,
-                               Local_Plate = veh.Local_Plate,
+                               Min_Driver_RegNumber = Md.Min_Driver_RegNumber
                            }
                            ).ToList();
 
                 drop.DataSource = obj;
-                drop.DataTextField = "Local_Plate";
-                drop.DataValueField = "VEHICLE_ID";
+                drop.DataValueField = "Min_Driver_RegNumber";
                 drop.DataBind();
             }
+
 
         }
 
@@ -670,6 +645,51 @@ namespace VehicleFleetManagment.FleetImp
             }
 
         }
+
+        //DISPLAY VEHICLE FOR SPECIFIC MINISTRY BASED ON CODE MINISTRY METHOD ( In case of Edit) WHEN DRIVER AND VEH NOT ON POST
+        public void DisplaySelectedVehicle(DropDownList drop, string codeMin, int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from C in con.CAR_CRASH
+                           where C.MINISTRY.Code_Min == codeMin && C.CAR_CRASH_ID == id
+
+                           select new
+                           {
+                               Local_Plate = C.Local_Plate,
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "Local_Plate";
+                drop.DataBind();
+            }
+
+        }
+
+       // DISPLAY DRIVER FOR SPECIFIC MINISTRY BASED ON CODE MINISTRY METHOD(In case of Edit) WHEN DRIVER AND VEH NOT ON POST
+        public void DisplaySelectedDriver(DropDownList drop, string codeMin, int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from C in con.CAR_CRASH
+                           where C.MINISTRY.Code_Min == codeMin && C.CAR_CRASH_ID == id
+
+                           select new
+                           {
+                               DRIVER_ID = C.MINISTRY_DRIVER.DRIVER_ID,
+                               Full_Name = C.MINISTRY_DRIVER.DRIVER.Full_Name
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "DRIVER_ID";
+                drop.DataTextField = "Full_Name";
+                drop.DataBind();
+            }
+
+        }
+
 
 
     }

@@ -21,7 +21,6 @@ namespace VehicleFleetManagment.FleetModel
             this.ASSURANCEs = new HashSet<ASSURANCE>();
             this.MOTs = new HashSet<MOT>();
             this.SCHEDULEs = new HashSet<SCHEDULE>();
-            this.CAR_CRASH = new HashSet<CAR_CRASH>();
             this.REPAIRs = new HashSet<REPAIR>();
         }
     
@@ -89,8 +88,6 @@ namespace VehicleFleetManagment.FleetModel
         public virtual ICollection<MOT> MOTs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SCHEDULE> SCHEDULEs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CAR_CRASH> CAR_CRASH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<REPAIR> REPAIRs { get; set; }
     }

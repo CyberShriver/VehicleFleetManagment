@@ -196,9 +196,15 @@
 
                                             <asp:TemplateField HeaderText="Ministry Code" Visible="true">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label111" runat="server" Text='<%# Eval("Ministry_Work") %>'></asp:Label>
+                                                    <asp:Label ID="LblMinistryWork" runat="server" Text='<%# Eval("Ministry_Work") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Visibility" Visible="true">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label45555" runat="server" Text='<%# Eval("Visibility") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
                                             <asp:TemplateField HeaderText="State" Visible="true">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label11144" runat="server" Text='<%# Eval("State") %>'></asp:Label>
@@ -213,7 +219,8 @@
 
                                             <asp:TemplateField HeaderText="Action">
                                                 <ItemTemplate>
-                                                    <asp:Button ID="btn_Edit" class="btn btn-sm btn-primary mr-4" runat="server" Text="Edit" CommandName="edit" CommandArgument='<%# Eval("DRIVER_ID") %>' />
+                                                    <asp:Button ID="btn_Edit" class="btn btn-sm btn-primary " runat="server" Text="Edit" CommandName="edit" CommandArgument='<%# Eval("DRIVER_ID") %>' />
+                                                    <asp:Button ID="Btn_Fired" class="btn btn-sm btn-info " runat="server" Text="Fired" CommandName="fired" CommandArgument='<%# Eval("DRIVER_ID") %>' OnClientClick="return confirm('Do you want to remove him in this ministry?')" />
                                                     <asp:Button ID="Btn_Delete" class="btn btn-sm btn-danger " runat="server" Text="Delete" CommandName="delet" CommandArgument='<%# Eval("DRIVER_ID") %>' OnClientClick="return confirm('Do you want to delete It?')" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>

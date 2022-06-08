@@ -49,6 +49,14 @@
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                                 <strong>Please complete all fields!</strong>
                             </div>
+                             <div class="alert alert-danger alert-dismissible fade show" runat="server" id="DateFailed">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>
+                                    <b>Start Date</b> Must be inferior on <b>End Date</b><br />
+                                    <b>Demand Date</b> Must be inferior or equals on <b>start Date</b>
+                                    <b>Approved Date</b> Must be inferior on <b>start Date</b>
+                                </strong>
+                            </div>
                             <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                                 <strong>Operation Failed!</strong>
@@ -70,7 +78,7 @@
                                                 <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_LeaveType" required="" runat="server"></asp:DropDownList>
                                                 <label class="float-label">Leave Type</label>
                                             </div>
-                                            <div class="form-group form-default">
+                                            <div class="form-group form-default" runat="server" visible="false">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLeaveCode">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Leave Code</label>
@@ -103,16 +111,16 @@
                                                 <span class="form-bar"></span>
                                                 <label class="float-label ">Demand date</label>
                                             </div>
-                                            <div class="form-group form-default">
+                                            <div class="form-group form-default" runat="server" visible="false" id="VisApprovedBy">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtApproved">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Approved By</label>
                                             </div>
-                                            <div class="form-group form-default">
+<%--                                            <div class="form-group form-default" >
                                                 <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateApproved">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label ">Approved date</label>
-                                            </div>
+                                            </div>--%>
                                             <div class="form-group form-default">
                                                 <textarea class="form-control" required="" runat="server" id="txtComment"></textarea>
                                                 <span class="form-bar"></span>

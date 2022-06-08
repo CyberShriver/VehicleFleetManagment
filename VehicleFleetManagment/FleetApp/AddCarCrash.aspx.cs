@@ -16,6 +16,8 @@ namespace VehicleFleetManagment.FleetApp
     {
         CarCrash_Class Cr = new CarCrash_Class();
         Crash_Interface I = new Crash_Imp();
+
+        MinDriver_Interface Imd = new MinDriver_Imp();
         int msg;
         string id;
         string code;
@@ -27,26 +29,28 @@ namespace VehicleFleetManagment.FleetApp
         protected void Page_Load(object sender, EventArgs e)
         {
             id = Request.QueryString["CAR_CRASH_ID"];
-            ChargeCookies();
+            ChargeCookies();          
             if (!IsPostBack)
             {
                 txtSystemTitle.Text = sytemTitle;
                 txtSlogan.Text = slogan;
 
                 MultiView.ActiveViewIndex = 0;
-                MsgInit();
                 Minisrty();
                 Vehicle();
                 Driver();
-                driverAge();
+                MsgInit();
+               
                 if (id == null)
                 {
-                    btnSave.InnerText = "Save";
+                    btnSave.InnerText = "Save";                    
                 }
                 else
 
                 {
                     btnSave.InnerText = "Edit";
+                    I.DisplaySelectedVehicle(DropDown_Plate, codeMin,Convert.ToInt32(id));
+                    I.DisplaySelectedDriver(DropDown_Driver, codeMin, Convert.ToInt32(id));
                     ChargeData();
                 }
 
@@ -78,10 +82,10 @@ namespace VehicleFleetManagment.FleetApp
             try
             {
                 if (dateCrash.Value == "" || TimeCrash.Value == "" || txtCrashPlace.Value == "" || txtAddress.Value == "" ||
-                    txtMeileage.Value == "" || txtResponible.Value == "" || txtDriverAge.Value == "" || txtWeather.Value == "" || txtCrashPlace.Value == "" || txtSpeed.Value == "" ||
-                    txtPassenger.Value == "" || txtCrashInfo.Value == "" || txtReason.Value == "" || txtCondition.Value == "" || txtDamage.Value == "" || dateCompensation.Value == "" ||
-                    txtCircumstance.Value == "" || dateReport.Value == "" || txtCondition.Value == "" || dateFinalReport.Value == "" || dateDeclaration.Value == "" || txtAmount.Value == "" ||
-                    txtDamageDesipt.Value == "" || txtComment.Value == "" || txtLegalCost.Value == "" || txtLocalComp.Value == "" || txtRecoverEmpl.Value == "" || txtThirdPartyRecov.Value == "" ||
+                    txtResponible.Value == "" || txtSpeed.Value == "" ||
+                    txtPassenger.Value == "" || txtCrashInfo.Value == "" || txtReason.Value == "" ||  txtDamage.Value == "" || dateCompensation.Value == "" ||
+                     dateReport.Value == "" || dateFinalReport.Value == "" || dateDeclaration.Value == "" || txtAmount.Value == "" ||
+                    txtDamageDesipt.Value == "" ||  txtLocalComp.Value == "" || txtRecoverEmpl.Value == "" || 
                     DropDown_Ministry.SelectedValue == "-1" || DropDown_vehicle_Damag.SelectedValue == "-1" || DropDown_Damage_thirdParty.SelectedValue == "-1" || DropDown_thirdParty_injure.SelectedValue == "-1"
                     || DropDown_Employee_injure.SelectedValue == "-1" || dropDown_Employe_Payed.SelectedValue == "-1" || DropDown_state.SelectedValue == "-1" || DropDown_Driver.SelectedValue == "-1"
                     || DropDown_Plate.SelectedValue == "-1")
@@ -123,8 +127,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Cr.Stat = DropDown_state.SelectedValue;
                                 Cr.Report_Dte = dateReport.Value;
                                 Cr.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
-                                Cr.VEHICLE_ID = Convert.ToInt32(DropDown_Plate.SelectedValue);
-                                Cr.Driver_Age = txtDriverAge.Value;
+                                Cr.Local_Plate = DropDown_Plate.SelectedValue;
                                 Cr.Tot_Number_Driver_drives = Convert.ToInt32(txtPassenger.Value);
                                 Cr.Circumstance = txtCircumstance.Value;
                                 Cr.Crash_Info = txtCrashInfo.Value;
@@ -153,7 +156,6 @@ namespace VehicleFleetManagment.FleetApp
                                     txtAddress.Value = "";
                                     txtMeileage.Value = "";
                                     txtResponible.Value = "";
-                                    txtDriverAge.Value = "";
                                     txtWeather.Value = "";
                                     txtCrashPlace.Value = "";
                                     txtSpeed.Value = "";
@@ -223,8 +225,7 @@ namespace VehicleFleetManagment.FleetApp
                         Cr.Stat = DropDown_state.SelectedValue;
                         Cr.Report_Dte = dateReport.Value;
                         Cr.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
-                        Cr.VEHICLE_ID = Convert.ToInt32(DropDown_Plate.SelectedValue);
-                        Cr.Driver_Age = txtDriverAge.Value;
+                        Cr.Local_Plate = DropDown_Plate.SelectedValue;
                         Cr.Tot_Number_Driver_drives = Convert.ToInt32(txtPassenger.Value);
                         Cr.Circumstance = txtCircumstance.Value;
                         Cr.Crash_Info = txtCrashInfo.Value;
@@ -253,7 +254,6 @@ namespace VehicleFleetManagment.FleetApp
                             txtAddress.Value = "";
                             txtMeileage.Value = "";
                             txtResponible.Value = "";
-                            txtDriverAge.Value = "";
                             txtWeather.Value = "";
                             txtCrashPlace.Value = "";
                             txtSpeed.Value = "";
@@ -302,7 +302,7 @@ namespace VehicleFleetManagment.FleetApp
             try
             {
                 if (dateCrash.Value == "" || TimeCrash.Value == "" || txtCrashPlace.Value == "" || txtAddress.Value == "" ||
-                    txtMeileage.Value == "" || txtResponible.Value == "" || txtDriverAge.Value == "" || txtWeather.Value == "" || txtCrashPlace.Value == "" || txtSpeed.Value == "" ||
+                    txtMeileage.Value == "" || txtResponible.Value == "" ||  txtWeather.Value == "" || txtCrashPlace.Value == "" || txtSpeed.Value == "" ||
                     txtPassenger.Value == "" || txtCrashInfo.Value == "" || txtReason.Value == "" || txtCondition.Value == "" || txtDamage.Value == "" || dateCompensation.Value == "" ||
                     txtCircumstance.Value == "" || dateReport.Value == "" || txtCondition.Value == "" || dateFinalReport.Value == "" || dateDeclaration.Value == "" || txtAmount.Value == "" ||
                     txtDamageDesipt.Value == "" || txtComment.Value == "" || txtLegalCost.Value == "" || txtLocalComp.Value == "" || txtRecoverEmpl.Value == "" || txtThirdPartyRecov.Value == ""
@@ -347,8 +347,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Cr.Stat = DropDown_state.SelectedValue;
                                 Cr.Report_Dte = dateReport.Value;
                                 Cr.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
-                                Cr.VEHICLE_ID = Convert.ToInt32(DropDown_Plate.SelectedValue);
-                                Cr.Driver_Age = txtDriverAge.Value;
+                                Cr.Local_Plate = DropDown_Plate.SelectedValue;
                                 Cr.Tot_Number_Driver_drives = Convert.ToInt32(txtPassenger.Value);
                                 Cr.Circumstance = txtCircumstance.Value;
                                 Cr.Crash_Info = txtCrashInfo.Value;
@@ -415,8 +414,7 @@ namespace VehicleFleetManagment.FleetApp
                         Cr.Stat = DropDown_state.SelectedValue;
                         Cr.Report_Dte = dateReport.Value;
                         Cr.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
-                        Cr.VEHICLE_ID = Convert.ToInt32(DropDown_Plate.SelectedValue);
-                        Cr.Driver_Age = txtDriverAge.Value;
+                        Cr.Local_Plate = DropDown_Plate.SelectedValue;
                         Cr.Tot_Number_Driver_drives = Convert.ToInt32(txtPassenger.Value);
                         Cr.Circumstance = txtCircumstance.Value;
                         Cr.Crash_Info = txtCrashInfo.Value;
@@ -483,8 +481,7 @@ namespace VehicleFleetManagment.FleetApp
                 DropDown_state.SelectedValue = Cr.Stat;
                 dateReport.Value = Cr.Report_Dte;
                 DropDown_Driver.SelectedValue = Cr.MIN_DRIVER_ID.ToString();
-                DropDown_Plate.SelectedValue = Cr.VEHICLE_ID.ToString();
-                txtDriverAge.Value = txtDriverAge.Value;
+                DropDown_Plate.SelectedValue = Cr.Local_Plate.ToString();
                 txtPassenger.Value = Cr.Tot_Number_Driver_drives.ToString();
                 txtCircumstance.Value = Cr.Circumstance;
                 txtCrashInfo.Value = Cr.Crash_Info.ToString();
@@ -504,12 +501,15 @@ namespace VehicleFleetManagment.FleetApp
 
         protected void btn_save_Click(object sender, EventArgs args)
         {
+            
             if (id == null)
             {
                 Add();
+                ChangeStateVehDemage();
             }
             else
                 Update();
+            ChangeStateVehDemage();
         }
         protected void ActiveGen_click(object sender, EventArgs args)
         {
@@ -557,17 +557,21 @@ namespace VehicleFleetManagment.FleetApp
 
             if (codeMin == "All")
             {
-                return code = "Crash-" + DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3)+(Convert.ToInt32(I.countAll() + 1)) + "/" + DateTime.Now.Date;
+                return code = "Crash-" + DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3)+(Convert.ToInt32(I.countAll() + 1)) + DateTime.Today.ToString("ddMMyyyy");
             }
             else
             {
-                return code = "Crash-"+ DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.count(codeMin) + 1)) + "/" + DateTime.Now.Date;
+                return code = "Crash-"+ DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.count(codeMin) + 1)) +DateTime.Today.ToString("ddMMyyyy");
             }
         }
 
-        string driverAge()
+        //Change state of vehicle demaged when is true ()
+        void ChangeStateVehDemage()
         {
-            return I.DisplayDriverAge(Convert.ToInt32(DropDown_Driver.SelectedValue));
+            if (DropDown_vehicle_Damag.SelectedValue == "true")
+            {
+                Imd.UpdateVehUnavailable(DropDown_Plate.SelectedValue);
+            }
         }
         void Minisrty()
         {
@@ -586,15 +590,20 @@ namespace VehicleFleetManagment.FleetApp
         //Add dropDawn driver Minisrty
         void Driver()
         {
-            I.DisplayDriver(DropDown_Driver, Convert.ToInt32(DropDown_Ministry.SelectedItem.Value));
+            I.DisplayDriver(DropDown_Driver,DropDown_Plate.SelectedValue);
         }
 
         protected void dropDown_Ministry_SelectedIndexChanged(object sender, EventArgs e)
         {
             Vehicle();
             Driver();
-            driverAge();
         }
+
+        protected void DropDown_Plate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Driver();
+        }
+
 
         //Add dropDawn driver Minisrty
         void AllDriver()

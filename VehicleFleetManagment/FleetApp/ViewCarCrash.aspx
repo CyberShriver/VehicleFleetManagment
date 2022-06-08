@@ -110,7 +110,7 @@
 
                                             <asp:TemplateField HeaderText="Vehicle">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("VEHICLE_ID") %>'></asp:Label>
+                                                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("Local_Plate") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                              <asp:TemplateField HeaderText="Driver" Visible="true">
@@ -200,12 +200,7 @@
                                                 <ItemTemplate>
                                                     <asp:Label ID="tra" runat="server" Text='<%# Eval("Condition_After_Crash") %>'></asp:Label>
                                                 </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Driver Age" Visible="false">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="ass" runat="server" Text='<%# Eval("Driver_Age") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+                                            </asp:TemplateField>                                           
                                             <asp:TemplateField HeaderText="Total passengers" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="rhd" runat="server" Text='<%# Eval("Tot_Number_Driver_drives") %>'></asp:Label>

@@ -96,15 +96,6 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.WebControls.DropDownList DropDown_Vehicle;
 
         /// <summary>
-        /// DropDown_Status control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDown_Status;
-
-        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>

@@ -14,6 +14,9 @@ namespace VehicleFleetManagment.FleetApp
         Ministry_Class Min = new Ministry_Class();
         Ministry_Interface I = new Ministry_Imp();
 
+        Leave_Interface Il = new Leave_Imp();
+        MinDriver_Interface IMd = new MinDriver_Imp();
+
         HttpCookie Code_Min = new HttpCookie("Code_Min");
         HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
         HttpCookie Phone = new HttpCookie("Phone");
@@ -45,6 +48,10 @@ namespace VehicleFleetManagment.FleetApp
         protected void Page_Load(object sender, EventArgs e)
         {
             ChargeCookies();
+            Il.AutoSwitch();
+            Il.UpdateStateFinished();
+            Il.UpdateAutoStateDenied();
+            IMd.AutoSwap();
 
             if (codeMin == "All")
             {

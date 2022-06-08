@@ -253,7 +253,15 @@ namespace VehicleFleetManagment.FleetApp
         //Add dropDawn Vehicle
         void Vehicle()
         {
-            I.DisplayVehicle(DropDown_Vehicle);
+            if (codeMin == "All")
+            {
+                I.DisplayAllVehicle(DropDown_Vehicle);
+            }
+            else
+            {
+                I.DisplayVehicle(DropDown_Vehicle,codeMin);
+            }
+            
         }
 
         //Add dropDawn Vehicle

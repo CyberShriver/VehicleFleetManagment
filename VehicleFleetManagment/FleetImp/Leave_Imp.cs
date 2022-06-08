@@ -27,11 +27,12 @@ namespace VehicleFleetManagment.FleetImp
                 L.Approved_By = Le.Approved_By;
                 L.Comment = Le.Comment;
                 L.Demand_Dte = Le.Demand_Dte;
-                L.Approved_Dte = Le.Approved_Dte;
+                L.Approved_Dte = "";
                 L.Saved_Date = Le.Saved_Date;
                 L.MINISTRY_ID = Le.MINISTRY_ID;
                 L.MIN_DRIVER_ID = Le.MIN_DRIVER_ID;
                 L.LEAVE_TYPE_ID = Le.LEAVE_TYPE_ID;
+                L.State = Le.State;
 
                 con.LEAVEs.Add(L);
 
@@ -72,6 +73,8 @@ namespace VehicleFleetManagment.FleetImp
                     L.MINISTRY_ID = Le.MINISTRY_ID;
                     L.MIN_DRIVER_ID = Le.MIN_DRIVER_ID;
                     L.LEAVE_TYPE_ID = Le.LEAVE_TYPE_ID;
+                    L.State = Le.State;
+
 
                     if (con.SaveChanges() > 0)
                     {
@@ -157,6 +160,7 @@ namespace VehicleFleetManagment.FleetImp
                                Saved_Date = L.Saved_Date,
                                Demand_Dte = L.Demand_Dte,
                                Comment = L.Comment,
+                               State = L.State,
                                MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
                                LEAVE_TYPE_ID = L.LEAVE_TYPE.Leave_Type_Description,
                                MINISTRY_ID = L.MINISTRY.Ministry_Name
@@ -189,6 +193,7 @@ namespace VehicleFleetManagment.FleetImp
                                Saved_Date = L.Saved_Date,
                                Demand_Dte = L.Demand_Dte,
                                Comment = L.Comment,
+                               State = L.State,
                                MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
                                LEAVE_TYPE_ID = L.LEAVE_TYPE.Leave_Type_Description,
                                MINISTRY_ID = L.MINISTRY.Ministry_Name
@@ -263,6 +268,7 @@ namespace VehicleFleetManagment.FleetImp
                        L.Demand_Dte.StartsWith(SearchText) ||
                        L.MINISTRY_DRIVER.DRIVER.Full_Name.StartsWith(SearchText) ||
                        L.LEAVE_TYPE.Leave_Type_Description.StartsWith(SearchText) ||
+                       L.State.StartsWith(SearchText) ||
                        L.Approved_Dte.StartsWith(SearchText)
 
                            select new
@@ -276,6 +282,7 @@ namespace VehicleFleetManagment.FleetImp
                                Approved_Dte = L.Approved_Dte,
                                Saved_Date = L.Saved_Date,
                                Demand_Dte = L.Demand_Dte,
+                               State = L.State,
                                Comment = L.Comment,
                                MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
                                LEAVE_TYPE_ID = L.LEAVE_TYPE.Leave_Type_Description,
@@ -302,6 +309,7 @@ namespace VehicleFleetManagment.FleetImp
                        L.Demand_Dte.StartsWith(SearchText) ||
                        L.MINISTRY_DRIVER.DRIVER.Full_Name.StartsWith(SearchText) ||
                        L.LEAVE_TYPE.Leave_Type_Description.StartsWith(SearchText) ||
+                       L.State.StartsWith(SearchText) ||
                        L.Approved_Dte.StartsWith(SearchText)
 
                            select new
@@ -316,6 +324,7 @@ namespace VehicleFleetManagment.FleetImp
                                Saved_Date = L.Saved_Date,
                                Demand_Dte = L.Demand_Dte,
                                Comment = L.Comment,
+                               State = L.State,
                                MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
                                LEAVE_TYPE_ID = L.LEAVE_TYPE.Leave_Type_Description,
                                MINISTRY_ID = L.MINISTRY.Ministry_Name
@@ -361,12 +370,12 @@ namespace VehicleFleetManagment.FleetImp
                            select new
                            {
                                LEAVE_TYPE_ID = Lev.LEAVE_TYPE_ID,
-                               Leave_Number = Lev.Leave_Number,
+                               Leave_Type_Description = Lev.Leave_Type_Description,
                            }
                            ).ToList();
 
                 drop.DataSource = obj;
-                drop.DataTextField = "Leave_Number";
+                drop.DataTextField = "Leave_Type_Description";
                 drop.DataValueField = "LEAVE_TYPE_ID";
                 drop.DataBind();
             }
@@ -419,6 +428,279 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //UPDATE VEHICLE VAILABLE STATE METHOD
+        public int UpdateVehAvailable(string LocalPlate)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                VEHICLE V = new VEHICLE();
+                V = con.VEHICLEs.Where(x => x.Local_Plate == LocalPlate).FirstOrDefault();
+
+                if (V != null)
+                {
+                    V.Stat = "Available";
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.VEHICLEs.Add(V);
+                        con.Entry(V).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
+        //UPDATE DRIVER VISIBILITY FALSE METHOD
+        public int UpdateDriverVisibilty(long id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                DRIVER D = new DRIVER();
+                D = con.DRIVERs.Where(x => x.DRIVER_ID == id).FirstOrDefault();
+
+                if (D != null)
+                {                  
+                        D.Visibility = "false";
+                    
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.DRIVERs.Add(D);
+                        con.Entry(D).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
+        //UPDATE DRIVER VISIBILITY TRUE METHOD
+        public int UpdateDriverVisibiltyTrue(long id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                DRIVER D = new DRIVER();
+                D = con.DRIVERs.Where(x => x.DRIVER_ID == id).FirstOrDefault();
+
+                if (D != null)
+                {
+                    D.Visibility = "True";
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.DRIVERs.Add(D);
+                        con.Entry(D).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+        //UPDATE DRIVER POSITION & VEHICLE STATE & DRIVER VISIBILITY
+        public long UpdatePositionState(long id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                MINISTRY_DRIVER M = new MINISTRY_DRIVER();
+                M = con.MINISTRY_DRIVER.Where(x => x.MIN_DRIVER_ID == id && x.Position_Status=="On Post").FirstOrDefault();
+
+                if (M != null)
+                {
+                    M.Position_Status = "Leave";
+                    M.EndDate = DateTime.Now.ToString();
+                    UpdateVehAvailable(M.Min_Driver_RegNumber);
+                    UpdateDriverVisibilty(M.DRIVER_ID);
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.MINISTRY_DRIVER.Add(M);
+                        con.Entry(M).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+        //AUTO SWITCH  THE STATE AND POSITION WHEN APPROVED AND START LEAVE
+        public void AutoSwitch()
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                L = con.LEAVEs.AsEnumerable().Where(x => x.State == "Approved" && Convert.ToDateTime(x.Start_Dte).Date<= DateTime.Now.Date).FirstOrDefault();
+
+                if (L != null)
+                {
+                    L.State = "in Progress";
+                    UpdatePositionState(L.MIN_DRIVER_ID);
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.LEAVEs.Add(L);
+                        con.Entry(L).State = EntityState.Modified;
+
+                    }
+                }
+            }
+        }
+
+        //UPDATE APPROVED  STATE METHOD ON CLICK APPROVE BTN
+        public int UpdateStateApproved(long id,string approvBy)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                L = con.LEAVEs.Where(x => x.LEAVE_ID == id).FirstOrDefault();
+
+                if (L != null)
+                {
+                    L.State = "Approved";
+                    L.Approved_Dte =DateTime.Now.Date.ToString();
+                    L.Approved_By = approvBy;
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.LEAVEs.Add(L);
+                        con.Entry(L).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
+        //UPDATE DENY  STATE METHOD ON CLICK CANCEL BTN
+        public int UpdateStateDeny(long id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                L = con.LEAVEs.Where(x => x.LEAVE_ID == id).FirstOrDefault();
+
+                if (L != null)
+                {
+                    L.State = "Denied";
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.LEAVEs.Add(L);
+                        con.Entry(L).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
+        //AUTO UPDATE FINISH  STATE METHOD
+        public int UpdateStateFinished()
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                L = con.LEAVEs.AsEnumerable().Where(x => x.State == "Approved" || x.State == "in Progress" && Convert.ToDateTime(x.End_Dte).Date<= DateTime.Now.Date).FirstOrDefault();
+
+                if (L != null)
+                {
+                    L.State = "Finished";
+                    UpdateDriverVisibiltyTrue(L.MINISTRY_DRIVER.DRIVER.DRIVER_ID);
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.LEAVEs.Add(L);
+                        con.Entry(L).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
+        //AUTO CHANGE PENDING WHEN START DATE IS OVERAL
+        public int UpdateAutoStateDenied()
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                L = con.LEAVEs.AsEnumerable().Where(x => x.State == "Pending..." && Convert.ToDateTime(x.Start_Dte).Date <= DateTime.Now.Date).FirstOrDefault();
+
+                if (L != null)
+                {
+                    L.State = "Denied";
+                    UpdateDriverVisibiltyTrue(L.MINISTRY_DRIVER.DRIVER.DRIVER_ID);
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.LEAVEs.Add(L);
+                        con.Entry(L).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+        ////CHECK LAST SAVED
+
+        //public void LastSaved(MinDriver_Class Md, int driver)
+        //{
+        //    int id;
+        //    using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+        //    {
+        //        var M = con.MINISTRY_DRIVER.OrderByDescending(x => x.MIN_DRIVER_ID).Where(x => x.DRIVER_ID == driver).FirstOrDefault();
+
+        //        if (M != null)
+        //        {
+        //            id = Convert.ToInt32(M.MIN_DRIVER_ID);
+
+        //            if (M.Position_Status == "On Post")
+        //            {
+        //                UpdatePositionState(id);
+        //            }
+
+        //        }
+
+        //    }
+
+        //}
         //DISPLAY METHOD ALL MINISTRY
         public void DisplayMinistryAll(DropDownList drop)
         {
@@ -440,6 +722,7 @@ namespace VehicleFleetManagment.FleetImp
             }
 
         }
+
 
     }
 }

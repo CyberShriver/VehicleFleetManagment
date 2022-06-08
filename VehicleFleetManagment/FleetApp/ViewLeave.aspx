@@ -83,7 +83,7 @@
                                     <asp:GridView ID="gdv" DataKeyNames="LEAVE_ID" ShowHeaderWhenEmpty="true" EmptyDataText="No Records" HeaderStyle-HorizontalAlign="Center"
                                         class="table  table-striped  table-borderless text-center gdv" HorizontalAlign="Center" HeaderStyle-Font-Bold="true"
                                         AutoGenerateColumns="false" EmptyDataRowStyle-Font-Size="X-Large" AllowPaging="true" PageSize="10" OnPreRender="gdv_PreRender"
-                                        GridLines="None" EmptyDataRowStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#448aff" HeaderStyle-ForeColor="White"
+                                        GridLines="None" EmptyDataRowStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#448aff" HeaderStyle-ForeColor="White" 
                                         runat="server" Width="100%" OnRowCommand="gdv_RowCommand" OnPageIndexChanging="gdv_PageIndexChanging">
 
                                         <Columns>
@@ -97,11 +97,11 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="#" FooterText="#" Visible="false">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("LEAVE_ID") %>'></asp:Label>
+                                                    <asp:Label ID="lblID" runat="server" Text='<%# Eval("LEAVE_ID") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                             <asp:TemplateField HeaderText="Ministry" FooterText="#" >
+                                             <asp:TemplateField HeaderText="Ministry" FooterText="#" Visible="false" >
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label9" runat="server" Text='<%# Eval("MINISTRY_ID") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -130,26 +130,24 @@
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label4" runat="server" Text='<%# Eval("Demand_Dte") %>'></asp:Label>
                                                 </ItemTemplate>
-                                            </asp:TemplateField>
+                                            </asp:TemplateField>  
 
-                                            <asp:TemplateField HeaderText="Approved Date" >
+                                            <asp:TemplateField HeaderText="Start Date">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="LblStartDate" runat="server" Text='<%# Eval("Start_Dte") %>'></asp:Label>
+                                                </ItemTemplate>
+
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="End Date" Visible="true">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="LblEndDate" runat="server" Text='<%# Eval("End_Dte") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Approved Date">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label5" runat="server" Text='<%# Eval("Approved_Dte") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-
-                                            <asp:TemplateField HeaderText="Start Date">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label6" runat="server" Text='<%# Eval("Start_Dte") %>'></asp:Label>
-                                                </ItemTemplate>
-
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="End Date" Visible="false">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label7" runat="server" Text='<%# Eval("End_Dte") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-
                                             <asp:TemplateField HeaderText="Approved By" >
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label12" runat="server" Text='<%# Eval("Approved_By") %>'></asp:Label>
@@ -167,6 +165,11 @@
                                                     <asp:Label ID="Label98" runat="server" Text='<%# Eval("Comment") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="state" >
+                                                <ItemTemplate>
+                                                    <asp:Label ID="LblState" runat="server" Text='<%# Eval("State") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
 
                                             <asp:TemplateField HeaderText="Saved Date" >
                                                 <ItemTemplate>
@@ -176,7 +179,9 @@
 
                                             <asp:TemplateField HeaderText="Action">
                                                 <ItemTemplate>
-                                                    <asp:Button ID="btn_Edit" class="btn btn-sm btn-primary mr-4" runat="server" Text="Edit" CommandName="edit" CommandArgument='<%# Eval("LEAVE_ID") %>' />
+                                                    <asp:Button ID="btn_Edit" class="btn btn-sm btn-primary" runat="server" Text="Edit" CommandName="edit" CommandArgument='<%# Eval("LEAVE_ID") %>' />
+                                                    <asp:Button ID="Btn_Approved" class="btn btn-sm btn-secondary " runat="server" Text="Approve" CommandName="Approv" CommandArgument='<%# Eval("LEAVE_ID") %>' OnClientClick="return confirm('Approved It?')" />
+                                                    <asp:Button ID="Btn_Cancel" class="btn btn-sm btn-info " runat="server" Text="Cancel" CommandName="cancel" CommandArgument='<%# Eval("LEAVE_ID") %>' OnClientClick="return confirm('Cancel This Leave?')" />
                                                     <asp:Button ID="Btn_Delete" class="btn btn-sm btn-danger " runat="server" Text="Delete" CommandName="delet" CommandArgument='<%# Eval("LEAVE_ID") %>' OnClientClick="return confirm('Do you want to delete It?')" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>

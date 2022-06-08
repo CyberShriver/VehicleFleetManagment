@@ -165,7 +165,7 @@
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="float-right">
-                                                        <a class="btn btn-sm btn-info ml-5" href="ViewCarCrash.aspx">List <i class="icofont icofont-listine-dots"></i></a>
+                                                        <a class="btn btn-sm btn-info ml-5" href="ViewDriver.aspx">List <i class="icofont icofont-listine-dots"></i></a>
                                                         <button type="reset" class="btn btn-sm btn-danger ml-5 mr-5">Cancel</button>
                                                         <button type="button" id="btnGenNext" class="btn btn-sm btn-default ml-5 waves-effect  " runat="server" onserverclick="ActiveProf_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
                                                     </div>

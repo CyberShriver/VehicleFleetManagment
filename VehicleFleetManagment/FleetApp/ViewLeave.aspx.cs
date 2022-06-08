@@ -26,8 +26,8 @@ namespace VehicleFleetManagment.FleetApp
             {
                 txtSystemTitle.Text = sytemTitle;
                 txtSlogan.Text = slogan;
-
                 getDataGDV();
+                runGrid();
 
             }
         }
@@ -78,6 +78,64 @@ namespace VehicleFleetManagment.FleetApp
             txt_Search.Value = "";
         }
 
+         void runGrid()
+        {
+            foreach(GridViewRow row in this.gdv.Rows){
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    Button btnEdit = (Button)row.FindControl("btn_Edit");
+                    Button btnDelete = (Button)row.FindControl("Btn_Delete");
+                    Button btnAppro = (Button)row.FindControl("Btn_Approved");
+                    Button btnCancel = (Button)row.FindControl("Btn_Cancel");
+                    Label state = (Label)row.FindControl("LblState");
+                    Label Id = (Label)row.FindControl("lblID");
+                    Label startDat = (Label)row.FindControl("LblStartDate");
+                    Label EndDat = (Label)row.FindControl("LblEndDate");
+                    if (state.Text == "Approved")
+                    {
+                        btnAppro.Visible = false;
+                    }
+                    else if(state.Text == "Denied")
+                    {
+                        btnEdit.Visible = false;
+                        btnAppro.Visible = false;
+                        btnCancel.Visible = false;
+                    }
+                    else if (state.Text == "in Progress")
+                    {
+                        btnAppro.Visible = false;
+                        btnCancel.Visible = false;
+                    }
+                    else if (state.Text == "Approved" &&  DateTime.Now.Date >= Convert.ToDateTime(startDat).Date)
+                    {
+                        btnAppro.Visible = false;
+                        btnCancel.Visible = false;
+                    }
+                    else if (state.Text == "Approved" && DateTime.Now.Date == Convert.ToDateTime(EndDat).Date)
+                    {
+                        //I.UpdateStateFinished(Convert.ToInt64(Id));
+                        btnEdit.Visible = false;
+                        btnAppro.Visible = false;
+                        btnCancel.Visible = false;
+
+                    }                    
+                    else if (state.Text == "Finished")
+                    {
+                        btnEdit.Visible = false;
+                        btnAppro.Visible = false;
+                        btnCancel.Visible = false;
+                    }
+                    else
+                    {
+                        btnEdit.Visible = true;
+                        btnAppro.Visible = true;
+                        btnCancel.Visible = true;
+                        btnDelete.Visible = true;
+                    }
+                }
+            }
+        }
+
         protected void gdv_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
@@ -90,6 +148,20 @@ namespace VehicleFleetManagment.FleetApp
             if (e.CommandName == "delet")
             {
                 I.Delete(index);
+                Response.Redirect("~/FleetApp/ViewLeave.aspx");
+
+
+            }
+            if (e.CommandName == "Approv")
+            {
+                I.UpdateStateApproved(index, codeMin);
+                Response.Redirect("~/FleetApp/ViewLeave.aspx");
+
+
+            }
+            if (e.CommandName == "cancel")
+            {
+                I.UpdateStateDeny(index);
                 Response.Redirect("~/FleetApp/ViewLeave.aspx");
 
 

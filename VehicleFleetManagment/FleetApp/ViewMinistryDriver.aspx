@@ -106,22 +106,30 @@
                                                     <asp:Label ID="Label2" runat="server" Text='<%# Eval("MINISTRY_ID") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-
-                                            <asp:TemplateField HeaderText="Vehicle">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label5" runat="server" Text='<%# Eval("Min_Driver_RegNumber") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-
                                             <asp:TemplateField HeaderText="Driver">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label3" runat="server" Text='<%# Eval("DRIVER_ID") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
+                                            <asp:TemplateField HeaderText="Vehicle">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label8" runat="server" Text='<%# Eval("Min_Driver_RegNumber") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>                                            
+                                            <asp:TemplateField HeaderText="Start date">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("StartDate") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="End Date">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label5" runat="server" Text='<%# Eval("EndDate") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Position">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("Position_Status") %>'></asp:Label>
+                                                    <asp:Label ID="Label6" runat="server" Text='<%# Eval("Position_Status") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

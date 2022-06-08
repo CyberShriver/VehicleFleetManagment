@@ -14,7 +14,15 @@ namespace VehicleFleetManagment.FleetApp
     {
         Leave_Class  Le = new Leave_Class ();
         Leave_Interface I = new Leave_Imp();
+
+        Vehicle_Class Ve = new Vehicle_Class();
+        Vehicle_Interface Iv = new Vehicle_Imp();
+
+        MinDriver_Class Md = new MinDriver_Class();
+        MinDriver_Interface Imd = new MinDriver_Imp();
+
         int msg;
+        string code;
         string id;
         string codeMin;
         string sytemTitle;
@@ -36,12 +44,13 @@ namespace VehicleFleetManagment.FleetApp
                 if (id == null)
                 {
                     btnSave.InnerText = "Save";
-                    // Response.Redirect("~/sima/province.aspx/");
                 }
                 else
 
                 {
                     btnSave.InnerText = "Edit";
+                    VisApprovedBy.Visible = true;
+                    VisApprovedBy.Disabled = true;
                     ChargeData();
                 }
 
@@ -67,14 +76,81 @@ namespace VehicleFleetManagment.FleetApp
             SuccessMsg.Visible = false;
             FillMsg.Visible = false;
             FailMsg.Visible = false;
+            DateFailed.Visible = false;
         }
 
         void Add()
         {
             try
             {
-                if (txtLeaveCode.Value == "" || txtCarpooling.Value == "" || dateStart.Value == "" || dateEnd.Value == ""
-                    || txtComment.Value == "" || txtApproved.Value == "" || dateDemand.Value == "" || dateApproved.Value == ""
+                if (txtCarpooling.Value == "" || dateStart.Value == "" || dateEnd.Value == "" || dateDemand.Value == "" 
+                    || DropDown_Ministry.SelectedValue == "-1" || DropDown_Driver.SelectedValue == "-1" || DropDown_LeaveType.SelectedValue == "-1")
+                {
+                    SuccessMsg.Visible = false;
+                    FillMsg.Visible = true;
+                    FailMsg.Visible = false;
+                    DateFailed.Visible = false;
+                }
+                else
+                {
+
+                    Le.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
+                    Le.Leave_Code = LeaveCode();
+                    Le.Carpooling = txtCarpooling.Value;
+                    Le.End_Dte = dateEnd.Value;
+                    Le.Start_Dte = dateStart.Value;
+                    Le.Comment = txtComment.Value;
+                    Le.Saved_Date = DateTime.Now.ToString();
+                    Le.Approved_By = "";
+                    Le.Demand_Dte =  dateDemand.Value ;
+                    Le.State = "Pending..." ;
+                    Le.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
+                    Le.LEAVE_TYPE_ID = Convert.ToInt32(DropDown_LeaveType.SelectedValue);
+
+
+                        msg = I.Add(Le);
+                        if (msg > 0)
+                        {
+                            FillMsg.Visible = false;
+                            FailMsg.Visible = false;
+                            SuccessMsg.Visible = true;
+
+                            txtLeaveCode.Value = "";
+                            txtCarpooling.Value = "";
+                            txtApproved.Value = "";
+                            dateEnd.Value = "";
+                            dateStart.Value = "";
+                            dateStart.Value = "";
+                            dateDemand.Value = "";
+
+                        }
+                        else
+                        {
+                            SuccessMsg.Visible = false;
+                            FillMsg.Visible = false;
+                            FailMsg.Visible = true;
+                            DateFailed.Visible = false;
+
+                        }
+                    
+                                       
+                }
+            }
+            catch (SqlException e)
+            {
+                SuccessMsg.Visible = false;
+                FillMsg.Visible = false;
+                FailMsg.Visible = true;
+                DateFailed.Visible = false;
+            }
+        }
+
+        //update
+        void Update()
+        {
+            try
+            {
+                if (txtCarpooling.Value == "" || dateStart.Value == "" || dateEnd.Value == "" || dateDemand.Value == ""
                     || DropDown_Ministry.SelectedValue == "-1" || DropDown_Driver.SelectedValue == "-1" || DropDown_LeaveType.SelectedValue == "-1")
                 {
                     SuccessMsg.Visible = false;
@@ -90,73 +166,9 @@ namespace VehicleFleetManagment.FleetApp
                     Le.End_Dte = dateEnd.Value;
                     Le.Start_Dte = dateStart.Value;
                     Le.Comment = txtComment.Value;
-                    Le.Saved_Date = DateTime.Now.ToString();
-                    Le.Approved_By = txtApproved.Value;
-                    Le.Demand_Dte =  dateDemand.Value ;
-                    Le.Approved_Dte =dateApproved.Value;
-                    Le.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
-                    Le.LEAVE_TYPE_ID = Convert.ToInt32(DropDown_LeaveType.SelectedValue);
-
-                    msg = I.Add(Le);
-                    if (msg > 0)
-                    {
-                        FillMsg.Visible = false;
-                        FailMsg.Visible = false;
-                        SuccessMsg.Visible = true;
-
-                        txtLeaveCode.Value = "";
-                        txtCarpooling.Value = "";
-                        txtApproved.Value = "";
-                        dateEnd.Value = "";
-                        dateStart.Value = "";
-                        dateStart.Value = "";
-                        dateDemand.Value = "";
-                        dateApproved.Value = "";
-
-                    }
-                    else
-                    {
-                        SuccessMsg.Visible = false;
-                        FillMsg.Visible = false;
-                        FailMsg.Visible = true;
-
-                    }
-                }
-            }
-            catch (SqlException e)
-            {
-                SuccessMsg.Visible = false;
-                FillMsg.Visible = false;
-                FailMsg.Visible = true;
-            }
-        }
-
-        //update
-        void Update()
-        {
-            try
-            {
-                if (txtLeaveCode.Value == "" || txtCarpooling.Value == "" || dateStart.Value == "" || dateEnd.Value == ""
-                   || txtComment.Value == "" || txtApproved.Value == "" || dateDemand.Value == "" || dateApproved.Value == ""
-                   || DropDown_Ministry.SelectedValue == "-1" || DropDown_Driver.SelectedValue == "-1" || DropDown_LeaveType.SelectedValue == "-1")
-                {
-                    SuccessMsg.Visible = false;
-                    FillMsg.Visible = true;
-                    FailMsg.Visible = false;
-                }
-                else
-                {
-
-                    Le.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
-                    Le.Leave_Code = txtLeaveCode.Value;
-                    Le.Carpooling = txtCarpooling.Value;
-                    Le.End_Dte = dateEnd.Value;
-                    Le.Start_Dte = dateStart.Value;
-                    Le.Comment = txtComment.Value;
-                    Le.Saved_Date = DateTime.Now.ToString();
+                    Le.Saved_Date = DateTime.Now.Date.ToString();
                     Le.Approved_By = txtApproved.Value;
                     Le.Demand_Dte = dateDemand.Value;
-                    Le.Approved_Dte = dateApproved.Value;
                     Le.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
                     Le.LEAVE_TYPE_ID = Convert.ToInt32(DropDown_LeaveType.SelectedValue);
 
@@ -183,6 +195,18 @@ namespace VehicleFleetManagment.FleetApp
             }
         }
 
+        string LeaveCode()
+        {
+
+            if (codeMin == "All")
+            {
+                return code = "Leave-" + DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.countAll() + 1)) + "/" + DateTime.Now.Date;
+            }
+            else
+            {
+                return code = "Leave-" + DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.count(codeMin) + 1)) + "/" + DateTime.Now.Date;
+            }
+        }
         protected void ChargeData()
         {
             if (id != null)
@@ -197,7 +221,6 @@ namespace VehicleFleetManagment.FleetApp
                 dateStart.Value = Le.Start_Dte;
                 dateEnd.Value = Le.End_Dte;
                 dateDemand.Value = Le.Demand_Dte;
-                dateApproved.Value = Le.Approved_Dte;
                 DropDown_Driver.SelectedItem.Value = Le.MIN_DRIVER_ID.ToString();
                 DropDown_LeaveType.SelectedItem.Value = Le.LEAVE_TYPE_ID.ToString();
             }
@@ -205,14 +228,29 @@ namespace VehicleFleetManagment.FleetApp
 
         protected void btn_save_Click(object sender, EventArgs args)
         {
-            if (id == null)
+            if (Convert.ToDateTime(dateStart.Value).Date < Convert.ToDateTime(dateEnd.Value).Date &&
+               Convert.ToDateTime(dateDemand.Value).Date < Convert.ToDateTime(dateStart.Value).Date )
             {
-                Add();
+                if (id == null)
+                {
+
+                    Add();
+                   // I.UpdatePositionState(Convert.ToInt32(DropDown_Driver.SelectedValue));
+                }
+                else
+                    Update();
             }
             else
-                Update();
+            {
+                DateFailed.Visible = true;
+                SuccessMsg.Visible = false;
+                FillMsg.Visible = false;
+                FailMsg.Visible = false;
+            }
+            
         }
 
+  
         //Add dropDawn drievr Minisrty
         void AllDriver()
         {
@@ -243,8 +281,14 @@ namespace VehicleFleetManagment.FleetApp
         {
             I.DisplayDriver(DropDown_Driver, Convert.ToInt32(DropDown_Ministry.SelectedItem.Value));
         }
+        //change Mininstr draver position state and vehicle state
 
-        protected void dropDown_Ministry_SelectedIndexChanged(object sender, EventArgs e)
+        void state()
+        {
+            
+        }
+
+    protected void dropDown_Ministry_SelectedIndexChanged(object sender, EventArgs e)
         {
             Driver();
         }

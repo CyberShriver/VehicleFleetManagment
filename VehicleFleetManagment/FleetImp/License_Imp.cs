@@ -354,41 +354,40 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from Md in con.MINISTRY_DRIVER
-
+                var obj = (from D in con.DRIVERs                          
                            select new
                            {
-                               MIN_DRIVER_ID = Md.MIN_DRIVER_ID,
-                               Full_Name = Md.DRIVER.Full_Name,
+                               DRIVER_ID = D.DRIVER_ID,
+                               Full_Name = D.Full_Name,
                            }
-                           ).ToList();
+                             ).ToList();
 
                 drop.DataSource = obj;
                 drop.DataTextField = "Full_Name";
-                drop.DataValueField = "MIN_DRIVER_ID";
+                drop.DataValueField = "DRIVER_ID";
                 drop.DataBind();
             }
 
         }
 
         //DISPLAY METHOD Driver
-        public void DisplayDriver(DropDownList drop, int id)
+        public void DisplayDriver(DropDownList drop, string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from Md in con.MINISTRY_DRIVER
-                           where Md.MIN_DRIVER_ID == id
+                var obj = (from D in con.DRIVERs
+                           where D.Ministry_Work == codeMin
 
                            select new
                            {
-                               MIN_DRIVER_ID = Md.MIN_DRIVER_ID,
-                               Full_Name = Md.DRIVER.Full_Name,
+                               DRIVER_ID = D.DRIVER_ID,
+                               Full_Name = D.Full_Name,
                            }
                            ).ToList();
 
                 drop.DataSource = obj;
                 drop.DataTextField = "Full_Name";
-                drop.DataValueField = "MIN_DRIVER_ID";
+                drop.DataValueField = "DRIVER_ID";
                 drop.DataBind();
             }
 

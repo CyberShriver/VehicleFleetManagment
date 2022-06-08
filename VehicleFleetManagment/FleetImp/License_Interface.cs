@@ -54,7 +54,7 @@ namespace VehicleFleetManagment.FleetImp
         void DisplayMinistryAll(DropDownList drop);
 
         //DropDown Driver 
-        void DisplayDriver(DropDownList drop, int id);
+        void DisplayDriver(DropDownList drop, string codeMin);
 
 
 

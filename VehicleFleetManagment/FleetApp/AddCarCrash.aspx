@@ -87,7 +87,7 @@
                                                                 <label class="float-label">Ministry</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Plate" required="" runat="server"></asp:DropDownList>
+                                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Plate" OnSelectedIndexChanged="DropDown_Plate_SelectedIndexChanged" AutoPostBack="true"  required="" runat="server"></asp:DropDownList>
                                                                 <label class="float-label">Plate</label>
                                                             </div>
                                                             <div class="form-group form-default">
@@ -124,12 +124,7 @@
                                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtResponible">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Responsible</label>
-                                                            </div>
-                                                            <div class="form-group form-default">
-                                                                <input type="text" class="form-control" required="" runat="server" id="txtDriverAge">
-                                                                <span class="form-bar"></span>
-                                                                <label class="float-label">Driver Age</label>
-                                                            </div>
+                                                            </div>                                                            
                                                             <div class="form-group form-default">
                                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtWeather">
                                                                 <span class="form-bar"></span>

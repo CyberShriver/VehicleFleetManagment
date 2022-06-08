@@ -251,7 +251,7 @@ namespace VehicleFleetManagment.FleetApp
         //Add dropDawn Vehicle
         void Driver()
         {
-            I.DisplayDriver(DropDown_Driver, Convert.ToInt32(DropDown_Ministry.SelectedItem.Value));
+            I.DisplayDriver(DropDown_Driver,codeMin);
         }
 
         protected void dropDown_Ministry_SelectedIndexChanged(object sender, EventArgs e)

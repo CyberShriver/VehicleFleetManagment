@@ -15,6 +15,7 @@ namespace VehicleFleetManagment.FleetImp
         int msg;
         MINISTRY_DRIVER M = new MINISTRY_DRIVER();
         VEHICLE V = new VEHICLE();
+        DRIVER D = new DRIVER();
 
         //ADD METHOD
         public int Add(MinDriver_Class Md)
@@ -25,7 +26,8 @@ namespace VehicleFleetManagment.FleetImp
                 M.Min_Driver_RegNumber  = Md.Min_Driver_RegNumber ;
                 M.MINISTRY_ID = Md.MINISTRY_ID;
                 M.Position_Status = Md.Position_Status;
-                // M.Saved_Date = Md.Saved_Date;
+                M.StartDate = Md.StartDate;
+                M.EndDate = Md.EndDate;
 
                 con.MINISTRY_DRIVER.Add(M);
 
@@ -135,8 +137,10 @@ namespace VehicleFleetManagment.FleetImp
                            {
                                MIN_DRIVER_ID = M.MIN_DRIVER_ID,
                                DRIVER_ID = M.DRIVER.Full_Name,
-                               Min_Driver_RegNumber  = M.Min_Driver_RegNumber ,
+                               Min_Driver_RegNumber = M.Min_Driver_RegNumber,
                                MINISTRY_ID = M.MINISTRY.Ministry_Name,
+                               StartDate = M.StartDate,
+                               EndDate = M.EndDate,
                                Position_Status = M.Position_Status
                            }
                            ).ToList();
@@ -159,6 +163,8 @@ namespace VehicleFleetManagment.FleetImp
                                DRIVER_ID = M.DRIVER.Full_Name,
                                Min_Driver_RegNumber = M.Min_Driver_RegNumber,
                                MINISTRY_ID = M.MINISTRY.Ministry_Name,
+                               StartDate = M.StartDate,
+                               EndDate = M.EndDate,
                                Position_Status = M.Position_Status
                            }
                            ).ToList();
@@ -220,6 +226,9 @@ namespace VehicleFleetManagment.FleetImp
                            where M.MINISTRY.Code_Min== codeMin &&
                            (M.Min_Driver_RegNumber ).ToString().StartsWith(SearchText) ||
                            M.DRIVER.Full_Name.StartsWith(SearchText) ||
+                           M.StartDate.StartsWith(SearchText) ||
+                           M.EndDate.StartsWith(SearchText) ||
+                           M.Position_Status.StartsWith(SearchText) ||
                            M.DRIVER.Full_Name.StartsWith(SearchText) 
                            select new
                            {
@@ -227,6 +236,8 @@ namespace VehicleFleetManagment.FleetImp
                                DRIVER_ID = M.DRIVER.Full_Name,
                                Min_Driver_RegNumber = M.Min_Driver_RegNumber,
                                MINISTRY_ID = M.MINISTRY.Ministry_Name,
+                               StartDate = M.StartDate,
+                               EndDate = M.EndDate,
                                Position_Status = M.Position_Status
 
                            }
@@ -244,17 +255,20 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MINISTRY_DRIVER
-                           where
+                           where 
                            (M.Min_Driver_RegNumber).ToString().StartsWith(SearchText) ||
                            M.DRIVER.Full_Name.StartsWith(SearchText) ||
-                           M.DRIVER.Full_Name.StartsWith(SearchText)||
-                           M.MINISTRY.Ministry_Name.StartsWith(SearchText)
+                           M.StartDate.StartsWith(SearchText) ||
+                           M.EndDate.StartsWith(SearchText) ||
+                           M.DRIVER.Full_Name.StartsWith(SearchText)
                            select new
                            {
                                MIN_DRIVER_ID = M.MIN_DRIVER_ID,
                                DRIVER_ID = M.DRIVER.Full_Name,
                                Min_Driver_RegNumber = M.Min_Driver_RegNumber,
                                MINISTRY_ID = M.MINISTRY.Ministry_Name,
+                               StartDate = M.StartDate,
+                               EndDate = M.EndDate,
                                Position_Status = M.Position_Status
 
                            }
@@ -335,7 +349,7 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
-        //DISPLAY  ALL VEHICLE FOR SPECIFIC MINISTRY BASED ON CODE MINISTRY METHOD
+        //DISPLAY  ALL VEHICLE FOR SPECIFIC MINISTRY BASED ON CODE MINISTRY METHOD()
         public void DisplayAllMinVehicle(DropDownList drop,string codeMin,int idMinDr)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
@@ -375,14 +389,107 @@ namespace VehicleFleetManagment.FleetImp
             }
 
         }
+        //UPDATE VEHICLE VAILABLE STATE METHOD
+        public int UpdateVehAvailable(string LocalPlate)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                VEHICLE V = new VEHICLE();
+                V = con.VEHICLEs.Where(x => x.Local_Plate == LocalPlate).FirstOrDefault();
 
+                if (V != null)
+                {
+                    V.Stat = "Available";
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.VEHICLEs.Add(V);
+                        con.Entry(V).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
+        //UPDATE VEHICLE UNVAILABLE STATE METHOD
+        public int UpdateVehUnavailable( string LocalPlate)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                VEHICLE V = new VEHICLE();
+                V = con.VEHICLEs.Where(x => x.Local_Plate == LocalPlate).FirstOrDefault();
+
+                if (V != null)
+                {
+                    V.Stat = "Unavailable";
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.VEHICLEs.Add(V);
+                        con.Entry(V).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
+        //UPDATE VEHICLE UNVAILABLE STATE METHOD
+        //public int UpdateDriverVisibility(int id)
+        //{
+        //    using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+        //    {
+        //        DRIVER V = new DRIVER();
+        //        D = con.DRIVERs.Where(x => x.DRIVER_ID == id).FirstOrDefault();
+
+        //        if (D != null)
+        //        {
+        //            MINISTRY_DRIVER M = new MINISTRY_DRIVER();
+        //            M = con.MINISTRY_DRIVER.Where(x => x.DRIVER_ID == id).FirstOrDefault();
+
+        //            if (M.Position_Status=="On Post" || M.Position_Status == "Swaped")
+        //            {
+        //            D.Visibility = "true";
+
+        //            }
+        //            else
+        //            {
+        //            D.Visibility = "false";
+        //            }
+        //            if (con.SaveChanges() > 0)
+        //            {
+        //                con.DRIVERs.Add(D);
+        //                con.Entry(D).State = EntityState.Modified;
+
+        //                msg = 1;
+        //            }
+
+        //            else
+        //                msg = 0;
+        //        }
+        //    }
+
+
+        //    return msg;
+        //}
 
         //DISPLAY  Driver for specific Ministry METHOD
         public void DisplayDriver(DropDownList drop, string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from D in con.DRIVERs where D.Ministry_Work== codeMin && D.State=="Work"
+                var obj = (from D in con.DRIVERs where D.Ministry_Work== codeMin && D.State=="Work" && D.Visibility=="true"
 
                            select new
                            {
@@ -442,6 +549,97 @@ namespace VehicleFleetManagment.FleetImp
             }
 
         }
+
+        //UPDATE Position
+        int UpdatePositionState(int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                
+                M = con.MINISTRY_DRIVER.Where(x => x.MIN_DRIVER_ID == id).FirstOrDefault();
+
+                if (M != null)
+                {
+                    M.Position_Status = "Swaped";
+                    M.EndDate = DateTime.Today.ToShortDateString();
+                    UpdateVehAvailable(M.Min_Driver_RegNumber);
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.MINISTRY_DRIVER.Add(M);
+                        con.Entry(M).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+      
+        //CHECK LAST SAVED
+        public int LastSaved(MinDriver_Class Md, int driver)
+        {
+            int id;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                 var M = con.MINISTRY_DRIVER.OrderByDescending(x => x.MIN_DRIVER_ID).Where(x => x.DRIVER_ID == driver).FirstOrDefault();
+
+                if (M!=null)
+                {
+                    id = Convert.ToInt32(M.MIN_DRIVER_ID);
+
+                    if(M.Position_Status=="On Post" || M.Position_Status == "Leave")
+                    {
+                        UpdatePositionState(id);
+                    }
+                    
+                        return msg = 1;
+
+                }
+                else
+                {
+                    return msg = 0;
+                }
+
+            }
+
+        }
+
+        //Auto swap driver When driver is fired but in case is not in leave and change vehicle state
+       public int AutoSwap()
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+
+                M = con.MINISTRY_DRIVER.Where(x => x.Position_Status=="On Post" && x.DRIVER.Ministry_Work==null).FirstOrDefault();
+
+                if (M != null)
+                {
+                    M.Position_Status = "Fired";
+                    M.EndDate = DateTime.Today.ToShortDateString();
+                    UpdateVehAvailable(M.Min_Driver_RegNumber);
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.MINISTRY_DRIVER.Add(M);
+                        con.Entry(M).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
+
 
     }
 }

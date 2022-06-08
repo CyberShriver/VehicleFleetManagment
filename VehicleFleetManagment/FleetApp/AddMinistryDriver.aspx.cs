@@ -30,8 +30,8 @@ namespace VehicleFleetManagment.FleetApp
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            id = Request.QueryString["MIN_DRIVER_ID"];
             ChargeCookies();
+            id = Request.QueryString["MIN_DRIVER_ID"];
 
             if (!IsPostBack)
             {
@@ -50,8 +50,8 @@ namespace VehicleFleetManagment.FleetApp
 
                 {
                     btnSave.InnerText = "Edit";
-                    ChargeData();
-                    swap();
+                    //ChargeData();
+                    //swap();
                 }
                
 
@@ -67,7 +67,10 @@ namespace VehicleFleetManagment.FleetApp
                 sytemTitle = Request.Cookies["System_Title"].Value;
                 slogan = Request.Cookies["Slogan"].Value;
             }
-
+            else
+            {
+                Response.Redirect("~/FleetApp/Login.aspx");
+            }
         }
         private void MsgInit()
         {
@@ -81,7 +84,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (DropDown_Vehicle.SelectedValue == "-1" || DropDown_Driver.SelectedValue == "-1" || DropDown_Status.SelectedValue == "-1" || DropDown_Ministry.SelectedValue == "-1")
+                if (DropDown_Vehicle.SelectedValue == "-1" || DropDown_Driver.SelectedValue == "-1" ||  DropDown_Ministry.SelectedValue == "-1")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -92,7 +95,9 @@ namespace VehicleFleetManagment.FleetApp
 
                     Md.Min_Driver_RegNumber  = DropDown_Vehicle.SelectedItem.Value;
                     Md.DRIVER_ID  = Convert.ToInt32(DropDown_Driver.SelectedValue);
-                    Md.Position_Status  = DropDown_Status.SelectedValue;
+                    Md.Position_Status  = "On Post";
+                    Md.StartDate  = DateTime.Today.ToShortDateString();
+                    Md.EndDate  = "-";
                     Md.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedItem.Value);
 
                     msg = I.Add(Md);
@@ -123,97 +128,98 @@ namespace VehicleFleetManagment.FleetApp
         }
 
         //update
-        void Update()
-        {
-            try
-            {
-                if (DropDown_Driver.SelectedValue == "" || DropDown_Status.SelectedValue == "" || DropDown_Vehicle.SelectedValue == "-1" || DropDown_Ministry.SelectedValue == "-1")
-                {
-                    SuccessMsg.Visible = false;
-                    FillMsg.Visible = true;
-                    FailMsg.Visible = false;
-                }
-                else
-                {
-                    Md.Min_Driver_RegNumber  = DropDown_Vehicle.SelectedItem.Value;
-                    Md.DRIVER_ID  = Convert.ToInt32(DropDown_Driver.SelectedValue);
-                    Md.Position_Status  = DropDown_Status.SelectedValue;
-                    Md.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedItem.Value);
+        //void Update()
+        //{
+        //    try
+        //    {
+        //        if (DropDown_Driver.SelectedValue == "" || DropDown_Status.SelectedValue == "" || DropDown_Vehicle.SelectedValue == "-1" || DropDown_Ministry.SelectedValue == "-1")
+        //        {
+        //            SuccessMsg.Visible = false;
+        //            FillMsg.Visible = true;
+        //            FailMsg.Visible = false;
+        //        }
+        //        else
+        //        {
+        //            Md.Min_Driver_RegNumber  = DropDown_Vehicle.SelectedItem.Value;
+        //            Md.DRIVER_ID  = Convert.ToInt32(DropDown_Driver.SelectedValue);
+        //            Md.Position_Status  = DropDown_Status.SelectedValue;
+        //            Md.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedItem.Value);
 
-                    msg = I.Update(Md, Convert.ToInt32(id));
+        //            msg = I.Update(Md, Convert.ToInt32(id));
 
-                    if (msg > 0)
-                    {
-                        Response.Redirect("~/FleetApp/ViewMinistryDriver.aspx");
-                    }
-                    else
-                    {
-                        SuccessMsg.Visible = false;
-                        FillMsg.Visible = false;
-                        FailMsg.Visible = true;
+        //            if (msg > 0)
+        //            {
+        //                Response.Redirect("~/FleetApp/ViewMinistryDriver.aspx");
+        //            }
+        //            else
+        //            {
+        //                SuccessMsg.Visible = false;
+        //                FillMsg.Visible = false;
+        //                FailMsg.Visible = true;
 
-                    }
-                }
-            }
-            catch (SqlException e)
-            {
-                SuccessMsg.Visible = false;
-                FillMsg.Visible = false;
-                FailMsg.Visible = true;
-            }
-        }
+        //            }
+        //        }
+        //    }
+        //    catch (SqlException e)
+        //    {
+        //        SuccessMsg.Visible = false;
+        //        FillMsg.Visible = false;
+        //        FailMsg.Visible = true;
+        //    }
+        //}
 
         //update vehicle vailability 
 
-        void vehicleDriverState()
-        {
-            if(DropDown_Status.SelectedValue== "On Post")
-            {
-                Iveh.UpdateVehUnavailable(Veh, DropDown_Vehicle.SelectedItem.Value);
-                Idr.UpdateMinistryWorkState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value),codeMin);
-                Idr.UpdateWorkState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
+        //void vehicleDriverState()
+        //{
+        //    if(DropDown_Status.SelectedValue== "On Post")
+        //    {
+        //        Iveh.UpdateVehUnavailable(Veh, DropDown_Vehicle.SelectedItem.Value);
+        //        Idr.UpdateMinistryWorkState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value),codeMin);
+        //        Idr.UpdateWorkState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
 
-            }
-            else if(DropDown_Status.SelectedValue == "Swaped to another")
-            {
-                Iveh.UpdateVehAvailable(Veh, DropDown_Vehicle.SelectedItem.Value);
-                Idr.UpdateWorkState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
-            }
-            else if (DropDown_Status.SelectedValue == "Leave")
-            {
-                Iveh.UpdateVehAvailable(Veh, DropDown_Vehicle.SelectedItem.Value);
-                Idr.UpdateWorkState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
-            }
-            else
-            {
-                Iveh.UpdateVehAvailable(Veh, DropDown_Vehicle.SelectedItem.Value);
-                Idr.UpdateFreeState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
-                Idr.UpdateMinistryWorkStateEmpty(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
-            }
-        }
+        //    }
+        //    else if(DropDown_Status.SelectedValue == "Swaped to another")
+        //    {
+        //        Iveh.UpdateVehAvailable(Veh, DropDown_Vehicle.SelectedItem.Value);
+        //        Idr.UpdateWorkState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
+        //    }
+        //    else if (DropDown_Status.SelectedValue == "Leave")
+        //    {
+        //        Iveh.UpdateVehAvailable(Veh, DropDown_Vehicle.SelectedItem.Value);
+        //        Idr.UpdateWorkState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
+        //    }
+        //    else
+        //    {
+        //        Iveh.UpdateVehAvailable(Veh, DropDown_Vehicle.SelectedItem.Value);
+        //        Idr.UpdateFreeState(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
+        //        Idr.UpdateMinistryWorkStateEmpty(Dr, Convert.ToInt32(DropDown_Driver.SelectedItem.Value));
+        //    }
+        //}
 
-        protected void ChargeData()
-        {
-            if (id != null)
-            {
-                I.provide(Md, Convert.ToInt32(id));
+        //protected void ChargeData()
+        //{
+        //    if (id != null)
+        //    {
+        //        I.provide(Md, Convert.ToInt32(id));
 
-                DropDown_Vehicle.SelectedValue = Md.Min_Driver_RegNumber.ToString();
-                DropDown_Status.SelectedValue = Md.Position_Status ;
-                DropDown_Ministry.SelectedValue = Md.MINISTRY_ID.ToString();
-                DropDown_Driver.SelectedValue = Md.DRIVER_ID.ToString();
-            }
-        }
+        //        DropDown_Vehicle.SelectedValue = Md.Min_Driver_RegNumber.ToString();
+        //        DropDown_Status.SelectedValue = Md.Position_Status ;
+        //        DropDown_Ministry.SelectedValue = Md.MINISTRY_ID.ToString();
+        //        DropDown_Driver.SelectedValue = Md.DRIVER_ID.ToString();
+        //    }
+        //}
 
         protected void btn_save_Click(object sender, EventArgs args)
         {
-            vehicleDriverState();
-            if (id == null)
-            {
-                Add();
-            }
-            else
-                Update();
+            // vehicleDriverState();
+            //if (id == null)
+            //{
+            //    Add();
+            //}
+            // Update();
+            verification();
+          // Add();
 
         }
 
@@ -232,18 +238,36 @@ namespace VehicleFleetManagment.FleetApp
             }
         }
 
-        //control swap button
-        void swap()
+        //Verification
+
+        void verification()
         {
-            if(DropDown_Status.SelectedValue=="Swaped to another")
+            
+               msg= I.LastSaved(Md, Convert.ToInt32(DropDown_Driver.SelectedValue));
+            if (msg==1)
             {
-                btnSave.Visible = false;
+                Add();
+                I.UpdateVehUnavailable(DropDown_Vehicle.SelectedItem.Value);
             }
             else
             {
-                btnSave.Visible = true;
+                Add();
+                I.UpdateVehUnavailable( DropDown_Vehicle.SelectedItem.Value);
             }
         }
+
+        //control swap button
+        //void swap()
+        //{
+        //    if(DropDown_Status.SelectedValue=="Swaped to another")
+        //    {
+        //        btnSave.Visible = false;
+        //    }
+        //    else
+        //    {
+        //        btnSave.Visible = true;
+        //    }
+        //}
         // DropDawn Driver
         void Driver()
         {
@@ -272,7 +296,7 @@ namespace VehicleFleetManagment.FleetApp
             }
             else if (id != null && codeMin == "All")
             {
-                I.DisplayAllVehicle(DropDown_Driver);
+                I.DisplayAllVehicle(DropDown_Vehicle);
 
             }
             else

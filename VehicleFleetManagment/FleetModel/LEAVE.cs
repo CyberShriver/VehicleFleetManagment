@@ -27,6 +27,7 @@ namespace VehicleFleetManagment.FleetModel
         public string Comment { get; set; }
         public string Saved_Date { get; set; }
         public int MINISTRY_ID { get; set; }
+        public string State { get; set; }
     
         public virtual LEAVE_TYPE LEAVE_TYPE { get; set; }
         public virtual MINISTRY_DRIVER MINISTRY_DRIVER { get; set; }

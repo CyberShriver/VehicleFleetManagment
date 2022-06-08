@@ -28,6 +28,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtSlogan.Text = slogan;
 
                 getDataGDV();
+                runGrid();
 
             }
         }
@@ -106,10 +107,46 @@ namespace VehicleFleetManagment.FleetApp
                 I.Delete(index);
                 Response.Redirect("~/FleetApp/ViewDriver.aspx");
 
+            }
+            if (e.CommandName == "fired")
+            {
+                 msg=I.UpdateMinistryWorkStateEmpty(index);
+                if (msg == 1)
+                {
+
+                Response.Redirect("~/FleetApp/ViewDriver.aspx");
+                }
+                else
+                {
+                    Response.Write("<script> alert('The driver may be in Leave');</script>");
+                }
+
 
             }
 
 
+        }
+
+        //run All gridView
+        void runGrid()
+        {
+            foreach (GridViewRow row in this.gdv.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    Button btnEdit = (Button)row.FindControl("btn_Edit");
+                    Button btnDelete = (Button)row.FindControl("Btn_Delete");
+                    Button btnFired = (Button)row.FindControl("Btn_Fired");
+                    Label state = (Label)row.FindControl("Label11144");
+                    Label minWork = (Label)row.FindControl("LblMinistryWork");
+                    if (state.Text =="Free" && minWork.Text=="")
+                    {
+                        btnFired.Visible = false;
+                        btnDelete.Visible = false;
+                    }
+               
+                }
+            }
         }
 
         protected void DeleteCheck_Click(object sender, EventArgs e)
@@ -132,6 +169,7 @@ namespace VehicleFleetManagment.FleetApp
         protected void DropDown_Filter_SelectedIndexChanged(object sender, EventArgs e)
         {
             getDataGDV();
+            runGrid();
         }
     }
 }

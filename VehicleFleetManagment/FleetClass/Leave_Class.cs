@@ -20,6 +20,7 @@ namespace VehicleFleetManagment.FleetClass
         public string Approved_By { get; set; }
         public string Approved_Dte { get; set; }
         public string Comment { get; set; }
+        public string State { get; set; }
         public string Saved_Date { get; set; }
         public int MINISTRY_ID { get; set; }
 

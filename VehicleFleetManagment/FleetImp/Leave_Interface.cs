@@ -61,5 +61,22 @@ namespace VehicleFleetManagment.FleetImp
         //DropDown Vehicle 
         void DisplayLeaveType(DropDownList drop);
 
+        //UPDATE Position
+        long UpdatePositionState(long id);
+
+        //UPDATE STATE WHEN ITS APPROVED
+        int UpdateStateApproved(long id, string approvBy);
+
+        //UPDATE STATE WHEN ITS DENY   
+         int UpdateStateDeny(long id);
+
+        //AUTO CHANGE PENDING WHEN START DATE IS OVERAL
+        int UpdateAutoStateDenied();
+
+        //AUTO UPDATE FINISH  STATE METHOD WHEN LEAVE OVER
+        int UpdateStateFinished();
+
+        //AUTO SWITCH  THE STATE AND POSITION WHEN APPROVED AND START LEAVE
+        void AutoSwitch();
     }
 }

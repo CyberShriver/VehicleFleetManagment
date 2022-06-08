@@ -27,6 +27,8 @@ namespace VehicleFleetManagment.FleetModel
         public long DRIVER_ID { get; set; }
         public int MINISTRY_ID { get; set; }
         public string Position_Status { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
     
         public virtual DRIVER DRIVER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

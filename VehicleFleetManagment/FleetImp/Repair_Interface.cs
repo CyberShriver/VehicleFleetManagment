@@ -61,7 +61,7 @@ namespace VehicleFleetManagment.FleetImp
         void DisplayVehicle(DropDownList drop, int id);
 
         //DropDown Crash 
-        void DisplayCarCrash(DropDownList drop, int id);
+        void DisplayCarCrash(DropDownList drop, string plate);
 
     }
 }

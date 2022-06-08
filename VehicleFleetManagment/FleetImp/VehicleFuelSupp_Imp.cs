@@ -384,8 +384,8 @@ namespace VehicleFleetManagment.FleetImp
         }
 
 
-        //DISPLAY METHOD VEHICLE
-        public void DisplayVehicle(DropDownList drop)
+        //DISPLAY ALL VEHICLE
+        public void DisplayAllVehicle(DropDownList drop)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -394,13 +394,35 @@ namespace VehicleFleetManagment.FleetImp
                            select new
                            {
                                VEHICLE_ID =V.VEHICLE_ID,
-                               NameVeh = V.NameVeh,
+                               Local_Plate = V.Local_Plate,
                            }
                            ).ToList();
 
                 drop.DataSource = obj;
                 drop.DataValueField = "VEHICLE_ID";
-                drop.DataTextField = "NameVeh";
+                drop.DataTextField = "Local_Plate";
+                drop.DataBind();
+            }
+
+        }
+
+        //DISPLAY  VEHICLE FOR SPECIFIC MINISTRY
+        public void DisplayVehicle(DropDownList drop, string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from V in con.VEHICLEs where V.MINISTRY.Code_Min== codeMin
+
+                           select new
+                           {
+                               VEHICLE_ID = V.VEHICLE_ID,
+                               Local_Plate = V.Local_Plate
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "VEHICLE_ID";
+                drop.DataTextField = "Local_Plate";
                 drop.DataBind();
             }
 
