@@ -37,6 +37,12 @@
 
                 <!-- Page body start -->
                 <div class="page-body">
+                    <div class="col-sm-6 mx-auto">                          
+                            <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg" visible="false">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Wait untill His Leave End!!</strong>
+                            </div>
+                        </div>
                     <!-- Hover table card start -->
                     <div class="card">
                         <div class="card-header">

@@ -49,9 +49,8 @@ namespace VehicleFleetManagment.FleetApp
 
                 {
                     btnSave.InnerText = "Edit";
-                    VisApprovedBy.Visible = true;
-                    VisApprovedBy.Disabled = true;
                     ChargeData();
+                    controlDisplay();
                 }
 
 
@@ -69,8 +68,40 @@ namespace VehicleFleetManagment.FleetApp
                 sytemTitle = Request.Cookies["System_Title"].Value;
                 slogan = Request.Cookies["Slogan"].Value;
             }
+            else
+            {
+                Response.Redirect("~/FleetApp/Login.aspx");
+            }
 
         }
+
+        //control contents display based on state of leave and date
+        void controlDisplay()
+        {
+            if(Le.State== "in Progress")
+            {
+                VisApprovedBy.Visible = true;
+                idStart.Visible = false;
+                idDemand.Visible = false;
+                btnSave.Visible = true;
+                btnCancel.Visible = true;
+            }
+            else if(Le.State=="Approved")
+            {
+                btnSave.Visible = true;
+                btnCancel.Visible = true;
+            }
+            else
+            {
+                idState.Visible = true;
+                idAproved.Visible = true;
+                idSaved.Visible = true;
+                btnSave.Visible = false;
+                btnCancel.Visible = false;
+            }
+
+        }
+
         private void MsgInit()
         {
             SuccessMsg.Visible = false;
@@ -100,7 +131,7 @@ namespace VehicleFleetManagment.FleetApp
                     Le.End_Dte = dateEnd.Value;
                     Le.Start_Dte = dateStart.Value;
                     Le.Comment = txtComment.Value;
-                    Le.Saved_Date = DateTime.Now.ToString();
+                    Le.Saved_Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); ;
                     Le.Approved_By = "";
                     Le.Demand_Dte =  dateDemand.Value ;
                     Le.State = "Pending..." ;
@@ -166,8 +197,10 @@ namespace VehicleFleetManagment.FleetApp
                     Le.End_Dte = dateEnd.Value;
                     Le.Start_Dte = dateStart.Value;
                     Le.Comment = txtComment.Value;
-                    Le.Saved_Date = DateTime.Now.Date.ToString();
+                    Le.Saved_Date = DateSaved.Value;
                     Le.Approved_By = txtApproved.Value;
+                    Le.State = txtState.Value;
+                    Le.Approved_Dte = dateApproved.Value;
                     Le.Demand_Dte = dateDemand.Value;
                     Le.MIN_DRIVER_ID = Convert.ToInt32(DropDown_Driver.SelectedValue);
                     Le.LEAVE_TYPE_ID = Convert.ToInt32(DropDown_LeaveType.SelectedValue);
@@ -200,11 +233,11 @@ namespace VehicleFleetManagment.FleetApp
 
             if (codeMin == "All")
             {
-                return code = "Leave-" + DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.countAll() + 1)) + "/" + DateTime.Now.Date;
+                return code = "Leave-"+DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.countAll() + 1)) + DateTime.Today.ToString("ddMMyyyy");
             }
             else
             {
-                return code = "Leave-" + DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.count(codeMin) + 1)) + "/" + DateTime.Now.Date;
+                return code = "Leave-" + DropDown_Ministry.SelectedItem.ToString().Trim().Substring(0, 3) + (Convert.ToInt32(I.count(codeMin) + 1)) + DateTime.Today.ToString("ddMMyyyy");
             }
         }
         protected void ChargeData()
@@ -221,6 +254,9 @@ namespace VehicleFleetManagment.FleetApp
                 dateStart.Value = Le.Start_Dte;
                 dateEnd.Value = Le.End_Dte;
                 dateDemand.Value = Le.Demand_Dte;
+                dateApproved.Value =Le.Approved_Dte;
+                DateSaved.Value = Le.Saved_Date;
+                txtState.Value = Le.State ;
                 DropDown_Driver.SelectedItem.Value = Le.MIN_DRIVER_ID.ToString();
                 DropDown_LeaveType.SelectedItem.Value = Le.LEAVE_TYPE_ID.ToString();
             }
@@ -228,7 +264,7 @@ namespace VehicleFleetManagment.FleetApp
 
         protected void btn_save_Click(object sender, EventArgs args)
         {
-            if (Convert.ToDateTime(dateStart.Value).Date < Convert.ToDateTime(dateEnd.Value).Date &&
+            if (Convert.ToDateTime(dateStart.Value).Date <= Convert.ToDateTime(dateEnd.Value).Date &&
                Convert.ToDateTime(dateDemand.Value).Date < Convert.ToDateTime(dateStart.Value).Date )
             {
                 if (id == null)
@@ -251,7 +287,7 @@ namespace VehicleFleetManagment.FleetApp
         }
 
   
-        //Add dropDawn drievr Minisrty
+        //Add dropDown drievr Minisrty
         void AllDriver()
         {
             I.DisplayAllDriver(DropDown_Driver);
@@ -260,7 +296,14 @@ namespace VehicleFleetManagment.FleetApp
         //Add dropDown LeaveType
         void LeaveType()
         {
+            if (id != null )
+            {
+                I.DisplaySelectedLeave(DropDown_LeaveType, Convert.ToInt32(DropDown_Ministry.SelectedItem.Value), Convert.ToInt32(id));
+            }
+            else
+            {
             I.DisplayLeaveType(DropDown_LeaveType);
+            }
         }
         //Add dropDown Minisrty
         void Ministry()
@@ -279,17 +322,21 @@ namespace VehicleFleetManagment.FleetApp
         //Add dropDown driver
         void Driver()
         {
-            I.DisplayDriver(DropDown_Driver, Convert.ToInt32(DropDown_Ministry.SelectedItem.Value));
-        }
-        //change Mininstr draver position state and vehicle state
-
-        void state()
-        {
+            if (id != null)
+            {
+                I.DisplaySelectedDriver(DropDown_Driver, Convert.ToInt32(DropDown_Ministry.SelectedItem.Value), Convert.ToInt32(id));
+            } 
             
+            else
+            {
+            I.DisplayDriver(DropDown_Driver, Convert.ToInt32(DropDown_Ministry.SelectedItem.Value));
+            }
         }
+  
 
     protected void dropDown_Ministry_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             Driver();
         }
     }

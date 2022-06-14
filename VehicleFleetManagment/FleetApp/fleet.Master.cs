@@ -50,7 +50,7 @@ namespace VehicleFleetManagment.FleetApp
             ChargeCookies();
             Il.AutoSwitch();
             Il.UpdateStateFinished();
-            Il.UpdateAutoStateDenied();
+            Il.UpdateAutoStateDenied(codeMin);
             IMd.AutoSwap();
 
             if (codeMin == "All")

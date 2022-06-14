@@ -58,7 +58,10 @@ namespace VehicleFleetManagment.FleetApp
                 sytemTitle = Request.Cookies["System_Title"].Value;
                 slogan = Request.Cookies["Slogan"].Value;
             }
-
+            else
+            {
+                Response.Redirect("~/FleetApp/Login.aspx");
+            }
         }
         private void MsgInit()
         {

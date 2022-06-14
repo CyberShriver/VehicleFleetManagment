@@ -27,6 +27,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtSystemTitle.Text = sytemTitle;
                 txtSlogan.Text = slogan;
                 getDataGDV();
+                runGrid();
 
             }
         }
@@ -95,6 +96,29 @@ namespace VehicleFleetManagment.FleetApp
 
         }
 
+        //run All gridView
+        void runGrid()
+        {
+            foreach (GridViewRow row in this.gdv.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    Button btnEdit = (Button)row.FindControl("btn_Edit");
+                    Button btnDelete = (Button)row.FindControl("Btn_Delete");
+                    Label state = (Label)row.FindControl("Label6");
+            
+                    if (state.Text == "Leave")
+                    {
+                        btnEdit.Enabled = false;
+                        btnDelete.Enabled = false;
+                    }else if(state.Text == "Swaped" || state.Text == "Fired")
+                    {
+                        btnEdit.Enabled = false;
+                    }
+
+                }
+            }
+        }
         protected void DeleteCheck_Click(object sender, EventArgs e)
         {
 

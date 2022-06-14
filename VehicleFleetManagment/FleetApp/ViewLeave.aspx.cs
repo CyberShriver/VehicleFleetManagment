@@ -97,7 +97,7 @@ namespace VehicleFleetManagment.FleetApp
                     }
                     else if(state.Text == "Denied")
                     {
-                        btnEdit.Visible = false;
+                        btnEdit.Text = "Detail"; 
                         btnAppro.Visible = false;
                         btnCancel.Visible = false;
                     }
@@ -105,23 +105,26 @@ namespace VehicleFleetManagment.FleetApp
                     {
                         btnAppro.Visible = false;
                         btnCancel.Visible = false;
+                        btnDelete.Enabled = false;
+
                     }
                     else if (state.Text == "Approved" &&  DateTime.Now.Date >= Convert.ToDateTime(startDat).Date)
                     {
                         btnAppro.Visible = false;
                         btnCancel.Visible = false;
+                        btnDelete.Visible = false;
                     }
                     else if (state.Text == "Approved" && DateTime.Now.Date == Convert.ToDateTime(EndDat).Date)
                     {
                         //I.UpdateStateFinished(Convert.ToInt64(Id));
-                        btnEdit.Visible = false;
+                        btnEdit.Text = "Detail";
                         btnAppro.Visible = false;
                         btnCancel.Visible = false;
 
                     }                    
                     else if (state.Text == "Finished")
                     {
-                        btnEdit.Visible = false;
+                        btnEdit.Text = "Detail";
                         btnAppro.Visible = false;
                         btnCancel.Visible = false;
                     }
@@ -161,7 +164,7 @@ namespace VehicleFleetManagment.FleetApp
             }
             if (e.CommandName == "cancel")
             {
-                I.UpdateStateDeny(index);
+                I.UpdateStateDeny(index,codeMin);
                 Response.Redirect("~/FleetApp/ViewLeave.aspx");
 
 

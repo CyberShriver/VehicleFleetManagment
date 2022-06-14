@@ -146,7 +146,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from L in con.LEAVEs where L.MINISTRY.Code_Min== codeMin
+                var obj = (from L in con.LEAVEs where L.MINISTRY.Code_Min== codeMin orderby L.LEAVE_ID descending
 
                            select new
                            {
@@ -225,8 +225,9 @@ namespace VehicleFleetManagment.FleetImp
                 Le.MIN_DRIVER_ID = L.MIN_DRIVER_ID;
                 Le.MINISTRY_ID = L.MINISTRY_ID;
                 Le.LEAVE_TYPE_ID = L.LEAVE_TYPE_ID;
-
-
+                Le.State = L.State;
+                Le.Saved_Date = L.Saved_Date;
+                Le.Approved_Dte = L.Approved_Dte;
 
             }
         }
@@ -574,7 +575,7 @@ namespace VehicleFleetManagment.FleetImp
                 if (L != null)
                 {
                     L.State = "Approved";
-                    L.Approved_Dte =DateTime.Now.Date.ToString();
+                    L.Approved_Dte =DateTime.Today.ToString("yyyy-MM-dd");
                     L.Approved_By = approvBy;
                     if (con.SaveChanges() > 0)
                     {
@@ -594,7 +595,7 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //UPDATE DENY  STATE METHOD ON CLICK CANCEL BTN
-        public int UpdateStateDeny(long id)
+        public int UpdateStateDeny(long id,string approvBy)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -603,6 +604,8 @@ namespace VehicleFleetManagment.FleetImp
                 if (L != null)
                 {
                     L.State = "Denied";
+                    L.Approved_Dte = DateTime.Today.ToString("yyyy-MM-dd");
+                    L.Approved_By = approvBy;
 
                     if (con.SaveChanges() > 0)
                     {
@@ -651,7 +654,7 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //AUTO CHANGE PENDING WHEN START DATE IS OVERAL
-        public int UpdateAutoStateDenied()
+        public int UpdateAutoStateDenied(string approvBy)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -660,6 +663,8 @@ namespace VehicleFleetManagment.FleetImp
                 if (L != null)
                 {
                     L.State = "Denied";
+                    L.Approved_Dte = DateTime.Today.ToString("yyyy-MM-dd");
+                    L.Approved_By = approvBy;
                     UpdateDriverVisibiltyTrue(L.MINISTRY_DRIVER.DRIVER.DRIVER_ID);
 
                     if (con.SaveChanges() > 0)
@@ -722,6 +727,53 @@ namespace VehicleFleetManagment.FleetImp
             }
 
         }
+
+        //DISPLAY Leave Type FOR SPECIFIC DRIVER ( In case of Edit) WHEN DRIVER START LEAVE
+        public void DisplaySelectedLeave(DropDownList drop, int idMin, int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from L in con.LEAVEs
+                           where L.MINISTRY.MINISTRY_ID == idMin && L.LEAVE_ID == id
+
+                           select new
+                           {
+                               LEAVE_TYPE_ID = L.LEAVE_TYPE_ID,
+                               Leave_Type_Description = L.LEAVE_TYPE.Leave_Type_Description,
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataTextField = "Leave_Type_Description";
+                drop.DataValueField = "LEAVE_TYPE_ID";
+                drop.DataBind();
+            }
+
+        }
+
+        // DISPLAY SPECIFIC  DRIVER   (In case of Edit) WHEN DRIVER START LEAVE
+        public void DisplaySelectedDriver(DropDownList drop, int idMin, int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from L in con.LEAVEs
+                           where L.MINISTRY.MINISTRY_ID == idMin && L.LEAVE_ID == id
+
+                           select new
+                           {
+                               MIN_DRIVER_ID = L.MIN_DRIVER_ID,
+                               Full_Name = L.MINISTRY_DRIVER.DRIVER.Full_Name
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "MIN_DRIVER_ID";
+                drop.DataTextField = "Full_Name";
+                drop.DataBind();
+            }
+
+        }
+
 
 
     }

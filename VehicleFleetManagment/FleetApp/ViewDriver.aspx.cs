@@ -118,7 +118,7 @@ namespace VehicleFleetManagment.FleetApp
                 }
                 else
                 {
-                    Response.Write("<script> alert('The driver may be in Leave');</script>");
+                    FailMsg.Visible = true;
                 }
 
 

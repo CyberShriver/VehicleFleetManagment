@@ -68,15 +68,21 @@ namespace VehicleFleetManagment.FleetImp
         int UpdateStateApproved(long id, string approvBy);
 
         //UPDATE STATE WHEN ITS DENY   
-         int UpdateStateDeny(long id);
+         int UpdateStateDeny(long id,string approvBy);
 
         //AUTO CHANGE PENDING WHEN START DATE IS OVERAL
-        int UpdateAutoStateDenied();
+        int UpdateAutoStateDenied(string approvBy);
 
         //AUTO UPDATE FINISH  STATE METHOD WHEN LEAVE OVER
         int UpdateStateFinished();
 
         //AUTO SWITCH  THE STATE AND POSITION WHEN APPROVED AND START LEAVE
         void AutoSwitch();
+
+        //DISPLAY Leave Type FOR SPECIFIC DRIVER ( In case of Edit) WHEN DRIVER START LEAVE
+        void DisplaySelectedLeave(DropDownList drop, int idMin, int id);
+
+        // DISPLAY SPECIFIC DRIVER   (In case of Edit) WHEN DRIVER START LEAVE
+        void DisplaySelectedDriver(DropDownList drop, int idMin, int id);
     }
 }

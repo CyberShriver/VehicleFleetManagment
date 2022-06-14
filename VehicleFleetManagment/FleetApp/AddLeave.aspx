@@ -20,7 +20,7 @@
                         <li class="breadcrumb-item">
                             <a href="Home.aspx"><i class="fa fa-home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="AddAddLeave.aspx">Add-Leave</a>
+                        <li class="breadcrumb-item"><a href="AddLeave.aspx">Add-Leave</a>
                         </li>
                     </ul>
                 </div>
@@ -83,16 +83,18 @@
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Leave Code</label>
                                             </div>
+
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCarpooling">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Carpooling </label>
                                             </div>
-                                            <div class="form-group form-default">
-                                                <input type="date" class="form-control text-right" required="" runat="server" id="dateStart">
+                                            <div class="form-group form-default" id="idDemand" runat="server">
+                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateDemand">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label  ">Start Date</label>
+                                                <label class="float-label ">Demand date</label>
                                             </div>
+                                           
 
                                         </div>
                                     </div>
@@ -100,27 +102,37 @@
 
                             <div class="col-md-6">
                                     <div class="card-block">
-                                        <div class="form-material">
+                                        <div class="form-material" >
+                                             <div class="form-group form-default" id="idStart" runat="server">
+                                                <input type="date" class="form-control text-right" required="" runat="server" id="dateStart">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label  ">Start Date</label>
+                                            </div>
                                             <div class="form-group form-default">
                                                 <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateEnd">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label ">End Date</label>
                                             </div>
-                                            <div class="form-group form-default">
-                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateDemand">
+                                            <div class="form-group form-default" runat="server" visible="false" id="idState">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtState">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label ">Demand date</label>
-                                            </div>
+                                                <label class="float-label">State</label>
+                                            </div> 
+                                            <div class="form-group form-default" runat="server" visible="false" id="idAproved">
+                                                <input type="date" name="footer-email " class="form-control text-right" required="" runat="server" id="dateApproved">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Approved Date</label>
+                                            </div> 
                                             <div class="form-group form-default" runat="server" visible="false" id="VisApprovedBy">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtApproved">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Approved By</label>
-                                            </div>
-<%--                                            <div class="form-group form-default" >
-                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateApproved">
+                                            </div> 
+                                            <div class="form-group form-default" runat="server" visible="false" id="idSaved">
+                                                <input type="text" name="footer-email " class="form-control text-right" required="" runat="server" id="DateSaved">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label ">Approved date</label>
-                                            </div>--%>
+                                                <label class="float-label">Saved</label>
+                                            </div>
                                             <div class="form-group form-default">
                                                 <textarea class="form-control" required="" runat="server" id="txtComment"></textarea>
                                                 <span class="form-bar"></span>
@@ -133,7 +145,7 @@
                         <div class="card-footer">
                              <div class="float-right">
                                 <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
-                                <button type="reset" class="btn btn-danger ml-5">Cancel</button>
+                                <button id="btnCancel" runat="server" type="reset" class="btn btn-danger ml-5">Cancel</button>
                                 <a class="btn btn-info ml-5" href="ViewLeave.aspx">List</a>
                             </div>
                         </div>
