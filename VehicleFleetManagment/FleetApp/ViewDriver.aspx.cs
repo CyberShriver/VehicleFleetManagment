@@ -113,7 +113,6 @@ namespace VehicleFleetManagment.FleetApp
                  msg=I.UpdateMinistryWorkStateEmpty(index);
                 if (msg == 1)
                 {
-
                 Response.Redirect("~/FleetApp/ViewDriver.aspx");
                 }
                 else
