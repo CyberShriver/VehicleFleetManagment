@@ -84,5 +84,8 @@ namespace VehicleFleetManagment.FleetImp
 
         // DISPLAY SPECIFIC DRIVER   (In case of Edit) WHEN DRIVER START LEAVE
         void DisplaySelectedDriver(DropDownList drop, int idMin, int id);
+
+        // DISPLAY NOTIFICATION
+        void LeaveNotification(ListView listProgress, string codeMin);
     }
 }

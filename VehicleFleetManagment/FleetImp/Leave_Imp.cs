@@ -774,6 +774,29 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        // DISPLAY NOTIFICATION
+        public void LeaveNotification(ListView listProgress, string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from L in con.LEAVEs
+                           where L.MINISTRY.Code_Min == codeMin && L.State == "in Progress" || L.State == "Pending..."
+
+                           select new
+                           {
+                               Picture=L.MINISTRY_DRIVER.DRIVER.Picture,
+                               Full_Name = L.MINISTRY_DRIVER.DRIVER.Full_Name,
+                               Leave_Code=L.Leave_Code,
+                               State=L.State
+                           }
+                           ).ToList();
+
+                listProgress.DataSource = obj;
+                listProgress.DataBind();
+            }
+
+        }
+
 
 
     }

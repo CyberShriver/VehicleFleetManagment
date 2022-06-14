@@ -167,7 +167,7 @@ namespace VehicleFleetManagment.FleetApp
                         Dr.Office_Phone = txtTelOffice.Value;
                         Dr.Personnal_Phone = txtTel.Value;
                         Dr.State = state();
-                        Dr.Picture = "No Picture";
+                        Dr.Picture = "unkownDriver.jpg";
                         msg = I.Add(Dr);
                         if (msg > 0)
                         {

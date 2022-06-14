@@ -200,18 +200,18 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Ministry Code" Visible="true">
+                                            <asp:TemplateField HeaderText="Ministry Code" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="LblMinistryWork" runat="server" Text='<%# Eval("Ministry_Work") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Visibility" Visible="true">
+                                            <asp:TemplateField HeaderText="Visibility" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label45555" runat="server" Text='<%# Eval("Visibility") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="State" Visible="true">
+                                            <asp:TemplateField HeaderText="State" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label11144" runat="server" Text='<%# Eval("State") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -219,7 +219,7 @@
 
                                             <asp:TemplateField HeaderText="Picture">
                                                 <ItemTemplate>
-                                                    <asp:Image ID="Image1" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images",Eval("Picture")) %>' />
+                                                    <asp:Image ID="Image1" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images/Drivers/",Eval("Picture")) %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

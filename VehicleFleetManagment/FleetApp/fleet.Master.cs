@@ -60,6 +60,7 @@ namespace VehicleFleetManagment.FleetApp
             else
             {
                 MinistryTable.Visible = false;
+                Il.LeaveNotification(ListView1, codeMin);
             }
             
         }
