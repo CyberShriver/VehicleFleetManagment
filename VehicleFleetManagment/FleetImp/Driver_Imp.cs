@@ -124,35 +124,6 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
-        //DELETE CHECK METHOD
-        public int DeleteCheck(GridView gd, CheckBox chk, int id)
-        {
-            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
-            {
-                for (int i = 0; i < gd.Rows.Count; i++)
-                {
-                    CheckBox chkselect = (CheckBox)gd.Rows[i].FindControl("chk");
-                    if (chkselect.Checked == true)
-                    {
-                        id = Convert.ToInt32(gd.Rows[i].Cells[i].Text);
-                        var obj = con.DRIVERs.Where(x => x.DRIVER_ID == id).First();
-
-                        if (con.Entry(obj).State == EntityState.Detached)
-                        {
-                            con.DRIVERs.Attach(obj);
-
-
-                        }
-                        con.DRIVERs.Remove(obj);
-                        con.SaveChanges();
-                    }
-                }
-                return msg;
-            }
-
-        }
-
-
         //DISPLAY METHOD
         public void Display(GridView gd)
         {
@@ -188,6 +159,44 @@ namespace VehicleFleetManagment.FleetImp
 
                 gd.DataSource = obj;
                 gd.DataBind();
+            }
+
+        }
+
+        //DISPLAY METHOD Where CNI
+        public int ProvideByCNI(Driver_Class Dr, string cni)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                D = con.DRIVERs.Where(x => x.CNI == cni).FirstOrDefault();
+
+                if (D != null)
+                {
+                    Dr.Driver_Code = D.Driver_Code;
+                    Dr.Full_Name = D.Full_Name;
+                    Dr.CNI = D.CNI;
+                    Dr.Address1 = D.Address1;
+                    Dr.Address2 = D.Address2;
+                    Dr.Address3 = D.Address3;
+                    Dr.Driver_Type = D.Driver_Type;
+                    Dr.Postal_code = D.Postal_code;
+                    Dr.Email = D.Email;
+                    Dr.Nationality = D.Nationality;
+                    Dr.Gender = D.Gender;
+                    Dr.Marital_Status = D.Marital_Status;
+                    Dr.DOB = D.DOB;
+                    Dr.Mother_Language = D.Mother_Language;
+                    Dr.Office_Phone = D.Office_Phone;
+                    Dr.Personnal_Phone = D.Personnal_Phone;
+                    Dr.Ministry_Work = D.Ministry_Work;
+                    Dr.State = D.State;
+                    Dr.Picture = D.Picture;
+
+                    return msg = 1;
+                }
+                else
+                    return msg = 0;
+                
             }
 
         }

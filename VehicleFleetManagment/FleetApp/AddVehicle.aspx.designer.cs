@@ -51,6 +51,15 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl FillMsg;
 
         /// <summary>
+        /// ExistMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ExistMsg;
+
+        /// <summary>
         /// FailMsg control.
         /// </summary>
         /// <remarks>
@@ -138,7 +147,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPlate;
+        protected global::System.Web.UI.WebControls.TextBox txtPlate;
 
         /// <summary>
         /// txtName control.

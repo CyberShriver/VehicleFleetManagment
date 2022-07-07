@@ -272,13 +272,13 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
-                                    <li class="pcoded-hasmenu">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                    <li class="">
+                                        <a href="ViewVehicle.aspx" class="waves-effect waves-dark">
+                                            <span class="pcoded-micon"><i class="fa fa-bus"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Vehicles.alert">Vehicles</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+<%--                                        <ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddVehicle.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -293,15 +293,15 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
-                                    <li class="pcoded-hasmenu">
-                                        <a href="javascript:void(0) " class="waves-effect waves-dark">
+                                    <li class="">
+                                        <a href="ViewMark.aspx " class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Vehicles.Mark.Alert">Mark</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddMark.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -316,15 +316,15 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class="">
+                                        <a href="ViewModel.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Vehicles.Model.Alert">Model</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+<%--                                        <ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddModel.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -339,16 +339,16 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class="">
+                                        <a href="ViewBody.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Vehicles.Body-Type.Alert">Body Type</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
 
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddBody.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -363,16 +363,16 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class=" ">
+                                        <a href="ViewSchedule.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Vehicles.Schedule.alert">Schedule</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
 
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddSchedule.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -387,15 +387,15 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
-                                    <li class="pcoded-hasmenu">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class="">
+                                        <a href="ViewAssurance.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Vehicles.Assurance.Alert">Assurance</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddAssurance.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -410,15 +410,15 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
-                                    <li class="pcoded-hasmenu">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class="">
+                                        <a href="ViewMOT.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Vehicles.MOT.alert">MOT</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddMOT.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -433,7 +433,7 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
                                 </ul>
                             </li>
@@ -450,13 +450,13 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
-                                    <li class="pcoded-hasmenu " runat="server" id="MinistryTable">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class="" runat="server" id="MinistryTable">
+                                        <a href="ViewMinistry.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministry.alert">Ministry</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddMinistry.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -471,15 +471,15 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class=" ">
+                                        <a href="ViewMinistryDriver.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministry-Drivers.alert">Ministry Drivers</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddMinistryDriver.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -494,16 +494,16 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
 
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class=" ">
+                                        <a href="ViewRealEstate.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Ministries.Real-Estate.alert">Real Estate</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddRealEstate.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -518,15 +518,15 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class=" ">
+                                        <a href="ViewMinistryReal.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministries-Real-Estate.alert">Ministries Real Estate</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddMinistryReal.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -541,7 +541,7 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
 
                                 </ul>
@@ -573,13 +573,13 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class="">
+                                        <a href="ViewProvider.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Fuel.Provider.alert">Provider</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddProvider.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -594,16 +594,16 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
 
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class="">
+                                        <a href="ViewVehicleFuel.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Fuel.Vehicle-Fuel.alert">Vehicle Fuel</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddVehicleFuel.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -618,7 +618,7 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
 
 
@@ -637,13 +637,13 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
-                                    <li class="pcoded-hasmenu">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class="">
+                                        <a href="ViewDriver.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Drivers.alert">Drivers</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                         <ul class="pcoded-submenu">
+                                        <%-- <ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddDriver.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -658,15 +658,15 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class="">
+                                        <a href="ViewLeaveType.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Drivers.Leave-Type.alert">Leave Type</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddLeaveType.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -681,15 +681,15 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
-                                    <li class="pcoded-hasmenu">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class="">
+                                        <a href="ViewLeave.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Drivers.Leave.alert">Leave</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddLeave.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -704,15 +704,15 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class=" ">
+                                        <a href="ViewLicense.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">License</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+                                       <%-- <ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddLicense.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -727,7 +727,7 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
                                 </ul>
                             </li>
@@ -744,13 +744,13 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class="">
+                                        <a href="ViewCarCrash.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Maintanance-Crash.Crash.alert">Crash</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddCarCrash.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -765,15 +765,15 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
-                                    <li class="pcoded-hasmenu ">
-                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                    <li class=" ">
+                                        <a href="ViewRepair.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Maintanance-Crash.Repair.alert">Repair</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <ul class="pcoded-submenu">
+                                        <%--<ul class="pcoded-submenu">
                                             <li class="">
                                                 <a href="AddRepair.aspx" class="waves-effect waves-dark">
                                                     <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -788,7 +788,7 @@
                                                     <span class="pcoded-mcaret"></span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul>--%>
                                     </li>
 
                                 </ul>

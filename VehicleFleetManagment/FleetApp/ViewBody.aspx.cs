@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -25,7 +28,7 @@ namespace VehicleFleetManagment.FleetApp
             {
                 txtSystemTitle.Text = sytemTitle;
                 txtSlogan.Text = slogan;
-
+                DeleteAllVisibility.Visible = false;
                 getDataGDV();
 
             }
@@ -100,7 +103,8 @@ namespace VehicleFleetManagment.FleetApp
         protected void checkSel_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox chkStatus = (CheckBox)sender;
-            GridView row = (GridView)chkStatus.NamingContainer;
+            GridViewRow row = (GridViewRow)chkStatus.NamingContainer;
+            DeleteAllVisibility.Visible = true;
         }
 
         protected void checkSelHeader_CheckedChanged(object sender, EventArgs e)
@@ -109,13 +113,25 @@ namespace VehicleFleetManagment.FleetApp
             foreach(GridViewRow row in gdv.Rows)
             {
                 CheckBox chkrow=(CheckBox)row.FindControl("checkSel");
+                Button btnEdit = (Button)row.FindControl("btn_Edit");
+                Button btnDelete = (Button)row.FindControl("Btn_Delete");
+
                 if (chkHeader.Checked==true)
                 {
                     chkrow.Checked = true;
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
+                    DeleteAllVisibility.Visible = true;
+                    chkHeader.Text = "Deselect All";
+
                 }
                 else
                 {
                     chkrow.Checked= false;
+                    btnEdit.Enabled = true;
+                    btnDelete.Enabled = true;
+                    DeleteAllVisibility.Visible = false;
+                    chkHeader.Text = " Select All";
                 }
                  
             }
@@ -128,11 +144,21 @@ namespace VehicleFleetManagment.FleetApp
                 CheckBox chkdelete = (CheckBox)gdv.Rows[i].Cells[0].FindControl("checkSel");
                 if (chkdelete.Checked)
                 {
-                   int id = Convert.ToInt32(gdv.Rows[i].Cells[1].Text);
-                    I.DeleteCheck(id);
+                   int id = Convert.ToInt32(gdv.DataKeys[i].Value);
+                    //using(SqlConnection con=new SqlConnection(ConfigurationManager.ConnectionStrings["MINISTRY_DB_Connection"].ConnectionString))
+                    //{
+                    //    con.Open();
+                    //    SqlCommand cmd = new SqlCommand("Delete from BODY_TYPE Where BODY_ID='" + id + "'", con);
+                    //    cmd.ExecuteNonQuery();
+                    //    gdv.EditIndex = -1;
+                    //    con.Close();
+                    //}
+                    I.Delete(id);
                     gdv.EditIndex = -1;
                 }
             }
+            getDataGDV();
+            DeleteAllVisibility.Visible = false;
         }
     }
 }

@@ -89,35 +89,6 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
-        //DELETE CHECK METHOD
-        public int DeleteCheck(GridView gd, CheckBox chk, int id)
-        {
-            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
-            {
-                for (int i = 0; i < gd.Rows.Count; i++)
-                {
-                    CheckBox chkselect = (CheckBox)gd.Rows[i].FindControl("chk");
-                    if (chkselect.Checked == true)
-                    {
-                        id = Convert.ToInt32(gd.Rows[i].Cells[i].Text);
-                        var obj = con.REAL_ESTATE.Where(x => x.REAL_ESTATE_ID == id).First();
-
-                        if (con.Entry(obj).State == EntityState.Detached)
-                        {
-                            con.REAL_ESTATE.Attach(obj);
-
-
-                        }
-                        con.REAL_ESTATE.Remove(obj);
-                        con.SaveChanges();
-                    }
-                }
-                return msg;
-            }
-
-        }
-
-
         //DISPLAY METHOD
         public void Display(GridView gd)
         {

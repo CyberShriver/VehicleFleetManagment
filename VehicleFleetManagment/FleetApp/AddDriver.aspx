@@ -43,8 +43,12 @@
                         </div>
                         <div class="alert alert-info alert-dismissible fade show" runat="server" id="FillMsg">
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <strong>Please complete all fields!</strong>
+                            <strong>Please complete all fields!</strong>                          
                         </div>
+                        <div class="alert alert-info alert-dismissible fade show" runat="server" id="ExistMsg">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Already saved!</strong>
+                            </div>
                         <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                             <strong>Operation Failed!</strong>
@@ -135,7 +139,8 @@
                                                     <div class="col-md-6">
                                                         <div class="form-material">
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCNI">
+                                                                <%--<input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCNI" onchange="" >--%>
+                                                                <asp:TextBox ID="txtCNI"  class="form-control" required="" runat="server" OnTextChanged="OnTextChanged_txtCNI" AutoPostBack="true"></asp:TextBox>
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">CNI</label>
                                                             </div>

@@ -19,9 +19,6 @@ namespace VehicleFleetManagment.FleetImp
         //Delete Method
         int Delete(int id);
 
-        //Delete Method
-        int DeleteCheck(GridView gd, CheckBox chk, int id);
-
         //Display Method
         void Display(GridView gd);
 
@@ -58,7 +55,11 @@ namespace VehicleFleetManagment.FleetImp
         //UPDATE MINISTRY WORK STATE METHOD TO EMPTY
         int UpdateMinistryWorkStateEmpty( int id);
 
-        
+        //DISPLAY METHOD Where CNI
+        int ProvideByCNI(Driver_Class Dr, string cni);
+
+
+
 
 
     }

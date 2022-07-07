@@ -20,8 +20,6 @@ namespace VehicleFleetManagment.FleetImp
         //Delete Method
         int Delete(int id);
 
-        //Delete Method
-        int DeleteCheck(int id);
         //Display Method
         void Display(GridView gd);
 

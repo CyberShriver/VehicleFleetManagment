@@ -89,26 +89,6 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
-        //DELETE CHECK METHOD
-        public int DeleteCheck(int id)
-        {
-            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
-            {
-                var obj = con.BODY_TYPE.Where(x => x.BODY_ID == id).First();
-
-                if (con.Entry(obj).State == EntityState.Detached)
-                {
-                    con.BODY_TYPE.Attach(obj);
-
-                }
-                con.BODY_TYPE.Remove(obj);
-                con.SaveChanges();
-                return msg;
-            }
-
-        }
-
-
         //DISPLAY METHOD
         public void Display(GridView gd)
         {

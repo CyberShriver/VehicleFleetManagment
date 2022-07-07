@@ -66,6 +66,7 @@ namespace VehicleFleetManagment.FleetApp
             SuccessMsg.Visible = false;
             FillMsg.Visible = false;
             FailMsg.Visible = false;
+            ExistMsg.Visible = false;
         }
 
         //Add 
@@ -73,7 +74,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if ( txtPlate.Value == "" || txtName.Value == "" || txtColor.Value == "" || txtEngineNumber.Value == "" || txtChassis.Value == "" ||
+                if ( txtPlate.Text == "" || txtName.Value == "" || txtColor.Value == "" || txtEngineNumber.Value == "" || txtChassis.Value == "" ||
                     txtEngineManif.Value == "" || txtEnginType.Value == "" || txtEnginSeries.Value == "" || txtEngAltern.Value == "" || txtEngineNumber.Value == "" || txtEngAlternType.Value == "" ||
                     txtEnginCylind.Value == "" || txtEnginPower.Value == "" || txtAssembly.Value == "" || txtGenerWeight.Value == "" || txtVolt.Value == "" || txtKva.Value == "" ||
                     txtEngincc.Value == "" || txtGearBox.Value == "" || txtCondition.Value == "" || txtTankTyp1.Value == "" || txtTankSze1.Value == ""  ||
@@ -101,7 +102,7 @@ namespace VehicleFleetManagment.FleetApp
                             {
                                 Veh.Veh_Code = VehicleCode();
                                 Veh.BODY_ID = Convert.ToInt32(DropDown_Body.SelectedValue);
-                                Veh.Local_Plate =txtPlate.Value;
+                                Veh.Local_Plate =txtPlate.Text;
                                 Veh.MODEL_ID = Convert.ToInt32(DropDown_Model.SelectedValue);
                                 Veh.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
                                 Veh.NameVeh = txtName.Value;
@@ -158,7 +159,7 @@ namespace VehicleFleetManagment.FleetApp
                                     SuccessMsg.Visible = true;
 
                                     txtCode.Value = "";
-                                    txtPlate.Value = "";
+                                    txtPlate.Text = "";
                                     txtName.Value = "";
                                     txtColor.Value = "";
                                     txtEngineNumber.Value = "";
@@ -219,7 +220,7 @@ namespace VehicleFleetManagment.FleetApp
                     {
                         Veh.Veh_Code = VehicleCode();
                         Veh.BODY_ID = Convert.ToInt32(DropDown_Body.SelectedValue);
-                        Veh.Local_Plate = txtPlate.Value;
+                        Veh.Local_Plate = txtPlate.Text;
                         Veh.MODEL_ID = Convert.ToInt32(DropDown_Model.SelectedValue);
                         Veh.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
                         Veh.NameVeh = txtName.Value;
@@ -276,7 +277,7 @@ namespace VehicleFleetManagment.FleetApp
                             SuccessMsg.Visible = true;
 
                             txtCode.Value = "";
-                            txtPlate.Value = "";
+                            txtPlate.Text = "";
                             txtName.Value = "";
                             txtColor.Value = "";
                             txtEngineNumber.Value = "";
@@ -335,7 +336,7 @@ namespace VehicleFleetManagment.FleetApp
 
             try
             {
-                if ( txtPlate.Value == "" || txtName.Value == "" || txtColor.Value == "" || txtEngineNumber.Value == "" || txtChassis.Value == "" ||
+                if ( txtPlate.Text == "" || txtName.Value == "" || txtColor.Value == "" || txtEngineNumber.Value == "" || txtChassis.Value == "" ||
                     txtEngineManif.Value == "" || txtEnginType.Value == "" || txtEnginSeries.Value == "" || txtEngAltern.Value == "" || txtEngineNumber.Value == "" || txtEngAlternType.Value == "" ||
                     txtEnginCylind.Value == "" || txtEnginPower.Value == "" || txtAssembly.Value == "" || txtGenerWeight.Value == "" || txtVolt.Value == "" || txtKva.Value == "" ||
                     txtEngincc.Value == "" || txtGearBox.Value == "" || txtCondition.Value == "" || txtTankTyp1.Value == "" || txtTankSze1.Value == "" || txtTankTyp2.Value == "" ||
@@ -363,7 +364,7 @@ namespace VehicleFleetManagment.FleetApp
                             {
                                 Veh.Veh_Code =txtCode.Value;
                                 Veh.BODY_ID = Convert.ToInt32(DropDown_Body.SelectedValue);
-                                Veh.Local_Plate = txtPlate.Value;
+                                Veh.Local_Plate = txtPlate.Text;
                                 Veh.MODEL_ID = Convert.ToInt32(DropDown_Model.SelectedValue);
                                 Veh.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
                                 Veh.NameVeh = txtName.Value;
@@ -443,7 +444,7 @@ namespace VehicleFleetManagment.FleetApp
                     {
                         Veh.Veh_Code = txtCode.Value;
                         Veh.BODY_ID = Convert.ToInt32(DropDown_Body.SelectedValue);
-                        Veh.Local_Plate = txtPlate.Value;
+                        Veh.Local_Plate = txtPlate.Text;
                         Veh.MODEL_ID = Convert.ToInt32(DropDown_Model.SelectedValue);
                         Veh.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
                         Veh.NameVeh = txtName.Value;
@@ -523,7 +524,7 @@ namespace VehicleFleetManagment.FleetApp
 
                 txtCode.Value = Veh.Veh_Code;
                 DropDown_Body.SelectedValue = Veh.BODY_ID.ToString();
-                txtPlate.Value = Veh.Local_Plate;
+                txtPlate.Text = Veh.Local_Plate;
                 DropDown_Model.SelectedValue = Veh.MODEL_ID.ToString();
                 DropDown_Ministry.SelectedValue = Veh.MINISTRY_ID.ToString();
                 txtName.Value = Veh.NameVeh;
@@ -661,9 +662,114 @@ namespace VehicleFleetManagment.FleetApp
             I.DisplayBodyType(DropDown_Body);
         }
 
-       // void Fuel()
-       // {
-       //     I.DisplayFuel(DropDown_fuel);
+        // void Fuel()
+        // {
+        //     I.DisplayFuel(DropDown_fuel);
         //}
+
+        protected void OnTextChanged_txtPlate(object sender, EventArgs args)
+        {
+            msg = I.ProvideByPlate(Veh, txtPlate.Text);
+
+            if (msg == 1)
+            {
+                txtCode.Value = Veh.Veh_Code;
+                DropDown_Body.SelectedValue = Veh.BODY_ID.ToString();
+                txtPlate.Text = Veh.Local_Plate;
+                DropDown_Model.SelectedValue = Veh.MODEL_ID.ToString();
+                DropDown_Ministry.SelectedValue = Veh.MINISTRY_ID.ToString();
+                txtName.Value = Veh.NameVeh;
+                txtColor.Value = Veh.Color;
+                txtCondition.Value = Veh.Condition;
+                txtChassis.Value = Veh.Chassis_Num;
+                txtEngineNumber.Value = Veh.Engine_Num;
+                txtEngineManif.Value = Veh.Engine_Manufacturer;
+                txtEnginType.Value = Veh.Engine_Type;
+                txtEngAltern.Value = Veh.Alternator_Engine_Manufacturer;
+                txtEngAlternType.Value = Veh.Alternator_Engine_Type;
+                txtKva.Value = Veh.Kva.ToString();
+                txtVolt.Value = Veh.Volt.ToString();
+                // Veh.Picture = img;
+                txtGenerWeight.Value = Veh.Generator_Weight;
+                DropDown_Trailer.SelectedValue = Veh.Trailer;
+                txtAssembly.Value = Veh.Assembly_Num;
+                DropDown_lhd_rhd.SelectedValue = Veh.lhd_rhd;
+                DropDown_Belt.SelectedValue = Veh.Safety_Belt;
+                txtGearBox.Value = Veh.Gearbox_Type;
+                DropDown_Opt_Four_Wheel.SelectedValue = Veh.Opt_Four_Wheel;
+                DropDown_Central_Locking.SelectedValue = Veh.Central_Locking;
+                dropDown_Rear_Lock.SelectedValue = Veh.Rear_Lock;
+                txtEnginSeries.Value = Veh.Engine_Series_Num;
+                DropDown_Forward_Lock.SelectedValue = Veh.Forward_Lock;
+                txtEnginCylind.Value = Veh.Engine_cylinder_Number;
+                txtEngincc.Value = Veh.Engine_cc;
+                txtEnginPower.Value = Veh.Engine_Power.ToString();
+                DropDown_fuel.SelectedValue = Veh.Fuel_Fype;
+                txtTankTyp1.Value = Veh.Tank_Type1;
+                txtTankSze1.Value = Veh.Tank_Size1.ToString();
+                txtTankTyp2.Value = Veh.Tank_Type2;
+                txtTankCapacity2.Value = Veh.Tank_Capacity2.ToString();
+                txtFrontSeat.Value = Veh.Front_Seats_Number.ToString();
+                txtBatteryVolt.Value = Veh.Battery_Voltage.ToString();
+                DropDown_Air_Conditioner.SelectedValue = Veh.Air_Conditioner;
+                DropDown_Additional_Heating.SelectedValue = Veh.Additional_Heating;
+                txtVehiclWeight.Value = Veh.Veh_Weight.ToString();
+                txtGrossVehWeigth.Value = Veh.Gross_Veh_Weigth.ToString();
+                txtEmptyPod.Value = Veh.Empty_Pod.ToString();
+                txtKeyCode.Value = Veh.Key_Code;
+                DropDown_Rear_Blake.SelectedValue = Veh.Rear_Blake;
+                DropDown_Electronic_Logbook.SelectedValue = Veh.Electronic_Logbook;
+                txtRadioCode.Value = Veh.Radio_Code;
+                dateGuaranteExp.Value = Veh.Guaranteed_Expiration_Date;
+                txtGuaranteeCerticat.Value = Veh.Guaranteed_Certificate_Num;
+                dateCirculationExp.Value = Veh.Circulation_Expiration_Date;
+                DropDown_State.SelectedValue = Veh.Stat;
+
+                ExistMsg.Visible = true;                
+                btnSave.Visible = false;
+
+            }
+            else
+            {
+                txtCode.Value = "";
+                txtName.Value = "";
+                txtColor.Value = "";
+                txtEngineNumber.Value = "";
+                txtChassis.Value = "";
+                txtEngineManif.Value = "";
+                txtEnginType.Value = "";
+                txtEnginSeries.Value = "";
+                txtEngAltern.Value = "";
+                txtEngineNumber.Value = "";
+                txtEngAlternType.Value = "";
+                txtEnginCylind.Value = "";
+                txtEnginPower.Value = "";
+                txtAssembly.Value = "";
+                txtGenerWeight.Value = "";
+                txtVolt.Value = "";
+                txtKva.Value = "";
+                txtEngincc.Value = "";
+                txtGearBox.Value = "";
+                txtCondition.Value = "";
+                txtTankTyp1.Value = "";
+                txtTankSze1.Value = "";
+                txtTankTyp2.Value = "";
+                txtGrossVehWeigth.Value = "";
+                txtKeyCode.Value = "";
+                txtVehiclWeight.Value = "";
+                txtBatteryVolt.Value = "";
+                txtFrontSeat.Value = "";
+                txtTankCapacity2.Value = "";
+                txtEmptyPod.Value = "";
+                txtRadioCode.Value = "";
+                txtGuaranteeCerticat.Value = "";
+                dateGuaranteExp.Value = "";
+                dateCirculationExp.Value = "";
+
+                btnSave.Visible = true;
+                ExistMsg.Visible = false;
+            }
+
+        }
     }
 }

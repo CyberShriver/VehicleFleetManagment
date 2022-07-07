@@ -52,24 +52,24 @@
                             </div>
 
                             <!-- Start Search  -->
-                            <div class=" col-md-6 mx-auto mb-0 mt-0">
-                                <div class="row">
-                                    <div class="col-md">
-                                        <div class="form-material">
-                                            <div class="form-group form-primary">
-                                                <input type="text" name="footer-email" class="form-control" id="txt_Search" runat="server" placeholder="search">
-                                                <span class="form-bar"></span>
+                             <div class="row">                                    
+                                    <div class="col-md-6 d-flex mx-auto mb-0 mt-0">
+                                        <div class="col-md ">
+                                            <div class="form-material">
+                                                <div class="form-group form-primary">
+                                                    <input name="footer-email" class="form-control"  id="txt_Search" runat="server" placeholder="search" OnTextChanged="txt_Search_TextChanged"/>
+                                                    <span class="form-bar"></span>
+                                                </div>
                                             </div>
+
                                         </div>
 
-                                    </div>
+                                        <div class="col-md">
+                                            <button class="btn btn-default" runat="server" onserverclick="btn_srch_Click"><i class="fa fa-search m-r-10"></i>search</button>
 
-                                    <div class="col-md">
-                                        <button class="btn btn-default" runat="server" onserverclick="btn_srch_Click"><i class="fa fa-search m-r-10"></i>search</button>
-                                        <%--<asp:Button ID="DeleteCheck" runat="server" Text="Delete All" class="btn btn-danger" OnClick="DeleteCheck_Click" />--%>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                            </div> 
                             <!-- end Search  -->
                             <div class="float-right mt-0 d-flex mb-0">
                                 <span runat="server" class="font-weight-bold mr-1">Records: </span>
@@ -79,6 +79,11 @@
                         </div>
                         <div class="card-block table-border-style">
                             <div class="table-responsive">
+                                <div class=" ml-5  mb-2 mr-5" runat="server" id="DeleteAllVisibility" visible="false">
+                                            <button  runat="server"  class="btn btn-default ml-5" onserverclick="DeleteCheck_Click">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                    </div>
                                 <table class="">
                                     <asp:GridView ID="gdv" DataKeyNames="LEAVE_ID" ShowHeaderWhenEmpty="true" EmptyDataText="No Records" HeaderStyle-HorizontalAlign="Center"
                                         class="table  table-striped  table-borderless text-center gdv" HorizontalAlign="Center" HeaderStyle-Font-Bold="true"
@@ -87,20 +92,17 @@
                                         runat="server" Width="100%" OnRowCommand="gdv_RowCommand" OnPageIndexChanging="gdv_PageIndexChanging">
 
                                         <Columns>
-                                            <asp:TemplateField>
+                                             <asp:TemplateField>
                                                 <HeaderTemplate>
-                                                    <asp:CheckBox ID="checkSelHeader" runat="server" Text="Select All" AutoPostBack="false" />
+                                                    <asp:CheckBox ID="checkSelHeader" runat="server" Text=" Select All" AutoPostBack="true" OnCheckedChanged="checkSelHeader_CheckedChanged" />
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
-                                                    <asp:CheckBox ID="checkSel" runat="server" />
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="#" FooterText="#" Visible="false">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="lblID" runat="server" Text='<%# Eval("LEAVE_ID") %>'></asp:Label>
+                                                    <asp:CheckBox ID="checkSel" runat="server" OnCheckedChanged="checkSel_CheckedChanged"/>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
+                                            <asp:BoundField DataField="LEAVE_ID" HeaderText="#" Visible="false" />
+                                           
                                              <asp:TemplateField HeaderText="Ministry" FooterText="#" Visible="false" >
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label9" runat="server" Text='<%# Eval("MINISTRY_ID") %>'></asp:Label>

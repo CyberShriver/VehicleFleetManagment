@@ -45,6 +45,10 @@
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                             <strong>Please complete all fields!</strong>
                         </div>
+                        <div class="alert alert-info alert-dismissible fade show" runat="server" id="ExistMsg">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Already saved!</strong>
+                            </div>
                         <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                             <strong>Operation Failed!</strong>
@@ -91,7 +95,7 @@
                                                             </div>
 
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtPlate">
+                                                                <asp:TextBox ID="txtPlate"  class="form-control" required="" runat="server" OnTextChanged="OnTextChanged_txtPlate" AutoPostBack="true"></asp:TextBox>
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Plate</label>
                                                             </div>

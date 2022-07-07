@@ -52,9 +52,8 @@
                                     <li><i class="fa fa fa-wrench open-card-option"></i></li>
                                     <li><i class="fa fa-window-maximize full-card"></i></li>
                                     <li><i class="fa fa-minus minimize-card"></i></li>
-                                    <li></li>
-                                    <li><a onserverclick="btnReload_click" runat="server" class="reload-card btn-out"><i class="fa fa-refresh"></i></a></li>
-                                    <li><i class="fa fa-trash close-card"></i></li>
+                                    <li><a onserverclick="btnReload_click" runat="server" class="reload-card btn-out"><i class="fa fa-refresh"></i></a></li>                                   
+                                    <li><a onserverclick="DeleteCheck_Click" runat="server" class="reload-card btn-out"><i class="fa fa-trash"></i></a></li>
                                 </ul>
                             </div>
 
@@ -83,7 +82,6 @@
 
                                         <div class="col-md">
                                             <button class="btn btn-default" runat="server" onserverclick="btn_srch_Click"><i class="fa fa-search m-r-10"></i>search</button>
-                                            <%--<asp:Button ID="DeleteCheck" runat="server" Text="Delete All" class="btn btn-danger" OnClick="DeleteCheck_Click" />--%>
                                         </div>
                                     </div>
                             </div>
@@ -97,6 +95,11 @@
                         </div>
                         <div class="card-block table-border-style">
                             <div class="table-responsive">
+                                <div class=" ml-5  mb-2 mr-5" runat="server" id="DeleteAllVisibility" visible="false">
+                                            <button  runat="server"  class="btn btn-default ml-5" onserverclick="DeleteCheck_Click">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                    </div>
                                 <table class="">
                                     <asp:GridView ID="gdv" DataKeyNames="DRIVER_ID" ShowHeaderWhenEmpty="true" EmptyDataText="No Records" HeaderStyle-HorizontalAlign="Center"
                                         class="table  table-striped  table-borderless text-center gdv" HorizontalAlign="Center" HeaderStyle-Font-Bold="true"
@@ -107,17 +110,14 @@
                                         <Columns>
                                             <asp:TemplateField>
                                                 <HeaderTemplate>
-                                                    <asp:CheckBox ID="checkSelHeader" runat="server" Text="  Select All " AutoPostBack="false" />
+                                                    <asp:CheckBox ID="checkSelHeader" runat="server" Text="  Select All " AutoPostBack="true" OnCheckedChanged="checkSelHeader_CheckedChanged" />
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
-                                                    <asp:CheckBox ID="checkSel" runat="server" />
+                                                    <asp:CheckBox ID="checkSel" runat="server" OnCheckedChanged="checkSel_CheckedChanged" />
                                                 </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="#" FooterText="#" Visible="false">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("DRIVER_ID") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+                                            </asp:TemplateField>      
+                                            
+                                            <asp:BoundField DataField="DRIVER_ID" HeaderText="#" Visible="false" />
 
                                             <asp:TemplateField HeaderText="Full Name">
                                                 <ItemTemplate>
@@ -205,7 +205,7 @@
                                                     <asp:Label ID="LblMinistryWork" runat="server" Text='<%# Eval("Ministry_Work") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Visibility" Visible="false">
+                                            <asp:TemplateField HeaderText="Visibility" Visible="true">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label45555" runat="server" Text='<%# Eval("Visibility") %>'></asp:Label>
                                                 </ItemTemplate>

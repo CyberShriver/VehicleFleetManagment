@@ -69,6 +69,7 @@ namespace VehicleFleetManagment.FleetApp
             SuccessMsg.Visible = false;
             FillMsg.Visible = false;
             FailMsg.Visible = false;
+            ExistMsg.Visible = false;
         }
 
         //Add 
@@ -76,11 +77,12 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if ( txtFullName.Value == "" || txtTel.Value == "" || dateBirth.Value == "" || txtNationality.Value == "" || txtCNI.Value == "" || txtAddress1.Value == "" 
+                if ( txtFullName.Value == "" || txtTel.Value == "" || dateBirth.Value == "" || txtNationality.Value == "" || txtCNI.Text == "" || txtAddress1.Value == "" 
                     || DropDown_language.SelectedValue == "-1" || DropDown_Gender.SelectedValue == "-1" || DropDown_Marital.SelectedValue == "-1" || DropDownList_DriverType.SelectedValue == "-1")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
+                    ExistMsg.Visible = false;
                     FailMsg.Visible = false;
                 }
                 else
@@ -97,7 +99,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Dr.Driver_Code = DriverCode();
                                 Dr.Ministry_Work = DropDown_Ministry.SelectedValue;
                                 Dr.Full_Name = txtFullName.Value;
-                                Dr.CNI = txtCNI.Value;
+                                Dr.CNI = txtCNI.Text;
                                 Dr.Address1 = txtAddress1.Value;
                                 Dr.Address2 = txtAddress2.Value;
                                 Dr.Address3 = txtAddress3.Value;
@@ -119,6 +121,7 @@ namespace VehicleFleetManagment.FleetApp
                                     FillMsg.Visible = false;
                                     FailMsg.Visible = false;
                                     SuccessMsg.Visible = true;
+                                    ExistMsg.Visible = false;
 
                                     txtCode.Value = "";
                                     txtFullName.Value = "";
@@ -130,6 +133,7 @@ namespace VehicleFleetManagment.FleetApp
                                     SuccessMsg.Visible = false;
                                     FillMsg.Visible = false;
                                     FailMsg.Visible = true;
+                                    ExistMsg.Visible = false;
 
                                 }
                             }
@@ -138,6 +142,7 @@ namespace VehicleFleetManagment.FleetApp
                                 SuccessMsg.Visible = false;
                                 FillMsg.Visible = false;
                                 FailMsg.Visible = true;
+                                ExistMsg.Visible = false;
                             }
                         }
                         else
@@ -145,6 +150,7 @@ namespace VehicleFleetManagment.FleetApp
                             SuccessMsg.Visible = false;
                             FillMsg.Visible = false;
                             FailMsg.Visible = true;
+                            ExistMsg.Visible = false;
                         }
                     }
                     else
@@ -152,7 +158,7 @@ namespace VehicleFleetManagment.FleetApp
                         Dr.Driver_Code = DriverCode();
                         Dr.Ministry_Work = DropDown_Ministry.SelectedValue;
                         Dr.Full_Name = txtFullName.Value;
-                        Dr.CNI = txtCNI.Value;
+                        Dr.CNI = txtCNI.Text;
                         Dr.Address1 = txtAddress1.Value;
                         Dr.Address2 = txtAddress2.Value;
                         Dr.Address3 = txtAddress3.Value;
@@ -174,6 +180,7 @@ namespace VehicleFleetManagment.FleetApp
                             FillMsg.Visible = false;
                             FailMsg.Visible = false;
                             SuccessMsg.Visible = true;
+                            ExistMsg.Visible = false;
 
                             txtCode.Value = "";
                             txtFullName.Value = "";
@@ -183,6 +190,7 @@ namespace VehicleFleetManagment.FleetApp
                         else
                         {
                             SuccessMsg.Visible = false;
+                            ExistMsg.Visible = false;
                             FillMsg.Visible = false;
                             FailMsg.Visible = true;
 
@@ -207,7 +215,7 @@ namespace VehicleFleetManagment.FleetApp
             try
             {
                 if (txtCode.Value == "" || txtFullName.Value == "" || txtTel.Value == "" || txtMail.Value == "" || dateBirth.Value == "" || txtNationality.Value == "" ||
-                    txtCNI.Value == "" || txtAddress1.Value == "" || txtAddress1.Value == "" ||txtTelOffice.Value == "" || txtPostal.Value == ""
+                    txtCNI.Text == "" || txtAddress1.Value == "" || txtAddress1.Value == "" ||txtTelOffice.Value == "" || txtPostal.Value == ""
                     || DropDown_language.SelectedValue == "-1" || DropDown_Gender.SelectedValue == "-1" || DropDown_Marital.SelectedValue == "-1" || DropDownList_DriverType.SelectedValue == "-1" )
                 {
                     SuccessMsg.Visible = false;
@@ -228,7 +236,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Dr.Driver_Code = txtCode.Value;
                                 Dr.Ministry_Work = DropDown_Ministry.SelectedValue;
                                 Dr.Full_Name = txtFullName.Value;
-                                Dr.CNI = txtCNI.Value;
+                                Dr.CNI = txtCNI.Text;
                                 Dr.Address1 = txtAddress1.Value;
                                 Dr.Address2 = txtAddress2.Value;
                                 Dr.Address3 = txtAddress3.Value;
@@ -276,7 +284,7 @@ namespace VehicleFleetManagment.FleetApp
                         Dr.Driver_Code = txtCode.Value;
                         Dr.Ministry_Work = DropDown_Ministry.SelectedValue;
                         Dr.Full_Name = txtFullName.Value;
-                        Dr.CNI = txtCNI.Value;
+                        Dr.CNI = txtCNI.Text;
                         Dr.Address1 = txtAddress1.Value;
                         Dr.Address2 = txtAddress2.Value;
                         Dr.Address3 = txtAddress3.Value;
@@ -339,7 +347,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtCode.Value = Dr.Driver_Code;
                 DropDown_Ministry.SelectedValue= Dr.Ministry_Work ;
                 txtFullName.Value = Dr.Full_Name;
-                txtCNI.Value = Dr.CNI;
+                txtCNI.Text = Dr.CNI;
                 txtAddress1.Value = Dr.Address1;
                 txtAddress2.Value = Dr.Address2;
                 txtAddress3.Value = Dr.Address3;
@@ -390,17 +398,63 @@ namespace VehicleFleetManagment.FleetApp
             tabProfessional.Attributes.Add("class", "nav-link active");
         }
 
+        protected void OnTextChanged_txtCNI(object sender, EventArgs args)
+        {
+            msg= I.ProvideByCNI(Dr, txtCNI.Text);
+            if (msg == 1)
+            {
+                ExistMsg.Visible = true;
+                txtCode.Value = Dr.Driver_Code;
+                DropDown_Ministry.SelectedValue = Dr.Ministry_Work;
+                txtFullName.Value = Dr.Full_Name;
+                txtCNI.Text = Dr.CNI;
+                txtAddress1.Value = Dr.Address1;
+                txtAddress2.Value = Dr.Address2;
+                txtAddress3.Value = Dr.Address3;
+                DropDownList_DriverType.SelectedValue = Dr.Driver_Type;
+                txtPostal.Value = Dr.Postal_code;
+                txtMail.Value = Dr.Email;
+                txtNationality.Value = Dr.Nationality;
+                DropDown_Gender.SelectedValue = Dr.Gender;
+                DropDown_Marital.SelectedValue = Dr.Marital_Status;
+                dateBirth.Value = Dr.DOB;
+                DropDown_language.SelectedValue = Dr.Mother_Language;
+                txtTelOffice.Value = Dr.Office_Phone;
+                txtTel.Value = Dr.Personnal_Phone;
+
+                btnSave.Visible = false;
+                
+            }
+            else
+            {
+                txtCode.Value = "";
+                txtFullName.Value = "";
+                txtTel.Value = "";
+                txtMail.Value = "";
+                txtAddress1.Value ="";
+                txtAddress2.Value ="";
+                txtAddress3.Value = "";
+                dateBirth.Value = "";
+                txtTelOffice.Value = "";
+                txtNationality.Value = "";
+                txtPostal.Value = "";
+
+                btnSave.Visible = true;
+                ExistMsg.Visible = false;
+            }
+           
+        }
         //Driver code auto generate 
         string DriverCode()
         {
 
             if (codeMin == "All")
             {
-                return code = txtCNI.Value.Trim().Substring(0, 2) + (Convert.ToInt32(I.countAll() + 1)) + DateTime.Today.ToString("ddMMyyyy");
+                return code = txtCNI.Text.Trim().Substring(0, 2) + (Convert.ToInt32(I.countAll() + 1)) + DateTime.Today.ToString("ddMMyyyy");
             }
             else
             {
-                return code = txtCNI.Value.Trim().Substring(0, 2) + (Convert.ToInt32(I.count() + 1)) + DateTime.Today.ToString("ddMMyyyy");
+                return code = txtCNI.Text.Trim().Substring(0, 2) + (Convert.ToInt32(I.count() + 1)) + DateTime.Today.ToString("ddMMyyyy");
             }
         }
 

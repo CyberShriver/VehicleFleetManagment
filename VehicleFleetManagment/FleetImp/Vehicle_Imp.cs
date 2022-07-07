@@ -190,35 +190,6 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
-        //DELETE CHECK METHOD
-        public int DeleteCheck(GridView gd, CheckBox chk, int id)
-        {
-            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
-            {
-                for (int i = 0; i < gd.Rows.Count; i++)
-                {
-                    CheckBox chkselect = (CheckBox)gd.Rows[i].FindControl("chk");
-                    if (chkselect.Checked == true)
-                    {
-                        id = Convert.ToInt32(gd.Rows[i].Cells[i].Text);
-                        var obj = con.VEHICLEs.Where(x => x.VEHICLE_ID == id).First();
-
-                        if (con.Entry(obj).State == EntityState.Detached)
-                        {
-                            con.VEHICLEs.Attach(obj);
-
-
-                        }
-                        con.VEHICLEs.Remove(obj);
-                        con.SaveChanges();
-                    }
-                }
-                return msg;
-            }
-
-        }
-
-
         //DISPLAY METHOD
         public void Display(GridView gd, string codeMin)
         {
@@ -418,6 +389,76 @@ namespace VehicleFleetManagment.FleetImp
                 Veh.Circulation_Expiration_Date = V.Circulation_Expiration_Date;
                 Veh.Stat = V.Stat;
                 Veh.Picture = V.Picture;
+
+            }
+        }
+
+
+        //PROVIDE METHOD by plate
+        public int ProvideByPlate(Vehicle_Class Veh, string plate)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                V = con.VEHICLEs.Where(x => x.Local_Plate == plate).FirstOrDefault();
+
+                if (V != null)
+                {
+                    Veh.Veh_Code = V.Veh_Code;
+                    Veh.BODY_ID = V.BODY_ID;
+                    Veh.Local_Plate = V.Local_Plate;
+                    Veh.MODEL_ID = V.MODEL_ID;
+                    Veh.MINISTRY_ID = V.MINISTRY_ID;
+                    Veh.NameVeh = V.NameVeh;
+                    Veh.Color = V.Color;
+                    Veh.Condition = V.Condition;
+                    Veh.Chassis_Num = V.Chassis_Num;
+                    Veh.Engine_Num = V.Engine_Num;
+                    Veh.Engine_Manufacturer = V.Engine_Manufacturer;
+                    Veh.Engine_Type = V.Engine_Type;
+                    Veh.Alternator_Engine_Manufacturer = V.Alternator_Engine_Manufacturer;
+                    Veh.Alternator_Engine_Type = V.Alternator_Engine_Type;
+                    Veh.Kva = V.Kva;
+                    Veh.Volt = V.Volt;
+                    Veh.Picture = V.Picture;
+                    Veh.Generator_Weight = V.Generator_Weight;
+                    Veh.Trailer = V.Trailer;
+                    Veh.Assembly_Num = V.Assembly_Num;
+                    Veh.lhd_rhd = V.lhd_rhd;
+                    Veh.Safety_Belt = V.Safety_Belt;
+                    Veh.Gearbox_Type = V.Gearbox_Type;
+                    Veh.Opt_Four_Wheel = V.Opt_Four_Wheel;
+                    Veh.Central_Locking = V.Central_Locking;
+                    Veh.Rear_Lock = V.Rear_Lock;
+                    Veh.Engine_Series_Num = V.Engine_Series_Num;
+                    Veh.Forward_Lock = V.Forward_Lock;
+                    Veh.Engine_cylinder_Number = V.Engine_cylinder_Number;
+                    Veh.Engine_cc = V.Engine_cc;
+                    Veh.Engine_Power = V.Engine_Power;
+                    Veh.Fuel_Fype = V.Fuel_Fype;
+                    Veh.Tank_Type1 = V.Tank_Type1;
+                    Veh.Tank_Size1 = V.Tank_Size1;
+                    Veh.Tank_Type2 = V.Tank_Type2;
+                    Veh.Tank_Capacity2 = V.Tank_Capacity2;
+                    Veh.Front_Seats_Number = V.Front_Seats_Number;
+                    Veh.Battery_Voltage = V.Battery_Voltage;
+                    Veh.Air_Conditioner = V.Air_Conditioner;
+                    Veh.Additional_Heating = V.Additional_Heating;
+                    Veh.Veh_Weight = V.Veh_Weight;
+                    Veh.Gross_Veh_Weigth = V.Gross_Veh_Weigth;
+                    Veh.Empty_Pod = V.Empty_Pod;
+                    Veh.Key_Code = V.Key_Code;
+                    Veh.Rear_Blake = V.Rear_Blake;
+                    Veh.Electronic_Logbook = V.Electronic_Logbook;
+                    Veh.Radio_Code = V.Radio_Code;
+                    Veh.Guaranteed_Expiration_Date = V.Guaranteed_Expiration_Date;
+                    Veh.Guaranteed_Certificate_Num = V.Guaranteed_Certificate_Num;
+                    Veh.Circulation_Expiration_Date = V.Circulation_Expiration_Date;
+                    Veh.Stat = V.Stat;
+                    Veh.Picture = V.Picture;
+
+                    return msg = 1;
+                }
+                else return msg = 0;
 
             }
         }

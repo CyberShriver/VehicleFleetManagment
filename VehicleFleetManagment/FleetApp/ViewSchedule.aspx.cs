@@ -24,7 +24,7 @@ namespace VehicleFleetManagment.FleetApp
             {
                 txtSystemTitle.Text = sytemTitle;
                 txtSlogan.Text = slogan;
-
+                DeleteAllVisibility.Visible = false;
                 getDataGDV();
 
             }
@@ -96,9 +96,55 @@ namespace VehicleFleetManagment.FleetApp
 
         }
 
+        protected void checkSel_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chkStatus = (CheckBox)sender;
+            GridViewRow row = (GridViewRow)chkStatus.NamingContainer;
+            DeleteAllVisibility.Visible = true;
+        }
+        protected void checkSelHeader_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chkHeader = (CheckBox)gdv.HeaderRow.FindControl("checkSelHeader");
+            foreach (GridViewRow row in gdv.Rows)
+            {
+                CheckBox chkrow = (CheckBox)row.FindControl("checkSel");
+                Button btnEdit = (Button)row.FindControl("btn_Edit");
+                Button btnDelete = (Button)row.FindControl("Btn_Delete");
+
+                if (chkHeader.Checked == true)
+                {
+                    chkrow.Checked = true;
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
+                    DeleteAllVisibility.Visible = true;
+                    chkHeader.Text = "Deselect All";
+
+                }
+                else
+                {
+                    chkrow.Checked = false;
+                    btnEdit.Enabled = true;
+                    btnDelete.Enabled = true;
+                    DeleteAllVisibility.Visible = false;
+                    chkHeader.Text = " Select All";
+                }
+
+            }
+        }
         protected void DeleteCheck_Click(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < gdv.Rows.Count; i++)
+            {
+                CheckBox chkdelete = (CheckBox)gdv.Rows[i].Cells[0].FindControl("checkSel");
+                if (chkdelete.Checked)
+                {
+                    int id = Convert.ToInt32(gdv.DataKeys[i].Value);
+                    I.Delete(id);
+                    gdv.EditIndex = -1;
+                }
+            }
+            getDataGDV();
+            DeleteAllVisibility.Visible = false;
         }
 
         protected void gdv_PageIndexChanging(object sender, GridViewPageEventArgs e)
