@@ -15,93 +15,129 @@ namespace VehicleFleetManagment.FleetApp
     {
 
         /// <summary>
-        /// txtCode control.
+        /// txtSystemTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCode;
+        protected global::System.Web.UI.WebControls.Label txtSystemTitle;
 
         /// <summary>
-        /// txtPlate control.
+        /// txtSlogan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPlate;
+        protected global::System.Web.UI.WebControls.Label txtSlogan;
 
         /// <summary>
-        /// txtName control.
+        /// driverNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtName;
+        protected global::System.Web.UI.WebControls.Label driverNumber;
 
         /// <summary>
-        /// txtModel control.
+        /// ActiveLeave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtModel;
+        protected global::System.Web.UI.WebControls.Label ActiveLeave;
 
         /// <summary>
-        /// txtColor control.
+        /// VehicleNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtColor;
+        protected global::System.Web.UI.WebControls.Label VehicleNumber;
 
         /// <summary>
-        /// txtEngineNumber control.
+        /// CrashNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEngineNumber;
+        protected global::System.Web.UI.WebControls.Label CrashNumber;
 
         /// <summary>
-        /// txtChassis control.
+        /// countVehAvail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtChassis;
+        protected global::System.Web.UI.WebControls.Label countVehAvail;
 
         /// <summary>
-        /// txtEngineManif control.
+        /// countVehUnvail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEngineManif;
+        protected global::System.Web.UI.WebControls.Label countVehUnvail;
 
         /// <summary>
-        /// txtPicture control.
+        /// countDriverOnPost control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtPicture;
+        protected global::System.Web.UI.WebControls.Label countDriverOnPost;
 
         /// <summary>
-        /// txtStatus control.
+        /// countDrivLeave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtStatus;
+        protected global::System.Web.UI.WebControls.Label countDrivLeave;
+
+        /// <summary>
+        /// countLeavePending control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countLeavePending;
+
+        /// <summary>
+        /// countLeaveDueSoon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countLeaveDueSoon;
+
+        /// <summary>
+        /// countLeaveSoonFinish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countLeaveSoonFinish;
+
+        /// <summary>
+        /// ListView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView ListView1;
     }
 }

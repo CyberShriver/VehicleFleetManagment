@@ -58,6 +58,8 @@ namespace VehicleFleetManagment.FleetImp
         //DISPLAY METHOD Where CNI
         int ProvideByCNI(Driver_Class Dr, string cni);
 
+        // DISPLAY Dashboard List Driver
+         void DriverDashboard(ListView listProgress, string codeMin);
 
 
 

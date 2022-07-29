@@ -16,6 +16,8 @@ namespace VehicleFleetManagment.FleetApp
 
         Ministry_Class  Min = new Ministry_Class ();
         Ministry_Interface I = new Ministry_Imp();
+        Role_Interface Ir = new Role_Imp();
+
         int msg;
         string id;
         string code;
@@ -77,7 +79,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtName.Value == "" || txtAddress.Value == "" || txtTel.Value == "" || txtUserName.Value == "" || txtPassword.Value == "" || txtSysTitle.Value == "" ||
+                if (txtName.Value == "" || txtAddress.Value == "" || txtTel.Value == "" || txtSysTitle.Value == "" ||
                     txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || txtSysMaile.Value == "" || txtTheme.Value=="" || txtSlogan.Value=="")
                 {
                     SuccessMsg.Visible = false;
@@ -107,9 +109,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Min.System_Name = txtSysName.Value;
                                 Min.System_Title = txtSysTitle.Value;
                                 Min.Postal_code = txtPostal.Value;
-                                Min.User_Nme = txtUserName.Value;
                                 Min.System_Email = txtSysMaile.Value;
-                                Min.Password = txtPassword.Value;
                                 Min.Picture = img;
                                 Min.Logo = Imglogo;
                                 Min.Theme = txtTheme.Value;
@@ -126,11 +126,9 @@ namespace VehicleFleetManagment.FleetApp
                                     txtTel.Value = "";
                                     txtSysTitle.Value = "";
                                     txtSysName.Value = "";
-                                    txtPassword.Value = "";
                                     txtName.Value = "";
                                     txtTel.Value = "";
                                     txtAddress.Value = "";
-                                    txtUserName.Value = "";
                                     txtSysName.Value = "";
                                     txtTheme.Value = "";
                                     txtSlogan.Value = "";
@@ -168,9 +166,7 @@ namespace VehicleFleetManagment.FleetApp
                         Min.System_Name = txtSysName.Value;
                         Min.System_Title = txtSysTitle.Value;
                         Min.Postal_code = txtPostal.Value;
-                        Min.User_Nme = txtUserName.Value;
                         Min.System_Email = txtSysMaile.Value;
-                        Min.Password = txtPassword.Value;
                         Min.Picture = "unkownUser.jpg";
                         Min.Logo = "Nologo.png";
                         Min.Theme = txtTheme.Value;
@@ -187,11 +183,9 @@ namespace VehicleFleetManagment.FleetApp
                             txtTel.Value = "";
                             txtSysTitle.Value = "";
                             txtSysName.Value = "";
-                            txtPassword.Value = "";
                             txtName.Value = "";
                             txtTel.Value = "";
                             txtAddress.Value = "";
-                            txtUserName.Value = "";
                             txtSysName.Value = "";
                             txtTheme.Value = "";
                             txtSlogan.Value = "";
@@ -221,7 +215,7 @@ namespace VehicleFleetManagment.FleetApp
 
             try
             {
-                if (txtName.Value == "" || txtAddress.Value == "" || txtTel.Value == "" || txtUserName.Value == "" || txtPassword.Value == "" || txtSysTitle.Value == "" ||
+                if (txtName.Value == "" || txtAddress.Value == "" || txtTel.Value == "" ||  txtSysTitle.Value == "" ||
                   txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || txtSysMaile.Value == "" || txtTheme.Value == "" || txtSlogan.Value == "")
                 {
                     SuccessMsg.Visible = false;
@@ -251,9 +245,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Min.System_Name = txtSysName.Value;
                                 Min.System_Title = txtSysTitle.Value;
                                 Min.Postal_code = txtPostal.Value;
-                                Min.User_Nme = txtUserName.Value;
                                 Min.System_Email = txtSysMaile.Value;
-                                Min.Password = txtPassword.Value;
                                 Min.Picture = img;
                                 Min.Logo = Imglogo;
                                 Min.Theme = txtTheme.Value;
@@ -296,9 +288,7 @@ namespace VehicleFleetManagment.FleetApp
                         Min.System_Name = txtSysName.Value;
                         Min.System_Title = txtSysTitle.Value;
                         Min.Postal_code = txtPostal.Value;
-                        Min.User_Nme = txtUserName.Value;
                         Min.System_Email = txtSysMaile.Value;
-                        Min.Password = txtPassword.Value;
                         Min.Picture = "unkownUser.jpg";
                         Min.Logo = "Nologo.png";
                         Min.Theme = txtTheme.Value;
@@ -341,15 +331,12 @@ namespace VehicleFleetManagment.FleetApp
                 txtSysName.Value = Min.System_Name;
                 txtSysTitle.Value= Min.System_Title;
                 txtPostal.Value = Min.Postal_code;
-                txtUserName.Value = Min.User_Nme;
-                txtPassword.Value = Min.Password;
                 txtSysMaile.Value = Min.System_Email;
                 txtSlogan.Value = Min.Slogan;
                 txtTheme.Value = Min.Theme;
                
             }
         }
-
         protected void btn_save_Click(object sender, EventArgs args)
         {
             if (id == null)

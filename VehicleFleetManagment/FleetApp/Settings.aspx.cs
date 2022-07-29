@@ -15,9 +15,13 @@ namespace VehicleFleetManagment.FleetApp
     {
         Ministry_Class Min = new Ministry_Class();
         Ministry_Interface I = new Ministry_Imp();
+        Role_Class Ro = new Role_Class();
+        Role_Interface Ir = new Role_Imp();
+
         private int msg;
         string codeMin;
         int id;
+        string ID_Role;
         string name;
         string systemTitle;
         string logo;
@@ -31,6 +35,8 @@ namespace VehicleFleetManagment.FleetApp
         protected void Page_Load(object sender, EventArgs e)
         {
             ChargeCookies();
+            ID_Role = Request.QueryString["ROLE_ID"];
+                MultiView.ActiveViewIndex = 0;
             if (!IsPostBack)
             {
                 txtSystemTitle.Text = systemTitle;
@@ -38,25 +44,24 @@ namespace VehicleFleetManagment.FleetApp
 
                 MsgInit();
                 ChargeData();
-                confirm();
+                //confirm();
+
+                MsgInitRole();
+                ChargeDataRole();
+                getDataGDVRole();
+
+                if (ID_Role == null)
+                {
+                    btnSave.InnerText = "Save";
+                }                
+                else
+                {
+                    btnSave.InnerText = "Edit";
+                    getDataGDVRole();
+                }
             }
         }
 
-        //MANAGE BUTTON ACTIVATION
-        void buttonState()
-        {
-            if (txtSysTitle.Value == "" && txtSysName.Value == "" && txtSysMaile.Value == "" && txtTheme.Value == "" && txtSlogan.Value == "" && file_updLogo.HasFile==false)
-            {
-                btnSave.Disabled=true;
-                btnCancel.Disabled=true;
-            }
-            else
-            {
-                btnSave.Disabled = false;
-                btnCancel.Disabled = false;
-            }
-
-        }
         //SAVED COOKIES METHODE
         void ChargeCookies()
         {
@@ -77,6 +82,25 @@ namespace VehicleFleetManagment.FleetApp
             }
 
         }
+
+        //=========================================== Settings =============================
+
+        //MANAGE BUTTON ACTIVATION
+        void buttonState()
+        {
+            if (txtSysTitle.Value == "" && txtSysName.Value == "" && txtSysMaile.Value == "" && txtTheme.Value == "" && txtSlogan.Value == "" && file_updLogo.HasFile==false)
+            {
+                btnSave.Disabled=true;
+                btnCancel.Disabled=true;
+            }
+            else
+            {
+                btnSave.Disabled = false;
+                btnCancel.Disabled = false;
+            }
+
+        }
+       
      
         //MANAGE CONFIRM BUTTON ON SUBMIT CHANGES
         void confirm()
@@ -93,25 +117,6 @@ namespace VehicleFleetManagment.FleetApp
             FailMsg.Visible = false;
         }
 
-        //CHARGE PROFILE DATA
-        protected void ChargeData()
-        {
-            if (codeMin != null)
-            {
-                I.Profile(Min, codeMin);
-
-                txtCode.Text = Min.Code_Min;
-                txtName.Text = Min.Ministry_Name;
-                txtAddress.Text = Min.Address;
-                txtTel.Text = Min.Phone;
-                txtFax.Text = Min.Fax;
-                txtPostal.Text = Min.Postal_code;
-                txtUserName.Text = Min.User_Nme;
-                Image1.ImageUrl = "~/FleetApp/assets/images/Users/" + Min.Picture;
-            }
-        }
-
-   
         //UPDATE SETTINGS 
         void Update()
         {
@@ -213,6 +218,304 @@ namespace VehicleFleetManagment.FleetApp
         {
             
             Update();
+        }
+
+
+        //=========================================== Profile =============================
+
+        //CHARGE PROFILE DATA
+        protected void ChargeData()
+        {
+            if (codeMin != null)
+            {
+                I.Profile(Min, codeMin);
+
+                txtCode.Text = Min.Code_Min;
+                txtName.Text = Min.Ministry_Name;
+                txtAddress.Text = Min.Address;
+                txtTel.Text = Min.Phone;
+                txtFax.Text = Min.Fax;
+                txtPostal.Text = Min.Postal_code;
+                Image1.ImageUrl = "~/FleetApp/assets/images/Users/" + Min.Picture;
+            }
+        }
+
+
+        //=========================================== ROLE =============================
+
+        // MESSAGES Role
+        private void MsgInitRole()
+        {
+            successMsgRole.Visible = false;
+            EmptyRoleMsg.Visible = false;
+            failMsgRole.Visible = false;
+        }
+
+        public void getDataGDVRole()
+        {
+            
+                Ir.Display(gdv);
+                nbr.Text = Ir.count().ToString();
+            
+
+        }
+
+        //Add 
+        void Add_Role()
+        {
+            try
+            {
+                if (txtRole.Value == "" || txtDescript.Value == "")
+                {
+                    EmptyRoleMsg.Visible = true;
+                    failMsgRole.Visible = false;
+                    successMsgRole.Visible = false;
+                }
+                else
+                {
+
+                    Ro.Role_Name = txtRole.Value;
+                    Ro.Descrept = txtDescript.Value;
+
+                    msg = Ir.Add(Ro);
+                    if (msg > 0)
+                    {
+                        EmptyRoleMsg.Visible = false;
+                        failMsgRole.Visible = false;
+                        successMsgRole.Visible = true;
+
+                        txtRole.Value = "";
+                        txtDescript.Value = "";
+                    }
+                    else
+                    {
+                        EmptyRoleMsg.Visible = false;
+                        failMsgRole.Visible = true;
+                        successMsgRole.Visible = false;
+
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                EmptyRoleMsg.Visible = false;
+                failMsgRole.Visible = true;
+                successMsgRole.Visible = false;
+            }
+        }
+
+        //update
+        void Update_Role()
+        {
+            try
+            {
+                if (txtRole.Value == "" || txtDescript.Value == "")
+                {
+                    EmptyRoleMsg.Visible = true;
+                    failMsgRole.Visible = false;
+                    successMsgRole.Visible = false;
+                }
+                else
+                {
+                    Ro.Role_Name = txtRole.Value;
+                    Ro.Descrept = txtDescript.Value;
+
+                    msg = Ir.Update(Ro, Convert.ToInt32(id));
+
+                    if (msg > 0)
+                    {
+                        Response.Redirect("~/FleetApp/Settings.aspx");
+                        MultiView.ActiveViewIndex = 2;
+                    }
+                    else
+                    {
+                        EmptyRoleMsg.Visible = false;
+                        failMsgRole.Visible = true;
+                        successMsgRole.Visible = false;
+
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                EmptyRoleMsg.Visible = false;
+                failMsgRole.Visible = true;
+                successMsgRole.Visible = false;
+            }
+        }
+
+        protected void ChargeDataRole()
+        {
+            if (ID_Role != null)
+            {
+                Ir.provide(Ro, Convert.ToInt32(ID_Role));
+                txtRole.Value = Ro.Role_Name;
+                txtDescript.Value = Ro.Descrept;
+            }
+        }
+
+        protected void btn_save_role_Click(object sender, EventArgs args)
+        {
+            if (ID_Role == null)
+            {
+                Add_Role();
+                getDataGDVRole();
+                MultiView.ActiveViewIndex = 2;
+            }
+            else
+                Update_Role();
+            getDataGDVRole();
+            MultiView.ActiveViewIndex = 2;
+        }
+
+        protected void btn_srch_Click(object sender, EventArgs e)
+        {
+            if (txt_Search.Value == "")
+            {
+                getDataGDVRole();
+                MultiView.ActiveViewIndex = 2;
+            }
+            else {
+                Ir.Research(gdv, txt_Search.Value);
+                MultiView.ActiveViewIndex = 2;
+            }
+        }
+
+        protected void btnReload_click(object sender, EventArgs e)
+        {
+            getDataGDVRole();
+            txt_Search.Value = "";
+        }
+
+        protected void gdv_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+            int index = Convert.ToInt32(e.CommandArgument);
+            if (e.CommandName == "edit")
+            {
+                Response.Redirect("~/FleetApp/Settings.aspx?ROLE_ID=" + index);
+                getDataGDVRole();
+                MultiView.ActiveViewIndex = 2;
+
+            }
+            if (e.CommandName == "delet")
+            {
+                Ir.Delete(index);
+                Response.Redirect("~/FleetApp/Settings.aspx");
+                getDataGDVRole();
+                MultiView.ActiveViewIndex = 2;
+            }
+
+
+        }
+
+        protected void checkSel_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chkStatus = (CheckBox)sender;
+            GridViewRow row = (GridViewRow)chkStatus.NamingContainer;
+            DeleteAllVisibility.Visible = true;
+        }
+        protected void checkSelHeader_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chkHeader = (CheckBox)gdv.HeaderRow.FindControl("checkSelHeader");
+            foreach (GridViewRow row in gdv.Rows)
+            {
+                CheckBox chkrow = (CheckBox)row.FindControl("checkSel");
+                Button btnEdit = (Button)row.FindControl("btn_Edit");
+                Button btnDelete = (Button)row.FindControl("Btn_Delete");
+
+                if (chkHeader.Checked == true)
+                {
+                    chkrow.Checked = true;
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
+                    DeleteAllVisibility.Visible = true;
+                    chkHeader.Text = "Deselect All";
+
+                }
+                else
+                {
+                    chkrow.Checked = false;
+                    btnEdit.Enabled = true;
+                    btnDelete.Enabled = true;
+                    DeleteAllVisibility.Visible = false;
+                    chkHeader.Text = " Select All";
+                }
+
+            }
+        }
+        protected void DeleteCheck_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < gdv.Rows.Count; i++)
+            {
+                CheckBox chkdelete = (CheckBox)gdv.Rows[i].Cells[0].FindControl("checkSel");
+                if (chkdelete.Checked)
+                {
+                    int id = Convert.ToInt32(gdv.DataKeys[i].Value);
+                    Ir.Delete(id);
+                    MultiView.ActiveViewIndex = 2;
+                    gdv.EditIndex = -1;
+                }
+            }
+            getDataGDVRole();
+            DeleteAllVisibility.Visible = false;
+            MultiView.ActiveViewIndex = 2;
+        }
+
+        protected void gdv_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gdv.PageIndex = e.NewPageIndex;
+            this.getDataGDVRole();
+            MultiView.ActiveViewIndex = 2;
+
+        }
+
+        protected void gdv_PreRender(object sender, EventArgs e)
+        {
+            indexFooter.Text = "Page " + (gdv.PageIndex + 1).ToString() + " of " + gdv.PageCount.ToString();
+        }
+
+        protected void ActiveSettings_click(object sender, EventArgs args)
+        {
+            MultiView.ActiveViewIndex = 0;
+            MsgInit();
+
+            tabSettings.Attributes.Remove("class");
+            tabSettings.Attributes.Add("class", "nav-link active");
+
+            tabProfile.Attributes.Remove("class");
+            tabProfile.Attributes.Add("class", "nav-link");
+
+            tabRole.Attributes.Remove("class");
+            tabRole.Attributes.Add("class", "nav-link ");
+        }
+        protected void ActiveProfile_click(object sender, EventArgs args)
+        {
+            MultiView.ActiveViewIndex = 1;
+            MsgInit();
+
+            tabSettings.Attributes.Remove("class");
+            tabSettings.Attributes.Add("class", "nav-link");
+
+            tabProfile.Attributes.Remove("class");
+            tabProfile.Attributes.Add("class", "nav-link active");
+
+            tabRole.Attributes.Remove("class");
+            tabRole.Attributes.Add("class", "nav-link ");
+        }
+
+        protected void ActiveRole_click(object sender, EventArgs args)
+        {
+            MultiView.ActiveViewIndex = 2;
+            MsgInit();
+            tabSettings.Attributes.Remove("class");
+            tabSettings.Attributes.Add("class", "nav-link");
+
+            tabProfile.Attributes.Remove("class");
+            tabProfile.Attributes.Add("class", "nav-link ");
+
+            tabRole.Attributes.Remove("class");
+            tabRole.Attributes.Add("class", "nav-link active");
         }
     }
 }

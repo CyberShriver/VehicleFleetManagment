@@ -44,8 +44,18 @@
 
                                 <div class="col-md-5 ">
                                     <div class="form-group form-default">
-                                        <label class="float-label">Name:  </label>
-                                        <asp:Label ID="txtName" runat="server" Text="" ForeColor="Red"></asp:Label>
+                                        <label class="float-label">First Name:  </label>
+                                        <asp:Label ID="txtFirstName" runat="server" Text="" ForeColor="Red"></asp:Label>
+                                    </div>
+
+                                    <div class="form-group form-default">
+                                        <label class="float-label"> Last Name:  </label>
+                                        <asp:Label ID="txtLastName" runat="server" Text="" ForeColor="Red"></asp:Label>
+                                    </div>
+
+                                    <div class="form-group form-default">
+                                        <label class="float-label">DOB:</label>
+                                        <asp:Label ID="txtbirth" runat="server" Text="" ForeColor="Red"></asp:Label>
                                     </div>
 
                                     <div class="form-group form-default">
@@ -58,21 +68,17 @@
                                     </div>
 
                                     <div class="form-group form-default">
-                                        <label class="float-label">Fax : </label>
-                                        <asp:Label ID="txtFax" runat="server" Text="" ForeColor="Red"></asp:Label>
+                                        <label class="float-label">Email:</label>
+                                        <asp:Label ID="txtMail" runat="server" Text="" ForeColor="Red"></asp:Label>
                                     </div>
+
                                     <div class="form-group form-default">
-                                        <label class="float-label">Postal Code:</label>
-                                        <asp:Label ID="txtPostal" runat="server" Text="" ForeColor="Red"></asp:Label>
+                                        <label class="float-label">User Code : </label>
+                                        <asp:Label ID="txtUserCode" runat="server" Text="" ForeColor="Red"></asp:Label>
                                     </div>
-                                    <div class="form-group form-default">
-                                        <label class="float-label">Ministry Code :</label>
-                                        <asp:Label ID="txtCode" runat="server" Text="" ForeColor="Red"></asp:Label>
-                                    </div>
-                                    <div class="form-group form-default">
-                                        <label class="float-label">User Name :</label>
-                                        <asp:Label ID="txtUserName" runat="server" Text="" ForeColor="Red"></asp:Label>
-                                    </div>
+                                    
+                                  
+                                    
                                 </div>
 
                                 <div class="col-md-7">

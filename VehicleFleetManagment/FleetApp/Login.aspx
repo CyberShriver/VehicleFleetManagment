@@ -107,14 +107,19 @@
                         </div>
                         <div class="auth-box card">
                             <div class="card-block for">
-                               <div class="col-sm-6 mx-auto">
+                               <div class="col-sm-12 mx-auto">
                                     <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
                                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>Success!</strong>
+                                        <strong>Success!  <i class="fa fa-check-square"></i></strong>
                                     </div>
                                     <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
                                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                        <strong>Wrong username or password</strong>
+                                        <strong>Wrong username or password  <i class="fa fa-warning"></i></strong>
+                                    </div>
+
+                                   <div class="alert alert-danger alert-dismissible fade show" runat="server" id="AdmMsg">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>Something goes wrong <br/> contact the administrator  <i class="fa fa-phone"></i></strong>
                                     </div>
                                 </div>
                                 <div class="row m-b-20">

@@ -26,9 +26,6 @@ namespace VehicleFleetManagment.FleetImp
         //Display Method
         void Display(GridView gd);
 
-        //Login Connexion
-        int Connexion(Ministry_Class Min, string userName, string password);
-
         //Provide Method
         void provide(Ministry_Class Min, int id);
 

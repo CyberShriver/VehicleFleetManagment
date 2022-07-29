@@ -25,12 +25,10 @@ namespace VehicleFleetManagment.FleetImp
                 M.Address = Min.Address;
                 M.Phone = Min.Phone;
                 M.Postal_code = Min.Postal_code;
-                M.User_Nme = Min.User_Nme;
                 M.Fax = Min.Fax;
                 M.System_Name = Min.System_Name;
                 M.System_Title = Min.System_Title;
                 M.System_Email = Min.System_Email;
-                M.Password = Min.Password;
                 M.Logo = Min.Logo;
                 M.Slogan = Min.Slogan;
                 M.Theme = Min.Theme;
@@ -69,12 +67,10 @@ namespace VehicleFleetManagment.FleetImp
                     M.Address = Min.Address;
                     M.Phone = Min.Phone;
                     M.Postal_code = Min.Postal_code;
-                    M.User_Nme = Min.User_Nme;
                     M.Fax = Min.Fax;
                     M.System_Name = Min.System_Name;
                     M.System_Title = Min.System_Title;
                     M.System_Email = Min.System_Email;
-                    M.Password = Min.Password;
                     M.Logo = Min.Logo;
                     M.Picture = Min.Picture;
                     M.Theme = Min.Theme;
@@ -133,39 +129,6 @@ namespace VehicleFleetManagment.FleetImp
             return msg;
         }
 
-        //Login Connection METHOD
-        public int Connexion(Ministry_Class Min, string userName, string password)
-        {
-            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
-            {
-                M = con.MINISTRies.Where(x => x.User_Nme == userName && x.Password == password).FirstOrDefault();
-
-                if (M!= null)
-                {
-                    Min.Code_Min = M.Code_Min;
-                    Min.Ministry_Name = M.Ministry_Name;
-                    Min.MINISTRY_ID = M.MINISTRY_ID;
-                    Min.Address = M.Address;
-                    Min.Phone = M.Phone;
-                    Min.Postal_code = M.Postal_code;
-                    Min.User_Nme = M.User_Nme;
-                    Min.Fax = M.Fax;
-                    Min.System_Name = M.System_Name;
-                    Min.System_Title = M.System_Title;
-                    Min.System_Email = M.System_Email;
-                    Min.Password = M.Password;
-                    Min.Logo = M.Logo;
-                    Min.Slogan = M.Slogan;
-                    Min.Theme = M.Theme;
-                    Min.Picture = M.Picture;
-
-                    return msg = 1;
-                }
-                else return msg = 0;
-
-            }
-        }
-
         //DELETE METHOD
         public int Delete(int id)
         {
@@ -200,12 +163,10 @@ namespace VehicleFleetManagment.FleetImp
                                Address = M.Address,
                                Phone = M.Phone,
                                Postal_code = M.Postal_code,
-                               User_Nme = M.User_Nme,
                                Fax = M.Fax,
                                System_Name = M.System_Name,
                                System_Title = M.System_Title,
                                System_Email = M.System_Email,
-                               Password = M.Password,
                                Logo = M.Logo,
                                Picture = M.Picture,
                                Slogan = M.Slogan,
@@ -231,12 +192,10 @@ namespace VehicleFleetManagment.FleetImp
                 Min.Address = M.Address;
                 Min.Phone = M.Phone;
                 Min.Postal_code = M.Postal_code;
-                Min.User_Nme = M.User_Nme;
                 Min.Fax = M.Fax;
                 Min.System_Name = M.System_Name;
                 Min.System_Title = M.System_Title;
                 Min.System_Email = M.System_Email;
-                Min.Password = M.Password;
                 Min.Logo = M.Logo;
                 Min.Theme = M.Theme;
                 Min.Picture = M.Picture;
@@ -257,17 +216,14 @@ namespace VehicleFleetManagment.FleetImp
                 Min.Address = M.Address;
                 Min.Phone = M.Phone;
                 Min.Postal_code = M.Postal_code;
-                Min.User_Nme = M.User_Nme;
                 Min.Fax = M.Fax;
                 Min.System_Name = M.System_Name;
                 Min.System_Title = M.System_Title;
                 Min.System_Email = M.System_Email;
-                Min.Password = M.Password;
                 Min.Logo = M.Logo;
                 Min.Picture = M.Picture;
                 Min.Slogan = M.Slogan;
                 Min.Theme = M.Theme;
-
 
             }
         }
@@ -304,12 +260,10 @@ namespace VehicleFleetManagment.FleetImp
                                Address = M.Address,
                                Phone = M.Phone,
                                Postal_code = M.Postal_code,
-                               User_Nme = M.User_Nme,
                                Fax = M.Fax,
                                System_Name = M.System_Name,
                                System_Title = M.System_Title,
                                System_Email = M.System_Email,
-                               Password = M.Password,
                                Logo = M.Logo,
                                Picture = M.Picture,
                                Slogan = M.Slogan,

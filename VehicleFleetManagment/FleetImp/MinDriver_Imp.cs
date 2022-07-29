@@ -112,7 +112,8 @@ namespace VehicleFleetManagment.FleetImp
                                MINISTRY_ID = M.MINISTRY.Ministry_Name,
                                StartDate = M.StartDate,
                                EndDate = M.EndDate,
-                               Position_Status = M.Position_Status
+                               Position_Status = M.Position_Status,
+                               Picture= M.DRIVER.Picture
                            }
                            ).ToList();
 
@@ -169,6 +170,20 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var M = (from l in con.MINISTRY_DRIVER where l.MINISTRY.Code_Min == codeMin
+                         select l).Count();
+                n = M;
+            }
+            return n;
+        }
+
+        //COUNT ON POST POSITION METHOD
+        public int countOnPost(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var M = (from l in con.MINISTRY_DRIVER
+                         where l.MINISTRY.Code_Min == codeMin && l.Position_Status=="On Post"
                          select l).Count();
                 n = M;
             }

@@ -33,9 +33,23 @@ namespace VehicleFleetManagment.FleetImp
         //count
         int count(string codeMin);
 
+        //COUNT NOTIFICATION
+        int countNotification(string codeMin);
+
+        //COUNT ACTIVE LEAVE METHOD
+         int countActive(string codeMin);
+
+        //COUNT PENDING LEAVE METHOD
+         int countPending(string codeMin);
+
+        //COUNT DUE SOON LEAVE METHOD
+        int countDueSoon(string codeMin);
+
+        //COUNT FINISH SOON LEAVE METHOD
+        int countFinishSoon(string codeMin);
+
         //count All
         int countAll();
-
 
         //Research Method
         void Research(GridView gd,string codeMin, string SearchText);

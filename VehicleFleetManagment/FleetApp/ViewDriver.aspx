@@ -119,6 +119,12 @@
                                             
                                             <asp:BoundField DataField="DRIVER_ID" HeaderText="#" Visible="false" />
 
+                                             <asp:TemplateField HeaderText="Picture">
+                                                <ItemTemplate>
+                                                    <asp:Image ID="Image1" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images/Drivers/",Eval("Picture")) %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
                                             <asp:TemplateField HeaderText="Full Name">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label2" runat="server" Text='<%# Eval("Full_Name") %>'></asp:Label>
@@ -215,13 +221,7 @@
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label11144" runat="server" Text='<%# Eval("State") %>'></asp:Label>
                                                 </ItemTemplate>
-                                            </asp:TemplateField>
-
-                                            <asp:TemplateField HeaderText="Picture">
-                                                <ItemTemplate>
-                                                    <asp:Image ID="Image1" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images/Drivers/",Eval("Picture")) %>' />
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+                                            </asp:TemplateField>                                           
 
                                             <asp:TemplateField HeaderText="Action">
                                                 <ItemTemplate>

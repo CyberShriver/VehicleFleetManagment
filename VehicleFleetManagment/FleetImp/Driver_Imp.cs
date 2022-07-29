@@ -335,7 +335,6 @@ namespace VehicleFleetManagment.FleetImp
             }
             return n;
         }
-
         //COUNT Ministry drivers METHOD
         public int countMinistryDrivers(string codeMin)
         {
@@ -555,7 +554,27 @@ namespace VehicleFleetManagment.FleetImp
             return msg;
         }
 
+        // DISPLAY Dashboard List Driver
+        public void DriverDashboard(ListView listProgress, string codeMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from D in con.DRIVERs
+                           where D.Ministry_Work == codeMin
 
+                           select new
+                           {
+                               Picture = D.Picture,
+                               Full_Name =D.Full_Name,
+                               Personnal_Phone = D.Personnal_Phone,
+                           }
+                           ).ToList();
+
+                listProgress.DataSource = obj;
+                listProgress.DataBind();
+            }
+
+        }
 
     }
 }

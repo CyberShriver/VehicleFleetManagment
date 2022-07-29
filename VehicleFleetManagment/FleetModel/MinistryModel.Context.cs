@@ -44,5 +44,9 @@ namespace VehicleFleetManagment.FleetModel
         public virtual DbSet<CAR_CRASH> CAR_CRASH { get; set; }
         public virtual DbSet<LICENSE> LICENSEs { get; set; }
         public virtual DbSet<REPAIR> REPAIRs { get; set; }
+        public virtual DbSet<GRANT_RIGHT> GRANT_RIGHT { get; set; }
+        public virtual DbSet<MENU> MENUs { get; set; }
+        public virtual DbSet<ROLE> ROLEs { get; set; }
+        public virtual DbSet<USER> USERS { get; set; }
     }
 }

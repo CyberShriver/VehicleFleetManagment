@@ -131,6 +131,7 @@
     <Content Include="FleetApp\AddLeaveType.aspx" />
     <Content Include="FleetApp\AddLicense.aspx" />
     <Content Include="FleetApp\AddMark.aspx" />
+    <Content Include="FleetApp\AddMenu.aspx" />
     <Content Include="FleetApp\AddMinistry.aspx" />
     <Content Include="FleetApp\AddMinistryDriver.aspx" />
     <Content Include="FleetApp\AddMinistryReal.aspx" />
@@ -141,6 +142,7 @@
     <Content Include="FleetApp\AddRepair.aspx" />
     <Content Include="FleetApp\AddSchedule.aspx" />
     <Content Include="FleetApp\AddSystemSettings.aspx" />
+    <Content Include="FleetApp\AddUsers.aspx" />
     <Content Include="FleetApp\AddVehicle.aspx" />
     <Content Include="FleetApp\AddVehicleFuel.aspx" />
     <Content Include="FleetApp\assets\css\animate.css\css\animate.css" />
@@ -282,8 +284,11 @@
     <Content Include="FleetApp\assets\pages\widget\amchart\serial.js" />
     <Content Include="FleetApp\assets\pages\widget\amchart\serial.min.js" />
     <Content Include="FleetApp\assets\pages\widget\excanvas.js" />
+    <Content Include="FleetApp\Granted_Right.aspx" />
+    <Content Include="FleetApp\Grant_Right.aspx" />
     <Content Include="FleetApp\Home.aspx" />
     <Content Include="FleetApp\Login.aspx" />
+    <Content Include="FleetApp\Menu.aspx" />
     <Content Include="FleetApp\Profile.aspx" />
     <Content Include="FleetApp\Settings.aspx" />
     <Content Include="FleetApp\ViewAssurance.aspx" />
@@ -303,6 +308,7 @@
     <Content Include="FleetApp\ViewRealEstate.aspx" />
     <Content Include="FleetApp\ViewRepair.aspx" />
     <Content Include="FleetApp\ViewSchedule.aspx" />
+    <Content Include="FleetApp\ViewUsers.aspx" />
     <Content Include="FleetApp\ViewVehicle.aspx" />
     <Content Include="FleetApp\ViewVehicleFuel.aspx" />
     <Content Include="FleetModel\MinistryModel.Context.tt">
@@ -488,6 +494,13 @@
     <Compile Include="FleetApp\AddMark.aspx.designer.cs">
       <DependentUpon>AddMark.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FleetApp\AddMenu.aspx.cs">
+      <DependentUpon>AddMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddMenu.aspx.designer.cs">
+      <DependentUpon>AddMenu.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FleetApp\AddMinistry.aspx.cs">
       <DependentUpon>AddMinistry.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -558,6 +571,13 @@
     <Compile Include="FleetApp\AddSystemSettings.aspx.designer.cs">
       <DependentUpon>AddSystemSettings.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FleetApp\AddUsers.aspx.cs">
+      <DependentUpon>AddUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AddUsers.aspx.designer.cs">
+      <DependentUpon>AddUsers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FleetApp\AddVehicle.aspx.cs">
       <DependentUpon>AddVehicle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -579,6 +599,20 @@
     <Compile Include="FleetApp\fleet.Master.designer.cs">
       <DependentUpon>fleet.Master</DependentUpon>
     </Compile>
+    <Compile Include="FleetApp\Granted_Right.aspx.cs">
+      <DependentUpon>Granted_Right.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\Granted_Right.aspx.designer.cs">
+      <DependentUpon>Granted_Right.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\Grant_Right.aspx.cs">
+      <DependentUpon>Grant_Right.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\Grant_Right.aspx.designer.cs">
+      <DependentUpon>Grant_Right.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FleetApp\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -592,6 +626,13 @@
     </Compile>
     <Compile Include="FleetApp\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\Menu.aspx.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\Menu.aspx.designer.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
     </Compile>
     <Compile Include="FleetApp\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
@@ -726,6 +767,13 @@
     <Compile Include="FleetApp\ViewSchedule.aspx.designer.cs">
       <DependentUpon>ViewSchedule.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FleetApp\ViewUsers.aspx.cs">
+      <DependentUpon>ViewUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\ViewUsers.aspx.designer.cs">
+      <DependentUpon>ViewUsers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FleetApp\ViewVehicle.aspx.cs">
       <DependentUpon>ViewVehicle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -744,10 +792,12 @@
     <Compile Include="FleetClass\BodyType_Class.cs" />
     <Compile Include="FleetClass\CarCrash_Class.cs" />
     <Compile Include="FleetClass\Driver_Class.cs" />
+    <Compile Include="FleetClass\Grant_Class.cs" />
     <Compile Include="FleetClass\LeaveType_Class.cs" />
     <Compile Include="FleetClass\Leave_Class.cs" />
     <Compile Include="FleetClass\License_Class.cs" />
     <Compile Include="FleetClass\Mark_Class.cs" />
+    <Compile Include="FleetClass\Menu_Class.cs" />
     <Compile Include="FleetClass\MinDriver_Class.cs" />
     <Compile Include="FleetClass\Ministry_Class.cs" />
     <Compile Include="FleetClass\MinRealEstate_Class.cs" />
@@ -756,7 +806,9 @@
     <Compile Include="FleetClass\Provider_Class.cs" />
     <Compile Include="FleetClass\RealEstate_Class.cs" />
     <Compile Include="FleetClass\Repair_Class.cs" />
+    <Compile Include="FleetClass\Role_Class.cs" />
     <Compile Include="FleetClass\Schedule_Class.cs" />
+    <Compile Include="FleetClass\Users_Class.cs" />
     <Compile Include="FleetClass\VehicleFuelSup_Class.cs" />
     <Compile Include="FleetClass\Vehicle_Class.cs" />
     <Compile Include="FleetImp\Assurance_Imp.cs" />
@@ -767,6 +819,8 @@
     <Compile Include="FleetImp\Crash_Interface.cs" />
     <Compile Include="FleetImp\Driver_Imp.cs" />
     <Compile Include="FleetImp\Driver_Interface.cs" />
+    <Compile Include="FleetImp\Grant_Imp.cs" />
+    <Compile Include="FleetImp\Grant_Interface.cs" />
     <Compile Include="FleetImp\LeaveType_Imp.cs" />
     <Compile Include="FleetImp\LeaveType_Interface.cs" />
     <Compile Include="FleetImp\Leave_Imp.cs" />
@@ -775,6 +829,8 @@
     <Compile Include="FleetImp\License_Interface.cs" />
     <Compile Include="FleetImp\Mark_Imp.cs" />
     <Compile Include="FleetImp\Mark_Interface.cs" />
+    <Compile Include="FleetImp\Menu_Imp.cs" />
+    <Compile Include="FleetImp\Menu_Interface.cs" />
     <Compile Include="FleetImp\MinDriver_Imp.cs" />
     <Compile Include="FleetImp\MinDriver_Interface.cs" />
     <Compile Include="FleetImp\Ministry_Imp.cs" />
@@ -791,6 +847,8 @@
     <Compile Include="FleetImp\RealEstate_Interface.cs" />
     <Compile Include="FleetImp\Repair_Imp.cs" />
     <Compile Include="FleetImp\Repair_Interface.cs" />
+    <Compile Include="FleetImp\Role_Imp.cs" />
+    <Compile Include="FleetImp\Role_Interface.cs" />
     <Compile Include="FleetImp\Schedule_Imp.cs" />
     <Compile Include="FleetImp\Schedule_Interface.cs" />
     <Compile Include="FleetImp\Users_Imp.cs" />
@@ -811,6 +869,9 @@
     <Compile Include="FleetModel\DRIVER.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="FleetModel\GRANT_RIGHT.cs">
+      <DependentUpon>MinistryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="FleetModel\LEAVE.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
@@ -821,6 +882,9 @@
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="FleetModel\MARK.cs">
+      <DependentUpon>MinistryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FleetModel\MENU.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="FleetModel\MINISTRY.cs">
@@ -867,7 +931,13 @@
     <Compile Include="FleetModel\REPAIR.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="FleetModel\ROLE.cs">
+      <DependentUpon>MinistryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="FleetModel\SCHEDULE.cs">
+      <DependentUpon>MinistryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FleetModel\USER.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="FleetModel\VEHICLE.cs">

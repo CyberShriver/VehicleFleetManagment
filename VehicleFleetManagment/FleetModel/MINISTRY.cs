@@ -28,12 +28,13 @@ namespace VehicleFleetManagment.FleetModel
             this.CAR_CRASH = new HashSet<CAR_CRASH>();
             this.LICENSEs = new HashSet<LICENSE>();
             this.REPAIRs = new HashSet<REPAIR>();
+            this.GRANT_RIGHT = new HashSet<GRANT_RIGHT>();
+            this.USERS = new HashSet<USER>();
         }
     
         public int MINISTRY_ID { get; set; }
         public string Code_Min { get; set; }
         public string Ministry_Name { get; set; }
-        public string Password { get; set; }
         public string Postal_code { get; set; }
         public string Fax { get; set; }
         public string Phone { get; set; }
@@ -41,7 +42,6 @@ namespace VehicleFleetManagment.FleetModel
         public string System_Name { get; set; }
         public string System_Email { get; set; }
         public string System_Title { get; set; }
-        public string User_Nme { get; set; }
         public string Logo { get; set; }
         public string Picture { get; set; }
         public string Slogan { get; set; }
@@ -69,5 +69,9 @@ namespace VehicleFleetManagment.FleetModel
         public virtual ICollection<LICENSE> LICENSEs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<REPAIR> REPAIRs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GRANT_RIGHT> GRANT_RIGHT { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USER> USERS { get; set; }
     }
 }

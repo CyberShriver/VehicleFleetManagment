@@ -98,6 +98,16 @@
           <Property Name="State" Type="varchar" MaxLength="100" />
           <Property Name="Visibility" Type="varchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="GRANT_RIGHT">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROLE_ID" Type="bigint" Nullable="false" />
+          <Property Name="Menu_Code" Type="bigint" Nullable="false" />
+          <Property Name="Access" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MINISTRY_ID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="LEAVE">
           <Key>
             <PropertyRef Name="LEAVE_ID" />
@@ -154,6 +164,14 @@
           <Property Name="Mark_Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Comment" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="MENU">
+          <Key>
+            <PropertyRef Name="Menu_Code" />
+          </Key>
+          <Property Name="Menu_Code" Type="bigint" Nullable="false" />
+          <Property Name="Title_Menu" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Stat" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
         <EntityType Name="MINISTRY">
           <Key>
             <PropertyRef Name="MINISTRY_ID" />
@@ -161,8 +179,6 @@
           <Property Name="MINISTRY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Code_Min" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Ministry_Name" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="User_Nme" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Postal_code" Type="varchar" MaxLength="100" />
           <Property Name="Fax" Type="varchar" MaxLength="100" />
           <Property Name="Phone" Type="varchar" MaxLength="30" />
@@ -262,6 +278,14 @@
           <Property Name="Saved_Date" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="MINISTRY_ID" Type="int" />
         </EntityType>
+        <EntityType Name="ROLE">
+          <Key>
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="ROLE_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role_Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descrept" Type="varchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="SCHEDULE">
           <Key>
             <PropertyRef Name="SCHEDULE_ID" />
@@ -271,6 +295,27 @@
           <Property Name="Comment" Type="varchar" MaxLength="300" />
           <Property Name="Saved_Date" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="MINISTRY_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="USERS_ID" />
+          </Key>
+          <Property Name="USERS_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MINISTRY_ID" Type="int" />
+          <Property Name="ROLE_ID" Type="bigint" />
+          <Property Name="Code_Min" Type="varchar" MaxLength="30" />
+          <Property Name="First_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="100" />
+          <Property Name="DOB" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="30" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="User_Nme" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="30" />
+          <Property Name="Picture" Type="varchar" MaxLength="100" />
+          <Property Name="User_Code" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="10" />
+          <Property Name="Saved_Date" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="VEHICLE">
           <Key>
@@ -469,6 +514,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MENU_Menu_Code">
+          <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
+          <End Role="GRANT_RIGHT" Type="Self.GRANT_RIGHT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENU">
+              <PropertyRef Name="Menu_Code" />
+            </Principal>
+            <Dependent Role="GRANT_RIGHT">
+              <PropertyRef Name="Menu_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MINISTRY_DRIVER_DriverID">
           <End Role="DRIVER" Type="Self.DRIVER" Multiplicity="1" />
           <End Role="MINISTRY_DRIVER" Type="Self.MINISTRY_DRIVER" Multiplicity="*" />
@@ -489,6 +546,30 @@
               <PropertyRef Name="MINISTRY_ID" />
             </Principal>
             <Dependent Role="MINISTRY_DRIVER">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MINISTRY_IDMinistry">
+          <End Role="MINISTRY" Type="Self.MINISTRY" Multiplicity="0..1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MINISTRY_MINISTRY_ID">
+          <End Role="MINISTRY" Type="Self.MINISTRY" Multiplicity="1" />
+          <End Role="GRANT_RIGHT" Type="Self.GRANT_RIGHT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Principal>
+            <Dependent Role="GRANT_RIGHT">
               <PropertyRef Name="MINISTRY_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -574,6 +655,30 @@
             </Principal>
             <Dependent Role="REPAIR">
               <PropertyRef Name="VEHICLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLE_IdRole">
+          <End Role="ROLE" Type="Self.ROLE" Multiplicity="0..1" />
+          <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="USERS">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLE_ROLE_ID">
+          <End Role="ROLE" Type="Self.ROLE" Multiplicity="1" />
+          <End Role="GRANT_RIGHT" Type="Self.GRANT_RIGHT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="GRANT_RIGHT">
+              <PropertyRef Name="ROLE_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -666,10 +771,12 @@
           <EntitySet Name="BODY_TYPE" EntityType="Self.BODY_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CAR_CRASH" EntityType="Self.CAR_CRASH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DRIVER" EntityType="Self.DRIVER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GRANT_RIGHT" EntityType="Self.GRANT_RIGHT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LEAVE" EntityType="Self.LEAVE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LEAVE_TYPE" EntityType="Self.LEAVE_TYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LICENSE" EntityType="Self.LICENSE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MARK" EntityType="Self.MARK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MENU" EntityType="Self.MENU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MINISTRY" EntityType="Self.MINISTRY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MINISTRY_DRIVER" EntityType="Self.MINISTRY_DRIVER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MINISTRY_REAL_ESTATE" EntityType="Self.MINISTRY_REAL_ESTATE" Schema="dbo" store:Type="Tables" />
@@ -678,7 +785,9 @@
           <EntitySet Name="PROVIDER" EntityType="Self.PROVIDER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="REAL_ESTATE" EntityType="Self.REAL_ESTATE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="REPAIR" EntityType="Self.REPAIR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLE" EntityType="Self.ROLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SCHEDULE" EntityType="Self.SCHEDULE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VEHICLE" EntityType="Self.VEHICLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VEHICLE_FUEL_SUPPLY" EntityType="Self.VEHICLE_FUEL_SUPPLY" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ASSURANCE_IDveh" Association="Self.FK_ASSURANCE_IDveh">
@@ -721,6 +830,10 @@
             <End Role="MARK" EntitySet="MARK" />
             <End Role="MODEL" EntitySet="MODEL" />
           </AssociationSet>
+          <AssociationSet Name="FK_MENU_Menu_Code" Association="Self.FK_MENU_Menu_Code">
+            <End Role="MENU" EntitySet="MENU" />
+            <End Role="GRANT_RIGHT" EntitySet="GRANT_RIGHT" />
+          </AssociationSet>
           <AssociationSet Name="FK_MINISTRY_DRIVER_DriverID" Association="Self.FK_MINISTRY_DRIVER_DriverID">
             <End Role="DRIVER" EntitySet="DRIVER" />
             <End Role="MINISTRY_DRIVER" EntitySet="MINISTRY_DRIVER" />
@@ -728,6 +841,14 @@
           <AssociationSet Name="FK_MINISTRY_DRIVER_IDMinistry" Association="Self.FK_MINISTRY_DRIVER_IDMinistry">
             <End Role="MINISTRY" EntitySet="MINISTRY" />
             <End Role="MINISTRY_DRIVER" EntitySet="MINISTRY_DRIVER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MINISTRY_IDMinistry" Association="Self.FK_MINISTRY_IDMinistry">
+            <End Role="MINISTRY" EntitySet="MINISTRY" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MINISTRY_MINISTRY_ID" Association="Self.FK_MINISTRY_MINISTRY_ID">
+            <End Role="MINISTRY" EntitySet="MINISTRY" />
+            <End Role="GRANT_RIGHT" EntitySet="GRANT_RIGHT" />
           </AssociationSet>
           <AssociationSet Name="FK_MINISTRY_REAL_ESTATE_IDMinistry" Association="Self.FK_MINISTRY_REAL_ESTATE_IDMinistry">
             <End Role="MINISTRY" EntitySet="MINISTRY" />
@@ -756,6 +877,14 @@
           <AssociationSet Name="FK_REPAIR_IDveh" Association="Self.FK_REPAIR_IDveh">
             <End Role="VEHICLE" EntitySet="VEHICLE" />
             <End Role="REPAIR" EntitySet="REPAIR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLE_IdRole" Association="Self.FK_ROLE_IdRole">
+            <End Role="ROLE" EntitySet="ROLE" />
+            <End Role="USERS" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLE_ROLE_ID" Association="Self.FK_ROLE_ROLE_ID">
+            <End Role="ROLE" EntitySet="ROLE" />
+            <End Role="GRANT_RIGHT" EntitySet="GRANT_RIGHT" />
           </AssociationSet>
           <AssociationSet Name="FK_SCHEDULE_IDveh" Association="Self.FK_SCHEDULE_IDveh">
             <End Role="VEHICLE" EntitySet="VEHICLE" />
@@ -976,6 +1105,30 @@
             <End Role="VEHICLE" EntitySet="VEHICLEs" />
             <End Role="REPAIR" EntitySet="REPAIRs" />
           </AssociationSet>
+          <EntitySet Name="GRANT_RIGHT" EntityType="MINISTRY_DBModel.GRANT_RIGHT" />
+          <EntitySet Name="MENUs" EntityType="MINISTRY_DBModel.MENU" />
+          <EntitySet Name="ROLEs" EntityType="MINISTRY_DBModel.ROLE" />
+          <AssociationSet Name="FK_MENU_Menu_Code" Association="MINISTRY_DBModel.FK_MENU_Menu_Code">
+            <End Role="MENU" EntitySet="MENUs" />
+            <End Role="GRANT_RIGHT" EntitySet="GRANT_RIGHT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLE_ROLE_ID" Association="MINISTRY_DBModel.FK_ROLE_ROLE_ID">
+            <End Role="ROLE" EntitySet="ROLEs" />
+            <End Role="GRANT_RIGHT" EntitySet="GRANT_RIGHT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MINISTRY_MINISTRY_ID" Association="MINISTRY_DBModel.FK_MINISTRY_MINISTRY_ID">
+            <End Role="MINISTRY" EntitySet="MINISTRies" />
+            <End Role="GRANT_RIGHT" EntitySet="GRANT_RIGHT" />
+          </AssociationSet>
+          <EntitySet Name="USERS" EntityType="MINISTRY_DBModel.USER" />
+          <AssociationSet Name="FK_MINISTRY_IDMinistry" Association="MINISTRY_DBModel.FK_MINISTRY_IDMinistry">
+            <End Role="MINISTRY" EntitySet="MINISTRies" />
+            <End Role="USER" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ROLE_IdRole" Association="MINISTRY_DBModel.FK_ROLE_IdRole">
+            <End Role="ROLE" EntitySet="ROLEs" />
+            <End Role="USER" EntitySet="USERS" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="DRIVER">
           <Key>
@@ -1020,7 +1173,6 @@
           <Property Name="MINISTRY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Code_Min" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Ministry_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Postal_code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Fax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -1039,11 +1191,12 @@
           <NavigationProperty Name="CAR_CRASH" Relationship="MINISTRY_DBModel.FK_CAR_CRASH_IDMinistry" FromRole="MINISTRY" ToRole="CAR_CRASH" />
           <NavigationProperty Name="LICENSEs" Relationship="MINISTRY_DBModel.FK_LICENSE_IDMinistry" FromRole="MINISTRY" ToRole="LICENSE" />
           <NavigationProperty Name="REPAIRs" Relationship="MINISTRY_DBModel.FK_REPAIR_IDMinistry" FromRole="MINISTRY" ToRole="REPAIR" />
-          <Property Name="User_Nme" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Logo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Slogan" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Theme" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GRANT_RIGHT" Relationship="MINISTRY_DBModel.FK_MINISTRY_MINISTRY_ID" FromRole="MINISTRY" ToRole="GRANT_RIGHT" />
+          <NavigationProperty Name="USERS" Relationship="MINISTRY_DBModel.FK_MINISTRY_IDMinistry" FromRole="MINISTRY" ToRole="USER" />
         </EntityType>
         <EntityType Name="VEHICLE">
           <Key>
@@ -1623,6 +1776,121 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="GRANT_RIGHT">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROLE_ID" Type="Int64" Nullable="false" />
+          <Property Name="Menu_Code" Type="Int64" Nullable="false" />
+          <Property Name="Access" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MENU" Relationship="MINISTRY_DBModel.FK_MENU_Menu_Code" FromRole="GRANT_RIGHT" ToRole="MENU" />
+          <NavigationProperty Name="ROLE" Relationship="MINISTRY_DBModel.FK_ROLE_ROLE_ID" FromRole="GRANT_RIGHT" ToRole="ROLE" />
+          <Property Name="MINISTRY_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_MINISTRY_MINISTRY_ID" FromRole="GRANT_RIGHT" ToRole="MINISTRY" />
+        </EntityType>
+        <EntityType Name="MENU">
+          <Key>
+            <PropertyRef Name="Menu_Code" />
+          </Key>
+          <Property Name="Menu_Code" Type="Int64" Nullable="false" />
+          <Property Name="Title_Menu" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Stat" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="GRANT_RIGHT" Relationship="MINISTRY_DBModel.FK_MENU_Menu_Code" FromRole="MENU" ToRole="GRANT_RIGHT" />
+        </EntityType>
+        <EntityType Name="ROLE">
+          <Key>
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="ROLE_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Descrept" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GRANT_RIGHT" Relationship="MINISTRY_DBModel.FK_ROLE_ROLE_ID" FromRole="ROLE" ToRole="GRANT_RIGHT" />
+          <NavigationProperty Name="USERS" Relationship="MINISTRY_DBModel.FK_ROLE_IdRole" FromRole="ROLE" ToRole="USER" />
+        </EntityType>
+        <Association Name="FK_MENU_Menu_Code">
+          <End Type="MINISTRY_DBModel.MENU" Role="MENU" Multiplicity="1" />
+          <End Type="MINISTRY_DBModel.GRANT_RIGHT" Role="GRANT_RIGHT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENU">
+              <PropertyRef Name="Menu_Code" />
+            </Principal>
+            <Dependent Role="GRANT_RIGHT">
+              <PropertyRef Name="Menu_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLE_ROLE_ID">
+          <End Type="MINISTRY_DBModel.ROLE" Role="ROLE" Multiplicity="1" />
+          <End Type="MINISTRY_DBModel.GRANT_RIGHT" Role="GRANT_RIGHT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="GRANT_RIGHT">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MINISTRY_MINISTRY_ID">
+          <End Type="MINISTRY_DBModel.MINISTRY" Role="MINISTRY" Multiplicity="1" />
+          <End Type="MINISTRY_DBModel.GRANT_RIGHT" Role="GRANT_RIGHT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Principal>
+            <Dependent Role="GRANT_RIGHT">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USERS_ID" />
+          </Key>
+          <Property Name="USERS_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MINISTRY_ID" Type="Int32" />
+          <Property Name="ROLE_ID" Type="Int64" />
+          <Property Name="Code_Min" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="First_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="User_Nme" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_MINISTRY_IDMinistry" FromRole="USER" ToRole="MINISTRY" />
+          <NavigationProperty Name="ROLE" Relationship="MINISTRY_DBModel.FK_ROLE_IdRole" FromRole="USER" ToRole="ROLE" />
+          <Property Name="User_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Saved_Date" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_MINISTRY_IDMinistry">
+          <End Type="MINISTRY_DBModel.MINISTRY" Role="MINISTRY" Multiplicity="0..1" />
+          <End Type="MINISTRY_DBModel.USER" Role="USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MINISTRY">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="MINISTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ROLE_IdRole">
+          <End Type="MINISTRY_DBModel.ROLE" Role="ROLE" Multiplicity="0..1" />
+          <End Type="MINISTRY_DBModel.USER" Role="USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1722,7 +1990,6 @@
                 <ScalarProperty Name="Slogan" ColumnName="Slogan" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
                 <ScalarProperty Name="Logo" ColumnName="Logo" />
-                <ScalarProperty Name="User_Nme" ColumnName="User_Nme" />
                 <ScalarProperty Name="System_Title" ColumnName="System_Title" />
                 <ScalarProperty Name="System_Email" ColumnName="System_Email" />
                 <ScalarProperty Name="System_Name" ColumnName="System_Name" />
@@ -1730,7 +1997,6 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="Postal_code" ColumnName="Postal_code" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Ministry_Name" ColumnName="Ministry_Name" />
                 <ScalarProperty Name="Code_Min" ColumnName="Code_Min" />
                 <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
@@ -1989,6 +2255,57 @@
                 <ScalarProperty Name="VEHICLE_ID" ColumnName="VEHICLE_ID" />
                 <ScalarProperty Name="Work_Number" ColumnName="Work_Number" />
                 <ScalarProperty Name="REPAIR_ID" ColumnName="REPAIR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRANT_RIGHT">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.GRANT_RIGHT">
+              <MappingFragment StoreEntitySet="GRANT_RIGHT">
+                <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
+                <ScalarProperty Name="Access" ColumnName="Access" />
+                <ScalarProperty Name="Menu_Code" ColumnName="Menu_Code" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="RowId" ColumnName="RowId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MENUs">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.MENU">
+              <MappingFragment StoreEntitySet="MENU">
+                <ScalarProperty Name="Stat" ColumnName="Stat" />
+                <ScalarProperty Name="Title_Menu" ColumnName="Title_Menu" />
+                <ScalarProperty Name="Menu_Code" ColumnName="Menu_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLEs">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.ROLE">
+              <MappingFragment StoreEntitySet="ROLE">
+                <ScalarProperty Name="Descrept" ColumnName="Descrept" />
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="MINISTRY_DBModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="Saved_Date" ColumnName="Saved_Date" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="User_Code" ColumnName="User_Code" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="User_Nme" ColumnName="User_Nme" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Code_Min" ColumnName="Code_Min" />
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+                <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
+                <ScalarProperty Name="USERS_ID" ColumnName="USERS_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

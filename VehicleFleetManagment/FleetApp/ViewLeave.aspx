@@ -109,6 +109,12 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
+                                            <asp:TemplateField HeaderText="Picture">
+                                                <ItemTemplate>
+                                                    <asp:Image ID="Image1" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images/Drivers/",Eval("Picture")) %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
                                             <asp:TemplateField HeaderText="Driver" FooterText="#">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label8" runat="server" Text='<%# Eval("MIN_DRIVER_ID") %>'></asp:Label>

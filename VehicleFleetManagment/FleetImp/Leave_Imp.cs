@@ -134,7 +134,8 @@ namespace VehicleFleetManagment.FleetImp
                                State = L.State,
                                MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
                                LEAVE_TYPE_ID = L.LEAVE_TYPE.Leave_Type_Description,
-                               MINISTRY_ID = L.MINISTRY.Ministry_Name
+                               MINISTRY_ID = L.MINISTRY.Ministry_Name,
+                               Picture=L.MINISTRY_DRIVER.DRIVER.Picture
 
                            }
                            ).ToList();
@@ -210,6 +211,76 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var L = (from l in con.LEAVEs where l.MINISTRY.Code_Min==codeMin
+                         select l).Count();
+                n = L;
+            }
+            return n;
+        }
+
+        //COUNT NOTIFICATION
+        public int countNotification(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var L = (from l in con.LEAVEs
+                         where l.State == "in Progress" || l.State == "Pending..." && l.MINISTRY.Code_Min == codeMin
+                         select l).Count();
+                n = L;
+            }
+            return n;
+        }
+
+        //COUNT ACTIVE LEAVE METHOD
+        public int countActive(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var L = (from l in con.LEAVEs
+                         where l.State== "in Progress" && l.MINISTRY.Code_Min == codeMin
+                         select l).Count();
+                n = L;
+            }
+            return n;
+        }
+
+        //COUNT PENDING LEAVE METHOD
+        public int countPending(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var L = (from l in con.LEAVEs
+                         where l.State == "Pending..." && l.MINISTRY.Code_Min == codeMin
+                         select l).Count();
+                n = L;
+            }
+            return n;
+        }
+
+        //COUNT DUE SOON LEAVE METHOD
+        public int countDueSoon(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var L = (from l in con.LEAVEs
+                         where l.State == "Approved" && l.MINISTRY.Code_Min == codeMin
+                         select l).Count();
+                n = L;
+            }
+            return n;
+        }
+
+        //COUNT FINISH SOON LEAVE METHOD
+        public int countFinishSoon(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var L = (from l in con.LEAVEs
+                         where l.State == "in Progress" && ((Convert.ToDateTime(l.End_Dte).Date - DateTime.Now.Date)).TotalDays <= 2 && l.MINISTRY.Code_Min == codeMin
                          select l).Count();
                 n = L;
             }

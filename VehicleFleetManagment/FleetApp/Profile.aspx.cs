@@ -11,13 +11,11 @@ namespace VehicleFleetManagment.FleetApp
 {
     public partial class Profile : System.Web.UI.Page
     {
-        Ministry_Class Min = new Ministry_Class();
-        Ministry_Interface I = new Ministry_Imp();
-        string codeMin;
-        string sytemTitle;
-        string slogan;
+        Users_Class Us = new Users_Class();
+        Users_Interface I = new Users_Imp();
 
-
+        string codeMin, username, sytemTitle, slogan;
+  
         protected void Page_Load(object sender, EventArgs e)
         {
             ChargeCookies();
@@ -32,11 +30,12 @@ namespace VehicleFleetManagment.FleetApp
 
         void ChargeCookies()
         {
-            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null)
+            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null || Request.Cookies["User_Nme"] != null)
             {
                 codeMin = Request.Cookies["Code_Min"].Value;
                 sytemTitle = Request.Cookies["System_Title"].Value;
                 slogan = Request.Cookies["Slogan"].Value;
+                username = Request.Cookies["User_Nme"].Value;
             }
 
         }
@@ -44,16 +43,16 @@ namespace VehicleFleetManagment.FleetApp
         {
             if (codeMin != null)
             {
-                I.Profile(Min, codeMin);
+                I.Profile(Us, username);
 
-                txtCode.Text = Min.Code_Min;
-                txtName.Text = Min.Ministry_Name;
-                txtAddress.Text = Min.Address;
-                txtTel.Text = Min.Phone;
-                txtFax.Text = Min.Fax;
-                txtPostal.Text = Min.Postal_code;
-                txtUserName.Text = Min.User_Nme;
-                Image1.ImageUrl ="~/FleetApp/assets/images/Users/"+Min.Picture;
+                txtFirstName.Text = Us.First_Name;
+                txtLastName.Text = Us.Last_Name;
+                txtAddress.Text = Us.Address;
+                txtTel.Text = Us.Phone;
+                txtbirth.Text = Us.DOB;
+                txtMail.Text = Us.Email;
+                txtUserCode.Text = Us.User_Code;
+                Image1.ImageUrl ="~/FleetApp/assets/images/Users/"+ Us.Picture;
             }
         }
     }

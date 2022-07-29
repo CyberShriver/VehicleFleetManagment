@@ -476,6 +476,34 @@ namespace VehicleFleetManagment.FleetImp
             return n;
         }
 
+        //COUNT AVAILABLE METHOD
+        public int countAvailable(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var V = (from l in con.VEHICLEs
+                         where l.MINISTRY.Code_Min == codeMin && l.Stat=="Available"
+                         select l).Count();
+                n = V;
+            }
+            return n;
+        }
+
+        //COUNT UNAVAILABLE METHOD
+        public int countUnavailable(string codeMin)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var V = (from l in con.VEHICLEs
+                         where l.MINISTRY.Code_Min == codeMin && l.Stat == "Unavailable"
+                         select l).Count();
+                n = V;
+            }
+            return n;
+        }
+
         //COUNT All METHOD
         public int countAll()
         {

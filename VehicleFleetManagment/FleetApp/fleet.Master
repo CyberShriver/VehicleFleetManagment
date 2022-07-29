@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <!-- scrollbar.css -->
     <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css">
+    <!-- morris chart -->
+    <link rel="stylesheet" type="text/css" href="assets/css/morris.js/css/morris.css">
     <!-- am chart export.css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
     <!-- Style.css -->
@@ -104,17 +106,6 @@
                         <a class="mobile-menu waves-effect waves-light" id="mobile-collapse" href="#!">
                             <i class="ti-menu"></i>
                         </a>
-                        <%--<div class="mobile-search waves-effect waves-light">
-                            <div class="header-search">
-                                <div class="main-search morphsearch-search">
-                                    <div class="input-group">
-                                        <span class="input-group-addon search-close"><i class="ti-close"></i></span>
-                                        <input type="text" class="form-control" placeholder="Enter Keyword">
-                                        <span class="input-group-addon search-btn"><i class="ti-search"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>--%>
                         <a href="Home.aspx">
                             <asp:Image ID="LogoPic" class="img-fluid" runat="server" AlternateText="System logo"/>
                         </a>
@@ -128,15 +119,6 @@
                             <li>
                                 <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
                             </li>
-                            <%--<li class="header-search">
-                                <div class="main-search morphsearch-search">
-                                    <div class="input-group">
-                                        <span class="input-group-addon search-close"><i class="ti-close"></i></span>
-                                        <input type="text" class="form-control">
-                                        <span class="input-group-addon search-btn"><i class="ti-search"></i></span>
-                                    </div>
-                                </div>
-                            </li>--%>
                             <li>
                                 <a href="#!" onclick="javascript:toggleFullScreen()" class="waves-effect waves-light">
                                     <i class="ti-fullscreen"></i>
@@ -152,9 +134,9 @@
                                 <ul class="show-notification">
                                     <li>
                                         <h6>Notifications</h6>
-                                        <label class="label label-danger">New</label>
+                                        <label class="label label-danger"><asp:Label class="label label-danger h5" id="ActiveNumber" runat="server" Text=""></asp:Label>New</label>
                                     </li>
-                                    <asp:ListView ID="ListView1" runat="server" >
+                                    <asp:ListView ID="ListView1" runat="server"  >
                                         <ItemTemplate>
                                             <li class="waves-effect waves-light">
                                                 <div class="media">
@@ -182,6 +164,16 @@
                                     <li class="waves-effect waves-light">
                                         <a href="Settings.aspx">
                                             <i class="ti-settings"></i>Settings
+                                        </a>
+                                    </li>
+                                    <li class="waves-effect waves-light">
+                                        <a href="Menu.aspx">
+                                            <i class="ti-settings"></i>Menu
+                                        </a>
+                                    </li>
+                                    <li class="waves-effect waves-light">
+                                        <a href="Grant_Right.aspx">
+                                            <i class="ti-settings"></i>Granted Right
                                         </a>
                                     </li>
                                     <li class="waves-effect waves-light">
@@ -259,7 +251,7 @@
                         <%--<div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Vehicle Entities</div>--%>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="active">
-                                <a href="index.html" class="waves-effect waves-dark">
+                                <a href="Home.aspx" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="icofont icofont-dashboard"></i><b>D</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                     <span class="pcoded-mcaret"></span>
@@ -278,22 +270,6 @@
                                             <span class="pcoded-mtext" data-i18n="nav.Vehicles.alert">Vehicles</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-<%--                                        <ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddVehicle.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Vehicles.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewVehicle.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicle.Vehicles.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
                                     </li>
                                     <li class="">
                                         <a href="ViewMark.aspx " class="waves-effect waves-dark">
@@ -301,22 +277,6 @@
                                             <span class="pcoded-mtext" data-i18n="nav.Vehicles.Mark.Alert">Mark</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddMark.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Mark.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewMark.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Mark.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
                                     </li>
                                     <li class="">
                                         <a href="ViewModel.aspx" class="waves-effect waves-dark">
@@ -324,22 +284,6 @@
                                             <span class="pcoded-mtext" data-i18n="nav.Vehicles.Model.Alert">Model</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-<%--                                        <ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddModel.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Model.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewModel.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Model.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
                                     </li>
                                     <li class="">
                                         <a href="ViewBody.aspx" class="waves-effect waves-dark">
@@ -441,7 +385,6 @@
                         <!--End Vehicle entities-->
 
                         <!-- Start Ministrie entities-->
-                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.forms">Ministries Entries</div>--%>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -524,6 +467,30 @@
                                         <a href="ViewMinistryReal.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministries-Real-Estate.alert">Ministries Real Estate</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                        <%--<ul class="pcoded-submenu">
+                                            <li class="">
+                                                <a href="AddMinistryReal.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministries-Real-Estate.Add">Add</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="ViewMinistryReal.aspx" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministries-Real-Estate.List">List</span>
+                                                    <span class="pcoded-mcaret"></span>
+                                                </a>
+                                            </li>
+                                        </ul>--%>
+                                    </li>
+
+                                    <li class=" ">
+                                        <a href="ViewUsers.aspx" class="waves-effect waves-dark">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext" data-i18n="nav.Ministries.Userse.alert">Users</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                         <%--<ul class="pcoded-submenu">
@@ -798,6 +765,9 @@
 
                         <!-- Start Reports entities-->
                         <%--<div class="pcoded-navigation-label" data-i18n="nav.category.other">Reports Entities</div>--%>
+
+                        <% if (MenuDisplay("DisplayReport") == true){ %>
+
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -808,6 +778,7 @@
                                 
                             </li>
                         </ul>
+                          <% }%>
                         <!-- End Reports entities-->
 
                         <!-- Start System entities-->
@@ -846,51 +817,7 @@
     </div>
 
 
-    <!-- Warning Section Starts -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 10]>
-    <div class="ie-warning">
-        <h1>Warning!!</h1>
-        <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-        <div class="iew-container">
-            <ul class="iew-download">
-                <li>
-                    <a href="http://www.google.com/chrome/">
-                        <img src="assets/images/browser/chrome.png" alt="Chrome">
-                        <div>Chrome</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.mozilla.org/en-US/firefox/new/">
-                        <img src="assets/images/browser/firefox.png" alt="Firefox">
-                        <div>Firefox</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://www.opera.com">
-                        <img src="assets/images/browser/opera.png" alt="Opera">
-                        <div>Opera</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.apple.com/safari/">
-                        <img src="assets/images/browser/safari.png" alt="Safari">
-                        <div>Safari</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                        <img src="assets/images/browser/ie.png" alt="">
-                        <div>IE (9 & above)</div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <p>Sorry for the inconvenience!</p>
-    </div>
-    <![endif]-->
-    <!-- Warning Section Ends -->
-
+  
     <!-- Required Jquery -->
     <script type="text/javascript" src="assets/js/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/jquery-ui/jquery-ui.min.js "></script>
@@ -909,6 +836,11 @@
     <script src="assets/js/jquery.mCustomScrollbar.concat.min.js "></script>
     <!-- Chart js -->
     <script type="text/javascript" src="assets/js/chart.js/Chart.js"></script>
+    <!-- Morris Chart js -->
+    <script src="assets/js/raphael/raphael.min.js"></script>
+    <script src="assets/js/morris.js/morris.js"></script>
+    <!-- Custom  Morris js -->
+    <script src="assets/js/morris-custom-chart.js"></script>
     <!-- amchart js -->
     <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
     <script src="assets/pages/widget/amchart/gauge.js"></script>

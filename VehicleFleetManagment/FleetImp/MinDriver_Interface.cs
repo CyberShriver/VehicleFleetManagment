@@ -33,6 +33,9 @@ namespace VehicleFleetManagment.FleetImp
         //count
         int count(string codeMin);
 
+        //COUNT ON POST POSITION METHOD
+        int countOnPost(string codeMin);
+
         //count All
         int countAll();
 

@@ -34,6 +34,12 @@ namespace VehicleFleetManagment.FleetImp
         //count
         int count(string codeMin);
 
+        //COUNT AVAILABLE METHOD
+        int countAvailable(string codeMin);
+
+        //COUNT UNAVAILABLE METHOD
+        int countUnavailable(string codeMin);
+
         //count All
         int countAll();
 

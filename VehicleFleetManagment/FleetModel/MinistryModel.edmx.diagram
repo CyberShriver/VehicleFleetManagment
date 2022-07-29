@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b50417d591ab4c0fbead3dd975c9f3ca" Name="Diagram1" ZoomLevel="100">
+      <Diagram DiagramId="b50417d591ab4c0fbead3dd975c9f3ca" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="MINISTRY_DBModel.BODY_TYPE" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MINISTRY_DBModel.MARK" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="MINISTRY_DBModel.MODEL" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
@@ -50,6 +50,15 @@
         <AssociationConnector Association="MINISTRY_DBModel.FK_LICENSE_MIN_DRIVER_ID" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_REPAIR_IDMinistry" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_REPAIR_IDveh" />
+        <EntityTypeShape EntityType="MINISTRY_DBModel.GRANT_RIGHT" Width="1.5" PointX="3" PointY="15" />
+        <EntityTypeShape EntityType="MINISTRY_DBModel.MENU" Width="1.5" PointX="0.75" PointY="15.25" />
+        <EntityTypeShape EntityType="MINISTRY_DBModel.ROLE" Width="1.5" PointX="0.75" PointY="18.25" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_MENU_Menu_Code" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_ROLE_ROLE_ID" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_MINISTRY_MINISTRY_ID" />
+        <EntityTypeShape EntityType="MINISTRY_DBModel.USER" Width="1.5" PointX="3" PointY="10.375" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_MINISTRY_IDMinistry" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_ROLE_IdRole" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

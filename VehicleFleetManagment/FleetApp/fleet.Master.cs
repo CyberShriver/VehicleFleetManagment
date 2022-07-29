@@ -17,33 +17,37 @@ namespace VehicleFleetManagment.FleetApp
         Leave_Interface Il = new Leave_Imp();
         MinDriver_Interface IMd = new MinDriver_Imp();
 
+        Grant_Class Gr = new Grant_Class();
+        Grant_Interface IG = new Grant_Imp();
+
+        static int id, n, role;
+
         HttpCookie Code_Min = new HttpCookie("Code_Min");
         HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
-        HttpCookie Phone = new HttpCookie("Phone");
         HttpCookie Ministry_Name = new HttpCookie("Ministry_Name");
-        HttpCookie Address = new HttpCookie("Address");
         HttpCookie Postal_code = new HttpCookie("Postal_code");
-        HttpCookie User_Nme = new HttpCookie("User_Nme");
         HttpCookie Fax = new HttpCookie("Fax");
         HttpCookie System_Name = new HttpCookie("System_Name");
         HttpCookie System_Title = new HttpCookie("System_Title");
         HttpCookie System_Email = new HttpCookie("System_Email");
-        HttpCookie Password = new HttpCookie("Password");
         HttpCookie Logo = new HttpCookie("Logo");
-        HttpCookie Picture = new HttpCookie("Picture");
         HttpCookie Slogan = new HttpCookie("Slogan");
-        HttpCookie Theme = new HttpCookie("Theme");
+        HttpCookie theme = new HttpCookie("Theme");
+        HttpCookie PictMin = new HttpCookie("Picture");
 
-        string codeMin;
-        string name;
-        string sytemTitle;
-        string logo;
-        string systemName;
-        string pic;
-        string slogan;
-        string theme;
+        HttpCookie Phone = new HttpCookie("Phone");
+        HttpCookie Address = new HttpCookie("Address");
+        HttpCookie User_Nme = new HttpCookie("User_Nme");
+        HttpCookie Password = new HttpCookie("Password");
+        HttpCookie PictureUser = new HttpCookie("Picture");
+        HttpCookie mail = new HttpCookie("Email");
+        HttpCookie FirstName = new HttpCookie("First_Name");
+        HttpCookie LastName = new HttpCookie("Last_Name");
+        HttpCookie UserCode = new HttpCookie("User_Code");
+        HttpCookie birth = new HttpCookie("DOB");
+        HttpCookie rol = new HttpCookie("ROLE_ID");
 
-    
+        string codeMin, MinistryName, sytemTitle, MinistryMail,fax,postal, IdMin, logo, systemName, picUser, slogan, them,email,picMin,firstname,lastname,address,phon,usercod,Dob;
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -52,6 +56,7 @@ namespace VehicleFleetManagment.FleetApp
             Il.UpdateStateFinished();
             Il.UpdateAutoStateDenied(codeMin);
             IMd.AutoSwap();
+            ActiveNumber.Text=Il.countNotification(codeMin).ToString();
 
             if (codeMin == "All")
             {
@@ -70,26 +75,47 @@ namespace VehicleFleetManagment.FleetApp
         {
            
 
-            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Ministry_Name"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null || Request.Cookies["Logo"] != null || Request.Cookies["System_Name"] != null || Request.Cookies["Picture"] != null || Request.Cookies["Theme"] != null)
-            {
+            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Ministry_Name"] != null || Request.Cookies["Slogan"] != null || 
+                Request.Cookies["System_Title"] != null || Request.Cookies["Logo"] != null || Request.Cookies["System_Name"] != null || 
+                Request.Cookies["Picture"] != null || Request.Cookies["Theme"] != null || Request.Cookies["MINISTRY_ID"] != null ||
+                Request.Cookies["Fax"] != null || Request.Cookies["Postal_code"] != null || Request.Cookies["System_Email"] != null ||
+                Request.Cookies["Phone"] != null || Request.Cookies["Address"] != null || Request.Cookies["Picture"] != null ||
+                Request.Cookies["Email"] != null || Request.Cookies["First_Name"] != null || Request.Cookies["Last_Name"] != null ||
+                Request.Cookies["DOB"] != null || Request.Cookies["ROLE_ID"] != null  )
+            {       
+
                 codeMin = Request.Cookies["Code_Min"].Value;
-                name = Request.Cookies["Ministry_Name"].Value;
+                MinistryMail = Request.Cookies["System_Email"].Value;
+                MinistryName = Request.Cookies["Ministry_Name"].Value;
                 sytemTitle = Request.Cookies["System_Title"].Value;
                 logo = Request.Cookies["Logo"].Value;
                 systemName = Request.Cookies["System_Name"].Value;
-                pic = Request.Cookies["Picture"].Value;
+                picMin = Request.Cookies["Picture"].Value;
                 slogan = Request.Cookies["Slogan"].Value;
-                theme = Request.Cookies["Theme"].Value;
+                them = Request.Cookies["Theme"].Value;
+                IdMin = Request.Cookies["MINISTRY_ID"].Value;
+                fax = Request.Cookies["Fax"].Value;
+                postal = Request.Cookies["Postal_code"].Value;
+
+                phon = Request.Cookies["Phone"].Value;
+                address = Request.Cookies["Address"].Value;
+                picUser = Request.Cookies["Picture"].Value;
+                email = Request.Cookies["Email"].Value;
+                firstname = Request.Cookies["First_Name"].Value;
+                lastname = Request.Cookies["Last_Name"].Value;
+                usercod = Request.Cookies["User_Code"].Value;
+                Dob = Request.Cookies["DOB"].Value;
+                role= Convert.ToInt32(rol.Value);
             }
             else
             {
                 Response.Redirect("~/FleetApp/Login.aspx");
             }
 
-            txtProfileName.Text = name;
-            txtSideProfile.Text = name;
-            HeaderProfile.ImageUrl = "~/FleetApp/assets/images/Users/" + pic;
-            SideProfile.ImageUrl = "~/FleetApp/assets/images/Users/" + pic;
+            txtProfileName.Text = lastname+ " " + firstname;
+            txtSideProfile.Text = lastname + " " + firstname;
+            HeaderProfile.ImageUrl = "~/FleetApp/assets/images/Users/" + picUser;
+            SideProfile.ImageUrl = "~/FleetApp/assets/images/Users/" + picUser;
             LogoPic.ImageUrl = "~/FleetApp/assets/images/Logo/" + logo;
         }
 
@@ -156,6 +182,43 @@ namespace VehicleFleetManagment.FleetApp
             Code_Min.Expires = DateTime.Now.AddMilliseconds(-10);
             Response.Cookies.Add(Code_Min);
             Response.Redirect("~/FleetApp/Login.aspx");
+        }
+
+        public bool MenuDisplay(string menuValue)
+        {
+            //HttpCookie role = Request.Cookies["role"];
+            //HttpCookie rs = Request.Cookies["rs"];
+            //HttpCookie usernm = Request.Cookies["usernm"];
+            //HttpCookie idperso = Request.Cookies["iduser"];
+            //HttpCookie idagc = Request.Cookies["agc"];
+
+            HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
+            HttpCookie rol = new HttpCookie("ROLE_ID");
+
+            bool rep = false;
+            if (Request.Cookies["MINISTRY_ID"] != null || Request.Cookies["ROLE_ID"] != null)
+            {
+                id = Convert.ToInt32(MINISTRY_ID.Value);
+                role = Convert.ToInt32(rol.Value);
+
+                try
+                {
+                    n = Convert.ToInt32(IG.count(role, menuValue, id));
+                    if (n > 0)
+                        rep = true;
+                    else
+                        rep = false;
+
+
+                }
+                catch (Exception ex)
+                {
+                    Response.Write(ex.Message);
+                }
+
+
+            }
+            return rep;
         }
     }
 }
