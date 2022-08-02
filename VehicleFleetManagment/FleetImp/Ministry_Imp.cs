@@ -26,6 +26,7 @@ namespace VehicleFleetManagment.FleetImp
                 M.Phone = Min.Phone;
                 M.Postal_code = Min.Postal_code;
                 M.Fax = Min.Fax;
+                M.ROLE_ID = Min.ROLE_ID;
                 M.System_Name = Min.System_Name;
                 M.System_Title = Min.System_Title;
                 M.System_Email = Min.System_Email;
@@ -68,6 +69,7 @@ namespace VehicleFleetManagment.FleetImp
                     M.Phone = Min.Phone;
                     M.Postal_code = Min.Postal_code;
                     M.Fax = Min.Fax;
+                    M.ROLE_ID = Min.ROLE_ID;
                     M.System_Name = Min.System_Name;
                     M.System_Title = Min.System_Title;
                     M.System_Email = Min.System_Email;
@@ -111,6 +113,7 @@ namespace VehicleFleetManagment.FleetImp
                     M.Logo = Min.Logo;
                     M.Theme = Min.Theme;
                     M.Slogan = Min.Slogan;
+                    M.ROLE_ID = Min.ROLE_ID;
 
                     if (con.SaveChanges() > 0)
                     {
@@ -170,6 +173,7 @@ namespace VehicleFleetManagment.FleetImp
                                Logo = M.Logo,
                                Picture = M.Picture,
                                Slogan = M.Slogan,
+                               ROLE_ID = M.ROLE.Role_Name,
                                Theme = M.Theme
             }
                            ).ToList();
@@ -200,6 +204,7 @@ namespace VehicleFleetManagment.FleetImp
                 Min.Theme = M.Theme;
                 Min.Picture = M.Picture;
                 Min.Slogan = M.Slogan;
+                Min.ROLE_ID = M.ROLE_ID;
 
             }
         }
@@ -224,6 +229,7 @@ namespace VehicleFleetManagment.FleetImp
                 Min.Picture = M.Picture;
                 Min.Slogan = M.Slogan;
                 Min.Theme = M.Theme;
+                Min.ROLE_ID = M.ROLE_ID;
 
             }
         }
@@ -266,7 +272,8 @@ namespace VehicleFleetManagment.FleetImp
                                System_Email = M.System_Email,
                                Logo = M.Logo,
                                Picture = M.Picture,
-                               Slogan = M.Slogan,
+                               Slogan = M.Slogan,                               
+                               ROLE_ID = M.ROLE.Role_Name,                               
                                Theme = M.Theme
 
                            }

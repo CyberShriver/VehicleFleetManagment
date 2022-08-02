@@ -118,17 +118,11 @@
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label7" runat="server" Text='<%# Eval("Phone") %>'></asp:Label>
                                                 </ItemTemplate>
-                                            </asp:TemplateField>
+                                            </asp:TemplateField>                                            
 
-                                            <asp:TemplateField HeaderText="User Name">
+                                            <asp:TemplateField HeaderText="Role">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label10" runat="server" Text='<%# Eval("User_Nme") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-
-                                            <asp:TemplateField HeaderText="Password">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label1011" runat="server" Text='<%# Eval("Password") %>'></asp:Label>
+                                                    <asp:Label ID="Label1011" runat="server" Text='<%# Eval("ROLE_ID") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

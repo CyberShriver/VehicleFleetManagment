@@ -48,13 +48,12 @@ namespace VehicleFleetManagment.FleetApp
 
         void ChargeCookies()
         {
-            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null || Request.Cookies["Role_Name"] != null || Request.Cookies["MINISTRY_ID"] != null)
+            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null || Request.Cookies["MINISTRY_ID"] != null)
             {
                 codeMin = Request.Cookies["Code_Min"].Value;
                 IdMin = Request.Cookies["MINISTRY_ID"].Value;
                 sytemTitle = Request.Cookies["System_Title"].Value;
                 slogan = Request.Cookies["Slogan"].Value;
-                rol = Request.Cookies["Role_Name"].Value;
             }     
         
         }
@@ -86,7 +85,7 @@ namespace VehicleFleetManagment.FleetApp
         protected void gdv_RowCommand(object sender, GridViewCommandEventArgs e)
         {
           
-            if (e.CommandName == "update")
+            if (e.CommandName == "updat")
             {
                 if (DropDown_Role.SelectedValue == "-1")
                 {

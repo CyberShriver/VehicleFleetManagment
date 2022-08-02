@@ -59,6 +59,7 @@
         <EntityTypeShape EntityType="MINISTRY_DBModel.USER" Width="1.5" PointX="3" PointY="10.375" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_MINISTRY_IDMinistry" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_ROLE_IdRole" />
+        <AssociationConnector Association="MINISTRY_DBModel.FK_MINISTRY_ROLE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

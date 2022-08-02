@@ -21,6 +21,7 @@ namespace VehicleFleetManagment.FleetClass
         public string Picture { get; set; }
         public string Slogan { get; set; }
         public string Theme { get; set; }
+        public Nullable<long> ROLE_ID { get; set; }
 
 
     }

@@ -145,6 +145,12 @@
                                                             <span class="form-bar"></span>
                                                             <label class="float-label">Slogan</label>
                                                         </div>
+
+                                                        <div class="form-group form-default"  runat="server">
+                                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Role"  required="" runat="server"></asp:DropDownList>
+                                                            <label class="float-label">Role</label>
+                                                        </div>
+
                                                         <div class="form-group form-default">
                                                             <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTheme">
                                                             <span class="form-bar"></span>

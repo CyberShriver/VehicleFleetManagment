@@ -29,7 +29,9 @@ namespace VehicleFleetManagment.FleetApp
         {
             ChargeCookies();
             id = Request.QueryString["MINISTRY_ID"];
+            Ir.DropdownRole(DropDown_Role);
             MultiView.ActiveViewIndex = 0;
+
             if (!IsPostBack)
             {
                 MsgInit();
@@ -80,7 +82,7 @@ namespace VehicleFleetManagment.FleetApp
             try
             {
                 if (txtName.Value == "" || txtAddress.Value == "" || txtTel.Value == "" || txtSysTitle.Value == "" ||
-                    txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || txtSysMaile.Value == "" || txtTheme.Value=="" || txtSlogan.Value=="")
+                    txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || DropDown_Role.SelectedValue == "-1" || txtSysMaile.Value == "" || txtTheme.Value=="" || txtSlogan.Value=="")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -114,6 +116,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Min.Logo = Imglogo;
                                 Min.Theme = txtTheme.Value;
                                 Min.Slogan = txtSlogan.Value;
+                                Min.ROLE_ID = Convert.ToInt64(DropDown_Role.SelectedValue);
 
                                 msg = I.Add(Min);
                                 if (msg > 0)
@@ -171,6 +174,7 @@ namespace VehicleFleetManagment.FleetApp
                         Min.Logo = "Nologo.png";
                         Min.Theme = txtTheme.Value;
                         Min.Slogan = txtSlogan.Value;
+                        Min.ROLE_ID = Convert.ToInt64(DropDown_Role.SelectedValue);
 
                         msg = I.Add(Min);
                         if (msg > 0)
@@ -216,7 +220,7 @@ namespace VehicleFleetManagment.FleetApp
             try
             {
                 if (txtName.Value == "" || txtAddress.Value == "" || txtTel.Value == "" ||  txtSysTitle.Value == "" ||
-                  txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || txtSysMaile.Value == "" || txtTheme.Value == "" || txtSlogan.Value == "")
+                  txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || DropDown_Role.SelectedValue == "-1" || txtSysMaile.Value == "" || txtTheme.Value == "" || txtSlogan.Value == "")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -250,6 +254,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Min.Logo = Imglogo;
                                 Min.Theme = txtTheme.Value;
                                 Min.Slogan = txtSlogan.Value;
+                                Min.ROLE_ID = Convert.ToInt64(DropDown_Role.SelectedValue);
 
                                 msg = I.Update(Min, Convert.ToInt32(id));
                                 if (msg > 0)
@@ -292,6 +297,7 @@ namespace VehicleFleetManagment.FleetApp
                         Min.Picture = "unkownUser.jpg";
                         Min.Logo = "Nologo.png";
                         Min.Theme = txtTheme.Value;
+                        Min.ROLE_ID = Convert.ToInt64(DropDown_Role.SelectedValue);
                         Min.Slogan = txtSlogan.Value;
 
                         msg = I.Update(Min, Convert.ToInt32(id));

@@ -139,7 +139,7 @@
                         </div>
                         <!-- task, page, download counter  end -->
 
-                        <!--  sale analytics start -->
+                        <!--  Leave donut chart start -->
                         <div class="col-xl-8 col-md-12">
                             <div class="card">
                                 <div class="card-header">
@@ -156,7 +156,8 @@
                                     </div>
                                 </div>
                                 <div class="card-block">
-                                    <div id="sales-analytics" style="height: 400px;"></div>
+<%--                                    <div id="sales-analytics" style="height: 400px;"></div>--%>
+                                    <div id="chartdiv"></div>                                
                                 </div>
                             </div>
                         </div>

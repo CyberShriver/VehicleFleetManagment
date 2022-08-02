@@ -206,6 +206,14 @@
                         </div>
                     </div>
                     <!-- Hover table card end -->
+
+                    <div class="card">
+                        <div class="card-header">Json Data</div>
+                        <div class="card-block" >
+                            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                        </div>
+                    </div>
+
                 </div>
                 <!-- Page body end -->
             </div>

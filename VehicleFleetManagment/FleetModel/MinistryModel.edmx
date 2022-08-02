@@ -168,7 +168,7 @@
           <Key>
             <PropertyRef Name="Menu_Code" />
           </Key>
-          <Property Name="Menu_Code" Type="bigint" Nullable="false" />
+          <Property Name="Menu_Code" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title_Menu" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Stat" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
@@ -190,6 +190,7 @@
           <Property Name="Picture" Type="varchar" MaxLength="100" />
           <Property Name="Slogan" Type="varchar" MaxLength="200" />
           <Property Name="Theme" Type="varchar" MaxLength="100" />
+          <Property Name="ROLE_ID" Type="bigint" />
         </EntityType>
         <EntityType Name="MINISTRY_DRIVER">
           <Key>
@@ -598,6 +599,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MINISTRY_ROLE">
+          <End Role="ROLE" Type="Self.ROLE" Multiplicity="0..1" />
+          <End Role="MINISTRY" Type="Self.MINISTRY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="MINISTRY">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MOT_IDveh">
           <End Role="VEHICLE" Type="Self.VEHICLE" Multiplicity="1" />
           <End Role="MOT" Type="Self.MOT" Multiplicity="*" />
@@ -857,6 +870,10 @@
           <AssociationSet Name="FK_MINISTRY_REAL_ESTATE_REAL_ESTATE_ID" Association="Self.FK_MINISTRY_REAL_ESTATE_REAL_ESTATE_ID">
             <End Role="REAL_ESTATE" EntitySet="REAL_ESTATE" />
             <End Role="MINISTRY_REAL_ESTATE" EntitySet="MINISTRY_REAL_ESTATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MINISTRY_ROLE" Association="Self.FK_MINISTRY_ROLE">
+            <End Role="ROLE" EntitySet="ROLE" />
+            <End Role="MINISTRY" EntitySet="MINISTRY" />
           </AssociationSet>
           <AssociationSet Name="FK_MOT_IDveh" Association="Self.FK_MOT_IDveh">
             <End Role="VEHICLE" EntitySet="VEHICLE" />
@@ -1129,6 +1146,10 @@
             <End Role="ROLE" EntitySet="ROLEs" />
             <End Role="USER" EntitySet="USERS" />
           </AssociationSet>
+          <AssociationSet Name="FK_MINISTRY_ROLE" Association="MINISTRY_DBModel.FK_MINISTRY_ROLE">
+            <End Role="ROLE" EntitySet="ROLEs" />
+            <End Role="MINISTRY" EntitySet="MINISTRies" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="DRIVER">
           <Key>
@@ -1197,6 +1218,8 @@
           <Property Name="Theme" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="GRANT_RIGHT" Relationship="MINISTRY_DBModel.FK_MINISTRY_MINISTRY_ID" FromRole="MINISTRY" ToRole="GRANT_RIGHT" />
           <NavigationProperty Name="USERS" Relationship="MINISTRY_DBModel.FK_MINISTRY_IDMinistry" FromRole="MINISTRY" ToRole="USER" />
+          <Property Name="ROLE_ID" Type="Int64" />
+          <NavigationProperty Name="ROLE" Relationship="MINISTRY_DBModel.FK_MINISTRY_ROLE" FromRole="MINISTRY" ToRole="ROLE" />
         </EntityType>
         <EntityType Name="VEHICLE">
           <Key>
@@ -1807,6 +1830,7 @@
           <Property Name="Descrept" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="GRANT_RIGHT" Relationship="MINISTRY_DBModel.FK_ROLE_ROLE_ID" FromRole="ROLE" ToRole="GRANT_RIGHT" />
           <NavigationProperty Name="USERS" Relationship="MINISTRY_DBModel.FK_ROLE_IdRole" FromRole="ROLE" ToRole="USER" />
+          <NavigationProperty Name="MINISTRies" Relationship="MINISTRY_DBModel.FK_MINISTRY_ROLE" FromRole="ROLE" ToRole="MINISTRY" />
         </EntityType>
         <Association Name="FK_MENU_Menu_Code">
           <End Type="MINISTRY_DBModel.MENU" Role="MENU" Multiplicity="1" />
@@ -1887,6 +1911,18 @@
               <PropertyRef Name="ROLE_ID" />
             </Principal>
             <Dependent Role="USER">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MINISTRY_ROLE">
+          <End Type="MINISTRY_DBModel.ROLE" Role="ROLE" Multiplicity="0..1" />
+          <End Type="MINISTRY_DBModel.MINISTRY" Role="MINISTRY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="MINISTRY">
               <PropertyRef Name="ROLE_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1986,6 +2022,7 @@
           <EntitySetMapping Name="MINISTRies">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.MINISTRY">
               <MappingFragment StoreEntitySet="MINISTRY">
+                <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
                 <ScalarProperty Name="Theme" ColumnName="Theme" />
                 <ScalarProperty Name="Slogan" ColumnName="Slogan" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />

@@ -236,7 +236,7 @@
                         <!-- end Admin Pic -->
 
                         <!-- Start Search  -->
-                        <div class="p-15 p-b-0">
+<%--                        <div class="p-15 p-b-0">
                             <form class="form-material">
                                 <div class="form-group form-primary">
                                     <input type="text" name="footer-email" class="form-control" required="">
@@ -244,12 +244,12 @@
                                     <label class="float-label"><i class="fa fa-search m-r-10"></i>Search </label>
                                 </div>
                             </form>
-                        </div>
+                        </div>--%>
                         <!-- end Search  -->
 
                         <!-- Start Vehicle entities-->
                         <%--<div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Vehicle Entities</div>--%>
-                        <ul class="pcoded-item pcoded-left-item">
+                        <ul class="pcoded-item pcoded-left-item mt-3 ">
                             <li class="active">
                                 <a href="Home.aspx" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="icofont icofont-dashboard"></i><b>D</b></span>
@@ -855,6 +855,11 @@
     <script type="text/javascript" src="assets/pages/dashboard/custom-dashboard.js"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
    
+    <!-- Donut chart js file -->
+    <script src="https://localhost:44339/FleetApp/assets/js/Donut-Chart/index.js"></script>
+    <script src="https://localhost:44339/FleetApp/assets/js/Donut-Chart/percent.js"></script>
+    <script src="https://localhost:44339/FleetApp/assets/js/Donut-Chart/Animated.js"></script>
+
     <!-- prevent letter input in type="text" for double or float-->
      <script>
         function inpNum(e) {
@@ -865,6 +870,69 @@
                 e.preventDefault();
         }
      </script>
+
+    <!-- Donut chart js code-->
+    <script>
+        am5.ready(function () {
+
+            // Create root element
+            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+            var root = am5.Root.new("chartdiv");
+
+
+            // Set themes
+            // https://www.amcharts.com/docs/v5/concepts/themes/
+            root.setThemes([
+                am5themes_Animated.new(root)
+            ]);
+
+
+            // Create chart
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+            var chart = root.container.children.push(am5percent.PieChart.new(root, {
+                layout: root.verticalLayout,
+                innerRadius: am5.percent(50)
+            }));
+
+
+            // Create series
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+            var series = chart.series.push(am5percent.PieSeries.new(root, {
+                valueField: "count",
+                categoryField: "Start_Dte",
+                alignLabels: false
+            }));
+
+            series.labels.template.setAll({
+                textType: "circular",
+                centerX: 0,
+                centerY: 0
+            });
+
+
+            // Set data
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+            series.data.setAll(<%= obj %>);
+
+
+            // Create legend
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
+            var legend = chart.children.push(am5.Legend.new(root, {
+                centerX: am5.percent(50),
+                x: am5.percent(50),
+                marginTop: 15,
+                marginBottom: 15,
+            }));
+
+            legend.data.setAll(series.dataItems);
+
+
+            // Play initial series animation
+            // https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+            series.appear(1000, 100);
+
+        }); // end am5.ready()
+    </script>
 
      <!-- prevent letter input in type="text" for int-->
     <script>

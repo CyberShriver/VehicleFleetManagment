@@ -43,6 +43,7 @@ namespace VehicleFleetManagment.FleetApp
         HttpCookie UserCode = new HttpCookie("User_Code");
         HttpCookie birth = new HttpCookie("DOB");
         HttpCookie rol = new HttpCookie("ROLE_ID");
+        HttpCookie IdUser = new HttpCookie("USERS_ID");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -91,6 +92,9 @@ namespace VehicleFleetManagment.FleetApp
                         Response.Cookies["Password"].Expires = DateTime.Now.AddMinutes(-1);
                     }
 
+                    IdUser.Value = Us.USERS_ID.ToString().Trim();
+                    IdUser.Expires.Add(new TimeSpan(1, 0, 0));
+                    Response.Cookies.Add(IdUser);
 
                     Code_Min.Value = Min.Code_Min.ToString().Trim();
                     Code_Min.Expires.Add(new TimeSpan(1, 0, 0));

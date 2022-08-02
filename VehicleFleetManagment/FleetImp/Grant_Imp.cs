@@ -49,7 +49,6 @@ namespace VehicleFleetManagment.FleetImp
             {
                 G = con.GRANT_RIGHT.Where(x => x.ROLE_ID == code && x.Menu_Code == menu && x.MINISTRY_ID == IdMin).FirstOrDefault();
 
-
                 G.Access = Gr.Access;
 
                 if (con.SaveChanges() == 1)
@@ -197,7 +196,7 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //CHECK IF PERMISSION(GRANT) ALREADY GRANTED
-        public int count(int role, string menu, int CodeMin)
+        public int count(int role, string menu, int idMin)
         {
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
@@ -206,7 +205,7 @@ namespace VehicleFleetManagment.FleetImp
                          join M in con.MENUs on l.Menu_Code equals G.Menu_Code
                          join r in con.ROLEs on l.ROLE_ID equals r.ROLE_ID
                          join Min in con.MINISTRies on l.MINISTRY_ID equals Min.MINISTRY_ID
-                         where (l.ROLE_ID == role && M.Title_Menu == menu && l.MINISTRY_ID == CodeMin && l.Access == "ON")
+                         where (l.ROLE_ID == role && M.Title_Menu == menu && l.MINISTRY_ID == idMin && l.Access == "ON")
                          select l).Count();
                 n = b;
             }

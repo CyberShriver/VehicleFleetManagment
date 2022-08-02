@@ -134,6 +134,14 @@
                         </div>
                     </div>
                     <!-- Hover table card end -->
+
+                    <div class="card">
+                        <div class="card-header"> Json Data</div>
+                        <div class="card-block" runat="server" id="jsondata">
+
+                        </div>
+                    </div>
+
                 </div>
                 <!-- Page body end -->
             </div>

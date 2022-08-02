@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using VehicleFleetManagment.FleetClass;
 using VehicleFleetManagment.FleetModel;
 using System.Data.Entity;
+using Newtonsoft.Json;
 
 namespace VehicleFleetManagment.FleetImp
 {
@@ -144,6 +145,50 @@ namespace VehicleFleetManagment.FleetImp
                 gd.DataBind();
             }
 
+        }
+
+        //DISPLAY DATE IN JSON FORMAT METHOD
+        public string DisplayJson(string codeMin)
+        {
+            string jsonTable;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from L in con.LEAVEs.AsEnumerable()
+                           where L.MINISTRY.Code_Min == codeMin && L.State == "Finished"
+                           group L by Convert.ToDateTime(L.Start_Dte).ToString("MMMM")  into g
+
+                           select new
+                           {
+                               Start_Dte = g.Key,
+                               
+                               count = (from L in g select Convert.ToDateTime(L.Start_Dte).Month).Count()
+                           });
+                
+                //.GroupBy(L =>L.Start_Dte)
+                //.Select(x => new {
+                //    Start_Dte= x.st }).Where(x => x.MINISTRY.Code_Min == codeMin && x.State == "Finished").Count();
+                //var obj = con.LEAVEs.GroupBy(x => new {x.Start_Dte,x.Leave_Code }).Select(x => x.FirstOrDefault()).Where(x => x.MINISTRY.Code_Min == codeMin && x.State == "Finished").Count();
+                //(from L in con.LEAVEs 
+                //           where L.MINISTRY.Code_Min == codeMin && L.State=="Finished" 
+
+                //           select new
+                //           {
+                //               LEAVE_ID = L.LEAVE_ID,
+                //               Leave_Code = L.Leave_Code,
+                //               Start_Dte = L.Start_Dte,
+                //               End_Dte = L.End_Dte,
+                //               State = L.State,
+                //               MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
+
+                //           }
+                //           ).ToList().Count();
+                string TextJson = JsonConvert.SerializeObject(obj);
+
+                jsonTable = TextJson;
+
+
+            }
+            return jsonTable;
         }
 
         //DISPLAY ALL METHOD

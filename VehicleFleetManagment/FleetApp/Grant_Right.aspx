@@ -114,7 +114,7 @@
                          
                                                             <asp:TemplateField HeaderText="Action">
                                                                 <ItemTemplate>
-                                                                    <asp:Button ID="btn_Update" class="btn btn-sm btn-primary mr-4" runat="server" Text="Update" CommandName="update" />
+                                                                    <asp:Button ID="btn_Update" class="btn btn-sm btn-primary mr-4" runat="server" Text="Update" CommandName="updat" />
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 

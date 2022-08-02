@@ -204,6 +204,15 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtSlogan;
 
         /// <summary>
+        /// DropDown_Role control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDown_Role;
+
+        /// <summary>
         /// txtTheme control.
         /// </summary>
         /// <remarks>

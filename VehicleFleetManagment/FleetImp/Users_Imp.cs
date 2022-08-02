@@ -112,6 +112,7 @@ namespace VehicleFleetManagment.FleetImp
                     code = U.Code_Min;
                     M = con.MINISTRies.Where(x => x.Code_Min == code).FirstOrDefault();
 
+                    Us.USERS_ID = U.USERS_ID;
                     Us.Code_Min = U.Code_Min;
                     Us.First_Name = U.First_Name;
                     Us.USERS_ID = U.USERS_ID;

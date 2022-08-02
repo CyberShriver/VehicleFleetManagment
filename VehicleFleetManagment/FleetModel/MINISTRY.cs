@@ -46,6 +46,7 @@ namespace VehicleFleetManagment.FleetModel
         public string Picture { get; set; }
         public string Slogan { get; set; }
         public string Theme { get; set; }
+        public Nullable<long> ROLE_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VEHICLE> VEHICLEs { get; set; }
@@ -73,5 +74,6 @@ namespace VehicleFleetManagment.FleetModel
         public virtual ICollection<GRANT_RIGHT> GRANT_RIGHT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USER> USERS { get; set; }
+        public virtual ROLE ROLE { get; set; }
     }
 }

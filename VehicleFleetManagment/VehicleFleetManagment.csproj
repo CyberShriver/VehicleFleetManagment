@@ -236,6 +236,10 @@
     <Content Include="FleetApp\assets\js\bootstrap\js\bootstrap.min.js" />
     <Content Include="FleetApp\assets\js\chart.js\Chart.js" />
     <Content Include="FleetApp\assets\js\common-pages.js" />
+    <Content Include="FleetApp\assets\js\Donut-Chart\Animated.js" />
+    <Content Include="FleetApp\assets\js\Donut-Chart\donut.js" />
+    <Content Include="FleetApp\assets\js\Donut-Chart\index.js" />
+    <Content Include="FleetApp\assets\js\Donut-Chart\percent.js" />
     <Content Include="FleetApp\assets\js\jquery-slimscroll\jquery.slimscroll.js" />
     <Content Include="FleetApp\assets\js\jquery-ui\jquery-ui.min.js" />
     <Content Include="FleetApp\assets\js\jquery.mCustomScrollbar.concat.min.js" />
@@ -287,6 +291,7 @@
     <Content Include="FleetApp\Granted_Right.aspx" />
     <Content Include="FleetApp\Grant_Right.aspx" />
     <Content Include="FleetApp\Home.aspx" />
+    <Content Include="FleetApp\LeaveDonutChart.aspx" />
     <Content Include="FleetApp\Login.aspx" />
     <Content Include="FleetApp\Menu.aspx" />
     <Content Include="FleetApp\Profile.aspx" />
@@ -619,6 +624,13 @@
     </Compile>
     <Compile Include="FleetApp\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\LeaveDonutChart.aspx.cs">
+      <DependentUpon>LeaveDonutChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\LeaveDonutChart.aspx.designer.cs">
+      <DependentUpon>LeaveDonutChart.aspx</DependentUpon>
     </Compile>
     <Compile Include="FleetApp\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

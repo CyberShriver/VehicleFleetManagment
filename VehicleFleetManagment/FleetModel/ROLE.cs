@@ -19,6 +19,7 @@ namespace VehicleFleetManagment.FleetModel
         {
             this.GRANT_RIGHT = new HashSet<GRANT_RIGHT>();
             this.USERS = new HashSet<USER>();
+            this.MINISTRies = new HashSet<MINISTRY>();
         }
     
         public long ROLE_ID { get; set; }
@@ -29,5 +30,7 @@ namespace VehicleFleetManagment.FleetModel
         public virtual ICollection<GRANT_RIGHT> GRANT_RIGHT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USER> USERS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MINISTRY> MINISTRies { get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace VehicleFleetManagment.FleetImp
         int count();
 
         //CHECK IF PERMISSION(GRANT) ALREADY GRANTED
-        int count(int role, string menu, int CodeMin);
+        int count(int role, string menu, int idMin);
 
         //REASEARCH METHOD
          void Research(GridView gd, string SearchText);

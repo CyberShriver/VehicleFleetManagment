@@ -30,6 +30,8 @@ namespace VehicleFleetManagment.FleetApp
                 getDataGDV();
                 runGrid();
 
+                Label1.Text= I.DisplayJson(codeMin);
+
             }
         }
 
