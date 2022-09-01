@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using VehicleFleetManagment.FleetClass;
 using VehicleFleetManagment.FleetModel;
 using System.Data.Entity;
+using Newtonsoft.Json;
 
 namespace VehicleFleetManagment.FleetImp
 {
@@ -161,6 +162,31 @@ namespace VehicleFleetManagment.FleetImp
                 return msg;
             }
 
+        }
+
+        //DISPLAY DATE IN JSON FORMAT METHOD
+        public string DisplayJson(string codeMin)
+        {
+            string jsonTable;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from C in con.CAR_CRASH.AsEnumerable()
+                           where C.MINISTRY.Code_Min == codeMin 
+                           group C by Convert.ToDateTime(C.Crash_Date).ToString("MMMM") into g
+
+                           select new
+                           {
+                               Crash_Date = g.Key,
+                               count = (from C in g select Convert.ToDateTime(C.Crash_Date).Month).Count()
+                           });
+          
+                string TextJson = JsonConvert.SerializeObject(obj);
+
+                jsonTable = TextJson;
+
+
+            }
+            return jsonTable;
         }
 
         //DISPLAY METHOD

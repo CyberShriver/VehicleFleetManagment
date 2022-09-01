@@ -3,7 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <style>
+        #chartdiv1 {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
     <!-- Page-header start -->
     <div class="page-header">
         <div class="page-block">
@@ -15,7 +20,7 @@
                             <asp:Label class="m-b-0 p" ID="txtSlogan" runat="server" Text=""></asp:Label></p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <%--<div class="col-md-4">
                     <ul class="breadcrumb-title">
                         <li class="breadcrumb-item">
                             <a href="index.html"><i class="fa fa-home"></i></a>
@@ -23,7 +28,7 @@
                         <li class="breadcrumb-item"><a href="#!">Dashboard</a>
                         </li>
                     </ul>
-                </div>
+                </div>--%>
             </div>
         </div>
     </div>
@@ -140,10 +145,10 @@
                         <!-- task, page, download counter  end -->
 
                         <!--  Leave donut chart start -->
-                        <div class="col-xl-8 col-md-12">
-                            <div class="card">
+                        <div class="col-xl-8 col-md-12 col-sm-4">
+                            <div class="card ">
                                 <div class="card-header">
-                                    <h5>Leave Analytics</h5>
+                                    <h5>Leave Statistics and Analytics</h5>
                                     <span class="text-muted">Statistics of leaves per month</span>
                                     <div class="card-header-right">
                                         <ul class="list-unstyled card-option">
@@ -155,9 +160,75 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="card-block">
-<%--                                    <div id="sales-analytics" style="height: 400px;"></div>--%>
-                                    <div id="chartdiv"></div>                                
+                                <div class="card-block tab-icon">                                                                                                        
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs md-tabs " role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" role="tab" runat="server" id="tabAnalysis" onserverclick="ActiveAnalys_click"><i class="icofont icofont-ui-settings"></i>Leave analysis with Donut Pie</a>
+                                            <div class="slide"></div>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link " role="tab" runat="server" id="tabStat" onserverclick="ActiveStat_click"><i class="icofont icofont-home"></i>Leave Statistic table</a>
+                                            <div class="slide"></div>
+                                        </li>
+                                                                                
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content card-block">
+                                        <!-- MULTIVIEW  -->
+                                        <asp:MultiView ID="MultiView" runat="server">
+
+                                             <!--  Analysis Tab  -->
+                                            <asp:View ID="ViewAnalysis" runat="server">
+                                                <div class="row card-block">
+
+                                                    <div  id="chartdiv" class="" ></div>  
+
+                                                </div>
+
+                                            </asp:View>
+                                            <!-- Analysis Tab  -->
+
+                                            <!--Statistics  info Tab  -->
+                                            <asp:View ID="ViewStatistic" runat="server">
+                                                <div class="row card-block">
+                                                    <div class="table">
+                                                        <asp:GridView ID="gdv" ShowHeaderWhenEmpty="true" EmptyDataText="No Records" 
+                                                            class="table  table-striped  table-borderless  " HorizontalAlign="Center" HeaderStyle-Font-Bold="true"
+                                                            AutoGenerateColumns="false" EmptyDataRowStyle-Font-Size="X-Large"
+                                                            GridLines="None" EmptyDataRowStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#448aff" HeaderStyle-ForeColor="White"
+                                                            runat="server" Width="100%">
+
+                                                            <Columns>
+
+                                                                <asp:TemplateField HeaderText="Month">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label98" runat="server" Text='<%# Eval("Start_Dte") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Number">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="LblState" runat="server" Text='<%# Eval("count") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+
+                                                            </Columns>
+                                                        </asp:GridView>
+
+                                                        <div> <span runat="server" class="font-weight-bold mr-1">Total Number: </span> <asp:Label runat="server" Text="" ID="totalFinishedLeave" class="txt-muted"></asp:Label></div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                
+                                            </asp:View>
+                                            <!-- end Statistics Tab  -->
+                                          
+                                           
+                                        </asp:MultiView>
+                                        <!-- END MULTIVIEW  -->
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -271,9 +342,78 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="card-block">
-                                    <div id="line-example"></div>
+
+                                <div class="card-block tab-icon">                                                                                                        
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs md-tabs " role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" role="tab" runat="server" id="tabCrashAnaly" onserverclick="ActiveCrashAnalys_click"><i class="icofont icofont-ui-settings"></i>Crash analysis with Donut Pie</a>
+                                            <div class="slide"></div>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link " role="tab" runat="server" id="tabCrashStat" onserverclick="ActiveCrashStat_click"><i class="icofont icofont-home"></i>Crash Statistic table</a>
+                                            <div class="slide"></div>
+                                        </li>
+                                                                                
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content card-block">
+                                        <!-- MULTIVIEW  -->
+                                        <asp:MultiView ID="MultiView1" runat="server">
+
+                                             <!--  Analysis Tab  -->
+                                            <asp:View ID="View1" runat="server">
+                                                <div class="row card-block">
+
+                                                    <div  id="chartdiv1" class="" ></div>  
+
+                                                </div>
+
+                                            </asp:View>
+                                            <!-- Analysis Tab  -->
+
+                                            <!--Statistics  info Tab  -->
+                                            <asp:View ID="View2" runat="server">
+                                                <div class=" card-block">
+                                                    <div class="table">
+                                                        <asp:GridView ID="gdvCrash" ShowHeaderWhenEmpty="true" EmptyDataText="No Records" 
+                                                            class="table  table-striped  table-borderless  " HorizontalAlign="Center" HeaderStyle-Font-Bold="true"
+                                                            AutoGenerateColumns="false" EmptyDataRowStyle-Font-Size="X-Large"
+                                                            GridLines="None" EmptyDataRowStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#448aff" HeaderStyle-ForeColor="White"
+                                                            runat="server" Width="100%">
+
+                                                            <Columns>
+
+                                                                <asp:TemplateField HeaderText="Month">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Label98" runat="server" Text='<%# Eval("Crash_Date") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Number">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="LblState" runat="server" Text='<%# Eval("count") %>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+
+                                                            </Columns>
+                                                        </asp:GridView>
+
+                                                        <div> <span runat="server" class="font-weight-bold mr-1">Total Number: </span> <asp:Label runat="server" Text="" ID="TotalNumberCrash" class="txt-muted"></asp:Label></div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                
+                                            </asp:View>
+                                            <!-- end Statistics Tab  -->
+                                          
+                                           
+                                        </asp:MultiView>
+                                        <!-- END MULTIVIEW  -->
+                                    </div>
+
                                 </div>
+
                             </div>
                         </div>
                         <!--  Crash line chart end -->
@@ -320,4 +460,74 @@
             <div id="styleSelector"></div>
         </div>
     </div>
+
+
+     <!-- Donut chart js file -->
+    <script src="https://localhost:44339/FleetApp/assets/js/Donut-Chart/index.js"></script>
+    <script src="https://localhost:44339/FleetApp/assets/js/Donut-Chart/percent.js"></script>
+    <script src="https://localhost:44339/FleetApp/assets/js/Donut-Chart/Animated.js"></script>
+
+      <%-- Donut chart js code for Crash Analyse   --%>
+    <script>
+        am5.ready(function () {
+
+            // Create root element
+            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+            var root = am5.Root.new("chartdiv1");
+
+
+            // Set themes
+            // https://www.amcharts.com/docs/v5/concepts/themes/
+            root.setThemes([
+                am5themes_Animated.new(root)
+            ]);
+
+
+            // Create chart
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+            var chart = root.container.children.push(am5percent.PieChart.new(root, {
+                layout: root.verticalLayout,
+                innerRadius: am5.percent(50)
+            }));
+
+
+            // Create series
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+            var series = chart.series.push(am5percent.PieSeries.new(root, {
+                valueField: "count",
+                categoryField: "Crash_Date",
+                alignLabels: false
+            }));
+
+            series.labels.template.setAll({
+                textType: "circular",
+                centerX: 0,
+                centerY: 0
+            });
+
+
+            // Set data
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+            series.data.setAll(<%= CrashAnalys %>);
+
+
+            // Create legend
+            // https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
+            var legend = chart.children.push(am5.Legend.new(root, {
+                centerX: am5.percent(50),
+                x: am5.percent(50),
+                marginTop: 15,
+                marginBottom: 15,
+            }));
+
+            legend.data.setAll(series.dataItems);
+
+
+            // Play initial series animation
+            // https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+            series.appear(1000, 100);
+
+        }); // end am5.ready()
+    </script>
+<!-- HTML -->
 </asp:Content>

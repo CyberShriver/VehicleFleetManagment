@@ -87,6 +87,15 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.WebControls.DropDownList DropDown_Ministry;
 
         /// <summary>
+        /// driver control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl driver;
+
+        /// <summary>
         /// DropDown_Driver control.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace VehicleFleetManagment.FleetApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDown_Driver;
+
+        /// <summary>
+        /// Leavetype control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Leavetype;
 
         /// <summary>
         /// DropDown_LeaveType control.
@@ -112,6 +130,15 @@ namespace VehicleFleetManagment.FleetApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtLeaveCode;
+
+        /// <summary>
+        /// carpooling control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl carpooling;
 
         /// <summary>
         /// txtCarpooling control.
@@ -157,6 +184,15 @@ namespace VehicleFleetManagment.FleetApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateStart;
+
+        /// <summary>
+        /// EndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EndDate;
 
         /// <summary>
         /// dateEnd control.

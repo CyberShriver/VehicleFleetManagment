@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using VehicleFleetManagment.FleetClass;
 using VehicleFleetManagment.FleetImp;
 
+
 namespace VehicleFleetManagment.FleetApp
 {
     public partial class fleet : System.Web.UI.MasterPage
@@ -16,6 +17,8 @@ namespace VehicleFleetManagment.FleetApp
 
         Leave_Interface Il = new Leave_Imp();
         MinDriver_Interface IMd = new MinDriver_Imp();
+
+        Crash_Interface Icrash = new Crash_Imp();
 
         Grant_Class Gr = new Grant_Class();
         Grant_Interface IG = new Grant_Imp();
@@ -49,7 +52,7 @@ namespace VehicleFleetManagment.FleetApp
         HttpCookie rol = new HttpCookie("ROLE_ID");
 
         string codeMin, MinistryName, sytemTitle, MinistryMail,fax,postal, IdMin, logo, systemName, picUser, slogan, them,email,picMin,firstname,lastname,address,phon,usercod,Dob;
-        public string obj;
+        public string LeaveAnalys;
         protected void Page_Load(object sender, EventArgs e)
         {
             ChargeCookies();
@@ -57,34 +60,26 @@ namespace VehicleFleetManagment.FleetApp
             Il.UpdateStateFinished();
             Il.UpdateAutoStateDenied(codeMin);
             IMd.AutoSwap();
-            ActiveNumber.Text=Il.countNotification(codeMin).ToString();
+            ActiveNumber.Text = Il.countNotification(codeMin).ToString();
 
-            if (codeMin == "All")
-            {
-                MinistryTable.Visible = true;
-            }
-            else
-            {
-                MinistryTable.Visible = false;
-                Il.LeaveNotification(ListView1, codeMin);
-                this.obj=Il.DisplayJson(codeMin);
-
-            }
-
-}
+            Il.LeaveNotification(ListView1, codeMin);
+            this.LeaveAnalys = Il.DisplayJson(codeMin);
+            
+           
+        }
 
         //Charge Cookies
         void ChargeCookies()
         {
            
 
-            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Ministry_Name"] != null || Request.Cookies["Slogan"] != null || 
-                Request.Cookies["System_Title"] != null || Request.Cookies["Logo"] != null || Request.Cookies["System_Name"] != null || 
-                Request.Cookies["Picture"] != null || Request.Cookies["Theme"] != null || Request.Cookies["MINISTRY_ID"] != null ||
-                Request.Cookies["Fax"] != null || Request.Cookies["Postal_code"] != null || Request.Cookies["System_Email"] != null ||
-                Request.Cookies["Phone"] != null || Request.Cookies["Address"] != null || Request.Cookies["Picture"] != null ||
-                Request.Cookies["Email"] != null || Request.Cookies["First_Name"] != null || Request.Cookies["Last_Name"] != null ||
-                Request.Cookies["DOB"] != null || Request.Cookies["ROLE_ID"] != null || Request.Cookies["USERS_ID"] != null)
+            if (Request.Cookies["Code_Min"] != null && Request.Cookies["Ministry_Name"] != null && Request.Cookies["Slogan"] != null &&
+                Request.Cookies["System_Title"] != null && Request.Cookies["Logo"] != null && Request.Cookies["System_Name"] != null &&
+                Request.Cookies["Picture"] != null && Request.Cookies["Theme"] != null && Request.Cookies["MINISTRY_ID"] != null &&
+                Request.Cookies["Fax"] != null && Request.Cookies["Postal_code"] != null && Request.Cookies["System_Email"] != null &&
+                Request.Cookies["Phone"] != null && Request.Cookies["Address"] != null && Request.Cookies["Picture"] != null &&
+                Request.Cookies["Email"] != null && Request.Cookies["First_Name"] != null && Request.Cookies["Last_Name"] != null &&
+                Request.Cookies["DOB"] != null && Request.Cookies["ROLE_ID"] != null && Request.Cookies["USERS_ID"] != null)
             {       
 
                 codeMin = Request.Cookies["Code_Min"].Value;
@@ -190,8 +185,8 @@ namespace VehicleFleetManagment.FleetApp
 
         public bool MenuDisplay(string menuValue)
         {
-            HttpCookie MINISTRY_ID = new HttpCookie("MINISTRY_ID");
-            HttpCookie rol = new HttpCookie("ROLE_ID");
+            HttpCookie MINISTRY_ID = Request.Cookies["MINISTRY_ID"];
+            HttpCookie rol = Request.Cookies["ROLE_ID"];
 
             bool rep = false;
             if ( Request.Cookies["MINISTRY_ID"] != null && Request.Cookies["ROLE_ID"] != null)

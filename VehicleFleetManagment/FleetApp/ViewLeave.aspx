@@ -45,9 +45,8 @@
                                     <li><i class="fa fa fa-wrench open-card-option"></i></li>
                                     <li><i class="fa fa-window-maximize full-card"></i></li>
                                     <li><i class="fa fa-minus minimize-card"></i></li>
-                                    <li></li>
                                     <li><a onserverclick="btnReload_click" runat="server" class="reload-card btn-out"><i class="fa fa-refresh"></i></a></li>
-                                    <li><i class="fa fa-trash close-card"></i></li>
+                                    <li><a onserverclick="DeleteCheck_Click" runat="server" class="reload-card btn-out"><i class="fa fa-trash"></i></a></li>
                                 </ul>
                             </div>
 
@@ -206,13 +205,6 @@
                         </div>
                     </div>
                     <!-- Hover table card end -->
-
-                    <div class="card">
-                        <div class="card-header">Json Data</div>
-                        <div class="card-block" >
-                            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-                        </div>
-                    </div>
 
                 </div>
                 <!-- Page body end -->

@@ -41,60 +41,7 @@
 </head>
 
 <body themebg-pattern="theme4">
-    <!-- Pre-loader start -->
-    <%--<div class="theme-loader">
-        <div class="loader-track">
-            <div class="preloader-wrapper">
-                <div class="spinner-layer spinner-blue">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-                <div class="spinner-layer spinner-red">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
 
-                <div class="spinner-layer spinner-yellow">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-
-                <div class="spinner-layer spinner-green">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>--%>
-    <!-- Pre-loader end -->
     <div id="pcoded" class="pcoded">
         <div class="pcoded-overlay-box"></div>
 
@@ -161,36 +108,49 @@
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
+                                    <% if (MenuDisplay("SettingsMenu") == true)
+                                        { %>
                                     <li class="waves-effect waves-light">
                                         <a href="Settings.aspx">
                                             <i class="ti-settings"></i>Settings
                                         </a>
                                     </li>
+
+                                    <%} %>
+
+                                     <% if (MenuDisplay("AddingMenu") == true)
+                                        { %>
                                     <li class="waves-effect waves-light">
                                         <a href="Menu.aspx">
-                                            <i class="ti-settings"></i>Menu
+                                            <i class=" ti-menu"></i>Menu
                                         </a>
                                     </li>
+                                    <%} %>
+
+                                    <% if (MenuDisplay("GrantRightMenu") == true)
+                                        { %>
                                     <li class="waves-effect waves-light">
                                         <a href="Grant_Right.aspx">
-                                            <i class="ti-settings"></i>Granted Right
+                                            <i class=" ti-alert"></i>Granted Right
                                         </a>
                                     </li>
+                                     <%} %>
+
                                     <li class="waves-effect waves-light">
                                         <a href="Profile.aspx">
                                             <i class="ti-user"></i>Profile
                                         </a>
                                     </li>
+
+                                     <% if (MenuDisplay("ProvideRoleMenu") == true)
+                                        { %>
                                     <li class="waves-effect waves-light">
-                                        <a href="email-inbox.html">
-                                            <i class="ti-email"></i>My Messages
+                                        <a href="Role.aspx">
+                                            <i class=" ti-check-box"></i>Role
                                         </a>
-                                    </li>
-                                    <li class="waves-effect waves-light">
-                                        <a href="auth-lock-screen.html">
-                                            <i class="ti-lock"></i>Lock Screen
-                                        </a>
-                                    </li>
+                                    </li>  
+                                     <%} %>
+
                                     <li class="waves-effect waves-light">
                                         <a href="#" runat="server" onserverclick="LogoutLink">
                                             <i class="ti-layout-sidebar-left"></i>Logout
@@ -226,7 +186,8 @@
                                 <ul>
                                     <li class="more-details">
                                         <a href="Profile.aspx"><i class="ti-user"></i>View Profile</a>
-                                        <a href="Settings.aspx"><i class="ti-settings"></i>Settings</a>
+                                         <% if (MenuDisplay("SettingsMenu") == true)
+                                             { %><a href="Settings.aspx"><i class="ti-settings"></i>Settings</a><%} %>
                                         <a href="#" runat="server" onserverclick="SideLogout_ServerClick"><i class="ti-layout-sidebar-left"></i>Logout</a>
                                     </li>
                                 </ul>
@@ -247,8 +208,8 @@
                         </div>--%>
                         <!-- end Search  -->
 
-                        <!-- Start Vehicle entities-->
-                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Vehicle Entities</div>--%>
+                        <!-- start Dashboard-->
+                        <% if (MenuDisplay("DashboardMenu") == true){ %>
                         <ul class="pcoded-item pcoded-left-item mt-3 ">
                             <li class="active">
                                 <a href="Home.aspx" class="waves-effect waves-dark">
@@ -257,6 +218,15 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
+                        </ul>
+                        <% } %>
+                        <!-- end Dashboard-->
+
+                        <!-- Start Vehicle entities-->
+                        <% if (MenuDisplay("VehicleEntityMenu") == true)
+                            { %>
+
+                        <ul class="pcoded-item pcoded-left-item  ">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
                                     <span class="pcoded-micon"><i class="fa fa-bus"></i></span>
@@ -264,6 +234,9 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
+
+                                    <% if (MenuDisplay("VehicleMenu") == true)
+                                        { %>
                                     <li class="">
                                         <a href="ViewVehicle.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="fa fa-bus"></i></span>
@@ -271,6 +244,10 @@
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                     </li>
+                                    <% } %>
+
+                                    <% if (MenuDisplay("MarkMenu") == true)
+                                        { %>
                                     <li class="">
                                         <a href="ViewMark.aspx " class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -278,6 +255,10 @@
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                     </li>
+                                    <% } %>
+
+                                    <% if (MenuDisplay("ModelMenu") == true)
+                                        { %>
                                     <li class="">
                                         <a href="ViewModel.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -285,30 +266,21 @@
                                             <span class="pcoded-mcaret"></span>
                                         </a>
                                     </li>
+                                    <% } %>
+
+                                    <% if (MenuDisplay("BodyTypeMenu") == true)
+                                        { %>
                                     <li class="">
                                         <a href="ViewBody.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Vehicles.Body-Type.Alert">Body Type</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddBody.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Body-Type.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewBody.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Body-Type.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
                                     </li>
+                                    <% } %>
+
+                                    <% if (MenuDisplay("ScheduleMenu") == true)
+                                        { %>
                                     <li class=" ">
                                         <a href="ViewSchedule.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -316,75 +288,41 @@
                                             <span class="pcoded-mcaret"></span>
                                         </a>
 
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddSchedule.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicle.Schedule.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewSchedule.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicle.Schedule.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
                                     </li>
+                                    <% } %>
+
+                                    <% if (MenuDisplay("AssuranceMenu") == true)
+                                        { %>
                                     <li class="">
                                         <a href="ViewAssurance.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Vehicles.Assurance.Alert">Assurance</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddAssurance.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Assurance.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewAssurance.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.Assurance.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
+
                                     </li>
+                                    <% } %>
+
+                                    <% if (MenuDisplay("MOTMenu") == true)
+                                    { %>
                                     <li class="">
                                         <a href="ViewMOT.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Vehicles.MOT.alert">MOT</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddMOT.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.MOT.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewMOT.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Vehicles.MOT.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
                                     </li>
+                                    <% } %>
                                 </ul>
                             </li>
                         </ul>
+
+                        <% } %>
                         <!--End Vehicle entities-->
 
                         <!-- Start Ministrie entities-->
+                        <% if (MenuDisplay("MinistryEntityMenu") == true)
+                            { %>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -393,145 +331,71 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
+
+                                    <% if (MenuDisplay("MinistryMenu") == true)
+                                        { %>
                                     <li class="" runat="server" id="MinistryTable">
                                         <a href="ViewMinistry.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministry.alert">Ministry</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddMinistry.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministry.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewMinistry.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministry.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
                                     </li>
+                                    <% }%>
+
+                                     <% if (MenuDisplay("MinistryDriversMenu") == true)
+                                        { %>
                                     <li class=" ">
                                         <a href="ViewMinistryDriver.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministry-Drivers.alert">Ministry Drivers</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddMinistryDriver.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministry-Drivers.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewMinistryDriver.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministry-Drivers.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
                                     </li>
+                                     <% }%>
 
+                                     <% if (MenuDisplay("RealEstateMenu") == true)
+                                        { %>
                                     <li class=" ">
                                         <a href="ViewRealEstate.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Ministries.Real-Estate.alert">Real Estate</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddRealEstate.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Real-Estate.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewRealEstate.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Real-Estate.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
                                     </li>
+                                     <% }%>
+
+                                     <% if (MenuDisplay("MinistryRealEstateMenu") == true)
+                                        { %>
                                     <li class=" ">
                                         <a href="ViewMinistryReal.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministries-Real-Estate.alert">Ministries Real Estate</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddMinistryReal.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministries-Real-Estate.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewMinistryReal.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministries-Real-Estate.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
                                     </li>
+                                     <% }%>
 
+                                     <% if (MenuDisplay("UsersMenu") == true)
+                                        { %>
                                     <li class=" ">
                                         <a href="ViewUsers.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Ministries.Userse.alert">Users</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddMinistryReal.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministries-Real-Estate.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewMinistryReal.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministries-Real-Estate.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
                                     </li>
+                                     <% }%>
 
                                 </ul>
                             </li>
                         </ul>
+                        <% } %>
                         <!-- End Ministrie entities-->
 
-                        <!-- Start Tools entities-->
-                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.forms">Tools Entities</div>--%>
-                       <%-- <ul class="pcoded-item pcoded-left-item">
-                            <li class="">
-                                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                    <span class="pcoded-micon"><i class="fa fa-puzzle-piece"></i></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Piece</span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                                
-                            </li>
-                        </ul>--%>
-                        <!-- End Tools entities-->
-
                         <!-- Start Fuels entities-->
-                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.forms">Fuels Entities</div>--%>
+                        <% if (MenuDisplay("FuelEntityMenu") == true)
+                            { %>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -540,62 +404,40 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
+
+                                    <% if (MenuDisplay("ProviderMenu") == true)
+                                        { %>
                                     <li class="">
                                         <a href="ViewProvider.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Fuel.Provider.alert">Provider</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddProvider.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Fuel.Provider.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewProvider.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Fuel.Provider.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
-                                    </li>
 
+                                    </li>
+                                    <% }%>
+
+                                    <% if (MenuDisplay("VehicleFuelMenu") == true)
+                                        { %>
                                     <li class="">
                                         <a href="ViewVehicleFuel.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Fuel.Vehicle-Fuel.alert">Vehicle Fuel</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddVehicleFuel.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Fuel.Vehicle-Fuel.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewVehicleFuel.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Fuel.Vehicle-Fuel.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
-                                    </li>
 
+                                    </li>
+                                     <% }%>
 
                                 </ul>
                             </li>
                         </ul>
+                        <% } %>
                         <!-- End Fuels entities-->
 
                         <!-- Start Drivers entities-->
-                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.other">Drivers Entities</div>--%>
+                         <% if (MenuDisplay("DriverEntityMenu") == true)
+                            { %>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -604,105 +446,62 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
+
+                                    <% if (MenuDisplay("DriversMenu") == true)
+                                        { %>
                                     <li class="">
                                         <a href="ViewDriver.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Drivers.alert">Drivers</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <%-- <ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddDriver.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.Driver.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewDriver.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.Driver.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
+
                                     </li>
+                                    <% } %>
+
+                                     <% if (MenuDisplay("LeaveTypeMenu") == true)
+                                        { %>
                                     <li class="">
                                         <a href="ViewLeaveType.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Drivers.Leave-Type.alert">Leave Type</span>
                                             <span class="pcoded-mcaret"></span>
-                                        </a>
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddLeaveType.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.Leave-Type.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewLeaveType.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.Leave-Type.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
+                                        </a>                                        
                                     </li>
+                                     <% } %>
+
+                                     <% if (MenuDisplay("LeaveMenu") == true)
+                                        { %>
                                     <li class="">
                                         <a href="ViewLeave.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Drivers.Leave.alert">Leave</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddLeave.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.Leave.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewLeave.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.Leave.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
+                                        
                                     </li>
+                                     <% } %>
+
+                                    <% if (MenuDisplay("LicenseMenu") == true)
+                                        { %>
                                     <li class=" ">
                                         <a href="ViewLicense.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">License</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                       <%-- <ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddLicense.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.License.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewLicense.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Drivers.License.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
+                                       
                                     </li>
+                                     <% } %>
+
                                 </ul>
                             </li>
                         </ul>
+                        <% } %>
                         <!-- End Drivers entities-->
-
-                        <!-- Start Accident entities-->
-                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.other">Crash & Repair</div>--%>
+                        <!-- Start Maintenance entities-->
+                         <% if (MenuDisplay("RepairCrashEntityMenu") == true)
+                            { %>
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="pcoded-hasmenu">
                                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -711,29 +510,21 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                                 <ul class="pcoded-submenu">
+
+                                    <% if (MenuDisplay("CrashMenu") == true)
+                                        { %>
                                     <li class="">
                                         <a href="ViewCarCrash.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                                             <span class="pcoded-mtext" data-i18n="nav.Maintanance-Crash.Crash.alert">Crash</span>
                                             <span class="pcoded-mcaret"></span>
                                         </a>
-                                        <%--<ul class="pcoded-submenu">
-                                            <li class="">
-                                                <a href="AddCarCrash.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Maintanance-Crash.Crash.Add">Add</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                            <li class="">
-                                                <a href="ViewCarCrash.aspx" class="waves-effect waves-dark">
-                                                    <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                    <span class="pcoded-mtext" data-i18n="nav.Maintanance-Crash.Crash.List">List</span>
-                                                    <span class="pcoded-mcaret"></span>
-                                                </a>
-                                            </li>
-                                        </ul>--%>
+
                                     </li>
+                                    <% } %>
+
+                                    <% if (MenuDisplay("RepairMenu") == true)
+                                        { %>
                                     <li class=" ">
                                         <a href="ViewRepair.aspx" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -757,15 +548,14 @@
                                             </li>
                                         </ul>--%>
                                     </li>
-
+                                    <% } %>
                                 </ul>
                             </li>
                         </ul>
-                        <!-- End Accident entities-->
+                        <% } %>
+                        <!-- End Maintenance entities-->
 
                         <!-- Start Reports entities-->
-                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.other">Reports Entities</div>--%>
-
                         <% if (MenuDisplay("DisplayReport") == true){ %>
 
                         <ul class="pcoded-item pcoded-left-item">
@@ -779,20 +569,7 @@
                             </li>
                         </ul>
                           <% }%>
-                        <!-- End Reports entities-->
-
-                        <!-- Start System entities-->
-                        <%--<div class="pcoded-navigation-label" data-i18n="nav.category.other">Settings</div>--%>
-                        <%--<ul class="pcoded-item pcoded-left-item">
-                            <li class="">
-                                <a href="AddSystemSettings.aspx" class="waves-effect waves-dark">
-                                    <span class="pcoded-micon"><i class="ti-settings"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">System settings</span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                            </li>
-                        </ul>--%>
-                        <!-- End System entities-->
+                        <!-- End Reports entities-->                    
                     </div>
                 </nav>
                 <!-- end side nav-->
@@ -871,24 +648,21 @@
         }
      </script>
 
-    <!-- Donut chart js code-->
+    <!-- Donut chart js code for Leave Analyse-->
     <script>
         am5.ready(function () {
 
             // Create root element
-            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
             var root = am5.Root.new("chartdiv");
 
 
             // Set themes
-            // https://www.amcharts.com/docs/v5/concepts/themes/
             root.setThemes([
                 am5themes_Animated.new(root)
             ]);
 
 
             // Create chart
-            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
             var chart = root.container.children.push(am5percent.PieChart.new(root, {
                 layout: root.verticalLayout,
                 innerRadius: am5.percent(50)
@@ -911,12 +685,10 @@
 
 
             // Set data
-            // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
-            series.data.setAll(<%= obj %>);
+            series.data.setAll(<%= LeaveAnalys %>);
 
 
             // Create legend
-            // https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
             var legend = chart.children.push(am5.Legend.new(root, {
                 centerX: am5.percent(50),
                 x: am5.percent(50),
@@ -928,11 +700,13 @@
 
 
             // Play initial series animation
-            // https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
             series.appear(1000, 100);
 
         }); // end am5.ready()
     </script>
+
+   
+
 
      <!-- prevent letter input in type="text" for int-->
     <script>

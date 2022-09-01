@@ -11,7 +11,7 @@ namespace VehicleFleetManagment.FleetApp
 {
 
 
-    public partial class Granted_Right
+    public partial class Role
     {
 
         /// <summary>
@@ -33,40 +33,67 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.WebControls.Label txtSlogan;
 
         /// <summary>
-        /// SuccessMsg control.
+        /// successMsgRole control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SuccessMsg;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl successMsgRole;
 
         /// <summary>
-        /// FillMsg control.
+        /// EmptyRoleMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FillMsg;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EmptyRoleMsg;
 
         /// <summary>
-        /// FailMsg control.
+        /// failMsgRole control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FailMsg;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl failMsgRole;
 
         /// <summary>
-        /// DropDown_Role control.
+        /// txtRole control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDown_Role;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtRole;
+
+        /// <summary>
+        /// txtDescript control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDescript;
+
+        /// <summary>
+        /// btnSaveRole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSaveRole;
+
+        /// <summary>
+        /// btnCancelRole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnCancelRole;
 
         /// <summary>
         /// txt_Search control.
@@ -85,6 +112,15 @@ namespace VehicleFleetManagment.FleetApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label nbr;
+
+        /// <summary>
+        /// DeleteAllVisibility control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DeleteAllVisibility;
 
         /// <summary>
         /// gdv control.

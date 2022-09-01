@@ -70,11 +70,11 @@
                                                 <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;"  OnSelectedIndexChanged="dropDown_Ministry_SelectedIndexChanged" AutoPostBack="true" ID="DropDown_Ministry" required="" runat="server"></asp:DropDownList>
                                                 <label class="float-label">Ministry</label>
                                             </div>
-                                            <div class="form-group form-default">
+                                            <div class="form-group form-default" runat="server" id="driver">
                                                 <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Driver" required="" runat="server"></asp:DropDownList>
                                                 <label class="float-label">Driver</label>
                                             </div>
-                                            <div class="form-group form-default">
+                                            <div class="form-group form-default"  runat="server" id="Leavetype">
                                                 <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_LeaveType" required="" runat="server"></asp:DropDownList>
                                                 <label class="float-label">Leave Type</label>
                                             </div>
@@ -84,7 +84,7 @@
                                                 <label class="float-label">Leave Code</label>
                                             </div>
 
-                                            <div class="form-group form-default">
+                                            <div class="form-group form-default"  runat="server" id="carpooling">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCarpooling">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Carpooling </label>
@@ -108,7 +108,7 @@
                                                 <span class="form-bar"></span>
                                                 <label class="float-label  ">Start Date</label>
                                             </div>
-                                            <div class="form-group form-default">
+                                            <div class="form-group form-default"  runat="server" id="EndDate">
                                                 <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateEnd">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label ">End Date</label>

@@ -201,12 +201,12 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var b = (from l in con.GRANT_RIGHT
-                         join M in con.MENUs on l.Menu_Code equals G.Menu_Code
-                         join r in con.ROLEs on l.ROLE_ID equals r.ROLE_ID
-                         join Min in con.MINISTRies on l.MINISTRY_ID equals Min.MINISTRY_ID
-                         where (l.ROLE_ID == role && M.Title_Menu == menu && l.MINISTRY_ID == idMin && l.Access == "ON")
-                         select l).Count();
+                var b = (from G in con.GRANT_RIGHT
+                         join M in con.MENUs on G.Menu_Code equals M.Menu_Code
+                         join r in con.ROLEs on G.ROLE_ID equals r.ROLE_ID
+                         join Min in con.MINISTRies on G.MINISTRY_ID equals Min.MINISTRY_ID
+                         where (G.ROLE_ID == role && M.Title_Menu == menu && G.MINISTRY_ID == idMin && G.Access == "ON")
+                         select G).Count();
                 n = b;
             }
             return n;

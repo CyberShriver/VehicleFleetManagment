@@ -20,8 +20,6 @@
                         <li class="breadcrumb-item">
                             <a href="Home.aspx"><i class="fa fa-home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="AddMark.aspx">Add-Mark</a>
-                        </li>
                     </ul>
                 </div>
             </div>

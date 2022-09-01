@@ -9,35 +9,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Mega Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
-    <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
-    <meta name="author" content="codedthemes" />
     <!-- Favicon icon -->
 
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <%--<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">--%>
     <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+    <%--<link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">--%>
     <!-- Required Fremwork -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/css/bootstrap.min.css"/>
     <!-- waves.css -->
-    <link rel="stylesheet" href="assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+    <%--<link rel="stylesheet" href="assets/pages/waves/css/waves.min.css" type="text/css" media="all">--%>
     <!-- themify-icons line icon -->
-    <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css"/>
     <!-- ico font -->
-    <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css">
+    <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css"/>
     <!-- Font Awesome -->
-    <link rel="stylesheet" type="text/css" href="assets/icon/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/icon/font-awesome/css/font-awesome.min.css"/>
     <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/loginstyle.css"/>
 </head>
-<%--<form id="form1" runat="server">
-        <div>
-
-
-
-        </div>
-    </form>--%>
-<body themebg-pattern="theme1">
+<body >
     <!-- Pre-loader start -->
    <%-- <div class="theme-loader">
         <div class="loader-track">
@@ -101,13 +91,7 @@
                     <!-- Authentication card start -->
 
                     <form class="md-float-material form-material" runat="server">
-                        <div class="text-center">
-                            <img src="assets/images/Logo/bus-48.png" alt="logo.png" />
-                            <span class="text-light font-weight-bold">Vehicle System Managment</span>
-                        </div>
-                        <div class="auth-box card">
-                            <div class="card-block for">
-                               <div class="col-sm-12 mx-auto">
+                               <div class="col-sm-6 mx-auto" id="msg">
                                     <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
                                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                                         <strong>Success!  <i class="fa fa-check-square"></i></strong>
@@ -122,9 +106,12 @@
                                         <strong>Something goes wrong <br/> contact the administrator  <i class="fa fa-phone"></i></strong>
                                     </div>
                                 </div>
+                        
+                        <div class="auth-box card">
+                            <div class="card-block ">
                                 <div class="row m-b-20">
                                     <div class="col-md-12">
-                                        <h3 class="text-center">Sign In</h3>
+                                        <h3 class="text-center">Authenticate</h3>
                                     </div>
                                 </div>
                                     <div class="form-group form-primary">

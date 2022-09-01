@@ -20,6 +20,9 @@ namespace VehicleFleetManagment.FleetImp
         //Delete Method
         int Delete(int id);
 
+        //DISPLAY DATE IN JSON FORMAT METHOD
+        string DisplayJson(string codeMin);
+
         //Display Method
         void Display(GridView gd,string codeMin);
 

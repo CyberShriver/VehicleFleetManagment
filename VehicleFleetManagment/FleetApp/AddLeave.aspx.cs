@@ -22,11 +22,7 @@ namespace VehicleFleetManagment.FleetApp
         MinDriver_Interface Imd = new MinDriver_Imp();
 
         int msg;
-        string code;
-        string id;
-        string codeMin;
-        string sytemTitle;
-        string slogan;
+        string code,state, user_FirstName, user_LastName,id, codeMin, sytemTitle, slogan;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -62,9 +58,11 @@ namespace VehicleFleetManagment.FleetApp
 
         void ChargeCookies()
         {
-            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null)
+            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null || Request.Cookies["First_Name"] != null || Request.Cookies["Last_Name"] != null)
             {
                 codeMin = Request.Cookies["Code_Min"].Value;
+                user_FirstName = Request.Cookies["First_Name"].Value;
+                user_LastName = Request.Cookies["Last_Name"].Value;
                 sytemTitle = Request.Cookies["System_Title"].Value;
                 slogan = Request.Cookies["Slogan"].Value;
             }
@@ -78,16 +76,22 @@ namespace VehicleFleetManagment.FleetApp
         //control contents display based on state of leave and date
         void controlDisplay()
         {
-            if(Le.State== "in Progress")
+            ChargeData();
+            if (Le.State=="in Progress")
             {
-                VisApprovedBy.Visible = true;
                 idStart.Visible = false;
                 idDemand.Visible = false;
+                EndDate.Visible = true;
+                driver.Visible = false;
+                Leavetype.Visible = false;
                 btnSave.Visible = true;
                 btnCancel.Visible = true;
             }
             else if(Le.State=="Approved")
             {
+                idState.Visible = false;
+                idSaved.Visible = false;
+                idAproved.Visible = false;
                 btnSave.Visible = true;
                 btnCancel.Visible = true;
             }
@@ -110,6 +114,18 @@ namespace VehicleFleetManagment.FleetApp
             DateFailed.Visible = false;
         }
 
+        private void controleInput()
+        {
+            if (id != null && state == "in Progress")
+            {
+                txtApproved.Visible = false;
+                dateStart.Visible = false;
+                DropDown_LeaveType.Visible = false;
+                dateDemand.Visible = false;
+                DropDown_Driver.Visible = false;
+
+            }
+        }
         void Add()
         {
             try

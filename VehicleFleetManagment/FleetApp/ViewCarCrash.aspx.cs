@@ -34,7 +34,7 @@ namespace VehicleFleetManagment.FleetApp
 
         void ChargeCookies()
         {
-            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null)
+            if (Request.Cookies["Code_Min"] != null && Request.Cookies["Slogan"] != null && Request.Cookies["System_Title"] != null)
             {
                 codeMin = Request.Cookies["Code_Min"].Value;
                 sytemTitle = Request.Cookies["System_Title"].Value;

@@ -14,9 +14,8 @@ namespace VehicleFleetManagment.FleetApp
         Leave_Class Le = new Leave_Class();
         Leave_Interface I = new Leave_Imp();
         private int msg;
-        string codeMin;
-        string sytemTitle;
-        string slogan;
+        string code, user_FirstName, user_LastName, id, codeMin, sytemTitle, slogan;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,19 +28,22 @@ namespace VehicleFleetManagment.FleetApp
                 DeleteAllVisibility.Visible = false;
                 getDataGDV();
                 runGrid();
-
-                Label1.Text= I.DisplayJson(codeMin);
-
             }
         }
 
         void ChargeCookies()
         {
-            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null)
+            if (Request.Cookies["Code_Min"] != null || Request.Cookies["Slogan"] != null || Request.Cookies["System_Title"] != null || Request.Cookies["First_Name"] != null || Request.Cookies["Last_Name"] != null)
             {
                 codeMin = Request.Cookies["Code_Min"].Value;
+                user_FirstName = Request.Cookies["First_Name"].Value;
+                user_LastName = Request.Cookies["Last_Name"].Value;
                 sytemTitle = Request.Cookies["System_Title"].Value;
                 slogan = Request.Cookies["Slogan"].Value;
+            }
+            else
+            {
+                Response.Redirect("~/FleetApp/Login.aspx");
             }
 
         }
@@ -94,6 +96,7 @@ namespace VehicleFleetManagment.FleetApp
                     Label Id = (Label)row.FindControl("lblID");
                     Label startDat = (Label)row.FindControl("LblStartDate");
                     Label EndDat = (Label)row.FindControl("LblEndDate");
+
                     if (state.Text == "Approved")
                     {
                         btnAppro.Visible = false;
@@ -144,11 +147,10 @@ namespace VehicleFleetManagment.FleetApp
 
         protected void gdv_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
             int index = Convert.ToInt32(e.CommandArgument);
             if (e.CommandName == "edit")
             {
-                Response.Redirect("~/FleetApp/AddLeave.aspx?LEAVE_ID=" + index);
+                    Response.Redirect("~/FleetApp/AddLeave.aspx?LEAVE_ID="+ index);
 
             }
             if (e.CommandName == "delet")
@@ -160,14 +162,14 @@ namespace VehicleFleetManagment.FleetApp
             }
             if (e.CommandName == "Approv")
             {
-                I.UpdateStateApproved(index, codeMin);
+                I.UpdateStateApproved(index,user_LastName+ " " +user_FirstName);
                 Response.Redirect("~/FleetApp/ViewLeave.aspx");
 
 
             }
             if (e.CommandName == "cancel")
             {
-                I.UpdateStateDeny(index,codeMin);
+                I.UpdateStateDeny(index, user_LastName + " " + user_FirstName);
                 Response.Redirect("~/FleetApp/ViewLeave.aspx");
 
 
@@ -181,6 +183,7 @@ namespace VehicleFleetManagment.FleetApp
             CheckBox chkStatus = (CheckBox)sender;
             GridViewRow row = (GridViewRow)chkStatus.NamingContainer;
             DeleteAllVisibility.Visible = true;
+            runGrid();
         }
         protected void checkSelHeader_CheckedChanged(object sender, EventArgs e)
         {
@@ -225,6 +228,7 @@ namespace VehicleFleetManagment.FleetApp
             }
             getDataGDV();
             DeleteAllVisibility.Visible = false;
+            runGrid();
         }
 
 

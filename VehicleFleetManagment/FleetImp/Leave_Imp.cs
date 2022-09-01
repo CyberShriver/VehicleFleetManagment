@@ -161,27 +161,9 @@ namespace VehicleFleetManagment.FleetImp
                            {
                                Start_Dte = g.Key,
                                
-                               count = (from L in g select Convert.ToDateTime(L.Start_Dte).Month).Count()
-                           });
-                
-                //.GroupBy(L =>L.Start_Dte)
-                //.Select(x => new {
-                //    Start_Dte= x.st }).Where(x => x.MINISTRY.Code_Min == codeMin && x.State == "Finished").Count();
-                //var obj = con.LEAVEs.GroupBy(x => new {x.Start_Dte,x.Leave_Code }).Select(x => x.FirstOrDefault()).Where(x => x.MINISTRY.Code_Min == codeMin && x.State == "Finished").Count();
-                //(from L in con.LEAVEs 
-                //           where L.MINISTRY.Code_Min == codeMin && L.State=="Finished" 
-
-                //           select new
-                //           {
-                //               LEAVE_ID = L.LEAVE_ID,
-                //               Leave_Code = L.Leave_Code,
-                //               Start_Dte = L.Start_Dte,
-                //               End_Dte = L.End_Dte,
-                //               State = L.State,
-                //               MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
-
-                //           }
-                //           ).ToList().Count();
+                               count = (from L in g select Convert.ToDateTime(L.Start_Dte).Month).Count(),
+                               countAll = (from L in g select g).Count()
+                           });              
                 string TextJson = JsonConvert.SerializeObject(obj);
 
                 jsonTable = TextJson;
@@ -191,6 +173,19 @@ namespace VehicleFleetManagment.FleetImp
             return jsonTable;
         }
 
+        //COUNT ALL FINISHED LEAVE FOR STATISTIC TABLE METHOD
+        public int countFinishedLeave(string codeMin)
+        {
+            int n;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from L in con.LEAVEs.AsEnumerable()
+                           where L.MINISTRY.Code_Min == codeMin && L.State == "Finished" select L).Count();
+
+                n = obj;
+            }
+            return n;
+        }
         //DISPLAY ALL METHOD
         public void DisplayAll(GridView gd)
         {
@@ -324,8 +319,8 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var L = (from l in con.LEAVEs
-                         where l.State == "in Progress" && ((Convert.ToDateTime(l.End_Dte).Date - DateTime.Now.Date)).TotalDays <= 2 && l.MINISTRY.Code_Min == codeMin
+                var L = (from l in con.LEAVEs.AsEnumerable()
+                         where l.State == "in Progress"  && ((Convert.ToDateTime(l.End_Dte).Date - DateTime.Now.Date)).TotalDays <= 2 && l.MINISTRY.Code_Min == codeMin
                          select l).Count();
                 n = L;
             }
@@ -661,7 +656,7 @@ namespace VehicleFleetManagment.FleetImp
 
                 if (L != null)
                 {
-                    L.State = "Approved";
+                    L.State ="Approved";
                     L.Approved_Dte =DateTime.Today.ToString("yyyy-MM-dd");
                     L.Approved_By = approvBy;
                     if (con.SaveChanges() > 0)
@@ -716,7 +711,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                L = con.LEAVEs.AsEnumerable().Where(x => x.State == "Approved" || x.State == "in Progress" && Convert.ToDateTime(x.End_Dte).Date<= DateTime.Now.Date).FirstOrDefault();
+                L = con.LEAVEs.AsEnumerable().Where(x => x.State == "in Progress" && Convert.ToDateTime(x.End_Dte).Date<= DateTime.Now.Date).FirstOrDefault();
 
                 if (L != null)
                 {

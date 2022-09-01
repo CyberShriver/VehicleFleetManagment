@@ -54,6 +54,9 @@ namespace VehicleFleetManagment.FleetImp
         //count All
         int countAll();
 
+        //COUNT ALL FINISHED LEAVE FOR STATISTIC TABLE METHOD
+        int countFinishedLeave(string codeMin);
+
         //Research Method
         void Research(GridView gd,string codeMin, string SearchText);
 
