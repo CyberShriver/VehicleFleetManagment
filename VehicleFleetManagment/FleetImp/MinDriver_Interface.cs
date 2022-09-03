@@ -70,7 +70,7 @@ namespace VehicleFleetManagment.FleetImp
         void DisplayAllVehicle(DropDownList drop);
 
         //CHECK LAST SAVED
-        int LastSaved(MinDriver_Class Md, int Driver);
+        int LastSaved(MinDriver_Class Md, int Driver,string SwapedVeh);
 
         //UPDATE VEHICLE AVAILABLE STATE METHOD
         int UpdateVehAvailable(string LocalPlate);
@@ -81,6 +81,7 @@ namespace VehicleFleetManagment.FleetImp
         //Auto swap driver Whe driver is fired but in case is not in leave and change vehicle state
         int AutoSwap();
 
+        int DrivingLicenceValidation(int driver, string regNumber);
 
     }
 }

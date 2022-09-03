@@ -173,6 +173,7 @@
     <Content Include="FleetApp\assets\images\details_close.png" />
     <Content Include="FleetApp\assets\images\details_open.png" />
     <Content Include="FleetApp\assets\images\favicon.ico" />
+    <Content Include="FleetApp\assets\images\Licence\Burundi-driver-license-min.png" />
     <Content Include="FleetApp\assets\images\logo-blue.png" />
     <Content Include="FleetApp\assets\images\logo-compact.png" />
     <Content Include="FleetApp\assets\images\logo.png" />

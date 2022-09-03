@@ -77,6 +77,7 @@ namespace VehicleFleetManagment.FleetApp
             SuccessMsg.Visible = false;
             FillMsg.Visible = false;
             FailMsg.Visible = false;
+            FailLicence.Visible = false;
         }
 
         //Add 
@@ -89,6 +90,7 @@ namespace VehicleFleetManagment.FleetApp
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
                     FailMsg.Visible = false;
+                    FailLicence.Visible = false;
                 }
                 else
                 {
@@ -98,6 +100,7 @@ namespace VehicleFleetManagment.FleetApp
                     Md.Position_Status  = "On Post";
                     Md.StartDate  = DateTime.Today.ToShortDateString();
                     Md.EndDate  = "-";
+                    Md.Swaped_Vehicle  = "-";
                     Md.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedItem.Value);
 
                     msg = I.Add(Md);
@@ -106,6 +109,7 @@ namespace VehicleFleetManagment.FleetApp
                         FillMsg.Visible = false;
                         FailMsg.Visible = false;
                         SuccessMsg.Visible = true;
+                        FailLicence.Visible = false;
 
 
 
@@ -115,6 +119,7 @@ namespace VehicleFleetManagment.FleetApp
                         SuccessMsg.Visible = false;
                         FillMsg.Visible = false;
                         FailMsg.Visible = true;
+                        FailLicence.Visible = false;
 
                     }
                 }
@@ -124,6 +129,7 @@ namespace VehicleFleetManagment.FleetApp
                 SuccessMsg.Visible = false;
                 FillMsg.Visible = false;
                 FailMsg.Visible = true;
+                FailLicence.Visible = false;
             }
         }
 
@@ -212,14 +218,29 @@ namespace VehicleFleetManagment.FleetApp
 
         protected void btn_save_Click(object sender, EventArgs args)
         {
-            // vehicleDriverState();
-            //if (id == null)
-            //{
-            //    Add();
-            //}
-            // Update();
-            verification();
-          // Add();
+            msg = I.DrivingLicenceValidation(Convert.ToInt32(DropDown_Driver.SelectedValue), DropDown_Vehicle.SelectedValue);
+            if (msg == 1)
+            {
+                if (id == null)
+                {
+                    verification();
+                }
+                
+                else
+                {
+                    verification();
+                    Response.Redirect("~/FleetApp/ViewMinistryDriver.aspx");
+                }
+               
+            }
+            else
+            {
+                SuccessMsg.Visible = false;
+                FillMsg.Visible = false;
+                FailMsg.Visible = false;
+                FailLicence.Visible = true;
+            }
+
 
         }
 
@@ -243,7 +264,7 @@ namespace VehicleFleetManagment.FleetApp
         void verification()
         {
             
-               msg= I.LastSaved(Md, Convert.ToInt32(DropDown_Driver.SelectedValue));
+               msg= I.LastSaved(Md, Convert.ToInt32(DropDown_Driver.SelectedValue), DropDown_Vehicle.SelectedItem.Value);
             if (msg==1)
             {
                 Add();
@@ -292,7 +313,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             if (id != null && codeMin != "All")
             {
-                I.DisplayAllMinVehicle(DropDown_Vehicle,codeMin, Convert.ToInt32(id));
+                I.DisplayVehicle(DropDown_Vehicle, Convert.ToInt32(DropDown_Ministry.SelectedItem.Value));
             }
             else if (id != null && codeMin == "All")
             {

@@ -8,7 +8,7 @@ using VehicleFleetManagment.FleetModel;
 using System.Data.Entity;
 namespace VehicleFleetManagment.FleetImp
 {
-    public class License_Imp: License_Interface
+    public class License_Imp : License_Interface
     {
         int msg;
         LICENSE L = new LICENSE();
@@ -18,20 +18,27 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                L.License_Code = Li.License_Code;
+                L.License_Number = Li.License_Number;
                 L.International_License_Code = Li.International_License_Code;
                 L.Exp_Date = Li.Exp_Date;
                 L.Inter_License_Code_Exp_Date = Li.Inter_License_Code_Exp_Date;
                 L.License_Code_Mission = Li.License_Code_Mission;
-                L.Bike = Li.Bike;
-                L.Light_Vehicle = Li.Light_Vehicle;
-                L.Heavy_Weights = Li.Heavy_Weights;
-                L.Trailer_Weight = Li.Trailer_Weight;
+                L.Category_A = Li.Category_A;
+                L.Category_B = Li.Category_B;
+                L.Category_C = Li.Category_C;
+                L.Category_D1 = Li.Category_D1;
+                L.Category_D2 = Li.Category_D2;
+                L.Category_E= Li.Category_E;
+                L.Category_F = Li.Category_F;
+                L.Issued_At = Li.Issued_At;
+                L.Issued_Authority = Li.Issued_Authority;
+                L.Issued_On = Li.Issued_On;
+                L.Card_Number = Li.Card_Number;
+                L.Scanned_Picture = Li.Scanned_Picture;
                 L.License_State = Li.License_State;
                 L.License_Code_Mission_Exp_Dte = Li.License_Code_Mission_Exp_Dte;
                 L.MINISTRY_ID = Li.MINISTRY_ID;
-                L.MIN_DRIVER_ID = Li.MIN_DRIVER_ID;
-                L.FourXfour = Li.FourXfour;
+                L.DRIVER_ID = Li.DRIVER_ID;
                 L.Saved_Dte = Li.Saved_Dte;
 
                 con.LICENSEs.Add(L);
@@ -61,20 +68,27 @@ namespace VehicleFleetManagment.FleetImp
                 if (L != null)
                 {
 
-                    L.License_Code = Li.License_Code;
+                    L.License_Number = Li.License_Number;
                     L.International_License_Code = Li.International_License_Code;
                     L.Exp_Date = Li.Exp_Date;
                     L.Inter_License_Code_Exp_Date = Li.Inter_License_Code_Exp_Date;
                     L.License_Code_Mission = Li.License_Code_Mission;
-                    L.Bike = Li.Bike;
-                    L.Light_Vehicle = Li.Light_Vehicle;
-                    L.Heavy_Weights = Li.Heavy_Weights;
-                    L.Trailer_Weight = Li.Trailer_Weight;
+                    L.Category_A = Li.Category_A;
+                    L.Category_B = Li.Category_B;
+                    L.Category_C = Li.Category_C;
+                    L.Category_D1 = Li.Category_D1;
+                    L.Category_D2 = Li.Category_D2;
+                    L.Category_E = Li.Category_E;
+                    L.Category_F = Li.Category_F;
+                    L.Issued_At = Li.Issued_At;
+                    L.Issued_Authority = Li.Issued_Authority;
+                    L.Issued_On = Li.Issued_On;
+                    L.Card_Number = Li.Card_Number;
+                    L.Scanned_Picture = Li.Scanned_Picture;
                     L.License_State = Li.License_State;
                     L.License_Code_Mission_Exp_Dte = Li.License_Code_Mission_Exp_Dte;
                     L.MINISTRY_ID = Li.MINISTRY_ID;
-                    L.MIN_DRIVER_ID = Li.MIN_DRIVER_ID;
-                    L.FourXfour = Li.FourXfour;
+                    L.DRIVER_ID = Li.DRIVER_ID;
                     L.Saved_Dte = Li.Saved_Dte;
 
                     if (con.SaveChanges() > 0)
@@ -114,28 +128,31 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //DISPLAY METHOD
-        public void Display(GridView gd,string codeMin)
+        public void Display(GridView gd, string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from L in con.LICENSEs where L.MINISTRY.Code_Min== codeMin
+                var obj = (from L in con.LICENSEs
+                           where L.MINISTRY.Code_Min == codeMin
+                           orderby L.LICENSE_ID descending
 
                            select new
                            {
                                LICENSE_ID = L.LICENSE_ID,
-                               License_Code  = L.License_Code ,
-                               International_License_Code  = L.International_License_Code ,
-                               Exp_Date  = L.Exp_Date ,
-                               Inter_License_Code_Exp_Date  = L.Inter_License_Code_Exp_Date ,
-                               License_Code_Mission  = L.License_Code_Mission ,
+                               License_Number = L.License_Number,
+                               International_License_Code = L.International_License_Code,
+                               Exp_Date = L.Exp_Date,
+                               Inter_License_Code_Exp_Date = L.Inter_License_Code_Exp_Date,
+                               License_Code_Mission = L.License_Code_Mission,
                                License_State = L.License_State,
-                               Heavy_Weights  = L.Heavy_Weights ,
-                               Trailer_Weight  = L.Trailer_Weight ,
-                               Light_Vehicle  = L.Light_Vehicle ,
+                               Category_A = L.Category_A +" "+ L.Category_B+ " " + L.Category_C + " " + L.Category_D1 + " " + L.Category_D2 + " " + L.Category_E + " " + L.Category_F,
+                               Issued_At = L.Issued_At,
+                               Issued_Authority = L.Issued_Authority,
+                               Issued_On = L.Issued_On,
+                               Card_Number = L.Card_Number,
+                               Scanned_Picture = L.Scanned_Picture,
                                License_Code_Mission_Exp_Dte = L.License_Code_Mission_Exp_Dte,
-                               Bike  = L.Bike ,
-                               MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
-                               FourXfour  = L.FourXfour,
+                               DRIVER_ID = L.DRIVER.Full_Name,
                                Saved_Dte = L.Saved_Dte,
                                MINISTRY_ID = L.MINISTRY.Ministry_Name
 
@@ -154,26 +171,27 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from L in con.LICENSEs
+                           orderby L.LICENSE_ID descending
 
                            select new
                            {
                                LICENSE_ID = L.LICENSE_ID,
-                               License_Code = L.License_Code,
+                               License_Number = L.License_Number,
                                International_License_Code = L.International_License_Code,
                                Exp_Date = L.Exp_Date,
                                Inter_License_Code_Exp_Date = L.Inter_License_Code_Exp_Date,
                                License_Code_Mission = L.License_Code_Mission,
                                License_State = L.License_State,
-                               Heavy_Weights = L.Heavy_Weights,
-                               Trailer_Weight = L.Trailer_Weight,
-                               Light_Vehicle = L.Light_Vehicle,
+                               Category_A = L.Category_A + " " + L.Category_B + " " + L.Category_C + " " + L.Category_D1 + " " + L.Category_D2 + " " + L.Category_E + " " + L.Category_F,
+                               Issued_At = L.Issued_At,
+                               Issued_Authority = L.Issued_Authority,
+                               Issued_On = L.Issued_On,
+                               Card_Number = L.Card_Number,
+                               Scanned_Picture = L.Scanned_Picture,
                                License_Code_Mission_Exp_Dte = L.License_Code_Mission_Exp_Dte,
-                               Bike = L.Bike,
-                               MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
-                               FourXfour = L.FourXfour,
+                               DRIVER_ID = L.DRIVER.Full_Name,
                                Saved_Dte = L.Saved_Dte,
                                MINISTRY_ID = L.MINISTRY.Ministry_Name
-
                            }
                            ).ToList();
 
@@ -190,23 +208,29 @@ namespace VehicleFleetManagment.FleetImp
             {
                 L = con.LICENSEs.Where(x => x.LICENSE_ID == id).FirstOrDefault();
 
-                Li.License_Code  = L.License_Code ;
-                Li.International_License_Code  = L.International_License_Code ;
-                Li.Exp_Date  = L.Exp_Date ;
-                Li.Inter_License_Code_Exp_Date  = L.Inter_License_Code_Exp_Date ;
-                Li.License_Code_Mission_Exp_Dte = L.License_Code_Mission_Exp_Dte ;
-                Li.License_Code_Mission  = L.License_Code_Mission ;
-                Li.Bike  = L.Bike ;
-                Li.Heavy_Weights = L.Heavy_Weights;
-                Li.Trailer_Weight = L.Trailer_Weight;
-                Li.Light_Vehicle  = L.Light_Vehicle ;
+                Li.License_Number = L.License_Number;
+                Li.International_License_Code = L.International_License_Code;
+                Li.Exp_Date = L.Exp_Date;
+                Li.Inter_License_Code_Exp_Date = L.Inter_License_Code_Exp_Date;
+                Li.License_Code_Mission_Exp_Dte = L.License_Code_Mission_Exp_Dte;
+                Li.License_Code_Mission = L.License_Code_Mission;
+                Li.Category_A = L.Category_A;
+                Li.Category_B = L.Category_B;
+                Li.Category_C = L.Category_C;
+                Li.Category_D1 = L.Category_D1;
+                Li.Category_D2 = L.Category_D2;
+                Li.Category_E = L.Category_E;
+                Li.Category_F = L.Category_F;
+                Li.Issued_At = L.Issued_At;
+                Li.Issued_Authority = L.Issued_Authority;
+                Li.Issued_On = L.Issued_On;
+                Li.Card_Number = L.Card_Number;
+                Li.Scanned_Picture = L.Scanned_Picture;
                 Li.License_State = L.License_State;
-                Li.MIN_DRIVER_ID = L.MIN_DRIVER_ID;
                 Li.MINISTRY_ID = L.MINISTRY_ID;
-                Li.FourXfour  = L.FourXfour ;
+                Li.DRIVER_ID = L.DRIVER_ID;
 
-
-
+              
             }
         }
 
@@ -216,7 +240,8 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var L = (from l in con.LICENSEs where l.MINISTRY.Code_Min== codeMin
+                var L = (from l in con.LICENSEs
+                         where l.MINISTRY.Code_Min == codeMin
                          select l).Count();
                 n = L;
             }
@@ -237,35 +262,33 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //REASEARCH METHOD
-        public void Research(GridView gd,string codeMin, string SearchText)
+        public void Research(GridView gd, string codeMin, string SearchText)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from L in con.LICENSEs
-                           where L.MINISTRY.Code_Min== codeMin &&
+                           where L.MINISTRY.Code_Min == codeMin &&
                        L.License_Code_Mission.StartsWith(SearchText) ||
-                       L.License_Code.StartsWith(SearchText) ||
-                       L.MINISTRY_DRIVER.DRIVER.Full_Name.StartsWith(SearchText) ||
-                        L.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
-                       L.Exp_Date.StartsWith(SearchText) ||
-                       L.Heavy_Weights.StartsWith(SearchText)
-
+                       L.License_Number.StartsWith(SearchText) ||
+                       L.DRIVER.Full_Name.StartsWith(SearchText) ||
+                       L.Exp_Date.StartsWith(SearchText) 
                            select new
                            {
                                LICENSE_ID = L.LICENSE_ID,
-                               License_Code = L.License_Code,
+                               License_Number = L.License_Number,
                                International_License_Code = L.International_License_Code,
                                Exp_Date = L.Exp_Date,
                                Inter_License_Code_Exp_Date = L.Inter_License_Code_Exp_Date,
                                License_Code_Mission = L.License_Code_Mission,
                                License_State = L.License_State,
-                               Heavy_Weights = L.Heavy_Weights,
-                               Trailer_Weight = L.Trailer_Weight,
-                               Light_Vehicle = L.Light_Vehicle,
+                               Category = L.Category_A + " " + L.Category_B + " " + L.Category_C + " " + L.Category_D1 + " " + L.Category_D2 + " " + L.Category_E + " " + L.Category_F,
+                               Issued_At = L.Issued_At,
+                               Issued_Authority = L.Issued_Authority,
+                               Issued_On = L.Issued_On,
+                               Card_Number = L.Card_Number,
+                               Scanned_Picture = L.Scanned_Picture,
                                License_Code_Mission_Exp_Dte = L.License_Code_Mission_Exp_Dte,
-                               Bike = L.Bike,
-                               MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
-                               FourXfour = L.FourXfour,
+                               DRIVER_ID = L.DRIVER.Full_Name,
                                Saved_Dte = L.Saved_Dte,
                                MINISTRY_ID = L.MINISTRY.Ministry_Name
 
@@ -286,31 +309,31 @@ namespace VehicleFleetManagment.FleetImp
                 var obj = (from L in con.LICENSEs
                            where
                        L.License_Code_Mission.StartsWith(SearchText) ||
-                       L.License_Code.StartsWith(SearchText) ||
-                       L.MINISTRY_DRIVER.DRIVER.Full_Name.StartsWith(SearchText) ||
+                       L.License_Number.StartsWith(SearchText) ||
+                       L.DRIVER.Full_Name.StartsWith(SearchText) ||
                         L.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
                        L.Exp_Date.StartsWith(SearchText) ||
-                       L.Heavy_Weights.StartsWith(SearchText)
+                       L.Category_C.StartsWith(SearchText)
 
                            select new
                            {
                                LICENSE_ID = L.LICENSE_ID,
-                               License_Code = L.License_Code,
+                               License_Number = L.License_Number,
                                International_License_Code = L.International_License_Code,
                                Exp_Date = L.Exp_Date,
                                Inter_License_Code_Exp_Date = L.Inter_License_Code_Exp_Date,
                                License_Code_Mission = L.License_Code_Mission,
                                License_State = L.License_State,
-                               Heavy_Weights = L.Heavy_Weights,
-                               Trailer_Weight = L.Trailer_Weight,
-                               Light_Vehicle = L.Light_Vehicle,
+                               Category_A = L.Category_A + " " + L.Category_B + " " + L.Category_C + " " + L.Category_D1 + " " + L.Category_D2 + " " + L.Category_E + " " + L.Category_F,
+                               Issued_At = L.Issued_At,
+                               Issued_Authority = L.Issued_Authority,
+                               Issued_On = L.Issued_On,
+                               Card_Number = L.Card_Number,
+                               Scanned_Picture = L.Scanned_Picture,
                                License_Code_Mission_Exp_Dte = L.License_Code_Mission_Exp_Dte,
-                               Bike = L.Bike,
-                               MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
-                               FourXfour = L.FourXfour,
+                               DRIVER_ID = L.DRIVER.Full_Name,
                                Saved_Dte = L.Saved_Dte,
                                MINISTRY_ID = L.MINISTRY.Ministry_Name
-
                            }
                            ).ToList();
 
@@ -325,13 +348,14 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from D in con.DRIVERs                          
+                var obj = (from D in con.DRIVERs
+
                            select new
                            {
                                DRIVER_ID = D.DRIVER_ID,
                                Full_Name = D.Full_Name,
                            }
-                             ).ToList();
+                           ).ToList();
 
                 drop.DataSource = obj;
                 drop.DataTextField = "Full_Name";
@@ -340,14 +364,12 @@ namespace VehicleFleetManagment.FleetImp
             }
 
         }
-
         //DISPLAY METHOD Driver
         public void DisplayDriver(DropDownList drop, string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from D in con.DRIVERs
-                           where D.Ministry_Work == codeMin
+                var obj = (from D in con.DRIVERs where D.Ministry_Work==codeMin
 
                            select new
                            {
@@ -365,11 +387,12 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //DISPLAY METHOD MINISTRY
-        public void DisplayMinistry(DropDownList drop,string codeMin)
+        public void DisplayMinistry(DropDownList drop, string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from L in con.MINISTRies where L.Code_Min== codeMin
+                var obj = (from L in con.MINISTRies
+                           where L.Code_Min == codeMin
 
                            select new
                            {
@@ -408,6 +431,6 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
-       
+
     }
 }

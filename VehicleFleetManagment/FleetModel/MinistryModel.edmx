@@ -140,21 +140,28 @@
             <PropertyRef Name="LICENSE_ID" />
           </Key>
           <Property Name="LICENSE_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MIN_DRIVER_ID" Type="bigint" Nullable="false" />
-          <Property Name="License_Code" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DRIVER_ID" Type="bigint" Nullable="false" />
+          <Property Name="License_Number" Type="varchar" MaxLength="100" />
+          <Property Name="Issued_On" Type="varchar" MaxLength="20" />
+          <Property Name="Issued_At" Type="varchar" MaxLength="255" />
+          <Property Name="Issued_Authority" Type="varchar" MaxLength="100" />
+          <Property Name="Card_Number" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Exp_Date" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="International_License_Code" Type="varchar" MaxLength="100" />
           <Property Name="Inter_License_Code_Exp_Date" Type="varchar" MaxLength="100" />
           <Property Name="License_Code_Mission" Type="varchar" MaxLength="100" />
           <Property Name="License_Code_Mission_Exp_Dte" Type="varchar" MaxLength="100" />
-          <Property Name="Bike" Type="varchar" MaxLength="30" />
-          <Property Name="Light_Vehicle" Type="varchar" MaxLength="30" />
-          <Property Name="Heavy_Weights" Type="varchar" MaxLength="30" />
-          <Property Name="Trailer_Weight" Type="varchar" MaxLength="30" />
-          <Property Name="FourXfour" Type="varchar" MaxLength="30" />
+          <Property Name="Category_A" Type="varchar" MaxLength="30" />
+          <Property Name="Category_B" Type="varchar" MaxLength="30" />
+          <Property Name="Category_C" Type="varchar" MaxLength="30" />
+          <Property Name="Category_D1" Type="varchar" MaxLength="30" />
+          <Property Name="Category_D2" Type="varchar" MaxLength="30" />
+          <Property Name="Category_E" Type="varchar" MaxLength="30" />
+          <Property Name="Category_F" Type="varchar" MaxLength="30" />
           <Property Name="License_State" Type="varchar" MaxLength="100" />
           <Property Name="MINISTRY_ID" Type="int" />
           <Property Name="Saved_Dte" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Scanned_Picture" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="MARK">
           <Key>
@@ -198,6 +205,7 @@
           </Key>
           <Property Name="MIN_DRIVER_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Min_Driver_RegNumber" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Swaped_Vehicle" Type="varchar" MaxLength="100" />
           <Property Name="DRIVER_ID" Type="bigint" Nullable="false" />
           <Property Name="MINISTRY_ID" Type="int" Nullable="false" />
           <Property Name="Position_Status" Type="varchar" MaxLength="30" />
@@ -479,6 +487,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_LICENSE_DRIVER_ID">
+          <End Role="DRIVER" Type="Self.DRIVER" Multiplicity="1" />
+          <End Role="LICENSE" Type="Self.LICENSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DRIVER">
+              <PropertyRef Name="DRIVER_ID" />
+            </Principal>
+            <Dependent Role="LICENSE">
+              <PropertyRef Name="DRIVER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LICENSE_IDMinistry">
           <End Role="MINISTRY" Type="Self.MINISTRY" Multiplicity="0..1" />
           <End Role="LICENSE" Type="Self.LICENSE" Multiplicity="*" />
@@ -488,18 +508,6 @@
             </Principal>
             <Dependent Role="LICENSE">
               <PropertyRef Name="MINISTRY_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LICENSE_MIN_DRIVER_ID">
-          <End Role="MINISTRY_DRIVER" Type="Self.MINISTRY_DRIVER" Multiplicity="1" />
-          <End Role="LICENSE" Type="Self.LICENSE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MINISTRY_DRIVER">
-              <PropertyRef Name="MIN_DRIVER_ID" />
-            </Principal>
-            <Dependent Role="LICENSE">
-              <PropertyRef Name="MIN_DRIVER_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -831,12 +839,12 @@
             <End Role="MINISTRY" EntitySet="MINISTRY" />
             <End Role="LEAVE" EntitySet="LEAVE" />
           </AssociationSet>
-          <AssociationSet Name="FK_LICENSE_IDMinistry" Association="Self.FK_LICENSE_IDMinistry">
-            <End Role="MINISTRY" EntitySet="MINISTRY" />
+          <AssociationSet Name="FK_LICENSE_DRIVER_ID" Association="Self.FK_LICENSE_DRIVER_ID">
+            <End Role="DRIVER" EntitySet="DRIVER" />
             <End Role="LICENSE" EntitySet="LICENSE" />
           </AssociationSet>
-          <AssociationSet Name="FK_LICENSE_MIN_DRIVER_ID" Association="Self.FK_LICENSE_MIN_DRIVER_ID">
-            <End Role="MINISTRY_DRIVER" EntitySet="MINISTRY_DRIVER" />
+          <AssociationSet Name="FK_LICENSE_IDMinistry" Association="Self.FK_LICENSE_IDMinistry">
+            <End Role="MINISTRY" EntitySet="MINISTRY" />
             <End Role="LICENSE" EntitySet="LICENSE" />
           </AssociationSet>
           <AssociationSet Name="FK_MARK_MODEL" Association="Self.FK_MARK_MODEL">
@@ -1110,10 +1118,6 @@
             <End Role="MINISTRY" EntitySet="MINISTRies" />
             <End Role="LICENSE" EntitySet="LICENSEs" />
           </AssociationSet>
-          <AssociationSet Name="FK_LICENSE_MIN_DRIVER_ID" Association="MINISTRY_DBModel.FK_LICENSE_MIN_DRIVER_ID">
-            <End Role="MINISTRY_DRIVER" EntitySet="MINISTRY_DRIVER" />
-            <End Role="LICENSE" EntitySet="LICENSEs" />
-          </AssociationSet>
           <AssociationSet Name="FK_REPAIR_IDMinistry" Association="MINISTRY_DBModel.FK_REPAIR_IDMinistry">
             <End Role="MINISTRY" EntitySet="MINISTRies" />
             <End Role="REPAIR" EntitySet="REPAIRs" />
@@ -1150,6 +1154,10 @@
             <End Role="ROLE" EntitySet="ROLEs" />
             <End Role="MINISTRY" EntitySet="MINISTRies" />
           </AssociationSet>
+          <AssociationSet Name="FK_LICENSE_DRIVER_ID" Association="MINISTRY_DBModel.FK_LICENSE_DRIVER_ID">
+            <End Role="DRIVER" EntitySet="DRIVERs" />
+            <End Role="LICENSE" EntitySet="LICENSEs" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="DRIVER">
           <Key>
@@ -1177,6 +1185,7 @@
           <Property Name="Ministry_Work" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Visibility" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LICENSEs" Relationship="MINISTRY_DBModel.FK_LICENSE_DRIVER_ID" FromRole="DRIVER" ToRole="LICENSE" />
         </EntityType>
         <EntityType Name="LEAVE_TYPE">
           <Key>
@@ -1421,9 +1430,9 @@
           <NavigationProperty Name="LEAVEs" Relationship="MINISTRY_DBModel.FK_LEAVE_MIN_DRIVER_ID" FromRole="MINISTRY_DRIVER" ToRole="LEAVE" />
           <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_MINISTRY_DRIVER_IDMinistry" FromRole="MINISTRY_DRIVER" ToRole="MINISTRY" />
           <NavigationProperty Name="CAR_CRASH" Relationship="MINISTRY_DBModel.FK_CAR_CRASH_MIN_DRIVER_ID" FromRole="MINISTRY_DRIVER" ToRole="CAR_CRASH" />
-          <NavigationProperty Name="LICENSEs" Relationship="MINISTRY_DBModel.FK_LICENSE_MIN_DRIVER_ID" FromRole="MINISTRY_DRIVER" ToRole="LICENSE" />
           <Property Name="StartDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EndDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Swaped_Vehicle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="MINISTRY_REAL_ESTATE">
           <Key>
@@ -1670,23 +1679,30 @@
             <PropertyRef Name="LICENSE_ID" />
           </Key>
           <Property Name="LICENSE_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MIN_DRIVER_ID" Type="Int64" Nullable="false" />
-          <Property Name="License_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Exp_Date" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="International_License_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Inter_License_Code_Exp_Date" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="License_Code_Mission" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="License_Code_Mission_Exp_Dte" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Bike" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Light_Vehicle" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Heavy_Weights" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Trailer_Weight" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="FourXfour" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="License_State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="MINISTRY_ID" Type="Int32" />
           <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_LICENSE_IDMinistry" FromRole="LICENSE" ToRole="MINISTRY" />
-          <NavigationProperty Name="MINISTRY_DRIVER" Relationship="MINISTRY_DBModel.FK_LICENSE_MIN_DRIVER_ID" FromRole="LICENSE" ToRole="MINISTRY_DRIVER" />
           <Property Name="Saved_Dte" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="License_Number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Issued_On" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Issued_At" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Issued_Authority" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Card_Number" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Category_A" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Category_B" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Category_C" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Category_D1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Category_D2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Category_E" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Category_F" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Scanned_Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DRIVER_ID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="DRIVER" Relationship="MINISTRY_DBModel.FK_LICENSE_DRIVER_ID" FromRole="LICENSE" ToRole="DRIVER" />
         </EntityType>
         <EntityType Name="REPAIR">
           <Key>
@@ -1760,18 +1776,6 @@
             </Principal>
             <Dependent Role="LICENSE">
               <PropertyRef Name="MINISTRY_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LICENSE_MIN_DRIVER_ID">
-          <End Type="MINISTRY_DBModel.MINISTRY_DRIVER" Role="MINISTRY_DRIVER" Multiplicity="1" />
-          <End Type="MINISTRY_DBModel.LICENSE" Role="LICENSE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MINISTRY_DRIVER">
-              <PropertyRef Name="MIN_DRIVER_ID" />
-            </Principal>
-            <Dependent Role="LICENSE">
-              <PropertyRef Name="MIN_DRIVER_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1924,6 +1928,18 @@
             </Principal>
             <Dependent Role="MINISTRY">
               <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LICENSE_DRIVER_ID">
+          <End Type="MINISTRY_DBModel.DRIVER" Role="DRIVER" Multiplicity="1" />
+          <End Type="MINISTRY_DBModel.LICENSE" Role="LICENSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DRIVER">
+              <PropertyRef Name="DRIVER_ID" />
+            </Principal>
+            <Dependent Role="LICENSE">
+              <PropertyRef Name="DRIVER_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2159,6 +2175,7 @@
           <EntitySetMapping Name="MINISTRY_DRIVER">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.MINISTRY_DRIVER">
               <MappingFragment StoreEntitySet="MINISTRY_DRIVER">
+                <ScalarProperty Name="Swaped_Vehicle" ColumnName="Swaped_Vehicle" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="Position_Status" ColumnName="Position_Status" />
@@ -2251,21 +2268,28 @@
           <EntitySetMapping Name="LICENSEs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.LICENSE">
               <MappingFragment StoreEntitySet="LICENSE">
+                <ScalarProperty Name="DRIVER_ID" ColumnName="DRIVER_ID" />
+                <ScalarProperty Name="Scanned_Picture" ColumnName="Scanned_Picture" />
+                <ScalarProperty Name="Category_F" ColumnName="Category_F" />
+                <ScalarProperty Name="Category_E" ColumnName="Category_E" />
+                <ScalarProperty Name="Category_D2" ColumnName="Category_D2" />
+                <ScalarProperty Name="Category_D1" ColumnName="Category_D1" />
+                <ScalarProperty Name="Category_C" ColumnName="Category_C" />
+                <ScalarProperty Name="Category_B" ColumnName="Category_B" />
+                <ScalarProperty Name="Category_A" ColumnName="Category_A" />
+                <ScalarProperty Name="Card_Number" ColumnName="Card_Number" />
+                <ScalarProperty Name="Issued_Authority" ColumnName="Issued_Authority" />
+                <ScalarProperty Name="Issued_At" ColumnName="Issued_At" />
+                <ScalarProperty Name="Issued_On" ColumnName="Issued_On" />
+                <ScalarProperty Name="License_Number" ColumnName="License_Number" />
                 <ScalarProperty Name="Saved_Dte" ColumnName="Saved_Dte" />
                 <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
                 <ScalarProperty Name="License_State" ColumnName="License_State" />
-                <ScalarProperty Name="FourXfour" ColumnName="FourXfour" />
-                <ScalarProperty Name="Trailer_Weight" ColumnName="Trailer_Weight" />
-                <ScalarProperty Name="Heavy_Weights" ColumnName="Heavy_Weights" />
-                <ScalarProperty Name="Light_Vehicle" ColumnName="Light_Vehicle" />
-                <ScalarProperty Name="Bike" ColumnName="Bike" />
                 <ScalarProperty Name="License_Code_Mission_Exp_Dte" ColumnName="License_Code_Mission_Exp_Dte" />
                 <ScalarProperty Name="License_Code_Mission" ColumnName="License_Code_Mission" />
                 <ScalarProperty Name="Inter_License_Code_Exp_Date" ColumnName="Inter_License_Code_Exp_Date" />
                 <ScalarProperty Name="International_License_Code" ColumnName="International_License_Code" />
                 <ScalarProperty Name="Exp_Date" ColumnName="Exp_Date" />
-                <ScalarProperty Name="License_Code" ColumnName="License_Code" />
-                <ScalarProperty Name="MIN_DRIVER_ID" ColumnName="MIN_DRIVER_ID" />
                 <ScalarProperty Name="LICENSE_ID" ColumnName="LICENSE_ID" />
               </MappingFragment>
             </EntityTypeMapping>

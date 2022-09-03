@@ -20,7 +20,7 @@
                         <li class="breadcrumb-item">
                             <a href="Home.aspx"><i class="fa fa-home"></i></a>
                         </li>
-                        <li class="breadcrumb-item"><a href="AddLicense.aspx">Add-License</a>
+                        <li class="breadcrumb-item"><a href="AddLicense.aspx">Add-Licence</a>
                         </li>
                     </ul>
                 </div>
@@ -38,7 +38,7 @@
                     <!--Start Main Card -->
                     <div class="card">
                         <div class="card-header">
-                            <h5>License</h5>
+                            <h5>Driving's Licence</h5>
                         </div>
                         <div class="col-sm-6 mx-auto">
                             <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
@@ -70,28 +70,55 @@
                                             <div class="form-group form-default">
                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLicenseCode">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">License Code</label>
+                                                <label class="float-label">Driving Licence N°</label>
                                             </div>
-                                             <div class="form-group form-default">
+                                             
+                                            <div class="form-group form-default">
+                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateIssueOn">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label ">Issued On </label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtIssuedAt">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Issued At</label>
+                                            </div>                                          
+                                            <div class="form-group form-default">
+                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_IssuedAuthority" required="" runat="server">
+                                                    <asp:ListItem>PR & SR</asp:ListItem>
+                                                </asp:DropDownList>
+                                                <label class="float-label">Issued Authority</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <label> Category :</label>
+                                                <asp:CheckBox ID="category_A" runat="server" Text=" A " OnCheckedChanged="OnCheckedChanged_A" AutoPostBack="true" />
+                                                <asp:CheckBox ID="category_B" runat="server" Text=" B " OnCheckedChanged="OnCheckedChanged_B" AutoPostBack="true"/>
+                                                <asp:CheckBox ID="category_C" runat="server" Text=" C "  OnCheckedChanged="OnCheckedChanged_C" AutoPostBack="true"/>
+                                                <asp:CheckBox ID="category_D1" runat="server" Text=" D1 "  OnCheckedChanged="OnCheckedChanged_D1" AutoPostBack="true"/>
+                                                <asp:CheckBox ID="category_D2" runat="server" Text=" D2 " OnCheckedChanged="OnCheckedChanged_D2" AutoPostBack="true"/>
+                                                <asp:CheckBox ID="category_E" runat="server" Text=" E "  OnCheckedChanged="OnCheckedChanged_E" AutoPostBack="true"/>
+                                                <asp:CheckBox ID="category_F" runat="server" Text=" F " OnCheckedChanged="OnCheckedChanged_F" AutoPostBack="true"/>
+                                            </div>                                                                               
+
+                                            <div class="form-group form-default">
                                                 <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateExp">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label ">Expire Date</label>
                                             </div>
-                                            <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtInterCode">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">International License Code</label>
-                                            </div>
+
                                              <div class="form-group form-default">
-                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateExpInter">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCrdNum">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label ">International License Code Expire Date</label>
+                                                <label class="float-label">CARD N°</label>
                                             </div>
+
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCodeMission">
+                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
                                                 <span class="form-bar"></span>
-                                                <label class="float-label">License Code Mission</label>
-                                            </div>                                         
+                                                <label class="float-label ">Scanned Pic:.png,.jpg</label>
+                                            </div>
+                                               
+                                            <asp:Image ID="Image1" runat="server" Width="70px" Height="50px" />
 
                                         </div>
                                     </div>
@@ -101,49 +128,28 @@
                                     <div class="card-block">
                                         <div class="form-material">
                                           
+                                             <div class="form-group form-default">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtInterCode">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">International Licence Code</label>
+                                            </div>
+                                             <div class="form-group form-default">
+                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateExpInter">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label ">International Licence Code Expire Date</label>
+                                            </div>
+                                            <div class="form-group form-default">
+                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCodeMission">
+                                                <span class="form-bar"></span>
+                                                <label class="float-label">Licence Code Mission</label>
+                                            </div>     
+
                                             <div class="form-group form-default">
                                                 <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateCodeMissionExp">
                                                 <span class="form-bar"></span>
-                                                <label class="float-label ">License Code Mission Expire Date</label>
+                                                <label class="float-label ">Licence Code Mission Expire Date</label>
                                             </div>
-             
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="dropDown_Bike" required="" runat="server">
-                                                    <asp:ListItem>True</asp:ListItem>
-                                                    <asp:ListItem>False</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Bike</label>
-                                            </div>
-
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_ligthVeh" required="" runat="server">
-                                                    <asp:ListItem>True</asp:ListItem>
-                                                    <asp:ListItem>False</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Light Vehicle</label>
-                                            </div>
-
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_HeavyWeight" required="" runat="server">
-                                                    <asp:ListItem>True</asp:ListItem>
-                                                    <asp:ListItem>False</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Heavy Weight</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Trailer" required="" runat="server">
-                                                    <asp:ListItem>True</asp:ListItem>
-                                                    <asp:ListItem>False</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">Trailer Weight</label>
-                                            </div>
-                                            <div class="form-group form-default">
-                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_4x4" required="" runat="server">
-                                                    <asp:ListItem>True</asp:ListItem>
-                                                    <asp:ListItem>False</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <label class="float-label">4x4</label>
-                                            </div>
+                                                                                                      
                                             <div class="form-group form-default">
                                                 <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_licenseState" required="" runat="server">
                                                     <asp:ListItem>Valid</asp:ListItem>

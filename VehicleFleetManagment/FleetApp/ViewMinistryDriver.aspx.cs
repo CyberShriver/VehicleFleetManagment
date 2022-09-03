@@ -64,13 +64,13 @@ namespace VehicleFleetManagment.FleetApp
             {
                 if (txt_Search.Value == "")
                     getDataGDV();
-                else I.ResearchAll(gdv,txt_Search.Value);
+                else I.ResearchAll(gdv, txt_Search.Value);
             }
             else
-            { 
-              if (txt_Search.Value == "")
-                getDataGDV();
-            else I.Research(gdv, codeMin, txt_Search.Value);
+            {
+                if (txt_Search.Value == "")
+                    getDataGDV();
+                else I.Research(gdv, codeMin, txt_Search.Value);
             }
         }
         protected void btnReload_click(object sender, EventArgs e)
@@ -107,14 +107,15 @@ namespace VehicleFleetManagment.FleetApp
                     Button btnEdit = (Button)row.FindControl("btn_Edit");
                     Button btnDelete = (Button)row.FindControl("Btn_Delete");
                     Label state = (Label)row.FindControl("Label6");
-            
+
                     if (state.Text == "Leave")
                     {
-                        btnEdit.Enabled = false;
-                        btnDelete.Enabled = false;
-                    }else if(state.Text == "Swaped" || state.Text == "Fired")
+                        btnEdit.Visible = false;
+                        btnDelete.Visible = false;
+                    }
+                    else if (state.Text == "Swaped" || state.Text == "Fired")
                     {
-                        btnEdit.Enabled = false;
+                        btnEdit.Visible = false;
                     }
 
                 }

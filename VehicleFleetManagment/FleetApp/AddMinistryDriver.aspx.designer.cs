@@ -60,6 +60,15 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl FailMsg;
 
         /// <summary>
+        /// FailLicence control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FailLicence;
+
+        /// <summary>
         /// DMinistry control.
         /// </summary>
         /// <remarks>

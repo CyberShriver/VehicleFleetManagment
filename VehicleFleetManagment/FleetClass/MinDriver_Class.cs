@@ -11,6 +11,7 @@ namespace VehicleFleetManagment.FleetClass
 
         public long MIN_DRIVER_ID { get; set; }
         public string Min_Driver_RegNumber { get; set; }
+        public string Swaped_Vehicle { get; set; }
         public long DRIVER_ID { get; set; }
         public int MINISTRY_ID { get; set; }
         public string Position_Status { get; set; }

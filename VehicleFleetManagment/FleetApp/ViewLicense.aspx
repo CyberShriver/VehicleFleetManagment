@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FleetApp/fleet.Master" AutoEventWireup="true" CodeBehind="ViewLicense.aspx.cs" Inherits="VehicleFleetManagment.FleetApp.ViewLicense" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <!-- Page-header start -->
@@ -110,75 +108,48 @@
 
                                             <asp:TemplateField HeaderText="Driver" FooterText="#">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label8" runat="server" Text='<%# Eval("MIN_DRIVER_ID") %>'></asp:Label>
+                                                    <asp:Label ID="Label8" runat="server" Text='<%# Eval("DRIVER_ID") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
 
-                                            <asp:TemplateField HeaderText="License Code ">
+                                            <asp:TemplateField HeaderText="License N° ">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("License_Code") %>'></asp:Label>
+                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("License_Number") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Expire Date ">
+                                            <asp:TemplateField HeaderText="Issued On ">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("Exp_Date") %>'></asp:Label>
+                                                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("Issued_On") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="International License Code " Visible="false">
+                                            <asp:TemplateField HeaderText="Issued At ">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("International_License_Code") %>'></asp:Label>
+                                                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("Issued_At") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            
+                                            <asp:TemplateField HeaderText="Issued Authority ">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label5" runat="server" Text='<%# Eval("Issued_Authority") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="I.L.C Expire Date ">
+                                            <asp:TemplateField HeaderText="Category">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label5" runat="server" Text='<%# Eval("Inter_License_Code_Exp_Date") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-
-                                            <asp:TemplateField HeaderText="License Code Mission ">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label6" runat="server" Text='<%# Eval("License_Code_Mission") %>'></asp:Label>
+                                                    <asp:Label ID="Label6" runat="server" Text='<%# Eval("Category_A") %>'></asp:Label>
                                                 </ItemTemplate>
 
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="L.C.M Expire Date" Visible="false">
+                                            <asp:TemplateField HeaderText="CARD N°" >
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label7" runat="server" Text='<%# Eval("License_Code_Mission_Exp_Dte") %>'></asp:Label>
+                                                    <asp:Label ID="Label7" runat="server" Text='<%# Eval("Card_Number") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Bike ">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label12" runat="server" Text='<%# Eval("Bike") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-
-                                            <asp:TemplateField HeaderText="Light Vehicle " Visible="false">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label18" runat="server" Text='<%# Eval("Light_Vehicle") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-
-                                            <asp:TemplateField HeaderText="Heavy Weights" Visible="false">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label98" runat="server" Text='<%# Eval("Heavy_Weights") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-
-                                            <asp:TemplateField HeaderText="Trailer Weight " Visible="false">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label00" runat="server" Text='<%# Eval("Trailer_Weight") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="4 x 4" Visible="false">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label01" runat="server" Text='<%# Eval("FourXfour") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+                                           
                                             <asp:TemplateField HeaderText="License State " >
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label056" runat="server" Text='<%# Eval("License_State") %>'></asp:Label>
@@ -188,6 +159,12 @@
                                             <asp:TemplateField HeaderText="Saved Date">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label99" runat="server" Text='<%# Eval("Saved_Dte") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                            <asp:TemplateField HeaderText="Scanned File">
+                                                <ItemTemplate>
+                                                    <asp:Image ID="Image1" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images/Licence/",Eval("Scanned_Picture")) %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

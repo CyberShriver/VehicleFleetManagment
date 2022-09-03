@@ -48,6 +48,11 @@
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                                 <strong>Operation Failed!</strong>
                             </div>
+
+                            <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailLicence">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>His/her Driving Licence Not Allowed to drive this Vehicle!</strong>
+                            </div>
                         </div>
                         <div class="col-md-12">
                             <div class="card">

@@ -24,6 +24,7 @@ namespace VehicleFleetManagment.FleetImp
             {
                 M.DRIVER_ID = Md.DRIVER_ID;
                 M.Min_Driver_RegNumber  = Md.Min_Driver_RegNumber ;
+                M.Swaped_Vehicle  = Md.Swaped_Vehicle ;
                 M.MINISTRY_ID = Md.MINISTRY_ID;
                 M.Position_Status = Md.Position_Status;
                 M.StartDate = Md.StartDate;
@@ -45,6 +46,25 @@ namespace VehicleFleetManagment.FleetImp
             return msg;
         }
 
+        public int DrivingLicenceValidation( int driver,string regNumber)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                LICENSE L = new LICENSE();
+                VEHICLE V = new VEHICLE();
+                L = con.LICENSEs.Where(x => x.DRIVER_ID == driver).FirstOrDefault();
+                V = con.VEHICLEs.Where(x => x.Local_Plate == regNumber).FirstOrDefault();
+
+                if (L != null && V != null)
+                {
+                 if(L.Category_A=="Yes" && L.Category_B == "Yes" && L.Category_C == "Yes" && V.Trailer == "true"){ return msg = 1; } else {return msg = 0; }
+                    
+                }
+                else return msg = 0;
+
+            }
+        }
+
         //UPDATE METHOD
         public int Update(MinDriver_Class Md, int id)
         {
@@ -58,6 +78,7 @@ namespace VehicleFleetManagment.FleetImp
 
                     M.DRIVER_ID = Md.DRIVER_ID;
                     M.Min_Driver_RegNumber  = Md.Min_Driver_RegNumber ;
+                    M.Swaped_Vehicle  = Md.Swaped_Vehicle ;
                     M.MINISTRY_ID = Md.MINISTRY_ID;
                     M.Position_Status = Md.Position_Status;
 
@@ -103,12 +124,14 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MINISTRY_DRIVER where M.MINISTRY.Code_Min ==codeMin.Trim()
+                           orderby M.MIN_DRIVER_ID descending
 
                            select new
                            {
                                MIN_DRIVER_ID = M.MIN_DRIVER_ID,
                                DRIVER_ID = M.DRIVER.Full_Name,
                                Min_Driver_RegNumber = M.Min_Driver_RegNumber,
+                               Swaped_Vehicle = M.Swaped_Vehicle,
                                MINISTRY_ID = M.MINISTRY.Ministry_Name,
                                StartDate = M.StartDate,
                                EndDate = M.EndDate,
@@ -129,11 +152,13 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MINISTRY_DRIVER
+                           orderby M.MIN_DRIVER_ID descending
                            select new
                            {
                                MIN_DRIVER_ID = M.MIN_DRIVER_ID,
                                DRIVER_ID = M.DRIVER.Full_Name,
                                Min_Driver_RegNumber = M.Min_Driver_RegNumber,
+                               Swaped_Vehicle = M.Swaped_Vehicle,
                                MINISTRY_ID = M.MINISTRY.Ministry_Name,
                                StartDate = M.StartDate,
                                EndDate = M.EndDate,
@@ -221,6 +246,7 @@ namespace VehicleFleetManagment.FleetImp
                                MIN_DRIVER_ID = M.MIN_DRIVER_ID,
                                DRIVER_ID = M.DRIVER.Full_Name,
                                Min_Driver_RegNumber = M.Min_Driver_RegNumber,
+                               Swaped_Vehicle = M.Swaped_Vehicle,
                                MINISTRY_ID = M.MINISTRY.Ministry_Name,
                                StartDate = M.StartDate,
                                EndDate = M.EndDate,
@@ -252,6 +278,7 @@ namespace VehicleFleetManagment.FleetImp
                                MIN_DRIVER_ID = M.MIN_DRIVER_ID,
                                DRIVER_ID = M.DRIVER.Full_Name,
                                Min_Driver_RegNumber = M.Min_Driver_RegNumber,
+                               Swaped_Vehicle = M.Swaped_Vehicle,
                                MINISTRY_ID = M.MINISTRY.Ministry_Name,
                                StartDate = M.StartDate,
                                EndDate = M.EndDate,
@@ -431,6 +458,7 @@ namespace VehicleFleetManagment.FleetImp
             return msg;
         }
 
+
         //UPDATE VEHICLE UNVAILABLE STATE METHOD
         //public int UpdateDriverVisibility(int id)
         //{
@@ -537,7 +565,7 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //UPDATE Position
-        int UpdatePositionState(int id)
+        int UpdatePositionState(int id, string swapedVeh)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
@@ -547,6 +575,7 @@ namespace VehicleFleetManagment.FleetImp
                 if (M != null)
                 {
                     M.Position_Status = "Swaped";
+                    M.Swaped_Vehicle = swapedVeh;
                     M.EndDate = DateTime.Today.ToShortDateString();
                     UpdateVehAvailable(M.Min_Driver_RegNumber);
                     if (con.SaveChanges() > 0)
@@ -567,7 +596,7 @@ namespace VehicleFleetManagment.FleetImp
         }
       
         //CHECK LAST SAVED
-        public int LastSaved(MinDriver_Class Md, int driver)
+        public int LastSaved(MinDriver_Class Md, int driver,string swapdVeh)
         {
             int id;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
@@ -580,7 +609,7 @@ namespace VehicleFleetManagment.FleetImp
 
                     if(M.Position_Status=="On Post" || M.Position_Status == "Leave")
                     {
-                        UpdatePositionState(id);
+                        UpdatePositionState(id,swapdVeh);
                     }
                     
                         return msg = 1;

@@ -18,6 +18,7 @@ namespace VehicleFleetManagment.FleetModel
         public DRIVER()
         {
             this.MINISTRY_DRIVER = new HashSet<MINISTRY_DRIVER>();
+            this.LICENSEs = new HashSet<LICENSE>();
         }
     
         public long DRIVER_ID { get; set; }
@@ -44,5 +45,7 @@ namespace VehicleFleetManagment.FleetModel
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MINISTRY_DRIVER> MINISTRY_DRIVER { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LICENSE> LICENSEs { get; set; }
     }
 }

@@ -192,6 +192,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from L in con.LEAVEs
+                           orderby L.LEAVE_ID descending
 
                            select new
                            {

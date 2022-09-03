@@ -21,7 +21,7 @@ namespace VehicleFleetManagment.FleetImp
         int Delete(int id);
 
         //Display Method
-        void Display(GridView gd,string codeMin);
+        void Display(GridView gd, string codeMin);
 
         //Display ALL Method
         void DisplayAll(GridView gd);
@@ -36,7 +36,7 @@ namespace VehicleFleetManagment.FleetImp
         int countAll();
 
         //Research Method
-        void Research(GridView gd,string codeMin, string SearchText);
+        void Research(GridView gd, string codeMin, string SearchText);
 
         //Research All Method
         void ResearchAll(GridView gd, string SearchText);
@@ -45,7 +45,7 @@ namespace VehicleFleetManagment.FleetImp
         void DisplayAllDriver(DropDownList drop);
 
         //DropDown Ministry 
-        void DisplayMinistry(DropDownList drop,string codeMin);
+        void DisplayMinistry(DropDownList drop, string codeMin);
 
         //DropDown All Ministry 
         void DisplayMinistryAll(DropDownList drop);

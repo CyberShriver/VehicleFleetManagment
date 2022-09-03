@@ -19,7 +19,6 @@ namespace VehicleFleetManagment.FleetModel
         {
             this.LEAVEs = new HashSet<LEAVE>();
             this.CAR_CRASH = new HashSet<CAR_CRASH>();
-            this.LICENSEs = new HashSet<LICENSE>();
         }
     
         public long MIN_DRIVER_ID { get; set; }
@@ -29,6 +28,7 @@ namespace VehicleFleetManagment.FleetModel
         public string Position_Status { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
+        public string Swaped_Vehicle { get; set; }
     
         public virtual DRIVER DRIVER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -36,7 +36,5 @@ namespace VehicleFleetManagment.FleetModel
         public virtual MINISTRY MINISTRY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CAR_CRASH> CAR_CRASH { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LICENSE> LICENSEs { get; set; }
     }
 }
