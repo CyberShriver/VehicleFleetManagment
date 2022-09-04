@@ -57,8 +57,13 @@ namespace VehicleFleetManagment.FleetImp
 
                 if (L != null && V != null)
                 {
-                 if(L.Category_A=="Yes" && L.Category_B == "Yes" && L.Category_C == "Yes" && V.Trailer == "true"){ return msg = 1; } else {return msg = 0; }
-                    
+                    if (L.Category_B == "Yes" && V.Trailer == "Compact Car") { return msg = 1; }
+                    else if (L.Category_C == "Yes" && ( V.Trailer == "Compact Car" || V.Trailer == "small lorry truck")) { return msg = 1; }
+                    else if (L.Category_D1 == "Yes" && (V.Trailer == "Compact Car" || V.Trailer == "small lorry truck" || V.Trailer == "Van")) { return msg = 1; }
+                    else if ( L.Category_D2 == "Yes" && ( V.Trailer == "Compact Car" || V.Trailer == "small lorry truck" || V.Trailer == "Van" || V.Trailer == "Bus")) { return msg = 1; }
+                    else if ( L.Category_E == "Yes" && (V.Trailer == "Compact Car" || V.Trailer == "small lorry truck" || V.Trailer == "Van" || V.Trailer == "Bus" || V.Trailer == "Trailer")) { return msg = 1; }
+                    else if ( L.Category_F == "Yes" && (V.Trailer == "Compact Car" || V.Trailer == "small lorry truck" || V.Trailer == "Van" || V.Trailer == "Bus" || V.Trailer == "Trailer" || V.Trailer == "Tractor")) { return msg = 1; } else { return msg = 0; }
+
                 }
                 else return msg = 0;
 

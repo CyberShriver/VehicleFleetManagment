@@ -30,6 +30,10 @@ namespace VehicleFleetManagment.FleetApp
                 txtSystemTitle.Text = sytemTitle;
                 txtSlogan.Text = slogan;
                 MsgInit();
+                Ministry();
+                Vehicle();
+                fuel();
+                Provider();
 
                 if (id == null)
                 {
@@ -41,9 +45,7 @@ namespace VehicleFleetManagment.FleetApp
                     btnSave.InnerText = "Edit";
                     ChargeData();
                 }
-                Ministry();
-                Vehicle();
-                Provider();
+                
 
             }
 
@@ -268,6 +270,16 @@ namespace VehicleFleetManagment.FleetApp
         void Provider()
         {
             I.DisplayProvider(DropDown_ProviderCode);
+        }
+
+        void fuel()
+        {
+            I.DisplayFuelType(DropDown_fuel, DropDown_Vehicle.SelectedItem.Text);
+        }
+
+        protected void DropDown_Vehicle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fuel();
         }
     }
 }

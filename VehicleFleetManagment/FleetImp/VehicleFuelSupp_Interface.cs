@@ -56,5 +56,8 @@ namespace VehicleFleetManagment.FleetImp
 
         //DropDown Provider 
         void DisplayProvider(DropDownList drop);
+
+        //DISPLAY  Fuel Type Consumed By This Vehicle
+         void DisplayFuelType(DropDownList drop, string Plate);
     }
 }

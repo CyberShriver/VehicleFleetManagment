@@ -62,7 +62,7 @@
                                             <label class="float-label">Ministry</label>
                                         </div>
                                         <div class="form-group form-default">
-                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Vehicle" required="" runat="server"></asp:DropDownList>
+                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Vehicle" OnSelectedIndexChanged="DropDown_Vehicle_SelectedIndexChanged" AutoPostBack="true" required="" runat="server"></asp:DropDownList>
                                             <label class="float-label">Plate</label>
                                         </div>
 
@@ -78,11 +78,8 @@
                                             <label class="float-label">Tank Type</label>
                                         </div>
                                          <div class="form-group form-default">
-                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_fuel" required="" runat="server">
-                                                <asp:ListItem>Petrol</asp:ListItem>
-                                                <asp:ListItem>Mazutu</asp:ListItem>
-                                            </asp:DropDownList>
-                                            <label class="float-label">Fuel Type</label>
+                                             <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_fuel" required="" runat="server"></asp:DropDownList>
+                                             <label class="float-label">Fuel Type</label>
                                         </div>
                                         <div class="form-group form-default">
                                             <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTankCode">

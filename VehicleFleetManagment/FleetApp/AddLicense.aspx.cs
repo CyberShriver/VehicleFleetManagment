@@ -75,7 +75,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtLicenseCode.Value == "" ||  dateExp.Value == ""  ||  category_A.Checked==false || txtIssuedAt.Value == "" || dateIssueOn.Value == ""
+                if (txtLicenseCode.Value == "" ||  dateExp.Value == ""  ||  category_B.Checked==false || txtIssuedAt.Value == "" || dateIssueOn.Value == ""
                     || txtCrdNum.Value == ""   || category_A.Checked==false || txtIssuedAt.Value == "" || dateIssueOn.Value == ""
                     ||  DropDown_licenseState.SelectedValue == "-1" || DropDown_IssuedAuthority.SelectedValue == "-1"
                     )
@@ -168,7 +168,7 @@ namespace VehicleFleetManagment.FleetApp
 
             try
             {
-                if (txtLicenseCode.Value == "" || dateExp.Value == "" || category_A.Checked == false || txtIssuedAt.Value == "" || dateIssueOn.Value == ""
+                if (txtLicenseCode.Value == "" || dateExp.Value == "" || category_B.Checked == false || txtIssuedAt.Value == "" || dateIssueOn.Value == ""
                     || txtCrdNum.Value == "" || category_A.Checked == false || txtIssuedAt.Value == "" || dateIssueOn.Value == ""
                     || DropDown_licenseState.SelectedValue == "-1" || DropDown_IssuedAuthority.SelectedValue == "-1"
                     )

@@ -251,9 +251,15 @@
           <Property Name="Provider_Type" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Provider_Code" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Full_Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CNI" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DOB" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Stat" Type="varchar" MaxLength="30" />
+          <Property Name="Picture" Type="varchar" MaxLength="100" />
+          <Property Name="Contract" Type="varchar" MaxLength="100" />
+          <Property Name="Saved_Date" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="REAL_ESTATE">
           <Key>
@@ -984,6 +990,12 @@
           <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Stat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CNI" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Contract" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Saved_Date" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="REAL_ESTATE">
           <Key>
@@ -1980,6 +1992,12 @@
           <EntitySetMapping Name="PROVIDERs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.PROVIDER">
               <MappingFragment StoreEntitySet="PROVIDER">
+                <ScalarProperty Name="Saved_Date" ColumnName="Saved_Date" />
+                <ScalarProperty Name="Contract" ColumnName="Contract" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="CNI" ColumnName="CNI" />
                 <ScalarProperty Name="PROVIDER_ID" ColumnName="PROVIDER_ID" />
                 <ScalarProperty Name="Provider_Type" ColumnName="Provider_Type" />
                 <ScalarProperty Name="Provider_Code" ColumnName="Provider_Code" />

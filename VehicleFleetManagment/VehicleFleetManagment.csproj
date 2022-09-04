@@ -974,6 +974,7 @@
     <Folder Include="FleetApp\assets\images\Crash\" />
     <Folder Include="FleetApp\assets\images\Drivers\" />
     <Folder Include="FleetApp\assets\images\Logo\" />
+    <Folder Include="FleetApp\assets\images\Providers\" />
     <Folder Include="FleetApp\assets\images\Users\" />
     <Folder Include="FleetApp\assets\images\Vehicles\" />
   </ItemGroup>

@@ -69,6 +69,15 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl FailMsg;
 
         /// <summary>
+        /// MsgGVN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MsgGVN;
+
+        /// <summary>
         /// tabGen control.
         /// </summary>
         /// <remarks>
@@ -462,16 +471,7 @@ namespace VehicleFleetManagment.FleetApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtGrossVehWeigth;
-
-        /// <summary>
-        /// txtEmptyPod control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEmptyPod;
+        protected global::System.Web.UI.WebControls.TextBox txtGrossVehWeigth;
 
         /// <summary>
         /// DropDown_Trailer control.
@@ -481,6 +481,15 @@ namespace VehicleFleetManagment.FleetApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDown_Trailer;
+
+        /// <summary>
+        /// txtEmptyPod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEmptyPod;
 
         /// <summary>
         /// DropDown_lhd_rhd control.

@@ -420,5 +420,27 @@ namespace VehicleFleetManagment.FleetImp
             }
 
         }
+
+        //DISPLAY  Fuel Type Consumed By This Vehicle
+        public void DisplayFuelType(DropDownList drop, string Plate)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from V in con.VEHICLEs
+                           where V.Local_Plate== Plate
+
+                           select new
+                           {
+                               Fuel_Fype = V.Fuel_Fype
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "Fuel_Fype";
+                drop.DataBind();
+            }
+
+        }
+
     }
 }

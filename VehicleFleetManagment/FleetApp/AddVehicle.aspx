@@ -46,15 +46,19 @@
                             <strong>Please complete all fields!</strong>
                         </div>
                         <div class="alert alert-info alert-dismissible fade show" runat="server" id="ExistMsg">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Already saved!</strong>
-                            </div>
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Already saved!</strong>
+                        </div>
                         <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                             <strong>Operation Failed!</strong>
                         </div>
+                        <div class="alert alert-danger alert-dismissible fade show" runat="server" id="MsgGVN">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Check GVM value !!! <span class="form-txt-info">Values must be between 401 and 4499.999</span></strong>
+                        </div>
                     </div>
-                    <div class="row">
+                        <div class="row">
                         <div class="col-sm-12">
                             <!-- Tab variant tab card start -->
                             <div class="card">
@@ -296,24 +300,31 @@
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Key code</label>
                                                             </div>
-                                                            <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtGrossVehWeigth" onkeypress="inpNum(event)" maxlength="5">
+                                                             <div class="form-group form-default">
+<%--                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtGrossVehWeigth" onkeypress="inpNum(event)" maxlength="5" OnTextChanged="OnTextChanged_txtGrossVehWeigth" AutoPostBack="true">--%>
+                                                                <asp:TextBox name="footer-email" class="form-control" required="" runat="server" id="txtGrossVehWeigth" onkeypress="inpNum(event)" maxlength="4" OnTextChanged="OnTextChanged_txtGrossVehWeigth" AutoPostBack="true"></asp:TextBox>
                                                                 <span class="form-bar"></span>
-                                                                <label class="float-label">Gross Weigth ( in Kgs )</label>
+                                                                <label class="float-label"> Gross Vehicle Mass [between 400.99 and 4499.99] ( in Kgs )</label>
                                                             </div>
+
+                                                            <div class="form-group form-default">
+                                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Trailer" required="" runat="server">
+                                                                    <asp:ListItem>Compact Car</asp:ListItem>
+                                                                    <asp:ListItem >small lorry truck</asp:ListItem>
+                                                                    <asp:ListItem>Van</asp:ListItem>
+                                                                    <asp:ListItem>Bus</asp:ListItem>
+                                                                    <asp:ListItem>Trailer</asp:ListItem>
+                                                                    <asp:ListItem>Tractor</asp:ListItem>
+                                                                </asp:DropDownList>
+                                                                <label class="float-label">Vehicle type</label>
+                                                            </div>
+                                                           
                                                             <div class="form-group form-default">
                                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEmptyPod" onkeypress="inpNum(event)" maxlength="10">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Empty Pod</label>
                                                             </div>
-
-                                                            <div class="form-group form-default">
-                                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Trailer" required="" runat="server">
-                                                                    <asp:ListItem>true</asp:ListItem>
-                                                                    <asp:ListItem>false</asp:ListItem>
-                                                                </asp:DropDownList>
-                                                                <label class="float-label">Trailer? </label>
-                                                            </div>
+                                                            
                                                             <div class="form-group form-default">
                                                                 <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_lhd_rhd" required="" runat="server">
                                                                     <asp:ListItem>left</asp:ListItem>
@@ -361,7 +372,7 @@
                                                                     <asp:ListItem>true</asp:ListItem>
                                                                     <asp:ListItem>false</asp:ListItem>
                                                                 </asp:DropDownList>
-                                                                <label class="float-label">Opt Four Wheel?</label>
+                                                                <label class="float-label">Opt Four Wheel over?</label>
                                                             </div>
                                                             <div class="form-group form-default">
                                                                 <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Air_Conditioner" required="" runat="server">

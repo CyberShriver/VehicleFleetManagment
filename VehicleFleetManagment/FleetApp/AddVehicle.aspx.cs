@@ -39,7 +39,7 @@ namespace VehicleFleetManagment.FleetApp
                     btnSave.InnerText = "Edit";
                     ChargeData();
                 }
-
+               
                 txtSystemTitle.Text = sytemTitle;
                 txtSlogan.Text = slogan;
 
@@ -67,6 +67,7 @@ namespace VehicleFleetManagment.FleetApp
             FillMsg.Visible = false;
             FailMsg.Visible = false;
             ExistMsg.Visible = false;
+            MsgGVN.Visible = false;
         }
 
         //Add 
@@ -78,7 +79,7 @@ namespace VehicleFleetManagment.FleetApp
                     txtEngineManif.Value == "" || txtEnginType.Value == "" || txtEnginSeries.Value == "" || txtEngAltern.Value == "" || txtEngineNumber.Value == "" || txtEngAlternType.Value == "" ||
                     txtEnginCylind.Value == "" || txtEnginPower.Value == "" || txtAssembly.Value == "" || txtGenerWeight.Value == "" || txtVolt.Value == "" || txtKva.Value == "" ||
                     txtEngincc.Value == "" || txtGearBox.Value == "" || txtCondition.Value == "" || txtTankTyp1.Value == "" || txtTankSze1.Value == ""  ||
-                    txtGrossVehWeigth.Value == "" || txtKeyCode.Value == "" || txtVehiclWeight.Value == "" || txtBatteryVolt.Value == "" || txtFrontSeat.Value == "" || txtTankCapacity2.Value == "" ||
+                    txtGrossVehWeigth.Text == "" || txtKeyCode.Value == "" || txtVehiclWeight.Value == "" || txtBatteryVolt.Value == "" || txtFrontSeat.Value == "" || txtTankCapacity2.Value == "" ||
                     txtEmptyPod.Value == "" || txtRadioCode.Value == "" || txtGuaranteeCerticat.Value == "" || dateGuaranteExp.Value == "" || dateCirculationExp.Value == "" 
                     || DropDown_Ministry.SelectedValue == "-1" || DropDown_Model.SelectedValue == "-1" || DropDown_Body.SelectedValue == "-1" || DropDown_fuel.SelectedValue == "-1"
                     || DropDown_Trailer.SelectedValue == "-1" || DropDown_lhd_rhd.SelectedValue == "-1" || DropDown_Belt.SelectedValue == "-1" || DropDown_Central_Locking.SelectedValue == "-1"
@@ -88,6 +89,8 @@ namespace VehicleFleetManagment.FleetApp
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
                     FailMsg.Visible = false;
+                    ExistMsg.Visible = false;
+                    MsgGVN.Visible = false;
                 }
                 else
                 {
@@ -141,7 +144,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Veh.Air_Conditioner = DropDown_Air_Conditioner.SelectedValue;
                                 Veh.Additional_Heating = DropDown_Additional_Heating.SelectedValue;
                                 Veh.Veh_Weight =Convert.ToDouble(txtVehiclWeight.Value);
-                                Veh.Gross_Veh_Weigth =Convert.ToDouble(txtGrossVehWeigth.Value);
+                                Veh.Gross_Veh_Weigth =Convert.ToDouble(txtGrossVehWeigth.Text);
                                 Veh.Empty_Pod = Convert.ToDouble(txtEmptyPod.Value);
                                 Veh.Key_Code = txtKeyCode.Value;
                                 Veh.Rear_Blake = DropDown_Rear_Blake.SelectedValue;
@@ -157,6 +160,8 @@ namespace VehicleFleetManagment.FleetApp
                                     FillMsg.Visible = false;
                                     FailMsg.Visible = false;
                                     SuccessMsg.Visible = true;
+                                    ExistMsg.Visible = false;
+                                    MsgGVN.Visible = false;
 
                                     txtCode.Value = "";
                                     txtPlate.Text = "";
@@ -182,7 +187,7 @@ namespace VehicleFleetManagment.FleetApp
                                     txtTankTyp1.Value = "";
                                     txtTankSze1.Value = "";
                                     txtTankTyp2.Value = "";
-                                    txtGrossVehWeigth.Value = "";
+                                    txtGrossVehWeigth.Text = "";
                                     txtKeyCode.Value = "";
                                     txtVehiclWeight.Value = "";
                                     txtBatteryVolt.Value = "";
@@ -199,6 +204,8 @@ namespace VehicleFleetManagment.FleetApp
                                     SuccessMsg.Visible = false;
                                     FillMsg.Visible = false;
                                     FailMsg.Visible = true;
+                                    ExistMsg.Visible = false;
+                                    MsgGVN.Visible = false;
 
                                 }
                             }
@@ -207,6 +214,8 @@ namespace VehicleFleetManagment.FleetApp
                                 SuccessMsg.Visible = false;
                                 FillMsg.Visible = false;
                                 FailMsg.Visible = true;
+                                ExistMsg.Visible = false;
+                                MsgGVN.Visible = false;
                             }
                         }
                         else
@@ -214,6 +223,8 @@ namespace VehicleFleetManagment.FleetApp
                             SuccessMsg.Visible = false;
                             FillMsg.Visible = false;
                             FailMsg.Visible = true;
+                            ExistMsg.Visible = false;
+                            MsgGVN.Visible = false;
                         }
                     }
                     else
@@ -259,7 +270,7 @@ namespace VehicleFleetManagment.FleetApp
                         Veh.Air_Conditioner = DropDown_Air_Conditioner.SelectedValue;
                         Veh.Additional_Heating = DropDown_Additional_Heating.SelectedValue;
                         Veh.Veh_Weight = Convert.ToDouble(txtVehiclWeight.Value);
-                        Veh.Gross_Veh_Weigth = Convert.ToDouble(txtGrossVehWeigth.Value);
+                        Veh.Gross_Veh_Weigth = Convert.ToDouble(txtGrossVehWeigth.Text);
                         Veh.Empty_Pod = Convert.ToDouble(txtEmptyPod.Value);
                         Veh.Key_Code = txtKeyCode.Value;
                         Veh.Rear_Blake = DropDown_Rear_Blake.SelectedValue;
@@ -275,6 +286,8 @@ namespace VehicleFleetManagment.FleetApp
                             FillMsg.Visible = false;
                             FailMsg.Visible = false;
                             SuccessMsg.Visible = true;
+                            ExistMsg.Visible = false;
+                            MsgGVN.Visible = false;
 
                             txtCode.Value = "";
                             txtPlate.Text = "";
@@ -300,7 +313,7 @@ namespace VehicleFleetManagment.FleetApp
                             txtTankTyp1.Value = "";
                             txtTankSze1.Value = "";
                             txtTankTyp2.Value = "";
-                            txtGrossVehWeigth.Value = "";
+                            txtGrossVehWeigth.Text = "";
                             txtKeyCode.Value = "";
                             txtVehiclWeight.Value = "";
                             txtBatteryVolt.Value = "";
@@ -317,6 +330,8 @@ namespace VehicleFleetManagment.FleetApp
                             SuccessMsg.Visible = false;
                             FillMsg.Visible = false;
                             FailMsg.Visible = true;
+                            ExistMsg.Visible = false;
+                            MsgGVN.Visible = false;
 
                         }
                     }
@@ -327,6 +342,8 @@ namespace VehicleFleetManagment.FleetApp
                 SuccessMsg.Visible = false;
                 FillMsg.Visible = false;
                 FailMsg.Visible = true;
+                ExistMsg.Visible = false;
+                MsgGVN.Visible = false;
             }
         }
 
@@ -340,7 +357,7 @@ namespace VehicleFleetManagment.FleetApp
                     txtEngineManif.Value == "" || txtEnginType.Value == "" || txtEnginSeries.Value == "" || txtEngAltern.Value == "" || txtEngineNumber.Value == "" || txtEngAlternType.Value == "" ||
                     txtEnginCylind.Value == "" || txtEnginPower.Value == "" || txtAssembly.Value == "" || txtGenerWeight.Value == "" || txtVolt.Value == "" || txtKva.Value == "" ||
                     txtEngincc.Value == "" || txtGearBox.Value == "" || txtCondition.Value == "" || txtTankTyp1.Value == "" || txtTankSze1.Value == "" || txtTankTyp2.Value == "" ||
-                    txtGrossVehWeigth.Value == "" || txtKeyCode.Value == "" || txtVehiclWeight.Value == "" || txtBatteryVolt.Value == "" || txtFrontSeat.Value == "" || txtTankCapacity2.Value == "" ||
+                    txtGrossVehWeigth.Text == "" || txtKeyCode.Value == "" || txtVehiclWeight.Value == "" || txtBatteryVolt.Value == "" || txtFrontSeat.Value == "" || txtTankCapacity2.Value == "" ||
                     txtEmptyPod.Value == "" || txtRadioCode.Value == "" || txtGuaranteeCerticat.Value == "" || dateGuaranteExp.Value == "" || dateCirculationExp.Value == "" 
                     || DropDown_Ministry.SelectedValue == "-1" || DropDown_Model.SelectedValue == "-1" || DropDown_Body.SelectedValue == "-1" || DropDown_fuel.SelectedValue == "-1"
                     || DropDown_Trailer.SelectedValue == "-1" || DropDown_lhd_rhd.SelectedValue == "-1" || DropDown_Belt.SelectedValue == "-1" || DropDown_Central_Locking.SelectedValue == "-1"
@@ -350,6 +367,8 @@ namespace VehicleFleetManagment.FleetApp
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
                     FailMsg.Visible = false;
+                    ExistMsg.Visible = false;
+                    MsgGVN.Visible = false;
                 }
                 else
                 {
@@ -403,7 +422,7 @@ namespace VehicleFleetManagment.FleetApp
                                 Veh.Air_Conditioner = DropDown_Air_Conditioner.SelectedValue;
                                 Veh.Additional_Heating = DropDown_Additional_Heating.SelectedValue;
                                 Veh.Veh_Weight = Convert.ToDouble(txtVehiclWeight.Value);
-                                Veh.Gross_Veh_Weigth = Convert.ToDouble(txtGrossVehWeigth.Value);
+                                Veh.Gross_Veh_Weigth = Convert.ToDouble(txtGrossVehWeigth.Text);
                                 Veh.Empty_Pod = Convert.ToDouble(txtEmptyPod.Value);
                                 Veh.Key_Code = txtKeyCode.Value;
                                 Veh.Rear_Blake = DropDown_Rear_Blake.SelectedValue;
@@ -423,6 +442,8 @@ namespace VehicleFleetManagment.FleetApp
                                     SuccessMsg.Visible = false;
                                     FillMsg.Visible = false;
                                     FailMsg.Visible = true;
+                                    ExistMsg.Visible = false;
+                                    MsgGVN.Visible = false;
 
                                 }
                             }
@@ -431,6 +452,8 @@ namespace VehicleFleetManagment.FleetApp
                                 SuccessMsg.Visible = false;
                                 FillMsg.Visible = false;
                                 FailMsg.Visible = true;
+                                ExistMsg.Visible = false;
+                                MsgGVN.Visible = false;
                             }
                         }
                         else
@@ -438,6 +461,8 @@ namespace VehicleFleetManagment.FleetApp
                             SuccessMsg.Visible = false;
                             FillMsg.Visible = false;
                             FailMsg.Visible = true;
+                            ExistMsg.Visible = false;
+                            MsgGVN.Visible = false;
                         }
                     }
                     else
@@ -483,7 +508,7 @@ namespace VehicleFleetManagment.FleetApp
                         Veh.Air_Conditioner = DropDown_Air_Conditioner.SelectedValue;
                         Veh.Additional_Heating = DropDown_Additional_Heating.SelectedValue;
                         Veh.Veh_Weight = Convert.ToDouble(txtVehiclWeight.Value);
-                        Veh.Gross_Veh_Weigth = Convert.ToDouble(txtGrossVehWeigth.Value);
+                        Veh.Gross_Veh_Weigth = Convert.ToDouble(txtGrossVehWeigth.Text);
                         Veh.Empty_Pod = Convert.ToDouble(txtEmptyPod.Value);
                         Veh.Key_Code = txtKeyCode.Value;
                         Veh.Rear_Blake = DropDown_Rear_Blake.SelectedValue;
@@ -503,6 +528,8 @@ namespace VehicleFleetManagment.FleetApp
                             SuccessMsg.Visible = false;
                             FillMsg.Visible = false;
                             FailMsg.Visible = true;
+                            ExistMsg.Visible = false;
+                            MsgGVN.Visible = false;
 
                         }
                     }
@@ -513,6 +540,8 @@ namespace VehicleFleetManagment.FleetApp
                 SuccessMsg.Visible = false;
                 FillMsg.Visible = false;
                 FailMsg.Visible = true;
+                ExistMsg.Visible = false;
+                MsgGVN.Visible = false;
             }
         }
 
@@ -563,7 +592,7 @@ namespace VehicleFleetManagment.FleetApp
                 DropDown_Air_Conditioner.SelectedValue = Veh.Air_Conditioner;
                 DropDown_Additional_Heating.SelectedValue = Veh.Additional_Heating;
                 txtVehiclWeight.Value = Veh.Veh_Weight.ToString();
-                txtGrossVehWeigth.Value = Veh.Gross_Veh_Weigth.ToString();
+                txtGrossVehWeigth.Text = Veh.Gross_Veh_Weigth.ToString();
                 txtEmptyPod.Value = Veh.Empty_Pod.ToString();
                 txtKeyCode.Value = Veh.Key_Code;
                 DropDown_Rear_Blake.SelectedValue = Veh.Rear_Blake;
@@ -714,7 +743,7 @@ namespace VehicleFleetManagment.FleetApp
                 DropDown_Air_Conditioner.SelectedValue = Veh.Air_Conditioner;
                 DropDown_Additional_Heating.SelectedValue = Veh.Additional_Heating;
                 txtVehiclWeight.Value = Veh.Veh_Weight.ToString();
-                txtGrossVehWeigth.Value = Veh.Gross_Veh_Weigth.ToString();
+                txtGrossVehWeigth.Text = Veh.Gross_Veh_Weigth.ToString();
                 txtEmptyPod.Value = Veh.Empty_Pod.ToString();
                 txtKeyCode.Value = Veh.Key_Code;
                 DropDown_Rear_Blake.SelectedValue = Veh.Rear_Blake;
@@ -754,7 +783,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtTankTyp1.Value = "";
                 txtTankSze1.Value = "";
                 txtTankTyp2.Value = "";
-                txtGrossVehWeigth.Value = "";
+                txtGrossVehWeigth.Text = "";
                 txtKeyCode.Value = "";
                 txtVehiclWeight.Value = "";
                 txtBatteryVolt.Value = "";
@@ -770,6 +799,39 @@ namespace VehicleFleetManagment.FleetApp
                 ExistMsg.Visible = false;
             }
 
+        }
+
+        //Control GVM
+        protected void OnTextChanged_txtGrossVehWeigth(object sender, EventArgs args)
+        {
+           
+            if ((Convert.ToInt32(txtGrossVehWeigth.Text) > 400) && (Convert.ToInt32(txtGrossVehWeigth.Text) < 3500))
+                {
+
+                DropDown_Trailer.Items.FindByText("small lorry truck").Attributes.Add("disabled", "disabled");
+                DropDown_Trailer.Items.FindByText("Van").Attributes.Add("disabled", "disabled");
+                DropDown_Trailer.Items.FindByText("Bus").Attributes.Add("disabled", "disabled");
+                DropDown_Trailer.Items.FindByText("Trailer").Attributes.Add("disabled", "disabled");
+                DropDown_Trailer.Items.FindByText("Tractor").Attributes.Add("disabled", "disabled");
+                DropDown_Trailer.SelectedValue = "-1";
+            }   
+            else if((Convert.ToInt32(txtGrossVehWeigth.Text) > 3500) && (Convert.ToInt32(txtGrossVehWeigth.Text) < 4500))
+            {
+                DropDown_Trailer.Items.FindByText("Compact Car").Attributes.Add("disabled", "disabled");
+                DropDown_Trailer.SelectedValue = "-1";
+            }
+            else
+            {
+                DropDown_Trailer.Items.FindByText("Compact Car").Attributes.Add("disabled", "disabled");
+                DropDown_Trailer.Items.FindByText("small lorry truck").Attributes.Add("disabled", "disabled");
+                DropDown_Trailer.Items.FindByText("Van").Attributes.Add("disabled", "disabled");
+                DropDown_Trailer.Items.FindByText("Bus").Attributes.Add("disabled", "disabled");
+                DropDown_Trailer.Items.FindByText("Trailer").Attributes.Add("disabled", "disabled");
+                DropDown_Trailer.Items.FindByText("Tractor").Attributes.Add("disabled", "disabled");
+                DropDown_Trailer.SelectedValue = "-1";
+
+                txtGrossVehWeigth.Text = "";
+            }
         }
     }
 }
