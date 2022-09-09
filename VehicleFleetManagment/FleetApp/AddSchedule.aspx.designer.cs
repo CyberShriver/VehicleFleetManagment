@@ -87,6 +87,33 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.WebControls.DropDownList DropDown_Plate;
 
         /// <summary>
+        /// txtMission control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMission;
+
+        /// <summary>
+        /// dateMission control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateMission;
+
+        /// <summary>
+        /// TimeMission control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl TimeMission;
+
+        /// <summary>
         /// txtComment control.
         /// </summary>
         /// <remarks>

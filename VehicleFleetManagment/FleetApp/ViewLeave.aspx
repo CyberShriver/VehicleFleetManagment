@@ -160,13 +160,6 @@
                                                     <asp:Label ID="Label12" runat="server" Text='<%# Eval("Approved_By") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-
-                                            <asp:TemplateField HeaderText="Carpooling" Visible="false">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label18" runat="server" Text='<%# Eval("Carpooling") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-
                                             <asp:TemplateField HeaderText="Comment" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label98" runat="server" Text='<%# Eval("Comment") %>'></asp:Label>

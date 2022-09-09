@@ -75,12 +75,12 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if ( txtPlate.Text == "" || txtName.Value == "" || txtColor.Value == "" || txtEngineNumber.Value == "" || txtChassis.Value == "" ||
+                if (txtPlate.Text == "" || txtName.Value == "" || txtColor.Value == "" || txtEngineNumber.Value == "" || txtChassis.Value == "" ||
                     txtEngineManif.Value == "" || txtEnginType.Value == "" || txtEnginSeries.Value == "" || txtEngAltern.Value == "" || txtEngineNumber.Value == "" || txtEngAlternType.Value == "" ||
                     txtEnginCylind.Value == "" || txtEnginPower.Value == "" || txtAssembly.Value == "" || txtGenerWeight.Value == "" || txtVolt.Value == "" || txtKva.Value == "" ||
-                    txtEngincc.Value == "" || txtGearBox.Value == "" || txtCondition.Value == "" || txtTankTyp1.Value == "" || txtTankSze1.Value == ""  ||
-                    txtGrossVehWeigth.Text == "" || txtKeyCode.Value == "" || txtVehiclWeight.Value == "" || txtBatteryVolt.Value == "" || txtFrontSeat.Value == "" || txtTankCapacity2.Value == "" ||
-                    txtEmptyPod.Value == "" || txtRadioCode.Value == "" || txtGuaranteeCerticat.Value == "" || dateGuaranteExp.Value == "" || dateCirculationExp.Value == "" 
+                    txtEngincc.Value == "" || txtGearBox.Value == "" || txtTankTyp1.Value == "" || txtTankSze1.Value == "" ||
+                    txtGrossVehWeigth.Text == "" || txtKeyCode.Value == "" || txtVehiclWeight.Value == "" || txtBatteryVolt.Value == "" || txtFrontSeat.Value == "" ||
+                    txtEmptyPod.Value == "" || txtRadioCode.Value == "" || txtGuaranteeCerticat.Value == "" || dateGuaranteExp.Value == "" || dateCirculationExp.Value == ""
                     || DropDown_Ministry.SelectedValue == "-1" || DropDown_Model.SelectedValue == "-1" || DropDown_Body.SelectedValue == "-1" || DropDown_fuel.SelectedValue == "-1"
                     || DropDown_Trailer.SelectedValue == "-1" || DropDown_lhd_rhd.SelectedValue == "-1" || DropDown_Belt.SelectedValue == "-1" || DropDown_Central_Locking.SelectedValue == "-1"
                     || dropDown_Rear_Lock.SelectedValue == "-1" || DropDown_Forward_Lock.SelectedValue == "-1" || DropDown_Opt_Four_Wheel.SelectedValue == "-1" || DropDown_Air_Conditioner.SelectedValue == "-1"
@@ -356,8 +356,8 @@ namespace VehicleFleetManagment.FleetApp
                 if ( txtPlate.Text == "" || txtName.Value == "" || txtColor.Value == "" || txtEngineNumber.Value == "" || txtChassis.Value == "" ||
                     txtEngineManif.Value == "" || txtEnginType.Value == "" || txtEnginSeries.Value == "" || txtEngAltern.Value == "" || txtEngineNumber.Value == "" || txtEngAlternType.Value == "" ||
                     txtEnginCylind.Value == "" || txtEnginPower.Value == "" || txtAssembly.Value == "" || txtGenerWeight.Value == "" || txtVolt.Value == "" || txtKva.Value == "" ||
-                    txtEngincc.Value == "" || txtGearBox.Value == "" || txtCondition.Value == "" || txtTankTyp1.Value == "" || txtTankSze1.Value == "" || txtTankTyp2.Value == "" ||
-                    txtGrossVehWeigth.Text == "" || txtKeyCode.Value == "" || txtVehiclWeight.Value == "" || txtBatteryVolt.Value == "" || txtFrontSeat.Value == "" || txtTankCapacity2.Value == "" ||
+                    txtEngincc.Value == "" || txtGearBox.Value == "" ||  txtTankTyp1.Value == "" || txtTankSze1.Value == "" || 
+                    txtGrossVehWeigth.Text == "" || txtKeyCode.Value == "" || txtVehiclWeight.Value == "" || txtBatteryVolt.Value == "" || txtFrontSeat.Value == "" || 
                     txtEmptyPod.Value == "" || txtRadioCode.Value == "" || txtGuaranteeCerticat.Value == "" || dateGuaranteExp.Value == "" || dateCirculationExp.Value == "" 
                     || DropDown_Ministry.SelectedValue == "-1" || DropDown_Model.SelectedValue == "-1" || DropDown_Body.SelectedValue == "-1" || DropDown_fuel.SelectedValue == "-1"
                     || DropDown_Trailer.SelectedValue == "-1" || DropDown_lhd_rhd.SelectedValue == "-1" || DropDown_Belt.SelectedValue == "-1" || DropDown_Central_Locking.SelectedValue == "-1"

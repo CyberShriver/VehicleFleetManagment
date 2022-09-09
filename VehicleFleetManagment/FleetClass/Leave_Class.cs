@@ -12,7 +12,7 @@ namespace VehicleFleetManagment.FleetClass
         public long LEAVE_ID { get; set; }
         public string Leave_Code { get; set; }
         public long MIN_DRIVER_ID { get; set; }
-        public string Carpooling { get; set; }
+        public string Deleted { get; set; }
         public Nullable<int> LEAVE_TYPE_ID { get; set; }
         public string Start_Dte { get; set; }
         public string End_Dte { get; set; }

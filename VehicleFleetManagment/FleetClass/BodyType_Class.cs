@@ -10,6 +10,7 @@ namespace VehicleFleetManagment.FleetClass
         public int BODY_ID { get; set; }
         public string Category { get; set; }
         public int Category_N_ { get; set; }
+        public string Deleted { get; set; }
 
     }
 }

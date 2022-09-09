@@ -19,11 +19,14 @@ namespace VehicleFleetManagment.FleetClass
         public double Initial_Qty { get; set; }
         public double Consumed_Qty { get; set; }
         public double United_Price { get; set; }
+        public string Deleted { get; set; }
         public double Total_Price { get; set; }
         public double Liter_100_km { get; set; }
         public string Comment { get; set; }
         public string Saved_Date { get; set; }
-
+        public Nullable<double> Fuel_Used { get; set; }
+        public string User_IP_Address { get; set; }
+        public string Permission { get; set; }
         public virtual MINISTRY MINISTRY { get; set; }
         public virtual VEHICLE VEHICLE { get; set; }
 

@@ -74,7 +74,7 @@ namespace VehicleFleetManagment.FleetApp
             try
             {
                 if (txtWork.Value == "" || txtLocationCode.Value == "" || dateStart.Value == "" || dateEnd.Value == "" || txtOdomOUT.Value == ""
-                    || txtComment.Value == "" || txtReason.Value == "" || txtWorkStatus.Value == "" || txtOdomIN.Value == ""
+                    ||  txtReason.Value == "" || txtWorkStatus.Value == "" || txtOdomIN.Value == ""
                     || txtOffService.Value == "" || TimeStartRepair.Value == "" || TimeEndRepair.Value == ""|| txtParticiEmp.Value == "" 
                     || DropDown_Ministry.SelectedValue == "-1" || DropDown_Plate.SelectedValue == "-1" || DropDown_Crash.SelectedValue == "-1" || DropDown_InterOrExt.SelectedValue == "-1"
                     )
@@ -145,7 +145,7 @@ namespace VehicleFleetManagment.FleetApp
             try
             {
                 if (txtWork.Value == "" || txtLocationCode.Value == "" || dateStart.Value == "" || dateEnd.Value == "" || txtOdomOUT.Value == ""
-                      || txtComment.Value == "" || txtReason.Value == "" || txtWorkStatus.Value == "" || txtOdomIN.Value == ""
+                      || txtReason.Value == "" || txtWorkStatus.Value == "" || txtOdomIN.Value == ""
                       || txtOffService.Value == "" || TimeStartRepair.Value == "" || TimeEndRepair.Value == "" || txtParticiEmp.Value == ""
                       || DropDown_Ministry.SelectedValue == "-1" || DropDown_Plate.SelectedValue == "-1" || DropDown_Crash.SelectedValue == "-1" || DropDown_InterOrExt.SelectedValue == "-1"
                       )

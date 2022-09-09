@@ -56,6 +56,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             SuccessMsg.Visible = false;
             FillMsg.Visible = false;
+            ExistMsg.Visible = false;
             FailMsg.Visible = false;
         }
 
@@ -88,18 +89,18 @@ namespace VehicleFleetManagment.FleetApp
                             if (file_upd.PostedFile.ContentLength < 104857600)
                             {
 
-                                // Pr.CNI = txtCNI.Text;
-                                //Pr.Address = txtAddress.Value;
+                                Pr.CNI = txtCNI.Text;
+                                Pr.Address = txtAddress.Value;
                                 Pr.Provider_Type = DropDown_ProviderType.SelectedItem.Value;
                                 Pr.Provider_Code = ProviderCode();
                                 Pr.Full_Name = txtFullName.Value;
                                 Pr.Phone = txtTel.Value;
                                 Pr.Email = txtMail.Value;
                                 Pr.Stat = DropDown_Status.SelectedItem.Value;
-                                // Pr.DOB = dateBirth.Value;                               
-                                // Pr.Picture = img;
-                                // Pr.Contract = img1;
-                                // Pr.Saved_Date = DateTime.Now.ToString();
+                                Pr.DOB = dateBirth.Value;
+                                Pr.Picture = img;
+                                Pr.Contract = img1;
+                                Pr.Saved_Date = DateTime.Now.ToString();
                                 msg = I.Add(Pr);
                                 if (msg > 0)
                                 {
@@ -140,18 +141,18 @@ namespace VehicleFleetManagment.FleetApp
                     }
                     else
                     {
-                        // Pr.CNI = txtCNI.Text;
-                        //Pr.Address = txtAddress.Value;
+                        Pr.CNI = txtCNI.Text;
+                        Pr.Address = txtAddress.Value;
                         Pr.Provider_Type = DropDown_ProviderType.SelectedItem.Value;
                         Pr.Provider_Code = ProviderCode();
                         Pr.Full_Name = txtFullName.Value;
                         Pr.Phone = txtTel.Value;
                         Pr.Email = txtMail.Value;
                         Pr.Stat = DropDown_Status.SelectedItem.Value;
-                        // Pr.DOB = dateBirth.Value;                               
-                        // Pr.Picture = "unkownDriver.jpg";
-                        // Pr.Contract = img1;
-                        // Pr.Saved_Date = DateTime.Now.ToString();
+                        Pr.DOB = dateBirth.Value;
+                        Pr.Picture = "unkownDriver.jpg";
+                        Pr.Contract = "";
+                        Pr.Saved_Date = DateTime.Now.ToString();
                         msg = I.Add(Pr);
                         if (msg > 0)
                         {
@@ -212,18 +213,18 @@ namespace VehicleFleetManagment.FleetApp
                             if (file_upd.PostedFile.ContentLength < 104857600)
                             {
 
-                                // Pr.CNI = txtCNI.Text;
-                                //Pr.Address = txtAddress.Value;
+                                Pr.CNI = txtCNI.Text;
+                                Pr.Address = txtAddress.Value;
                                 Pr.Provider_Type = DropDown_ProviderType.SelectedItem.Value;
                                 Pr.Provider_Code = ProviderCode();
                                 Pr.Full_Name = txtFullName.Value;
                                 Pr.Phone = txtTel.Value;
                                 Pr.Email = txtMail.Value;
-                               // Pr.Saved_Date = DateTime.Now.ToString();
+                                Pr.Saved_Date = DateTime.Now.ToString();
                                 Pr.Stat = DropDown_Status.SelectedItem.Value;
-                                // Pr.DOB = dateBirth.Value;                               
-                                // Pr.Picture = img;
-                                // Pr.Contract = img1;
+                                Pr.DOB = dateBirth.Value;
+                                Pr.Picture = img;
+                                Pr.Contract = img1;
                                 msg = I.Update(Pr, Convert.ToInt32(id));
 
                                 if (msg > 0)
@@ -257,18 +258,18 @@ namespace VehicleFleetManagment.FleetApp
                     }
                     else
                     {
-                        // Pr.CNI = txtCNI.Text;
-                        //Pr.Address = txtAddress.Value;
+                        Pr.CNI = txtCNI.Text;
+                        Pr.Address = txtAddress.Value;
                         Pr.Provider_Type = DropDown_ProviderType.SelectedItem.Value;
                         Pr.Provider_Code = ProviderCode();
                         Pr.Full_Name = txtFullName.Value;
                         Pr.Phone = txtTel.Value;
                         Pr.Email = txtMail.Value;
                         Pr.Stat = DropDown_Status.SelectedItem.Value;
-                        // Pr.DOB = dateBirth.Value;                               
-                        // Pr.Picture = "unkownDriver.jpg";
-                        // Pr.Contract = img1;
-                        // Pr.Saved_Date = DateTime.Now.ToString();
+                        Pr.DOB = dateBirth.Value;
+                        Pr.Picture = "unkownDriver.jpg";
+                        Pr.Contract = "";
+                        Pr.Saved_Date = DateTime.Now.ToString();
                         msg = I.Update(Pr, Convert.ToInt32(id));
 
                         if (msg > 0)
@@ -306,16 +307,16 @@ namespace VehicleFleetManagment.FleetApp
                  txtTel.Value = Pr.Phone;
                  txtMail.Value= Pr.Email;
                  DropDown_Status.SelectedItem.Value= Pr.Stat;
-                //txtCNI.Text = Pr.CNI;
-                //txtAddress.Value = Pr.Address1;                   
-                // dateBirth.Value = Pr.DOB;
-                // Image1.ImageUrl = "~/FleetApp/assets/images/Providers/" + Pr.Contract;
+                txtCNI.Text = Pr.CNI;
+                txtAddress.Value = Pr.Address;
+                dateBirth.Value = Pr.DOB;
+                Image1.ImageUrl = "~/FleetApp/assets/images/Providers/" + Pr.Contract;
             }
         }
 
         protected void OnTextChanged_txtCNI(object sender, EventArgs args)
         {
-          //  msg = I.ProvideByCNI(Dr, txtCNI.Text);
+            msg = I.ProvideByCNI(Pr, txtCNI.Text);
             if (msg == 1)
             {
                 ExistMsg.Visible = true;
@@ -325,22 +326,15 @@ namespace VehicleFleetManagment.FleetApp
                 txtTel.Value = Pr.Phone;
                 txtMail.Value = Pr.Email;
                 DropDown_Status.SelectedItem.Value = Pr.Stat;
-                //txtCNI.Text = Pr.CNI;
-                //txtAddress.Value = Pr.Address1;                   
-               // dateBirth.Value = Pr.DOB;
+                txtCNI.Text = Pr.CNI;
+                txtAddress.Value = Pr.Address;
+                dateBirth.Value = Pr.DOB;
 
                 btnSave.Visible = false;
 
             }
             else
-            {
-                txtCode.Value = "";
-                txtFullName.Value = "";
-                txtTel.Value = "";
-                txtMail.Value = "";
-                txtAddress.Value = "";
-                dateBirth.Value = "";
-
+            {         
                 btnSave.Visible = true;
                 ExistMsg.Visible = false;
             }

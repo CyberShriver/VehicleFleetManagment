@@ -23,6 +23,7 @@ namespace VehicleFleetManagment.FleetModel
         public int REAL_ESTATE_ID { get; set; }
         public string RealEstate_Name { get; set; }
         public string Comment { get; set; }
+        public string Deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MINISTRY_REAL_ESTATE> MINISTRY_REAL_ESTATE { get; set; }

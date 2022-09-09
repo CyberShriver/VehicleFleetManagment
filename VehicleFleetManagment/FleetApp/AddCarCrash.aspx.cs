@@ -89,7 +89,6 @@ namespace VehicleFleetManagment.FleetApp
                     txtResponible.Value == "" || txtSpeed.Value == "" ||
                     txtPassenger.Value == "" || txtCrashInfo.Value == "" || txtReason.Value == "" ||  txtDamage.Value == "" || dateCompensation.Value == "" ||
                      dateReport.Value == "" || dateFinalReport.Value == "" || dateDeclaration.Value == "" || txtAmount.Value == "" ||
-                    txtDamageDesipt.Value == "" ||  txtLocalComp.Value == "" || txtRecoverEmpl.Value == "" || 
                     DropDown_Ministry.SelectedValue == "-1" || DropDown_vehicle_Damag.SelectedValue == "-1" || DropDown_Damage_thirdParty.SelectedValue == "-1" || DropDown_thirdParty_injure.SelectedValue == "-1"
                     || DropDown_Employee_injure.SelectedValue == "-1" || dropDown_Employe_Payed.SelectedValue == "-1" || DropDown_state.SelectedValue == "-1" || DropDown_Driver.SelectedValue == "-1"
                     || DropDown_Plate.SelectedValue == "-1")
@@ -306,11 +305,10 @@ namespace VehicleFleetManagment.FleetApp
             try
             {
                 if (dateCrash.Value == "" || TimeCrash.Value == "" || txtCrashPlace.Value == "" || txtAddress.Value == "" ||
-                    txtMeileage.Value == "" || txtResponible.Value == "" ||  txtWeather.Value == "" || txtCrashPlace.Value == "" || txtSpeed.Value == "" ||
-                    txtPassenger.Value == "" || txtCrashInfo.Value == "" || txtReason.Value == "" || txtCondition.Value == "" || txtDamage.Value == "" || dateCompensation.Value == "" ||
-                    txtCircumstance.Value == "" || dateReport.Value == "" || txtCondition.Value == "" || dateFinalReport.Value == "" || dateDeclaration.Value == "" || txtAmount.Value == "" ||
-                    txtDamageDesipt.Value == "" || txtComment.Value == "" || txtLegalCost.Value == "" || txtLocalComp.Value == "" || txtRecoverEmpl.Value == "" || txtThirdPartyRecov.Value == ""
-                    || DropDown_Ministry.SelectedValue == "-1" || DropDown_vehicle_Damag.SelectedValue == "-1" || DropDown_Damage_thirdParty.SelectedValue == "-1" || DropDown_thirdParty_injure.SelectedValue == "-1"
+                    txtResponible.Value == "" || txtSpeed.Value == "" ||
+                    txtPassenger.Value == "" || txtCrashInfo.Value == "" || txtReason.Value == "" || txtDamage.Value == "" || dateCompensation.Value == "" ||
+                     dateReport.Value == "" || dateFinalReport.Value == "" || dateDeclaration.Value == "" || txtAmount.Value == "" ||
+                    DropDown_Ministry.SelectedValue == "-1" || DropDown_vehicle_Damag.SelectedValue == "-1" || DropDown_Damage_thirdParty.SelectedValue == "-1" || DropDown_thirdParty_injure.SelectedValue == "-1"
                     || DropDown_Employee_injure.SelectedValue == "-1" || dropDown_Employe_Payed.SelectedValue == "-1" || DropDown_state.SelectedValue == "-1" || DropDown_Driver.SelectedValue == "-1"
                     || DropDown_Plate.SelectedValue == "-1")
                 {

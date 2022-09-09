@@ -122,10 +122,11 @@
                                                         <div class="form-material">
 
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtChassis">
+                                                                <input type="text" name="footer-email" class="form-control" runat="server" id="txtChassis" required>
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Chassis N°</label>
                                                             </div>
+        
                                                             <div class="form-group form-default">
                                                                 <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_fuel" required="" runat="server">
                                                                     <asp:ListItem>Petrol</asp:ListItem>
@@ -142,7 +143,7 @@
                                                             </div>
 
                                                             <div class="form-group form-default">
-                                                                <textarea class="form-control" required="" runat="server" id="txtCondition"></textarea>
+                                                                <textarea class="form-control"  runat="server" id="txtCondition"></textarea>
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Condition</label>
                                                             </div>
@@ -153,7 +154,7 @@
                                                     <div class="float-right">
                                                         <a class="btn btn-sm btn-info ml-5" href="ViewVehicle.aspx">List <i class="icofont icofont-listine-dots"></i></a>
                                                         <button type="reset" class="btn btn-sm btn-danger ml-5 mr-5">Cancel</button>
-                                                        <button type="button" id="btnGenNext" class="btn btn-sm btn-default ml-5 waves-effect ml-5" runat="server" onserverclick="ActiveEngine_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
+                                                        <button type="submit" id="btnGenNext" class="btn btn-sm btn-default ml-5 waves-effect ml-5" runat="server" onserverclick="ActiveEngine_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
                                                     </div>
                                                 </div>
                                             </asp:View>
@@ -247,7 +248,7 @@
                                                 <div class="float-right">
                                                     <a class="btn btn-sm btn-info ml-5 " href="ViewVehicle.aspx">List <i class="icofont icofont-listine-dots"></i></a>
                                                     <button type="reset" class="btn btn-sm btn-danger ml-5 mr-5">Cancel</button>
-                                                    <button type="button" id="BtnEngineNext" class="btn btn-sm btn-default  waves-effect  ml-5" runat="server" onserverclick="ActiveSpecific_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
+                                                    <button type="submit" id="BtnEngineNext" class="btn btn-sm btn-default  waves-effect  ml-5" runat="server" onserverclick="ActiveSpecific_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
                                                 </div>
                                                 <button type="button" id="BtnEnginePreview" class="btn btn-sm btn-default  waves-effect " runat="server" onserverclick="ActiveGen_click"><i class="icofont icofont-hand-drawn-left"></i>Preview</button>
 
@@ -271,12 +272,12 @@
                                                                 <label class="float-label ">Tank Size 1 ( in Meter )</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTankTyp2">
+                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtTankTyp2">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Tank Type 2 </label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTankCapacity2" onkeypress="inpNumInt(event)" maxlength="5">
+                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtTankCapacity2" onkeypress="inpNumInt(event)" maxlength="5">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Tank Capacity 2 ( in Liter )</label>
                                                             </div>
@@ -296,7 +297,7 @@
                                                                 <label class="float-label">Vehicle Weight (in kgs )</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtKeyCode">
+                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtKeyCode">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Key code</label>
                                                             </div>
@@ -320,7 +321,7 @@
                                                             </div>
                                                            
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtEmptyPod" onkeypress="inpNum(event)" maxlength="10">
+                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtEmptyPod" onkeypress="inpNum(event)" maxlength="10">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Empty Pod</label>
                                                             </div>
@@ -403,7 +404,7 @@
                                                                 <label class="float-label">Electronic Logbook?</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtRadioCode">
+                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtRadioCode">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Radio Code</label>
                                                             </div>
@@ -439,7 +440,7 @@
                                                 </div>
                                                 <button type="button" id="BtnSpecificPreview" class="btn btn-sm btn-default  waves-effect" runat="server" onserverclick="ActiveEngine_click"><i class="icofont icofont-hand-drawn-left"></i>Preview</button>
                                                 <div class="float-right">
-                                                    <button type="button" id="btnSave" class="btn btn-sm btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save <i class="icofont icofont-save"></i></button>
+                                                    <button type="submit" id="btnSave" class="btn btn-sm btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save <i class="icofont icofont-save"></i></button>
                                                     <button type="reset" class="btn btn-sm btn-danger ml-5">Cancel</button>
                                                     <a class="btn btn-sm btn-info ml-5" href="ViewVehicle.aspx">List <i class="icofont icofont-listine-dots"></i></a>
 

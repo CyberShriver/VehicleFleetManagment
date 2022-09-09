@@ -29,6 +29,10 @@ namespace VehicleFleetManagment.FleetModel
         public double Liter_100_km { get; set; }
         public string Comment { get; set; }
         public string Saved_Date { get; set; }
+        public Nullable<double> Fuel_Used { get; set; }
+        public string User_IP_Address { get; set; }
+        public string Permission { get; set; }
+        public string Deleted { get; set; }
     
         public virtual MINISTRY MINISTRY { get; set; }
         public virtual VEHICLE VEHICLE { get; set; }

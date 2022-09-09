@@ -73,7 +73,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtMaintenance.Value == "" || txtInsurancePolicy.Value == "" || txtInsuranceCompany.Value == "" || txtAmount.Value == "" || txtComment.Value == "")
+                if (txtMaintenance.Value == "" || txtInsurancePolicy.Value == "" || txtInsuranceCompany.Value == "" || txtAmount.Value == "" )
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -130,7 +130,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtMaintenance.Value == "" || txtInsurancePolicy.Value == "" || txtInsuranceCompany.Value == "" || txtAmount.Value == "" || txtComment.Value == "")
+                if (txtMaintenance.Value == "" || txtInsurancePolicy.Value == "" || txtInsuranceCompany.Value == "" || txtAmount.Value == "" )
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;

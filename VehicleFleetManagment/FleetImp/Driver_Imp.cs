@@ -39,6 +39,7 @@ namespace VehicleFleetManagment.FleetImp
                 D.Ministry_Work = Dr.Ministry_Work;
                 D.State = Dr.State;
                 D.Visibility = "true";
+                D.Deleted = "False";
                 D.Picture = Dr.Picture;
 
                 con.DRIVERs.Add(D);
@@ -87,6 +88,7 @@ namespace VehicleFleetManagment.FleetImp
                     D.Ministry_Work = Dr.Ministry_Work;
                     D.State = Dr.State;
                     D.Visibility = "true";
+                    D.Deleted = "False";
                     D.Picture = Dr.Picture;
                     if (con.SaveChanges() > 0)
                     {
@@ -105,6 +107,33 @@ namespace VehicleFleetManagment.FleetImp
             return msg;
         }
 
+        //CHANGE DELETE STATE METHOD
+        public int DeleteState( int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                DRIVER D = new DRIVER();
+                D = con.DRIVERs.Where(x => x.DRIVER_ID == id).FirstOrDefault();
+
+                if (D != null)
+                {
+                    D.Deleted = "True";
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.DRIVERs.Add(D);
+                        con.Entry(D).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
         //DELETE METHOD
         public int Delete(int id)
         {
@@ -129,7 +158,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from D in con.DRIVERs where D.Ministry_Work==null && D.State=="Free"
+                var obj = (from D in con.DRIVERs where D.Ministry_Work==null && D.State=="Free" && D.Deleted=="False"
 
                            select new
                            {
@@ -168,7 +197,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                D = con.DRIVERs.Where(x => x.CNI == cni).FirstOrDefault();
+                D = con.DRIVERs.Where(x => x.CNI == cni && x.Deleted == "False").FirstOrDefault();
 
                 if (D != null)
                 {
@@ -207,7 +236,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from D in con.DRIVERs
-                           where D.Ministry_Work ==codeMin
+                           where D.Ministry_Work ==codeMin && D.Deleted == "False"
 
                            select new
                            {
@@ -246,7 +275,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from D in con.DRIVERs
+                var obj = (from D in con.DRIVERs where D.Deleted == "False"
 
                            select new
                            {
@@ -316,7 +345,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var D = (from l in con.DRIVERs
+                var D = (from l in con.DRIVERs where l.Deleted == "False"
                          select l).Count();
                 n = D;
             }
@@ -329,7 +358,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var D = (from l in con.DRIVERs where l.Ministry_Work == null && l.State == "Free" 
+                var D = (from l in con.DRIVERs where l.Ministry_Work == null && l.State == "Free" && l.Deleted == "False"
                          select l).Count();
                 n = D;
             }
@@ -342,7 +371,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var D = (from l in con.DRIVERs
-                         where l.Ministry_Work == codeMin 
+                         where l.Ministry_Work == codeMin && l.Deleted == "False"
                          select l).Count();
                 n = D;
             }
@@ -355,7 +384,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from D in con.DRIVERs
-                           where D.Ministry_Work==null && D.State=="Free" &&
+                           where D.Ministry_Work==null && D.State=="Free" && D.Deleted == "False" &&
                        D.Full_Name.StartsWith(SearchText) ||
                        D.Driver_Code.StartsWith(SearchText) ||
                        D.DOB.StartsWith(SearchText) ||
@@ -402,7 +431,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from D in con.DRIVERs
-                           where
+                           where D.Deleted == "False" &&
                        D.Full_Name.StartsWith(SearchText) ||
                        D.Driver_Code.StartsWith(SearchText) ||
                        D.DOB.StartsWith(SearchText) ||
@@ -449,7 +478,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MINISTRies
-                           where M.Code_Min == codeMin
+                           where M.Code_Min == codeMin && D.Deleted == "False"
 
                            select new
                            {
@@ -472,7 +501,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MINISTRies
+                var obj = (from M in con.MINISTRies where D.Deleted == "False"
 
                            select new
                            {
@@ -497,7 +526,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 DRIVER D = new DRIVER();
-                D = con.DRIVERs.Where(x => x.DRIVER_ID == id).FirstOrDefault();
+                D = con.DRIVERs.Where(x => x.DRIVER_ID == id && x.Deleted == "False").FirstOrDefault();
 
                 if (D != null)
                 {
@@ -529,8 +558,8 @@ namespace VehicleFleetManagment.FleetImp
                 DRIVER D = new DRIVER();
                 MINISTRY_DRIVER M = new MINISTRY_DRIVER();
 
-                D = con.DRIVERs.Where(x => x.DRIVER_ID == id).FirstOrDefault();
-                M = con.MINISTRY_DRIVER.OrderByDescending(x => x.MIN_DRIVER_ID).Where(x => x.DRIVER_ID == id && x.Position_Status == "On Post").FirstOrDefault();
+                D = con.DRIVERs.Where(x => x.DRIVER_ID == id && x.Deleted == "False").FirstOrDefault();
+                M = con.MINISTRY_DRIVER.OrderByDescending(x => x.MIN_DRIVER_ID).Where(x => x.DRIVER_ID == id && x.Position_Status == "On Post" && x.Deleted == "False").FirstOrDefault();
 
                 if (D != null && M!= null)
                 {
@@ -560,7 +589,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from D in con.DRIVERs
-                           where D.Ministry_Work == codeMin
+                           where D.Ministry_Work == codeMin && D.Deleted == "False"
 
                            select new
                            {

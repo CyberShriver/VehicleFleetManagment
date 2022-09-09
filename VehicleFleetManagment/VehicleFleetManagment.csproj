@@ -145,6 +145,7 @@
     <Content Include="FleetApp\AddUsers.aspx" />
     <Content Include="FleetApp\AddVehicle.aspx" />
     <Content Include="FleetApp\AddVehicleFuel.aspx" />
+    <Content Include="FleetApp\AllMinistries.aspx" />
     <Content Include="FleetApp\assets\css\animate.css\css\animate.css" />
     <Content Include="FleetApp\assets\css\bootstrap\css\bootstrap.min.css" />
     <Content Include="FleetApp\assets\css\chartist\chartist.css" />
@@ -265,6 +266,7 @@
     <Content Include="FleetApp\assets\pages\widget\amchart\serial.js" />
     <Content Include="FleetApp\assets\pages\widget\amchart\serial.min.js" />
     <Content Include="FleetApp\assets\pages\widget\excanvas.js" />
+    <Content Include="FleetApp\FleetReport.aspx" />
     <Content Include="FleetApp\Grant_Right.aspx" />
     <Content Include="FleetApp\Home.aspx" />
     <Content Include="FleetApp\LeaveDonutChart.aspx" />
@@ -575,12 +577,26 @@
     <Compile Include="FleetApp\AddVehicleFuel.aspx.designer.cs">
       <DependentUpon>AddVehicleFuel.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FleetApp\AllMinistries.aspx.cs">
+      <DependentUpon>AllMinistries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\AllMinistries.aspx.designer.cs">
+      <DependentUpon>AllMinistries.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FleetApp\fleet.Master.cs">
       <DependentUpon>fleet.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FleetApp\fleet.Master.designer.cs">
       <DependentUpon>fleet.Master</DependentUpon>
+    </Compile>
+    <Compile Include="FleetApp\FleetReport.aspx.cs">
+      <DependentUpon>FleetReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FleetApp\FleetReport.aspx.designer.cs">
+      <DependentUpon>FleetReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="FleetApp\Grant_Right.aspx.cs">
       <DependentUpon>Grant_Right.aspx</DependentUpon>
@@ -973,6 +989,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="FleetApp\assets\images\Crash\" />
     <Folder Include="FleetApp\assets\images\Drivers\" />
+    <Folder Include="FleetApp\assets\images\File_Permission\" />
     <Folder Include="FleetApp\assets\images\Logo\" />
     <Folder Include="FleetApp\assets\images\Providers\" />
     <Folder Include="FleetApp\assets\images\Users\" />

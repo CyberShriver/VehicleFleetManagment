@@ -25,6 +25,7 @@ namespace VehicleFleetManagment.FleetImp
                 M.MARK_ID = Mo.MARK_ID;
                 M.Model_Name = Mo.Model_Name;
                 M.Comment = Mo.Comment;
+                M.Deleted = "False";
 
                 con.MODELs.Add(M);
 
@@ -56,6 +57,7 @@ namespace VehicleFleetManagment.FleetImp
                     M.MARK_ID = Mo.MARK_ID;
                     M.Model_Name = Mo.Model_Name;
                     M.Comment = Mo.Comment;
+                    M.Deleted = "False";
 
                     if (con.SaveChanges() > 0)
                     {
@@ -93,12 +95,41 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //CHANGE DELETE STATE METHOD
+        public int DeleteState(int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                MODEL M = new MODEL();
+                M = con.MODELs.Where(x => x.MODEL_ID == id).FirstOrDefault();
+
+                if (M != null)
+                {
+                    M.Deleted = "True";
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.MODELs.Add(M);
+                        con.Entry(M).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
         //DISPLAY METHOD
         public void Display(GridView gd)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MODELs
+                var obj = (from M in con.MODELs where M.Deleted=="False"
 
                            select new
                            {
@@ -136,7 +167,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var M = (from l in con.MODELs
+                var M = (from l in con.MODELs where l.Deleted == "False"
                          select l).Count();
                 n = M;
             }
@@ -149,7 +180,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MODELs
-                           where
+                           where M.Deleted == "False" &&
                        M.Model_Name.StartsWith(SearchText) ||
                        M.MARK.Mark_Name.StartsWith(SearchText)
 
@@ -173,7 +204,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MARKs
+                var obj = (from M in con.MARKs where M.Deleted == "False"
 
                            select new
                            {

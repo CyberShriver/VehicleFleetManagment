@@ -23,6 +23,7 @@ namespace VehicleFleetManagment.FleetModel
         public int MARK_ID { get; set; }
         public string Mark_Name { get; set; }
         public string Comment { get; set; }
+        public string Deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MODEL> MODELs { get; set; }

@@ -76,7 +76,7 @@
                                                 <label class="float-label">Work Number</label>
                                             </div>
                                              <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLocationCode">
+                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtLocationCode">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Location Code</label>
                                             </div>
@@ -148,7 +148,7 @@
                                                 <label class="float-label">Participant Employee Code</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <textarea class="form-control" required="" runat="server" id="txtComment"></textarea>
+                                                <textarea class="form-control"  runat="server" id="txtComment"></textarea>
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Comment</label>
                                             </div>                                     
@@ -160,7 +160,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="float-right">
-                                <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
+                                <button type="submit" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
                                 <button type="reset" class="btn btn-danger ml-5">Cancel</button>
                                 <a class="btn btn-info ml-5" href="ViewRepair.aspx">List</a>
                             </div>

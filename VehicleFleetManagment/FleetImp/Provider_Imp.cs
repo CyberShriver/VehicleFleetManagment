@@ -25,7 +25,14 @@ namespace VehicleFleetManagment.FleetImp
                 P.Full_Name = Pr.Full_Name;
                 P.Phone = Pr.Phone;
                 P.Email = Pr.Email;
+                P.DOB = Pr.DOB;
+                P.CNI = Pr.CNI;
+                P.Address = Pr.Address;
+                P.Picture = Pr.Picture;
+                P.Contract = Pr.Contract;
+                P.Saved_Date = Pr.Saved_Date;
                 P.Stat = Pr.Stat;
+                P.Deleted ="False";
 
                 con.PROVIDERs.Add(P);
 
@@ -59,7 +66,14 @@ namespace VehicleFleetManagment.FleetImp
                     P.Full_Name = Pr.Full_Name;
                     P.Phone = Pr.Phone;
                     P.Email = Pr.Email;
+                    P.DOB = Pr.DOB;
+                    P.CNI = Pr.CNI;
+                    P.Address = Pr.Address;
+                    P.Picture = Pr.Picture;
+                    P.Contract = Pr.Contract;
+                    P.Saved_Date = Pr.Saved_Date;
                     P.Stat = Pr.Stat;
+                    P.Deleted = "False";
 
                     if (con.SaveChanges() > 0)
                     {
@@ -97,12 +111,41 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //CHANGE DELETE STATE METHOD
+        public int DeleteState(int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                PROVIDER P = new PROVIDER();
+                P = con.PROVIDERs.Where(x => x.PROVIDER_ID == id).FirstOrDefault();
+
+                if (P != null)
+                {
+                    P.Deleted = "True";
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.PROVIDERs.Add(P);
+                        con.Entry(P).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
         //DISPLAY METHOD
         public void Display(GridView gd)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from P in con.PROVIDERs
+                var obj = (from P in con.PROVIDERs where P.Deleted=="False"
 
                            select new
                            {
@@ -112,7 +155,13 @@ namespace VehicleFleetManagment.FleetImp
                                Full_Name = P.Full_Name,
                                Phone = P.Phone,
                                Email = P.Email,
-                               Stat = P.Stat
+                               Stat = P.Stat,
+                               DOB = P.DOB,
+                               CNI = P.CNI,
+                               Address = P.Address,
+                               Picture = P.Picture,
+                               Contract = P.Contract,
+                               Saved_Date = P.Saved_Date,
                            }
                            ).ToList();
 
@@ -128,15 +177,49 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 P = con.PROVIDERs.Where(x => x.PROVIDER_ID == id).FirstOrDefault();
-
                 Pr.Provider_Type = P.Provider_Type;
                 Pr.Provider_Code = P.Provider_Code;
                 Pr.Full_Name = P.Full_Name;
                 Pr.Phone = P.Phone;
                 Pr.Email = P.Email;
+                Pr.DOB = P.DOB;
+                Pr.Address = P.Address;
+                Pr.CNI = P.CNI;
+                Pr.Picture = P.Picture;
+                Pr.Contract = P.Contract;
                 Pr.Stat = P.Stat;
 
             }
+        }
+
+        //DISPLAY METHOD Where CNI
+        public int ProvideByCNI(Provider_Class Pr, string cni)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                P = con.PROVIDERs.Where(x => x.CNI == cni && x.Deleted == "False").FirstOrDefault();
+
+                if (P != null)
+                {
+                    Pr.Provider_Type = P.Provider_Type;
+                    Pr.Provider_Code = P.Provider_Code;
+                    Pr.Full_Name = P.Full_Name;
+                    Pr.Phone = P.Phone;
+                    Pr.Email = P.Email;
+                    Pr.DOB = P.DOB;
+                    Pr.Address = P.Address;
+                    Pr.CNI = P.CNI;
+                    Pr.Picture = P.Picture;
+                    Pr.Contract = P.Contract;
+                    Pr.Stat = P.Stat;
+
+                    return msg = 1;
+                }
+                else
+                    return msg = 0;
+
+            }
+
         }
 
         //COUNT METHOD
@@ -145,7 +228,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var P = (from l in con.PROVIDERs
+                var P = (from l in con.PROVIDERs where l.Deleted == "False"
                          select l).Count();
                 n = P;
             }
@@ -158,11 +241,13 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from P in con.PROVIDERs
-                           where
+                           where P.Deleted == "False" &&
                        P.Full_Name.StartsWith(SearchText) ||
                        P.Provider_Code.StartsWith(SearchText) ||
                        P.Stat.StartsWith(SearchText) ||
                        P.Phone.StartsWith(SearchText) ||
+                       P.CNI.StartsWith(SearchText) ||
+                       P.Address.StartsWith(SearchText) ||
                        P.Provider_Type.StartsWith(SearchText)
 
                            select new
@@ -173,7 +258,13 @@ namespace VehicleFleetManagment.FleetImp
                                Full_Name = P.Full_Name,
                                Phone = P.Phone,
                                Email = P.Email,
-                               Stat = P.Stat
+                               Stat = P.Stat,
+                               DOB = P.DOB,
+                               CNI = P.CNI,
+                               Address = P.Address,
+                               Picture = P.Picture,
+                               Contract = P.Contract,
+                               Saved_Date = P.Saved_Date,
 
                            }
                            ).ToList();

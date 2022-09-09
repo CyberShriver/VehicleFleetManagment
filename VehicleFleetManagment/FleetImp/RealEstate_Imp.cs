@@ -22,6 +22,7 @@ namespace VehicleFleetManagment.FleetImp
             {
                 R.RealEstate_Name = Re.RealEstate_Name;
                 R.Comment = Re.Comment;
+                R.Deleted = "False";
 
                 con.REAL_ESTATE.Add(R);
 
@@ -52,6 +53,7 @@ namespace VehicleFleetManagment.FleetImp
 
                     R.RealEstate_Name = Re.RealEstate_Name;
                     R.Comment = Re.Comment;
+                    R.Deleted = "False";
 
                     if (con.SaveChanges() > 0)
                     {
@@ -89,12 +91,41 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //CHANGE DELETE STATE METHOD
+        public int DeleteState( int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                REAL_ESTATE R = new REAL_ESTATE();
+                R = con.REAL_ESTATE.Where(x => x.REAL_ESTATE_ID == id).FirstOrDefault();
+
+                if (R != null)
+                {
+                    R.Deleted = "True";
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.REAL_ESTATE.Add(R);
+                        con.Entry(R).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
         //DISPLAY METHOD
         public void Display(GridView gd)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from R in con.REAL_ESTATE
+                var obj = (from R in con.REAL_ESTATE where R.Deleted=="False"
 
                            select new
                            {
@@ -129,7 +160,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var R = (from l in con.REAL_ESTATE
+                var R = (from l in con.REAL_ESTATE where l.Deleted == "False"
                          select l).Count();
                 n = R;
             }
@@ -142,7 +173,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from R in con.REAL_ESTATE
-                           where R.RealEstate_Name.StartsWith(SearchText)
+                           where R.Deleted == "False" && R.RealEstate_Name.StartsWith(SearchText)
 
                            select new
                            {

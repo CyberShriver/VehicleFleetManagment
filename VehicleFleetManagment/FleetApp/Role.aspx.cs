@@ -214,7 +214,7 @@ namespace VehicleFleetManagment.FleetApp
                 }
                 if (e.CommandName == "delet")
                 {
-                    Ir.Delete(index);
+                    Ir.DeleteState(index);
                     Response.Redirect("~/FleetApp/Role.aspx");
                     getDataGDVRole();
                 }
@@ -265,7 +265,7 @@ namespace VehicleFleetManagment.FleetApp
                     if (chkdelete.Checked)
                     {
                         int id = Convert.ToInt32(gdv.DataKeys[i].Value);
-                        Ir.Delete(id);
+                        Ir.DeleteState(id);
                         gdv.EditIndex = -1;
                     }
                 }

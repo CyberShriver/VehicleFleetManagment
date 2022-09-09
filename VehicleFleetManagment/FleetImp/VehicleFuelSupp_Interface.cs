@@ -21,6 +21,8 @@ namespace VehicleFleetManagment.FleetImp
         //Delete Method
         int Delete(int id);
 
+        //Delete State METHOD
+         int DeleteState(int id);
         //Display Method
         void Display(GridView gd,string codeMin);
 
@@ -59,5 +61,8 @@ namespace VehicleFleetManagment.FleetImp
 
         //DISPLAY  Fuel Type Consumed By This Vehicle
          void DisplayFuelType(DropDownList drop, string Plate);
+
+        //DISPLAY  Vehicle category
+        void DisplayVehicleCategory(DropDownList drop, string Plate);
     }
 }

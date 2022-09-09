@@ -173,7 +173,7 @@
                                                     <div class="float-right">
                                                         <a class="btn btn-sm btn-info ml-5" href="ViewCarCrash.aspx">List <i class="icofont icofont-listine-dots"></i></a>
                                                         <button type="reset" class="btn btn-sm btn-danger ml-5 mr-5">Cancel</button>
-                                                    <button type="button" id="btnGenNext" class="btn btn-sm btn-default ml-5 waves-effect  " runat="server" onserverclick="ActiveReport_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
+                                                    <button type="submit" id="btnGenNext" class="btn btn-sm btn-default ml-5 waves-effect  " runat="server" onserverclick="ActiveReport_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
                                                     </div>
                                                 </div>
                                             </asp:View>
@@ -190,7 +190,7 @@
                                                                 <label class="float-label  ">Compensation Rule Date</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <textarea class="form-control" required="" runat="server" id="txtCircumstance"></textarea>
+                                                                <textarea class="form-control"  runat="server" id="txtCircumstance"></textarea>
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Circumstance</label>
                                                             </div>
@@ -200,7 +200,7 @@
                                                                 <label class="float-label ">Report Date</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
+                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtCode" visible="false">
                                                             </div>
                                                             <div class="form-group form-default">
                                                                 <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateFinalReport">
@@ -213,7 +213,7 @@
                                                                 <label class="float-label ">Insurance Declaration Date</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAmount" onkeypress="inpNum(event)" maxlength="4">
+                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAmount" onkeypress="inpNum(event)" maxlength="12">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Claim Compensation Amount</label>
                                                             </div>
@@ -223,32 +223,32 @@
                                                     <div class="col-md-6">
                                                         <div class="form-material">
                                                             <div class="form-group form-default">
-                                                                <textarea class="form-control" required="" runat="server" id="txtDamageDesipt"></textarea>
+                                                                <textarea class="form-control"  runat="server" id="txtDamageDesipt"></textarea>
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Damage Description</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <textarea class="form-control" required="" runat="server" id="txtComment"></textarea>
+                                                                <textarea class="form-control"  runat="server" id="txtComment"></textarea>
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Passenger Comment</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLegalCost" onkeypress="inpNum(event)" maxlength="4">
+                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtLegalCost" onkeypress="inpNum(event)" maxlength="12">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Legal Cost</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLocalComp" onkeypress="inpNum(event)" maxlength="4">
+                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLocalComp" onkeypress="inpNum(event)" maxlength="12">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Local Insurance Compensation Amount</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtRecoverEmpl" onkeypress="inpNum(event)" maxlength="4">
+                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtRecoverEmpl" onkeypress="inpNum(event)" maxlength="12">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Employee Amount Recovered</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtThirdPartyRecov" onkeypress="inpNum(event)" maxlength="4">
+                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtThirdPartyRecov" onkeypress="inpNum(event)" maxlength="12">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Third Party Amount Recovered</label>
                                                             </div>
@@ -258,7 +258,7 @@
                                                 <div class="float-right">
                                                     <a class="btn btn-sm btn-info ml-5 " href="ViewCarCrash.aspx">List <i class="icofont icofont-listine-dots"></i></a>
                                                     <button type="reset" class="btn btn-sm btn-danger ml-5 mr-5">Cancel</button>
-                                                    <button type="button" id="BtnReportNext" class="btn btn-sm btn-default  waves-effect  ml-5" runat="server" onserverclick="ActiveSpecific_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
+                                                    <button type="submit" id="BtnReportNext" class="btn btn-sm btn-default  waves-effect  ml-5" runat="server" onserverclick="ActiveSpecific_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
                                                 </div>
                                                 <button type="button" id="BtnReportPreview" class="btn btn-sm btn-default  waves-effect " runat="server" onserverclick="ActiveGen_click"><i class="icofont icofont-hand-drawn-left"></i>Preview</button>
                                             </asp:View>
@@ -321,7 +321,7 @@
                                                                 <label class="float-label">State</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
+                                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change"  autocomplete="off" class="form-control text-right" runat="server" />
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label ">Pic:.ico,.png,.jpg</label>
                                                             </div>
@@ -330,7 +330,7 @@
                                                 </div>
                                                 <button type="button" id="BtnSpecificPreview" class="btn btn-sm btn-default  waves-effect" runat="server" onserverclick="ActiveReport_click"><i class="icofont icofont-hand-drawn-left"></i>Preview</button>
                                                 <div class="float-right">
-                                                    <button type="button" id="btnSave" class="btn btn-sm btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save <i class="icofont icofont-save"></i></button>
+                                                    <button type="submit" id="btnSave" class="btn btn-sm btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save <i class="icofont icofont-save"></i></button>
                                                     <button type="reset" class="btn btn-sm btn-danger ml-5">Cancel</button>
                                                     <a class="btn btn-sm btn-info ml-5" href="ViewCarCrash.aspx">List <i class="icofont icofont-listine-dots"></i></a>
 

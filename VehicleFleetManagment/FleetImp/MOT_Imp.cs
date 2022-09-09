@@ -26,6 +26,7 @@ namespace VehicleFleetManagment.FleetImp
                 M.Validity_End_Dte = Mo.Validity_End_Dte;
                 M.MINISTRY_ID = Mo.MINISTRY_ID;
                 M.VEHICLE_ID = Mo.VEHICLE_ID;
+                M.Deleted = "False";
 
                 con.MOTs.Add(M);
 
@@ -60,6 +61,7 @@ namespace VehicleFleetManagment.FleetImp
                     M.Validity_End_Dte = Mo.Validity_End_Dte;
                     M.MINISTRY_ID = Mo.MINISTRY_ID;
                     M.VEHICLE_ID = Mo.VEHICLE_ID;
+                    M.Deleted = "False";
 
                     if (con.SaveChanges() > 0)
                     {
@@ -97,12 +99,41 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //CHANGE DELETE STATE METHOD
+        public int DeleteState( int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                MOT M = new MOT();
+                M = con.MOTs.Where(x => x.MOT_ID == id).FirstOrDefault();
+
+                if (M != null)
+                {
+                    M.Deleted = "True";
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.MOTs.Add(M);
+                        con.Entry(M).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
         //DISPLAY METHOD
         public void Display(GridView gd,string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MOTs where M.MINISTRY.Code_Min== codeMin
+                var obj = (from M in con.MOTs where M.Deleted=="False" && M.MINISTRY.Code_Min== codeMin
 
                            select new
                            {
@@ -128,7 +159,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MOTs
+                var obj = (from M in con.MOTs where M.Deleted == "False"
 
                            select new
                            {
@@ -174,7 +205,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var M = (from l in con.MOTs where l.MINISTRY.Code_Min== codeMin
+                var M = (from l in con.MOTs where l.Deleted == "False"  && l.MINISTRY.Code_Min== codeMin
                          select l).Count();
                 n = M;
             }
@@ -187,7 +218,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var M = (from l in con.MOTs
+                var M = (from l in con.MOTs where l.Deleted == "False"
                          select l).Count();
                 n = M;
             }
@@ -200,7 +231,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MOTs
-                           where M.MINISTRY.Code_Min == codeMin &&
+                           where M.Deleted == "False" && M.MINISTRY.Code_Min == codeMin &&
                        M.MOT_Agency_Name.StartsWith(SearchText) ||
                        M.MOT_Number.StartsWith(SearchText) ||
                        M.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
@@ -232,7 +263,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MOTs
-                           where
+                           where M.Deleted == "False" &&
                        M.MOT_Agency_Name.StartsWith(SearchText) ||
                        M.MOT_Number.StartsWith(SearchText) ||
                        M.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
@@ -263,7 +294,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from V in con.VEHICLEs
+                var obj = (from V in con.VEHICLEs where V.Deleted == "False"
 
                            select new
                            {
@@ -287,7 +318,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from V in con.VEHICLEs
-                           where V.MINISTRY_ID == id
+                           where V.Deleted == "False"  && V.MINISTRY_ID == id
 
                            select new
                            {
@@ -310,7 +341,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MINISTRies
-                           where M.Code_Min == codeMin
+                           where M.Deleted == "False"  && M.Code_Min == codeMin
 
                            select new
                            {
@@ -334,7 +365,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MINISTRies
+                var obj = (from M in con.MINISTRies where M.Deleted == "False"
 
                            select new
                            {

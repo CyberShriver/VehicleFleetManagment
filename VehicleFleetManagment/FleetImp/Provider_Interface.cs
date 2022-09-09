@@ -19,11 +19,17 @@ namespace VehicleFleetManagment.FleetImp
         //Delete Method
         int Delete(int id);
 
+        //CHANGE DELETE STATE METHOD
+         int DeleteState(int id);
+
         //Display Method
         void Display(GridView gd);
 
         //Provide Method
         void provide(Provider_Class Pr, int id);
+
+        //Provide CNI if user add CNI exist
+        int ProvideByCNI(Provider_Class Pr, string cni);
 
         //count
         int count();

@@ -23,6 +23,7 @@ namespace VehicleFleetManagment.FleetModel
         public int LEAVE_TYPE_ID { get; set; }
         public string Leave_Type_Description { get; set; }
         public string Leave_Number { get; set; }
+        public string Deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LEAVE> LEAVEs { get; set; }

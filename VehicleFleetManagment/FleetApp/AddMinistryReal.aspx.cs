@@ -72,7 +72,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtQuantity.Value == "" || txtComment.Value == "" || DropDown_RealEstate.SelectedValue == "-1" || DropDown_Ministry.SelectedValue == "-1")
+                if (txtQuantity.Value == "" ||  DropDown_RealEstate.SelectedValue == "-1" || DropDown_Ministry.SelectedValue == "-1")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -119,7 +119,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtQuantity.Value == "" || txtComment.Value == "" || DropDown_RealEstate.SelectedValue == "-1" || DropDown_Ministry.SelectedValue == "-1")
+                if (txtQuantity.Value == "" ||  DropDown_RealEstate.SelectedValue == "-1" || DropDown_Ministry.SelectedValue == "-1")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;

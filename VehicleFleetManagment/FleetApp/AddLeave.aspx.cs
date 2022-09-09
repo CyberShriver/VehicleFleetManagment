@@ -130,7 +130,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtCarpooling.Value == "" || dateStart.Value == "" || dateEnd.Value == "" || dateDemand.Value == "" 
+                if ( dateStart.Value == "" || dateEnd.Value == "" || dateDemand.Value == "" 
                     || DropDown_Ministry.SelectedValue == "-1" || DropDown_Driver.SelectedValue == "-1" || DropDown_LeaveType.SelectedValue == "-1")
                 {
                     SuccessMsg.Visible = false;
@@ -143,7 +143,6 @@ namespace VehicleFleetManagment.FleetApp
 
                     Le.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
                     Le.Leave_Code = LeaveCode();
-                    Le.Carpooling = txtCarpooling.Value;
                     Le.End_Dte = dateEnd.Value;
                     Le.Start_Dte = dateStart.Value;
                     Le.Comment = txtComment.Value;
@@ -163,7 +162,6 @@ namespace VehicleFleetManagment.FleetApp
                             SuccessMsg.Visible = true;
 
                             txtLeaveCode.Value = "";
-                            txtCarpooling.Value = "";
                             txtApproved.Value = "";
                             dateEnd.Value = "";
                             dateStart.Value = "";
@@ -197,7 +195,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtCarpooling.Value == "" || dateStart.Value == "" || dateEnd.Value == "" || dateDemand.Value == ""
+                if (dateStart.Value == "" || dateEnd.Value == "" || dateDemand.Value == ""
                     || DropDown_Ministry.SelectedValue == "-1" || DropDown_Driver.SelectedValue == "-1" || DropDown_LeaveType.SelectedValue == "-1")
                 {
                     SuccessMsg.Visible = false;
@@ -209,7 +207,6 @@ namespace VehicleFleetManagment.FleetApp
 
                     Le.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
                     Le.Leave_Code = txtLeaveCode.Value;
-                    Le.Carpooling = txtCarpooling.Value;
                     Le.End_Dte = dateEnd.Value;
                     Le.Start_Dte = dateStart.Value;
                     Le.Comment = txtComment.Value;
@@ -264,7 +261,6 @@ namespace VehicleFleetManagment.FleetApp
 
                 DropDown_Ministry.SelectedValue = Le.MINISTRY_ID.ToString();
                 txtLeaveCode.Value = Le.Leave_Code;
-                txtCarpooling.Value = Le.Carpooling;
                 txtComment.Value = Le.Comment;
                 txtApproved.Value = Le.Approved_By;
                 dateStart.Value = Le.Start_Dte;

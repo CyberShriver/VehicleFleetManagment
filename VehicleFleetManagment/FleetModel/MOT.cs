@@ -21,6 +21,7 @@ namespace VehicleFleetManagment.FleetModel
         public string Validity_End_Dte { get; set; }
         public long VEHICLE_ID { get; set; }
         public int MINISTRY_ID { get; set; }
+        public string Deleted { get; set; }
     
         public virtual VEHICLE VEHICLE { get; set; }
         public virtual MINISTRY MINISTRY { get; set; }

@@ -51,7 +51,12 @@
 
                         <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <strong>Operation Failed!  <i class="icofont icofont-danger-zone icofont-3x"></i></strong>
+                            <strong>Operation Failed! </strong>
+                        </div>
+
+                        <div class="alert alert-danger alert-dismissible fade show" runat="server" id="PasswordMsg">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Your input password not matche </strong>
                         </div>
                     </div>
 
@@ -97,18 +102,19 @@
                                                         <div class="form-group form-default">
                                                             <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLastName">
                                                             <span class="form-bar"></span>
-                                                            <label class="float-label">Last Name</label>
+                                                            <label class="float-label">Last Name</label>                                                           
                                                         </div>
-                                                        <div class="form-group form-default">
+                                                        <div class="form-group form-default ">
                                                             <input type="date" class="form-control text-right" required="" runat="server" id="dateBirth">
                                                             <span class="form-bar"></span>
                                                             <label class="float-label  ">DOB</label>
                                                         </div>
                                                         <div class="form-group form-default">
-                                                            <input type="tel" name="footer-email" class="form-control" required="" runat="server" id="txtTel">
+                                                            <input type="tel" name="footer-email"  class="form-control" required="" runat="server" id="txtTel">
                                                             <span class="form-bar"></span>
                                                             <label class="float-label">Telephone</label>
                                                         </div>
+                                                        
                                                         <div class="form-group form-default">
                                                             <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAddress">
                                                             <span class="form-bar"></span>
@@ -132,7 +138,7 @@
                                                     <div class="float-right">
                                                         <a class="btn btn-sm btn-info ml-5" href="ViewUsers.aspx">List <i class="icofont icofont-listine-dots"></i></a>
                                                         <button type="reset" class="btn btn-sm btn-danger ml-5 mr-5">Cancel</button>
-                                                    <button type="button" id="btnGenNext" class="btn btn-sm btn-default ml-5 waves-effect ml-5  " runat="server" onserverclick="ActiveSettings_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
+                                                    <button type="submit" id="btnGenNext" class="btn btn-sm btn-default ml-5 waves-effect ml-5  " runat="server" onserverclick="ActiveSettings_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
                                                     </div>
                                                 </div>
                                             </asp:View>
@@ -150,11 +156,14 @@
                                                         </div>
                                                         <div class="form-group form-default">
                                                             <input type="password" name="footer-email" class="form-control" required="" runat="server" id="txtPassword">
-                                                            <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
                                                             <span class="form-bar"></span>
                                                             <label class="float-label">Password</label>
                                                         </div>
-                                                                                                                                                               
+                                                         <div class="form-group form-default">
+                                                            <input type="password" name="footer-email" class="form-control" required="" runat="server" id="TxtPasswordConfirm">
+                                                            <span class="form-bar"></span>
+                                                            <label class="float-label">Confirm Password</label>
+                                                        </div>                                                                                                      
                                                         <div class="form-group form-default"  runat="server">
                                                             <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Role"  required="" runat="server"></asp:DropDownList>
                                                             <label class="float-label">Role</label>
@@ -175,11 +184,11 @@
                                                         </div>
 
                                                         <div class="form-group form-default">
-                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCodMin" visible="false">
+                                                            <input type="text" name="footer-email" class="form-control" runat="server" id="txtCodMin" visible="false">
                                                         </div>
 
                                                         <div class="form-group form-default" runat="server" visible="false" id="idSaved">
-                                                            <input type="text" name="footer-email " class="form-control text-right" required="" runat="server" id="DateSaved">
+                                                            <input type="text" name="footer-email " class="form-control text-right"  runat="server" id="DateSaved">
                                                             <span class="form-bar"></span>
                                                             <label class="float-label">Saved</label>
                                                         </div>
@@ -188,7 +197,7 @@
                                                     </div>
                                                    <button type="button" id="BtnSettingsPreview" class="btn btn-sm btn-default  waves-effect" runat="server" onserverclick="ActiveGen_click"><i class="icofont icofont-hand-drawn-left"></i>Preview</button>
                                                         <div class="float-right">
-                                                            <button type="button" id="btnSave" class="btn btn-sm btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save <i class="icofont icofont-save"></i></button>
+                                                            <button type="submit" id="btnSave" class="btn btn-sm btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save <i class="icofont icofont-save"></i></button>
                                                             <button type="reset" class="btn btn-sm btn-danger ml-5">Cancel</button>
                                                             <a class="btn btn-sm btn-info ml-5" href="ViewUsers.aspx">List <i class="icofont icofont-listine-dots"></i></a>
 
@@ -213,17 +222,5 @@
         <!-- Main-body end -->
         <div id="styleSelector"></div>
     </div>
-    <script>
-        const togglePassword = document.querySelector('#togglePassword');
-        const password = document.querySelector('#txtPassword');
-
-        togglePassword.addEventListener('click', function (e) {
-            // toggle the type attribute
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            // toggle the eye slash icon
-            this.classList.toggle('fa-eye-slash');
-        });
-    </script>
 
 </asp:Content>

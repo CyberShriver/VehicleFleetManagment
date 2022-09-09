@@ -22,13 +22,13 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 L.Leave_Code = Le.Leave_Code;
-                L.Carpooling = Le.Carpooling;
                 L.Start_Dte = Le.Start_Dte;
                 L.End_Dte = Le.End_Dte;
                 L.Approved_By = Le.Approved_By;
                 L.Comment = Le.Comment;
                 L.Demand_Dte = Le.Demand_Dte;
                 L.Approved_Dte = "";
+                L.Deleted = "False";
                 L.Saved_Date = Le.Saved_Date;
                 L.MINISTRY_ID = Le.MINISTRY_ID;
                 L.MIN_DRIVER_ID = Le.MIN_DRIVER_ID;
@@ -63,7 +63,6 @@ namespace VehicleFleetManagment.FleetImp
                 {
 
                     L.Leave_Code = Le.Leave_Code;
-                    L.Carpooling = Le.Carpooling;
                     L.Start_Dte = Le.Start_Dte;
                     L.End_Dte = Le.End_Dte;
                     L.Approved_By = Le.Approved_By;
@@ -75,7 +74,7 @@ namespace VehicleFleetManagment.FleetImp
                     L.MIN_DRIVER_ID = Le.MIN_DRIVER_ID;
                     L.LEAVE_TYPE_ID = Le.LEAVE_TYPE_ID;
                     L.State = Le.State;
-
+                    L.Deleted = "False";
 
                     if (con.SaveChanges() > 0)
                     {
@@ -113,18 +112,47 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //DELETE STATE METHOD
+        public int DeleteState( int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                LEAVE L = new LEAVE();
+                L = con.LEAVEs.Where(x => x.LEAVE_ID == id).FirstOrDefault();
+
+                if (L != null)
+                {
+                    L.Deleted = "True";
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.LEAVEs.Add(L);
+                        con.Entry(L).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
+
         //DISPLAY METHOD
         public void Display(GridView gd,string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from L in con.LEAVEs where L.MINISTRY.Code_Min== codeMin orderby L.LEAVE_ID descending
+                var obj = (from L in con.LEAVEs where L.MINISTRY.Code_Min== codeMin && L.Deleted=="False" orderby L.LEAVE_ID descending
 
                            select new
                            {
                                LEAVE_ID = L.LEAVE_ID,
                                Leave_Code = L.Leave_Code,
-                               Carpooling = L.Carpooling,
                                Start_Dte = L.Start_Dte,
                                End_Dte = L.End_Dte,
                                Approved_By = L.Approved_By,
@@ -154,7 +182,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from L in con.LEAVEs.AsEnumerable()
-                           where L.MINISTRY.Code_Min == codeMin && L.State == "Finished"
+                           where L.MINISTRY.Code_Min == codeMin && L.Deleted == "False" && L.State == "Finished"
                            group L by Convert.ToDateTime(L.Start_Dte).ToString("MMMM")  into g
 
                            select new
@@ -180,7 +208,8 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from L in con.LEAVEs.AsEnumerable()
-                           where L.MINISTRY.Code_Min == codeMin && L.State == "Finished" select L).Count();
+                           where L.MINISTRY.Code_Min == codeMin && L.State == "Finished" && L.Deleted == "False"
+                           select L).Count();
 
                 n = obj;
             }
@@ -192,13 +221,13 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from L in con.LEAVEs
+                           where L.Deleted == "False"
                            orderby L.LEAVE_ID descending
 
                            select new
                            {
                                LEAVE_ID = L.LEAVE_ID,
                                Leave_Code = L.Leave_Code,
-                               Carpooling = L.Carpooling,
                                Start_Dte = L.Start_Dte,
                                End_Dte = L.End_Dte,
                                Approved_By = L.Approved_By,
@@ -228,7 +257,6 @@ namespace VehicleFleetManagment.FleetImp
                 L = con.LEAVEs.Where(x => x.LEAVE_ID == id).FirstOrDefault();
 
                 Le.Leave_Code = L.Leave_Code;
-                Le.Carpooling = L.Carpooling;
                 Le.Start_Dte = L.Start_Dte;
                 Le.End_Dte = L.End_Dte;
                 Le.Approved_By = L.Approved_By;
@@ -251,7 +279,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var L = (from l in con.LEAVEs where l.MINISTRY.Code_Min==codeMin
+                var L = (from l in con.LEAVEs where l.Deleted == "False" &&l.MINISTRY.Code_Min==codeMin
                          select l).Count();
                 n = L;
             }
@@ -265,7 +293,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var L = (from l in con.LEAVEs
-                         where l.State == "in Progress" || l.State == "Pending..." && l.MINISTRY.Code_Min == codeMin
+                         where l.State == "in Progress" || l.State == "Pending..." && l.Deleted == "False" && l.MINISTRY.Code_Min == codeMin
                          select l).Count();
                 n = L;
             }
@@ -279,7 +307,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var L = (from l in con.LEAVEs
-                         where l.State== "in Progress" && l.MINISTRY.Code_Min == codeMin
+                         where l.State== "in Progress" && l.Deleted == "False" && l.MINISTRY.Code_Min == codeMin
                          select l).Count();
                 n = L;
             }
@@ -293,7 +321,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var L = (from l in con.LEAVEs
-                         where l.State == "Pending..." && l.MINISTRY.Code_Min == codeMin
+                         where l.State == "Pending..." && l.Deleted == "False" && l.MINISTRY.Code_Min == codeMin
                          select l).Count();
                 n = L;
             }
@@ -307,7 +335,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var L = (from l in con.LEAVEs
-                         where l.State == "Approved" && l.MINISTRY.Code_Min == codeMin
+                         where l.State == "Approved" && l.Deleted == "False" && l.MINISTRY.Code_Min == codeMin
                          select l).Count();
                 n = L;
             }
@@ -321,7 +349,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var L = (from l in con.LEAVEs.AsEnumerable()
-                         where l.State == "in Progress"  && ((Convert.ToDateTime(l.End_Dte).Date - DateTime.Now.Date)).TotalDays <= 2 && l.MINISTRY.Code_Min == codeMin
+                         where l.State == "in Progress" && l.Deleted == "False" && ((Convert.ToDateTime(l.End_Dte).Date - DateTime.Now.Date)).TotalDays <= 2 && l.MINISTRY.Code_Min == codeMin
                          select l).Count();
                 n = L;
             }
@@ -335,6 +363,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var L = (from l in con.LEAVEs
+                         where l.Deleted == "False"
                          select l).Count();
                 n = L;
             }
@@ -346,7 +375,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from L in con.LEAVEs
-                           where L.MINISTRY.Code_Min==codeMin &&
+                           where L.MINISTRY.Code_Min==codeMin && L.Deleted == "False" &&
                        L.Leave_Code.StartsWith(SearchText) ||
                        L.Start_Dte.StartsWith(SearchText) ||
                        L.Demand_Dte.StartsWith(SearchText) ||
@@ -359,7 +388,6 @@ namespace VehicleFleetManagment.FleetImp
                            {
                                LEAVE_ID = L.LEAVE_ID,
                                Leave_Code = L.Leave_Code,
-                               Carpooling = L.Carpooling,
                                Start_Dte = L.Start_Dte,
                                End_Dte = L.End_Dte,
                                Approved_By = L.Approved_By,
@@ -387,7 +415,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from L in con.LEAVEs
-                           where
+                           where L.Deleted == "False" &&
                        L.Leave_Code.StartsWith(SearchText) ||
                        L.Start_Dte.StartsWith(SearchText) ||
                        L.Demand_Dte.StartsWith(SearchText) ||
@@ -400,7 +428,6 @@ namespace VehicleFleetManagment.FleetImp
                            {
                                LEAVE_ID = L.LEAVE_ID,
                                Leave_Code = L.Leave_Code,
-                               Carpooling = L.Carpooling,
                                Start_Dte = L.Start_Dte,
                                End_Dte = L.End_Dte,
                                Approved_By = L.Approved_By,
@@ -428,6 +455,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from Md in con.MINISTRY_DRIVER
+                           where Md.Deleted == "False"
 
                            select new
                            {
@@ -449,7 +477,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from Lev in con.LEAVE_TYPE
+                var obj = (from Lev in con.LEAVE_TYPE where Lev.Deleted=="False"
 
                            select new
                            {
@@ -473,7 +501,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from Md in con.MINISTRY_DRIVER
-                           where Md.MINISTRY.MINISTRY_ID == id && Md.Position_Status=="On Post"
+                           where Md.MINISTRY.MINISTRY_ID == id && Md.Deleted == "False" && Md.Position_Status=="On Post"
 
                            select new
                            {
@@ -495,7 +523,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from L in con.MINISTRies where L.Code_Min==codeMin
+                var obj = (from L in con.MINISTRies where L.Code_Min==codeMin && L.Deleted == "False"
 
                            select new
                            {
@@ -518,7 +546,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 VEHICLE V = new VEHICLE();
-                V = con.VEHICLEs.Where(x => x.Local_Plate == LocalPlate).FirstOrDefault();
+                V = con.VEHICLEs.Where(x => x.Local_Plate == LocalPlate && x.Deleted == "False").FirstOrDefault();
 
                 if (V != null)
                 {
@@ -546,7 +574,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 DRIVER D = new DRIVER();
-                D = con.DRIVERs.Where(x => x.DRIVER_ID == id).FirstOrDefault();
+                D = con.DRIVERs.Where(x => x.DRIVER_ID == id && x.Deleted == "False").FirstOrDefault();
 
                 if (D != null)
                 {                  
@@ -575,7 +603,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 DRIVER D = new DRIVER();
-                D = con.DRIVERs.Where(x => x.DRIVER_ID == id).FirstOrDefault();
+                D = con.DRIVERs.Where(x => x.DRIVER_ID == id && x.Deleted == "False").FirstOrDefault();
 
                 if (D != null)
                 {
@@ -603,7 +631,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 MINISTRY_DRIVER M = new MINISTRY_DRIVER();
-                M = con.MINISTRY_DRIVER.Where(x => x.MIN_DRIVER_ID == id && x.Position_Status=="On Post").FirstOrDefault();
+                M = con.MINISTRY_DRIVER.Where(x => x.MIN_DRIVER_ID == id && x.Position_Status=="On Post" && x.Deleted == "False").FirstOrDefault();
 
                 if (M != null)
                 {
@@ -632,7 +660,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                L = con.LEAVEs.AsEnumerable().Where(x => x.State == "Approved" && Convert.ToDateTime(x.Start_Dte).Date<= DateTime.Now.Date).FirstOrDefault();
+                L = con.LEAVEs.AsEnumerable().Where(x => x.State == "Approved" && x.Deleted == "False" && Convert.ToDateTime(x.Start_Dte).Date<= DateTime.Now.Date).FirstOrDefault();
 
                 if (L != null)
                 {
@@ -653,7 +681,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                L = con.LEAVEs.Where(x => x.LEAVE_ID == id).FirstOrDefault();
+                L = con.LEAVEs.Where(x => x.LEAVE_ID == id && x.Deleted == "False").FirstOrDefault();
 
                 if (L != null)
                 {
@@ -682,7 +710,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                L = con.LEAVEs.Where(x => x.LEAVE_ID == id).FirstOrDefault();
+                L = con.LEAVEs.Where(x => x.LEAVE_ID == id && x.Deleted == "False").FirstOrDefault();
 
                 if (L != null)
                 {
@@ -712,7 +740,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                L = con.LEAVEs.AsEnumerable().Where(x => x.State == "in Progress" && Convert.ToDateTime(x.End_Dte).Date<= DateTime.Now.Date).FirstOrDefault();
+                L = con.LEAVEs.AsEnumerable().Where(x => x.State == "in Progress" && x.Deleted == "False" && Convert.ToDateTime(x.End_Dte).Date<= DateTime.Now.Date).FirstOrDefault();
 
                 if (L != null)
                 {
@@ -741,7 +769,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                L = con.LEAVEs.AsEnumerable().Where(x => x.State == "Pending..." && Convert.ToDateTime(x.Start_Dte).Date <= DateTime.Now.Date).FirstOrDefault();
+                L = con.LEAVEs.AsEnumerable().Where(x => x.State == "Pending..." && x.Deleted == "False" && Convert.ToDateTime(x.Start_Dte).Date <= DateTime.Now.Date).FirstOrDefault();
 
                 if (L != null)
                 {
@@ -794,7 +822,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from L in con.MINISTRies
+                var obj = (from L in con.MINISTRies where L.Deleted == "False"
 
                            select new
                            {
@@ -817,7 +845,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from L in con.LEAVEs
-                           where L.MINISTRY.MINISTRY_ID == idMin && L.LEAVE_ID == id
+                           where L.MINISTRY.MINISTRY_ID == idMin && L.LEAVE_ID == id && L.Deleted == "False"
 
                            select new
                            {
@@ -840,7 +868,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from L in con.LEAVEs
-                           where L.MINISTRY.MINISTRY_ID == idMin && L.LEAVE_ID == id
+                           where L.MINISTRY.MINISTRY_ID == idMin && L.LEAVE_ID == id && L.Deleted == "False"
 
                            select new
                            {
@@ -863,7 +891,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from L in con.LEAVEs
-                           where L.MINISTRY.Code_Min == codeMin && L.State == "in Progress" || L.State == "Pending..."
+                           where L.MINISTRY.Code_Min == codeMin && L.State == "in Progress" && L.Deleted == "False" || L.State == "Pending..."
 
                            select new
                            {

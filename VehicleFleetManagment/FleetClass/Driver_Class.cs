@@ -17,6 +17,7 @@ namespace VehicleFleetManagment.FleetClass
         public string Driver_Type { get; set; }
         public string Postal_code { get; set; }
         public string Email { get; set; }
+        public string Deleted { get; set; }
         public string Nationality { get; set; }
         public string Gender { get; set; }
         public string Marital_Status { get; set; }

@@ -19,6 +19,7 @@ namespace VehicleFleetManagment.FleetModel
         public long Menu_Code { get; set; }
         public string Access { get; set; }
         public int MINISTRY_ID { get; set; }
+        public string Deleted { get; set; }
     
         public virtual MENU MENU { get; set; }
         public virtual ROLE ROLE { get; set; }

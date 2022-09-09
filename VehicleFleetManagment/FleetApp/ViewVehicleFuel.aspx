@@ -108,34 +108,39 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Ministry">
+                                            <asp:TemplateField HeaderText="Ministry" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label3" runat="server" Text='<%# Eval("MINISTRY_ID") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
+
                                             <asp:TemplateField HeaderText="Provider" >
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label5" runat="server" Text='<%# Eval("Provider_Code") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
+
                                             <asp:TemplateField HeaderText="Fuel Type">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label6" runat="server" Text='<%# Eval("Fuel_Type") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Tank Type">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label7" runat="server" Text='<%# Eval("Tank_Type") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Odometer" Visible="false">
+                                            
+                                            <asp:TemplateField HeaderText="Odometer" Visible="true">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label8" runat="server" Text='<%# Eval("Odometer") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
+
                                             <asp:TemplateField HeaderText="Initial Qty" Visible="true">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label9" runat="server" Text='<%# Eval("Initial_Qty") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                            <asp:TemplateField HeaderText="Fuel Used">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label7" runat="server" Text='<%# Eval("Fuel_Used") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
@@ -143,8 +148,14 @@
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label10" runat="server" Text='<%# Eval("Consumed_Qty") %>'></asp:Label>
                                                 </ItemTemplate>
-
                                             </asp:TemplateField>
+
+                                            <asp:TemplateField HeaderText="Liter/100km" Visible="true">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label13" runat="server" Text='<%# Eval("Liter_100_km") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
                                             <asp:TemplateField HeaderText="United Price ">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label11" runat="server" Text='<%# Eval("United_Price") %>'></asp:Label>
@@ -155,12 +166,8 @@
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label12" runat="server" Text='<%# Eval("Total_Price") %>'></asp:Label>
                                                 </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Liter/100km" Visible="false">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label13" runat="server" Text='<%# Eval("Liter_100_km") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+                                            </asp:TemplateField>    
+                                            
                                             <asp:TemplateField HeaderText="Saved Date" >
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label14" runat="server" Text='<%# Eval("Saved_Date") %>'></asp:Label>

@@ -21,6 +21,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 B.Category = Bo.Category;
+                B.Deleted = "False";
                 B.Category_N_ = Bo.Category_N_;
 
                 con.BODY_TYPE.Add(B);
@@ -51,6 +52,7 @@ namespace VehicleFleetManagment.FleetImp
                 {
 
                     B.Category = Bo.Category;
+                    B.Deleted = "False";
                     B.Category_N_ = Bo.Category_N_;
 
                     if (con.SaveChanges() > 0)
@@ -89,12 +91,42 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //Change Delete state METHOD
+        public int DeleteState(int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                BODY_TYPE B = new BODY_TYPE();
+                B = con.BODY_TYPE.Where(x => x.BODY_ID == id).FirstOrDefault();
+
+                if (B != null)
+                {                   
+                    B.Deleted = "True";
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.BODY_TYPE.Add(B);
+                        con.Entry(B).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
+
         //DISPLAY METHOD
         public void Display(GridView gd)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from B in con.BODY_TYPE
+                var obj = (from B in con.BODY_TYPE where B.Deleted=="False"
 
                            select new
                            {
@@ -129,7 +161,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var b = (from l in con.BODY_TYPE
+                var b = (from l in con.BODY_TYPE where B.Deleted == "False"
                          select l).Count();
                 n = b;
             }
@@ -142,7 +174,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from B in con.BODY_TYPE
-                           where
+                           where B.Deleted == "False" &&
                       B.Category.StartsWith(SearchText) ||
                       B.Category_N_.ToString().StartsWith(SearchText)
 

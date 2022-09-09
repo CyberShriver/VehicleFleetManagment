@@ -22,6 +22,7 @@ namespace VehicleFleetManagment.FleetImp
             {
                 L.Leave_Type_Description = Le.Leave_Type_Description;
                 L.Leave_Number = Le.Leave_Number;
+                L.Deleted ="False";
 
                 con.LEAVE_TYPE.Add(L);
 
@@ -52,6 +53,7 @@ namespace VehicleFleetManagment.FleetImp
 
                     L.Leave_Type_Description = Le.Leave_Type_Description;
                     L.Leave_Number = Le.Leave_Number;
+                    L.Deleted = "False";
 
                     if (con.SaveChanges() > 0)
                     {
@@ -89,12 +91,42 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //DELETE STATE METHOD
+        public int DeleteState(int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                LEAVE_TYPE L = new LEAVE_TYPE();
+                L = con.LEAVE_TYPE.Where(x => x.LEAVE_TYPE_ID == id).FirstOrDefault();
+
+                if (L != null)
+                {
+                    L.Deleted = "True";
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.LEAVE_TYPE.Add(L);
+                        con.Entry(L).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
+
         //DISPLAY METHOD
         public void Display(GridView gd)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from L in con.LEAVE_TYPE
+                var obj = (from L in con.LEAVE_TYPE where L.Deleted=="False"
 
                            select new
                            {
@@ -129,7 +161,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var L = (from l in con.LEAVE_TYPE
+                var L = (from l in con.LEAVE_TYPE where l.Deleted == "False"
                          select l).Count();
                 n = L;
             }
@@ -142,7 +174,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from L in con.LEAVE_TYPE
-                           where
+                           where L.Deleted == "False" &&
                       L.Leave_Type_Description.StartsWith(SearchText) ||
                       L.Leave_Number.ToString().StartsWith(SearchText)
 

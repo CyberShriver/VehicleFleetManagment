@@ -22,6 +22,7 @@ namespace VehicleFleetManagment.FleetClass
         public Nullable<double> Odometer_OUT { get; set; }
         public string Start_Work_Time { get; set; }
         public string End_Work_Time { get; set; }
+        public string Deleted { get; set; }
         public int Off_Service_Days_Number { get; set; }
         public string Participant_Emp_Code { get; set; }
         public string Comment { get; set; }

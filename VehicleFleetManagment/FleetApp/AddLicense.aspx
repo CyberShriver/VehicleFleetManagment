@@ -129,23 +129,23 @@
                                         <div class="form-material">
                                           
                                              <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtInterCode">
+                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtInterCode">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">International Licence Code</label>
                                             </div>
                                              <div class="form-group form-default">
-                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateExpInter">
+                                                <input type="date" name="footer-email" class="form-control text-right"  runat="server" id="dateExpInter">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label ">International Licence Code Expire Date</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCodeMission">
+                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtCodeMission">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Licence Code Mission</label>
                                             </div>     
 
                                             <div class="form-group form-default">
-                                                <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateCodeMissionExp">
+                                                <input type="date" name="footer-email" class="form-control text-right"  runat="server" id="dateCodeMissionExp">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label ">Licence Code Mission Expire Date</label>
                                             </div>
@@ -163,7 +163,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="float-right">
-                                <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
+                                <button type="submit" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
                                 <button type="reset" class="btn btn-danger ml-5">Cancel</button>
                                 <a class="btn btn-info ml-5" href="ViewLicense.aspx">List</a>
                             </div>

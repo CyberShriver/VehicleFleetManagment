@@ -6,8 +6,8 @@
 <head runat="server">
     <title>Vehicle fleet Managment</title>
     <!-- Meta -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Favicon icon -->
 
@@ -90,7 +90,7 @@
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
 
-                    <form class="md-float-material form-material" runat="server">
+                    <form class="md-float-material form-material" runat="server" method="post" >
                                <div class="col-sm-6 mx-auto" id="msg">
                                     <div class="alert alert-success alert-dismissible fade show" runat="server" id="SuccessMsg">
                                         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -115,15 +115,16 @@
                                     </div>
                                 </div>
                                     <div class="form-group form-primary">
-                                        <input type="text" name="email" class="form-control" required="" id="txtUserName" runat="server" />
+                                        <input type="text" name="email" class="form-control"  id="txtUserName" runat="server" required="required"/>
                                         <span class="form-bar"></span>
                                         <label class="float-label">Your username</label>
                                     </div>
                                     <div class="form-group form-primary">
-                                        <input type="password" name="password" class="form-control" required="" id="txtPassWord" runat="server" />
+                                        <input type="password" name="password" class="form-control"  id="txtPassWord" runat="server" required="required" />
+                                        <i class=" fa fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;" onclick="myFunction()"></i>
                                         <span class="form-bar"></span>
                                         <label class="float-label">Password</label>
-                                    </div>
+                                    </div>                                                             
                                     <div class="row m-t-25 text-left">
                                         <div class="col-12">
                                             <div class="checkbox-fade fade-in-primary d-">
@@ -141,7 +142,7 @@
                                      
                                     <div class="row m-t-30">
                                         <div class="col-md-12 form-group form-primary">
-                                           <button type="button" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20" runat="server" id="btnconnexion"  onserverclick="btn_connexion_ServerClick" >Sign in</button>                      
+                                           <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20" runat="server" id="btnconnexion"  onserverclick="btn_connexion_ServerClick" >Sign in</button>                      
                                         </div>
                                     </div>
                             </div>
@@ -173,5 +174,19 @@
     <script type="text/javascript" src="bower_components/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js"></script>
     <script type="text/javascript" src="bower_components/jquery-i18next/js/jquery-i18next.min.js"></script>
     <script type="text/javascript" src="assets/js/common-pages.js"></script>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("txtPassWord");
+            var y = document.getElementById("togglePassword");
+            if (x.type === "password") {
+                x.type = "text";
+                
+            } else {
+                x.type = "password";               
+            }
+            y.classList.toggle('fa-eye-slash');
+        }
+    </script>
 </body>
 </html>

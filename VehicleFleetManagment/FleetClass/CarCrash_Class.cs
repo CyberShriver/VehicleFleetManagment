@@ -13,6 +13,7 @@ namespace VehicleFleetManagment.FleetClass
         public string Local_Plate { get; set; }
         public string Crash_Date { get; set; }
         public string Crash_Time { get; set; }
+        public string Deleted { get; set; }
         public Nullable<double> Crash_Mileage { get; set; }
         public Nullable<long> MIN_DRIVER_ID { get; set; }
         public string Compensation_Rule_Dte { get; set; }

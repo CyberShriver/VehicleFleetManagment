@@ -79,16 +79,11 @@
                                                 <label class="float-label">Leave Type</label>
                                             </div>
                                             <div class="form-group form-default" runat="server" visible="false">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtLeaveCode">
+                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtLeaveCode">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Leave Code</label>
                                             </div>
-
-                                            <div class="form-group form-default"  runat="server" id="carpooling">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCarpooling">
-                                                <span class="form-bar"></span>
-                                                <label class="float-label">Carpooling </label>
-                                            </div>
+                                        
                                             <div class="form-group form-default" id="idDemand" runat="server">
                                                 <input type="date" name="footer-email" class="form-control text-right" required="" runat="server" id="dateDemand">
                                                 <span class="form-bar"></span>
@@ -114,27 +109,27 @@
                                                 <label class="float-label ">End Date</label>
                                             </div>
                                             <div class="form-group form-default" runat="server" visible="false" id="idState">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtState">
+                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtState">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">State</label>
                                             </div> 
                                             <div class="form-group form-default" runat="server" visible="false" id="idAproved">
-                                                <input type="date" name="footer-email " class="form-control text-right" required="" runat="server" id="dateApproved">
+                                                <input type="date" name="footer-email " class="form-control text-right"  runat="server" id="dateApproved">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Approved Date</label>
                                             </div> 
                                             <div class="form-group form-default" runat="server" visible="false" id="VisApprovedBy">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtApproved">
+                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtApproved">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Approved By</label>
                                             </div> 
                                             <div class="form-group form-default" runat="server" visible="false" id="idSaved">
-                                                <input type="text" name="footer-email " class="form-control text-right" required="" runat="server" id="DateSaved">
+                                                <input type="text" name="footer-email " class="form-control text-right"  runat="server" id="DateSaved">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Saved</label>
                                             </div>
                                             <div class="form-group form-default">
-                                                <textarea class="form-control" required="" runat="server" id="txtComment"></textarea>
+                                                <textarea class="form-control" runat="server" id="txtComment"></textarea>
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Comment</label>
                                             </div>
@@ -144,7 +139,7 @@
                         </div>
                         <div class="card-footer">
                              <div class="float-right">
-                                <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
+                                <button type="submit" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
                                 <button id="btnCancel" runat="server" type="reset" class="btn btn-danger ml-5">Cancel</button>
                                 <a class="btn btn-info ml-5" href="ViewLeave.aspx">List</a>
                             </div>

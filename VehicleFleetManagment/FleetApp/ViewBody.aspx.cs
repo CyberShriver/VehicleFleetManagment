@@ -71,7 +71,7 @@ namespace VehicleFleetManagment.FleetApp
             }
             if (e.CommandName == "delet")
             {
-                I.Delete(index);
+                I.DeleteState(index);
                 Response.Redirect("~/FleetApp/ViewBody.aspx");
 
 
@@ -144,16 +144,8 @@ namespace VehicleFleetManagment.FleetApp
                 CheckBox chkdelete = (CheckBox)gdv.Rows[i].Cells[0].FindControl("checkSel");
                 if (chkdelete.Checked)
                 {
-                   int id = Convert.ToInt32(gdv.DataKeys[i].Value);
-                    //using(SqlConnection con=new SqlConnection(ConfigurationManager.ConnectionStrings["MINISTRY_DB_Connection"].ConnectionString))
-                    //{
-                    //    con.Open();
-                    //    SqlCommand cmd = new SqlCommand("Delete from BODY_TYPE Where BODY_ID='" + id + "'", con);
-                    //    cmd.ExecuteNonQuery();
-                    //    gdv.EditIndex = -1;
-                    //    con.Close();
-                    //}
-                    I.Delete(id);
+                   int id = Convert.ToInt32(gdv.DataKeys[i].Value);                    
+                    I.DeleteState(id);
                     gdv.EditIndex = -1;
                 }
             }

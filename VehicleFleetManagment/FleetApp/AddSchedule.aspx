@@ -10,8 +10,9 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                         <asp:Label class="m-b-10 h5" ID="txtSystemTitle" runat="server" Text="" ></asp:Label>
-                        <p><asp:Label class="m-b-0 p" ID="txtSlogan" runat="server" Text="" ></asp:Label></p>
+                        <asp:Label class="m-b-10 h5" ID="txtSystemTitle" runat="server" Text=""></asp:Label>
+                        <p>
+                            <asp:Label class="m-b-0 p" ID="txtSlogan" runat="server" Text=""></asp:Label></p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -67,7 +68,22 @@
                                             <label class="float-label">Plate</label>
                                         </div>
                                         <div class="form-group form-default">
-                                            <textarea class="form-control" required="" runat="server" id="txtComment"></textarea>
+                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtMission">
+                                            <span class="form-bar"></span>
+                                            <label class="float-label">Mission</label>
+                                        </div>
+                                        <div class="form-group form-default">
+                                            <input type="date" class="form-control text-right" required="" runat="server" id="dateMission">
+                                            <span class="form-bar"></span>
+                                            <label class="float-label  "> Date Mission</label>
+                                        </div>
+                                        <div class="form-group form-default">
+                                            <input type="time" name="footer-email" class="form-control text-right" required="" runat="server" id="TimeMission">
+                                            <span class="form-bar"></span>
+                                            <label class="float-label"> Time Of Mission</label>
+                                        </div>                                        
+                                        <div class="form-group form-default">
+                                            <textarea class="form-control" runat="server" id="txtComment"></textarea>
                                             <span class="form-bar"></span>
                                             <label class="float-label">Comment</label>
                                         </div>
@@ -76,7 +92,7 @@
 
                                 <div class="card-footer">
                                     <div class="float-right">
-                                        <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
+                                        <button type="submit" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
                                         <button type="reset" class="btn btn-danger ml-5">Cancel</button>
                                         <a class="btn btn-info ml-5" href="ViewSchedule.aspx">List</a>
                                     </div>

@@ -82,7 +82,7 @@ namespace VehicleFleetManagment.FleetApp
             try
             {
                 if (txtName.Value == "" || txtAddress.Value == "" || txtTel.Value == "" || txtSysTitle.Value == "" ||
-                    txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || DropDown_Role.SelectedValue == "-1" || txtSysMaile.Value == "" || txtTheme.Value=="" || txtSlogan.Value=="")
+                    txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || DropDown_Role.SelectedValue == "-1" || txtSysMaile.Value == "" )
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -220,7 +220,7 @@ namespace VehicleFleetManagment.FleetApp
             try
             {
                 if (txtName.Value == "" || txtAddress.Value == "" || txtTel.Value == "" ||  txtSysTitle.Value == "" ||
-                  txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || DropDown_Role.SelectedValue == "-1" || txtSysMaile.Value == "" || txtTheme.Value == "" || txtSlogan.Value == "")
+                  txtFax.Value == "" || txtPostal.Value == "" || txtSysName.Value == "" || DropDown_Role.SelectedValue == "-1" || txtSysMaile.Value == "")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;

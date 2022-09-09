@@ -59,6 +59,7 @@ namespace VehicleFleetManagment.FleetImp
                 C.Crash_Pic  = cr.Crash_Pic ;
                 C.Saved_Date  = cr.Saved_Date ;
                 C.Stat  = cr.Stat ;
+                C.Deleted  = "False" ;
                 
 
 
@@ -126,7 +127,37 @@ namespace VehicleFleetManagment.FleetImp
                     C.Crash_Pic  = cr.Crash_Pic ;
                     C.Saved_Date  = cr.Saved_Date ;
                     C.Stat  = cr.Stat ;
-                   
+                    C.Deleted = "False";
+
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.CAR_CRASH.Add(C);
+                        con.Entry(C).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
+        //Change delete state METHOD
+        public int DeleteState(int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                CAR_CRASH C = new CAR_CRASH();
+                C = con.CAR_CRASH.Where(x => x.CAR_CRASH_ID == id).FirstOrDefault();
+
+                if (C != null)
+                {
+                    C.Deleted = "True";
 
                     if (con.SaveChanges() > 0)
                     {
@@ -171,7 +202,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from C in con.CAR_CRASH.AsEnumerable()
-                           where C.MINISTRY.Code_Min == codeMin 
+                           where C.MINISTRY.Code_Min == codeMin  && C.Deleted=="False"
                            group C by Convert.ToDateTime(C.Crash_Date).ToString("MMMM") into g
 
                            select new
@@ -194,7 +225,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from C in con.CAR_CRASH where C.MINISTRY.Code_Min==codeMin
+                var obj = (from C in con.CAR_CRASH where C.MINISTRY.Code_Min==codeMin && C.Deleted == "False"
 
                            select new
                            {
@@ -251,7 +282,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from C in con.CAR_CRASH
+                var obj = (from C in con.CAR_CRASH where C.Deleted == "False"
 
                            select new
                            {
@@ -358,7 +389,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var C = (from l in con.CAR_CRASH where l.MINISTRY.Code_Min==codeMin
+                var C = (from l in con.CAR_CRASH where l.MINISTRY.Code_Min==codeMin && l.Deleted == "False"
                          select l).Count();
                 n = C;
             }
@@ -371,7 +402,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var C = (from l in con.CAR_CRASH
+                var C = (from l in con.CAR_CRASH where l.Deleted == "False"
                          select l).Count();
                 n = C;
             }
@@ -384,7 +415,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from C in con.CAR_CRASH
-                           where C.MINISTRY.Code_Min== codeMin &&
+                           where C.MINISTRY.Code_Min== codeMin && C.Deleted == "False" &&
                        C.Local_Plate.StartsWith(SearchText) ||
                        C.Crash_Date.StartsWith(SearchText) ||
                        C.Crash_Time.StartsWith(SearchText) ||
@@ -451,7 +482,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from C in con.CAR_CRASH
-                           where
+                           where C.Deleted == "False" &&
                        C.Local_Plate.StartsWith(SearchText) ||
                        C.Crash_Date.StartsWith(SearchText) ||
                        C.Crash_Time.StartsWith(SearchText) ||
@@ -516,7 +547,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from V in con.VEHICLEs
+                var obj = (from V in con.VEHICLEs where C.Deleted == "False"
 
                            select new
                            {
@@ -538,7 +569,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from Md in con.MINISTRY_DRIVER
+                var obj = (from Md in con.MINISTRY_DRIVER where C.Deleted == "False"
 
                            select new
                            {
@@ -561,7 +592,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from Md in con.MINISTRY_DRIVER
-                           where Md.Position_Status=="On Post" && Md.Min_Driver_RegNumber== plat
+                           where Md.Position_Status=="On Post" && C.Deleted == "False" && Md.Min_Driver_RegNumber== plat
 
                            select new
                            {
@@ -584,7 +615,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from Md in con.MINISTRY_DRIVER
-                           where Md.MINISTRY_ID == id && Md.Position_Status == "On Post" 
+                           where Md.MINISTRY_ID == id && Md.Position_Status == "On Post" && C.Deleted == "False"
                            select new
                            {
                                Min_Driver_RegNumber = Md.Min_Driver_RegNumber
@@ -604,7 +635,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MINISTRies where M.Code_Min==codeMin
+                var obj = (from M in con.MINISTRies where M.Code_Min==codeMin && C.Deleted == "False"
 
                            select new
                            {
@@ -626,7 +657,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from R in con.MINISTRies
+                var obj = (from R in con.MINISTRies where C.Deleted == "False"
 
                            select new
                            {
@@ -649,7 +680,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from C in con.CAR_CRASH
-                           where C.MINISTRY.Code_Min == codeMin && C.CAR_CRASH_ID == id
+                           where C.MINISTRY.Code_Min == codeMin && C.Deleted == "False" && C.CAR_CRASH_ID == id
 
                            select new
                            {
@@ -670,7 +701,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from C in con.CAR_CRASH
-                           where C.MINISTRY.Code_Min == codeMin && C.CAR_CRASH_ID == id
+                           where C.MINISTRY.Code_Min == codeMin && C.Deleted == "False" && C.CAR_CRASH_ID == id
 
                            select new
                            {

@@ -99,12 +99,12 @@
                                                                 <label class="float-label">Change System Email</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtSlogan">
+                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtSlogan">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Change Slogan</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTheme">
+                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtTheme">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Change Theme</label>
                                                             </div>
@@ -119,7 +119,7 @@
                                                 </div>
                                                 <div class="card-footer">
                                                     <div class="float-right">
-                                                        <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save Changes</button>
+                                                        <button type="submit" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save Changes</button>
                                                         <button type="reset" class="btn btn-danger ml-5" runat="server" id="btnCancel">Cancel</button>
                                                     </div>
                                                 </div>

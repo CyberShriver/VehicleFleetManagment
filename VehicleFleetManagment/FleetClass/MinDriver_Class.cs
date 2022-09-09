@@ -16,6 +16,7 @@ namespace VehicleFleetManagment.FleetClass
         public int MINISTRY_ID { get; set; }
         public string Position_Status { get; set; }
         public string StartDate { get; set; }
+        public string Deleted { get; set; }
         public string EndDate { get; set; }
         public virtual DRIVER DRIVER { get; set; }
         public virtual ICollection<LEAVE> LEAVEs { get; set; }

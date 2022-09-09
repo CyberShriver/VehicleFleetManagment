@@ -59,12 +59,11 @@
                                 <div class="card-header">
                                     <h5>Provider</h5>
                                 </div>
-                                <div class="row">
+                                <div class="row card-block">
                                     <div class="col-md-6">
-
                                         <div class="form-material">                                           
                                             <div class="form-group form-default">
-                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
+                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtCode" visible="false">
                                             </div>
 
                                             <div class="form-group form-default">
@@ -120,7 +119,7 @@
                                     <div class="col-md-6">
                                         <div class="form-material">
                                             <div class="form-group form-default">
-                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
+                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change"  autocomplete="off" class="form-control text-right" runat="server" />
                                                 <span class="form-bar"></span>
                                                 <label class="float-label ">Provider Picture:.png,.jpg</label>
                                             </div>
@@ -131,7 +130,7 @@
                                                 <label class="float-label ">Contact:.png,.jpg</label>
                                             </div>
 
-                                            <asp:Image ID="Image1" runat="server" Width="150px" Height="150px" />
+                                            <asp:Image ID="Image1" runat="server" Width="350px" Height="250px" />
                                         </div>
 
                                     </div>
@@ -139,7 +138,7 @@
 
                                 <div class="card-footer">
                                     <div class="float-right">
-                                        <button type="button" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
+                                        <button type="submit" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
                                         <button type="reset" class="btn btn-danger ml-5">Cancel</button>
                                         <a class="btn btn-info ml-5" href="ViewProvider.aspx">List</a>
                                     </div>

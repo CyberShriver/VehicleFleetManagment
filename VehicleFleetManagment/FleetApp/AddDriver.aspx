@@ -128,8 +128,6 @@
                                                                     <asp:ListItem>Francais</asp:ListItem>
                                                                     <asp:ListItem>Swahili</asp:ListItem>
                                                                     <asp:ListItem>English</asp:ListItem>
-                                                                    <asp:ListItem>Spanish</asp:ListItem>
-                                                                    <asp:ListItem>Portugal</asp:ListItem>
                                                                 </asp:DropDownList>
                                                                 <label class="float-label">Mother Langage</label>
                                                             </div>
@@ -150,17 +148,17 @@
                                                                 <label class="float-label">Address 1</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAddress2">
+                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtAddress2">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Address 2</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtAddress3">
+                                                                <input type="text" name="footer-email" class="form-control" runat="server" id="txtAddress3">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Address 3</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="tel" name="footer-email" class="form-control" required="" runat="server" id="txtTel">
+                                                                <input type="tel" name="footer-email" class="form-control" required="" runat="server" id="txtTel" onkeypress="inpNum(event)" maxlength="12" >
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Personal Phone</label>
                                                             </div>
@@ -172,7 +170,7 @@
                                                     <div class="float-right">
                                                         <a class="btn btn-sm btn-info ml-5" href="ViewDriver.aspx">List <i class="icofont icofont-listine-dots"></i></a>
                                                         <button type="reset" class="btn btn-sm btn-danger ml-5 mr-5">Cancel</button>
-                                                        <button type="button" id="btnGenNext" class="btn btn-sm btn-default ml-5 waves-effect  " runat="server" onserverclick="ActiveProf_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
+                                                        <button type="submit" id="btnGenNext" class="btn btn-sm btn-default ml-5 waves-effect  " runat="server" onserverclick="ActiveProf_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
                                                     </div>
                                                 </div>
                                             </asp:View>
@@ -196,7 +194,7 @@
                                                                 <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDownList_DriverType" required="" runat="server">
                                                                     <asp:ListItem>Vehicle</asp:ListItem>
                                                                     <asp:ListItem>Motor</asp:ListItem>
-                                                                    <asp:ListItem>Trail</asp:ListItem>
+                                                                    <asp:ListItem>Trailer</asp:ListItem>
                                                                 </asp:DropDownList>
                                                                 <label class="float-label">Driver Type</label>
                                                             </div>
@@ -206,18 +204,18 @@
                                                                 <label class="float-label">Email (example@gmail.com)</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtPostal">
+                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtPostal">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Postal Code</label>
                                                             </div>
                                                             <div class="form-group form-default"">
-                                                                 <input type="tel" name="footer-email" class="form-control"  required="" runat="server" id="txtTelOffice" >
+                                                                 <input type="tel" name="footer-email" class="form-control"   runat="server" id="txtTelOffice" onkeypress="inpNum(event)" maxlength="12" >
                                                                  <span class="form-bar"></span>
                                                                  <label class="float-label">Office Phone  </label> 
                                                 
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
+                                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change"  autocomplete="off" class="form-control text-right" runat="server" />
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label ">Pic:.ico,.png,.jpg</label>
                                                             </div>
@@ -226,7 +224,7 @@
                                                 </div>
                                                 <button type="button" id="BtnProfessionalPreview" class="btn btn-sm btn-default  waves-effect" runat="server" onserverclick="ActiveGen_click"><i class="icofont icofont-hand-drawn-left"></i>Preview</button>
                                                 <div class="float-right">
-                                                    <button type="button" id="btnSave" class="btn btn-sm btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save <i class="icofont icofont-save"></i></button>
+                                                    <button type="submit" id="btnSave" class="btn btn-sm btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save <i class="icofont icofont-save"></i></button>
                                                     <button type="reset" class="btn btn-sm btn-danger ml-5">Cancel</button>
                                                     <a class="btn btn-sm btn-info ml-5" href="ViewDriver.aspx">List <i class="icofont icofont-listine-dots"></i></a>
 

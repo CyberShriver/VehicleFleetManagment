@@ -71,7 +71,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (DropDown_Ministry.SelectedValue == "-1" || txtComment.Value == "" || DropDown_Plate.SelectedValue == "-1")
+                if (DropDown_Ministry.SelectedValue == "-1"  || DropDown_Plate.SelectedValue == "-1" || dateMission.Value=="" || txtMission.Value=="" || TimeMission.Value=="")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -82,6 +82,9 @@ namespace VehicleFleetManagment.FleetApp
 
                     sc.VEHICLE_ID = Convert.ToInt32(DropDown_Plate.SelectedValue);
                     sc.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
+                    sc.Mission = txtMission.Value;
+                    sc.Date = dateMission.Value;
+                    sc.Time = TimeMission.Value;
                     sc.Comment = txtComment.Value;
                     sc.Saved_Date =DateTime.Now.ToString();
 
@@ -95,6 +98,9 @@ namespace VehicleFleetManagment.FleetApp
                         //DropDown_Plate.SelectedValue= "";
                         //DropDown_Ministry.SelectedValue= "-1";
                         txtComment.Value = "";
+                        txtMission.Value = "";
+                        dateMission.Value = "";
+                        TimeMission.Value = "";
                     }
                     else
                     {
@@ -118,7 +124,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (DropDown_Ministry.SelectedValue == "-1" || txtComment.Value == "" || DropDown_Plate.SelectedValue == "-1")
+                if (DropDown_Ministry.SelectedValue == "-1" || DropDown_Plate.SelectedValue == "-1" || dateMission.Value == "" || txtMission.Value == "" || TimeMission.Value == "")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -128,6 +134,9 @@ namespace VehicleFleetManagment.FleetApp
                 {
                     sc.VEHICLE_ID = Convert.ToInt32(DropDown_Plate.SelectedValue);
                     sc.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
+                    sc.Mission = txtMission.Value;
+                    sc.Date = dateMission.Value;
+                    sc.Time = TimeMission.Value;
                     sc.Comment = txtComment.Value;
                     sc.Saved_Date = DateTime.Now.ToString();
 
@@ -164,6 +173,9 @@ namespace VehicleFleetManagment.FleetApp
                 DropDown_Plate.SelectedValue= sc.VEHICLE_ID.ToString();
                 DropDown_Ministry.SelectedValue = sc.MINISTRY_ID.ToString();
                 txtComment.Value = sc.Comment;
+                txtMission.Value= sc.Mission ;
+                dateMission.Value=sc.Date ;
+                TimeMission.Value =sc.Time ;
             }
         }
 

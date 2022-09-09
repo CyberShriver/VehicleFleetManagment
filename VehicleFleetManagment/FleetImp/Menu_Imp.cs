@@ -23,6 +23,7 @@ namespace VehicleFleetManagment.FleetImp
             {
                 M.Title_Menu = Me.Title_Menu;
                 M.Stat = Me.Stat;
+                M.Deleted = "False";
 
                 con.MENUs.Add(M);
 
@@ -53,6 +54,7 @@ namespace VehicleFleetManagment.FleetImp
 
                     M.Title_Menu = Me.Title_Menu;
                     M.Stat = Me.Stat;
+                    M.Deleted = "False";
 
                     if (con.SaveChanges() > 0)
                     {
@@ -90,12 +92,41 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //DELETE STATE METHOD
+        public int DeleteState(int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                MENU M = new MENU();
+                M = con.MENUs.Where(x => x.Menu_Code == id).FirstOrDefault();
+
+                if (M != null)
+                {
+                    M.Deleted = "True";
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.MENUs.Add(M);
+                        con.Entry(M).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
         //DISPLAY METHOD
         public void Display(GridView gd)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MENUs
+                var obj = (from M in con.MENUs where M.Deleted=="False"
 
                            select new
                            {
@@ -116,7 +147,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                M = con.MENUs.Where(x => x.Title_Menu == menu).FirstOrDefault();
+                M = con.MENUs.Where(x => x.Title_Menu == menu && x.Deleted == "False").FirstOrDefault();
                 if (M != null)
                 {
                     Me.Menu_Code = M.Menu_Code;
@@ -147,7 +178,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var b = (from l in con.MENUs
+                var b = (from l in con.MENUs where M.Deleted == "False"
                          select l).Count();
                 n = b;
             }
@@ -160,7 +191,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MENUs
-                           where M.Title_Menu.StartsWith(SearchText)
+                           where M.Deleted == "False" && M.Title_Menu.StartsWith(SearchText)
 
                            select new
                            {

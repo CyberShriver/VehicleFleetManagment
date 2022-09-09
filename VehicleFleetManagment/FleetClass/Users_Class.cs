@@ -19,6 +19,7 @@ namespace VehicleFleetManagment.FleetClass
         public string Phone { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
+        public string Deleted { get; set; }
         public string User_Nme { get; set; }
         public string Password { get; set; }
         public string Picture { get; set; }

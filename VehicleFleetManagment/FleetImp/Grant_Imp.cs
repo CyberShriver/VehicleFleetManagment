@@ -25,6 +25,7 @@ namespace VehicleFleetManagment.FleetImp
                 G.Access = Gr.Access;
                 G.MINISTRY_ID = Gr.MINISTRY_ID;
                 G.ROLE_ID = Gr.ROLE_ID;
+                G.Deleted ="False";
 
                 con.GRANT_RIGHT.Add(G);
 
@@ -50,6 +51,7 @@ namespace VehicleFleetManagment.FleetImp
                 G = con.GRANT_RIGHT.Where(x => x.ROLE_ID == code && x.Menu_Code == menu && x.MINISTRY_ID == IdMin).FirstOrDefault();
 
                 G.Access = Gr.Access;
+                G.Deleted = "False";
 
                 if (con.SaveChanges() == 1)
                 {
@@ -80,6 +82,27 @@ namespace VehicleFleetManagment.FleetImp
             }
         }
 
+        //DELETE STATE METHOD
+        public int DeleteState(int code, long menu, int IdMin, Grant_Class Gr)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                G = con.GRANT_RIGHT.Where(x => x.ROLE_ID == code && x.Menu_Code == menu && x.MINISTRY_ID == IdMin).FirstOrDefault();
+
+                G.Deleted = "True";
+
+                if (con.SaveChanges() == 1)
+                {
+                    con.GRANT_RIGHT.Add(G);
+                    con.Entry(G).State = EntityState.Modified;
+                    return msg = 1;
+                }
+                else
+                    return msg = 0;
+
+            }
+        }
+
         //DISPLAY METHOD
         public void Display(GridView gd)
         {
@@ -88,7 +111,7 @@ namespace VehicleFleetManagment.FleetImp
 
                 var obj = (from Gr in con.GRANT_RIGHT
                            join M in con.MENUs on Gr.Menu_Code equals M.Menu_Code
-                           join R in con.ROLEs on Gr.ROLE_ID equals R.ROLE_ID
+                           join R in con.ROLEs on Gr.ROLE_ID equals R.ROLE_ID where Gr.Deleted == "False"
                            select new
                            {
                                RowId = Gr.RowId,
@@ -112,7 +135,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                G = con.GRANT_RIGHT.Where(x => x.RowId == code).FirstOrDefault();
+                G = con.GRANT_RIGHT.Where(x => x.RowId == code && G.Deleted == "False").FirstOrDefault();
                 if (G != null)
                 {
                     Gr.ROLE_ID = G.ROLE_ID;
@@ -131,7 +154,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                G = con.GRANT_RIGHT.Where(x => x.ROLE_ID == code && x.Menu_Code == menu && x.MINISTRY_ID == idMin).FirstOrDefault();
+                G = con.GRANT_RIGHT.Where(x => x.ROLE_ID == code && x.Menu_Code == menu && x.MINISTRY_ID == idMin && x.Deleted == "False").FirstOrDefault();
                 if (G != null)
                 {
                     Gr.ROLE_ID = G.ROLE_ID;
@@ -188,7 +211,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var c = (from l in con.GRANT_RIGHT
+                var c = (from l in con.GRANT_RIGHT where G.Deleted == "False"
                          select l).Count();
                 n = c;
             }
@@ -205,7 +228,7 @@ namespace VehicleFleetManagment.FleetImp
                          join M in con.MENUs on G.Menu_Code equals M.Menu_Code
                          join r in con.ROLEs on G.ROLE_ID equals r.ROLE_ID
                          join Min in con.MINISTRies on G.MINISTRY_ID equals Min.MINISTRY_ID
-                         where (G.ROLE_ID == role && M.Title_Menu == menu && G.MINISTRY_ID == idMin && G.Access == "ON")
+                         where G.Deleted == "False" && (G.ROLE_ID == role && M.Title_Menu == menu && G.MINISTRY_ID == idMin && G.Access == "ON")
                          select G).Count();
                 n = b;
             }
@@ -221,7 +244,7 @@ namespace VehicleFleetManagment.FleetImp
                 var obj = (from Gr in con.GRANT_RIGHT
                            join M in con.MENUs on Gr.Menu_Code equals M.Menu_Code
                            join r in con.ROLEs on Gr.ROLE_ID equals r.ROLE_ID
-                           where (M.Title_Menu.Contains(SearchText) || r.Role_Name.Contains(SearchText))
+                           where G.Deleted == "False" && (M.Title_Menu.Contains(SearchText) || r.Role_Name.Contains(SearchText))
                            select new
                            {
                               

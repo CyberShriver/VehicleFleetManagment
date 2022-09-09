@@ -58,6 +58,7 @@ namespace VehicleFleetManagment.FleetModel
         public string Stat { get; set; }
         public Nullable<int> MINISTRY_ID { get; set; }
         public string Local_Plate { get; set; }
+        public string Deleted { get; set; }
     
         public virtual MINISTRY MINISTRY { get; set; }
         public virtual MINISTRY_DRIVER MINISTRY_DRIVER { get; set; }

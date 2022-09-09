@@ -398,6 +398,7 @@ namespace VehicleFleetManagment.FleetApp
             tabProfessional.Attributes.Add("class", "nav-link active");
         }
 
+        //CNI CHECK
         protected void OnTextChanged_txtCNI(object sender, EventArgs args)
         {
             msg= I.ProvideByCNI(Dr, txtCNI.Text);
@@ -426,19 +427,7 @@ namespace VehicleFleetManagment.FleetApp
                 
             }
             else
-            {
-                txtCode.Value = "";
-                txtFullName.Value = "";
-                txtTel.Value = "";
-                txtMail.Value = "";
-                txtAddress1.Value ="";
-                txtAddress2.Value ="";
-                txtAddress3.Value = "";
-                dateBirth.Value = "";
-                txtTelOffice.Value = "";
-                txtNationality.Value = "";
-                txtPostal.Value = "";
-
+            {                
                 btnSave.Visible = true;
                 ExistMsg.Visible = false;
             }

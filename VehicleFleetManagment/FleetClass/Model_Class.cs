@@ -13,6 +13,7 @@ namespace VehicleFleetManagment.FleetClass
         public Nullable<int> MARK_ID { get; set; }
         public string Model_Name { get; set; }
         public string Comment { get; set; }
+        public string Deleted { get; set; }
 
         public virtual MARK MARK { get; set; }
 

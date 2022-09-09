@@ -9,6 +9,7 @@ namespace VehicleFleetManagment.FleetClass
     {
         public int MARK_ID { get; set; }
         public string Mark_Name { get; set; }
+        public string Deleted { get; set; }
         public string Comment { get; set; }
 
 

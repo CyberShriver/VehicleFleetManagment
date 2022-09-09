@@ -20,6 +20,7 @@
           <Property Name="Insurance_Company" Type="varchar" MaxLength="255" />
           <Property Name="Comment" Type="text" />
           <Property Name="Insurance_State" Type="varchar" MaxLength="100" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="BODY_TYPE">
           <Key>
@@ -28,6 +29,7 @@
           <Property Name="BODY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Category" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Category_N°" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="CAR_CRASH">
           <Key>
@@ -71,6 +73,7 @@
           <Property Name="Saved_Date" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Stat" Type="varchar" MaxLength="30" />
           <Property Name="MINISTRY_ID" Type="int" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="DRIVER">
           <Key>
@@ -97,6 +100,7 @@
           <Property Name="Ministry_Work" Type="varchar" MaxLength="100" />
           <Property Name="State" Type="varchar" MaxLength="100" />
           <Property Name="Visibility" Type="varchar" MaxLength="10" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="GRANT_RIGHT">
           <Key>
@@ -107,6 +111,7 @@
           <Property Name="Menu_Code" Type="bigint" Nullable="false" />
           <Property Name="Access" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="MINISTRY_ID" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="LEAVE">
           <Key>
@@ -116,7 +121,6 @@
           <Property Name="MINISTRY_ID" Type="int" Nullable="false" />
           <Property Name="Leave_Code" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="MIN_DRIVER_ID" Type="bigint" Nullable="false" />
-          <Property Name="Carpooling" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="LEAVE_TYPE_ID" Type="int" />
           <Property Name="Start_Dte" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="End_Dte" Type="varchar" MaxLength="100" Nullable="false" />
@@ -126,6 +130,7 @@
           <Property Name="Comment" Type="text" />
           <Property Name="Saved_Date" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="State" Type="varchar" MaxLength="40" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="LEAVE_TYPE">
           <Key>
@@ -134,6 +139,7 @@
           <Property Name="LEAVE_TYPE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Leave_Type_Description" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Leave_Number" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="LICENSE">
           <Key>
@@ -162,6 +168,7 @@
           <Property Name="MINISTRY_ID" Type="int" />
           <Property Name="Saved_Dte" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Scanned_Picture" Type="varchar" MaxLength="100" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="MARK">
           <Key>
@@ -170,6 +177,7 @@
           <Property Name="MARK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Mark_Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Comment" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="MENU">
           <Key>
@@ -178,6 +186,7 @@
           <Property Name="Menu_Code" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title_Menu" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Stat" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="MINISTRY">
           <Key>
@@ -198,6 +207,7 @@
           <Property Name="Slogan" Type="varchar" MaxLength="200" />
           <Property Name="Theme" Type="varchar" MaxLength="100" />
           <Property Name="ROLE_ID" Type="bigint" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="MINISTRY_DRIVER">
           <Key>
@@ -211,6 +221,7 @@
           <Property Name="Position_Status" Type="varchar" MaxLength="30" />
           <Property Name="StartDate" Type="varchar" MaxLength="50" />
           <Property Name="EndDate" Type="varchar" MaxLength="50" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="MINISTRY_REAL_ESTATE">
           <Key>
@@ -221,6 +232,7 @@
           <Property Name="MINISTRY_ID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Comment" Type="varchar" MaxLength="300" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="MODEL">
           <Key>
@@ -230,6 +242,7 @@
           <Property Name="MARK_ID" Type="int" />
           <Property Name="Model_Name" Type="varchar" MaxLength="50" />
           <Property Name="Comment" Type="varchar" MaxLength="100" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="MOT">
           <Key>
@@ -242,6 +255,7 @@
           <Property Name="Validity_End_Dte" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="VEHICLE_ID" Type="bigint" Nullable="false" />
           <Property Name="MINISTRY_ID" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="PROVIDER">
           <Key>
@@ -260,6 +274,7 @@
           <Property Name="Picture" Type="varchar" MaxLength="100" />
           <Property Name="Contract" Type="varchar" MaxLength="100" />
           <Property Name="Saved_Date" Type="varchar" MaxLength="100" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="REAL_ESTATE">
           <Key>
@@ -268,6 +283,7 @@
           <Property Name="REAL_ESTATE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RealEstate_Name" Type="varchar" MaxLength="50" />
           <Property Name="Comment" Type="varchar" MaxLength="300" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="REPAIR">
           <Key>
@@ -292,6 +308,7 @@
           <Property Name="Comment" Type="text" />
           <Property Name="Saved_Date" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="MINISTRY_ID" Type="int" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="ROLE">
           <Key>
@@ -300,6 +317,7 @@
           <Property Name="ROLE_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Role_Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Descrept" Type="varchar" MaxLength="255" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="SCHEDULE">
           <Key>
@@ -307,9 +325,13 @@
           </Key>
           <Property Name="SCHEDULE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VEHICLE_ID" Type="bigint" Nullable="false" />
+          <Property Name="Mission" Type="varchar" MaxLength="300" />
+          <Property Name="Date" Type="varchar" MaxLength="300" />
+          <Property Name="Time" Type="varchar" MaxLength="300" />
           <Property Name="Comment" Type="varchar" MaxLength="300" />
           <Property Name="Saved_Date" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="MINISTRY_ID" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="USERS">
           <Key>
@@ -331,6 +353,7 @@
           <Property Name="User_Code" Type="varchar" MaxLength="50" />
           <Property Name="State" Type="varchar" MaxLength="10" />
           <Property Name="Saved_Date" Type="varchar" MaxLength="30" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="VEHICLE">
           <Key>
@@ -388,6 +411,7 @@
           <Property Name="Circulation_Expiration_Date" Type="varchar" MaxLength="100" />
           <Property Name="Stat" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Picture" Type="varchar" MaxLength="100" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="VEHICLE_FUEL_SUPPLY">
           <Key>
@@ -402,12 +426,16 @@
           <Property Name="Provider_Code" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Odometer" Type="float" Nullable="false" />
           <Property Name="Initial_Qty" Type="float" Nullable="false" />
+          <Property Name="Fuel_Used" Type="float" />
           <Property Name="Consumed_Qty" Type="float" Nullable="false" />
           <Property Name="United_Price" Type="float" Nullable="false" />
           <Property Name="Total_Price" Type="float" Nullable="false" />
           <Property Name="Liter_100_km" Type="float" Nullable="false" />
+          <Property Name="User_IP_Address" Type="varchar" MaxLength="100" />
+          <Property Name="Permission" Type="varchar" MaxLength="100" />
           <Property Name="Comment" Type="text" />
           <Property Name="Saved_Date" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <Association Name="FK_ASSURANCE_IDveh">
           <End Role="VEHICLE" Type="Self.VEHICLE" Multiplicity="1" />
@@ -958,6 +986,7 @@
           <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Category_N_" Type="Int32" Nullable="false" />
           <NavigationProperty Name="VEHICLEs" Relationship="MINISTRY_DBModel.FK_VEHICLE_IDBody" FromRole="BODY_TYPE" ToRole="VEHICLE" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="MARK">
           <Key>
@@ -967,6 +996,7 @@
           <Property Name="Mark_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="MODELs" Relationship="Self.FK_MARK_MODEL" FromRole="MARK" ToRole="MODEL" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="MODEL">
           <Key>
@@ -978,6 +1008,7 @@
           <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MARK" Relationship="Self.FK_MARK_MODEL" FromRole="MODEL" ToRole="MARK" />
           <NavigationProperty Name="VEHICLEs" Relationship="MINISTRY_DBModel.FK_VEHICLE_IDmodel" FromRole="MODEL" ToRole="VEHICLE" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PROVIDER">
           <Key>
@@ -996,6 +1027,7 @@
           <Property Name="Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Contract" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Saved_Date" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="REAL_ESTATE">
           <Key>
@@ -1005,6 +1037,7 @@
           <Property Name="RealEstate_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Comment" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MINISTRY_REAL_ESTATE" Relationship="MINISTRY_DBModel.FK_MINISTRY_REAL_ESTATE_REAL_ESTATE_ID" FromRole="REAL_ESTATE" ToRole="MINISTRY_REAL_ESTATE" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_MARK_MODEL">
           <End Role="MARK" Type="Self.MARK" Multiplicity="0..1" />
@@ -1198,6 +1231,7 @@
           <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Visibility" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="LICENSEs" Relationship="MINISTRY_DBModel.FK_LICENSE_DRIVER_ID" FromRole="DRIVER" ToRole="LICENSE" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="LEAVE_TYPE">
           <Key>
@@ -1207,6 +1241,7 @@
           <Property Name="Leave_Type_Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Leave_Number" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="LEAVEs" Relationship="MINISTRY_DBModel.FK_LEAVE_LEAVE_TYPE_ID" FromRole="LEAVE_TYPE" ToRole="LEAVE" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="MINISTRY">
           <Key>
@@ -1241,6 +1276,7 @@
           <NavigationProperty Name="USERS" Relationship="MINISTRY_DBModel.FK_MINISTRY_IDMinistry" FromRole="MINISTRY" ToRole="USER" />
           <Property Name="ROLE_ID" Type="Int64" />
           <NavigationProperty Name="ROLE" Relationship="MINISTRY_DBModel.FK_MINISTRY_ROLE" FromRole="MINISTRY" ToRole="ROLE" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="VEHICLE">
           <Key>
@@ -1306,6 +1342,7 @@
           <NavigationProperty Name="MOTs" Relationship="MINISTRY_DBModel.FK_MOT_IDveh" FromRole="VEHICLE" ToRole="MOT" />
           <NavigationProperty Name="SCHEDULEs" Relationship="MINISTRY_DBModel.FK_SCHEDULE_IDveh" FromRole="VEHICLE" ToRole="SCHEDULE" />
           <NavigationProperty Name="REPAIRs" Relationship="MINISTRY_DBModel.FK_REPAIR_IDveh" FromRole="VEHICLE" ToRole="REPAIR" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="VEHICLE_FUEL_SUPPLY">
           <Key>
@@ -1328,6 +1365,10 @@
           <Property Name="Saved_Date" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_VEHICLEfuel_IDMinistry" FromRole="VEHICLE_FUEL_SUPPLY" ToRole="MINISTRY" />
           <NavigationProperty Name="VEHICLE" Relationship="MINISTRY_DBModel.FK_VEHICLEfuel_IDveh" FromRole="VEHICLE_FUEL_SUPPLY" ToRole="VEHICLE" />
+          <Property Name="Fuel_Used" Type="Double" />
+          <Property Name="User_IP_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Permission" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_VEHICLE_IDBody">
           <End Type="MINISTRY_DBModel.BODY_TYPE" Role="BODY_TYPE" Multiplicity="1" />
@@ -1406,6 +1447,7 @@
           <Property Name="Insurance_State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="VEHICLE" Relationship="MINISTRY_DBModel.FK_ASSURANCE_IDveh" FromRole="ASSURANCE" ToRole="VEHICLE" />
           <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_ASSURANCE_MINISTRYId" FromRole="ASSURANCE" ToRole="MINISTRY" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="LEAVE">
           <Key>
@@ -1414,7 +1456,6 @@
           <Property Name="LEAVE_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Leave_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="MIN_DRIVER_ID" Type="Int64" Nullable="false" />
-          <Property Name="Carpooling" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LEAVE_TYPE_ID" Type="Int32" />
           <Property Name="Start_Dte" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="End_Dte" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -1428,6 +1469,7 @@
           <Property Name="MINISTRY_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_LEAVE_MINISTRYId" FromRole="LEAVE" ToRole="MINISTRY" />
           <Property Name="State" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="MINISTRY_DRIVER">
           <Key>
@@ -1445,6 +1487,7 @@
           <Property Name="StartDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EndDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Swaped_Vehicle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="MINISTRY_REAL_ESTATE">
           <Key>
@@ -1457,6 +1500,7 @@
           <Property Name="Comment" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_MINISTRY_REAL_ESTATE_IDMinistry" FromRole="MINISTRY_REAL_ESTATE" ToRole="MINISTRY" />
           <NavigationProperty Name="REAL_ESTATE" Relationship="MINISTRY_DBModel.FK_MINISTRY_REAL_ESTATE_REAL_ESTATE_ID" FromRole="MINISTRY_REAL_ESTATE" ToRole="REAL_ESTATE" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="MOT">
           <Key>
@@ -1471,6 +1515,7 @@
           <NavigationProperty Name="VEHICLE" Relationship="MINISTRY_DBModel.FK_MOT_IDveh" FromRole="MOT" ToRole="VEHICLE" />
           <Property Name="MINISTRY_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_MOT_MINISTRYId" FromRole="MOT" ToRole="MINISTRY" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SCHEDULE">
           <Key>
@@ -1483,6 +1528,10 @@
           <NavigationProperty Name="VEHICLE" Relationship="MINISTRY_DBModel.FK_SCHEDULE_IDveh" FromRole="SCHEDULE" ToRole="VEHICLE" />
           <Property Name="MINISTRY_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_SCHEDULE_MINISTRYId" FromRole="SCHEDULE" ToRole="MINISTRY" />
+          <Property Name="Mission" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_ASSURANCE_IDveh">
           <End Type="MINISTRY_DBModel.VEHICLE" Role="VEHICLE" Multiplicity="1" />
@@ -1685,6 +1734,7 @@
           <NavigationProperty Name="MINISTRY_DRIVER" Relationship="MINISTRY_DBModel.FK_CAR_CRASH_MIN_DRIVER_ID" FromRole="CAR_CRASH" ToRole="MINISTRY_DRIVER" />
           <NavigationProperty Name="REPAIRs" Relationship="MINISTRY_DBModel.FK_REPAIR_CAR_CRASH_ID" FromRole="CAR_CRASH" ToRole="REPAIR" />
           <Property Name="Local_Plate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="LICENSE">
           <Key>
@@ -1715,6 +1765,7 @@
           <Property Name="Scanned_Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DRIVER_ID" Type="Int64" Nullable="false" />
           <NavigationProperty Name="DRIVER" Relationship="MINISTRY_DBModel.FK_LICENSE_DRIVER_ID" FromRole="LICENSE" ToRole="DRIVER" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="REPAIR">
           <Key>
@@ -1742,6 +1793,7 @@
           <NavigationProperty Name="CAR_CRASH" Relationship="MINISTRY_DBModel.FK_REPAIR_CAR_CRASH_ID" FromRole="REPAIR" ToRole="CAR_CRASH" />
           <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_REPAIR_IDMinistry" FromRole="REPAIR" ToRole="MINISTRY" />
           <NavigationProperty Name="VEHICLE" Relationship="MINISTRY_DBModel.FK_REPAIR_IDveh" FromRole="REPAIR" ToRole="VEHICLE" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_CAR_CRASH_IDMinistry">
           <End Type="MINISTRY_DBModel.MINISTRY" Role="MINISTRY" Multiplicity="0..1" />
@@ -1827,6 +1879,7 @@
           <NavigationProperty Name="ROLE" Relationship="MINISTRY_DBModel.FK_ROLE_ROLE_ID" FromRole="GRANT_RIGHT" ToRole="ROLE" />
           <Property Name="MINISTRY_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_MINISTRY_MINISTRY_ID" FromRole="GRANT_RIGHT" ToRole="MINISTRY" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="MENU">
           <Key>
@@ -1836,6 +1889,7 @@
           <Property Name="Title_Menu" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Stat" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="GRANT_RIGHT" Relationship="MINISTRY_DBModel.FK_MENU_Menu_Code" FromRole="MENU" ToRole="GRANT_RIGHT" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ROLE">
           <Key>
@@ -1847,6 +1901,7 @@
           <NavigationProperty Name="GRANT_RIGHT" Relationship="MINISTRY_DBModel.FK_ROLE_ROLE_ID" FromRole="ROLE" ToRole="GRANT_RIGHT" />
           <NavigationProperty Name="USERS" Relationship="MINISTRY_DBModel.FK_ROLE_IdRole" FromRole="ROLE" ToRole="USER" />
           <NavigationProperty Name="MINISTRies" Relationship="MINISTRY_DBModel.FK_MINISTRY_ROLE" FromRole="ROLE" ToRole="MINISTRY" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_MENU_Menu_Code">
           <End Type="MINISTRY_DBModel.MENU" Role="MENU" Multiplicity="1" />
@@ -1906,6 +1961,7 @@
           <Property Name="User_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Saved_Date" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_MINISTRY_IDMinistry">
           <End Type="MINISTRY_DBModel.MINISTRY" Role="MINISTRY" Multiplicity="0..1" />
@@ -1964,6 +2020,7 @@
           <EntitySetMapping Name="BODY_TYPE">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.BODY_TYPE">
               <MappingFragment StoreEntitySet="BODY_TYPE">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="BODY_ID" ColumnName="BODY_ID" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="Category_N_" ColumnName="Category_N°" />
@@ -1973,6 +2030,7 @@
           <EntitySetMapping Name="MARKs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.MARK">
               <MappingFragment StoreEntitySet="MARK">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="MARK_ID" ColumnName="MARK_ID" />
                 <ScalarProperty Name="Mark_Name" ColumnName="Mark_Name" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
@@ -1982,6 +2040,7 @@
           <EntitySetMapping Name="MODELs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.MODEL">
               <MappingFragment StoreEntitySet="MODEL">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="MODEL_ID" ColumnName="MODEL_ID" />
                 <ScalarProperty Name="MARK_ID" ColumnName="MARK_ID" />
                 <ScalarProperty Name="Model_Name" ColumnName="Model_Name" />
@@ -1992,6 +2051,7 @@
           <EntitySetMapping Name="PROVIDERs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.PROVIDER">
               <MappingFragment StoreEntitySet="PROVIDER">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Saved_Date" ColumnName="Saved_Date" />
                 <ScalarProperty Name="Contract" ColumnName="Contract" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
@@ -2011,6 +2071,7 @@
           <EntitySetMapping Name="REAL_ESTATE">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.REAL_ESTATE">
               <MappingFragment StoreEntitySet="REAL_ESTATE">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="REAL_ESTATE_ID" ColumnName="REAL_ESTATE_ID" />
                 <ScalarProperty Name="RealEstate_Name" ColumnName="RealEstate_Name" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
@@ -2020,6 +2081,7 @@
           <EntitySetMapping Name="DRIVERs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.DRIVER">
               <MappingFragment StoreEntitySet="DRIVER">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Visibility" ColumnName="Visibility" />
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Ministry_Work" ColumnName="Ministry_Work" />
@@ -2047,6 +2109,7 @@
           <EntitySetMapping Name="LEAVE_TYPE">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.LEAVE_TYPE">
               <MappingFragment StoreEntitySet="LEAVE_TYPE">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Leave_Number" ColumnName="Leave_Number" />
                 <ScalarProperty Name="Leave_Type_Description" ColumnName="Leave_Type_Description" />
                 <ScalarProperty Name="LEAVE_TYPE_ID" ColumnName="LEAVE_TYPE_ID" />
@@ -2056,6 +2119,7 @@
           <EntitySetMapping Name="MINISTRies">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.MINISTRY">
               <MappingFragment StoreEntitySet="MINISTRY">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
                 <ScalarProperty Name="Theme" ColumnName="Theme" />
                 <ScalarProperty Name="Slogan" ColumnName="Slogan" />
@@ -2077,6 +2141,7 @@
           <EntitySetMapping Name="VEHICLEs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.VEHICLE">
               <MappingFragment StoreEntitySet="VEHICLE">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
                 <ScalarProperty Name="Stat" ColumnName="Stat" />
                 <ScalarProperty Name="Circulation_Expiration_Date" ColumnName="Circulation_Expiration_Date" />
@@ -2135,6 +2200,10 @@
           <EntitySetMapping Name="VEHICLE_FUEL_SUPPLY">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.VEHICLE_FUEL_SUPPLY">
               <MappingFragment StoreEntitySet="VEHICLE_FUEL_SUPPLY">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="User_IP_Address" ColumnName="User_IP_Address" />
+                <ScalarProperty Name="Fuel_Used" ColumnName="Fuel_Used" />
                 <ScalarProperty Name="Saved_Date" ColumnName="Saved_Date" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="Liter_100_km" ColumnName="Liter_100_km" />
@@ -2156,6 +2225,7 @@
           <EntitySetMapping Name="ASSURANCEs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.ASSURANCE">
               <MappingFragment StoreEntitySet="ASSURANCE">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Insurance_State" ColumnName="Insurance_State" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="Insurance_Company" ColumnName="Insurance_Company" />
@@ -2173,6 +2243,7 @@
           <EntitySetMapping Name="LEAVEs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.LEAVE">
               <MappingFragment StoreEntitySet="LEAVE">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
                 <ScalarProperty Name="Saved_Date" ColumnName="Saved_Date" />
@@ -2183,7 +2254,6 @@
                 <ScalarProperty Name="End_Dte" ColumnName="End_Dte" />
                 <ScalarProperty Name="Start_Dte" ColumnName="Start_Dte" />
                 <ScalarProperty Name="LEAVE_TYPE_ID" ColumnName="LEAVE_TYPE_ID" />
-                <ScalarProperty Name="Carpooling" ColumnName="Carpooling" />
                 <ScalarProperty Name="MIN_DRIVER_ID" ColumnName="MIN_DRIVER_ID" />
                 <ScalarProperty Name="Leave_Code" ColumnName="Leave_Code" />
                 <ScalarProperty Name="LEAVE_ID" ColumnName="LEAVE_ID" />
@@ -2193,6 +2263,7 @@
           <EntitySetMapping Name="MINISTRY_DRIVER">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.MINISTRY_DRIVER">
               <MappingFragment StoreEntitySet="MINISTRY_DRIVER">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Swaped_Vehicle" ColumnName="Swaped_Vehicle" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
@@ -2207,6 +2278,7 @@
           <EntitySetMapping Name="MINISTRY_REAL_ESTATE">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.MINISTRY_REAL_ESTATE">
               <MappingFragment StoreEntitySet="MINISTRY_REAL_ESTATE">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
@@ -2218,6 +2290,7 @@
           <EntitySetMapping Name="MOTs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.MOT">
               <MappingFragment StoreEntitySet="MOT">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Validity_End_Dte" ColumnName="Validity_End_Dte" />
                 <ScalarProperty Name="Visit_Dte" ColumnName="Visit_Dte" />
                 <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
@@ -2231,6 +2304,10 @@
           <EntitySetMapping Name="SCHEDULEs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.SCHEDULE">
               <MappingFragment StoreEntitySet="SCHEDULE">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Mission" ColumnName="Mission" />
                 <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
                 <ScalarProperty Name="Saved_Date" ColumnName="Saved_Date" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
@@ -2242,6 +2319,7 @@
           <EntitySetMapping Name="CAR_CRASH">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.CAR_CRASH">
               <MappingFragment StoreEntitySet="CAR_CRASH">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Local_Plate" ColumnName="Local_Plate" />
                 <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
                 <ScalarProperty Name="Stat" ColumnName="Stat" />
@@ -2286,6 +2364,7 @@
           <EntitySetMapping Name="LICENSEs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.LICENSE">
               <MappingFragment StoreEntitySet="LICENSE">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="DRIVER_ID" ColumnName="DRIVER_ID" />
                 <ScalarProperty Name="Scanned_Picture" ColumnName="Scanned_Picture" />
                 <ScalarProperty Name="Category_F" ColumnName="Category_F" />
@@ -2315,6 +2394,7 @@
           <EntitySetMapping Name="REPAIRs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.REPAIR">
               <MappingFragment StoreEntitySet="REPAIR">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
                 <ScalarProperty Name="Saved_Date" ColumnName="Saved_Date" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
@@ -2340,6 +2420,7 @@
           <EntitySetMapping Name="GRANT_RIGHT">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.GRANT_RIGHT">
               <MappingFragment StoreEntitySet="GRANT_RIGHT">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
                 <ScalarProperty Name="Access" ColumnName="Access" />
                 <ScalarProperty Name="Menu_Code" ColumnName="Menu_Code" />
@@ -2351,6 +2432,7 @@
           <EntitySetMapping Name="MENUs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.MENU">
               <MappingFragment StoreEntitySet="MENU">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Stat" ColumnName="Stat" />
                 <ScalarProperty Name="Title_Menu" ColumnName="Title_Menu" />
                 <ScalarProperty Name="Menu_Code" ColumnName="Menu_Code" />
@@ -2360,6 +2442,7 @@
           <EntitySetMapping Name="ROLEs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.ROLE">
               <MappingFragment StoreEntitySet="ROLE">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Descrept" ColumnName="Descrept" />
                 <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
                 <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
@@ -2369,6 +2452,7 @@
           <EntitySetMapping Name="USERS">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.USER">
               <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Saved_Date" ColumnName="Saved_Date" />
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="User_Code" ColumnName="User_Code" />

@@ -11,6 +11,7 @@ namespace VehicleFleetManagment.FleetClass
         public long LICENSE_ID { get; set; }
         public long DRIVER_ID { get; set; }
         public string Exp_Date { get; set; }
+        public string Deleted { get; set; }
         public string International_License_Code { get; set; }
         public string Inter_License_Code_Exp_Date { get; set; }
         public string License_Code_Mission { get; set; }

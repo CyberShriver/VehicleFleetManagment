@@ -90,7 +90,7 @@ namespace VehicleFleetManagment.FleetApp
             }
             if (e.CommandName == "delet")
             {
-                I.Delete(index);
+                I.DeleteState(index);
                 Response.Redirect("~/FleetApp/ViewMinistryDriver.aspx");
             }
 
@@ -164,7 +164,7 @@ namespace VehicleFleetManagment.FleetApp
                 if (chkdelete.Checked)
                 {
                     int id = Convert.ToInt32(gdv.DataKeys[i].Value);
-                    I.Delete(id);
+                    I.DeleteState(id);
                     gdv.EditIndex = -1;
                 }
             }

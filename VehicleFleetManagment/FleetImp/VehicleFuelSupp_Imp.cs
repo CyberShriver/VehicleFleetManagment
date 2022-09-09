@@ -29,11 +29,15 @@ namespace VehicleFleetManagment.FleetImp
                 V.Odometer  = Ve.Odometer ;
                 V.Initial_Qty = Ve.Initial_Qty;
                 V.Consumed_Qty    = Ve.Consumed_Qty   ;
+                V.Fuel_Used    = Ve.Fuel_Used;
                 V.United_Price  = Ve.United_Price ;
                 V.Total_Price  = Ve.Total_Price ;
                 V.Liter_100_km  = Ve.Liter_100_km ;
+                V.Permission  = Ve.Permission;
+                V.User_IP_Address  = Ve.User_IP_Address;
                 V.Comment  = Ve.Comment ;
                 V.Saved_Date  = Ve.Saved_Date ;              
+                V.Deleted  ="False" ;              
 
                 con.VEHICLE_FUEL_SUPPLY.Add(V);
 
@@ -70,12 +74,16 @@ namespace VehicleFleetManagment.FleetImp
                     V.Tank_Code  = Ve.Tank_Code ;
                     V.Odometer  = Ve.Odometer ;
                     V.Initial_Qty = Ve.Initial_Qty;
+                    V.Fuel_Used = Ve.Fuel_Used;
                     V.Consumed_Qty    = Ve.Consumed_Qty   ;
                     V.United_Price  = Ve.United_Price ;
                     V.Total_Price  = Ve.Total_Price ;
                     V.Liter_100_km  = Ve.Liter_100_km ;
+                    V.Permission = Ve.Permission;
+                    V.User_IP_Address = Ve.User_IP_Address;
                     V.Comment  = Ve.Comment ;
                     V.Saved_Date  = Ve.Saved_Date ;
+                    V.Deleted = "False";
 
                     if (con.SaveChanges() > 0)
                     {
@@ -113,12 +121,41 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //Delete State METHOD
+        public int DeleteState(int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                VEHICLE_FUEL_SUPPLY V = new VEHICLE_FUEL_SUPPLY();
+                V = con.VEHICLE_FUEL_SUPPLY.Where(x => x.VEHICLE_FUEL_ID == id).FirstOrDefault();
+
+                if (V != null)
+                {
+                    V.Deleted = "True";
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.VEHICLE_FUEL_SUPPLY.Add(V);
+                        con.Entry(V).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
         //DISPLAY METHOD
         public void Display(GridView gd,string codeMin)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from V in con.VEHICLE_FUEL_SUPPLY where V.MINISTRY.Code_Min== codeMin
+                var obj = (from V in con.VEHICLE_FUEL_SUPPLY where V.Deleted=="False" && V.MINISTRY.Code_Min== codeMin
 
                            select new
                            {
@@ -130,12 +167,15 @@ namespace VehicleFleetManagment.FleetImp
                                Tank_Type = V.Tank_Type,
                                Tank_Code  = V.Tank_Code ,
                                Odometer  = V.Odometer ,
+                               Fuel_Used = V.Fuel_Used ,
                                Initial_Qty = V.Initial_Qty,
                                Consumed_Qty    = V.Consumed_Qty   ,
                                United_Price  = V.United_Price ,
                                Total_Price  = V.Total_Price ,
                                Liter_100_km  = V.Liter_100_km ,
                                Comment  = V.Comment ,
+                               Permission = V.Permission ,
+                               User_IP_Address = V.User_IP_Address ,
                                Saved_Date  = V.Saved_Date ,
                            }
                            ).ToList();
@@ -152,7 +192,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from V in con.VEHICLE_FUEL_SUPPLY
+                var obj = (from V in con.VEHICLE_FUEL_SUPPLY where V.Deleted == "False"
 
                            select new
                            {
@@ -164,11 +204,14 @@ namespace VehicleFleetManagment.FleetImp
                                Tank_Type = V.Tank_Type,
                                Tank_Code = V.Tank_Code,
                                Odometer = V.Odometer,
+                               Fuel_Used = V.Fuel_Used,
                                Initial_Qty = V.Initial_Qty,
                                Consumed_Qty = V.Consumed_Qty,
                                United_Price = V.United_Price,
                                Total_Price = V.Total_Price,
                                Liter_100_km = V.Liter_100_km,
+                               Permission = V.Permission,
+                               User_IP_Address = V.User_IP_Address,
                                Comment = V.Comment,
                                Saved_Date = V.Saved_Date,
                            }
@@ -196,9 +239,12 @@ namespace VehicleFleetManagment.FleetImp
                 Ve.Odometer  = V.Odometer ;
                 Ve.Initial_Qty = V.Initial_Qty;
                 Ve.Consumed_Qty    = V.Consumed_Qty   ;
+                Ve.Fuel_Used = V.Fuel_Used   ;
                 Ve.United_Price  = V.United_Price ;
                 Ve.Total_Price  = V.Total_Price ;
                 Ve.Liter_100_km  = V.Liter_100_km ;
+                Ve.Permission  = V.Permission ;
+                Ve.User_IP_Address  = V.User_IP_Address ;
                 Ve.Comment  = V.Comment ;
                 Ve.Saved_Date  = V.Saved_Date ;
 
@@ -211,7 +257,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var V = (from l in con.VEHICLE_FUEL_SUPPLY where l.MINISTRY.Code_Min==codeMin
+                var V = (from l in con.VEHICLE_FUEL_SUPPLY where l.Deleted == "False" && l.MINISTRY.Code_Min==codeMin
                          select l).Count();
                 n = V;
             }
@@ -224,7 +270,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var V = (from l in con.VEHICLE_FUEL_SUPPLY
+                var V = (from l in con.VEHICLE_FUEL_SUPPLY where l.Deleted == "False"
                          select l).Count();
                 n = V;
             }
@@ -237,7 +283,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from V in con.VEHICLE_FUEL_SUPPLY
-                           where V.MINISTRY.Code_Min== codeMin &&
+                           where V.Deleted == "False" && V.MINISTRY.Code_Min== codeMin &&
                        V.Provider_Code.StartsWith(SearchText) ||
                         V.VEHICLE.Local_Plate.StartsWith(SearchText) ||
                        V.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
@@ -253,11 +299,14 @@ namespace VehicleFleetManagment.FleetImp
                                Tank_Type = V.Tank_Type,
                                Tank_Code = V.Tank_Code,
                                Odometer = V.Odometer,
+                               Fuel_Used = V.Fuel_Used,
                                Initial_Qty = V.Initial_Qty,
                                Consumed_Qty = V.Consumed_Qty,
                                United_Price = V.United_Price,
                                Total_Price = V.Total_Price,
                                Liter_100_km = V.Liter_100_km,
+                               Permission = V.Permission,
+                               User_IP_Address = V.User_IP_Address,
                                Comment = V.Comment,
                                Saved_Date = V.Saved_Date
 
@@ -276,7 +325,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from V in con.VEHICLE_FUEL_SUPPLY
-                           where
+                           where V.Deleted == "False" &&
                        V.Provider_Code.StartsWith(SearchText) ||
                         V.VEHICLE.Local_Plate.StartsWith(SearchText) ||
                        V.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
@@ -292,11 +341,14 @@ namespace VehicleFleetManagment.FleetImp
                                Tank_Type = V.Tank_Type,
                                Tank_Code = V.Tank_Code,
                                Odometer = V.Odometer,
+                               Fuel_Used = V.Fuel_Used,
                                Initial_Qty = V.Initial_Qty,
                                Consumed_Qty = V.Consumed_Qty,
                                United_Price = V.United_Price,
                                Total_Price = V.Total_Price,
                                Liter_100_km = V.Liter_100_km,
+                               Permission = V.Permission,
+                               User_IP_Address = V.User_IP_Address,
                                Comment = V.Comment,
                                Saved_Date = V.Saved_Date
 
@@ -315,7 +367,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MINISTRies where M.Code_Min==codeMin
+                var obj = (from M in con.MINISTRies where M.Deleted == "False" &&  M.Code_Min==codeMin
 
                            select new
                            {
@@ -337,7 +389,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MINISTRies
+                var obj = (from M in con.MINISTRies where M.Deleted == "False"
 
                            select new
                            {
@@ -360,7 +412,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from V in con.VEHICLEs
+                var obj = (from V in con.VEHICLEs where V.Deleted == "False"
 
                            select new
                            {
@@ -382,7 +434,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from V in con.VEHICLEs where V.MINISTRY.Code_Min== codeMin
+                var obj = (from V in con.VEHICLEs where V.Deleted == "False" && V.MINISTRY.Code_Min== codeMin
 
                            select new
                            {
@@ -404,7 +456,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from P in con.PROVIDERs
+                var obj = (from P in con.PROVIDERs where P.Deleted == "False"
 
                            select new
                            {
@@ -427,7 +479,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from V in con.VEHICLEs
-                           where V.Local_Plate== Plate
+                           where V.Deleted == "False" && V.Local_Plate== Plate
 
                            select new
                            {
@@ -437,6 +489,27 @@ namespace VehicleFleetManagment.FleetImp
 
                 drop.DataSource = obj;
                 drop.DataValueField = "Fuel_Fype";
+                drop.DataBind();
+            }
+
+        }
+
+        //DISPLAY   Vehicle category
+        public void DisplayVehicleCategory(DropDownList drop, string Plate)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from V in con.VEHICLEs
+                           where V.Deleted == "False" && V.Local_Plate == Plate
+
+                           select new
+                           {
+                               Trailer = V.Trailer
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "Trailer";
                 drop.DataBind();
             }
 

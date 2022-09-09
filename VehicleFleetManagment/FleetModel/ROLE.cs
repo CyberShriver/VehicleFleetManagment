@@ -25,6 +25,7 @@ namespace VehicleFleetManagment.FleetModel
         public long ROLE_ID { get; set; }
         public string Role_Name { get; set; }
         public string Descrept { get; set; }
+        public string Deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GRANT_RIGHT> GRANT_RIGHT { get; set; }

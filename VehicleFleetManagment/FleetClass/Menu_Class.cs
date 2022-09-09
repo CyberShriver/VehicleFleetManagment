@@ -9,6 +9,7 @@ namespace VehicleFleetManagment.FleetClass
     {
         public long Menu_Code { get; set; }
         public string Title_Menu { get; set; }
+        public string Deleted { get; set; }
         public string Stat { get; set; }
 
     }

@@ -39,6 +39,7 @@ namespace VehicleFleetManagment.FleetClass
         public string Forward_Lock { get; set; }
         public string Engine_cylinder_Number { get; set; }
         public string Engine_cc { get; set; }
+        public string Deleted { get; set; }
         public Nullable<double> Engine_Power { get; set; }
         public string Fuel_Fype { get; set; }
         public string Tank_Type1 { get; set; }

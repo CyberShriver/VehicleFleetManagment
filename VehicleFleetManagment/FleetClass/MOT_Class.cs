@@ -14,6 +14,7 @@ namespace VehicleFleetManagment.FleetClass
         public string Visit_Dte { get; set; }
         public string Validity_End_Dte { get; set; }
         public long VEHICLE_ID { get; set; }
+        public string Deleted { get; set; }
         public int MINISTRY_ID { get; set; }
 
         public virtual VEHICLE VEHICLE { get; set; }

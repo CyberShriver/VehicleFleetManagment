@@ -67,13 +67,13 @@
                                 <div class=" col-md-12   mt-3">
                                     <div class="form-material">
                                         <div class="form-group form-default">
-                                            <input type="text" name="footer-email" class="form-control" runat="server" id="txtRole">
+                                            <input type="text" name="footer-email" class="form-control" runat="server" id="txtRole" required>
                                             <span class="form-bar"></span>
                                             <label class="float-label">Role</label>
                                         </div>
 
                                         <div class="form-group form-default">
-                                            <input type="text" name="footer-email" class="form-control" runat="server" id="txtDescript">
+                                            <input type="text" name="footer-email" class="form-control" runat="server" id="txtDescript" required>
                                             <span class="form-bar"></span>
                                             <label class="float-label">Description</label>
                                         </div>
@@ -83,7 +83,7 @@
                                 <div class="card-footer ">
                                     <div class="float-right mb-3">
                                         <div class="float-right">
-                                            <button type="button" id="btnSaveRole" class="btn btn-primary btn-sm ml-5 waves-effect" runat="server" onserverclick="btn_save_role_Click">Save</button>
+                                            <button type="submit" id="btnSaveRole" class="btn btn-primary btn-sm ml-5 waves-effect" runat="server" onserverclick="btn_save_role_Click">Save</button>
                                             <button type="reset" class="btn btn-danger btn-sm ml-5" runat="server" id="btnCancelRole">Cancel</button>
                                         </div>
                                     </div>

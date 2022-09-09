@@ -22,6 +22,7 @@ namespace VehicleFleetManagment.FleetImp
             {
                 R.Role_Name = Ro.Role_Name;
                 R.Descrept = Ro.Descrept;
+                R.Deleted = "False";
 
                 con.ROLEs.Add(R);
 
@@ -52,6 +53,7 @@ namespace VehicleFleetManagment.FleetImp
 
                     R.Role_Name = Ro.Role_Name;
                     R.Descrept = Ro.Descrept;
+                    R.Deleted = "False";
 
                     if (con.SaveChanges() > 0)
                     {
@@ -89,12 +91,41 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //Delete State METHOD
+        public int DeleteState(int id)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                ROLE R = new ROLE();
+                R = con.ROLEs.Where(x => x.ROLE_ID == id).FirstOrDefault();
+
+                if (R != null)
+                {
+                    R.Deleted = "True";
+
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.ROLEs.Add(R);
+                        con.Entry(R).State = EntityState.Modified;
+
+                        msg = 1;
+                    }
+
+                    else
+                        msg = 0;
+                }
+            }
+
+
+            return msg;
+        }
+
         //DISPLAY METHOD
         public void Display(GridView gd)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from R in con.ROLEs
+                var obj = (from R in con.ROLEs where R.Deleted=="False"
 
                            select new
                            {
@@ -129,7 +160,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var b = (from l in con.ROLEs
+                var b = (from l in con.ROLEs where l.Deleted == "False"
                          select l).Count();
                 n = b;
             }
@@ -142,7 +173,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from R in con.ROLEs
-                           where R.Role_Name.StartsWith(SearchText)
+                           where R.Deleted == "False" && R.Role_Name.StartsWith(SearchText)
 
                            select new
                            {
@@ -164,8 +195,8 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from R in con.ROLEs
-                           
+                var obj = (from R in con.ROLEs where R.Deleted == "False"
+
                            select new
                            {
                                ROLE_ID = R.ROLE_ID,
@@ -187,7 +218,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from R in con.ROLEs
+                var obj = (from R in con.ROLEs where R.Deleted == "False"
 
                            select new
                            {

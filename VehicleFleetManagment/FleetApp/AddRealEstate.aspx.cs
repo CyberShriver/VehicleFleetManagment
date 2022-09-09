@@ -65,7 +65,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtName.Value == "" || txtComment.Value == "")
+                if (txtName.Value == "" )
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
@@ -109,7 +109,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtName.Value == "" || txtComment.Value == "")
+                if (txtName.Value == "" )
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;

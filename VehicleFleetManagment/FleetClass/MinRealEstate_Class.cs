@@ -12,6 +12,7 @@ namespace VehicleFleetManagment.FleetClass
         public int MIN_REAL_ESTATE_ID { get; set; }
         public int REAL_ESTATE_ID { get; set; }
         public int MINISTRY_ID { get; set; }
+        public string Deleted { get; set; }
         public string Quantity { get; set; }
         public string Comment { get; set; }
 

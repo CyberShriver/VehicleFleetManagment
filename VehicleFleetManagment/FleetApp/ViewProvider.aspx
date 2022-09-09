@@ -103,9 +103,9 @@
 
                                              <asp:BoundField DataField="PROVIDER_ID" HeaderText="#" Visible="false" />
 
-                                            <asp:TemplateField HeaderText="Provider Type">
+                                            <asp:TemplateField HeaderText="Picture">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("Provider_Type") %>'></asp:Label>
+                                                    <asp:Image ID="Image1" runat="server" Width="50px" Height="40px" ImageUrl='<%# string.Concat("~/FleetApp/assets/images/Providers/",Eval("Picture")) %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
@@ -121,21 +121,31 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
+                                            <asp:TemplateField HeaderText="DOB">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("DOB") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>                                             
+
                                             <asp:TemplateField HeaderText="Telephone">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label5" runat="server" Text='<%# Eval("Phone") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-
-                                            <asp:TemplateField HeaderText="Email" Visible="false">
+                                             
+                                            <asp:TemplateField HeaderText="CNI">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label6" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
+                                                    <asp:Label ID="Label6" runat="server" Text='<%# Eval("CNI") %>'></asp:Label>
                                                 </ItemTemplate>
-
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="State">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label7" runat="server" Text='<%# Eval("Stat") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Saved Date">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label5437" runat="server" Text='<%# Eval("Saved_Date") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Action">

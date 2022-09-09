@@ -76,6 +76,7 @@ namespace VehicleFleetManagment.FleetModel
         public string Circulation_Expiration_Date { get; set; }
         public string Stat { get; set; }
         public string Picture { get; set; }
+        public string Deleted { get; set; }
     
         public virtual BODY_TYPE BODY_TYPE { get; set; }
         public virtual MINISTRY MINISTRY { get; set; }

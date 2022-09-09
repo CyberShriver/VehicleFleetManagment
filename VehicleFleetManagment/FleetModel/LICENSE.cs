@@ -37,6 +37,7 @@ namespace VehicleFleetManagment.FleetModel
         public string Category_F { get; set; }
         public string Scanned_Picture { get; set; }
         public long DRIVER_ID { get; set; }
+        public string Deleted { get; set; }
     
         public virtual MINISTRY MINISTRY { get; set; }
         public virtual DRIVER DRIVER { get; set; }

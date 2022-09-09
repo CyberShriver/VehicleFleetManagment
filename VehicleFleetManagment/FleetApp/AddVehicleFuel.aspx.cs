@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.SqlClient;
+using System.IO;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,16 +16,16 @@ namespace VehicleFleetManagment.FleetApp
         VehicleFuelSup_Class Ve = new VehicleFuelSup_Class();
         VehicleFuelSupp_Interface I = new VehicleFuelSupp_Imp();
         int msg;
-        string id;
-        string codeMin;
-        string sytemTitle;
-        string slogan;
+        string id, codeMin, slogan, sytemTitle, fileImage;
+        public string ImgView;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             id = Request.QueryString["VEHICLE_FUEL_ID"];
             ChargeCookies();
-
+            file_upd.Attributes["onchange"] = "UploadFile(this)";
+            scannedPic.Visible = false;
+            checkApprove.Visible = false;
             if (!IsPostBack)
             {
                 txtSystemTitle.Text = sytemTitle;
@@ -34,6 +35,10 @@ namespace VehicleFleetManagment.FleetApp
                 Vehicle();
                 fuel();
                 Provider();
+                GetIpAddress();
+                VehicleCategory();
+                MaxLiter.Text = returnFuel();
+                Session["img"] = null;
 
                 if (id == null)
                 {
@@ -44,10 +49,22 @@ namespace VehicleFleetManagment.FleetApp
                 {
                     btnSave.InnerText = "Edit";
                     ChargeData();
+                    Vehicle();
+                    VehicleCategory();
+                    controlImageIP();
+                }              
+            }
+            else
+            {
+                if (Session["img"] != null)
+                {
+                    HttpPostedFile file = (Session["img"] as HttpPostedFile);
+                    fileImage = file.FileName;
                 }
-                
 
             }
+            
+            
 
         }
 
@@ -65,7 +82,10 @@ namespace VehicleFleetManagment.FleetApp
         {
             SuccessMsg.Visible = false;
             FillMsg.Visible = false;
+            FuelMsg.Visible = false;
             FailMsg.Visible = false;
+            exceedFuelLimit.Visible = false;
+            MaxLiterMsg.Visible = false;
         }
 
         //Add 
@@ -73,13 +93,16 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtTankCode.Value == "" || txtOdometer.Value == "" || txtInitQ.Value == "" || txtConsumeQ.Value == "" || txtUnit.Value == "" || 
-                    txtLiter_100_km.Value == "" || txtComment.Value == "" || DropDown_Ministry.SelectedValue == "-1" || DropDown_Vehicle.SelectedValue == "-1" ||
+                if ( txtFuelUsed.Value == "" || txtOdometer.Value == "" || txtInitQ.Value == "" || txtUnit.Value == "" ||
+                     DropDown_Ministry.SelectedValue == "-1" || DropDown_Vehicle.SelectedValue == "-1" ||
                     DropDown_ProviderCode.SelectedValue == "-1" || DropDown_TankType.SelectedValue == "-1")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
+                    FuelMsg.Visible = false;
                     FailMsg.Visible = false;
+                    exceedFuelLimit.Visible = false;
+                    MaxLiterMsg.Visible = false;
                 }
                
                     else
@@ -87,13 +110,16 @@ namespace VehicleFleetManagment.FleetApp
                         Ve.Tank_Code = txtTankCode.Value;
                         Ve.Odometer =Convert.ToDouble(txtOdometer.Value);
                         Ve.Initial_Qty = Convert.ToDouble(txtInitQ.Value);
-                        Ve.Consumed_Qty = Convert.ToDouble(txtConsumeQ.Value);
+                        Ve.Consumed_Qty = fuelConsumption();
                         Ve.United_Price = Convert.ToDouble(txtUnit.Value);
+                        Ve.Fuel_Used = Convert.ToDouble(txtFuelUsed.Value);
                         Ve.Total_Price = total();
                         Ve.Provider_Code = DropDown_ProviderCode.SelectedValue;
                         Ve.Fuel_Type = DropDown_fuel.SelectedValue;
-                        Ve.Liter_100_km = Convert.ToDouble(txtLiter_100_km.Value);
+                        Ve.Liter_100_km = fuelConsumption100Km();
                         Ve.Comment = txtComment.Value;
+                        Ve.User_IP_Address =GetIpAddress();
+                        Ve.Permission = fileImage;
                         Ve.MINISTRY_ID =Convert.ToInt32(DropDown_Ministry.SelectedValue);
                         Ve.Tank_Type = DropDown_TankType.SelectedValue;
                         Ve.Saved_Date = DateTime.Now.Date.ToString();
@@ -101,11 +127,15 @@ namespace VehicleFleetManagment.FleetApp
                         msg = I.Add(Ve);
                         if (msg > 0)
                         {
-                            FillMsg.Visible = false;
-                            FailMsg.Visible = false;
-                            SuccessMsg.Visible = true;
+                        FillMsg.Visible = false;
+                        FailMsg.Visible = false;
+                        FuelMsg.Visible = false;
+                        exceedFuelLimit.Visible = false;
+                        SuccessMsg.Visible = true;
+                        MaxLiterMsg.Visible = false;
 
                         txtTankCode.Value = "";
+                        txtFuelUsed.Value = "";
                         txtOdometer.Value = "";
                         txtInitQ.Value = "";
                         txtConsumeQ.Value = "";
@@ -115,18 +145,23 @@ namespace VehicleFleetManagment.FleetApp
                         }
                         else
                         {
-                            SuccessMsg.Visible = false;
-                            FillMsg.Visible = false;
-                            FailMsg.Visible = true;
+                        SuccessMsg.Visible = false;
+                        FillMsg.Visible = false;
+                        FuelMsg.Visible = false;
+                        exceedFuelLimit.Visible = false;
+                        FailMsg.Visible = true;
+                        MaxLiterMsg.Visible = false;
 
-                        }
+                    }
                     }               
             }
             catch (SqlException e)
             {
                 SuccessMsg.Visible = false;
                 FillMsg.Visible = false;
+                FuelMsg.Visible = false;
                 FailMsg.Visible = true;
+                MaxLiterMsg.Visible = false;
             }
         }
 
@@ -135,13 +170,16 @@ namespace VehicleFleetManagment.FleetApp
         {
             try
             {
-                if (txtTankCode.Value == "" || txtOdometer.Value == "" || txtInitQ.Value == "" || txtConsumeQ.Value == "" || txtUnit.Value == "" || 
-                    txtLiter_100_km.Value == "" || txtComment.Value == "" || DropDown_Ministry.SelectedValue == "-1" || DropDown_Vehicle.SelectedValue == "-1" ||
+                if (txtFuelUsed.Value == "" || txtOdometer.Value == "" || txtInitQ.Value == "" || txtUnit.Value == "" || 
+                     DropDown_Ministry.SelectedValue == "-1" || DropDown_Vehicle.SelectedValue == "-1" ||
                     DropDown_ProviderCode.SelectedValue == "-1" || DropDown_TankType.SelectedValue == "-1")
                 {
                     SuccessMsg.Visible = false;
                     FillMsg.Visible = true;
                     FailMsg.Visible = false;
+                    FuelMsg.Visible = false;
+                    exceedFuelLimit.Visible = false;
+                    MaxLiterMsg.Visible = false;
                 }
 
                 else
@@ -149,13 +187,16 @@ namespace VehicleFleetManagment.FleetApp
                     Ve.Tank_Code = txtTankCode.Value;
                     Ve.Odometer = Convert.ToDouble(txtOdometer.Value);
                     Ve.Initial_Qty = Convert.ToDouble(txtInitQ.Value);
-                    Ve.Consumed_Qty = Convert.ToDouble(txtConsumeQ.Value);
+                    Ve.Consumed_Qty = fuelConsumption();
                     Ve.United_Price = Convert.ToDouble(txtUnit.Value);
+                    Ve.Fuel_Used = Convert.ToDouble(txtFuelUsed.Value);
                     Ve.Total_Price = total();
                     Ve.Provider_Code = DropDown_ProviderCode.SelectedValue;
                     Ve.Fuel_Type = DropDown_fuel.SelectedValue;
-                    Ve.Liter_100_km = Convert.ToDouble(txtLiter_100_km.Value);
+                    Ve.Liter_100_km = fuelConsumption100Km();
                     Ve.Comment = txtComment.Value;
+                    Ve.User_IP_Address =GetIpAddress();
+                    if (Approve.Checked == true) { Ve.Permission = fileImage; } else { Ve.Permission =null; }
                     Ve.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
                     Ve.Tank_Type = DropDown_TankType.SelectedValue;
                     Ve.Saved_Date = DateTime.Now.Date.ToString();
@@ -170,7 +211,10 @@ namespace VehicleFleetManagment.FleetApp
                     {
                         SuccessMsg.Visible = false;
                         FillMsg.Visible = false;
+                        FuelMsg.Visible = false;
+                        exceedFuelLimit.Visible = false;
                         FailMsg.Visible = true;
+                        MaxLiterMsg.Visible = false;
 
                     }
                 }
@@ -179,7 +223,10 @@ namespace VehicleFleetManagment.FleetApp
             {
                 SuccessMsg.Visible = false;
                 FillMsg.Visible = false;
+                FuelMsg.Visible = false;
+                exceedFuelLimit.Visible = false;
                 FailMsg.Visible = true;
+                MaxLiterMsg.Visible = false;
             }
 
         }
@@ -193,11 +240,12 @@ namespace VehicleFleetManagment.FleetApp
                 txtTankCode.Value=Ve.Tank_Code ;
                 txtOdometer.Value=Ve.Odometer.ToString();
                 txtInitQ.Value= Ve.Initial_Qty.ToString();
-                txtConsumeQ.Value= Ve.Consumed_Qty.ToString();
                 txtUnit.Value= Ve.United_Price.ToString();
+                txtFuelUsed.Value= Ve.Fuel_Used.ToString();
                 DropDown_ProviderCode.SelectedValue= Ve.Provider_Code;
-                txtLiter_100_km.Value= Ve.Liter_100_km.ToString();
                 txtComment.Value= Ve.Comment ;
+                clientAddress.Text = Ve.User_IP_Address;
+                ImgView = "assets/images/File_Permission/" + Ve.Permission;
                 DropDown_Ministry.SelectedValue= Ve.MINISTRY_ID.ToString();
                 DropDown_TankType.SelectedValue= Ve.Tank_Type;
                 DropDown_fuel.SelectedValue= Ve.Fuel_Type;
@@ -208,23 +256,97 @@ namespace VehicleFleetManagment.FleetApp
 
         protected void btn_save_Click(object sender, EventArgs args)
         {
-            if (id == null)
+            if (Convert.ToDouble(txtFuelUsed.Value) >= Convert.ToDouble(txtInitQ.Value))
             {
-                Add();
-            }
+                if (Convert.ToDouble(txtFuelUsed.Value) <= Convert.ToDouble(returnFuel())) {
+                        if (Convert.ToDouble(txtFuelUsed.Value) > 100 && Approve.Checked == true)
+                        {
+                            if (id == null)
+                            {
+                                Add();
+                            }
+                            else
+                            {
+                            displayPermission.Visible = false;
+                            Update();
+                            }
+                        }
+                        else if (Convert.ToDouble(txtFuelUsed.Value) > 100 && Approve.Checked == false)
+                        {
+                            SuccessMsg.Visible = false;
+                            FillMsg.Visible = false;
+                            FailMsg.Visible = false;
+                            exceedFuelLimit.Visible = true;
+                            MaxLiterMsg.Visible = false;
+                            FuelMsg.Visible = false;
+                            displayPermission.Visible = false;
+
+                            scannedPic.Visible = true;
+                            checkApprove.Visible = false;
+                        }
+                        else
+                        {
+                            if (id == null)
+                            {
+                                Add();
+
+                            }
+                            else
+                            {
+                            displayPermission.Visible = false;
+                                Update();
+                            }
+                        }
+                    displayPermission.Visible = false;
+                }
+                else
+                {
+                    SuccessMsg.Visible = false;
+                    FillMsg.Visible = false;
+                    FailMsg.Visible = false;
+                    exceedFuelLimit.Visible = false;
+                    FuelMsg.Visible = false;
+                    MaxLiterMsg.Visible = true;
+                }
+               
+            }            
             else
-                Update();
+            {
+                SuccessMsg.Visible = false;
+                FillMsg.Visible = false;
+                FailMsg.Visible = false;
+                exceedFuelLimit.Visible = false;
+                FuelMsg.Visible = true;
+                MaxLiterMsg.Visible = false;
+            }
+           
+        }
+
+        // consumed Quantity
+        double  fuelConsumption()
+        {
+            double c = 0;           
+            return c = (Convert.ToDouble(txtFuelUsed.Value) - Convert.ToDouble(txtInitQ.Value)); 
+        }
+
+        // consumed L/100Km
+        double fuelConsumption100Km()
+        {
+            double c = 0;
+            double a = fuelConsumption();
+            double b = Convert.ToDouble(txtOdometer.Value);
+            return c = Math.Round( (a/b *100),2);
         }
 
         //Total function
-
-        int total()
+        double total()
         {
-            int tot=0;
-            if (Convert.ToInt32(txtInitQ.Value)>= Convert.ToInt32(txtConsumeQ.Value))
+            double tot=0;
+            if (Convert.ToDouble(txtFuelUsed.Value) >= Convert.ToDouble(txtInitQ.Value))
             {
-
-                int t=(Convert.ToInt32(txtInitQ.Value) - Convert.ToInt32(txtConsumeQ.Value)) * Convert.ToInt32(txtUnit.Value);
+                double a = fuelConsumption();
+                double b = Convert.ToDouble(txtUnit.Value);
+                double t = a*b;
                 tot = t;
             }
             else
@@ -276,10 +398,129 @@ namespace VehicleFleetManagment.FleetApp
         {
             I.DisplayFuelType(DropDown_fuel, DropDown_Vehicle.SelectedItem.Text);
         }
-
+        void VehicleCategory()
+        {
+            I.DisplayVehicleCategory(DropDown_Category, DropDown_Vehicle.SelectedItem.Text);
+        }
         protected void DropDown_Vehicle_SelectedIndexChanged(object sender, EventArgs e)
         {
             fuel();
+            VehicleCategory();
+            MaxLiter.Text = returnFuel();
         }
+
+        //limit fuel based on categories
+        string returnFuel()
+        {
+            string categ;
+            if (DropDown_Category.SelectedItem.Text=="Compact Car")
+            {
+                categ = "30";
+            }else if (DropDown_Category.SelectedItem.Text == "small lorry truck")
+            {
+                categ = "40";
+            }
+            else if(DropDown_Category.SelectedItem.Text == "Van")
+            {
+                categ = "50";
+            }
+            else if (DropDown_Category.SelectedItem.Text == "Bus")
+            {
+                categ = "60";
+            }
+            else if (DropDown_Category.SelectedItem.Text == "Trailer")
+            {
+                categ = "150";
+            }
+            else 
+            {
+                categ = "200";
+            }
+            return categ;
+        }
+
+        //control check when file is uploaded
+        protected void OnCheckedChangedApprove(object sender, EventArgs args)
+        {
+            
+            if (Approve.Checked == true)
+            {
+                checkApprove.Visible = true;
+
+            }
+            else if(Approve.Checked == false && Convert.ToDouble(txtFuelUsed.Value) <= 100)
+            {
+                checkApprove.Visible = false;
+                scannedPic.Visible = false;
+            }
+            else
+            {
+                checkApprove.Visible = false;
+                scannedPic.Visible = true;
+            }
+        }
+
+        //upload permission file
+        protected void Upload(object sender, EventArgs args)
+        {
+            if (file_upd.HasFile)
+            {
+                if (file_upd.PostedFile.ContentLength < 104857600)
+                {
+                    Session["img"] = file_upd.PostedFile;
+                    fileImage = file_upd.PostedFile.FileName;
+                    file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images/File_Permission/") + Path.GetFileName(file_upd.FileName));
+                    Approve.Checked = true;
+                    scannedPic.Visible = false;
+                    checkApprove.Visible = true;
+                    exceedFuelLimit.Visible = false;
+                    MaxLiterMsg.Visible = false;
+                    InvalidLenght.Visible = false;
+                    MaxLiter.Text = returnFuel();
+                }
+                else
+                {
+                    InvalidLenght.Visible = true;
+                }
+            }
+            else
+            {
+                MaxLiter.Text = returnFuel();
+                Session["img"] = null;
+                fileImage = "";
+            }
+        }
+
+        //Get Ip  Address of client
+        private string GetIpAddress()
+        {
+            string userip;
+            userip = Request.UserHostAddress;
+            if (Request.UserHostAddress != null)
+            {
+                Int64 macinfo = new Int64();
+                string macSrc = macinfo.ToString("X");
+                if (macSrc == "0")
+                {
+                    if (userip == "127.0.0.1")
+                    {
+                        userip = "Localhost(127.0.0.1)";
+                    }
+                   return userip;
+                }
+            }
+
+            return userip;
+        }
+
+        void controlImageIP()
+        {
+            if(id!= null && Ve.User_IP_Address!=null && Ve.Permission !=null)
+            {
+                displayPermission.Visible = true;
+            }
+        }
+
+
     }
 }

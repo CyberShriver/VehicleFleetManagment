@@ -33,6 +33,7 @@ namespace VehicleFleetManagment.FleetModel
         public string Comment { get; set; }
         public string Saved_Date { get; set; }
         public Nullable<int> MINISTRY_ID { get; set; }
+        public string Deleted { get; set; }
     
         public virtual CAR_CRASH CAR_CRASH { get; set; }
         public virtual MINISTRY MINISTRY { get; set; }

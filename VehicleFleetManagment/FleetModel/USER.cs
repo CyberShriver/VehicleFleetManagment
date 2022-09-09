@@ -30,6 +30,7 @@ namespace VehicleFleetManagment.FleetModel
         public string User_Code { get; set; }
         public string State { get; set; }
         public string Saved_Date { get; set; }
+        public string Deleted { get; set; }
     
         public virtual MINISTRY MINISTRY { get; set; }
         public virtual ROLE ROLE { get; set; }

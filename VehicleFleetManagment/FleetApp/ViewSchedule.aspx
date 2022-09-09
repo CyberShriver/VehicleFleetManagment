@@ -114,12 +114,24 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Comment">
+                                            <asp:TemplateField HeaderText="Mission">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("Comment") %>'></asp:Label>
+                                                    <asp:Label ID="Label9764" runat="server" Text='<%# Eval("Mission") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
+                                            <asp:TemplateField HeaderText="Mission Date">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label334" runat="server" Text='<%# Eval("Date") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                            <asp:TemplateField HeaderText="Mission Time">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label4567" runat="server" Text='<%# Eval("Time") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                           
                                             <asp:TemplateField HeaderText="Saved Date">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label5" runat="server" Text='<%# Eval("Saved_Date") %>'></asp:Label>

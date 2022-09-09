@@ -9,6 +9,7 @@ namespace VehicleFleetManagment.FleetClass
     {
         public long ROLE_ID { get; set; }
         public string Role_Name { get; set; }
+        public string Deleted { get; set; }
         public string Descrept { get; set; }
 
     }

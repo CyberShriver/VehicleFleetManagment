@@ -23,6 +23,7 @@ namespace VehicleFleetManagment.FleetModel
         public long Menu_Code { get; set; }
         public string Title_Menu { get; set; }
         public string Stat { get; set; }
+        public string Deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GRANT_RIGHT> GRANT_RIGHT { get; set; }

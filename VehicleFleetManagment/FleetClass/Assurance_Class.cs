@@ -20,6 +20,7 @@ namespace VehicleFleetManagment.FleetClass
         public string Insurance_Company { get; set; }
         public string Comment { get; set; }
         public string Insurance_State { get; set; }
+        public string Deleted { get; set; }
 
         public virtual VEHICLE VEHICLE { get; set; }
         public virtual MINISTRY MINISTRY { get; set; }

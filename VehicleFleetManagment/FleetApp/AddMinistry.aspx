@@ -78,7 +78,7 @@
                                                         <div class="form-group form-default">
                                                             <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtName">
                                                             <span class="form-bar"></span>
-                                                            <label class="float-label">Name</label>
+                                                            <label class="float-label">Ministry Name</label>
                                                         </div>
 
                                                         <div class="form-group form-default">
@@ -104,7 +104,7 @@
                                                         </div>
                                                        
                                                         <div class="form-group form-default">
-                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtCode" visible="false">
+                                                            <input type="text" name="footer-email" class="form-control"  runat="server" id="txtCode" visible="false">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -114,7 +114,7 @@
                                                     <div class="float-right">
                                                         <a class="btn btn-sm btn-info ml-5" href="ViewMinistry.aspx">List <i class="icofont icofont-listine-dots"></i></a>
                                                         <button type="reset" class="btn btn-sm btn-danger ml-5 mr-5">Cancel</button>
-                                                    <button type="button" id="btnGenNext" class="btn btn-sm btn-default ml-5 waves-effect ml-5  " runat="server" onserverclick="ActiveSettings_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
+                                                    <button type="submit" id="btnGenNext" class="btn btn-sm btn-default ml-5 waves-effect ml-5  " runat="server" onserverclick="ActiveSettings_click">Next <i class="icofont icofont-hand-drawn-right"></i></button>
                                                     </div>
                                                 </div>
                                             </asp:View>
@@ -141,7 +141,7 @@
                                                             <label class="float-label">System Email</label>
                                                         </div>
                                                         <div class="form-group form-default">
-                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtSlogan">
+                                                            <input type="text" name="footer-email" class="form-control"  runat="server" id="txtSlogan">
                                                             <span class="form-bar"></span>
                                                             <label class="float-label">Slogan</label>
                                                         </div>
@@ -152,7 +152,7 @@
                                                         </div>
 
                                                         <div class="form-group form-default">
-                                                            <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtTheme">
+                                                            <input type="text" name="footer-email" class="form-control" runat="server" id="txtTheme">
                                                             <span class="form-bar"></span>
                                                             <label class="float-label">Theme</label>
                                                         </div>
@@ -171,7 +171,7 @@
                                                 </div>
                                                    <button type="button" id="BtnSettingsPreview" class="btn btn-sm btn-default  waves-effect" runat="server" onserverclick="ActiveGen_click"><i class="icofont icofont-hand-drawn-left"></i>Preview</button>
                                                         <div class="float-right">
-                                                            <button type="button" id="btnSave" class="btn btn-sm btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save <i class="icofont icofont-save"></i></button>
+                                                            <button type="submit" id="btnSave" class="btn btn-sm btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save <i class="icofont icofont-save"></i></button>
                                                             <button type="reset" class="btn btn-sm btn-danger ml-5">Cancel</button>
                                                             <a class="btn btn-sm btn-info ml-5" href="ViewMinistry.aspx">List <i class="icofont icofont-listine-dots"></i></a>
 

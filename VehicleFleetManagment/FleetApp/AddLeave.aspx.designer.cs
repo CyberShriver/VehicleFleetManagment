@@ -132,24 +132,6 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtLeaveCode;
 
         /// <summary>
-        /// carpooling control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl carpooling;
-
-        /// <summary>
-        /// txtCarpooling control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCarpooling;
-
-        /// <summary>
         /// idDemand control.
         /// </summary>
         /// <remarks>

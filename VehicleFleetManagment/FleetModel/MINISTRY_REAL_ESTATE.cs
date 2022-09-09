@@ -19,6 +19,7 @@ namespace VehicleFleetManagment.FleetModel
         public int MINISTRY_ID { get; set; }
         public string Quantity { get; set; }
         public string Comment { get; set; }
+        public string Deleted { get; set; }
     
         public virtual MINISTRY MINISTRY { get; set; }
         public virtual REAL_ESTATE REAL_ESTATE { get; set; }

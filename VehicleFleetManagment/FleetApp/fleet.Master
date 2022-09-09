@@ -569,7 +569,21 @@
                             </li>
                         </ul>
                           <% }%>
-                        <!-- End Reports entities-->                    
+                        <!-- End Reports entities-->   
+                        
+                         <!-- Start Reports entities-->
+
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="">
+                                <a href="AllMinistries.aspx" class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><i class="ti-printer"></i></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">General Report</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                
+                            </li>
+                        </ul>
+                        <!-- End Reports entities--> 
                     </div>
                 </nav>
                 <!-- end side nav-->
@@ -577,7 +591,7 @@
                 <!-- start Main Content page -->
                 <div class="pcoded-content">
                     <!-- start page-->
-                    <form id="form1" runat="server">
+                    <form id="form1" runat="server" >
                         <div>
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                             </asp:ContentPlaceHolder>
