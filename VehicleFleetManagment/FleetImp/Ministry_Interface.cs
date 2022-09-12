@@ -29,6 +29,9 @@ namespace VehicleFleetManagment.FleetImp
         //Display Method
         void Display(GridView gd);
 
+        //DISPLAY  All MINISTRY DROPDOWN METHOD
+        void DisplayMinistryAll(DropDownList drop);
+
         //Provide Method
         void provide(Ministry_Class Min, int id);
 

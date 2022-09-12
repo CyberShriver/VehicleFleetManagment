@@ -315,5 +315,29 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //DISPLAY  All MINISTRY DROPDOWN METHOD
+        public void DisplayMinistryAll(DropDownList drop)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from M in con.MINISTRies
+                           where M.Deleted == "False"
+
+                           select new
+                           {
+                               Code_Min = M.Code_Min,
+                               Ministry_Name = M.Ministry_Name,
+
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "Code_Min";
+                drop.DataTextField = "Ministry_Name";
+                drop.DataBind();
+            }
+
+        }
+
     }
 }
