@@ -420,15 +420,6 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtTankTyp2;
 
         /// <summary>
-        /// txtTankCapacity2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTankCapacity2;
-
-        /// <summary>
         /// txtFrontSeat control.
         /// </summary>
         /// <remarks>
@@ -481,6 +472,15 @@ namespace VehicleFleetManagment.FleetApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDown_Trailer;
+
+        /// <summary>
+        /// txtTankCapacity2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTankCapacity2;
 
         /// <summary>
         /// txtEmptyPod control.

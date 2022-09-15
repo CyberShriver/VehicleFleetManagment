@@ -134,11 +134,9 @@
     <Content Include="FleetApp\AddMenu.aspx" />
     <Content Include="FleetApp\AddMinistry.aspx" />
     <Content Include="FleetApp\AddMinistryDriver.aspx" />
-    <Content Include="FleetApp\AddMinistryReal.aspx" />
     <Content Include="FleetApp\AddModel.aspx" />
     <Content Include="FleetApp\AddMOT.aspx" />
     <Content Include="FleetApp\AddProvider.aspx" />
-    <Content Include="FleetApp\AddRealEstate.aspx" />
     <Content Include="FleetApp\AddRepair.aspx" />
     <Content Include="FleetApp\AddSchedule.aspx" />
     <Content Include="FleetApp\AddSystemSettings.aspx" />
@@ -285,11 +283,9 @@
     <Content Include="FleetApp\ViewMark.aspx" />
     <Content Include="FleetApp\ViewMinistry.aspx" />
     <Content Include="FleetApp\ViewMinistryDriver.aspx" />
-    <Content Include="FleetApp\ViewMinistryReal.aspx" />
     <Content Include="FleetApp\ViewModel.aspx" />
     <Content Include="FleetApp\ViewMOT.aspx" />
     <Content Include="FleetApp\ViewProvider.aspx" />
-    <Content Include="FleetApp\ViewRealEstate.aspx" />
     <Content Include="FleetApp\ViewRepair.aspx" />
     <Content Include="FleetApp\ViewSchedule.aspx" />
     <Content Include="FleetApp\ViewUsers.aspx" />
@@ -500,13 +496,6 @@
     <Compile Include="FleetApp\AddMinistryDriver.aspx.designer.cs">
       <DependentUpon>AddMinistryDriver.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FleetApp\AddMinistryReal.aspx.cs">
-      <DependentUpon>AddMinistryReal.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FleetApp\AddMinistryReal.aspx.designer.cs">
-      <DependentUpon>AddMinistryReal.aspx</DependentUpon>
-    </Compile>
     <Compile Include="FleetApp\AddModel.aspx.cs">
       <DependentUpon>AddModel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -527,13 +516,6 @@
     </Compile>
     <Compile Include="FleetApp\AddProvider.aspx.designer.cs">
       <DependentUpon>AddProvider.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FleetApp\AddRealEstate.aspx.cs">
-      <DependentUpon>AddRealEstate.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FleetApp\AddRealEstate.aspx.designer.cs">
-      <DependentUpon>AddRealEstate.aspx</DependentUpon>
     </Compile>
     <Compile Include="FleetApp\AddRepair.aspx.cs">
       <DependentUpon>AddRepair.aspx</DependentUpon>
@@ -724,13 +706,6 @@
     <Compile Include="FleetApp\ViewMinistryDriver.aspx.designer.cs">
       <DependentUpon>ViewMinistryDriver.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FleetApp\ViewMinistryReal.aspx.cs">
-      <DependentUpon>ViewMinistryReal.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FleetApp\ViewMinistryReal.aspx.designer.cs">
-      <DependentUpon>ViewMinistryReal.aspx</DependentUpon>
-    </Compile>
     <Compile Include="FleetApp\ViewModel.aspx.cs">
       <DependentUpon>ViewModel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -751,13 +726,6 @@
     </Compile>
     <Compile Include="FleetApp\ViewProvider.aspx.designer.cs">
       <DependentUpon>ViewProvider.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FleetApp\ViewRealEstate.aspx.cs">
-      <DependentUpon>ViewRealEstate.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FleetApp\ViewRealEstate.aspx.designer.cs">
-      <DependentUpon>ViewRealEstate.aspx</DependentUpon>
     </Compile>
     <Compile Include="FleetApp\ViewRepair.aspx.cs">
       <DependentUpon>ViewRepair.aspx</DependentUpon>
@@ -806,11 +774,9 @@
     <Compile Include="FleetClass\Menu_Class.cs" />
     <Compile Include="FleetClass\MinDriver_Class.cs" />
     <Compile Include="FleetClass\Ministry_Class.cs" />
-    <Compile Include="FleetClass\MinRealEstate_Class.cs" />
     <Compile Include="FleetClass\Model_Class.cs" />
     <Compile Include="FleetClass\MOT_Class.cs" />
     <Compile Include="FleetClass\Provider_Class.cs" />
-    <Compile Include="FleetClass\RealEstate_Class.cs" />
     <Compile Include="FleetClass\Repair_Class.cs" />
     <Compile Include="FleetClass\Role_Class.cs" />
     <Compile Include="FleetClass\Schedule_Class.cs" />
@@ -841,16 +807,12 @@
     <Compile Include="FleetImp\MinDriver_Interface.cs" />
     <Compile Include="FleetImp\Ministry_Imp.cs" />
     <Compile Include="FleetImp\Ministry_Interface.cs" />
-    <Compile Include="FleetImp\MinRealEstate_Imp.cs" />
-    <Compile Include="FleetImp\MinRealEstate_Interface.cs" />
     <Compile Include="FleetImp\Model_Imp.cs" />
     <Compile Include="FleetImp\Model_Interface.cs" />
     <Compile Include="FleetImp\MOT_Imp.cs" />
     <Compile Include="FleetImp\MOT_Interface.cs" />
     <Compile Include="FleetImp\Provider_Imp.cs" />
     <Compile Include="FleetImp\Provider_Interface.cs" />
-    <Compile Include="FleetImp\RealEstate_Imp.cs" />
-    <Compile Include="FleetImp\RealEstate_Interface.cs" />
     <Compile Include="FleetImp\Repair_Imp.cs" />
     <Compile Include="FleetImp\Repair_Interface.cs" />
     <Compile Include="FleetImp\Role_Imp.cs" />
@@ -919,9 +881,6 @@
     <Compile Include="FleetModel\MINISTRY_DRIVER.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="FleetModel\MINISTRY_REAL_ESTATE.cs">
-      <DependentUpon>MinistryModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="FleetModel\MODEL.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
@@ -929,9 +888,6 @@
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="FleetModel\PROVIDER.cs">
-      <DependentUpon>MinistryModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FleetModel\REAL_ESTATE.cs">
       <DependentUpon>MinistryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="FleetModel\REPAIR.cs">

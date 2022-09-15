@@ -228,50 +228,107 @@ namespace VehicleFleetManagment.FleetApp
 
         protected void btn_save_Click(object sender, EventArgs args)
         {
-            if (id == null)
+          
+            try
             {
-                Add();
+                if (id == null)
+                {
+                    Add();
+                }
+                else
+                    Update();
             }
-            else
-                Update();
+
+            catch ( SqlException e )
+            {
+                FailMsg.Visible = true;
+            }
         }
 
 
         //Add dropDawn all Vehicle
         void AllVehicle()
         {
-            I.DisplayAllVehicle(DropDown_Plate);
+            try
+            {
+                I.DisplayAllVehicle(DropDown_Plate);
+            }
+
+            catch (NullReferenceException e)
+            {
+                FailMsg.Visible = true;
+            }
+
+           
         }
 
         //Add dropDawn all crash
         void AllCrash()
         {
-            I.DisplayAllCrash(DropDown_Crash);
+            try
+            {
+                I.DisplayAllCrash(DropDown_Crash);
+            }
+
+            catch (NullReferenceException e)
+            {
+                FailMsg.Visible = true;
+            }
+           
         }
         //Add dropDawn Minisrty
         void Ministry()
         {
-            if (codeMin == "All")
+            try
             {
-                DMinistry.Visible = true;
-                I.DisplayMinistryAll(DropDown_Ministry);
+                if (codeMin == "All")
+                {
+                    DMinistry.Visible = true;
+                    I.DisplayMinistryAll(DropDown_Ministry);
+                }
+                else
+                {
+                    I.DisplayMinistry(DropDown_Ministry, codeMin);
+                    DMinistry.Visible = false;
+                }
             }
-            else
+
+            catch (NullReferenceException e)
             {
-                I.DisplayMinistry(DropDown_Ministry, codeMin);
-                DMinistry.Visible = false;
+                FailMsg.Visible = true;
             }
+          
         }
         //Add dropDawn Vehicle
         void Vehicle()
         {
-            I.DisplayVehicle(DropDown_Plate, Convert.ToInt32(DropDown_Ministry.SelectedItem.Value));
+            try
+            {
+                I.DisplayVehicle(DropDown_Plate, Convert.ToInt32(DropDown_Ministry.SelectedItem.Value));
+            }
+
+            catch (NullReferenceException e)
+            {
+                FailMsg.Visible = true;
+            }
+
+           
         }
 
         //Add dropDawn crash
         void Crash()
         {
-            I.DisplayCarCrash(DropDown_Crash, DropDown_Plate.SelectedItem.Text);
+            try
+            {
+                I.DisplayCarCrash(DropDown_Crash, DropDown_Plate.SelectedItem.Text);
+            }
+
+            catch (NullReferenceException e)
+            {
+                FailMsg.Visible = true;
+            }
+
+            
         }
 
         protected void dropDown_Ministry_SelectedIndexChanged(object sender, EventArgs e)

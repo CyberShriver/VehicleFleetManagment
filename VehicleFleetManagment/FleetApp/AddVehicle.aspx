@@ -276,11 +276,7 @@
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Tank Type 2 </label>
                                                             </div>
-                                                            <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtTankCapacity2" onkeypress="inpNumInt(event)" maxlength="5">
-                                                                <span class="form-bar"></span>
-                                                                <label class="float-label">Tank Capacity 2 ( in Liter )</label>
-                                                            </div>
+                                                           
                                                             <div class="form-group form-default">
                                                                 <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtFrontSeat" onkeypress="inpNumInt(event)" maxlength="3">
                                                                 <span class="form-bar"></span>
@@ -318,6 +314,12 @@
                                                                     <asp:ListItem>Tractor</asp:ListItem>
                                                                 </asp:DropDownList>
                                                                 <label class="float-label">Vehicle type</label>
+                                                            </div>
+
+                                                             <div class="form-group form-default">
+                                                                <input type="text" name="footer-email" class="form-control"  runat="server" id="txtTankCapacity2" onkeypress="inpNumInt(event)" maxlength="5">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Tank Capacity 2 ( in Liter )</label>
                                                             </div>
                                                            
                                                             <div class="form-group form-default">

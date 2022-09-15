@@ -353,29 +353,7 @@
                                         </a>
                                     </li>
                                      <% }%>
-
-                                     <% if (MenuDisplay("RealEstateMenu") == true)
-                                        { %>
-                                    <li class=" ">
-                                        <a href="ViewRealEstate.aspx" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.Ministries.Real-Estate.alert">Real Estate</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                     <% }%>
-
-                                     <% if (MenuDisplay("MinistryRealEstateMenu") == true)
-                                        { %>
-                                    <li class=" ">
-                                        <a href="ViewMinistryReal.aspx" class="waves-effect waves-dark">
-                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                            <span class="pcoded-mtext" data-i18n="nav.Ministries.Ministries-Real-Estate.alert">Ministries Real Estate</span>
-                                            <span class="pcoded-mcaret"></span>
-                                        </a>
-                                    </li>
-                                     <% }%>
-
+                                  
                                      <% if (MenuDisplay("UsersMenu") == true)
                                         { %>
                                     <li class=" ">

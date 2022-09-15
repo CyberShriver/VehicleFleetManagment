@@ -223,17 +223,6 @@
           <Property Name="EndDate" Type="varchar" MaxLength="50" />
           <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
-        <EntityType Name="MINISTRY_REAL_ESTATE">
-          <Key>
-            <PropertyRef Name="MIN_REAL_ESTATE_ID" />
-          </Key>
-          <Property Name="MIN_REAL_ESTATE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="REAL_ESTATE_ID" Type="int" Nullable="false" />
-          <Property Name="MINISTRY_ID" Type="int" Nullable="false" />
-          <Property Name="Quantity" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="Comment" Type="varchar" MaxLength="300" />
-          <Property Name="Deleted" Type="varchar" MaxLength="7" />
-        </EntityType>
         <EntityType Name="MODEL">
           <Key>
             <PropertyRef Name="MODEL_ID" />
@@ -274,15 +263,6 @@
           <Property Name="Picture" Type="varchar" MaxLength="100" />
           <Property Name="Contract" Type="varchar" MaxLength="100" />
           <Property Name="Saved_Date" Type="varchar" MaxLength="100" />
-          <Property Name="Deleted" Type="varchar" MaxLength="7" />
-        </EntityType>
-        <EntityType Name="REAL_ESTATE">
-          <Key>
-            <PropertyRef Name="REAL_ESTATE_ID" />
-          </Key>
-          <Property Name="REAL_ESTATE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RealEstate_Name" Type="varchar" MaxLength="50" />
-          <Property Name="Comment" Type="varchar" MaxLength="300" />
           <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="REPAIR">
@@ -617,30 +597,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MINISTRY_REAL_ESTATE_IDMinistry">
-          <End Role="MINISTRY" Type="Self.MINISTRY" Multiplicity="1" />
-          <End Role="MINISTRY_REAL_ESTATE" Type="Self.MINISTRY_REAL_ESTATE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MINISTRY">
-              <PropertyRef Name="MINISTRY_ID" />
-            </Principal>
-            <Dependent Role="MINISTRY_REAL_ESTATE">
-              <PropertyRef Name="MINISTRY_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MINISTRY_REAL_ESTATE_REAL_ESTATE_ID">
-          <End Role="REAL_ESTATE" Type="Self.REAL_ESTATE" Multiplicity="1" />
-          <End Role="MINISTRY_REAL_ESTATE" Type="Self.MINISTRY_REAL_ESTATE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="REAL_ESTATE">
-              <PropertyRef Name="REAL_ESTATE_ID" />
-            </Principal>
-            <Dependent Role="MINISTRY_REAL_ESTATE">
-              <PropertyRef Name="REAL_ESTATE_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MINISTRY_ROLE">
           <End Role="ROLE" Type="Self.ROLE" Multiplicity="0..1" />
           <End Role="MINISTRY" Type="Self.MINISTRY" Multiplicity="*" />
@@ -834,11 +790,9 @@
           <EntitySet Name="MENU" EntityType="Self.MENU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MINISTRY" EntityType="Self.MINISTRY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MINISTRY_DRIVER" EntityType="Self.MINISTRY_DRIVER" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MINISTRY_REAL_ESTATE" EntityType="Self.MINISTRY_REAL_ESTATE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MODEL" EntityType="Self.MODEL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MOT" EntityType="Self.MOT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROVIDER" EntityType="Self.PROVIDER" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="REAL_ESTATE" EntityType="Self.REAL_ESTATE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="REPAIR" EntityType="Self.REPAIR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ROLE" EntityType="Self.ROLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SCHEDULE" EntityType="Self.SCHEDULE" Schema="dbo" store:Type="Tables" />
@@ -904,14 +858,6 @@
           <AssociationSet Name="FK_MINISTRY_MINISTRY_ID" Association="Self.FK_MINISTRY_MINISTRY_ID">
             <End Role="MINISTRY" EntitySet="MINISTRY" />
             <End Role="GRANT_RIGHT" EntitySet="GRANT_RIGHT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MINISTRY_REAL_ESTATE_IDMinistry" Association="Self.FK_MINISTRY_REAL_ESTATE_IDMinistry">
-            <End Role="MINISTRY" EntitySet="MINISTRY" />
-            <End Role="MINISTRY_REAL_ESTATE" EntitySet="MINISTRY_REAL_ESTATE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MINISTRY_REAL_ESTATE_REAL_ESTATE_ID" Association="Self.FK_MINISTRY_REAL_ESTATE_REAL_ESTATE_ID">
-            <End Role="REAL_ESTATE" EntitySet="REAL_ESTATE" />
-            <End Role="MINISTRY_REAL_ESTATE" EntitySet="MINISTRY_REAL_ESTATE" />
           </AssociationSet>
           <AssociationSet Name="FK_MINISTRY_ROLE" Association="Self.FK_MINISTRY_ROLE">
             <End Role="ROLE" EntitySet="ROLE" />
@@ -1029,16 +975,6 @@
           <Property Name="Saved_Date" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="REAL_ESTATE">
-          <Key>
-            <PropertyRef Name="REAL_ESTATE_ID" />
-          </Key>
-          <Property Name="REAL_ESTATE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RealEstate_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Comment" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MINISTRY_REAL_ESTATE" Relationship="MINISTRY_DBModel.FK_MINISTRY_REAL_ESTATE_REAL_ESTATE_ID" FromRole="REAL_ESTATE" ToRole="MINISTRY_REAL_ESTATE" />
-          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
-        </EntityType>
         <Association Name="FK_MARK_MODEL">
           <End Role="MARK" Type="Self.MARK" Multiplicity="0..1" />
           <End Role="MODEL" Type="Self.MODEL" Multiplicity="*" />
@@ -1056,7 +992,6 @@
           <EntitySet Name="MARKs" EntityType="Self.MARK" />
           <EntitySet Name="MODELs" EntityType="Self.MODEL" />
           <EntitySet Name="PROVIDERs" EntityType="Self.PROVIDER" />
-          <EntitySet Name="REAL_ESTATE" EntityType="Self.REAL_ESTATE" />
           <AssociationSet Name="FK_MARK_MODEL" Association="Self.FK_MARK_MODEL">
             <End Role="MARK" EntitySet="MARKs" />
             <End Role="MODEL" EntitySet="MODELs" />
@@ -1089,7 +1024,6 @@
           <EntitySet Name="ASSURANCEs" EntityType="MINISTRY_DBModel.ASSURANCE" />
           <EntitySet Name="LEAVEs" EntityType="MINISTRY_DBModel.LEAVE" />
           <EntitySet Name="MINISTRY_DRIVER" EntityType="MINISTRY_DBModel.MINISTRY_DRIVER" />
-          <EntitySet Name="MINISTRY_REAL_ESTATE" EntityType="MINISTRY_DBModel.MINISTRY_REAL_ESTATE" />
           <EntitySet Name="MOTs" EntityType="MINISTRY_DBModel.MOT" />
           <EntitySet Name="SCHEDULEs" EntityType="MINISTRY_DBModel.SCHEDULE" />
           <AssociationSet Name="FK_ASSURANCE_IDveh" Association="MINISTRY_DBModel.FK_ASSURANCE_IDveh">
@@ -1111,14 +1045,6 @@
           <AssociationSet Name="FK_MINISTRY_DRIVER_IDMinistry" Association="MINISTRY_DBModel.FK_MINISTRY_DRIVER_IDMinistry">
             <End Role="MINISTRY" EntitySet="MINISTRies" />
             <End Role="MINISTRY_DRIVER" EntitySet="MINISTRY_DRIVER" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MINISTRY_REAL_ESTATE_IDMinistry" Association="MINISTRY_DBModel.FK_MINISTRY_REAL_ESTATE_IDMinistry">
-            <End Role="MINISTRY" EntitySet="MINISTRies" />
-            <End Role="MINISTRY_REAL_ESTATE" EntitySet="MINISTRY_REAL_ESTATE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MINISTRY_REAL_ESTATE_REAL_ESTATE_ID" Association="MINISTRY_DBModel.FK_MINISTRY_REAL_ESTATE_REAL_ESTATE_ID">
-            <End Role="REAL_ESTATE" EntitySet="REAL_ESTATE" />
-            <End Role="MINISTRY_REAL_ESTATE" EntitySet="MINISTRY_REAL_ESTATE" />
           </AssociationSet>
           <AssociationSet Name="FK_MOT_IDveh" Association="MINISTRY_DBModel.FK_MOT_IDveh">
             <End Role="VEHICLE" EntitySet="VEHICLEs" />
@@ -1260,7 +1186,6 @@
           <NavigationProperty Name="VEHICLEs" Relationship="MINISTRY_DBModel.FK_VEHICLE_IDMinistry" FromRole="MINISTRY" ToRole="VEHICLE" />
           <NavigationProperty Name="VEHICLE_FUEL_SUPPLY" Relationship="MINISTRY_DBModel.FK_VEHICLEfuel_IDMinistry" FromRole="MINISTRY" ToRole="VEHICLE_FUEL_SUPPLY" />
           <NavigationProperty Name="MINISTRY_DRIVER" Relationship="MINISTRY_DBModel.FK_MINISTRY_DRIVER_IDMinistry" FromRole="MINISTRY" ToRole="MINISTRY_DRIVER" />
-          <NavigationProperty Name="MINISTRY_REAL_ESTATE" Relationship="MINISTRY_DBModel.FK_MINISTRY_REAL_ESTATE_IDMinistry" FromRole="MINISTRY" ToRole="MINISTRY_REAL_ESTATE" />
           <NavigationProperty Name="ASSURANCEs" Relationship="MINISTRY_DBModel.FK_ASSURANCE_MINISTRYId" FromRole="MINISTRY" ToRole="ASSURANCE" />
           <NavigationProperty Name="LEAVEs" Relationship="MINISTRY_DBModel.FK_LEAVE_MINISTRYId" FromRole="MINISTRY" ToRole="LEAVE" />
           <NavigationProperty Name="MOTs" Relationship="MINISTRY_DBModel.FK_MOT_MINISTRYId" FromRole="MINISTRY" ToRole="MOT" />
@@ -1489,19 +1414,6 @@
           <Property Name="Swaped_Vehicle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="MINISTRY_REAL_ESTATE">
-          <Key>
-            <PropertyRef Name="MIN_REAL_ESTATE_ID" />
-          </Key>
-          <Property Name="MIN_REAL_ESTATE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="REAL_ESTATE_ID" Type="Int32" Nullable="false" />
-          <Property Name="MINISTRY_ID" Type="Int32" Nullable="false" />
-          <Property Name="Quantity" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Comment" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MINISTRY" Relationship="MINISTRY_DBModel.FK_MINISTRY_REAL_ESTATE_IDMinistry" FromRole="MINISTRY_REAL_ESTATE" ToRole="MINISTRY" />
-          <NavigationProperty Name="REAL_ESTATE" Relationship="MINISTRY_DBModel.FK_MINISTRY_REAL_ESTATE_REAL_ESTATE_ID" FromRole="MINISTRY_REAL_ESTATE" ToRole="REAL_ESTATE" />
-          <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="MOT">
           <Key>
             <PropertyRef Name="MOT_ID" />
@@ -1590,30 +1502,6 @@
             </Principal>
             <Dependent Role="MINISTRY_DRIVER">
               <PropertyRef Name="MINISTRY_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MINISTRY_REAL_ESTATE_IDMinistry">
-          <End Type="MINISTRY_DBModel.MINISTRY" Role="MINISTRY" Multiplicity="1" />
-          <End Type="MINISTRY_DBModel.MINISTRY_REAL_ESTATE" Role="MINISTRY_REAL_ESTATE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MINISTRY">
-              <PropertyRef Name="MINISTRY_ID" />
-            </Principal>
-            <Dependent Role="MINISTRY_REAL_ESTATE">
-              <PropertyRef Name="MINISTRY_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MINISTRY_REAL_ESTATE_REAL_ESTATE_ID">
-          <End Type="MINISTRY_DBModel.REAL_ESTATE" Role="REAL_ESTATE" Multiplicity="1" />
-          <End Type="MINISTRY_DBModel.MINISTRY_REAL_ESTATE" Role="MINISTRY_REAL_ESTATE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="REAL_ESTATE">
-              <PropertyRef Name="REAL_ESTATE_ID" />
-            </Principal>
-            <Dependent Role="MINISTRY_REAL_ESTATE">
-              <PropertyRef Name="REAL_ESTATE_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2068,16 +1956,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="REAL_ESTATE">
-            <EntityTypeMapping TypeName="MINISTRY_DBModel.REAL_ESTATE">
-              <MappingFragment StoreEntitySet="REAL_ESTATE">
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="REAL_ESTATE_ID" ColumnName="REAL_ESTATE_ID" />
-                <ScalarProperty Name="RealEstate_Name" ColumnName="RealEstate_Name" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="DRIVERs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.DRIVER">
               <MappingFragment StoreEntitySet="DRIVER">
@@ -2272,18 +2150,6 @@
                 <ScalarProperty Name="DRIVER_ID" ColumnName="DRIVER_ID" />
                 <ScalarProperty Name="Min_Driver_RegNumber" ColumnName="Min_Driver_RegNumber" />
                 <ScalarProperty Name="MIN_DRIVER_ID" ColumnName="MIN_DRIVER_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MINISTRY_REAL_ESTATE">
-            <EntityTypeMapping TypeName="MINISTRY_DBModel.MINISTRY_REAL_ESTATE">
-              <MappingFragment StoreEntitySet="MINISTRY_REAL_ESTATE">
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="MINISTRY_ID" ColumnName="MINISTRY_ID" />
-                <ScalarProperty Name="REAL_ESTATE_ID" ColumnName="REAL_ESTATE_ID" />
-                <ScalarProperty Name="MIN_REAL_ESTATE_ID" ColumnName="MIN_REAL_ESTATE_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

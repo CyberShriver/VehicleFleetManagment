@@ -47,7 +47,7 @@
                             </div>
                             <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Operation Failed!</strong>
+                                <strong>Something goes wrong!! please try again</strong>
                             </div>
                             <div class="alert alert-info alert-dismissible fade show" runat="server" id="ExistMsg">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -93,7 +93,14 @@
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Telephone</label>
                                             </div>
-                                            <div class="form-group form-default">
+                                          
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-material">
+                                              <div class="form-group form-default">
                                                 <input type="email" name="footer-email" class="form-control" required="" runat="server" id="txtMail">
                                                 <span class="form-bar"></span>
                                                 <label class="float-label">Email</label>
@@ -112,12 +119,7 @@
                                                 </asp:DropDownList>
                                                 <label class="float-label">State</label>
                                             </div>
-                                        </div>
 
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-material">
                                             <div class="form-group form-default">
                                                 <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change"  autocomplete="off" class="form-control text-right" runat="server" />
                                                 <span class="form-bar"></span>
@@ -127,10 +129,12 @@
                                             <div class="form-group form-default">
                                                 <asp:FileUpload ID="file_updContract" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
                                                 <span class="form-bar"></span>
-                                                <label class="float-label ">Contact:.png,.jpg</label>
+                                                <label class="float-label ">Contract:.png,.jpg</label>
                                             </div>
 
-                                            <asp:Image ID="Image1" runat="server" Width="350px" Height="250px" />
+                                            <div class="form-group form-default" runat="server" id="displayContract" visible="false">
+                                            <a href="#" class="btn btn-danger" onClick="newWindow=window.open('<%=ImgView %>');newWindow.print();"> Open Contract </a>
+                                             </div>
                                         </div>
 
                                     </div>
@@ -139,6 +143,7 @@
                                 <div class="card-footer">
                                     <div class="float-right">
                                         <button type="submit" id="btnSave" class="btn btn-primary ml-5 waves-effect" runat="server" onserverclick="btn_save_Click">Save</button>
+                                        <button type="button" id="btnEmpty" class="btn btn-dark ml-5 waves-effect" runat="server" onserverclick="btn_Empty_Click" visible="false">Empty</button>
                                         <button type="reset" class="btn btn-danger ml-5">Cancel</button>
                                         <a class="btn btn-info ml-5" href="ViewProvider.aspx">List</a>
                                     </div>

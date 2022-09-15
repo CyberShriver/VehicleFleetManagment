@@ -17,6 +17,7 @@ namespace VehicleFleetManagment.FleetApp
         Provider_Interface I = new Provider_Imp();
         int msg;
         string id,code, sytemTitle,slogan;
+        public string ImgView;
         protected void Page_Load(object sender, EventArgs e)
         {
             id = Request.QueryString["PROVIDER_ID"];
@@ -31,12 +32,14 @@ namespace VehicleFleetManagment.FleetApp
                 if (id == null)
                 {
                     btnSave.InnerText = "Save";
+                    displayContract.Visible = false;
                 }
                 else
 
                 {
                     btnSave.InnerText = "Edit";
                     ChargeData();
+                    displayContract.Visible = true;
                 }
 
             }
@@ -75,44 +78,56 @@ namespace VehicleFleetManagment.FleetApp
                 }
                 else
                 {
-                    if (file_upd.HasFile || file_updContract.HasFile)
+                    try
                     {
-                        file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images/Providers/") + Path.GetFileName(file_upd.FileName));
-                        file_updContract.SaveAs(Server.MapPath("~/FleetApp/assets/images/Providers/") + Path.GetFileName(file_updContract.FileName));
-                        string img = Path.GetFileName(file_upd.FileName);
-                        string img1 = Path.GetFileName(file_updContract.FileName);
-                        FileInfo ext = new FileInfo(img);
-                        FileInfo ext1 = new FileInfo(img);
-                        if (ext1.Extension == ".ico" || ext1.Extension == ".png" || ext1.Extension == ".jpg" || ext1.Extension == ".jpeg" || ext1.Extension == ".pdf"||
-                            ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg" )
+
+                        if (file_upd.HasFile || file_updContract.HasFile)
                         {
-                            if (file_upd.PostedFile.ContentLength < 104857600)
+                            file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images/Providers/") + Path.GetFileName(file_upd.FileName));
+                            file_updContract.SaveAs(Server.MapPath("~/FleetApp/assets/images/Providers/") + Path.GetFileName(file_updContract.FileName));
+                            string img = Path.GetFileName(file_upd.FileName);
+                            string img1 = Path.GetFileName(file_updContract.FileName);
+                            FileInfo ext = new FileInfo(img);
+                            FileInfo ext1 = new FileInfo(img1);
+                            if (ext1.Extension == ".doc" || ext1.Extension == ".png" || ext1.Extension == ".jpg" || ext1.Extension == ".jpeg" || ext1.Extension == ".pdf" || ext1.Extension == ".docx" || ext1.Extension == ".txt" ||
+                                ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg")
                             {
-
-                                Pr.CNI = txtCNI.Text;
-                                Pr.Address = txtAddress.Value;
-                                Pr.Provider_Type = DropDown_ProviderType.SelectedItem.Value;
-                                Pr.Provider_Code = ProviderCode();
-                                Pr.Full_Name = txtFullName.Value;
-                                Pr.Phone = txtTel.Value;
-                                Pr.Email = txtMail.Value;
-                                Pr.Stat = DropDown_Status.SelectedItem.Value;
-                                Pr.DOB = dateBirth.Value;
-                                Pr.Picture = img;
-                                Pr.Contract = img1;
-                                Pr.Saved_Date = DateTime.Now.ToString();
-                                msg = I.Add(Pr);
-                                if (msg > 0)
+                                if (file_upd.PostedFile.ContentLength < 104857600)
                                 {
-                                    FillMsg.Visible = false;
-                                    FailMsg.Visible = false;
-                                    SuccessMsg.Visible = true;
-                                    ExistMsg.Visible = false;
 
-                                    txtCode.Value = "";
-                                    txtFullName.Value = "";
-                                    txtTel.Value = "";
-                                    txtMail.Value = "";
+                                    Pr.CNI = txtCNI.Text;
+                                    Pr.Address = txtAddress.Value;
+                                    Pr.Provider_Type = DropDown_ProviderType.SelectedItem.Value;
+                                    Pr.Provider_Code = ProviderCode();
+                                    Pr.Full_Name = txtFullName.Value;
+                                    Pr.Phone = txtTel.Value;
+                                    Pr.Email = txtMail.Value;
+                                    Pr.Stat = DropDown_Status.SelectedItem.Value;
+                                    Pr.DOB = dateBirth.Value;
+                                    Pr.Picture = img;
+                                    Pr.Contract = img1;
+                                    Pr.Saved_Date = DateTime.Now.ToString();
+                                    msg = I.Add(Pr);
+                                    if (msg > 0)
+                                    {
+                                        FillMsg.Visible = false;
+                                        FailMsg.Visible = false;
+                                        SuccessMsg.Visible = true;
+                                        ExistMsg.Visible = false;
+
+                                        txtCode.Value = "";
+                                        txtFullName.Value = "";
+                                        txtTel.Value = "";
+                                        txtMail.Value = "";
+                                    }
+                                    else
+                                    {
+                                        SuccessMsg.Visible = false;
+                                        FillMsg.Visible = false;
+                                        FailMsg.Visible = true;
+                                        ExistMsg.Visible = false;
+
+                                    }
                                 }
                                 else
                                 {
@@ -120,7 +135,6 @@ namespace VehicleFleetManagment.FleetApp
                                     FillMsg.Visible = false;
                                     FailMsg.Visible = true;
                                     ExistMsg.Visible = false;
-
                                 }
                             }
                             else
@@ -133,47 +147,44 @@ namespace VehicleFleetManagment.FleetApp
                         }
                         else
                         {
-                            SuccessMsg.Visible = false;
-                            FillMsg.Visible = false;
-                            FailMsg.Visible = true;
-                            ExistMsg.Visible = false;
+                            Pr.CNI = txtCNI.Text;
+                            Pr.Address = txtAddress.Value;
+                            Pr.Provider_Type = DropDown_ProviderType.SelectedItem.Value;
+                            Pr.Provider_Code = ProviderCode();
+                            Pr.Full_Name = txtFullName.Value;
+                            Pr.Phone = txtTel.Value;
+                            Pr.Email = txtMail.Value;
+                            Pr.Stat = DropDown_Status.SelectedItem.Value;
+                            Pr.DOB = dateBirth.Value;
+                            Pr.Picture = "unkownDriver.jpg";
+                            Pr.Contract = "";
+                            Pr.Saved_Date = DateTime.Now.ToString();
+                            msg = I.Add(Pr);
+                            if (msg > 0)
+                            {
+                                FillMsg.Visible = false;
+                                FailMsg.Visible = false;
+                                SuccessMsg.Visible = true;
+                                ExistMsg.Visible = false;
+
+                                txtCode.Value = "";
+                                txtFullName.Value = "";
+                                txtTel.Value = "";
+                                txtMail.Value = "";
+                            }
+                            else
+                            {
+                                SuccessMsg.Visible = false;
+                                ExistMsg.Visible = false;
+                                FillMsg.Visible = false;
+                                FailMsg.Visible = true;
+
+                            }
                         }
                     }
-                    else
+                    catch (DirectoryNotFoundException)
                     {
-                        Pr.CNI = txtCNI.Text;
-                        Pr.Address = txtAddress.Value;
-                        Pr.Provider_Type = DropDown_ProviderType.SelectedItem.Value;
-                        Pr.Provider_Code = ProviderCode();
-                        Pr.Full_Name = txtFullName.Value;
-                        Pr.Phone = txtTel.Value;
-                        Pr.Email = txtMail.Value;
-                        Pr.Stat = DropDown_Status.SelectedItem.Value;
-                        Pr.DOB = dateBirth.Value;
-                        Pr.Picture = "unkownDriver.jpg";
-                        Pr.Contract = "";
-                        Pr.Saved_Date = DateTime.Now.ToString();
-                        msg = I.Add(Pr);
-                        if (msg > 0)
-                        {
-                            FillMsg.Visible = false;
-                            FailMsg.Visible = false;
-                            SuccessMsg.Visible = true;
-                            ExistMsg.Visible = false;
-
-                            txtCode.Value = "";
-                            txtFullName.Value = "";
-                            txtTel.Value = "";
-                            txtMail.Value = "";
-                        }
-                        else
-                        {
-                            SuccessMsg.Visible = false;
-                            ExistMsg.Visible = false;
-                            FillMsg.Visible = false;
-                            FailMsg.Visible = true;
-
-                        }
+                        FailMsg.Visible = true;
                     }
                 }
             }
@@ -199,37 +210,48 @@ namespace VehicleFleetManagment.FleetApp
                 }
                 else
                 {
-                    if (file_upd.HasFile || file_updContract.HasFile)
+                    try
                     {
-                        file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images/Providers/") + Path.GetFileName(file_upd.FileName));
-                        file_updContract.SaveAs(Server.MapPath("~/FleetApp/assets/images/Providers/") + Path.GetFileName(file_updContract.FileName));
-                        string img = Path.GetFileName(file_upd.FileName);
-                        string img1 = Path.GetFileName(file_updContract.FileName);
-                        FileInfo ext = new FileInfo(img);
-                        FileInfo ext1 = new FileInfo(img);
-                        if (ext1.Extension == ".ico" || ext1.Extension == ".png" || ext1.Extension == ".jpg" || ext1.Extension == ".jpeg" || ext1.Extension == ".pdf" ||
-                            ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg")
+                        if (file_upd.HasFile || file_updContract.HasFile)
                         {
-                            if (file_upd.PostedFile.ContentLength < 104857600)
+                            file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images/Providers/") + Path.GetFileName(file_upd.FileName));
+                            file_updContract.SaveAs(Server.MapPath("~/FleetApp/assets/images/Providers/") + Path.GetFileName(file_updContract.FileName));
+                            string img = Path.GetFileName(file_upd.FileName);
+                            string img1 = Path.GetFileName(file_updContract.FileName);
+                            FileInfo ext = new FileInfo(img);
+                            FileInfo ext1 = new FileInfo(img1);
+                            if (ext1.Extension == ".doc" || ext1.Extension == ".png" || ext1.Extension == ".jpg" || ext1.Extension == ".jpeg" || ext1.Extension == ".pdf" || ext1.Extension == ".docx" || ext1.Extension == ".txt" ||
+                                ext.Extension == ".ico" || ext.Extension == ".png" || ext.Extension == ".jpg" || ext.Extension == ".jpeg")
                             {
-
-                                Pr.CNI = txtCNI.Text;
-                                Pr.Address = txtAddress.Value;
-                                Pr.Provider_Type = DropDown_ProviderType.SelectedItem.Value;
-                                Pr.Provider_Code = ProviderCode();
-                                Pr.Full_Name = txtFullName.Value;
-                                Pr.Phone = txtTel.Value;
-                                Pr.Email = txtMail.Value;
-                                Pr.Saved_Date = DateTime.Now.ToString();
-                                Pr.Stat = DropDown_Status.SelectedItem.Value;
-                                Pr.DOB = dateBirth.Value;
-                                Pr.Picture = img;
-                                Pr.Contract = img1;
-                                msg = I.Update(Pr, Convert.ToInt32(id));
-
-                                if (msg > 0)
+                                if (file_upd.PostedFile.ContentLength < 104857600)
                                 {
-                                    Response.Redirect("~/FleetApp/ViewProvider.aspx");
+
+                                    Pr.CNI = txtCNI.Text;
+                                    Pr.Address = txtAddress.Value;
+                                    Pr.Provider_Type = DropDown_ProviderType.SelectedItem.Value;
+                                    Pr.Provider_Code = ProviderCode();
+                                    Pr.Full_Name = txtFullName.Value;
+                                    Pr.Phone = txtTel.Value;
+                                    Pr.Email = txtMail.Value;
+                                    Pr.Saved_Date = DateTime.Now.ToString();
+                                    Pr.Stat = DropDown_Status.SelectedItem.Value;
+                                    Pr.DOB = dateBirth.Value;
+                                    Pr.Picture = img;
+                                    Pr.Contract = img1;
+                                    msg = I.Update(Pr, Convert.ToInt32(id));
+
+                                    if (msg > 0)
+                                    {
+                                        Response.Redirect("~/FleetApp/ViewProvider.aspx");
+                                    }
+                                    else
+                                    {
+                                        SuccessMsg.Visible = false;
+                                        FillMsg.Visible = false;
+                                        FailMsg.Visible = true;
+                                        ExistMsg.Visible = false;
+
+                                    }
                                 }
                                 else
                                 {
@@ -237,7 +259,6 @@ namespace VehicleFleetManagment.FleetApp
                                     FillMsg.Visible = false;
                                     FailMsg.Visible = true;
                                     ExistMsg.Visible = false;
-
                                 }
                             }
                             else
@@ -250,40 +271,37 @@ namespace VehicleFleetManagment.FleetApp
                         }
                         else
                         {
-                            SuccessMsg.Visible = false;
-                            FillMsg.Visible = false;
-                            FailMsg.Visible = true;
-                            ExistMsg.Visible = false;
+                            Pr.CNI = txtCNI.Text;
+                            Pr.Address = txtAddress.Value;
+                            Pr.Provider_Type = DropDown_ProviderType.SelectedItem.Value;
+                            Pr.Provider_Code = ProviderCode();
+                            Pr.Full_Name = txtFullName.Value;
+                            Pr.Phone = txtTel.Value;
+                            Pr.Email = txtMail.Value;
+                            Pr.Stat = DropDown_Status.SelectedItem.Value;
+                            Pr.DOB = dateBirth.Value;
+                            Pr.Picture = "unkownDriver.jpg";
+                            Pr.Contract = "";
+                            Pr.Saved_Date = DateTime.Now.ToString();
+                            msg = I.Update(Pr, Convert.ToInt32(id));
+
+                            if (msg > 0)
+                            {
+                                Response.Redirect("~/FleetApp/ViewProvider.aspx");
+                            }
+                            else
+                            {
+                                SuccessMsg.Visible = false;
+                                ExistMsg.Visible = false;
+                                FillMsg.Visible = false;
+                                FailMsg.Visible = true;
+
+                            }
                         }
                     }
-                    else
+                    catch (DirectoryNotFoundException)
                     {
-                        Pr.CNI = txtCNI.Text;
-                        Pr.Address = txtAddress.Value;
-                        Pr.Provider_Type = DropDown_ProviderType.SelectedItem.Value;
-                        Pr.Provider_Code = ProviderCode();
-                        Pr.Full_Name = txtFullName.Value;
-                        Pr.Phone = txtTel.Value;
-                        Pr.Email = txtMail.Value;
-                        Pr.Stat = DropDown_Status.SelectedItem.Value;
-                        Pr.DOB = dateBirth.Value;
-                        Pr.Picture = "unkownDriver.jpg";
-                        Pr.Contract = "";
-                        Pr.Saved_Date = DateTime.Now.ToString();
-                        msg = I.Update(Pr, Convert.ToInt32(id));
-
-                        if (msg > 0)
-                        {
-                            Response.Redirect("~/FleetApp/ViewProvider.aspx");
-                        }
-                        else
-                        {
-                            SuccessMsg.Visible = false;
-                            ExistMsg.Visible = false;
-                            FillMsg.Visible = false;
-                            FailMsg.Visible = true;
-
-                        }
+                        FailMsg.Visible = true;
                     }
                 }
             }
@@ -310,7 +328,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtCNI.Text = Pr.CNI;
                 txtAddress.Value = Pr.Address;
                 dateBirth.Value = Pr.DOB;
-                Image1.ImageUrl = "~/FleetApp/assets/images/Providers/" + Pr.Contract;
+                ImgView = "~/FleetApp/assets/images/Providers/" + Pr.Contract;
             }
         }
 
@@ -331,11 +349,13 @@ namespace VehicleFleetManagment.FleetApp
                 dateBirth.Value = Pr.DOB;
 
                 btnSave.Visible = false;
+                btnEmpty.Visible = true;
 
             }
             else
             {         
                 btnSave.Visible = true;
+                btnEmpty.Visible = false;
                 ExistMsg.Visible = false;
             }
 
@@ -355,6 +375,20 @@ namespace VehicleFleetManagment.FleetApp
             }
             else
                 Update();
+        }
+
+        protected void btn_Empty_Click(object sender, EventArgs args)
+        {
+            txtCode.Value = "";
+            txtFullName.Value = "";
+            txtTel.Value = "";
+            txtAddress.Value = "";
+            txtMail.Value = "";
+            dateBirth.Value = "";
+            txtCNI.Text = "";
+            btnEmpty.Visible = false;
+            btnSave.Visible = true;
+            ExistMsg.Visible = false;
         }
 
     }

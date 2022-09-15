@@ -37,7 +37,7 @@ namespace VehicleFleetManagment.FleetApp
                 Provider();
                 GetIpAddress();
                 VehicleCategory();
-                MaxLiter.Text = returnFuel();
+                MaxLiter.Text = ReturnFuel();
                 Session["img"] = null;
 
                 if (id == null)
@@ -258,7 +258,7 @@ namespace VehicleFleetManagment.FleetApp
         {
             if (Convert.ToDouble(txtFuelUsed.Value) >= Convert.ToDouble(txtInitQ.Value))
             {
-                if (Convert.ToDouble(txtFuelUsed.Value) <= Convert.ToDouble(returnFuel())) {
+                if (Convert.ToDouble(txtFuelUsed.Value) <= Convert.ToDouble(ReturnFuel())) {
                         if (Convert.ToDouble(txtFuelUsed.Value) > 100 && Approve.Checked == true)
                         {
                             if (id == null)
@@ -377,66 +377,110 @@ namespace VehicleFleetManagment.FleetApp
         //Add dropDawn Vehicle
         void Vehicle()
         {
-            if (codeMin == "All")
+            try
             {
-                I.DisplayAllVehicle(DropDown_Vehicle);
+                if (codeMin == "All")
+                {
+                    I.DisplayAllVehicle(DropDown_Vehicle);
+                }
+                else
+                {
+                    
+                        I.DisplayVehicle(DropDown_Vehicle, codeMin);
+                }
             }
-            else
+            catch (NullReferenceException e)
             {
-                I.DisplayVehicle(DropDown_Vehicle,codeMin);
+                FailMsg.Visible = true;
             }
+         
             
         }
 
         //Add dropDawn Vehicle
         void Provider()
         {
-            I.DisplayProvider(DropDown_ProviderCode);
+            try
+            {
+                I.DisplayProvider(DropDown_ProviderCode);
+            }
+            catch (NullReferenceException e)
+            {
+                FailMsg.Visible = true;
+            }
+
         }
 
         void fuel()
         {
-            I.DisplayFuelType(DropDown_fuel, DropDown_Vehicle.SelectedItem.Text);
+           
+            try
+            {
+                I.DisplayFuelType(DropDown_fuel, DropDown_Vehicle.SelectedItem.Text);
+            }
+            catch (NullReferenceException e)
+            {
+                FailMsg.Visible = true;
+            }
         }
         void VehicleCategory()
-        {
-            I.DisplayVehicleCategory(DropDown_Category, DropDown_Vehicle.SelectedItem.Text);
+        {            
+            try
+            {
+                I.DisplayVehicleCategory(DropDown_Category, DropDown_Vehicle.SelectedItem.Text);
+            }
+            catch (NullReferenceException e)
+            {
+                FailMsg.Visible = true;
+            }
         }
         protected void DropDown_Vehicle_SelectedIndexChanged(object sender, EventArgs e)
         {
             fuel();
             VehicleCategory();
-            MaxLiter.Text = returnFuel();
+            MaxLiter.Text = ReturnFuel();
         }
 
         //limit fuel based on categories
-        string returnFuel()
+        string ReturnFuel()
         {
-            string categ;
-            if (DropDown_Category.SelectedItem.Text=="Compact Car")
+            string c=null;
+            try
             {
-                categ = "30";
-            }else if (DropDown_Category.SelectedItem.Text == "small lorry truck")
-            {
-                categ = "40";
+                string categ;
+
+                if (DropDown_Category.SelectedItem.Text == "Compact Car")
+                {
+                    categ = "30";
+                }
+                else if (DropDown_Category.SelectedItem.Text == "small lorry truck")
+                {
+                    categ = "40";
+                }
+                else if (DropDown_Category.SelectedItem.Text == "Van")
+                {
+                    categ = "50";
+                }
+                else if (DropDown_Category.SelectedItem.Text == "Bus")
+                {
+                    categ = "60";
+                }
+                else if (DropDown_Category.SelectedItem.Text == "Trailer")
+                {
+                    categ = "150";
+                }
+                else
+                {
+                    categ = "200";
+                }
+                 c=categ;           
             }
-            else if(DropDown_Category.SelectedItem.Text == "Van")
+            catch (NullReferenceException e)
             {
-                categ = "50";
+                FailMsg.Visible = true;
             }
-            else if (DropDown_Category.SelectedItem.Text == "Bus")
-            {
-                categ = "60";
-            }
-            else if (DropDown_Category.SelectedItem.Text == "Trailer")
-            {
-                categ = "150";
-            }
-            else 
-            {
-                categ = "200";
-            }
-            return categ;
+
+            return c;
         }
 
         //control check when file is uploaded
@@ -476,7 +520,7 @@ namespace VehicleFleetManagment.FleetApp
                     exceedFuelLimit.Visible = false;
                     MaxLiterMsg.Visible = false;
                     InvalidLenght.Visible = false;
-                    MaxLiter.Text = returnFuel();
+                    MaxLiter.Text = ReturnFuel();
                 }
                 else
                 {
@@ -485,7 +529,7 @@ namespace VehicleFleetManagment.FleetApp
             }
             else
             {
-                MaxLiter.Text = returnFuel();
+                MaxLiter.Text = ReturnFuel();
                 Session["img"] = null;
                 fileImage = "";
             }

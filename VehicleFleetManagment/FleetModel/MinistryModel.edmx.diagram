@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="MINISTRY_DBModel.MARK" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="MINISTRY_DBModel.MODEL" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MINISTRY_DBModel.PROVIDER" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MINISTRY_DBModel.REAL_ESTATE" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_MARK_MODEL" ManuallyRouted="false" />
         <EntityTypeShape EntityType="MINISTRY_DBModel.DRIVER" Width="1.5" PointX="7.625" PointY="6.5" />
         <EntityTypeShape EntityType="MINISTRY_DBModel.LEAVE_TYPE" Width="1.5" PointX="7.625" PointY="0.5" />
@@ -24,7 +23,6 @@
         <EntityTypeShape EntityType="MINISTRY_DBModel.ASSURANCE" Width="1.5" PointX="12.5" PointY="10.5" />
         <EntityTypeShape EntityType="MINISTRY_DBModel.LEAVE" Width="1.5" PointX="17.125" PointY="3.625" />
         <EntityTypeShape EntityType="MINISTRY_DBModel.MINISTRY_DRIVER" Width="1.5" PointX="14.875" PointY="7.875" />
-        <EntityTypeShape EntityType="MINISTRY_DBModel.MINISTRY_REAL_ESTATE" Width="1.5" PointX="7" PointY="12.625" />
         <EntityTypeShape EntityType="MINISTRY_DBModel.MOT" Width="1.5" PointX="12.5" PointY="1.375" />
         <EntityTypeShape EntityType="MINISTRY_DBModel.SCHEDULE" Width="1.5" PointX="12.5" PointY="14.5" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_ASSURANCE_IDveh" />
@@ -32,8 +30,6 @@
         <AssociationConnector Association="MINISTRY_DBModel.FK_LEAVE_LEAVE_TYPE_ID" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_LEAVE_MIN_DRIVER_ID" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_MINISTRY_DRIVER_IDMinistry" />
-        <AssociationConnector Association="MINISTRY_DBModel.FK_MINISTRY_REAL_ESTATE_IDMinistry" />
-        <AssociationConnector Association="MINISTRY_DBModel.FK_MINISTRY_REAL_ESTATE_REAL_ESTATE_ID" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_MOT_IDveh" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_SCHEDULE_IDveh" />
         <AssociationConnector Association="MINISTRY_DBModel.FK_ASSURANCE_MINISTRYId" />

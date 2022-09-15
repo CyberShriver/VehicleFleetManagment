@@ -168,13 +168,13 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.WebControls.FileUpload file_updContract;
 
         /// <summary>
-        /// Image1 control.
+        /// displayContract control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl displayContract;
 
         /// <summary>
         /// btnSave control.
@@ -184,5 +184,14 @@ namespace VehicleFleetManagment.FleetApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnSave;
+
+        /// <summary>
+        /// btnEmpty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnEmpty;
     }
 }

@@ -50,7 +50,7 @@
                             </div>
                             <div class="alert alert-danger alert-dismissible fade show" runat="server" id="FailMsg">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Operation Failed!</strong>
+                                <strong>Something goes wrong!! please try again</strong>
                             </div>
                         </div>
                         <div class="row">

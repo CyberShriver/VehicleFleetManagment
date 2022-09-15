@@ -29,7 +29,6 @@ namespace VehicleFleetManagment.FleetModel
         public virtual DbSet<MARK> MARKs { get; set; }
         public virtual DbSet<MODEL> MODELs { get; set; }
         public virtual DbSet<PROVIDER> PROVIDERs { get; set; }
-        public virtual DbSet<REAL_ESTATE> REAL_ESTATE { get; set; }
         public virtual DbSet<DRIVER> DRIVERs { get; set; }
         public virtual DbSet<LEAVE_TYPE> LEAVE_TYPE { get; set; }
         public virtual DbSet<MINISTRY> MINISTRies { get; set; }
@@ -38,7 +37,6 @@ namespace VehicleFleetManagment.FleetModel
         public virtual DbSet<ASSURANCE> ASSURANCEs { get; set; }
         public virtual DbSet<LEAVE> LEAVEs { get; set; }
         public virtual DbSet<MINISTRY_DRIVER> MINISTRY_DRIVER { get; set; }
-        public virtual DbSet<MINISTRY_REAL_ESTATE> MINISTRY_REAL_ESTATE { get; set; }
         public virtual DbSet<MOT> MOTs { get; set; }
         public virtual DbSet<SCHEDULE> SCHEDULEs { get; set; }
         public virtual DbSet<CAR_CRASH> CAR_CRASH { get; set; }

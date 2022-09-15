@@ -3,10 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
-        #chartdiv1 {
-            width: 100%;
-            height: 400px;
-        }
+      
     </style>
     <!-- Page-header start -->
     <div class="page-header">
@@ -19,15 +16,7 @@
                             <asp:Label class="m-b-0 p" ID="txtSlogan" runat="server" Text=""></asp:Label></p>
                     </div>
                 </div>
-                <%--<div class="col-md-4">
-                    <ul class="breadcrumb-title">
-                        <li class="breadcrumb-item">
-                            <a href="index.html"><i class="fa fa-home"></i></a>
-                        </li>
-                        <li class="breadcrumb-item"><a href="#!">Dashboard</a>
-                        </li>
-                    </ul>
-                </div>--%>
+              
             </div>
         </div>
     </div>
@@ -48,32 +37,7 @@
                         
                         <!--  counter  start -->
                       
-                        <div class="col-xl-4 col-md-6">
-                            <div class="card">
-                                <div class="card-block">
-                                    <div class="row align-items-center">
-                                        <div class="col-8">
-                                            <asp:Label class="text-c-orenge h4" ID="RealEstateNumber" runat="server" Text=""></asp:Label>
-                                            <h6 class="text-muted m-b-0">Real Estate</h6>
-                                        </div>
-                                        <div class="col-4 text-right">
-                                            <i class="fa fa-table f-28"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer bg-c-blue">
-                                    <div class="row align-items-center">
-                                        <div class="col-9">
-                                            <p class="text-white m-b-0">Total number of Real Estate they have</p>
-                                        </div>
-                                        <div class="col-3 text-right">
-                                            <i class="fa fa-line-chart text-white f-16"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6">
+                        <div class="col-xl-6 col-md-6">
                             <div class="card">
                                 <div class="card-block">
                                     <div class="row align-items-center">
@@ -98,7 +62,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-md-6">
+                        <div class="col-xl-6 col-md-6">
                             <div class="card">
                                 <div class="card-block">
                                     <div class="row align-items-center">
@@ -451,78 +415,6 @@
                         </div>
 
                          <!-- Vehicle end -->
-
-                        <div class="text-center font-weight-bold">real estate</div>
-
-                        <!--  Ministry Real Estate start -->
-                        <div class="col-xl-12 col-md-12">
-                            <div class="card table-card">
-                                <div class="card-header">
-                                    <h5>Real Estate</h5>
-                                    <div class="card-header-right">
-                                        <ul class="list-unstyled card-option">
-                                            <li><i class="fa fa fa-wrench open-card-option"></i></li>
-                                            <li><i class="fa fa-window-maximize full-card"></i></li>
-                                            <li><i class="fa fa-minus minimize-card"></i></li>
-                                            <li><i class="fa fa-refresh reload-card"></i></li>
-                                            <li><i class="fa fa-trash close-card"></i></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="card-block">                                                                                                        
-                                    
-                                    <table class="">
-                                    <asp:GridView ID="GridViewReal" DataKeyNames="MIN_REAL_ESTATE_ID" ShowHeaderWhenEmpty="true" EmptyDataText="No Records" HeaderStyle-HorizontalAlign="Center"
-                                        class="table  table-striped  table-borderless text-center gdv" HorizontalAlign="Center" HeaderStyle-Font-Bold="true"
-                                        AutoGenerateColumns="false" EmptyDataRowStyle-Font-Size="X-Large" AllowPaging="true" PageSize="10" OnPreRender="gdv_PreRenderRealEstate"
-                                        GridLines="None" EmptyDataRowStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#448aff" HeaderStyle-ForeColor="White"
-                                        runat="server" Width="100%"  OnPageIndexChanging="gdv_PageIndexChangingRealEstate">
-
-                                        <Columns>
-                                            <%--<asp:TemplateField>
-                                                <HeaderTemplate>
-                                                    <asp:CheckBox ID="checkSelHeader" runat="server" Text="Select All" AutoPostBack="true" OnCheckedChanged="checkSelHeader_CheckedChanged" />
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
-                                                    <asp:CheckBox ID="checkSel" runat="server" OnCheckedChanged="checkSel_CheckedChanged" />
-                                                </ItemTemplate>
-                                            </asp:TemplateField>--%>
-
-                                             <asp:BoundField DataField="MIN_REAL_ESTATE_ID" HeaderText="#" Visible="false" />
-
-                                            <asp:TemplateField HeaderText="Real Estate">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label5po" runat="server" Text='<%# Eval("REAL_ESTATE_ID") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-
-                                            <asp:TemplateField HeaderText="Quantity ">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label3fre" runat="server" Text='<%# Eval("Quantity") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-
-                                            <asp:TemplateField HeaderText="Comment">
-                                                <ItemTemplate>
-                                                    <asp:Label ID="Label4vde" runat="server" Text='<%# Eval("Comment") %>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-
-                                        </Columns>
-                                    </asp:GridView>
-
-                                </table>
-
-                                    <div class="card-footer">
-                                        <asp:Label ID="indexFooterReal" runat="server"></asp:Label>
-                                    </div>
-                                </div>
-
-                                
-                            </div>
-                        </div>
-                        <!-- Ministry Real Estate end -->
 
 
                     </div>
