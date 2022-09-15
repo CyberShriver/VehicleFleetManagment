@@ -547,7 +547,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from V in con.VEHICLEs where C.Deleted == "False"
+                var obj = (from V in con.VEHICLEs where V.Deleted == "False"
 
                            select new
                            {
@@ -569,7 +569,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from Md in con.MINISTRY_DRIVER where C.Deleted == "False"
+                var obj = (from Md in con.MINISTRY_DRIVER where Md.Deleted == "False"
 
                            select new
                            {
@@ -592,7 +592,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from Md in con.MINISTRY_DRIVER
-                           where Md.Position_Status=="On Post" && C.Deleted == "False" && Md.Min_Driver_RegNumber== plat
+                           where Md.Position_Status=="On Post" && Md.Deleted == "False" && Md.Min_Driver_RegNumber== plat
 
                            select new
                            {
@@ -615,7 +615,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from Md in con.MINISTRY_DRIVER
-                           where Md.MINISTRY_ID == id && Md.Position_Status == "On Post" && C.Deleted == "False"
+                           where Md.MINISTRY_ID == id && Md.Position_Status == "On Post" && Md.Deleted == "False"
                            select new
                            {
                                Min_Driver_RegNumber = Md.Min_Driver_RegNumber
@@ -635,7 +635,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MINISTRies where M.Code_Min==codeMin && C.Deleted == "False"
+                var obj = (from M in con.MINISTRies where M.Code_Min==codeMin && M.Deleted == "False"
 
                            select new
                            {
@@ -657,12 +657,12 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from R in con.MINISTRies where C.Deleted == "False"
+                var obj = (from M in con.MINISTRies where M.Deleted == "False"
 
                            select new
                            {
-                               MINISTRY_ID = R.MINISTRY_ID,
-                               Ministry_Name = R.Ministry_Name,
+                               MINISTRY_ID = M.MINISTRY_ID,
+                               Ministry_Name = M.Ministry_Name,
                            }
                            ).ToList();
 

@@ -571,7 +571,8 @@
                           <% }%>
                         <!-- End Reports entities-->   
                         
-                         <!-- Start Reports entities-->
+                         <!-- Start General Reports entities-->
+                         <% if (MenuDisplay("DisplayGeneralReport") == true){ %>
 
                         <ul class="pcoded-item pcoded-left-item">
                             <li class="">
@@ -583,7 +584,8 @@
                                 
                             </li>
                         </ul>
-                        <!-- End Reports entities--> 
+                         <% }%>
+                        <!-- End General Reports entities--> 
                     </div>
                 </nav>
                 <!-- end side nav-->

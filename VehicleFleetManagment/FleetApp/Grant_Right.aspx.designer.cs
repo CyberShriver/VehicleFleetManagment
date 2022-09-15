@@ -69,6 +69,24 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ExistMsg;
 
         /// <summary>
+        /// DMinistry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DMinistry;
+
+        /// <summary>
+        /// DropDown_Ministry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDown_Ministry;
+
+        /// <summary>
         /// DropDown_Role control.
         /// </summary>
         /// <remarks>

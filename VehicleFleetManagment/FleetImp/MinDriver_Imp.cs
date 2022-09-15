@@ -272,7 +272,6 @@ namespace VehicleFleetManagment.FleetImp
                 var obj = (from M in con.MINISTRY_DRIVER
                            where M.Deleted == "False" && M.MINISTRY.Code_Min== codeMin &&
                            (M.Min_Driver_RegNumber ).ToString().StartsWith(SearchText) ||
-                           M.DRIVER.Full_Name.StartsWith(SearchText) ||
                            M.StartDate.StartsWith(SearchText) ||
                            M.EndDate.StartsWith(SearchText) ||
                            M.Position_Status.StartsWith(SearchText) ||
@@ -286,7 +285,8 @@ namespace VehicleFleetManagment.FleetImp
                                MINISTRY_ID = M.MINISTRY.Ministry_Name,
                                StartDate = M.StartDate,
                                EndDate = M.EndDate,
-                               Position_Status = M.Position_Status
+                               Position_Status = M.Position_Status,
+                               Picture = M.DRIVER.Picture
 
                            }
                            ).ToList();
@@ -318,7 +318,8 @@ namespace VehicleFleetManagment.FleetImp
                                MINISTRY_ID = M.MINISTRY.Ministry_Name,
                                StartDate = M.StartDate,
                                EndDate = M.EndDate,
-                               Position_Status = M.Position_Status
+                               Position_Status = M.Position_Status,
+                               Picture = M.DRIVER.Picture
 
                            }
                            ).ToList();

@@ -113,10 +113,10 @@ namespace VehicleFleetManagment.FleetApp
                         btnEdit.Visible = false;
                         btnDelete.Visible = false;
                     }
-                    else if (state.Text == "Swaped" || state.Text == "Fired")
+                    else if (state.Text == "Swaped" || state.Text == "Fired" || state.Text == "Free")
                     {
                         btnEdit.Visible = false;
-                    }
+                    }                   
 
                 }
             }

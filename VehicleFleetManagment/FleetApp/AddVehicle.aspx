@@ -424,11 +424,11 @@
                                                                 <label class="float-label ">Circulation Expiration Date</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" required="" autocomplete="off" class="form-control text-right" runat="server" />
+                                                                <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change" autocomplete="off" class="form-control text-right" runat="server" />
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label ">Pic:.ico,.png,.jpg</label>
                                                             </div>
-                                                            <div class="form-group form-default">
+                                                            <div class="form-group form-default" id="IdState" runat="server">
                                                                 <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_State" required="" runat="server">
                                                                     <asp:ListItem>Available</asp:ListItem>
                                                                     <asp:ListItem>Unavailable</asp:ListItem>

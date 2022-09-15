@@ -100,7 +100,7 @@
 
                                              <asp:BoundField DataField="LICENSE_ID" HeaderText="#" Visible="false" />
                                             
-                                            <asp:TemplateField HeaderText="Ministry" FooterText="#">
+                                            <asp:TemplateField HeaderText="Ministry" FooterText="#" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label9" runat="server" Text='<%# Eval("MINISTRY_ID") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -137,7 +137,7 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Category">
+                                            <asp:TemplateField HeaderText="Category" Visible="false" >
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label6" runat="server" Text='<%# Eval("Category_A") %>'></asp:Label>
                                                 </ItemTemplate>

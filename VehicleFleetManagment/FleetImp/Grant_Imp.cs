@@ -244,7 +244,7 @@ namespace VehicleFleetManagment.FleetImp
                 var obj = (from Gr in con.GRANT_RIGHT
                            join M in con.MENUs on Gr.Menu_Code equals M.Menu_Code
                            join r in con.ROLEs on Gr.ROLE_ID equals r.ROLE_ID
-                           where G.Deleted == "False" && (M.Title_Menu.Contains(SearchText) || r.Role_Name.Contains(SearchText))
+                           where G.Deleted == "False" && (M.Title_Menu.StartsWith(SearchText) || r.Role_Name.StartsWith(SearchText))
                            select new
                            {
                               
@@ -265,7 +265,28 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
-   
+        //DISPLAY   Role Of Ministry Selected
+        public void DisplayMinistryRole(DropDownList drop, int idMin)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from M in con.MINISTRies
+                           where M.Deleted == "False" && M.MINISTRY_ID == idMin
+
+                           select new
+                           {
+                               ROLE_ID = M.ROLE_ID,
+                               ROLE = M.ROLE.Role_Name,
+                           }
+                           ).ToList();
+
+                drop.DataSource = obj;
+                drop.DataValueField = "ROLE_ID";
+                drop.DataTextField = "ROLE";
+                drop.DataBind();
+            }
+
+        }
 
     }
 }

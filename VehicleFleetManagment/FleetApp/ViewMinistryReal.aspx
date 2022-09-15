@@ -102,7 +102,7 @@
 
                                              <asp:BoundField DataField="MIN_REAL_ESTATE_ID" HeaderText="#" Visible="false" />
 
-                                            <asp:TemplateField HeaderText="Ministry">
+                                            <asp:TemplateField HeaderText="Ministry" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label2" runat="server" Text='<%# Eval("MINISTRY_ID") %>'></asp:Label>
                                                 </ItemTemplate>

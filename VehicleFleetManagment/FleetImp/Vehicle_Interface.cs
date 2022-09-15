@@ -71,5 +71,11 @@ namespace VehicleFleetManagment.FleetImp
 
         //Update Availability of vahicle
         int UpdateVehAvailable(Vehicle_Class veh, string LocalPlate);
+
+        //UPDATE MINISTRY DRIVER STATE METHOD 
+         int UpdateMinDriverState(string plate);
+
+        //CHECK MINISTRY DRIVER STATE METHOD 
+        int CheckMinDriverState(string plate);
     }
 }

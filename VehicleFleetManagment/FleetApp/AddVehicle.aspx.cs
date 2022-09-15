@@ -38,6 +38,7 @@ namespace VehicleFleetManagment.FleetApp
                 {
                     btnSave.InnerText = "Edit";
                     ChargeData();
+                    state();
                 }
                
                 txtSystemTitle.Text = sytemTitle;
@@ -612,7 +613,26 @@ namespace VehicleFleetManagment.FleetApp
                 Add();
             }
             else
-                Update();
+            {
+                msg = I.CheckMinDriverState(txtPlate.Text);
+                if (msg == 1)
+                {
+                    if (DropDown_State.SelectedValue == "Available")
+                    {
+                        Update();
+                        I.UpdateMinDriverState(txtPlate.Text);
+                    }
+                    else
+                    {
+                        Update();
+                    }
+
+                }
+                else
+                {
+                    Update();
+                }
+            }
         }
 
         protected void ActiveGen_click(object sender, EventArgs args)
@@ -686,6 +706,13 @@ namespace VehicleFleetManagment.FleetApp
             I.DisplayModel(DropDown_Model);
         }
 
+        void state()
+        {
+            if (DropDown_State.SelectedValue == "Available")
+            {
+                IdState.Visible = false;
+            }
+        }
         void Body()
         {
             I.DisplayBodyType(DropDown_Body);

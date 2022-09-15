@@ -39,5 +39,8 @@ namespace VehicleFleetManagment.FleetImp
 
         //REASEARCH METHOD
          void Research(GridView gd, string SearchText);
+
+        //DISPLAY   Role Of Ministry Selected
+         void DisplayMinistryRole(DropDownList drop, int idMin);
     }
 }

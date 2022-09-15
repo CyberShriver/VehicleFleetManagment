@@ -872,5 +872,59 @@ namespace VehicleFleetManagment.FleetImp
 
             return msg;
         }
+
+        //UPDATE MINISTRY DRIVER STATE METHOD 
+        public int UpdateMinDriverState(string plate)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                MINISTRY_DRIVER M = new MINISTRY_DRIVER();
+                M = con.MINISTRY_DRIVER.OrderByDescending(x => x.MIN_DRIVER_ID).Where(x => x.Min_Driver_RegNumber == plate && x.Position_Status == "On Post" && x.Deleted == "False").FirstOrDefault();
+
+                if ( M != null)
+                {
+                    
+                    M.Position_Status = "Free";
+                    M.EndDate = DateTime.Now.Date.ToString();
+                    M.Swaped_Vehicle = "Not swaped";
+                    if (con.SaveChanges() > 0)
+                    {
+                        con.MINISTRY_DRIVER.Add(M);
+                        con.Entry(M).State = EntityState.Modified;                       
+                      msg = 1;
+                    }
+                    else
+                         msg = 0;
+
+
+                }
+
+                return msg;
+                
+            }
+        }
+
+        //CHECK MINISTRY DRIVER STATE METHOD 
+        public int CheckMinDriverState(string plate)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                DRIVER D = new DRIVER();
+                MINISTRY_DRIVER M = new MINISTRY_DRIVER();
+
+                V = con.VEHICLEs.Where(x => x.Local_Plate == plate && x.Deleted == "False").FirstOrDefault();
+                M = con.MINISTRY_DRIVER.OrderByDescending(x => x.MIN_DRIVER_ID).Where(x => x.Min_Driver_RegNumber == plate && x.Position_Status == "On Post" && x.Deleted == "False").FirstOrDefault();
+
+                if (V != null && M != null)
+                {
+
+                    return msg = 1;
+
+                }
+                else
+                    return msg = 0;
+            }
+        }
+
     }
 }

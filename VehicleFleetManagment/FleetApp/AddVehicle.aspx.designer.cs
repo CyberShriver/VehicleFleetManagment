@@ -627,6 +627,15 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.WebControls.FileUpload file_upd;
 
         /// <summary>
+        /// IdState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl IdState;
+
+        /// <summary>
         /// DropDown_State control.
         /// </summary>
         /// <remarks>

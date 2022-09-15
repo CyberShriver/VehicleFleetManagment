@@ -17,6 +17,9 @@ namespace VehicleFleetManagment.FleetApp
         Grant_Class Gra = new Grant_Class();
         Grant_Interface IG = new Grant_Imp();
 
+        Leave_Class Le = new Leave_Class();
+        Leave_Interface I = new Leave_Imp();
+
         Menu_Class M = new Menu_Class();
         Menu_Interface IM = new Menu_Imp();
 
@@ -38,6 +41,8 @@ namespace VehicleFleetManagment.FleetApp
 
             if (!IsPostBack)
             {
+                Ministry();
+                role();
                 txtSystemTitle.Text = sytemTitle;
                 txtSlogan.Text = slogan;
                 getDataGDV();
@@ -72,14 +77,21 @@ namespace VehicleFleetManagment.FleetApp
             IM.Display(gdv);
             nbr.Text = IG.count().ToString();
             IR.DropdownRole(DropDown_Role);
+            MsgInit();
 
         }
 
         protected void btn_srch_Click(object sender, EventArgs e)
         {
             if (txt_Search.Value == "")
+            {
                 getDataGDV();
-            else IG.Research(gdv, txt_Search.Value);
+
+            }
+            else { 
+                IG.Research(gdv, txt_Search.Value);
+                MsgInit();
+            }
         }
 
         protected void gdv_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -106,7 +118,7 @@ namespace VehicleFleetManagment.FleetApp
 
                     idmenu = Convert.ToInt32(M.Menu_Code);
 
-                    IG.DisplayDetails(Convert.ToInt32(DropDown_Role.SelectedValue), Convert.ToInt32(M.Menu_Code),Convert.ToInt32(IdMin), Gr);
+                    IG.DisplayDetails(Convert.ToInt32(DropDown_Role.SelectedValue), Convert.ToInt32(M.Menu_Code), Convert.ToInt32(DropDown_Ministry.SelectedValue), Gr);
                     if (Gr.Menu_Code > 0)
                     {
                         //if this line already exist ,update it
@@ -114,7 +126,7 @@ namespace VehicleFleetManagment.FleetApp
                             Gra.Access = "ON";
                         else Gra.Access = "OFF";
 
-                        info = IG.UPDATE(Convert.ToInt32(DropDown_Role.SelectedValue), Convert.ToInt32(M.Menu_Code), Convert.ToInt32(IdMin), Gra);
+                        info = IG.UPDATE(Convert.ToInt32(DropDown_Role.SelectedValue), Convert.ToInt32(M.Menu_Code), Convert.ToInt32(DropDown_Ministry.SelectedValue), Gra);
                         if (info == 1)
                         {
                             FillMsg.Visible = false;
@@ -136,7 +148,8 @@ namespace VehicleFleetManagment.FleetApp
                     {
                         //If not exist,grant it
                         Gra.Menu_Code = Convert.ToInt64(idmenu);
-                        Gra.MINISTRY_ID = Convert.ToInt32(IdMin);
+                        //Gra.MINISTRY_ID = Convert.ToInt32(IdMin);
+                        Gra.MINISTRY_ID = Convert.ToInt32(DropDown_Ministry.SelectedValue);
                         Gra.ROLE_ID = Convert.ToInt64(DropDown_Role.SelectedValue);
 
                         if (chkb.Checked == true)
@@ -175,6 +188,8 @@ namespace VehicleFleetManagment.FleetApp
         {
             gdv.PageIndex = e.NewPageIndex;
             this.getDataGDV();
+            role();
+            MsgInit();
 
         }
 
@@ -183,5 +198,28 @@ namespace VehicleFleetManagment.FleetApp
             indexFooter.Text = "Page " + (gdv.PageIndex + 1).ToString() + " of " + gdv.PageCount.ToString();
         }
 
+        void Ministry()
+        {
+            if (codeMin == "Min-7/2022")
+            {
+                DMinistry.Visible = true;
+                I.DisplayMinistryAll(DropDown_Ministry);
+            }
+            else
+            {
+                I.DisplayMinistry(DropDown_Ministry, codeMin);
+                DMinistry.Visible = false;
+            }
+           
+        }
+        void role()
+        {
+            IG.DisplayMinistryRole(DropDown_Role,Convert.ToInt32(DropDown_Ministry.SelectedValue));
+        }
+        protected void dropDown_Ministry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            role();
+        }
     }
 }

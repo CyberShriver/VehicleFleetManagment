@@ -61,6 +61,12 @@
                                 </div>
                                 <div class=" col-md-6  mx-auto  mt-3">                                  
                                     <div class="form-material">
+
+                                         <div class="form-group form-default" id="DMinistry" runat="server">
+                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;"   OnSelectedIndexChanged="dropDown_Ministry_SelectedIndexChanged" AutoPostBack="true"  ID="DropDown_Ministry" required="" runat="server"></asp:DropDownList>
+                                                <label class="float-label">Ministry</label>
+                                            </div>
+
                                         <div class="form-group form-default"  runat="server">
                                             <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_Role" required="" runat="server">
                                             </asp:DropDownList>
