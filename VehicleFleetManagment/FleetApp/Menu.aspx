@@ -37,7 +37,7 @@
                     <!-- Hover table card start -->
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="font-weight-bold">All Mark Records</h5>
+                            <h5 class="font-weight-bold">Menu</h5>
                             <div class="card-header-right">
                                 <ul class="list-unstyled card-option">
                                     <li><i class="fa fa fa-wrench open-card-option"></i></li>
@@ -68,9 +68,14 @@
                                     </div>
                             </div>  
                             <!-- end Search  -->
-                            <div class="float-right mt-0 d-flex mb-0">
+                            <div class="float-right mt-0 d-flex mb-0" runat="server" id="records">
                                 <span runat="server" class="font-weight-bold mr-1">Records: </span>
                                 <asp:Label ID="nbr" runat="server" Text="" class="text-danger font-weight-bold mr-1"> </asp:Label>
+                            </div>
+
+                            <div class="float-right mt-0 d-flex mb-0" runat="server" id="CountserchResult" visible="false">
+                                <span runat="server" class="font-weight-bold mr-1">Search result: </span>
+                                <asp:Label ID="txtSearchResult" runat="server" Text="" class="text-danger font-weight-bold mr-1"> </asp:Label>
                             </div>
 
                         </div>

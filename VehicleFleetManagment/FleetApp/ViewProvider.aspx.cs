@@ -49,13 +49,28 @@ namespace VehicleFleetManagment.FleetApp
         protected void btn_srch_Click(object sender, EventArgs e)
         {
             if (txt_Search.Value == "")
+            {
                 getDataGDV();
-            else I.Research(gdv, txt_Search.Value);
+                txtSearchResult.Text = gdv.Rows.Count.ToString();
+                CountserchResult.Visible = false;
+                records.Visible = true;
+            }
+            else
+            {
+                gdv.PageSize = 200;
+                I.Research(gdv, txt_Search.Value);
+                txtSearchResult.Text = gdv.Rows.Count.ToString();
+                CountserchResult.Visible = true;
+                records.Visible = false;
+            }
         }
         protected void btnReload_click(object sender, EventArgs e)
         {
             getDataGDV();
             txt_Search.Value = "";
+            CountserchResult.Visible = false;
+            records.Visible = true;
+            gdv.PageSize = 10;
         }
 
         protected void gdv_RowCommand(object sender, GridViewCommandEventArgs e)

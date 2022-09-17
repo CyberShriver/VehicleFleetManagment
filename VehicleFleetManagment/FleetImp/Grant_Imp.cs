@@ -112,6 +112,7 @@ namespace VehicleFleetManagment.FleetImp
                 var obj = (from Gr in con.GRANT_RIGHT
                            join M in con.MENUs on Gr.Menu_Code equals M.Menu_Code
                            join R in con.ROLEs on Gr.ROLE_ID equals R.ROLE_ID where Gr.Deleted == "False"
+                           orderby Gr.RowId descending
                            select new
                            {
                                RowId = Gr.RowId,

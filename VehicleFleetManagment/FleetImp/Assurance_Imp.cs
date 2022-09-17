@@ -144,8 +144,9 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from A in con.ASSURANCEs where A.MINISTRY.Code_Min== codeMin && A.Deleted == "False"
+                           orderby A.ASSURANCE_ID descending
 
-                select new
+                           select new
                            {
                                ASSURANCE_ID  = A.ASSURANCE_ID ,
                                Maintenance_Type  = A.Maintenance_Type ,
@@ -174,6 +175,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from A in con.ASSURANCEs where A.Deleted == "False"
+                           orderby A.ASSURANCE_ID descending
 
                            select new
                            {
@@ -254,12 +256,12 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from A in con.ASSURANCEs
                            where A.MINISTRY.Code_Min== codeMin && A.Deleted == "False" &&
-                       A.Insurance_Policy.StartsWith(SearchText) ||
+                      ( A.Insurance_Policy.StartsWith(SearchText) ||
                        A.Maintenance_Type.StartsWith(SearchText) ||
                        A.Insurance_Start_Date.StartsWith(SearchText) ||
                        A.Insurance_Company.StartsWith(SearchText) ||
                        A.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
-                       A.VEHICLE.Local_Plate.StartsWith(SearchText) 
+                       A.VEHICLE.Local_Plate.StartsWith(SearchText) )
 
                            select new
                            {
@@ -291,12 +293,12 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from A in con.ASSURANCEs
                            where A.Deleted == "False" &&
-                       A.Insurance_Policy.StartsWith(SearchText) ||
+                     (  A.Insurance_Policy.StartsWith(SearchText) ||
                        A.Maintenance_Type.StartsWith(SearchText) ||
                        A.Insurance_Start_Date.StartsWith(SearchText) ||
                        A.Insurance_Company.StartsWith(SearchText) ||
                        A.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
-                       A.VEHICLE.Local_Plate.StartsWith(SearchText)
+                       A.VEHICLE.Local_Plate.StartsWith(SearchText))
 
                            select new
                            {

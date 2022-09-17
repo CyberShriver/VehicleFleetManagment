@@ -376,13 +376,13 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from L in con.LEAVEs
                            where L.MINISTRY.Code_Min==codeMin && L.Deleted == "False" &&
-                       L.Leave_Code.StartsWith(SearchText) ||
+                      ( L.Leave_Code.StartsWith(SearchText) ||
                        L.Start_Dte.StartsWith(SearchText) ||
                        L.Demand_Dte.StartsWith(SearchText) ||
                        L.MINISTRY_DRIVER.DRIVER.Full_Name.StartsWith(SearchText) ||
                        L.LEAVE_TYPE.Leave_Type_Description.StartsWith(SearchText) ||
                        L.State.StartsWith(SearchText) ||
-                       L.Approved_Dte.StartsWith(SearchText)
+                       L.Approved_Dte.StartsWith(SearchText))
 
                            select new
                            {
@@ -398,7 +398,8 @@ namespace VehicleFleetManagment.FleetImp
                                Comment = L.Comment,
                                MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
                                LEAVE_TYPE_ID = L.LEAVE_TYPE.Leave_Type_Description,
-                               MINISTRY_ID = L.MINISTRY.Ministry_Name
+                               MINISTRY_ID = L.MINISTRY.Ministry_Name,
+                               Picture = L.MINISTRY_DRIVER.DRIVER.Picture
 
                            }
                            ).ToList();
@@ -416,13 +417,13 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from L in con.LEAVEs
                            where L.Deleted == "False" &&
-                       L.Leave_Code.StartsWith(SearchText) ||
+                      ( L.Leave_Code.StartsWith(SearchText) ||
                        L.Start_Dte.StartsWith(SearchText) ||
                        L.Demand_Dte.StartsWith(SearchText) ||
                        L.MINISTRY_DRIVER.DRIVER.Full_Name.StartsWith(SearchText) ||
                        L.LEAVE_TYPE.Leave_Type_Description.StartsWith(SearchText) ||
                        L.State.StartsWith(SearchText) ||
-                       L.Approved_Dte.StartsWith(SearchText)
+                       L.Approved_Dte.StartsWith(SearchText))
 
                            select new
                            {
@@ -438,7 +439,8 @@ namespace VehicleFleetManagment.FleetImp
                                State = L.State,
                                MIN_DRIVER_ID = L.MINISTRY_DRIVER.DRIVER.Full_Name,
                                LEAVE_TYPE_ID = L.LEAVE_TYPE.Leave_Type_Description,
-                               MINISTRY_ID = L.MINISTRY.Ministry_Name
+                               MINISTRY_ID = L.MINISTRY.Ministry_Name,
+                               Picture = L.MINISTRY_DRIVER.DRIVER.Picture
 
                            }
                            ).ToList();

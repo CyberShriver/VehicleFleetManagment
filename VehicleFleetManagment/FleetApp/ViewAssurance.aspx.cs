@@ -61,14 +61,38 @@ namespace VehicleFleetManagment.FleetApp
             if (codeMin == "All")
             {
                 if (txt_Search.Value == "")
-                    getDataGDV();
-                else I.ResearchAll(gdv, txt_Search.Value);
+                {
+                    getDataGDV();                    
+                    txtSearchResult.Text = gdv.Rows.Count.ToString();
+                    CountserchResult.Visible = false;
+                    records.Visible = true;
+                }
+                else
+                {
+                    gdv.PageSize = 200;
+                    I.ResearchAll(gdv, txt_Search.Value);
+                    txtSearchResult.Text = gdv.Rows.Count.ToString();
+                    CountserchResult.Visible = true;
+                    records.Visible = false;
+                }
             }
             else
             {
                 if (txt_Search.Value == "")
+                {
                     getDataGDV();
-                else I.Research(gdv, codeMin, txt_Search.Value);
+                    txtSearchResult.Text = gdv.Rows.Count.ToString();
+                    CountserchResult.Visible = false;
+                    records.Visible = true;
+                }
+                else
+                {
+                    gdv.PageSize = 500;
+                    I.Research(gdv, codeMin, txt_Search.Value);
+                    txtSearchResult.Text = gdv.Rows.Count.ToString();
+                    CountserchResult.Visible = true;
+                    records.Visible = false;
+                }
             }
         }
 
@@ -111,6 +135,9 @@ namespace VehicleFleetManagment.FleetApp
         {
             getDataGDV();
             txt_Search.Value = "";
+            CountserchResult.Visible = false;
+            records.Visible = true;
+            gdv.PageSize = 10;
         }
 
         protected void gdv_RowCommand(object sender, GridViewCommandEventArgs e)

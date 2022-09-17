@@ -30,6 +30,7 @@ namespace VehicleFleetManagment.FleetImp
                 S.Saved_Date = sc.Saved_Date;
                 S.Deleted ="False";
                 S.Comment = sc.Comment;
+                S.State = sc.State;
 
                 con.SCHEDULEs.Add(S);
 
@@ -65,6 +66,7 @@ namespace VehicleFleetManagment.FleetImp
                     S.Deleted = "False";
                     S.Mission = sc.Mission;
                     S.Saved_Date = sc.Saved_Date;
+                    S.State = sc.State;
                     S.Comment = sc.Comment;
 
                     if (con.SaveChanges() > 0)
@@ -138,7 +140,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from S in con.SCHEDULEs where S.MINISTRY.Code_Min== codeMin && S.Deleted=="False"
-
+                           orderby S.SCHEDULE_ID descending
                            select new
                            {
                                SCHEDULE_ID = S.SCHEDULE_ID,
@@ -148,6 +150,7 @@ namespace VehicleFleetManagment.FleetImp
                                Time = S.Time,
                                Date = S.Date,
                                Mission = S.Mission,
+                               State = S.State,
                                Comment = S.Comment
                            }
                            ).ToList();
@@ -164,7 +167,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from S in con.SCHEDULEs where S.Deleted == "False"
-
+                           orderby S.SCHEDULE_ID descending
                            select new
                            {
                                SCHEDULE_ID = S.SCHEDULE_ID,
@@ -174,6 +177,7 @@ namespace VehicleFleetManagment.FleetImp
                                Time = S.Time,
                                Date = S.Date,
                                Mission = S.Mission,
+                               State = S.State,
                                Comment = S.Comment
                            }
                            ).ToList();
@@ -197,6 +201,7 @@ namespace VehicleFleetManagment.FleetImp
                 sc.MINISTRY_ID  = S.MINISTRY_ID ;
                 sc.Time  = S.Time ;
                 sc.Date  = S.Date ;
+                sc.State = S.State ;
                 sc.Mission = S.Mission;
                 sc.Comment = S.Comment;
 
@@ -237,10 +242,11 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from S in con.SCHEDULEs
                            where S.MINISTRY.Code_Min==codeMin && S.Deleted=="False" &&
-                      S.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
+                      (S.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
                       S.Date.StartsWith(SearchText) ||
                       S.Saved_Date.StartsWith(SearchText) ||
-                      S.VEHICLE.Local_Plate.StartsWith(SearchText)
+                      S.State.StartsWith(SearchText) ||
+                      S.VEHICLE.Local_Plate.StartsWith(SearchText))
 
                            select new
                            {
@@ -250,6 +256,7 @@ namespace VehicleFleetManagment.FleetImp
                                Saved_Date = S.Saved_Date,
                                Time = S.Time,
                                Date = S.Date,
+                               State = S.State,
                                Mission = S.Mission,
                                Comment = S.Comment
 
@@ -269,10 +276,10 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from S in con.SCHEDULEs
                            where S.Deleted == "False" &&
-                      S.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
+                      (S.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
                       S.Date.StartsWith(SearchText) ||
                       S.Saved_Date.StartsWith(SearchText) ||
-                      S.VEHICLE.Local_Plate.StartsWith(SearchText)
+                      S.VEHICLE.Local_Plate.StartsWith(SearchText))
 
                            select new
                            {
@@ -282,6 +289,7 @@ namespace VehicleFleetManagment.FleetImp
                                Saved_Date = S.Saved_Date,
                                Time = S.Time,
                                Date = S.Date,
+                               State = S.State,
                                Mission = S.Mission,
                                Comment = S.Comment
 

@@ -226,7 +226,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from V in con.VEHICLEs where V.Deleted=="False" && V.MINISTRY.Code_Min== codeMin
-
+                           orderby V.VEHICLE_ID descending
                            select new
                            {
                                VEHICLE_ID = V.VEHICLE_ID,
@@ -296,7 +296,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from V in con.VEHICLEs where V.Deleted == "False"
-
+                           orderby V.VEHICLE_ID descending
                            select new
                            {
                                VEHICLE_ID = V.VEHICLE_ID,
@@ -554,14 +554,14 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from V in con.VEHICLEs
                            where V.Deleted == "False" && V.MINISTRY.Code_Min == codeMin &&
-                       V.Local_Plate.StartsWith(SearchText) ||
+                       (V.Local_Plate.StartsWith(SearchText) ||
                        V.Veh_Code.StartsWith(SearchText) ||
                        V.BODY_TYPE.Category.StartsWith(SearchText) ||
                        V.Veh_Code.StartsWith(SearchText) ||
                        V.MODEL.Model_Name.StartsWith(SearchText) ||
                        V.MODEL.MARK.Mark_Name.StartsWith(SearchText) ||
                        V.Chassis_Num.StartsWith(SearchText) ||
-                       V.NameVeh.StartsWith(SearchText)
+                       V.NameVeh.StartsWith(SearchText))
 
                            select new
                            {
@@ -634,14 +634,14 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from V in con.VEHICLEs
                            where V.Deleted == "False" &&
-                       V.Local_Plate.StartsWith(SearchText) ||
+                       (V.Local_Plate.StartsWith(SearchText) ||
                        V.Veh_Code.StartsWith(SearchText) ||
                        V.BODY_TYPE.Category.StartsWith(SearchText) ||
                        V.Veh_Code.StartsWith(SearchText) ||
                        V.MODEL.Model_Name.StartsWith(SearchText) ||
                        V.MODEL.MARK.Mark_Name.StartsWith(SearchText) ||
                        V.Chassis_Num.StartsWith(SearchText) ||
-                       V.NameVeh.StartsWith(SearchText)
+                       V.NameVeh.StartsWith(SearchText))
 
                            select new
                            {

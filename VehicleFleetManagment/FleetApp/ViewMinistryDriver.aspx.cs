@@ -51,10 +51,23 @@ namespace VehicleFleetManagment.FleetApp
                 nbr.Text = I.countAll().ToString();
             }
             else
-            {
-                I.Display(gdv, codeMin);
-                nbr.Text = I.count(codeMin).ToString();
+            {                
+                
+                if  (DropDown_Filter.SelectedValue == "On Post" || DropDown_Filter.SelectedValue == "Leave" || DropDown_Filter.SelectedValue == "Swaped" || DropDown_Filter.SelectedValue == "Free")
+                {
+                    I.DisplayFilter(gdv,codeMin, DropDown_Filter.SelectedValue);
+                    nbr.Text = I.countFilter(codeMin, DropDown_Filter.SelectedValue).ToString();
+                    filterVisibility.Visible = true;
+                }
+                else
+                {
+                    I.Display(gdv, codeMin);
+                    nbr.Text = I.count(codeMin).ToString();
+                }
+
             }
+
+            
 
         }
 
@@ -63,20 +76,50 @@ namespace VehicleFleetManagment.FleetApp
             if (codeMin == "All")
             {
                 if (txt_Search.Value == "")
+                {
                     getDataGDV();
-                else I.ResearchAll(gdv, txt_Search.Value);
+                    txtSearchResult.Text = gdv.Rows.Count.ToString();
+                    CountserchResult.Visible = false;
+                    records.Visible = true;
+                    filterVisibility.Visible = true;
+                }
+                else
+                {
+                    gdv.PageSize = 500;
+                    I.ResearchAll(gdv, txt_Search.Value);
+                    txtSearchResult.Text = gdv.Rows.Count.ToString();
+                    CountserchResult.Visible = true;
+                    records.Visible = false;
+                    filterVisibility.Visible = false;
+                }
             }
             else
             {
                 if (txt_Search.Value == "")
+                {
                     getDataGDV();
-                else I.Research(gdv, codeMin, txt_Search.Value);
+                    txtSearchResult.Text = gdv.Rows.Count.ToString();
+                    CountserchResult.Visible = false;
+                    records.Visible = true;
+                    filterVisibility.Visible = true;
+                }
+                else {
+                    gdv.PageSize = 200;
+                    I.Research(gdv, codeMin, txt_Search.Value);
+                    txtSearchResult.Text = gdv.Rows.Count.ToString();
+                    CountserchResult.Visible = true;
+                    records.Visible = false;
+                    filterVisibility.Visible = false;
+                }
             }
         }
         protected void btnReload_click(object sender, EventArgs e)
         {
             getDataGDV();
             txt_Search.Value = "";
+            CountserchResult.Visible = false;
+            records.Visible = true;
+            gdv.PageSize = 10;
         }
 
         protected void gdv_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -183,6 +226,11 @@ namespace VehicleFleetManagment.FleetApp
         protected void gdv_PreRender(object sender, EventArgs e)
         {
             indexFooter.Text = "Page " + (gdv.PageIndex + 1).ToString() + " of " + gdv.PageCount.ToString();
+        }
+        protected void DropDown_Filter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            getDataGDV();
+            runGrid();
         }
     }
 }

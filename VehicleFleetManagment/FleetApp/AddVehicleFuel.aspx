@@ -92,6 +92,11 @@
                                         </div>
 
                                         <div class="form-group form-default">
+                                            <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_TankCapacity" required="" runat="server"></asp:DropDownList>
+                                            <label class="float-label">Tank Capacity</label>
+                                        </div>
+
+                                        <div class="form-group form-default">
                                             <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_ProviderCode" required="" runat="server"></asp:DropDownList>
                                             <label class="float-label">Provider</label>
                                         </div>
@@ -134,7 +139,7 @@
                                         <div class="form-group form-default">
                                             <input type="text" name="footer-email" class="form-control" required="" runat="server" id="txtFuelUsed" onkeypress="inpNum(event)" maxlength="3">
                                             <span class="form-bar"></span>
-                                            <label class="float-label">Fuel used</label>
+                                            <label class="float-label">Total Fuel have</label>
                                         </div>
                                         <div class="form-group form-default" runat="server" id="scannedPic">
                                             <asp:FileUpload ID="file_upd" name="footer-email" data-parsley-trigger="change"  required="" autocomplete="off" onchange="" class="form-control text-right" runat="server"  />

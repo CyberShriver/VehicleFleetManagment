@@ -159,7 +159,7 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from M in con.MINISTRY_DRIVER where M.Deleted=="False" && M.MINISTRY.Code_Min ==codeMin.Trim()
+                var obj = (from M in con.MINISTRY_DRIVER where  M.Deleted=="False" && M.MINISTRY.Code_Min ==codeMin.Trim()
                            orderby M.MIN_DRIVER_ID descending
 
                            select new
@@ -182,6 +182,34 @@ namespace VehicleFleetManagment.FleetImp
 
         }
 
+        //DISPLAY FILTER METHOD
+        public void DisplayFilter(GridView gd, string codeMin, string filter)
+        {
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var obj = (from M in con.MINISTRY_DRIVER
+                           where M.Position_Status== filter && M.Deleted == "False" && M.MINISTRY.Code_Min == codeMin.Trim()
+                           orderby M.MIN_DRIVER_ID descending
+
+                           select new
+                           {
+                               MIN_DRIVER_ID = M.MIN_DRIVER_ID,
+                               DRIVER_ID = M.DRIVER.Full_Name,
+                               Min_Driver_RegNumber = M.Min_Driver_RegNumber,
+                               Swaped_Vehicle = M.Swaped_Vehicle,
+                               MINISTRY_ID = M.MINISTRY.Ministry_Name,
+                               StartDate = M.StartDate,
+                               EndDate = M.EndDate,
+                               Position_Status = M.Position_Status,
+                               Picture = M.DRIVER.Picture
+                           }
+                           ).ToList();
+
+                gd.DataSource = obj;
+                gd.DataBind();
+            }
+
+        }
         //DISPLAY All METHOD
         public void DisplayAll(GridView gd)
         {
@@ -237,6 +265,20 @@ namespace VehicleFleetManagment.FleetImp
             return n;
         }
 
+        //COUNT METHOD
+        public int countFilter(string codeMin,string filter)
+        {
+            int n = 0;
+            using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+            {
+                var M = (from l in con.MINISTRY_DRIVER
+                         where l.Position_Status==filter && l.Deleted == "False" && l.MINISTRY.Code_Min == codeMin
+                         select l).Count();
+                n = M;
+            }
+            return n;
+        }
+
         //COUNT ON POST POSITION METHOD
         public int countOnPost(string codeMin)
         {
@@ -271,11 +313,11 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from M in con.MINISTRY_DRIVER
                            where M.Deleted == "False" && M.MINISTRY.Code_Min== codeMin &&
-                           (M.Min_Driver_RegNumber ).ToString().StartsWith(SearchText) ||
+                           ((M.Min_Driver_RegNumber ).ToString().StartsWith(SearchText) ||
                            M.StartDate.StartsWith(SearchText) ||
                            M.EndDate.StartsWith(SearchText) ||
                            M.Position_Status.StartsWith(SearchText) ||
-                           M.DRIVER.Full_Name.StartsWith(SearchText) 
+                           M.DRIVER.Full_Name.StartsWith(SearchText) )
                            select new
                            {
                                MIN_DRIVER_ID = M.MIN_DRIVER_ID,
@@ -303,12 +345,12 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MINISTRY_DRIVER
-                           where M.Deleted == "False" &&
+                           where M.Deleted == "False" && (
                            (M.Min_Driver_RegNumber).ToString().StartsWith(SearchText) ||
                            M.DRIVER.Full_Name.StartsWith(SearchText) ||
                            M.StartDate.StartsWith(SearchText) ||
                            M.EndDate.StartsWith(SearchText) ||
-                           M.DRIVER.Full_Name.StartsWith(SearchText)
+                           M.DRIVER.Full_Name.StartsWith(SearchText))
                            select new
                            {
                                MIN_DRIVER_ID = M.MIN_DRIVER_ID,

@@ -125,7 +125,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MARKs where M.Deleted=="False"
-
+                           orderby M.MARK_ID descending
                            select new
                            {
                                MARK_ID = M.MARK_ID,

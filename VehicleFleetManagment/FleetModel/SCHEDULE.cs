@@ -23,6 +23,7 @@ namespace VehicleFleetManagment.FleetModel
         public string Date { get; set; }
         public string Time { get; set; }
         public string Deleted { get; set; }
+        public string State { get; set; }
     
         public virtual VEHICLE VEHICLE { get; set; }
         public virtual MINISTRY MINISTRY { get; set; }

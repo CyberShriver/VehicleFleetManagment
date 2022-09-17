@@ -18,14 +18,14 @@ namespace VehicleFleetManagment.FleetApp
         private int msg;
         string systemTitle, codeMin, systemName;
         string slogan;
-        string ID;
+        string id;
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
             ChargeCookies();
-            ID = Request.QueryString["ROLE_ID"];
+            id = Request.QueryString["ROLE_ID"];
 
             if (!IsPostBack)
             {
@@ -37,7 +37,7 @@ namespace VehicleFleetManagment.FleetApp
                 ChargeDataRole();
                 getDataGDVRole();
 
-                if (ID == null)
+                if (id == null)
                 {
                     btnSaveRole.InnerText = "Save";
                 }
@@ -139,7 +139,7 @@ namespace VehicleFleetManagment.FleetApp
                         Ro.Role_Name = txtRole.Value;
                         Ro.Descrept = txtDescript.Value;
 
-                        msg = Ir.Update(Ro, Convert.ToInt32(ID));
+                        msg = Ir.Update(Ro, Convert.ToInt32(id));
 
                         if (msg > 0)
                         {
@@ -164,9 +164,9 @@ namespace VehicleFleetManagment.FleetApp
 
             protected void ChargeDataRole()
             {
-                if (ID != null)
+                if (id != null)
                 {
-                    Ir.provide(Ro, Convert.ToInt32(ID));
+                    Ir.provide(Ro, Convert.ToInt32(id));
                     txtRole.Value = Ro.Role_Name;
                     txtDescript.Value = Ro.Descrept;
                 }
@@ -174,7 +174,7 @@ namespace VehicleFleetManagment.FleetApp
 
             protected void btn_save_role_Click(object sender, EventArgs args)
             {
-                if (ID == null)
+                if (id == null)
                 {
                     Add_Role();
                     getDataGDVRole();
@@ -186,21 +186,31 @@ namespace VehicleFleetManagment.FleetApp
 
             protected void btn_srch_Click(object sender, EventArgs e)
             {
-                if (txt_Search.Value == "")
-                {
-                    getDataGDVRole();
-                }
-                else
-                {
-                    Ir.Research(gdv, txt_Search.Value);
-                }
+            if (txt_Search.Value == "")
+            {
+                getDataGDVRole();
+                txtSearchResult.Text = gdv.Rows.Count.ToString();
+                CountserchResult.Visible = false;
+                records.Visible = true;
             }
+            else
+            {
+                gdv.PageSize = 200;
+                Ir.Research(gdv, txt_Search.Value);
+                txtSearchResult.Text = gdv.Rows.Count.ToString();
+                CountserchResult.Visible = true;
+                records.Visible = false;
+            }
+        }
 
             protected void btnReload_click(object sender, EventArgs e)
             {
-                getDataGDVRole();
-                txt_Search.Value = "";
-            }
+            getDataGDVRole();
+            txt_Search.Value = "";
+            CountserchResult.Visible = false;
+            records.Visible = true;
+            gdv.PageSize = 10;
+        }
 
             protected void gdv_RowCommand(object sender, GridViewCommandEventArgs e)
             {

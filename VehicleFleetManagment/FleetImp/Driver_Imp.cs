@@ -159,7 +159,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from D in con.DRIVERs where D.Ministry_Work==null && D.State=="Free" && D.Deleted=="False"
-
+                           orderby D.DRIVER_ID descending
                            select new
                            {
                                DRIVER_ID = D.DRIVER_ID,
@@ -237,7 +237,7 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from D in con.DRIVERs
                            where D.Ministry_Work ==codeMin && D.Deleted == "False"
-
+                           orderby D.DRIVER_ID descending
                            select new
                            {
                                DRIVER_ID = D.DRIVER_ID,
@@ -276,7 +276,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from D in con.DRIVERs where D.Deleted == "False"
-
+                           orderby D.DRIVER_ID descending
                            select new
                            {
                                DRIVER_ID = D.DRIVER_ID,
@@ -379,19 +379,17 @@ namespace VehicleFleetManagment.FleetImp
         }
 
         //REASEARCH METHOD
-        public void Research(GridView gd, string SearchText)
+        public void Research(GridView gd, string codeMin, string SearchText)
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from D in con.DRIVERs
-                           where D.Ministry_Work==null && D.State=="Free" && D.Deleted == "False" &&
-                       D.Full_Name.StartsWith(SearchText) ||
-                       D.Driver_Code.StartsWith(SearchText) ||
+                           where D.Ministry_Work== codeMin && D.Visibility=="True" && D.State=="Work" && D.Deleted == "False" &&
+                      ( D.Full_Name.StartsWith(SearchText) ||
                        D.DOB.StartsWith(SearchText) ||
                        D.Personnal_Phone.StartsWith(SearchText) ||
                        D.Office_Phone.StartsWith(SearchText) ||
-                       D.CNI.StartsWith(SearchText) ||
-                       D.Driver_Type.StartsWith(SearchText)
+                       D.CNI.StartsWith(SearchText) )
 
                            select new
                            {
@@ -413,6 +411,7 @@ namespace VehicleFleetManagment.FleetImp
                                Office_Phone = D.Office_Phone,
                                Personnal_Phone = D.Personnal_Phone,
                                Ministry_Work = D.Ministry_Work,
+                               Visibility = D.Visibility,
                                State = D.State,
                                Picture = D.Picture
 
@@ -431,14 +430,12 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from D in con.DRIVERs
-                           where D.Deleted == "False" &&
-                       D.Full_Name.StartsWith(SearchText) ||
-                       D.Driver_Code.StartsWith(SearchText) ||
+                           where D.Visibility == "True" && D.State == "Work" && D.Deleted == "False" &&
+                      ( D.Full_Name.StartsWith(SearchText) ||
                        D.DOB.StartsWith(SearchText) ||
                        D.Personnal_Phone.StartsWith(SearchText) ||
                        D.Office_Phone.StartsWith(SearchText) ||
-                       D.CNI.StartsWith(SearchText) ||
-                       D.Driver_Type.StartsWith(SearchText)
+                       D.CNI.StartsWith(SearchText) )
 
                            select new
                            {
@@ -461,6 +458,7 @@ namespace VehicleFleetManagment.FleetImp
                                Personnal_Phone = D.Personnal_Phone,
                                Ministry_Work = D.Ministry_Work,
                                State = D.State,
+                               Visibility = D.Visibility,
                                Picture = D.Picture
 
                            }

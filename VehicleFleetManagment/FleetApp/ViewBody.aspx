@@ -38,7 +38,7 @@
                 <div class="page-body">
                     <!-- Hover table card start -->
                     <div class="card">
-                        <div class="card-header"><%--<li><a  runat="server" class="reload-card btn-out"><i class="fa fa-recycle"></i></a></li>--%>
+                        <div class="card-header">
                             <h5 class="font-weight-bold">All Body Type Records</h5>
                             <div class="card-header-right">
                                 <ul class="list-unstyled card-option">
@@ -71,9 +71,14 @@
                                     </div>
                             </div>                        
                             <!-- end Search  -->
-                            <div class="float-right mt-0 d-flex mb-0">
+                            <div class="float-right mt-0 d-flex mb-0" runat="server" id="records">
                                 <span runat="server" class="font-weight-bold mr-1">Records: </span>
                                 <asp:Label ID="nbr" runat="server" Text="" class="text-danger font-weight-bold mr-1"> </asp:Label>
+                            </div>
+
+                            <div class="float-right mt-0 d-flex mb-0" runat="server" id="CountserchResult" visible="false">
+                                <span runat="server" class="font-weight-bold mr-1">Search result: </span>
+                                <asp:Label ID="txtSearchResult" runat="server" Text="" class="text-danger font-weight-bold mr-1"> </asp:Label>
                             </div>
 
                         </div>
@@ -133,15 +138,7 @@
                             <asp:Label ID="indexFooter" runat="server"></asp:Label>
                         </div>
                     </div>
-                    <!-- Hover table card end -->
-
-                    <div class="card">
-                        <div class="card-header"> Json Data</div>
-                        <div class="card-block" runat="server" id="jsondata">
-
-                        </div>
-                    </div>
-
+                    <!-- Hover table card end -->                   
                 </div>
                 <!-- Page body end -->
             </div>

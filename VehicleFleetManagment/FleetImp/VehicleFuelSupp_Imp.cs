@@ -155,7 +155,8 @@ namespace VehicleFleetManagment.FleetImp
         {
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var obj = (from V in con.VEHICLE_FUEL_SUPPLY where V.Deleted=="False" && V.MINISTRY.Code_Min== codeMin
+                var obj = (from V in con.VEHICLE_FUEL_SUPPLY where V.Deleted=="False" && V.MINISTRY.Code_Min== codeMin 
+                           orderby V.VEHICLE_FUEL_ID descending
 
                            select new
                            {
@@ -193,7 +194,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from V in con.VEHICLE_FUEL_SUPPLY where V.Deleted == "False"
-
+                           orderby V.VEHICLE_FUEL_ID descending
                            select new
                            {
                                VEHICLE_FUEL_ID = V.VEHICLE_FUEL_ID,
@@ -284,10 +285,10 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from V in con.VEHICLE_FUEL_SUPPLY
                            where V.Deleted == "False" && V.MINISTRY.Code_Min== codeMin &&
-                       V.Provider_Code.StartsWith(SearchText) ||
+                       (V.Provider_Code.StartsWith(SearchText) ||
                         V.VEHICLE.Local_Plate.StartsWith(SearchText) ||
                        V.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
-                       V.Fuel_Type.StartsWith(SearchText)
+                       V.Fuel_Type.StartsWith(SearchText))
 
                            select new
                            {
@@ -326,10 +327,10 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from V in con.VEHICLE_FUEL_SUPPLY
                            where V.Deleted == "False" &&
-                       V.Provider_Code.StartsWith(SearchText) ||
+                       (V.Provider_Code.StartsWith(SearchText) ||
                         V.VEHICLE.Local_Plate.StartsWith(SearchText) ||
                        V.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
-                       V.Fuel_Type.StartsWith(SearchText)
+                       V.Fuel_Type.StartsWith(SearchText))
 
                            select new
                            {
@@ -450,6 +451,29 @@ namespace VehicleFleetManagment.FleetImp
             }
 
         }
+
+        //DISPLAY  VEHICLE TANK CAPACITY
+            public void DisplayVehicleTankCapacity(DropDownList drop, string Plate)
+            {
+                using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
+                {
+                    var obj = (from V in con.VEHICLEs
+                               where V.Deleted == "False" && V.Local_Plate == Plate
+
+                               select new
+                               {
+                                   Tank_Capacity2 = V.Tank_Capacity2
+                               }
+                               ).ToList();
+
+                    drop.DataSource = obj;
+                    drop.DataValueField = "Tank_Capacity2";
+                    drop.DataBind();
+                }
+
+            }
+
+        
 
         //Provider
         public void DisplayProvider(DropDownList drop)

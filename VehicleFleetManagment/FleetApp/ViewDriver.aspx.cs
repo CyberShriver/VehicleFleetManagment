@@ -76,20 +76,49 @@ namespace VehicleFleetManagment.FleetApp
             if (codeMin == "All")
             {
                 if (txt_Search.Value == "")
+                {
                     getDataGDV();
-                else I.ResearchAll(gdv, txt_Search.Value);
+                    txtSearchResult.Text = gdv.Rows.Count.ToString();
+                    CountserchResult.Visible = true;
+                    CountserchResult.Visible = false;
+                    records.Visible = true;
+                }
+                else
+                {
+                    gdv.PageSize = 500;
+                    I.ResearchAll(gdv, txt_Search.Value);
+                    txtSearchResult.Text = gdv.Rows.Count.ToString();
+                    CountserchResult.Visible = true;
+                    records.Visible = false;
+                    filterVisibility.Visible = false;
+                }
             }
             else
             {
                 if (txt_Search.Value == "")
+                {
                     getDataGDV();
-                else I.Research(gdv,txt_Search.Value);
+                    txtSearchResult.Text = gdv.Rows.Count.ToString();
+                    CountserchResult.Visible = true;
+                    CountserchResult.Visible = false;
+                    records.Visible = true;
+                }
+                else {
+                    gdv.PageSize = 500;
+                    I.Research(gdv, codeMin, txt_Search.Value);
+                    txtSearchResult.Text = gdv.Rows.Count.ToString();
+                    CountserchResult.Visible = true;
+                    records.Visible = false;
+                    filterVisibility.Visible = false;
+                }
             }
         }
         protected void btnReload_click(object sender, EventArgs e)
         {
             getDataGDV();
             txt_Search.Value = "";
+            CountserchResult.Visible = false;
+            records.Visible = true;
         }
 
         protected void gdv_RowCommand(object sender, GridViewCommandEventArgs e)

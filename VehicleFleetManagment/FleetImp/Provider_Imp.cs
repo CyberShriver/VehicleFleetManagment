@@ -146,7 +146,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from P in con.PROVIDERs where P.Deleted=="False"
-
+                           orderby P.PROVIDER_ID descending
                            select new
                            {
                                PROVIDER_ID = P.PROVIDER_ID,
@@ -242,13 +242,13 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from P in con.PROVIDERs
                            where P.Deleted == "False" &&
-                       P.Full_Name.StartsWith(SearchText) ||
+                      ( P.Full_Name.StartsWith(SearchText) ||
                        P.Provider_Code.StartsWith(SearchText) ||
                        P.Stat.StartsWith(SearchText) ||
                        P.Phone.StartsWith(SearchText) ||
                        P.CNI.StartsWith(SearchText) ||
                        P.Address.StartsWith(SearchText) ||
-                       P.Provider_Type.StartsWith(SearchText)
+                       P.Provider_Type.StartsWith(SearchText))
 
                            select new
                            {

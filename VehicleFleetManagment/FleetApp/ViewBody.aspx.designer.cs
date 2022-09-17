@@ -42,6 +42,15 @@ namespace VehicleFleetManagment.FleetApp
         protected global::System.Web.UI.WebControls.TextBox txt_Search;
 
         /// <summary>
+        /// records control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl records;
+
+        /// <summary>
         /// nbr control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,24 @@ namespace VehicleFleetManagment.FleetApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label nbr;
+
+        /// <summary>
+        /// CountserchResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CountserchResult;
+
+        /// <summary>
+        /// txtSearchResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtSearchResult;
 
         /// <summary>
         /// DeleteAllVisibility control.

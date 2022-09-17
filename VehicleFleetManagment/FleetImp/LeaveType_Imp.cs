@@ -127,7 +127,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from L in con.LEAVE_TYPE where L.Deleted=="False"
-
+                           orderby L.LEAVE_TYPE_ID descending
                            select new
                            {
                                LEAVE_TYPE_ID = L.LEAVE_TYPE_ID,
@@ -175,8 +175,8 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from L in con.LEAVE_TYPE
                            where L.Deleted == "False" &&
-                      L.Leave_Type_Description.StartsWith(SearchText) ||
-                      L.Leave_Number.ToString().StartsWith(SearchText)
+                     ( L.Leave_Type_Description.StartsWith(SearchText) ||
+                      L.Leave_Number.ToString().StartsWith(SearchText))
 
                            select new
                            {

@@ -81,7 +81,16 @@
                                             <input type="time" name="footer-email" class="form-control text-right" required="" runat="server" id="TimeMission">
                                             <span class="form-bar"></span>
                                             <label class="float-label"> Time Of Mission</label>
-                                        </div>                                        
+                                        </div>   
+                                        <div class="form-group form-default">
+                                                <asp:DropDownList class="form-control " name="footer-email" Style="width: 100%;" ID="DropDown_State" required="" runat="server">
+                                                    <asp:ListItem>Done</asp:ListItem>
+                                                    <asp:ListItem>Not Yet</asp:ListItem>
+                                                    <asp:ListItem>Aborted</asp:ListItem>
+                                                </asp:DropDownList>
+                                                <label class="float-label">State</label>
+                                            </div>
+
                                         <div class="form-group form-default">
                                             <textarea class="form-control" runat="server" id="txtComment"></textarea>
                                             <span class="form-bar"></span>

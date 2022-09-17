@@ -207,7 +207,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from U in con.USERS where U.Deleted == "False"
-
+                           orderby U.USERS_ID descending
                            select new
                            {
                                USERS_ID = U.USERS_ID,
@@ -357,11 +357,11 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from U in con.USERS
                            where U.Deleted == "False" &&
-                       U.First_Name.StartsWith(SearchText) ||
+                       (U.First_Name.StartsWith(SearchText) ||
                        U.Last_Name.StartsWith(SearchText) ||
                        U.Address.StartsWith(SearchText) ||
                        U.ROLE.Role_Name.StartsWith(SearchText) ||
-                       U.Code_Min.StartsWith(SearchText)
+                       U.Code_Min.StartsWith(SearchText))
 
                            select new
                            {
@@ -398,11 +398,11 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from U in con.USERS
                            where U.Deleted == "False" && U.Code_Min== codeMin &&
-                       U.First_Name.StartsWith(SearchText) ||
+                       (U.First_Name.StartsWith(SearchText) ||
                        U.Last_Name.StartsWith(SearchText) ||
                        U.Address.StartsWith(SearchText) ||
                        U.ROLE.Role_Name.StartsWith(SearchText) ||
-                       U.Code_Min.StartsWith(SearchText)
+                       U.Code_Min.StartsWith(SearchText))
 
                            select new
                            {

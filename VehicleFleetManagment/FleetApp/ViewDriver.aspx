@@ -87,9 +87,14 @@
                             </div>
                             <!-- end Search  -->
 
-                            <div class="float-right mt-0 d-flex mb-0">
+                            <div class="float-right mt-0 d-flex mb-0" runat="server" id="records">
                                 <span runat="server" class="font-weight-bold mr-1">Records: </span>
                                 <asp:Label ID="nbr" runat="server" Text="" class="text-danger font-weight-bold mr-1"> </asp:Label>
+                            </div>
+
+                            <div class="float-right mt-0 d-flex mb-0" runat="server" id="CountserchResult" visible="false">
+                                <span runat="server" class="font-weight-bold mr-1">Search result: </span>
+                                <asp:Label ID="txtSearchResult" runat="server" Text="" class="text-danger font-weight-bold mr-1"> </asp:Label>
                             </div>
 
                         </div>
@@ -131,7 +136,7 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Driver Code">
+                                            <asp:TemplateField HeaderText="Driver Code" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label3" runat="server" Text='<%# Eval("Driver_Code") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -168,7 +173,7 @@
                                                 </ItemTemplate>
 
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Address 1">
+                                            <asp:TemplateField HeaderText="Address">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label11" runat="server" Text='<%# Eval("Address1") %>'></asp:Label>
                                                 </ItemTemplate>
@@ -211,9 +216,9 @@
                                                     <asp:Label ID="LblMinistryWork" runat="server" Text='<%# Eval("Ministry_Work") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Visibility" Visible="true">
+                                            <asp:TemplateField HeaderText="Visibility" Visible="false">
                                                 <ItemTemplate>
-                                                    <asp:Label ID="Label45555" runat="server" Text='<%# Eval("Visibility") %>'></asp:Label>
+                                                    <asp:Label ID="visibility" runat="server" Text='<%# Eval("Visibility") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 

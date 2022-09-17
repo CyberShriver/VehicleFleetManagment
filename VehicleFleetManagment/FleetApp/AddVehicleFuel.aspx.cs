@@ -37,6 +37,7 @@ namespace VehicleFleetManagment.FleetApp
                 Provider();
                 GetIpAddress();
                 VehicleCategory();
+                VehicleTankCapacity();
                 MaxLiter.Text = ReturnFuel();
                 Session["img"] = null;
 
@@ -51,6 +52,7 @@ namespace VehicleFleetManagment.FleetApp
                     ChargeData();
                     Vehicle();
                     VehicleCategory();
+                    VehicleTankCapacity();
                     controlImageIP();
                 }              
             }
@@ -434,10 +436,24 @@ namespace VehicleFleetManagment.FleetApp
                 FailMsg.Visible = true;
             }
         }
+
+        void VehicleTankCapacity()
+        {
+            try
+            {
+                I.DisplayVehicleTankCapacity(DropDown_TankCapacity, DropDown_Vehicle.SelectedItem.Text);
+            }
+            catch (NullReferenceException e)
+            {
+                FailMsg.Visible = true;
+            }
+        }
+
         protected void DropDown_Vehicle_SelectedIndexChanged(object sender, EventArgs e)
         {
             fuel();
             VehicleCategory();
+            VehicleTankCapacity();
             MaxLiter.Text = ReturnFuel();
         }
 
@@ -451,27 +467,27 @@ namespace VehicleFleetManagment.FleetApp
 
                 if (DropDown_Category.SelectedItem.Text == "Compact Car")
                 {
-                    categ = "30";
+                    categ = DropDown_TankCapacity.SelectedValue;
                 }
                 else if (DropDown_Category.SelectedItem.Text == "small lorry truck")
                 {
-                    categ = "40";
+                    categ = DropDown_TankCapacity.SelectedValue;
                 }
                 else if (DropDown_Category.SelectedItem.Text == "Van")
                 {
-                    categ = "50";
+                    categ = DropDown_TankCapacity.SelectedValue;
                 }
                 else if (DropDown_Category.SelectedItem.Text == "Bus")
                 {
-                    categ = "60";
+                    categ = DropDown_TankCapacity.SelectedValue;
                 }
                 else if (DropDown_Category.SelectedItem.Text == "Trailer")
                 {
-                    categ = "150";
+                    categ = DropDown_TankCapacity.SelectedValue;
                 }
                 else
                 {
-                    categ = "200";
+                    categ = DropDown_TankCapacity.SelectedValue;
                 }
                  c=categ;           
             }

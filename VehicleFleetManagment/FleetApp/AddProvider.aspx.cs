@@ -81,7 +81,7 @@ namespace VehicleFleetManagment.FleetApp
                     try
                     {
 
-                        if (file_upd.HasFile || file_updContract.HasFile)
+                        if (file_upd.HasFile && file_updContract.HasFile)
                         {
                             file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images/Providers/") + Path.GetFileName(file_upd.FileName));
                             file_updContract.SaveAs(Server.MapPath("~/FleetApp/assets/images/Providers/") + Path.GetFileName(file_updContract.FileName));
@@ -212,7 +212,7 @@ namespace VehicleFleetManagment.FleetApp
                 {
                     try
                     {
-                        if (file_upd.HasFile || file_updContract.HasFile)
+                        if (file_upd.HasFile && file_updContract.HasFile)
                         {
                             file_upd.SaveAs(Server.MapPath("~/FleetApp/assets/images/Providers/") + Path.GetFileName(file_upd.FileName));
                             file_updContract.SaveAs(Server.MapPath("~/FleetApp/assets/images/Providers/") + Path.GetFileName(file_updContract.FileName));
@@ -328,7 +328,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtCNI.Text = Pr.CNI;
                 txtAddress.Value = Pr.Address;
                 dateBirth.Value = Pr.DOB;
-                ImgView = "~/FleetApp/assets/images/Providers/" + Pr.Contract;
+                ImgView = "assets/images/Providers/" + Pr.Contract;
             }
         }
 
@@ -347,9 +347,11 @@ namespace VehicleFleetManagment.FleetApp
                 txtCNI.Text = Pr.CNI;
                 txtAddress.Value = Pr.Address;
                 dateBirth.Value = Pr.DOB;
+                ImgView = "assets/images/Providers/" + Pr.Contract;
 
                 btnSave.Visible = false;
                 btnEmpty.Visible = true;
+                displayContract.Visible = true;
 
             }
             else
@@ -389,6 +391,7 @@ namespace VehicleFleetManagment.FleetApp
             btnEmpty.Visible = false;
             btnSave.Visible = true;
             ExistMsg.Visible = false;
+            displayContract.Visible = true;
         }
 
     }

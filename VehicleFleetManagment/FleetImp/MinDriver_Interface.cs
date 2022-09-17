@@ -27,6 +27,9 @@ namespace VehicleFleetManagment.FleetImp
         //Display Method
         void Display(GridView gd,string codeMin);
 
+        //DISPLAY FILTER METHOD
+         void DisplayFilter(GridView gd, string codeMin, string filter);
+
         //Display All Method
         void DisplayAll(GridView gd);
 
@@ -35,6 +38,9 @@ namespace VehicleFleetManagment.FleetImp
 
         //count
         int count(string codeMin);
+
+        //COUNT METHOD
+         int countFilter(string codeMin, string filter);
 
         //COUNT ON POST POSITION METHOD
         int countOnPost(string codeMin);

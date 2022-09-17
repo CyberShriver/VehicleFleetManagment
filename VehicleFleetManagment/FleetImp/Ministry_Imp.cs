@@ -187,7 +187,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MINISTRies where M.Deleted=="False"
-
+                           orderby M.MINISTRY_ID descending
                            select new
                            {
                                MINISTRY_ID = M.MINISTRY_ID,
@@ -284,9 +284,9 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from M in con.MINISTRies
                            where M.Deleted == "False" &&
-                       M.Ministry_Name.StartsWith(SearchText) ||
+                      ( M.Ministry_Name.StartsWith(SearchText) ||
                        M.Address.StartsWith(SearchText) ||
-                       M.Code_Min.StartsWith(SearchText)
+                       M.Code_Min.StartsWith(SearchText))
 
                            select new
                            {

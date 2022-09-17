@@ -299,10 +299,10 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from L in con.LICENSEs
                            where L.Deleted == "False" && L.MINISTRY.Code_Min == codeMin &&
-                       L.License_Code_Mission.StartsWith(SearchText) ||
+                      ( L.License_Code_Mission.StartsWith(SearchText) ||
                        L.License_Number.StartsWith(SearchText) ||
                        L.DRIVER.Full_Name.StartsWith(SearchText) ||
-                       L.Exp_Date.StartsWith(SearchText) 
+                       L.Exp_Date.StartsWith(SearchText) )
                            select new
                            {
                                LICENSE_ID = L.LICENSE_ID,
@@ -312,7 +312,7 @@ namespace VehicleFleetManagment.FleetImp
                                Inter_License_Code_Exp_Date = L.Inter_License_Code_Exp_Date,
                                License_Code_Mission = L.License_Code_Mission,
                                License_State = L.License_State,
-                               Category = L.Category_A + " " + L.Category_B + " " + L.Category_C + " " + L.Category_D1 + " " + L.Category_D2 + " " + L.Category_E + " " + L.Category_F,
+                               Category_A = L.Category_A + " " + L.Category_B + " " + L.Category_C + " " + L.Category_D1 + " " + L.Category_D2 + " " + L.Category_E + " " + L.Category_F,
                                Issued_At = L.Issued_At,
                                Issued_Authority = L.Issued_Authority,
                                Issued_On = L.Issued_On,
@@ -339,12 +339,12 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from L in con.LICENSEs
                            where L.Deleted == "False" &&
-                       L.License_Code_Mission.StartsWith(SearchText) ||
+                      ( L.License_Code_Mission.StartsWith(SearchText) ||
                        L.License_Number.StartsWith(SearchText) ||
                        L.DRIVER.Full_Name.StartsWith(SearchText) ||
                         L.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
                        L.Exp_Date.StartsWith(SearchText) ||
-                       L.Category_C.StartsWith(SearchText)
+                       L.Category_C.StartsWith(SearchText))
 
                            select new
                            {

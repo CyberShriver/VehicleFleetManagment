@@ -85,6 +85,7 @@ namespace VehicleFleetManagment.FleetApp
                     sc.Mission = txtMission.Value;
                     sc.Date = dateMission.Value;
                     sc.Time = TimeMission.Value;
+                    sc.State = DropDown_State.SelectedValue;
                     sc.Comment = txtComment.Value;
                     sc.Saved_Date =DateTime.Now.ToString();
 
@@ -138,6 +139,7 @@ namespace VehicleFleetManagment.FleetApp
                     sc.Date = dateMission.Value;
                     sc.Time = TimeMission.Value;
                     sc.Comment = txtComment.Value;
+                    sc.State = DropDown_State.SelectedValue;
                     sc.Saved_Date = DateTime.Now.ToString();
 
 
@@ -176,6 +178,7 @@ namespace VehicleFleetManagment.FleetApp
                 txtMission.Value= sc.Mission ;
                 dateMission.Value=sc.Date ;
                 TimeMission.Value =sc.Time ;
+                 DropDown_State.SelectedValue = sc.State;
             }
         }
 

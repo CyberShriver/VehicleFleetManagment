@@ -130,7 +130,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MODELs where M.Deleted=="False"
-
+                           orderby M.MODEL_ID descending
                            select new
                            {
                                MODEL_ID = M.MODEL_ID,
@@ -181,8 +181,8 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from M in con.MODELs
                            where M.Deleted == "False" &&
-                       M.Model_Name.StartsWith(SearchText) ||
-                       M.MARK.Mark_Name.StartsWith(SearchText)
+                       ( M.Model_Name.StartsWith(SearchText) ||
+                       M.MARK.Mark_Name.StartsWith(SearchText))
 
                            select new
                            {

@@ -311,6 +311,7 @@
           <Property Name="Comment" Type="varchar" MaxLength="300" />
           <Property Name="Saved_Date" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="MINISTRY_ID" Type="int" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="20" />
           <Property Name="Deleted" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="USERS">
@@ -1444,6 +1445,7 @@
           <Property Name="Date" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="Time" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="Deleted" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_ASSURANCE_IDveh">
           <End Type="MINISTRY_DBModel.VEHICLE" Role="VEHICLE" Multiplicity="1" />
@@ -2170,6 +2172,7 @@
           <EntitySetMapping Name="SCHEDULEs">
             <EntityTypeMapping TypeName="MINISTRY_DBModel.SCHEDULE">
               <MappingFragment StoreEntitySet="SCHEDULE">
+                <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="Date" ColumnName="Date" />

@@ -58,6 +58,9 @@ namespace VehicleFleetManagment.FleetApp
         {
             getDataGDV();
             txt_Search.Text = "";
+            CountserchResult.Visible = false;
+            records.Visible = true;
+            gdv.PageSize = 10;
         }
 
         protected void gdv_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -96,8 +99,20 @@ namespace VehicleFleetManagment.FleetApp
         protected void txt_Search_TextChanged(object sender, EventArgs e)
         {
             if (txt_Search.Text == "")
+            {
                 getDataGDV();
-            else I.Research(gdv, txt_Search.Text);
+                txtSearchResult.Text = gdv.Rows.Count.ToString();
+                CountserchResult.Visible = false;
+                records.Visible = true;
+            }
+            else
+            {
+                gdv.PageSize = 200;
+                I.Research(gdv, txt_Search.Text);
+                txtSearchResult.Text = gdv.Rows.Count.ToString();
+                CountserchResult.Visible = true;
+                records.Visible = false;
+            }
         }
 
         protected void checkSel_CheckedChanged(object sender, EventArgs e)

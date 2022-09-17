@@ -64,5 +64,8 @@ namespace VehicleFleetManagment.FleetImp
 
         //DISPLAY  Vehicle category
         void DisplayVehicleCategory(DropDownList drop, string Plate);
+
+        //DISPLAY  VEHICLE TANK CAPACITY
+         void DisplayVehicleTankCapacity(DropDownList drop, string Plate);
     }
 }

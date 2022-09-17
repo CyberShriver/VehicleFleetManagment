@@ -127,7 +127,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MENUs where M.Deleted=="False"
-
+                           orderby M.Menu_Code descending
                            select new
                            {
                                Menu_Code = M.Menu_Code,
@@ -178,7 +178,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var b = (from l in con.MENUs where M.Deleted == "False"
+                var b = (from l in con.MENUs where l.Deleted == "False"
                          select l).Count();
                 n = b;
             }
@@ -191,7 +191,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MENUs
-                           where M.Deleted == "False" && M.Title_Menu.StartsWith(SearchText)
+                           where M.Deleted == "False" && M.Title_Menu.StartsWith(SearchText) 
 
                            select new
                            {

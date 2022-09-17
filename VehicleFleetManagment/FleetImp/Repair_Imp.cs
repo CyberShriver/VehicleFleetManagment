@@ -160,7 +160,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from R in con.REPAIRs where R.Deleted=="False" && R.MINISTRY.Code_Min== codeMin
-
+                           orderby R.REPAIR_ID descending
                            select new
                            {
                                REPAIR_ID  = R.REPAIR_ID ,
@@ -198,7 +198,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from R in con.REPAIRs where R.Deleted == "False"
-
+                           orderby R.REPAIR_ID descending
                            select new
                            {
                                REPAIR_ID = R.REPAIR_ID,
@@ -292,12 +292,12 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from R in con.REPAIRs
                            where R.Deleted == "False" && R.MINISTRY.Code_Min== codeMin &&
-                       R.Work_Number.StartsWith(SearchText) ||
+                       (R.Work_Number.StartsWith(SearchText) ||
                        R.Start_Dte.StartsWith(SearchText) ||
                        R.VEHICLE.Local_Plate.StartsWith(SearchText) ||
                        R.CAR_CRASH.Crash_Code.StartsWith(SearchText) ||
                        R.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
-                       R.Work_Status .ToString() == SearchText
+                       R.Work_Status .ToString() == SearchText)
 
                            select new
                            {
@@ -337,12 +337,12 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from R in con.REPAIRs
                            where R.Deleted == "False" &&
-                       R.Work_Number.StartsWith(SearchText) ||
+                       (R.Work_Number.StartsWith(SearchText) ||
                        R.Start_Dte.StartsWith(SearchText) ||
                        R.VEHICLE.Local_Plate.StartsWith(SearchText) ||
                        R.CAR_CRASH.Crash_Code.StartsWith(SearchText) ||
                        R.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
-                       R.Work_Status.ToString() == SearchText
+                       R.Work_Status.ToString() == SearchText)
 
                            select new
                            {

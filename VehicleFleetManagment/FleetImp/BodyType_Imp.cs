@@ -127,7 +127,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from B in con.BODY_TYPE where B.Deleted=="False"
-
+                           orderby B.BODY_ID descending
                            select new
                            {
                                BODY_ID = B.BODY_ID,                               
@@ -161,7 +161,7 @@ namespace VehicleFleetManagment.FleetImp
             int n = 0;
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
-                var b = (from l in con.BODY_TYPE where B.Deleted == "False"
+                var b = (from l in con.BODY_TYPE where l.Deleted == "False"
                          select l).Count();
                 n = b;
             }
@@ -175,8 +175,8 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from B in con.BODY_TYPE
                            where B.Deleted == "False" &&
-                      B.Category.StartsWith(SearchText) ||
-                      B.Category_N_.ToString().StartsWith(SearchText)
+                     ( B.Category.StartsWith(SearchText) ||
+                      B.Category_N_.ToString().StartsWith(SearchText))
 
                            select new
                            {

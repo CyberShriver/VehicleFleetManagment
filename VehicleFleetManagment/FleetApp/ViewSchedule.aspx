@@ -71,9 +71,14 @@
                             </div>  
                             <!-- end Search  -->
 
-                            <div class="float-right mt-0 d-flex mb-0">
+                            <div class="float-right mt-0 d-flex mb-0" runat="server" id="records">
                                 <span runat="server" class="font-weight-bold mr-1">Records: </span>
                                 <asp:Label ID="nbr" runat="server" Text="" class="text-danger font-weight-bold mr-1"> </asp:Label>
+                            </div>
+
+                            <div class="float-right mt-0 d-flex mb-0" runat="server" id="CountserchResult" visible="false">
+                                <span runat="server" class="font-weight-bold mr-1">Search result: </span>
+                                <asp:Label ID="txtSearchResult" runat="server" Text="" class="text-danger font-weight-bold mr-1"> </asp:Label>
                             </div>
 
                         </div>
@@ -132,6 +137,12 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                            
+                                            <asp:TemplateField HeaderText="State">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label456745" runat="server" Text='<%# Eval("State") %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
                                             <asp:TemplateField HeaderText="Saved Date">
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label5" runat="server" Text='<%# Eval("Saved_Date") %>'></asp:Label>

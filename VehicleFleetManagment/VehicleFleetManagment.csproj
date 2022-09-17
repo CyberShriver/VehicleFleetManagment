@@ -177,6 +177,9 @@
     <Content Include="FleetApp\assets\images\logo-compact.png" />
     <Content Include="FleetApp\assets\images\logo.png" />
     <Content Include="FleetApp\assets\images\mCSB_buttons.png" />
+    <Content Include="FleetApp\assets\images\Providers\3.jpg" />
+    <Content Include="FleetApp\assets\images\Providers\EntityDesignerDiagram.png" />
+    <Content Include="FleetApp\assets\images\Providers\IMG-20210509-WA0007.jpg" />
     <Content Include="FleetApp\assets\images\select-arrow.png" />
     <Content Include="FleetApp\assets\images\tooltip\Euclid.png" />
     <Content Include="FleetApp\assets\images\tooltip\shape1.svg" />
@@ -359,6 +362,7 @@
     <Content Include="FleetModel\MinistryModel.edmx.diagram">
       <DependentUpon>MinistryModel.edmx</DependentUpon>
     </Content>
+    <Content Include="FleetApp\assets\images\Providers\contract.pdf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="FleetApp\liveDataCrash.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -947,7 +951,6 @@
     <Folder Include="FleetApp\assets\images\Drivers\" />
     <Folder Include="FleetApp\assets\images\File_Permission\" />
     <Folder Include="FleetApp\assets\images\Logo\" />
-    <Folder Include="FleetApp\assets\images\Providers\" />
     <Folder Include="FleetApp\assets\images\Users\" />
     <Folder Include="FleetApp\assets\images\Vehicles\" />
   </ItemGroup>

@@ -134,7 +134,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MOTs where M.Deleted=="False" && M.MINISTRY.Code_Min== codeMin
-
+                           orderby M.MOT_ID descending
                            select new
                            {
                                MOT_ID = M.MOT_ID,
@@ -160,7 +160,7 @@ namespace VehicleFleetManagment.FleetImp
             using (MINISTRY_DB_Connection con = new MINISTRY_DB_Connection())
             {
                 var obj = (from M in con.MOTs where M.Deleted == "False"
-
+                           orderby M.MOT_ID descending
                            select new
                            {
                                MOT_ID = M.MOT_ID,
@@ -232,11 +232,11 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from M in con.MOTs
                            where M.Deleted == "False" && M.MINISTRY.Code_Min == codeMin &&
-                       M.MOT_Agency_Name.StartsWith(SearchText) ||
+                      ( M.MOT_Agency_Name.StartsWith(SearchText) ||
                        M.MOT_Number.StartsWith(SearchText) ||
                        M.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
                        M.Visit_Dte.StartsWith(SearchText) ||
-                       M.VEHICLE.Local_Plate.StartsWith(SearchText)
+                       M.VEHICLE.Local_Plate.StartsWith(SearchText))
 
                            select new
                            {
@@ -264,11 +264,11 @@ namespace VehicleFleetManagment.FleetImp
             {
                 var obj = (from M in con.MOTs
                            where M.Deleted == "False" &&
-                       M.MOT_Agency_Name.StartsWith(SearchText) ||
+                      ( M.MOT_Agency_Name.StartsWith(SearchText) ||
                        M.MOT_Number.StartsWith(SearchText) ||
                        M.MINISTRY.Ministry_Name.StartsWith(SearchText) ||
                        M.Visit_Dte.StartsWith(SearchText) ||
-                       M.VEHICLE.Local_Plate.StartsWith(SearchText)
+                       M.VEHICLE.Local_Plate.StartsWith(SearchText))
 
                            select new
                            {

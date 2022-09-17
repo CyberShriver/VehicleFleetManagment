@@ -45,11 +45,27 @@ namespace VehicleFleetManagment.FleetApp
                 Id.DriverDashboard(ListView1, codeMin);
 
                 this.CrashAnalys = Ic.DisplayJson(codeMin);
-               
+
+
 
             }
 
-}
+}       
+        //void donult()
+        //{
+        //    if (CrashAnalys == "" && LeaveAnalys=="")
+        //    {
+        //        MultiView.ActiveViewIndex = 1;
+        //        MultiView1.ActiveViewIndex = 1;
+        //    }else if(CrashAnalys == "")
+        //    {
+        //        MultiView.ActiveViewIndex = 1;
+        //    }
+        //    else
+        //    {
+        //        MultiView.ActiveViewIndex = 1;
+        //    }
+        //}
 
         void ChargeCookies()
         {

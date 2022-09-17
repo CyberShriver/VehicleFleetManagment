@@ -44,7 +44,7 @@ namespace VehicleFleetManagment.FleetImp
         int countAll();
 
         //Research Method
-        void Research(GridView gd, string SearchText);
+        void Research(GridView gd, string codeMin, string SearchText);
 
         //Research All Method
         void ResearchAll(GridView gd, string SearchText);
